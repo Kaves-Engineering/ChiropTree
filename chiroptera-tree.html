@@ -388,11 +388,14 @@ details.lookup-toggle[open] > summary::after{content:"–"}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
 .lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:14.5px;color:var(--bone)}
 .lu-row .lu-common{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+.lu-row .lu-common.lu-dk{color:var(--ochre)}
 .lu-row .lu-fam{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--line-dim);margin-top:2px;text-transform:uppercase}
 .lu-panel-detail{padding:clamp(18px,2.6vw,32px);overflow-y:auto}
 .lu-empty{color:var(--muted);font-style:italic;padding-top:8vh;text-align:center}
 .lu-d-sci{font-family:var(--display);font-style:italic;font-size:clamp(24px,3.4vw,34px);margin:0;color:var(--bone)}
 .lu-d-common{font-size:15px;color:var(--line);margin:5px 0 0}
+.lu-d-common.lu-dk{color:var(--ochre)}
+.lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
 .lu-chain{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em}
 .lu-chain span{padding:4px 9px;background:var(--prussian);border:1px solid var(--line-dim);border-radius:2px;color:var(--muted)}
@@ -454,6 +457,7 @@ details.lookup-toggle[open] > summary::after{content:"–"}
     <p class="lede" style="margin-top:16px;font-size:12.5px;color:var(--muted)">
       Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>.
       Echolocation figures here are a starter family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000) — illustrative, not species-verified.
+      Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records (mainly Denmark's National Checklist and Catalogue of Life) and are shown only where a genuine Danish name is on record — most of the world's bats have none.
     </p>
   </div>
 </details>
@@ -1820,14 +1824,16 @@ card.addEventListener('click', e=>{
    9. SECTION V — SPECIES LOOKUP
    (namespaced lu* to avoid collisions with the browser/filter code above)
    ========================================================= */
-const luState = { species: [], echo: null, filtered: [], active: null };
+const luState = { species: [], echo: null, danish: {}, filtered: [], active: null };
 
 Promise.all([
   fetch('data/chiroptera_taxonomy.json').then(r=>r.json()),
-  fetch('data/echolocation_reference.json').then(r=>r.json())
-]).then(([tax, echo])=>{
+  fetch('data/echolocation_reference.json').then(r=>r.json()),
+  fetch('data/danish_names.json').then(r=>r.json())
+]).then(([tax, echo, danish])=>{
   luState.species = tax.species;
   luState.echo = echo;
+  luState.danish = danish;
   document.getElementById('lu-headMeta').innerHTML =
     tax._meta.speciesCount+' species · '+tax._meta.familyCount+' families · '+tax._meta.genusCount+' genera — '+
     '<a href="'+tax._meta.sourceUrl+'" target="_blank" rel="noopener">'+tax._meta.source+'</a>';
@@ -1852,12 +1858,14 @@ function luApplyFilter(){
   luState.filtered = luState.species.filter(s=>{
     if(fam && s.family !== fam) return false;
     if(!q) return true;
+    const dk = luState.danish[s.sciName];
     return (
       s.sciName.toLowerCase().replace('_',' ').includes(q) ||
       (s.mainCommonName||'').toLowerCase().includes(q) ||
       (s.otherCommonNames||'').toLowerCase().includes(q) ||
       s.genus.toLowerCase().includes(q) ||
-      s.family.toLowerCase().includes(q)
+      s.family.toLowerCase().includes(q) ||
+      (dk && dk.allNames.some(n=>n.toLowerCase().includes(q)))
     );
   });
   luRenderList();
@@ -1872,8 +1880,10 @@ function luRenderList(){
     const row = document.createElement('div');
     row.className = 'lu-row'+(luState.active===s.id ? ' active' : '');
     row.dataset.id = s.id;
+    const dk = luState.danish[s.sciName];
     row.innerHTML = '<span class="lu-sci">'+luNiceName(s.sciName)+'</span>'+
       (s.mainCommonName ? '<span class="lu-common">'+s.mainCommonName+'</span>' : '')+
+      (dk ? '<span class="lu-common lu-dk">🇩🇰 '+dk.name+'</span>' : '')+
       '<span class="lu-fam">'+s.family+' · '+s.genus+'</span>';
     row.addEventListener('click', ()=>luSelectSpecies(s.id));
     frag.appendChild(row);
@@ -1900,6 +1910,7 @@ function luSelectSpecies(id){
 
   const echo = luFindEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
+  const dk = luState.danish[s.sciName];
 
   const chain = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k=>s[k] && s[k]!=='NA')
@@ -1917,6 +1928,7 @@ function luSelectSpecies(id){
   detail.innerHTML =
     '<p class="lu-d-sci">'+luNiceName(s.sciName)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+s.mainCommonName+(s.otherCommonNames ? ' · '+s.otherCommonNames : '')+'</p>' : '')+
+    (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+dk.allNames.join(' / ')+' <span class="lu-dk-src">('+dk.source+')</span></p>' : '')+
     '<p class="lu-d-authority">'+(s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||'')+'</p>'+
     '<div class="lu-chain">'+chain+'</div>'+
     '<div class="lu-grid2">'+

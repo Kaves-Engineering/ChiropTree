@@ -33,7 +33,7 @@ FIELDS = [
     "tribe", "genus", "subgenus", "specificEpithet",
     "authoritySpeciesAuthor", "authoritySpeciesYear",
     "countryDistribution", "continentDistribution", "biogeographicRealm",
-    "iucnStatus", "extinct",
+    "iucnStatus", "extinct", "MSW3_sciName",
 ]
 
 def main():

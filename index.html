@@ -73,6 +73,7 @@ input[type=search]:focus, select:focus{outline:1px solid var(--ochre)}
 .row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:13px}
 .row .sci{font-style:italic;font-family:var(--display);font-size:15px;color:var(--bone)}
 .row .common{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+.row .common.dk{color:var(--ochre)}
 .row .fam{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--line-dim);margin-top:3px;text-transform:uppercase}
 
 .panel-detail{padding:clamp(20px,3vw,48px);overflow-y:auto}
@@ -80,6 +81,8 @@ input[type=search]:focus, select:focus{outline:1px solid var(--ochre)}
 
 .d-sci{font-family:var(--display);font-style:italic;font-size:clamp(28px,4vw,40px);margin:0;color:var(--bone)}
 .d-common{font-size:16px;color:var(--line);margin:6px 0 0}
+.d-common.dk{color:var(--ochre)}
+.d-common .dk-src{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .d-authority{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:4px}
 
 .chain{
@@ -143,18 +146,21 @@ footer a{color:var(--muted)}
 
 <footer>
   Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a> ·
-  Echolocation: curated family/genus reference from published literature (see detail panel citations) — starter dataset, verify before research use.
+  Echolocation: curated family/genus reference from published literature (see detail panel citations) — starter dataset, verify before research use ·
+  Danish names: <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records (mainly Denmark's National Checklist and Catalogue of Life) — shown only where a genuine Danish name is on record; most species have none.
 </footer>
 
 <script>
-const state = { species: [], echo: null, filtered: [], active: null };
+const state = { species: [], echo: null, danish: {}, filtered: [], active: null };
 
 Promise.all([
   fetch('data/chiroptera_taxonomy.json').then(r => r.json()),
-  fetch('data/echolocation_reference.json').then(r => r.json())
-]).then(([tax, echo]) => {
+  fetch('data/echolocation_reference.json').then(r => r.json()),
+  fetch('data/danish_names.json').then(r => r.json())
+]).then(([tax, echo, danish]) => {
   state.species = tax.species;
   state.echo = echo;
+  state.danish = danish;
   document.getElementById('headMeta').innerHTML =
     `${tax._meta.speciesCount} species · ${tax._meta.familyCount} families · ${tax._meta.genusCount} genera — ` +
     `<a href="${tax._meta.sourceUrl}" target="_blank" rel="noopener">${tax._meta.source}</a>`;
@@ -179,12 +185,14 @@ function applyFilter(){
   state.filtered = state.species.filter(s => {
     if (fam && s.family !== fam) return false;
     if (!q) return true;
+    const dk = state.danish[s.sciName];
     return (
       s.sciName.toLowerCase().replace('_',' ').includes(q) ||
       (s.mainCommonName||'').toLowerCase().includes(q) ||
       (s.otherCommonNames||'').toLowerCase().includes(q) ||
       s.genus.toLowerCase().includes(q) ||
-      s.family.toLowerCase().includes(q)
+      s.family.toLowerCase().includes(q) ||
+      (dk && dk.allNames.some(n => n.toLowerCase().includes(q)))
     );
   });
   renderList();
@@ -199,8 +207,10 @@ function renderList(){
     const row = document.createElement('div');
     row.className = 'row' + (state.active === s.id ? ' active' : '');
     row.dataset.id = s.id;
+    const dk = state.danish[s.sciName];
     row.innerHTML = `<span class="sci">${niceName(s.sciName)}</span>` +
       (s.mainCommonName ? `<span class="common">${s.mainCommonName}</span>` : '') +
+      (dk ? `<span class="common dk">🇩🇰 ${dk.name}</span>` : '') +
       `<span class="fam">${s.family} · ${s.genus}</span>`;
     row.addEventListener('click', () => selectSpecies(s.id));
     frag.appendChild(row);
@@ -229,6 +239,7 @@ function selectSpecies(id){
 
   const echo = findEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
+  const dk = state.danish[s.sciName];
 
   const chain = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k => s[k] && s[k] !== 'NA')
@@ -249,6 +260,7 @@ function selectSpecies(id){
   detail.innerHTML = `
     <p class="d-sci">${niceName(s.sciName)}</p>
     ${s.mainCommonName ? `<p class="d-common">${s.mainCommonName}${s.otherCommonNames ? ' · ' + s.otherCommonNames : ''}</p>` : ''}
+    ${dk ? `<p class="d-common dk">🇩🇰 ${dk.allNames.join(' / ')} <span class="dk-src">(${dk.source})</span></p>` : ''}
     <p class="d-authority">${s.authoritySpeciesAuthor || ''} ${s.authoritySpeciesYear || ''}</p>
     <div class="chain">${chain}</div>
     <div class="grid2">

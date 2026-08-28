@@ -24,6 +24,18 @@ backend required.
 - **`data/build_taxonomy.py`** — regenerates `chiroptera_taxonomy.json` from
   the MDD release CSV (auto-downloads it into `data/raw/`, which is
   gitignored).
+- **`data/danish_names.json`** — genuine Danish common names, fetched from
+  [GBIF](https://www.gbif.org)'s vernacular-name records (mainly Denmark's
+  National Checklist and Catalogue of Life). Danish names for bats barely
+  exist outside the ~17 species found in Denmark — species without a
+  recorded name are simply absent from this file rather than given an
+  invented one.
+- **`data/build_danish_names.py`** — regenerates `danish_names.json` by
+  querying GBIF's species-match and vernacular-name APIs for every species
+  in `chiroptera_taxonomy.json` (falls back to each species' MSW3-era name
+  when MDD's current genus placement is ahead of GBIF's backbone, e.g. the
+  *Eptesicus* → *Cnephaeus* split). Takes a few minutes; re-run after
+  regenerating the taxonomy from a new MDD release.
 
 ## Updating the taxonomy data
 

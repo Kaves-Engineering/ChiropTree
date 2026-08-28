@@ -1,0 +1,226 @@
+{
+ "Barbastella_barbastellus": {
+  "allNames": [
+   "Bredøret flagermus"
+  ],
+  "name": "Bredøret flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Cnephaeus_nilssonii": {
+  "allNames": [
+   "Nordflagermus"
+  ],
+  "name": "Nordflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Cnephaeus_serotinus": {
+  "allNames": [
+   "Sydflagermus"
+  ],
+  "name": "Sydflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Eidolon_helvum": {
+  "allNames": [
+   "Gul flyvehund"
+  ],
+  "name": "Gul flyvehund",
+  "source": "Catalogue of Life"
+ },
+ "Myotis_bechsteinii": {
+  "allNames": [
+   "Bechsteins flagermus"
+  ],
+  "name": "Bechsteins flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_blythii": {
+  "allNames": [
+   "Lille museøre"
+  ],
+  "name": "Lille museøre",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Myotis_brandtii": {
+  "allNames": [
+   "Brandts flagermus"
+  ],
+  "name": "Brandts flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_capaccinii": {
+  "allNames": [
+   "Capaccinis flagermus",
+   "Capaccinnis flagermus"
+  ],
+  "name": "Capaccinis flagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Myotis_dasycneme": {
+  "allNames": [
+   "Damflagermus"
+  ],
+  "name": "Damflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_daubentonii": {
+  "allNames": [
+   "Vandflagermus"
+  ],
+  "name": "Vandflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_emarginatus": {
+  "allNames": [
+   "Geoffroys flagermus"
+  ],
+  "name": "Geoffroys flagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Myotis_myotis": {
+  "allNames": [
+   "Stor museøre"
+  ],
+  "name": "Stor museøre",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_mystacinus": {
+  "allNames": [
+   "Skægflagermus"
+  ],
+  "name": "Skægflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Myotis_nattereri": {
+  "allNames": [
+   "Frynseflagermus"
+  ],
+  "name": "Frynseflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Nyctalus_lasiopterus": {
+  "allNames": [
+   "Stor brunflagermus"
+  ],
+  "name": "Stor brunflagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Nyctalus_leisleri": {
+  "allNames": [
+   "Leislers flagermus"
+  ],
+  "name": "Leislers flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Nyctalus_noctula": {
+  "allNames": [
+   "Brunflagermus"
+  ],
+  "name": "Brunflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Phyllostomus_discolor": {
+  "allNames": [
+   "lys spydnæseflagermus"
+  ],
+  "name": "lys spydnæseflagermus",
+  "source": "Catalogue of Life"
+ },
+ "Pipistrellus_kuhlii": {
+  "allNames": [
+   "Kuhlflagermus",
+   "Kuhls flagermus"
+  ],
+  "name": "Kuhlflagermus",
+  "source": "Catalogue of Life"
+ },
+ "Pipistrellus_nathusii": {
+  "allNames": [
+   "Troldflagermus"
+  ],
+  "name": "Troldflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pipistrellus_pipistrellus": {
+  "allNames": [
+   "Dværgflagermus",
+   "Pipistrelflagermus"
+  ],
+  "name": "Pipistrelflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pipistrellus_pygmaeus": {
+  "allNames": [
+   "Dværgflagermus"
+  ],
+  "name": "Dværgflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Plecotus_auritus": {
+  "allNames": [
+   "Brun langøre",
+   "Langøret flagermus"
+  ],
+  "name": "Brun langøre",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Plecotus_austriacus": {
+  "allNames": [
+   "Grå langøret flagermus"
+  ],
+  "name": "Grå langøret flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Rhinolophus_blasii": {
+  "allNames": [
+   "Blasius hesteskonæse",
+   "Blasius' hesteskonæse"
+  ],
+  "name": "Blasius hesteskonæse",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Rhinolophus_euryale": {
+  "allNames": [
+   "Middelhavs hesteskonæse",
+   "Middelhavshesteskonæse"
+  ],
+  "name": "Middelhavs hesteskonæse",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Rhinolophus_ferrumequinum": {
+  "allNames": [
+   "Stor hesteskonæse"
+  ],
+  "name": "Stor hesteskonæse",
+  "source": "Catalogue of Life"
+ },
+ "Rhinolophus_hipposideros": {
+  "allNames": [
+   "Lille hestekonæse",
+   "Lille hesteskonæse"
+  ],
+  "name": "Lille hestekonæse",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Rhinolophus_mehelyi": {
+  "allNames": [
+   "Mehelys hesteskonæse"
+  ],
+  "name": "Mehelys hesteskonæse",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Tadarida_teniotis": {
+  "allNames": [
+   "Buldogflagermus"
+  ],
+  "name": "Buldogflagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Vespertilio_murinus": {
+  "allNames": [
+   "Skimmelflagermus"
+  ],
+  "name": "Skimmelflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ }
+}
