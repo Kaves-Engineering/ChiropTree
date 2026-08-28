@@ -55,10 +55,10 @@ body::after{
   background:radial-gradient(120% 90% at 50% 8%, rgba(20,70,110,.16), rgba(4,18,31,0) 62%);
 }
 
-.wrap{max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+.wrap{max-width:1640px;margin:0 auto;padding:0 var(--pad)}
 
 /* ---------- masthead ---------- */
-.masthead{padding:clamp(48px,9vw,110px) 0 clamp(32px,5vw,56px);position:relative}
+.masthead{padding:clamp(30px,5vw,64px) 0 clamp(26px,4vw,44px);position:relative}
 .eyebrow{
   font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
   color:var(--line);margin:0 0 22px;
@@ -66,8 +66,8 @@ body::after{
 h1{
   font-family:var(--display);
   font-weight:500;
-  font-size:clamp(46px,11vw,116px);
-  line-height:.92;
+  font-size:clamp(40px,8.5vw,92px);
+  line-height:.94;
   letter-spacing:-.015em;
   margin:0;
 }
@@ -76,7 +76,7 @@ h1 em{font-style:italic;color:var(--line)}
   margin:26px 0 0;max-width:56ch;font-size:clamp(16px,2.1vw,19px);color:var(--text);
 }
 .figures{
-  display:flex;flex-wrap:wrap;gap:0;margin-top:38px;
+  display:flex;flex-wrap:wrap;gap:0;margin-top:30px;
   border-top:1px solid var(--line-dim);
 }
 .fig{
@@ -87,7 +87,7 @@ h1 em{font-style:italic;color:var(--line)}
 .fig span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- sections ---------- */
-section{padding:clamp(46px,7vw,96px) 0;border-top:1px solid rgba(125,178,212,.2)}
+section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(125,178,212,.2);scroll-margin-top:70px}
 .sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
 .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ochre)}
 h2{
@@ -129,19 +129,28 @@ h2{
 .note-inline{font-family:var(--mono);font-size:11px;color:var(--ochre);letter-spacing:.04em}
 
 /* ---------- tree ---------- */
+.tree-layout{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);
+  gap:0 32px;align-items:start;margin-top:36px;
+}
 .treebox{
-  margin-top:36px;
+  margin-top:0;
   border:1px solid rgba(125,178,212,.22);
   background:#08243c;
   border-radius:3px;
-  overflow-x:auto;
+  overflow:auto;
+  max-height:min(1180px,82vh);
+  overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
 }
 .scroll-hint{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);margin:14px 0 0;
 }
-svg#tree{display:block;width:100%;min-width:780px;height:auto}
+@media (max-width:900px){
+  .tree-layout{grid-template-columns:1fr}
+}
+svg#tree{display:block;width:100%;min-width:660px;height:auto}
 .branch{stroke:var(--line-dim);stroke-width:1.2;fill:none;stroke-linecap:square}
 .tip-hit{fill:transparent;cursor:pointer}
 .tip-name{font-family:var(--display);font-size:15px;font-weight:500;fill:var(--bone);cursor:pointer;dominant-baseline:middle}
@@ -160,10 +169,37 @@ g.tip:focus-visible{outline:none}
 g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3}
 
 /* ---------- detail card ---------- */
+.card.empty{border-left-color:var(--line-dim);background:rgba(5,22,38,.35)}
+.card-empty{padding:6px 0 2px}
+.ce-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.ce-text{margin:0;color:#8fa3b0;font-size:14.5px;line-height:1.55;max-width:34ch}
+.card .lu-grid2{grid-template-columns:1fr;gap:14px;margin-top:18px}
+.card .lu-d-sci{font-size:clamp(22px,3vw,30px);padding-right:0}
+.card .lu-chain{font-size:10px}
+.card .lu-links{margin-top:18px}
+.card .lu-prov{font-size:11.5px}
+
 .card{
-  margin-top:26px;border:1px solid rgba(125,178,212,.28);border-left:3px solid var(--ochre);
+  margin-top:0;border:1px solid rgba(125,178,212,.28);border-left:3px solid var(--ochre);
   background:rgba(5,22,38,.75);padding:clamp(20px,3.4vw,32px);border-radius:2px;
+  position:sticky;top:78px;max-height:calc(100vh - 98px);overflow-y:auto;
 }
+@media (max-width:900px){
+  .card{position:static;max-height:none;margin-top:26px}
+}
+
+/* ---------- mini "zoomed" cladogram in the card ---------- */
+.card-zoom{margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid rgba(125,178,212,.18)}
+.card-zoom-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 8px;
+}
+svg.zoom-svg{display:block;width:100%;height:auto}
+.zoom-branch{stroke:var(--line-dim);stroke-width:1.2;fill:none;stroke-linecap:square}
+.zoom-name{font-family:var(--display);font-size:13px;fill:var(--text)}
+.zoom-name.current{fill:var(--ochre);font-weight:500}
+.zoom-dot{fill:var(--line-dim)}
+.zoom-dot.current{fill:var(--ochre)}
 .card-lineage{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
 .card h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.4vw,38px);margin:0;line-height:1.05}
 .card .common{font-size:16px;color:var(--ochre);margin:6px 0 20px}
@@ -346,54 +382,83 @@ footer b{color:var(--bone);font-weight:500}
   *{transition:none!important;animation:none!important}
 }
 
-/* ---------- species lookup, collapsible at top of page (scoped lu- prefix, avoids clashing with page classes above) ---------- */
-details.lookup-toggle{
-  margin:clamp(20px,3.4vw,40px) 0 0;border:1px solid var(--line-dim);border-radius:3px;
-  background:rgba(6,25,42,.55);
+/* ---------- sticky topbar with the search field ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(4,18,31,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(125,178,212,.2);
 }
-details.lookup-toggle[open]{background:rgba(4,17,30,.85);border-color:rgba(159,203,230,.4)}
-details.lookup-toggle > summary{
-  cursor:pointer;list-style:none;padding:18px 52px 18px 22px;display:flex;flex-wrap:wrap;
-  align-items:baseline;gap:6px 16px;position:relative;
+.topbar-in{
+  max-width:1640px;margin:0 auto;padding:0 var(--pad);
+  display:flex;align-items:center;gap:20px;height:58px;
 }
-details.lookup-toggle > summary::-webkit-details-marker{display:none}
-details.lookup-toggle > summary::after{
-  content:"+";position:absolute;right:22px;top:14px;font-family:var(--mono);color:var(--ochre);font-size:22px;
+.tb-brand{font-family:var(--display);font-size:17px;font-weight:500;color:var(--bone);text-decoration:none;white-space:nowrap}
+.tb-brand em{font-style:italic;color:var(--line)}
+.tb-nav{display:flex;gap:18px}
+.tb-nav a{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:.15s;
 }
-details.lookup-toggle[open] > summary::after{content:"–"}
-.lu-toggle-eyebrow{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ochre);
-  flex-basis:100%;
+.tb-nav a:hover{color:var(--ochre)}
+@media (max-width:800px){ .tb-nav{display:none} }
+@media (max-width:520px){ .tb-brand{display:none} }
+
+.tb-search{margin-left:auto;position:relative;width:min(330px,58vw)}
+.tb-search input{
+  width:100%;background:rgba(10,39,64,.85);border:1px solid var(--line-dim);color:var(--text);
+  font-family:var(--body);font-size:13.5px;padding:8px 44px 8px 32px;border-radius:999px;
 }
-.lu-toggle-title{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.8vw,25px);color:var(--bone)}
-.lu-toggle-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted)}
-.lu-toggle-hint a{color:var(--muted);text-decoration-color:var(--line-dim)}
-.lu-body{padding:0 22px 24px}
-.lu-layout{
-  display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:0;margin-top:24px;
-  border:1px solid var(--line-dim);border-radius:2px;overflow:hidden;min-height:520px;
+.tb-search input::placeholder{color:#7f939f}
+.tb-search input:focus{outline:none;border-color:var(--ochre);background:var(--prussian)}
+.tb-ico,.tb-kbd{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--line-dim)}
+.tb-ico{left:11px;font-size:12px}
+.tb-kbd{right:11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;transition:opacity .15s}
+.tb-search input:focus + .tb-kbd{opacity:0}
+
+.tb-results{
+  position:absolute;top:calc(100% + 9px);right:0;width:min(440px,90vw);
+  max-height:min(560px,70vh);overflow-y:auto;
+  background:#06192a;border:1px solid var(--line-dim);border-radius:4px;
+  box-shadow:0 26px 64px rgba(0,0,0,.55);
 }
-@media (max-width:820px){ .lu-layout{grid-template-columns:1fr} }
-.lu-panel-list{border-right:1px solid var(--line-dim);display:flex;flex-direction:column;max-height:640px}
-@media (max-width:820px){ .lu-panel-list{max-height:50vh;border-right:none;border-bottom:1px solid var(--line-dim)} }
-.lu-controls{padding:14px;display:flex;flex-direction:column;gap:9px;border-bottom:1px solid rgba(125,178,212,.18);background:rgba(5,22,38,.4)}
-.lu-controls input[type=search], .lu-controls select{
-  width:100%;background:var(--prussian);border:1px solid var(--line-dim);color:var(--text);
-  font-family:var(--body);font-size:14px;padding:8px 10px;border-radius:3px;
+.tb-results .lu-foot{
+  padding:9px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--line-dim);
+  border-top:1px solid rgba(125,178,212,.16);
 }
-.lu-controls input[type=search]:focus, .lu-controls select:focus{outline:1px solid var(--ochre)}
-.lu-count{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em}
-.lu-list{overflow-y:auto;flex:1}
+.tb-results .lu-none{padding:18px 14px;font-size:13px;color:var(--muted);font-style:italic}
+.lu-count{
+  padding:8px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--line-dim);border-bottom:1px solid rgba(125,178,212,.16);
+}
+
+/* ---------- species drawer ---------- */
+.lu-scrim{position:fixed;inset:0;background:rgba(2,10,18,.62);z-index:70;opacity:0;pointer-events:none;transition:opacity .26s}
+.lu-scrim.open{opacity:1;pointer-events:auto}
+.lu-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(640px,94vw);z-index:80;
+  background:#06192a;border-left:1px solid var(--line-dim);
+  transform:translateX(101%);transition:transform .28s cubic-bezier(.2,.7,.2,1);
+  overflow-y:auto;padding:clamp(22px,3vw,36px);
+}
+.lu-drawer.open{transform:none}
+.lu-close{
+  position:absolute;top:14px;right:16px;z-index:2;
+  background:transparent;border:1px solid var(--line-dim);color:var(--muted);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 12px;border-radius:2px;cursor:pointer;
+}
+.lu-close:hover{border-color:var(--ochre);color:var(--ochre)}
+
+/* ---------- lookup rows & detail (shared by dropdown and drawer) ---------- */
 .lu-row{padding:9px 14px;border-bottom:1px solid rgba(125,178,212,.10);cursor:pointer}
-.lu-row:hover{background:var(--prussian)}
+.lu-row:hover,.lu-row:focus-visible{background:var(--prussian);outline:none}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
 .lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:14.5px;color:var(--bone)}
 .lu-row .lu-common{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
 .lu-row .lu-common.lu-dk{color:var(--ochre)}
 .lu-row .lu-fam{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--line-dim);margin-top:2px;text-transform:uppercase}
-.lu-panel-detail{padding:clamp(18px,2.6vw,32px);overflow-y:auto}
 .lu-empty{color:var(--muted);font-style:italic;padding-top:8vh;text-align:center}
-.lu-d-sci{font-family:var(--display);font-style:italic;font-size:clamp(24px,3.4vw,34px);margin:0;color:var(--bone)}
+.lu-d-sci{font-family:var(--display);font-style:italic;font-size:clamp(24px,3.4vw,34px);margin:0;color:var(--bone);padding-right:90px}
 .lu-d-common{font-size:15px;color:var(--line);margin:5px 0 0}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
@@ -402,7 +467,7 @@ details.lookup-toggle[open] > summary::after{content:"–"}
 .lu-chain span{padding:4px 9px;background:var(--prussian);border:1px solid var(--line-dim);border-radius:2px;color:var(--muted)}
 .lu-chain span b{color:var(--line);font-weight:500}
 .lu-grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
-@media (max-width:600px){ .lu-grid2{grid-template-columns:1fr} }
+@media (max-width:700px){ .lu-grid2{grid-template-columns:1fr} }
 .lu-card{background:var(--prussian);border:1px solid rgba(125,178,212,.25);border-radius:4px;padding:16px 18px}
 .lu-card h4{margin:0 0 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);font-weight:500}
 .lu-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:13px}
@@ -415,16 +480,98 @@ details.lookup-toggle[open] > summary::after{content:"–"}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
 .lu-status.en,.lu-status.cr{color:#e88a8a;border-color:#8a3a3a}
 .lu-status.dd,.lu-status.na{color:var(--muted)}
+.lu-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px}
+.lu-links a{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--line);text-decoration:none;border:1px solid var(--line-dim);padding:7px 12px;border-radius:2px;
+}
+.lu-links a:hover{color:var(--ochre);border-color:var(--ochre)}
+.lu-prov{margin-top:26px;font-size:12px;color:var(--muted);line-height:1.5;border-top:1px solid rgba(125,178,212,.18);padding-top:14px}
+.lu-prov a{color:var(--line)}
+
+/* ---------- collapsible sections ---------- */
+details.fold > summary{
+  list-style:none;cursor:pointer;display:block;position:relative;padding-right:104px;
+}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary::after{
+  content:"Open";position:absolute;right:0;top:2px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ochre);border:1px solid var(--ochre-dim);padding:7px 13px;border-radius:2px;transition:.15s;
+}
+details.fold[open] > summary::after{content:"Close"}
+details.fold > summary:hover::after{background:var(--ochre);color:var(--abyss);border-color:var(--ochre)}
+details.fold > summary:focus-visible{outline:2px solid var(--ochre);outline-offset:6px}
+.fold-lede{max-width:62ch;color:var(--muted);margin:12px 0 0;font-size:14.5px}
+.fold-body{padding-top:10px}
+
+/* ---------- expandable tree ---------- */
+.tree-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 12px}
+.tree-tools button{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--line-dim);color:var(--text);
+  padding:7px 12px;border-radius:2px;cursor:pointer;transition:.15s;
+}
+.tree-tools button:hover{border-color:var(--ochre);color:var(--ochre)}
+.tree-tools button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.tree-tools .tt-hint{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-left:auto;
+}
+@media (max-width:640px){ .tree-tools .tt-hint{display:none} }
+g.trow{cursor:pointer}
+g.trow .trow-hit{fill:transparent}
+g.trow:hover .trow-hit{fill:rgba(159,203,230,.07)}
+g.trow:focus-visible{outline:none}
+g.trow:focus-visible .trow-hit{fill:rgba(232,171,76,.15)}
+.t-subfam{font-family:var(--display);font-size:13.5px;font-weight:500;fill:var(--bone);dominant-baseline:middle}
+.t-tribe{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;fill:var(--ochre);dominant-baseline:middle}
+.t-genus{font-family:var(--display);font-style:italic;font-size:13.5px;fill:#e2ecf1;dominant-baseline:middle}
+.t-species{font-family:var(--display);font-style:italic;font-size:12.5px;fill:#b9c9d2;dominant-baseline:middle}
+.t-note{font-family:var(--body);font-size:11px;fill:#8698a3;dominant-baseline:middle}
+.t-count{font-family:var(--mono);font-size:10px;fill:#8698a3;text-anchor:end;dominant-baseline:middle}
+.sub-branch{stroke:rgba(159,203,230,.34);stroke-width:1}
+.t-knot{fill:var(--line-dim)}
+.t-knot.shut{fill:var(--ochre-dim)}
+.t-knot.open{fill:#08243c;stroke:var(--ochre);stroke-width:1.5}
+.t-knot.leaf{fill:#3d6f95}
+g.tip:hover .t-knot.shut,g.trow:hover .t-knot.shut{fill:var(--ochre)}
+g.trow:hover .t-genus,g.trow:hover .t-species,g.trow:hover .t-subfam{fill:var(--ochre)}
+g.trow.species.active .t-species{fill:var(--ochre)}
+g.trow.species.active .trow-hit{fill:rgba(232,171,76,.12)}
+g.trow.static{cursor:default}
+g.trow.static:hover .trow-hit{fill:none}
+g.trow.static:hover .t-genus{fill:#e2ecf1}
+.fam-open .tip-name{fill:var(--ochre)}
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="tb-brand" href="#top">The branching of <em>bats</em></a>
+    <nav class="tb-nav">
+      <a href="#tree-section">Tree</a>
+      <a href="#ranks">Ranks</a>
+      <a href="#below">Atlas</a>
+      <a href="#sources">Sources</a>
+    </nav>
+    <div class="tb-search">
+      <span class="tb-ico" aria-hidden="true">⌕</span>
+      <input type="search" id="lu-search" placeholder="Search any bat…" autocomplete="off"
+             role="combobox" aria-expanded="false" aria-controls="lu-results" aria-label="Search species, genus, family or common name">
+      <span class="tb-kbd" aria-hidden="true">/</span>
+      <div class="tb-results" id="lu-results" role="listbox" hidden></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="top">
 
 <header class="masthead">
   <p class="eyebrow">Order Chiroptera — a working classification</p>
   <h1>The branching<br>of <em>bats</em></h1>
-  <p class="deck">One in every five mammal species is a bat. This page lays out how that diversity is filed: the ladder of ranks from order down to species, and the tree of 21 living families that the ranks are hung on.</p>
+  <p class="deck">One in every five mammal species is a bat. This page lays out how that diversity is filed: the tree of 21 living families, opened all the way down to species, and the ladder of ranks that the tree is hung on.</p>
   <div class="figures">
     <div class="fig"><b>21</b><span>Living families</span></div>
     <div class="fig"><b>2</b><span>Suborders</span></div>
@@ -433,72 +580,65 @@ details.lookup-toggle[open] > summary::after{content:"–"}
   </div>
 </header>
 
-<details class="lookup-toggle" id="lookup">
-  <summary>
-    <span class="lu-toggle-eyebrow">Quick lookup</span>
-    <span class="lu-toggle-title">Search species, phylogeny &amp; echolocation</span>
-    <span class="lu-toggle-hint" id="lu-headMeta">Loading taxonomy…</span>
-  </summary>
-  <div class="lu-body">
-    <p class="lede">Search the full Mammal Diversity Database export directly — every currently recognised bat, by scientific name, common name, genus or family — rather than drilling down through the tree below.</p>
+<!-- ================= TREE ================= -->
+<section id="tree-section">
+  <div class="sec-head"><span class="sec-num">I</span><h2>The tree of families</h2></div>
+  <p class="lede">Genetic evidence broke the old split between big fruit bats and small echolocating bats. Flying foxes turned out to be nested beside horseshoe bats, not opposite all the rest — so the two suborders below are <em>Yinpterochiroptera</em> and <em>Yangochiroptera</em>. Superfamilies group the families inside each.</p>
+  <p class="lede">Click a family to open its branch: the tree carries on into subfamilies, tribes where they are used, every genus, and then the species themselves. Whatever you click — family or species — opens in the panel beside the tree.</p>
 
-    <div class="lu-layout">
-      <div class="lu-panel-list">
-        <div class="lu-controls">
-          <input type="search" id="lu-search" placeholder="Search species, genus, family, common name…" autocomplete="off">
-          <select id="lu-familyFilter"><option value="">All families</option></select>
-          <div class="lu-count" id="lu-count"></div>
-        </div>
-        <div class="lu-list" id="lu-list"></div>
-      </div>
-      <div class="lu-panel-detail" id="lu-detail">
-        <div class="lu-empty">Select a species from the list.</div>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:16px;font-size:12.5px;color:var(--muted)">
-      Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>.
-      Echolocation figures here are a starter family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000) — illustrative, not species-verified.
-      Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records (mainly Denmark's National Checklist and Catalogue of Life) and are shown only where a genuine Danish name is on record — most of the world's bats have none.
-    </p>
+  <div class="tree-tools">
+    <button type="button" id="t-collapse">Collapse all</button>
+    <button type="button" id="t-expandsub">Open every family</button>
+    <span class="tt-hint">Click a family to grow its branch</span>
   </div>
-</details>
+
+  <div class="tree-layout">
+    <div class="tree-col">
+      <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg></div>
+      <p class="scroll-hint">Scroll inside the panel — sideways too, on a narrow screen</p>
+    </div>
+    <div class="card" id="card" aria-live="polite"></div>
+  </div>
+</section>
 
 <!-- ================= RANKS ================= -->
 <section id="ranks">
-  <div class="sec-head"><span class="sec-num">I</span><h2>The ladder of ranks</h2></div>
-  <p class="lede">A rank is just a level of nesting. Each step down describes a smaller, more closely related group, and every group at every level is contained entirely inside the one above it. Family sits in the middle: broad enough to share an obvious body plan and way of life, narrow enough that its members are unmistakably kin.</p>
-  <p class="lede">Pick a bat and watch the ladder narrow. The bar under each rung shows how many bat species fall inside that group.</p>
+  <details class="fold">
+    <summary>
+      <div class="sec-head"><span class="sec-num">II</span><h2>The ladder of ranks</h2></div>
+      <p class="fold-lede">Background: what a rank actually is, and how a single bat is filed from kingdom down to species.</p>
+    </summary>
+    <div class="fold-body">
+      <p class="lede">A rank is just a level of nesting. Each step down describes a smaller, more closely related group, and every group at every level is contained entirely inside the one above it. Family sits in the middle: broad enough to share an obvious body plan and way of life, narrow enough that its members are unmistakably kin.</p>
+      <p class="lede">Pick a bat and watch the ladder narrow. The bar under each rung shows how many bat species fall inside that group.</p>
 
-  <div class="switch" role="group" aria-label="Choose a worked example">
-    <button type="button" data-ex="0" aria-pressed="true">Common pipistrelle</button>
-    <button type="button" data-ex="1" aria-pressed="false">Large flying fox</button>
-    <button type="button" data-ex="2" aria-pressed="false">Common vampire bat</button>
-  </div>
+      <div class="switch" role="group" aria-label="Choose a worked example">
+        <button type="button" data-ex="0" aria-pressed="true">Common pipistrelle</button>
+        <button type="button" data-ex="1" aria-pressed="false">Large flying fox</button>
+        <button type="button" data-ex="2" aria-pressed="false">Common vampire bat</button>
+      </div>
 
-  <ul class="ladder" id="ladder"></ul>
-</section>
-
-<!-- ================= TREE ================= -->
-<section id="tree-section">
-  <div class="sec-head"><span class="sec-num">II</span><h2>The tree of families</h2></div>
-  <p class="lede">Genetic evidence broke the old split between big fruit bats and small echolocating bats. Flying foxes turned out to be nested beside horseshoe bats, not opposite all the rest — so the two suborders below are <em>Yinpterochiroptera</em> and <em>Yangochiroptera</em>. Superfamilies group the families inside each.</p>
-  <p class="lede">Tap any family name for its details.</p>
-
-  <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg></div>
-  <p class="scroll-hint">Scroll the panel sideways on a narrow screen</p>
-
-  <div class="card" id="card" aria-live="polite"></div>
+      <ul class="ladder" id="ladder"></ul>
+    </div>
+  </details>
 </section>
 
 <!-- ================= BELOW FAMILY ================= -->
 <section id="below">
-  <div class="sec-head"><span class="sec-num">III</span><h2>Inside every family</h2></div>
-  <p class="lede">All 21 families opened up: subfamilies, tribes where they are used, and every genus, with the number of species in each. Genera marked with a dot open one level further, to the species themselves.</p>
-  <p class="lede">Where a genus is small, every species is listed. Where it is large — <em>Myotis</em> has 143 — you get a labelled selection rather than a wall of Latin, and the panel says so. <span id="sp-coverage"></span> Each species carries an echolocation line: a measured description where one exists, otherwise the family profile, shown in grey italics so you can tell the two apart.</p>
-  <p class="lede">The filters below work on genera, and the cladogram above dims to match. Diet, roost and range are labelled at genus level, which is blunt: a genus of 130 species will always have exceptions to whatever label it carries. Echolocation is labelled at family level. The two regional checklists are curated species lists, not derived from the range data.</p>
-  <div class="filters" id="filters"></div>
-  <div class="fstatus"><p id="fsummary"></p><button type="button" id="fclear" hidden>Clear all filters</button></div>
-  <div class="drill" id="drill"></div>
+  <details class="fold">
+    <summary>
+      <div class="sec-head"><span class="sec-num">III</span><h2>The flat atlas, with filters</h2></div>
+      <p class="fold-lede">The same content as the tree, laid out flat and filterable by range, diet, roost, echolocation or regional checklist. Filtering here also dims the tree above.</p>
+    </summary>
+    <div class="fold-body">
+      <p class="lede">All 21 families opened up: subfamilies, tribes where they are used, and every genus, with the number of species in each. Genera marked with a dot open one level further, to the species themselves.</p>
+      <p class="lede">Where a genus is small, every species is listed. Where it is large — <em>Myotis</em> has 143 — you get a labelled selection rather than a wall of Latin, and the panel says so. <span id="sp-coverage"></span> Each species carries an echolocation line: a measured description where one exists, otherwise the family profile, shown in grey italics so you can tell the two apart.</p>
+      <p class="lede">The filters below work on genera, and the cladogram above dims to match. Diet, roost and range are labelled at genus level, which is blunt: a genus of 130 species will always have exceptions to whatever label it carries. Echolocation is labelled at family level. The two regional checklists are curated species lists, not derived from the range data.</p>
+      <div class="filters" id="filters"></div>
+      <div class="fstatus"><p id="fsummary"></p><button type="button" id="fclear" hidden>Clear all filters</button></div>
+      <div class="drill" id="drill"></div>
+    </div>
+  </details>
 </section>
 
 <section id="sources">
@@ -531,6 +671,12 @@ details.lookup-toggle[open] > summary::after{content:"–"}
 </footer>
 
 </div>
+
+<div class="lu-scrim" id="lu-scrim"></div>
+<aside class="lu-drawer" id="lu-drawer" aria-hidden="true" aria-label="Species record">
+  <button type="button" class="lu-close" id="lu-close">Close</button>
+  <div id="lu-detail"><div class="lu-empty">Select a species.</div></div>
+</aside>
 
 <script>
 /* =========================================================
@@ -669,7 +815,7 @@ const F = {
 };
 
 /* =========================================================
-   3. CLADOGRAM
+   3. CLADOGRAM — expandable to species
    ========================================================= */
 const leaf = n => ({name:n, leaf:true});
 const clade = (...c) => ({children:c});
@@ -703,8 +849,13 @@ const TREE = {name:"Chiroptera", rank:"Order", children:[
 
 const SVGNS = "http://www.w3.org/2000/svg";
 const svg = document.getElementById('tree');
-const ROW = 36, TOP = 44, LEFT = 30, TIPX = 400, NAMEX = 414, COUNTX = 872;
-const GAP_SF = 44, GAP_SUB = 84;
+const VW = 760;                            // viewBox width
+const TOP = 40, LEFT = 24, TIPX = 250, COUNTX = VW - 24;
+const GAP_SF = 34, GAP_SUB = 64;
+const RH = {fam:34, subfam:24, tribe:20, genus:20, species:19};
+const STEP2 = 24;                          // one nesting step below the family
+const PX = l => TIPX + l*STEP2;            // branch point of a level
+const LX = l => PX(l) + 9;                 // where its label starts
 
 function el(tag, attrs, txt){
   const e = document.createElementNS(SVGNS, tag);
@@ -713,108 +864,311 @@ function el(tag, attrs, txt){
   return e;
 }
 
-// depth of every node
+// depth of every backbone node
 let maxDepth = 0;
 (function setDepth(n,d){
   n.depth = d; if(d>maxDepth) maxDepth = d;
   if(!n.leaf) n.children.forEach(c=>setDepth(c,d+1));
 })(TREE,0);
 
-// vertical positions, with a gap before each superfamily block
-let leaves = [], cursor = TOP, blocks = [];
-function collect(n){
-  if(n.leaf){ n.y = cursor; cursor += ROW; leaves.push(n); return; }
-  n.children.forEach(collect);
-}
+// structural grouping: one entry per superfamily, in drawing order
+const BLOCKS = [];
 TREE.children.forEach(sub=>{
   sub.children.forEach((sf,i)=>{
-    cursor += (i===0 ? GAP_SUB : GAP_SF);
-    const from = leaves.length;
-    collect(sf);
-    blocks.push({ sub: i===0 ? sub.name : null, sf: sf.name, y0: leaves[from].y, members: leaves.slice(from) });
+    const members = [];
+    (function gather(n){ n.leaf ? members.push(n.name) : n.children.forEach(gather); })(sf);
+    BLOCKS.push({ sub: i===0 ? sub.name : null, clade: sub.name, sf: sf.name, members });
   });
-});
-(function midY(n){
-  if(n.leaf) return n.y;
-  n.children.forEach(midY);
-  n.y = (n.children[0].y + n.children[n.children.length-1].y)/2;
-  return n.y;
-})(TREE);
-
-const H = cursor + 26;
-svg.setAttribute('viewBox', `0 0 900 ${H}`);
-svg.appendChild(el('rect',{x:0,y:0,width:900,height:H,fill:'#08243c'}));
-
-const STEP = (TIPX - LEFT) / maxDepth;
-const xOf = n => n.leaf ? TIPX : LEFT + n.depth*STEP;
-
-// branches first — labels are painted over them
-(function draw(node){
-  if(node.leaf) return;
-  const px = xOf(node);
-  node.children.forEach(c=>{
-    svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch'}));
-    draw(c);
-  });
-})(TREE);
-
-// column headings
-svg.appendChild(el('text',{x:LEFT, y:26, class:'col-label'}, 'ORDER CHIROPTERA'));
-svg.appendChild(el('text',{x:NAMEX, y:26, class:'col-label'}, 'FAMILY'));
-svg.appendChild(el('text',{x:COUNTX, y:26, class:'col-label','text-anchor':'end'}, 'SPECIES'));
-svg.appendChild(el('line',{x1:LEFT,y1:34,x2:COUNTX,y2:34,stroke:'#3d6f95','stroke-width':'.7'}));
-
-// horizontal suborder + superfamily headings, knocked out of the branch lines
-function heading(text, x, y, cls, fs){
-  const w = text.length * fs * 0.78 + 16;
-  svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9}));
-  svg.appendChild(el('text',{x:x, y:y, class:cls}, text));
-}
-blocks.forEach(b=>{
-  if(b.sub){
-    heading(b.sub.toUpperCase(), LEFT, b.y0 - 54, 'sub-label', 13);
-    svg.appendChild(el('line',{x1:LEFT,y1:b.y0-45,x2:COUNTX,y2:b.y0-45,stroke:'#8a6427','stroke-width':'.8'}));
-  }
-  const n = b.members.reduce((s,l)=>s+F[l.name].species,0);
-  heading(b.sf.toUpperCase(), LEFT, b.y0 - 20, 'sf-label', 10.5);
-  const cx = LEFT + b.sf.length*10.5*0.78 + 20;
-  svg.appendChild(el('rect',{class:'knock',x:cx-6,y:b.y0-32,width:150,height:19}));
-  svg.appendChild(el('text',{x:cx, y:b.y0-20, class:'sf-count'},
-    b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
-});
-
-// tips
-leaves.forEach(l=>{
-  const d = F[l.name];
-  const g = el('g',{class:'tip', tabindex:'0', role:'button','aria-label':l.name+' — '+d.common});
-  g.appendChild(el('rect',{class:'focus-ring',x:NAMEX-8,y:l.y-15,width:COUNTX-NAMEX+16,height:30,rx:2}));
-  g.appendChild(el('rect',{class:'tip-hit',x:NAMEX-8,y:l.y-15,width:COUNTX-NAMEX+16,height:30}));
-  g.appendChild(el('line',{class:'branch branch-tip',x1:TIPX,y1:l.y,x2:NAMEX-10,y2:l.y}));
-  const name = el('text',{class:'tip-name',x:NAMEX,y:l.y-4}, l.name);
-  const com  = el('text',{class:'tip-common',x:NAMEX,y:l.y+10}, d.common);
-  g.appendChild(name); g.appendChild(com);
-  g.appendChild(el('text',{class:'tip-count',x:COUNTX,y:l.y}, d.species===1?'1':'~'+d.species));
-  const pick = ()=>select(l.name,g);
-  g.addEventListener('click',pick);
-  g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
-  svg.appendChild(g);
-  l.g = g;
 });
 
 // lineage lookup for the card
 const LINEAGE = {};
-(function walk(node, path){
+(function lwalk(node, path){
   if(node.leaf){ LINEAGE[node.name] = path; return; }
   const p = node.name ? path.concat(node.name) : path;
-  node.children.forEach(c=>walk(c,p));
+  node.children.forEach(c=>lwalk(c,p));
 })(TREE,[]);
 
+/* ---- what hangs below a family, built on demand from the atlas ---- */
+const kidCache = {};
+function famChildren(fam){
+  if(kidCache[fam]) return kidCache[fam];
+  const out = [];
+  (ATLAS[fam]||[]).forEach((sf, si)=>{
+    const tribeNodes = [];
+    sf.tribes.forEach((tr, ti)=>{
+      const genera = tr.g.map(g=>({
+        kind:'genus', name:g[0], n:g[1], fam, key:'g:'+g[0]
+      }));
+      if(tr.t) tribeNodes.push({kind:'tribe', name:tr.t, fam, children:genera, key:'t:'+fam+'|'+si+'|'+ti});
+      else tribeNodes.push(...genera);
+    });
+    if(sf.sub) out.push({kind:'subfam', name:sf.sub, note:sf.note, fam, children:tribeNodes, key:'s:'+fam+'|'+si});
+    else out.push(...tribeNodes);
+  });
+  return (kidCache[fam] = out);
+}
+function genusChildren(g){
+  const e = SP[g];
+  if(!e) return null;
+  return e[1].map(s=>({kind:'species', name:g+' '+s[0], note:s[1]||'', key:'x:'+g+' '+s[0]}));
+}
+function nodeChildren(n){
+  return n.kind==='genus' ? genusChildren(n.name) : (n.children||null);
+}
+function countGenera(list){
+  return list.reduce((s,n)=> s + (n.kind==='genus' ? 1 : countGenera(n.children||[])), 0);
+}
+function countSpecies(list){
+  return list.reduce((s,n)=> s + (n.kind==='genus' ? n.n : countSpecies(n.children||[])), 0);
+}
+const hasKids = n => n.kind==='genus' ? !!SP[n.name] : !!(n.children && n.children.length);
+
+/* ---- render ---- */
+const OPEN = new Set();          // keys of every open branch
+let famG = {};                   // family name -> <g>
+let dimSet = null;               // families surviving the filters, or null
+let selected = null;             // family shown in the panel
+let selectedSp = null;           // species shown in the panel
+let pos = {y:0};
+
+function applyTreeDim(){
+  Object.keys(famG).forEach(n=>{
+    famG[n].classList.toggle('dim', !!dimSet && !dimSet.has(n));
+  });
+}
+
+// node marker sitting on the branch point
+function knot(x, y, state){
+  return state === 'open'
+    ? el('circle',{class:'t-knot open', cx:x, cy:y, r:3.2})
+    : el('circle',{class:'t-knot '+state, cx:x, cy:y, r:state==='leaf'?1.7:2.9});
+}
+
+function drawTree(){
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  famG = {};
+
+  /* ---------- 1. layout ---------- */
+  pos = {y:TOP};
+  const rows = [], links = [], famY = {}, headings = [];
+
+  function walk(list, level, parentY){
+    const bx = PX(level-1), cx = PX(level);
+    list.forEach(n=>{
+      const h = RH[n.kind];
+      const y = pos.y + h/2;
+      rows.push({kind:n.kind, node:n, y, level});
+      links.push('M '+bx+' '+parentY+' L '+bx+' '+y+' L '+cx+' '+y);
+      pos.y += h;
+      if(OPEN.has(n.key)){
+        const kids = nodeChildren(n);
+        if(kids && kids.length) walk(kids, level+1, y);
+      }
+    });
+  }
+
+  BLOCKS.forEach(b=>{
+    pos.y += b.sub ? GAP_SUB : GAP_SF;
+    headings.push({b, y0: pos.y + RH.fam/2});
+    b.members.forEach(fam=>{
+      const y = pos.y + RH.fam/2;
+      famY[fam] = y;
+      rows.push({kind:'fam', name:fam, y, level:0});
+      pos.y += RH.fam;
+      if(OPEN.has('f:'+fam)){
+        pos.y += 2;
+        walk(famChildren(fam), 1, y);
+        pos.y += 8;
+      }
+    });
+  });
+
+  (function midY(n){
+    if(n.leaf) return (n.y = famY[n.name]);
+    n.children.forEach(midY);
+    n.y = (n.children[0].y + n.children[n.children.length-1].y)/2;
+    return n.y;
+  })(TREE);
+
+  const H = pos.y + 22;
+  svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
+  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,fill:'#08243c'}));
+
+  /* ---------- 2. backbone, then the branches that continue below a family ---------- */
+  const STEP = (TIPX - LEFT) / maxDepth;
+  const xOf = n => n.leaf ? TIPX : LEFT + n.depth*STEP;
+  (function draw(node){
+    if(node.leaf) return;
+    const px = xOf(node);
+    node.children.forEach(c=>{
+      svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch'}));
+      draw(c);
+    });
+  })(TREE);
+  links.forEach(d=> svg.appendChild(el('path',{d, class:'branch sub-branch'})));
+
+  /* ---------- 3. column headings ---------- */
+  svg.appendChild(el('text',{x:LEFT, y:24, class:'col-label'}, 'ORDER CHIROPTERA'));
+  svg.appendChild(el('text',{x:LX(0), y:24, class:'col-label'}, 'FAMILY ▸ SUBFAMILY ▸ GENUS ▸ SPECIES'));
+  svg.appendChild(el('text',{x:COUNTX, y:24, class:'col-label','text-anchor':'end'}, 'SPECIES'));
+  svg.appendChild(el('line',{x1:LEFT,y1:32,x2:COUNTX,y2:32,stroke:'#3d6f95','stroke-width':'.7'}));
+
+  function heading(text, x, y, cls, fs){
+    const w = text.length * fs * 0.78 + 16;
+    svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9}));
+    svg.appendChild(el('text',{x:x, y:y, class:cls}, text));
+  }
+  headings.forEach(({b,y0})=>{
+    if(b.sub){
+      heading(b.sub.toUpperCase(), LEFT, y0 - 44, 'sub-label', 12);
+      svg.appendChild(el('line',{x1:LEFT,y1:y0-36,x2:COUNTX,y2:y0-36,stroke:'#8a6427','stroke-width':'.8'}));
+    }
+    const n = b.members.reduce((s,f)=>s+F[f].species,0);
+    heading(b.sf.toUpperCase(), LEFT, y0 - 17, 'sf-label', 10);
+    const cx = LEFT + b.sf.length*10*0.78 + 20;
+    svg.appendChild(el('rect',{class:'knock',x:cx-6,y:y0-28,width:150,height:17}));
+    svg.appendChild(el('text',{x:cx, y:y0-17, class:'sf-count'},
+      b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
+  });
+
+  /* ---------- 4. rows ---------- */
+  rows.forEach(r=>{
+    if(r.kind === 'fam'){
+      const d = F[r.name], isOpen = OPEN.has('f:'+r.name);
+      const g = el('g',{
+        class:'tip'+(isOpen?' fam-open':'')+(r.name===selected?' active':''),
+        tabindex:'0', role:'button', 'aria-expanded':isOpen?'true':'false',
+        'aria-label':r.name+' — '+d.common+', '+d.species+' species'
+      });
+      g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-15,width:COUNTX-PX(0)+13,height:30,rx:2}));
+      g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-15,width:COUNTX-PX(0)+13,height:30}));
+      g.appendChild(knot(PX(0), r.y, isOpen ? 'open' : 'shut'));
+      g.appendChild(el('text',{class:'tip-name',x:LX(0),y:r.y-5}, r.name));
+      g.appendChild(el('text',{class:'tip-common',x:LX(0),y:r.y+8}, d.common));
+      g.appendChild(el('text',{class:'tip-count',x:COUNTX,y:r.y}, d.species===1?'1':'~'+d.species));
+      const hit = ()=>toggleFamily(r.name);
+      g.addEventListener('click', hit);
+      g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();hit();} });
+      svg.appendChild(g);
+      famG[r.name] = g;
+      return;
+    }
+
+    const n = r.node, x = PX(r.level), lx = LX(r.level);
+    const open = OPEN.has(n.key), expandable = hasKids(n);
+    const g = el('g',{class:'trow'+(open?' open':'')+(expandable?'':' static'), tabindex:'0', role:'button'});
+    g.appendChild(el('rect',{class:'trow-hit', x:x-5, y:r.y-9, width:COUNTX-x+13, height:18}));
+    g.appendChild(knot(x, r.y, expandable ? (open?'open':'shut') : 'leaf'));
+    if(expandable) g.setAttribute('aria-expanded', open?'true':'false');
+    else { g.removeAttribute('tabindex'); g.removeAttribute('role'); }
+
+    if(r.kind === 'subfam' || r.kind === 'tribe'){
+      const kids = n.children;
+      g.setAttribute('aria-label', (r.kind==='subfam'?'Subfamily ':'Tribe ')+n.name);
+      g.appendChild(el('text',{class:r.kind==='subfam'?'t-subfam':'t-tribe',x:lx,y:r.y},
+        r.kind==='subfam' ? n.name : n.name.toUpperCase()));
+      g.appendChild(el('text',{class:'t-count',x:COUNTX,y:r.y},
+        countGenera(kids)+' genera · ~'+countSpecies(kids)+' spp.'));
+      bindToggle(g, n);
+    } else if(r.kind === 'genus'){
+      g.setAttribute('aria-label', 'Genus '+n.name+', '+n.n+' species');
+      g.appendChild(el('text',{class:'t-genus',x:lx,y:r.y}, n.name));
+      g.appendChild(el('text',{class:'t-count',x:COUNTX,y:r.y}, n.n===1?'1 species':n.n+' spp.'));
+      if(expandable) bindToggle(g, n);
+    } else {
+      g.setAttribute('class','trow species'+(n.name===selectedSp?' active':''));
+      g.setAttribute('tabindex','0'); g.setAttribute('role','button');
+      g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:''));
+      const t = el('text',{x:lx,y:r.y,'dominant-baseline':'middle'});
+      t.appendChild(el('tspan',{class:'t-species'}, n.name));
+      if(n.note) t.appendChild(el('tspan',{class:'t-note',dx:'11'}, n.note));
+      g.appendChild(t);
+      const pick = ()=>showSpecies(n.name);
+      g.addEventListener('click', pick);
+      g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
+    }
+    svg.appendChild(g);
+  });
+
+  applyTreeDim();
+}
+
+function bindToggle(g, n){
+  const t = ()=>{ toggle(n.key); };
+  g.addEventListener('click', t);
+  g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();t();} });
+}
+function toggle(key){
+  OPEN.has(key) ? OPEN.delete(key) : OPEN.add(key);
+  const box = document.querySelector('.treebox');
+  const keep = box ? box.scrollTop : 0;
+  drawTree();
+  if(box) box.scrollTop = keep;
+}
+function toggleFamily(name){
+  const key = 'f:'+name, wasOpen = OPEN.has(key);
+  wasOpen ? OPEN.delete(key) : OPEN.add(key);
+  selected = name; selectedSp = null;
+  drawTree();
+  select(name);
+  if(!wasOpen) scrollFamIntoView(name);
+}
+function scrollFamIntoView(name){
+  const box = document.querySelector('.treebox'), g = famG[name];
+  if(!box || !g) return;
+  const scale = svg.getBoundingClientRect().width / VW;
+  const y = g.querySelector('.tip-name').getAttribute('y') * scale;
+  box.scrollTo({top:Math.max(0,y-80), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}
+
+// mini "zoomed in" cladogram of a family's own superfamily, for the card
+function zoomSVG(name){
+  const block = BLOCKS.find(b=>b.members.includes(name));
+  if(!block) return '';
+  const members = block.members;
+  const rowH = 22, top = 11, trunkX = 14, tipX = 30;
+  const H = top*2 + rowH*(members.length-1) + 8;
+  const ys = members.map((m,i)=> top + rowH*i);
+  let s = '<svg class="zoom-svg" viewBox="0 0 300 '+H+'" role="img" aria-label="'+block.sf+' family relationships">';
+  s += '<line class="zoom-branch" x1="'+trunkX+'" y1="'+ys[0]+'" x2="'+trunkX+'" y2="'+ys[ys.length-1]+'"/>';
+  members.forEach((m,i)=>{
+    const y = ys[i];
+    const cur = m===name;
+    s += '<line class="zoom-branch" x1="'+trunkX+'" y1="'+y+'" x2="'+(tipX-6)+'" y2="'+y+'"/>';
+    s += '<circle class="zoom-dot'+(cur?' current':'')+'" cx="'+(tipX-6)+'" cy="'+y+'" r="2.5"/>';
+    s += '<g class="zoom-pick" data-fam="'+m+'" style="cursor:pointer">'+
+           '<rect x="'+tipX+'" y="'+(y-9)+'" width="270" height="18" fill="transparent"/>'+
+           '<text class="zoom-name'+(cur?' current':'')+'" x="'+tipX+'" y="'+(y+4)+'">'+m+'</text>'+
+         '</g>';
+  });
+  s += '</svg>';
+  return '<div class="card-zoom"><p class="card-zoom-label">Within '+block.sf+'</p>'+s+'</div>';
+}
+
 const card = document.getElementById('card');
-function select(name, g){
-  document.querySelectorAll('g.tip').forEach(x=>x.classList.remove('active'));
-  if(g) g.classList.add('active');
+const CARD_EMPTY =
+  '<div class="card-empty">'+
+    '<p class="ce-eyebrow">Nothing selected</p>'+
+    '<p class="ce-text">Click a family in the tree to open its branch, then follow it down to a species. '+
+    'Whatever you pick shows up here.</p>'+
+  '</div>';
+
+function cardReset(){
+  selected = null; selectedSp = null;
+  card.classList.add('empty');
+  card.innerHTML = CARD_EMPTY;
+}
+
+function select(name){
+  selected = name; selectedSp = null;
+  card.classList.remove('empty');
+  Object.keys(famG).forEach(n=>famG[n].classList.toggle('active', n===name));
+  document.querySelectorAll('g.trow.species.active').forEach(g=>g.classList.remove('active'));
   const d = F[name];
+  const isOpen = OPEN.has('f:'+name);
   card.innerHTML =
+    zoomSVG(name) +
     '<p class="card-lineage">'+LINEAGE[name].join(' &rsaquo; ')+' &rsaquo; '+name+'</p>'+
     '<h3>'+name+'</h3>'+
     '<p class="common">'+d.common+'</p>'+
@@ -824,13 +1178,24 @@ function select(name, g){
       '<div class="stat"><b>'+(d.species===1?'1':'~'+d.species)+'</b><span>Species</span></div>'+
       '<div class="stat wide"><b>'+d.range+'</b><span>Distribution</span></div>'+
     '</div>'+
-    '<button type="button" class="jump" data-fam="'+name+'">Open the genera of '+name+' &rarr;</button>';
+    '<button type="button" class="jump" data-fam="'+name+'">'+
+      (isOpen ? 'Close this branch' : 'Open '+name+' in the tree')+' &rarr;</button>';
 }
-select('Phyllostomidae', leaves.find(l=>l.name==='Phyllostomidae').g);
 
-/* =========================================================
-   4. BELOW THE FAMILY
-   ========================================================= */
+/* a species picked in the tree fills the same panel */
+function showSpecies(binomial){
+  selectedSp = binomial; selected = null;
+  card.classList.remove('empty');
+  Object.keys(famG).forEach(n=>famG[n].classList.remove('active'));
+  document.querySelectorAll('g.trow.species').forEach(g=>{
+    g.classList.toggle('active', g.getAttribute('aria-label').indexOf(binomial) === 0);
+  });
+  card.innerHTML = luSpeciesHTML(binomial, true);
+  if(card.getBoundingClientRect().top < 0 || card.getBoundingClientRect().top > innerHeight-120){
+    card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+  }
+}
+
 /* =========================================================
    4. THE ATLAS — every family, subfamily, tribe and genus
    Structure: [subfamily, note, tribes] where a tribe is
@@ -1550,7 +1915,7 @@ let generaTotal = 0;
 
 const GFAM = {}, GSUB = {};
 let curSub = '';
-blocks.forEach(b=>{
+BLOCKS.forEach(b=>{
   if(b.sub) curSub = b.sub;
   if(b.sub){
     const h = document.createElement('h3');
@@ -1563,8 +1928,8 @@ blocks.forEach(b=>{
   sfh.textContent = b.sf;
   drill.appendChild(sfh);
 
-  b.members.forEach(l=>{
-    const name = l.name, d = F[name], struct = ATLAS[name];
+  b.members.forEach(name=>{
+    const d = F[name], struct = ATLAS[name];
     struct.forEach(sf=>sf.tribes.forEach(tr=>tr.g.forEach(gg=>{
       GFAM[gg[0]] = name; GSUB[gg[0]] = curSub;
     })));
@@ -1774,9 +2139,8 @@ function applyFilters(){
   }
 
   // reflect the filter in the cladogram
-  leaves.forEach(l=>{
-    l.g.classList.toggle('dim', any && !liveFams.has(l.name));
-  });
+  dimSet = any ? liveFams : null;
+  applyTreeDim();
 }
 
 fbox.addEventListener('click', e=>{
@@ -1811,23 +2175,17 @@ applyFilters();
     ' of the ' + generaTotal + ' genera, and ' + generaComplete + ' of those lists are complete.';
 })();
 
-/* open a family from the tree */
-function openFamily(name){
-  const d = document.getElementById('fam-'+name);
-  if(!d) return;
-  d.open = true;
-  d.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
-}
-card.addEventListener('click', e=>{
-  const btn = e.target.closest('.jump');
-  if(btn) openFamily(btn.dataset.fam);
-});
-
 /* =========================================================
-   9. SECTION V — SPECIES LOOKUP
-   (namespaced lu* to avoid collisions with the browser/filter code above)
+   9. SPECIES LOOKUP — search field top right, detail in a drawer
+   (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], echo: null, danish: {}, filtered: [], active: null };
+const luState = { species: [], byName:{}, echo: null, danish: {}, filtered: [], active: null, ready:false };
+const luInput   = document.getElementById('lu-search');
+const luResults = document.getElementById('lu-results');
+const luDrawer  = document.getElementById('lu-drawer');
+const luScrim   = document.getElementById('lu-scrim');
+const luDetail  = document.getElementById('lu-detail');
+const LU_MAX = 40;
 
 Promise.all([
   fetch('data/chiroptera_taxonomy.json').then(r=>r.json()),
@@ -1837,30 +2195,27 @@ Promise.all([
   luState.species = tax.species;
   luState.echo = echo;
   luState.danish = danish;
-  document.getElementById('lu-headMeta').innerHTML =
-    tax._meta.speciesCount+' species · '+tax._meta.familyCount+' families · '+tax._meta.genusCount+' genera — '+
-    '<a href="'+tax._meta.sourceUrl+'" target="_blank" rel="noopener">'+tax._meta.source+'</a>';
-
-  const famSel = document.getElementById('lu-familyFilter');
-  tax.families.forEach(f=>{
-    const o = document.createElement('option');
-    o.value = f; o.textContent = f;
-    famSel.appendChild(o);
-  });
-
-  luApplyFilter();
+  luState.meta = tax._meta;
+  luState.ready = true;
+  luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
+  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';
+  if(luInput.value.trim()) luApplyFilter();
 }).catch(err=>{
-  document.getElementById('lu-headMeta').textContent = 'Failed to load data: '+err.message;
+  luState.error = err.message;
 });
 
 function luNiceName(sci){ return sci.replace('_',' '); }
+function luEsc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 function luApplyFilter(){
-  const q = document.getElementById('lu-search').value.trim().toLowerCase();
-  const fam = document.getElementById('lu-familyFilter').value;
+  const q = luInput.value.trim().toLowerCase();
+  if(!q){ luCloseResults(); return; }
+  if(!luState.ready){
+    luResults.innerHTML = '<div class="lu-none">'+(luState.error ? 'Could not load the taxonomy: '+luEsc(luState.error) : 'Loading the taxonomy…')+'</div>';
+    luOpenResults();
+    return;
+  }
   luState.filtered = luState.species.filter(s=>{
-    if(fam && s.family !== fam) return false;
-    if(!q) return true;
     const dk = luState.danish[s.sciName];
     return (
       s.sciName.toLowerCase().replace('_',' ').includes(q) ||
@@ -1871,53 +2226,106 @@ function luApplyFilter(){
       (dk && dk.allNames.some(n=>n.toLowerCase().includes(q)))
     );
   });
-  luRenderList();
+  luRenderResults();
+  luOpenResults();
 }
 
-function luRenderList(){
-  const list = document.getElementById('lu-list');
-  document.getElementById('lu-count').textContent = luState.filtered.length+' of '+luState.species.length+' species';
-  list.innerHTML = '';
-  const frag = document.createDocumentFragment();
-  luState.filtered.forEach(s=>{
-    const row = document.createElement('div');
-    row.className = 'lu-row'+(luState.active===s.id ? ' active' : '');
-    row.dataset.id = s.id;
+function luRenderResults(){
+  const list = luState.filtered;
+  if(!list.length){
+    luResults.innerHTML = '<div class="lu-none">Nothing matches that. Try a genus, a family or a common name.</div>';
+    return;
+  }
+  const shown = list.slice(0, LU_MAX);
+  let html = '<div class="lu-count">'+list.length+' match'+(list.length===1?'':'es')+
+             (list.length>LU_MAX ? ' — first '+LU_MAX+' shown' : '')+'</div>';
+  html += shown.map(s=>{
     const dk = luState.danish[s.sciName];
-    row.innerHTML = '<span class="lu-sci">'+luNiceName(s.sciName)+'</span>'+
-      (s.mainCommonName ? '<span class="lu-common">'+s.mainCommonName+'</span>' : '')+
-      (dk ? '<span class="lu-common lu-dk">🇩🇰 '+dk.name+'</span>' : '')+
-      '<span class="lu-fam">'+s.family+' · '+s.genus+'</span>';
-    row.addEventListener('click', ()=>luSelectSpecies(s.id));
-    frag.appendChild(row);
-  });
-  list.appendChild(frag);
+    return '<div class="lu-row" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+
+      '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
+      (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
+      (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
+      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></div>';
+  }).join('');
+  if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
+    luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' families</div>';
+  luResults.innerHTML = html;
 }
+
+function luOpenResults(){ luResults.hidden = false; luInput.setAttribute('aria-expanded','true'); }
+function luCloseResults(){ luResults.hidden = true; luInput.setAttribute('aria-expanded','false'); }
+
+luResults.addEventListener('click', e=>{
+  const row = e.target.closest('.lu-row');
+  if(row) luSelectSpecies(row.dataset.id);
+});
+luResults.addEventListener('keydown', e=>{
+  const row = e.target.closest('.lu-row');
+  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id); }
+});
+luInput.addEventListener('input', luApplyFilter);
+luInput.addEventListener('focus', ()=>{ if(luInput.value.trim()) luApplyFilter(); });
+luInput.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ luCloseResults(); luInput.blur(); }
+  if(e.key==='ArrowDown'){
+    const first = luResults.querySelector('.lu-row');
+    if(first){ e.preventDefault(); first.focus(); }
+  }
+});
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.tb-search')) luCloseResults();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ luCloseDrawer(); luCloseResults(); return; }
+  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+  if(!typing && (e.key==='/' || ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k'))){
+    e.preventDefault(); luInput.focus(); luInput.select();
+  }
+});
+
+function luOpenDrawer(){
+  luDrawer.classList.add('open'); luScrim.classList.add('open');
+  luDrawer.setAttribute('aria-hidden','false');
+  luDrawer.scrollTop = 0;
+  document.getElementById('lu-close').focus();
+}
+function luCloseDrawer(){
+  luDrawer.classList.remove('open'); luScrim.classList.remove('open');
+  luDrawer.setAttribute('aria-hidden','true');
+}
+luScrim.addEventListener('click', luCloseDrawer);
+document.getElementById('lu-close').addEventListener('click', luCloseDrawer);
 
 function luStatusClass(code){ return (code||'na').toLowerCase(); }
 
 function luFindEcho(species){
-  const fam = luState.echo.families[species.family];
+  const fam = luState.echo && luState.echo.families[species.family];
   if(!fam) return null;
   const sciSpace = luNiceName(species.sciName);
   const genusExample = fam.genusExamples && (fam.genusExamples[sciSpace] || fam.genusExamples[species.genus]);
   return { base: fam, override: genusExample || null };
 }
 
-function luSelectSpecies(id){
-  luState.active = id;
-  luRenderList();
-  const s = luState.species.find(x=>x.id===id);
-  const detail = document.getElementById('lu-detail');
-  if(!s){ detail.innerHTML = '<div class="lu-empty">Select a species from the list.</div>'; return; }
+function luSpeciesHTML(binomial, compact){
+  const s = luState.byName[binomial.toLowerCase()];
+  if(!s){
+    return '<p class="lu-d-sci">'+luEsc(binomial)+'</p>'+
+      '<p class="lu-prov">'+(luState.ready
+        ? 'No record under this name in the Mammal Diversity Database export — most likely a spelling variant of a name the database files differently.'
+        : 'The species records have not loaded yet. This page needs to be served over http for them to load.')+'</p>';
+  }
+  return luDetailHTML(s, compact);
+}
 
+function luDetailHTML(s, compact){
   const echo = luFindEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
   const dk = luState.danish[s.sciName];
+  const bin = luNiceName(s.sciName);
 
   const chain = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k=>s[k] && s[k]!=='NA')
-    .map(k=>'<span>'+k+': <b>'+s[k]+'</b></span>').join('');
+    .map(k=>'<span>'+k+': <b>'+luEsc(s[k])+'</b></span>').join('');
 
   const echoCard = merged ? (
     '<div class="lu-card"><h4>Echolocation (family/genus reference)</h4><dl>'+
@@ -1925,29 +2333,68 @@ function luSelectSpecies(id){
     '<dt>Duty cycle</dt><dd>'+(merged.dutyCycle||'—')+'</dd>'+
     '<dt>Peak frequency</dt><dd>'+(merged.peakFrequencyKHz ? merged.peakFrequencyKHz.join('–')+' kHz' : '—')+'</dd>'+
     '</dl>'+(merged.foragingNote ? '<div class="lu-note">'+merged.foragingNote+'</div>' : '')+
-    '<div class="lu-src">'+(echo.override ? 'Genus-level example' : 'Family-level typical range')+' — see section notes; not verified per-species.</div></div>'
-  ) : '<div class="lu-card"><h4>Echolocation</h4><div class="lu-note">No reference data for family "'+s.family+'" yet.</div></div>';
+    '<div class="lu-src">'+(echo.override ? 'Genus-level example' : 'Family-level typical range')+' — illustrative, not verified per species.</div></div>'
+  ) : '<div class="lu-card"><h4>Echolocation</h4><div class="lu-note">No reference data for family "'+luEsc(s.family)+'" yet.</div></div>';
 
-  detail.innerHTML =
-    '<p class="lu-d-sci">'+luNiceName(s.sciName)+'</p>'+
-    (s.mainCommonName ? '<p class="lu-d-common">'+s.mainCommonName+(s.otherCommonNames ? ' · '+s.otherCommonNames : '')+'</p>' : '')+
-    (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+dk.allNames.join(' / ')+' <span class="lu-dk-src">('+dk.source+')</span></p>' : '')+
-    '<p class="lu-d-authority">'+(s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||'')+'</p>'+
+  const links = LINKS.map(([label,url])=>
+    '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('');
+
+  const measured = ESP[bin] ? '<div class="lu-card"><h4>Measured call</h4><div class="lu-note">'+ESP[bin]+'</div></div>' : '';
+
+  return (compact ? '<p class="card-lineage">'+luEsc(s.family)+' &rsaquo; '+luEsc(s.genus)+'</p>' : '')+
+    '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
+    (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
+    (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+' <span class="lu-dk-src">('+luEsc(dk.source)+')</span></p>' : '')+
+    '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
     '<div class="lu-chain">'+chain+'</div>'+
+    '<div class="lu-links">'+links+'</div>'+
     '<div class="lu-grid2">'+
       '<div class="lu-card"><h4>Taxonomy &amp; status</h4><dl>'+
         '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+(s.iucnStatus||'NA')+'</span></dd>'+
         '<dt>Extinct</dt><dd>'+(s.extinct==='1' ? 'Yes' : 'No')+'</dd>'+
-        '<dt>Realm</dt><dd>'+(s.biogeographicRealm||'—')+'</dd>'+
-        '<dt>Continents</dt><dd>'+(s.continentDistribution||'—').replace(/\|/g,', ')+'</dd>'+
-        '<dt>Countries</dt><dd>'+(s.countryDistribution||'—').replace(/\|/g,', ')+'</dd>'+
+        '<dt>Realm</dt><dd>'+luEsc(s.biogeographicRealm||'—')+'</dd>'+
+        '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
+        '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></div>'+
-      echoCard+
-    '</div>';
+      measured + echoCard+
+    '</div>'+
+    '<p class="lu-prov">Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>. ' +
+    'Echolocation figures are a family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000). ' +
+    'Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records and are shown only where a genuine Danish name is on record.</p>';
 }
 
-document.getElementById('lu-search').addEventListener('input', luApplyFilter);
-document.getElementById('lu-familyFilter').addEventListener('change', luApplyFilter);
+function luSelectSpecies(id){
+  luState.active = id;
+  luCloseResults();
+  const s = luState.species.find(x=>x.id===id);
+  luDetail.innerHTML = s ? luDetailHTML(s, false) : '<div class="lu-empty">Nothing to show.</div>';
+  luOpenDrawer();
+}
+
+/* =========================================================
+   10. START THE TREE
+   ========================================================= */
+cardReset();
+drawTree();
+
+card.addEventListener('click', e=>{
+  const btn = e.target.closest('.jump');
+  if(btn){ toggleFamily(btn.dataset.fam); return; }
+  const pick = e.target.closest('.zoom-pick');
+  if(pick){ select(pick.dataset.fam); }
+});
+
+document.getElementById('t-collapse').addEventListener('click', ()=>{
+  OPEN.clear(); cardReset(); drawTree();
+  document.querySelector('.treebox').scrollTop = 0;
+});
+document.getElementById('t-expandsub').addEventListener('click', ()=>{
+  const allOpen = BLOCKS.every(b=>b.members.every(f=>OPEN.has('f:'+f)));
+  BLOCKS.forEach(b=>b.members.forEach(f=>{
+    allOpen ? OPEN.delete('f:'+f) : OPEN.add('f:'+f);
+  }));
+  drawTree();
+});
 </script>
 </body>
 </html>
