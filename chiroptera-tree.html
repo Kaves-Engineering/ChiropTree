@@ -345,9 +345,29 @@ footer b{color:var(--bone);font-weight:500}
   *{transition:none!important;animation:none!important}
 }
 
-/* ---------- section V: species lookup (scoped lu- prefix, avoids clashing with page classes above) ---------- */
-#lookup .lu-headmeta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);margin:10px 0 0}
-#lookup .lu-headmeta a{color:var(--muted);text-decoration-color:var(--line-dim)}
+/* ---------- species lookup, collapsible at top of page (scoped lu- prefix, avoids clashing with page classes above) ---------- */
+details.lookup-toggle{
+  margin:clamp(20px,3.4vw,40px) 0 0;border:1px solid var(--line-dim);border-radius:3px;
+  background:rgba(6,25,42,.55);
+}
+details.lookup-toggle[open]{background:rgba(4,17,30,.85);border-color:rgba(159,203,230,.4)}
+details.lookup-toggle > summary{
+  cursor:pointer;list-style:none;padding:18px 52px 18px 22px;display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:6px 16px;position:relative;
+}
+details.lookup-toggle > summary::-webkit-details-marker{display:none}
+details.lookup-toggle > summary::after{
+  content:"+";position:absolute;right:22px;top:14px;font-family:var(--mono);color:var(--ochre);font-size:22px;
+}
+details.lookup-toggle[open] > summary::after{content:"–"}
+.lu-toggle-eyebrow{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ochre);
+  flex-basis:100%;
+}
+.lu-toggle-title{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.8vw,25px);color:var(--bone)}
+.lu-toggle-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted)}
+.lu-toggle-hint a{color:var(--muted);text-decoration-color:var(--line-dim)}
+.lu-body{padding:0 22px 24px}
 .lu-layout{
   display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:0;margin-top:24px;
   border:1px solid var(--line-dim);border-radius:2px;overflow:hidden;min-height:520px;
@@ -409,6 +429,35 @@ footer b{color:var(--bone);font-weight:500}
   </div>
 </header>
 
+<details class="lookup-toggle" id="lookup">
+  <summary>
+    <span class="lu-toggle-eyebrow">Quick lookup</span>
+    <span class="lu-toggle-title">Search species, phylogeny &amp; echolocation</span>
+    <span class="lu-toggle-hint" id="lu-headMeta">Loading taxonomy…</span>
+  </summary>
+  <div class="lu-body">
+    <p class="lede">Search the full Mammal Diversity Database export directly — every currently recognised bat, by scientific name, common name, genus or family — rather than drilling down through the tree below.</p>
+
+    <div class="lu-layout">
+      <div class="lu-panel-list">
+        <div class="lu-controls">
+          <input type="search" id="lu-search" placeholder="Search species, genus, family, common name…" autocomplete="off">
+          <select id="lu-familyFilter"><option value="">All families</option></select>
+          <div class="lu-count" id="lu-count"></div>
+        </div>
+        <div class="lu-list" id="lu-list"></div>
+      </div>
+      <div class="lu-panel-detail" id="lu-detail">
+        <div class="lu-empty">Select a species from the list.</div>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:16px;font-size:12.5px;color:var(--muted)">
+      Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>.
+      Echolocation figures here are a starter family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000) — illustrative, not species-verified.
+    </p>
+  </div>
+</details>
+
 <!-- ================= RANKS ================= -->
 <section id="ranks">
   <div class="sec-head"><span class="sec-num">I</span><h2>The ladder of ranks</h2></div>
@@ -467,30 +516,6 @@ footer b{color:var(--bone);font-weight:500}
     <div class="src"><a href="https://batnames.org" target="_blank" rel="noopener noreferrer">Bat Species of the World</a>
       <p>Simmons and Cirranello's taxonomic database — the authority the classification on this page follows. Updated twice a year, so it will drift ahead of what you see here.</p></div>
   </div>
-</section>
-
-<section id="lookup">
-  <div class="sec-head"><span class="sec-num">V</span><h2>Look up a species</h2></div>
-  <p class="lede">Search the full Mammal Diversity Database export directly — every currently recognised bat, by scientific name, common name, genus or family — rather than drilling down through the tree above.</p>
-  <p class="lu-headmeta" id="lu-headMeta">Loading taxonomy…</p>
-
-  <div class="lu-layout">
-    <div class="lu-panel-list">
-      <div class="lu-controls">
-        <input type="search" id="lu-search" placeholder="Search species, genus, family, common name…" autocomplete="off">
-        <select id="lu-familyFilter"><option value="">All families</option></select>
-        <div class="lu-count" id="lu-count"></div>
-      </div>
-      <div class="lu-list" id="lu-list"></div>
-    </div>
-    <div class="lu-panel-detail" id="lu-detail">
-      <div class="lu-empty">Select a species from the list.</div>
-    </div>
-  </div>
-  <p class="lede" style="margin-top:16px;font-size:12.5px;color:var(--muted)">
-    Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>.
-    Echolocation figures here are a starter family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000) — illustrative, not species-verified.
-  </p>
 </section>
 
 <footer>
