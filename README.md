@@ -4,14 +4,21 @@ A lightweight, static lookup tool for bat (Chiroptera) taxonomy, phylogenetic
 placement, and echolocation call characteristics — built for lab use, no
 backend required.
 
+Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/ — this
+serves `chiroptera-tree.html` as the homepage, with the standalone lookup
+available at `/lookup.html`.
+
 ## What's here
 
-- **`index.html`** — the lookup tool. Search/filter across all 1,514 currently
-  recognized bat species; each entry shows its taxonomic chain (order →
-  suborder → family → genus), IUCN status, distribution, and echolocation
-  call parameters where known.
-- **`chiroptera-tree.html`** — a standalone illustrated essay on bat taxonomy
-  and evolution (companion piece, not required by the lookup tool).
+- **`chiroptera-tree.html`** — the main page: an illustrated essay on bat
+  taxonomy and evolution, a genus-by-genus browser, and (collapsed at the
+  top) the same full species lookup as `index.html`. Deployed as the site's
+  homepage.
+- **`index.html`** — a standalone version of just the lookup tool. Search/
+  filter across all 1,514 currently recognized bat species; each entry shows
+  its taxonomic chain (order → suborder → family → genus), IUCN status,
+  distribution, and echolocation call parameters where known. Deployed at
+  `/lookup.html` on the live site.
 - **`data/chiroptera_taxonomy.json`** — generated taxonomy data, Chiroptera
   subset of the [Mammal Diversity Database](https://www.mammaldiversity.org)
   (MDD) v2.5 release ([doi:10.5281/zenodo.21654811](https://doi.org/10.5281/zenodo.21654811)).
