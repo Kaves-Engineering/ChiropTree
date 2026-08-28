@@ -1,4 +1,6 @@
 pages:
+  tags:
+    - shared
   stage: deploy
   script:
     - mkdir public
