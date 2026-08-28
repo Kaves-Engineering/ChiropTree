@@ -290,6 +290,7 @@ ul.sp li span.sp-echo{
   padding-left:9px;border-left:2px solid var(--ochre-dim);
 }
 ul.sp li span.sp-echo.gen-echo{color:#8a9aa4;border-left-color:rgba(159,203,230,.22);font-style:italic}
+ul.sp li span.sp-dk{color:var(--ochre)}
 @media (max-width:640px){ ul.sp{columns:1} }
 
 .echo{
@@ -1654,7 +1655,9 @@ drill.addEventListener('click', e=>{
       const echo = ESP[bin]
         ? '<span class="sp-echo">'+ESP[bin]+'</span>'
         : (fe ? '<span class="sp-echo gen-echo">'+fe.des+', '+fe.fq+' &middot; family profile</span>' : '');
-      return '<li><i>'+bin+'</i>'+(s[1]?'<span>'+s[1]+'</span>':'')+echo+
+      const dk = luState.danish[bin.replace(' ','_')];
+      const dkSpan = dk ? '<span class="sp-dk">🇩🇰 '+dk.name+'</span>' : '';
+      return '<li><i>'+bin+'</i>'+(s[1]?'<span>'+s[1]+'</span>':'')+dkSpan+echo+
              '<span class="sp-links">'+links+'</span></li>';
     }).join('')+
     '</ul>';
