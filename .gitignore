@@ -1,0 +1,15 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Raw MDD source download (large; re-fetch with data/build_taxonomy.py)
+data/raw/
+public/
+

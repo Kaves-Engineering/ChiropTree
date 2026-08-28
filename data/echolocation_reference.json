@@ -1,0 +1,182 @@
+{
+  "_meta": {
+    "purpose": "Starter reference for typical/representative echolocation call parameters by bat family (with a few well-documented genus-level examples). This is NOT species-exhaustive and NOT a substitute for primary literature — values are illustrative ranges drawn from standard comparative reviews. Verify and expand before citing in publications.",
+    "primary_sources": [
+      "Jones, G. & Holderied, M.W. (2007) 'Bat echolocation calls: adaptation and convergent evolution.' Proceedings of the Royal Society B 274:905-912.",
+      "Fenton, M.B. & Simmons, N.B. (2015) 'Bats: A World of Science and Mystery.' University of Chicago Press.",
+      "Neuweiler, G. (2000) 'The Biology of Bats.' Oxford University Press.",
+      "Schnitzler, H.U. & Kalko, E.K.V. (2001) 'Echolocation by insect-eating bats.' BioScience 51:557-569.",
+      "Barataud, M. (2015) 'Acoustic Ecology of European Bats.' Biotope/MNHN (for European Vespertilionidae/Rhinolophidae specifics)."
+    ],
+    "fields": {
+      "callType": "CF = constant frequency, FM = frequency-modulated (broadband sweep), CF-FM = constant frequency with FM component, QCF = quasi-constant frequency, clicks = non-laryngeal tongue-clicking, none = no laryngeal echolocation known",
+      "dutyCycle": "low or high (high-duty-cycle = CF specialists like Rhinolophidae, some Hipposideridae, Mormoopidae)",
+      "peakFrequencyKHz": "[min, max] typical range reported for the taxon",
+      "foragingNote": "brief context on habitat/strategy relevant to call design"
+    }
+  },
+  "families": {
+    "Rhinolophidae": {
+      "callType": "CF-FM",
+      "dutyCycle": "high",
+      "peakFrequencyKHz": [32, 120],
+      "foragingNote": "Long CF tone with terminal FM sweep; Doppler-shift compensation; clutter-tolerant, close-space foragers.",
+      "genusExamples": {
+        "Rhinolophus ferrumequinum": {"peakFrequencyKHz": [79, 85]},
+        "Rhinolophus hipposideros": {"peakFrequencyKHz": [107, 115]}
+      }
+    },
+    "Rhinonycteridae": {
+      "callType": "CF-FM",
+      "dutyCycle": "high",
+      "peakFrequencyKHz": [80, 130],
+      "foragingNote": "Trident bats, split from Hipposideridae; same high-duty-cycle CF-FM strategy as Rhinolophidae/Hipposideridae."
+    },
+    "Rhinopomatidae": {
+      "callType": "CF",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [29, 34],
+      "foragingNote": "Mouse-tailed bats; distinctive very long-duration, narrowband CF pulses with long silent intervals between them (low duty cycle despite CF design)."
+    },
+    "Cistugidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [40, 55],
+      "foragingNote": "Hairy bats (Cistugo), split from Vespertilionidae; broadband FM calls typical of vesper-bat-style edge/clutter foraging."
+    },
+    "Hipposideridae": {
+      "callType": "CF-FM",
+      "dutyCycle": "high",
+      "peakFrequencyKHz": [50, 160],
+      "foragingNote": "Convergent with Rhinolophidae; CF-FM high-duty-cycle calls for clutter-tolerant foraging.",
+      "genusExamples": {
+        "Hipposideros armiger": {"peakFrequencyKHz": [60, 70]}
+      }
+    },
+    "Mormoopidae": {
+      "callType": "CF-FM",
+      "dutyCycle": "high",
+      "peakFrequencyKHz": [55, 85],
+      "foragingNote": "Pteronotus parnellii independently evolved high-duty-cycle CF-FM, convergent with Old World Rhinolophidae/Hipposideridae.",
+      "genusExamples": {
+        "Pteronotus parnellii": {"peakFrequencyKHz": [59, 62]}
+      }
+    },
+    "Vespertilionidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [20, 80],
+      "foragingNote": "Largest bat family; broadband FM sweeps for precise ranging in open-to-edge space; specific genera vary widely (see examples).",
+      "genusExamples": {
+        "Myotis lucifugus": {"peakFrequencyKHz": [40, 80], "callType": "FM"},
+        "Eptesicus fuscus": {"peakFrequencyKHz": [25, 60], "callType": "FM"},
+        "Pipistrellus pipistrellus": {"peakFrequencyKHz": [45, 45], "callType": "FM", "foragingNote": "Peak ~45kHz; edge-space forager, gave rise to '45kHz pipistrelle' vs '55kHz' (P. pygmaeus) species split."},
+        "Pipistrellus pygmaeus": {"peakFrequencyKHz": [55, 55], "callType": "FM"},
+        "Nyctalus noctula": {"peakFrequencyKHz": [18, 25], "callType": "FM-QCF", "foragingNote": "Open-air, high-altitude forager; low frequency for long range."},
+        "Plecotus auritus": {"peakFrequencyKHz": [20, 60], "callType": "FM", "foragingNote": "Very low intensity ('whispering bat'); large ears, gleans prey using passive hearing too."}
+      }
+    },
+    "Miniopteridae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [45, 60],
+      "foragingNote": "Fast open/edge-space foragers, steep FM sweeps."
+    },
+    "Molossidae": {
+      "callType": "QCF/FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [10, 30],
+      "foragingNote": "Open-air, high-altitude, fast-flying foragers; narrowband low-frequency calls for long detection range.",
+      "genusExamples": {
+        "Tadarida brasiliensis": {"peakFrequencyKHz": [23, 28]}
+      }
+    },
+    "Emballonuridae": {
+      "callType": "CF/QCF",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [35, 50],
+      "foragingNote": "Sheath-tailed bats; edge/open-space foragers with narrowband multiharmonic calls.",
+      "genusExamples": {
+        "Saccopteryx bilineata": {"peakFrequencyKHz": [38, 45]}
+      }
+    },
+    "Noctilionidae": {
+      "callType": "CF-FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [50, 60],
+      "foragingNote": "Trawls water surface for fish/insects using CF component to detect ripples.",
+      "genusExamples": {
+        "Noctilio leporinus": {"peakFrequencyKHz": [50, 60]}
+      }
+    },
+    "Phyllostomidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [40, 100],
+      "foragingNote": "New World leaf-nosed bats; short, steep, low-intensity multiharmonic FM calls ('whispering'); many are frugivores/nectarivores relying more on vision/olfaction.",
+      "genusExamples": {
+        "Phyllostomus hastatus": {"peakFrequencyKHz": [60, 90]}
+      }
+    },
+    "Megadermatidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [20, 60],
+      "foragingNote": "False vampire bats; low-intensity calls, many glean prey using passive listening as primary sense.",
+      "genusExamples": {
+        "Megaderma lyra": {"peakFrequencyKHz": [20, 60]}
+      }
+    },
+    "Nycteridae": {
+      "callType": "CF-FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [20, 55],
+      "foragingNote": "Slit-faced bats; low-intensity narrowband calls emitted through nostrils; gleaning specialists."
+    },
+    "Craseonycteridae": {
+      "callType": "CF-FM",
+      "dutyCycle": "high",
+      "peakFrequencyKHz": [60, 75],
+      "foragingNote": "Kitti's hog-nosed bat (bumblebee bat), smallest bat; high-frequency calls suited to fine-scale clutter."
+    },
+    "Natalidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [90, 130],
+      "foragingNote": "Funnel-eared bats; very high-frequency, short-range calls for slow, maneuverable flight in clutter."
+    },
+    "Furipteridae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [60, 100],
+      "foragingNote": "Smoky bats; limited data, broadband FM typical of clutter foragers."
+    },
+    "Thyropteridae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [90, 150],
+      "foragingNote": "Disk-winged bats; roost in rolled leaves, high-frequency short-range FM calls."
+    },
+    "Mystacinidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [25, 90],
+      "foragingNote": "New Zealand lesser short-tailed bat; unusually terrestrial foraging behavior alongside aerial hawking."
+    },
+    "Myzopodidae": {
+      "callType": "FM",
+      "dutyCycle": "low",
+      "peakFrequencyKHz": [110, 150],
+      "foragingNote": "Sucker-footed bats of Madagascar; high-frequency calls, limited published data."
+    },
+    "Pteropodidae": {
+      "callType": "none",
+      "dutyCycle": null,
+      "peakFrequencyKHz": null,
+      "foragingNote": "Old World fruit bats/flying foxes; no laryngeal echolocation in most genera (navigate by vision/olfaction). EXCEPTION: Rousettus uses tongue-clicking echolocation (see genus note).",
+      "genusExamples": {
+        "Rousettus aegyptiacus": {"callType": "clicks", "peakFrequencyKHz": [10, 70], "foragingNote": "Non-laryngeal tongue-clicks, broadband, used for coarse cave-navigation, not fine prey capture."}
+      }
+    }
+  }
+}

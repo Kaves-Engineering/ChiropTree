@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiroptera — the ranks and branches of bats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#04121f;
+  --prussian:#0a2740;
+  --prussian-2:#0e3557;
+  --line:#9fcbe6;
+  --line-dim:#4d7fa3;
+  --bone:#f0f5f8;
+  --text:#d9e2e7;
+  --muted:#b0bfc7;
+  --ochre:#e8ab4c;
+  --ochre-dim:#8a6427;
+
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"Karla","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --pad:clamp(18px,4vw,56px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--abyss);
+  color:var(--text);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* cyanotype paper grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;z-index:99;
+  opacity:.09;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23g)'/></svg>");
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:98;
+  background:radial-gradient(120% 90% at 50% 8%, rgba(20,70,110,.16), rgba(4,18,31,0) 62%);
+}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- masthead ---------- */
+.masthead{padding:clamp(48px,9vw,110px) 0 clamp(32px,5vw,56px);position:relative}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--line);margin:0 0 22px;
+}
+h1{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(46px,11vw,116px);
+  line-height:.92;
+  letter-spacing:-.015em;
+  margin:0;
+}
+h1 em{font-style:italic;color:var(--line)}
+.deck{
+  margin:26px 0 0;max-width:56ch;font-size:clamp(16px,2.1vw,19px);color:var(--text);
+}
+.figures{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:38px;
+  border-top:1px solid var(--line-dim);
+}
+.fig{
+  flex:1 1 140px;padding:16px 20px 14px 0;border-right:1px solid rgba(125,178,212,.18);
+}
+.fig:last-child{border-right:none}
+.fig b{display:block;font-family:var(--display);font-size:30px;font-weight:500;line-height:1}
+.fig span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(46px,7vw,96px) 0;border-top:1px solid rgba(125,178,212,.2)}
+.sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ochre)}
+h2{
+  font-family:var(--display);font-weight:500;font-size:clamp(28px,5vw,46px);
+  line-height:1.05;margin:0;letter-spacing:-.01em;
+}
+.lede{max-width:62ch;color:var(--text);margin:14px 0 0}
+.lede + .lede{margin-top:12px}
+
+/* ---------- rank ladder ---------- */
+.switch{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 30px}
+.switch button{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--line-dim);color:var(--text);
+  padding:9px 14px;border-radius:2px;cursor:pointer;transition:.18s;
+}
+.switch button:hover{border-color:var(--line);color:var(--bone)}
+.switch button[aria-pressed="true"]{background:var(--line);border-color:var(--line);color:var(--abyss);font-weight:500}
+
+.ladder{list-style:none;margin:0;padding:0;border-top:1px solid rgba(125,178,212,.22)}
+.rung{
+  display:grid;
+  grid-template-columns:118px minmax(0,1.35fr) minmax(0,1fr) 92px;
+  gap:0 20px;align-items:center;
+  padding:13px 0;border-bottom:1px solid rgba(125,178,212,.12);
+}
+.rung.above{opacity:.36}
+.rung.terminal .taxon{color:var(--ochre)}
+.r-rank{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.rung.above .r-rank{color:var(--muted)}
+.taxon{font-family:var(--display);font-size:clamp(17px,2.4vw,23px);font-weight:500;line-height:1.15}
+.taxon.ital{font-style:italic}
+.gloss{font-size:13.5px;color:#9fb0ba;line-height:1.45}
+.count{text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.bar{grid-column:1 / -1;height:2px;background:rgba(125,178,212,.13);margin-top:10px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--line);display:block;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.rung.terminal .bar i{background:var(--ochre)}
+.rung.above .bar{display:none}
+.note-inline{font-family:var(--mono);font-size:11px;color:var(--ochre);letter-spacing:.04em}
+
+/* ---------- tree ---------- */
+.treebox{
+  margin-top:36px;
+  border:1px solid rgba(125,178,212,.22);
+  background:#08243c;
+  border-radius:3px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.scroll-hint{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:14px 0 0;
+}
+svg#tree{display:block;width:100%;min-width:780px;height:auto}
+.branch{stroke:var(--line-dim);stroke-width:1.2;fill:none;stroke-linecap:square}
+.tip-hit{fill:transparent;cursor:pointer}
+.tip-name{font-family:var(--display);font-size:15px;font-weight:500;fill:var(--bone);cursor:pointer;dominant-baseline:middle}
+.tip-common{font-family:var(--body);font-size:12px;fill:#a7b7c0;dominant-baseline:middle}
+.tip-count{font-family:var(--mono);font-size:11.5px;fill:var(--muted);text-anchor:end;dominant-baseline:middle}
+.col-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;fill:var(--muted)}
+.sub-label{font-family:var(--mono);font-size:13px;letter-spacing:.26em;text-transform:uppercase;fill:var(--ochre)}
+.sf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;fill:var(--line)}
+.sf-count{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:#8698a3}
+.knock{fill:#08243c}
+g.tip:hover .tip-name,g.tip:focus-visible .tip-name{fill:var(--ochre)}
+g.tip:hover .branch-tip,g.tip.active .branch-tip{stroke:var(--ochre);stroke-width:2}
+g.tip.active .tip-name{fill:var(--ochre)}
+g.tip:focus-visible{outline:none}
+.focus-ring{fill:none;stroke:none}
+g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3}
+
+/* ---------- detail card ---------- */
+.card{
+  margin-top:26px;border:1px solid rgba(125,178,212,.28);border-left:3px solid var(--ochre);
+  background:rgba(5,22,38,.75);padding:clamp(20px,3.4vw,32px);border-radius:2px;
+}
+.card-lineage{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.card h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,4.4vw,38px);margin:0;line-height:1.05}
+.card .common{font-size:16px;color:var(--ochre);margin:6px 0 20px}
+.card p.desc{margin:0 0 22px;max-width:64ch;color:var(--text)}
+.stats{display:flex;flex-wrap:wrap;gap:26px 40px;border-top:1px solid rgba(125,178,212,.18);padding-top:18px}
+.stat b{display:block;font-family:var(--display);font-size:24px;font-weight:500;line-height:1.1}
+.stat span{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.stat.wide{flex:1 1 240px}
+.stat.wide b{font-size:17px;font-family:var(--body);font-weight:400;line-height:1.4}
+.jump{
+  margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--ochre-dim);color:var(--ochre);
+  padding:10px 16px;border-radius:2px;cursor:pointer;transition:.18s;
+}
+.jump:hover{background:var(--ochre);border-color:var(--ochre);color:var(--abyss)}
+
+/* ---------- filters ---------- */
+.filters{
+  margin-top:34px;display:grid;gap:0;
+  border-top:1px solid rgba(159,203,230,.22);
+}
+.fgroup{
+  display:grid;grid-template-columns:minmax(0,168px) minmax(0,1fr);gap:8px 24px;
+  padding:14px 0;border-bottom:1px solid rgba(159,203,230,.12);align-items:baseline;
+}
+.flabel{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0;
+}
+.fopts{display:flex;flex-wrap:wrap;gap:7px}
+.fbtn{
+  font-family:var(--body);font-size:13px;
+  background:rgba(6,25,42,.6);border:1px solid rgba(159,203,230,.26);color:var(--text);
+  padding:6px 12px;border-radius:2px;cursor:pointer;transition:.15s;
+}
+.fbtn:hover{border-color:var(--line);color:var(--bone)}
+.fbtn:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.fbtn[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:var(--abyss);font-weight:500}
+
+.fstatus{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:baseline;margin-top:20px}
+#fsummary{margin:0;font-size:15px;color:var(--text);flex:1 1 300px}
+#fsummary b{color:var(--ochre);font-weight:500}
+#fclear{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--ochre-dim);color:var(--ochre);
+  padding:8px 14px;border-radius:2px;cursor:pointer;
+}
+#fclear:hover{background:var(--ochre);color:var(--abyss);border-color:var(--ochre)}
+
+.off{display:none !important}
+g.tip.dim{opacity:.22}
+g.tip{transition:opacity .25s}
+
+@media (max-width:640px){ .fgroup{grid-template-columns:1fr} }
+
+/* ---------- the atlas ---------- */
+.drill{margin-top:34px;display:grid;gap:10px}
+.atlas-sub{
+  font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ochre);margin:34px 0 0;padding-bottom:9px;border-bottom:1px solid var(--ochre-dim);font-weight:400;
+}
+.drill > .atlas-sub:first-child{margin-top:0}
+.atlas-sf{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--line);margin:22px 0 2px;
+}
+details.sub{
+  border:1px solid rgba(159,203,230,.2);border-radius:2px;background:rgba(6,25,42,.6);
+}
+details.sub[open]{background:rgba(4,17,30,.85);border-color:rgba(159,203,230,.34)}
+details.sub > summary{
+  cursor:pointer;list-style:none;padding:15px 46px 15px 20px;display:flex;gap:6px 16px;
+  align-items:baseline;flex-wrap:wrap;position:relative;
+}
+details.sub > summary::-webkit-details-marker{display:none}
+details.sub > summary::after{content:"+";position:absolute;right:20px;top:12px;font-family:var(--mono);color:var(--ochre);font-size:19px}
+details.sub[open] > summary::after{content:"–"}
+summary .fam{font-family:var(--display);font-size:clamp(19px,2.9vw,25px);font-weight:500}
+summary .famcommon{font-size:13.5px;color:var(--muted)}
+summary .sm{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted);flex-basis:100%}
+.subbody{padding:0 20px 8px}
+.subf{padding:16px 0;border-top:1px solid rgba(125,178,212,.14)}
+.subf-name{
+  font-family:var(--display);font-size:19px;font-weight:500;margin:0 0 6px;color:var(--bone);
+}
+.subf-note{margin:0 0 12px;font-size:14px;color:var(--text);max-width:70ch;line-height:1.55}
+.triberow{
+  display:grid;grid-template-columns:minmax(0,178px) minmax(0,1fr);gap:6px 20px;
+  align-items:baseline;padding:7px 0;
+}
+.triberow.no-tribe{grid-template-columns:1fr}
+.tribe{
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ochre);
+}
+.genera{display:flex;flex-wrap:wrap;gap:6px}
+.gen{
+  display:inline-flex;align-items:baseline;gap:7px;
+  border:1px solid rgba(159,203,230,.26);border-radius:2px;padding:4px 10px;background:rgba(12,42,68,.55);
+}
+.gen i{font-family:var(--display);font-style:italic;font-size:15px;color:var(--bone)}
+.gen b{font-family:var(--mono);font-size:10.5px;font-weight:400;color:#93a5af}
+button.gen{font:inherit;cursor:pointer;text-align:left;transition:.15s}
+button.gen:hover{border-color:var(--ochre);background:rgba(20,55,85,.7)}
+button.gen:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+button.gen.open{border-color:var(--ochre);background:rgba(232,171,76,.14)}
+button.gen.open i{color:var(--ochre)}
+button.gen::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--line-dim);margin-left:1px}
+button.gen.open::after{background:var(--ochre)}
+
+.splist{grid-column:1 / -1;padding:14px 0 4px}
+.sp-head{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ochre);margin:0 0 10px;
+}
+.sp-head i{font-family:var(--display);font-style:italic;text-transform:none;letter-spacing:0;font-size:13px}
+ul.sp{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+ul.sp li{
+  break-inside:avoid;padding:5px 0 5px 12px;border-left:1px solid rgba(159,203,230,.3);margin-bottom:3px;
+}
+ul.sp li i{display:block;font-family:var(--display);font-style:italic;font-size:15px;color:var(--bone)}
+ul.sp li span{display:block;font-size:12.5px;color:#9fb0ba;line-height:1.35}
+ul.sp li span.sp-echo{
+  margin-top:5px;font-size:12.5px;color:#c8d4da;line-height:1.45;
+  padding-left:9px;border-left:2px solid var(--ochre-dim);
+}
+ul.sp li span.sp-echo.gen-echo{color:#8a9aa4;border-left-color:rgba(159,203,230,.22);font-style:italic}
+@media (max-width:640px){ ul.sp{columns:1} }
+
+.echo{
+  padding:16px 0 4px;border-top:1px solid rgba(232,171,76,.28);
+}
+.echo-h{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre);margin:0 0 12px;
+}
+.echo-grid{display:flex;flex-wrap:wrap;gap:14px 34px;margin-bottom:12px}
+.echo-grid > div{font-size:14px;color:var(--bone);max-width:34ch}
+.echo-grid span{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#8698a3;margin-bottom:3px;
+}
+.echo-note{margin:0;font-size:14px;color:var(--text);max-width:72ch;line-height:1.55}
+
+ul.sp li span.sp-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px}
+.sp-links a{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--line);text-decoration:none;border-bottom:1px solid rgba(159,203,230,.35);
+  padding-bottom:1px;transition:.15s;
+}
+.sp-links a:hover{color:var(--ochre);border-color:var(--ochre)}
+.sp-links a:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+
+.sources{display:grid;gap:0;margin-top:30px;border-top:1px solid rgba(159,203,230,.22)}
+.src{
+  display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:6px 26px;
+  padding:16px 0;border-bottom:1px solid rgba(159,203,230,.12);align-items:baseline;
+}
+.src a{
+  font-family:var(--display);font-size:19px;font-weight:500;color:var(--bone);
+  text-decoration:none;border-bottom:1px solid var(--ochre-dim);
+}
+.src a:hover{color:var(--ochre);border-color:var(--ochre)}
+.src p{margin:0;font-size:13.5px;color:#a3b3bc;line-height:1.5}
+@media (max-width:640px){ .src{grid-template-columns:1fr} }
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(159,203,230,.2);padding:44px 0 70px;color:#a3b3bc;font-size:13.5px}
+footer p{max-width:70ch;margin:0 0 12px}
+footer b{color:var(--bone);font-weight:500}
+
+@media (max-width:720px){
+  .rung{grid-template-columns:96px 1fr;gap:2px 14px}
+  .gloss{grid-column:1 / -1;order:4;padding-top:4px}
+  .count{grid-column:2;text-align:left;order:3;padding-top:2px}
+  .triberow{grid-template-columns:1fr}
+  .tribe{padding-bottom:2px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Order Chiroptera — a working classification</p>
+  <h1>The branching<br>of <em>bats</em></h1>
+  <p class="deck">One in every five mammal species is a bat. This page lays out how that diversity is filed: the ladder of ranks from order down to species, and the tree of 21 living families that the ranks are hung on.</p>
+  <div class="figures">
+    <div class="fig"><b>21</b><span>Living families</span></div>
+    <div class="fig"><b>2</b><span>Suborders</span></div>
+    <div class="fig"><b id="genera-total">—</b><span>Genera</span></div>
+    <div class="fig"><b>1,506</b><span>Species</span></div>
+  </div>
+</header>
+
+<!-- ================= RANKS ================= -->
+<section id="ranks">
+  <div class="sec-head"><span class="sec-num">I</span><h2>The ladder of ranks</h2></div>
+  <p class="lede">A rank is just a level of nesting. Each step down describes a smaller, more closely related group, and every group at every level is contained entirely inside the one above it. Family sits in the middle: broad enough to share an obvious body plan and way of life, narrow enough that its members are unmistakably kin.</p>
+  <p class="lede">Pick a bat and watch the ladder narrow. The bar under each rung shows how many bat species fall inside that group.</p>
+
+  <div class="switch" role="group" aria-label="Choose a worked example">
+    <button type="button" data-ex="0" aria-pressed="true">Common pipistrelle</button>
+    <button type="button" data-ex="1" aria-pressed="false">Large flying fox</button>
+    <button type="button" data-ex="2" aria-pressed="false">Common vampire bat</button>
+  </div>
+
+  <ul class="ladder" id="ladder"></ul>
+</section>
+
+<!-- ================= TREE ================= -->
+<section id="tree-section">
+  <div class="sec-head"><span class="sec-num">II</span><h2>The tree of families</h2></div>
+  <p class="lede">Genetic evidence broke the old split between big fruit bats and small echolocating bats. Flying foxes turned out to be nested beside horseshoe bats, not opposite all the rest — so the two suborders below are <em>Yinpterochiroptera</em> and <em>Yangochiroptera</em>. Superfamilies group the families inside each.</p>
+  <p class="lede">Tap any family name for its details.</p>
+
+  <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg></div>
+  <p class="scroll-hint">Scroll the panel sideways on a narrow screen</p>
+
+  <div class="card" id="card" aria-live="polite"></div>
+</section>
+
+<!-- ================= BELOW FAMILY ================= -->
+<section id="below">
+  <div class="sec-head"><span class="sec-num">III</span><h2>Inside every family</h2></div>
+  <p class="lede">All 21 families opened up: subfamilies, tribes where they are used, and every genus, with the number of species in each. Genera marked with a dot open one level further, to the species themselves.</p>
+  <p class="lede">Where a genus is small, every species is listed. Where it is large — <em>Myotis</em> has 143 — you get a labelled selection rather than a wall of Latin, and the panel says so. <span id="sp-coverage"></span> Each species carries an echolocation line: a measured description where one exists, otherwise the family profile, shown in grey italics so you can tell the two apart.</p>
+  <p class="lede">The filters below work on genera, and the cladogram above dims to match. Diet, roost and range are labelled at genus level, which is blunt: a genus of 130 species will always have exceptions to whatever label it carries. Echolocation is labelled at family level. The two regional checklists are curated species lists, not derived from the range data.</p>
+  <div class="filters" id="filters"></div>
+  <div class="fstatus"><p id="fsummary"></p><button type="button" id="fclear" hidden>Clear all filters</button></div>
+  <div class="drill" id="drill"></div>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">IV</span><h2>Where to look next</h2></div>
+  <p class="lede">Each species above carries three links. They point at <em>search results</em>, not at individual pages — I can't verify 623 separate URLs, and a search box always resolves whereas a guessed page address often doesn't. Expect good coverage for European, North American and Australian bats and thin coverage for tropical ones.</p>
+
+  <div class="sources">
+    <div class="src"><a href="https://www.chirovox.org" target="_blank" rel="noopener noreferrer">ChiroVox</a>
+      <p>The largest open-access bat call library, run by the Hungarian Natural History Museum and SEABCRU. Around 4,000 recordings from close to 200 species, most from bats caught and identified in the hand, so the identifications are trustworthy. Best single source for echolocation.</p></div>
+    <div class="src"><a href="https://xeno-canto.org" target="_blank" rel="noopener noreferrer">xeno-canto</a>
+      <p>Long-established wildlife sound archive that added bats in 2022. Every recording comes with a spectrogram and a map, all under Creative Commons licences. This is what the "calls" link searches.</p></div>
+    <div class="src"><a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer">iNaturalist</a>
+      <p>Photographs of live animals, community-identified. Strong where people go bat-watching, sparse elsewhere. This is what the "photos" link searches.</p></div>
+    <div class="src"><a href="https://www.gbif.org" target="_blank" rel="noopener noreferrer">GBIF</a>
+      <p>Aggregated occurrence records from museums and surveys worldwide, with distribution maps and specimen media. Good for answering "where has this actually been found".</p></div>
+    <div class="src"><a href="https://www.iucnredlist.org" target="_blank" rel="noopener noreferrer">IUCN Red List</a>
+      <p>Conservation status, threats and range maps, written by specialist assessors. The place to check before trusting any distribution statement on this page.</p></div>
+    <div class="src"><a href="https://www.mammaldiversity.org/explore/taxonomy-table/" target="_blank" rel="noopener noreferrer">Mammal Diversity Database</a>
+      <p>The American Society of Mammalogists' running list of every mammal species, updated a few times a year and downloadable as CSV. Its taxonomy table is the source for every count on this page. Version 2.5, released 28 July 2026, recognises 21 bat families, 238 genera and 1,506 living species, plus 8 gone extinct in the last 500 years. Archived releases carry a DOI, so a count can be cited to a specific version.</p></div>
+    <div class="src"><a href="https://batnames.org" target="_blank" rel="noopener noreferrer">Bat Species of the World</a>
+      <p>Simmons and Cirranello's taxonomic database — the authority the classification on this page follows. Updated twice a year, so it will drift ahead of what you see here.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p><b>How firm is any of this?</b> The 21 families and the two suborders are well supported. Below that it gets softer. The branching order inside superfamilies is not settled — Myzopodidae and Miniopteridae in particular move between studies. Subfamilies and tribes are conventions that different authorities draw differently: the arrangement here follows Simmons and Cirranello's <i>Bat Species of the World</i>, with the Phyllostomidae subfamilies of Baker and colleagues (2016). Under other schemes you will see Antrozoinae and Nyctophilinae raised to subfamilies, <i>Chaerephon</i> kept apart from <i>Mops</i>, and <i>Lasiurus</i> split into three.</p>
+  <p><b>Where the numbers come from.</b> Every genus and species count on this page is taken from the Mammal Diversity Database v2.5 (28 July 2026), which the ASM harmonises with batnames.org through the IUCN Bat Specialist Group. Totals reconcile exactly: 238 genera and 1,506 living species across 21 families. Subfamily and tribe placements are mine, following Simmons and Cirranello with the Phyllostomidae arrangement of Baker and colleagues (2016), since MDD's table does not display those ranks.</p>
+  <p><b>Recent changes worth knowing.</b> MDD v2.5 differs sharply from most older references. <i>Eptesicus</i> has been broken up and now holds only two species, with the serotine and northern bat moved to <i>Cnephaeus</i> and the Neotropical species to <i>Neoeptesicus</i> — which is why the Danish and British checklists here read <i>Cnephaeus serotinus</i>. Most Asian pipistrelles have gone to <i>Alionoctula</i>, leaving <i>Pipistrellus</i> with 16 species. <i>Chaerephon</i> is inside <i>Mops</i>, <i>Micropteropus</i> inside <i>Epomophorus</i>, <i>Thainycteris</i> inside <i>Arielulus</i>, and <i>Aeorestes</i> and <i>Dasypterus</i> back inside <i>Lasiurus</i>. The 1,500th bat species, <i>Pipistrellus etula</i>, was recognised in v2.3 in 2025.</p>
+  <p><b>The numbers move.</b> Species counts are approximate and rising — MDD v1.0 listed about 1,300 bat species in 2018 and v2.5 lists 1,506 now. Very little of that is genuinely new discovery in the field; most of it is genetic work finding that one widespread species is really several that look alike. Genus totals shift the same way, in both directions, as lineages are split or merged. Treat every figure here as "about", not "exactly", and expect the vesper bats, horseshoe bats and bent-winged bats to keep changing fastest.</p>
+</footer>
+
+</div>
+
+<script>
+/* =========================================================
+   1. RANK LADDER
+   ========================================================= */
+const TOTAL = 1506;
+
+const examples = [
+  {
+    label:"Common pipistrelle",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia",           above:true},
+      {rank:"Phylum",   taxon:"Chordata",           above:true},
+      {rank:"Class",    taxon:"Mammalia",           above:true},
+      {rank:"Order",       taxon:"Chiroptera",        n:1506, gloss:"All bats. The only mammals with powered flight."},
+      {rank:"Suborder",    taxon:"Yangochiroptera",   n:1074, gloss:"The larger of the two great bat lineages; all echolocate with the larynx."},
+      {rank:"Superfamily", taxon:"Vespertilionoidea", n:743,  gloss:"Vesper bats and their nearest relatives."},
+      {rank:"Family",      taxon:"Vespertilionidae",  n:556,  gloss:"Vesper bats — plain faces, no nose-leaf, found on every continent but Antarctica."},
+      {rank:"Subfamily",   taxon:"Vespertilioninae",  n:321,  gloss:"Pipistrelles, serotines, noctules and kin."},
+      {rank:"Tribe",       taxon:"Pipistrellini",     n:49,   gloss:"An optional rank, used when a subfamily is big enough to need it."},
+      {rank:"Genus",       taxon:"Pipistrellus",      n:16,   gloss:"The first half of the scientific name. Always capitalised, always italic."},
+      {rank:"Species",     taxon:"Pipistrellus pipistrellus", n:1, ital:true, terminal:true, gloss:"A 5-gram bat that eats up to 3,000 insects a night."}
+    ]
+  },
+  {
+    label:"Large flying fox",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Chiroptera",         n:1506, gloss:"All bats."},
+      {rank:"Suborder",    taxon:"Yinpterochiroptera", n:432,  gloss:"Fruit bats plus the horseshoe bat group — a pairing only genetics revealed."},
+      {rank:"Superfamily", taxon:"Pteropodoidea",      n:197,  gloss:"Holds a single family."},
+      {rank:"Family",      taxon:"Pteropodidae",       n:197,  gloss:"Old World fruit bats. Big eyes, dog-like faces, no laryngeal echolocation."},
+      {rank:"Subfamily",   taxon:"Pteropodinae",       n:80,   gloss:"The flying foxes and their allies."},
+      {rank:"Tribe",       taxon:"Pteropodini",        n:75,   gloss:"Sits between subfamily and genus."},
+      {rank:"Genus",       taxon:"Pteropus",           n:59,   gloss:"The true flying foxes — the largest bats alive."},
+      {rank:"Species",     taxon:"Pteropus vampyrus",  n:1, ital:true, terminal:true, gloss:"Wingspan to 1.5 metres. Eats fruit and nectar, not blood."}
+    ]
+  },
+  {
+    label:"Common vampire bat",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Chiroptera",        n:1480, gloss:"All bats."},
+      {rank:"Suborder",    taxon:"Yangochiroptera",   n:1074, gloss:"Includes every bat family in the Americas."},
+      {rank:"Superfamily", taxon:"Noctilionoidea",    n:262,  gloss:"Fishing bats, mustached bats, leaf-nosed bats and several tiny oddities."},
+      {rank:"Family",      taxon:"Phyllostomidae",    n:231,  gloss:"New World leaf-nosed bats — the most varied diets of any mammal family."},
+      {rank:"Subfamily",   taxon:"Desmodontinae",     n:3,    gloss:"The only mammals that live entirely on blood."},
+      {rank:"Tribe",       taxon:"— not used —",      n:null, gloss:"Ranks are optional. With three species, this subfamily has no need of tribes.", skip:true},
+      {rank:"Genus",       taxon:"Desmodus",          n:1,    gloss:"One living species; two more are known only as fossils."},
+      {rank:"Species",     taxon:"Desmodus rotundus", n:1, ital:true, terminal:true, gloss:"Runs and leaps on the ground; shares meals with roost-mates that go hungry."}
+    ]
+  }
+];
+
+const ladder = document.getElementById('ladder');
+function barPct(n){ return n ? (Math.log10(n+1)/Math.log10(TOTAL+1))*100 : 0; }
+
+function drawLadder(i){
+  ladder.innerHTML = '';
+  examples[i].rows.forEach(r=>{
+    const li = document.createElement('li');
+    li.className = 'rung' + (r.above?' above':'') + (r.terminal?' terminal':'');
+    const count = r.skip ? '<span class="note-inline">optional rank</span>'
+                : (r.n ? (r.n===1 ? '1 species' : '~'+r.n.toLocaleString()+' spp.') : '');
+    li.innerHTML =
+      '<span class="r-rank">'+r.rank+'</span>'+
+      '<span class="taxon'+(r.ital?' ital':'')+'">'+r.taxon+'</span>'+
+      '<span class="gloss">'+(r.gloss||'')+'</span>'+
+      '<span class="count">'+count+'</span>'+
+      (r.above?'':'<span class="bar"><i style="width:0"></i></span>');
+    ladder.appendChild(li);
+    const bar = li.querySelector('.bar i');
+    if(bar) requestAnimationFrame(()=>{ bar.style.width = barPct(r.n)+'%'; });
+  });
+}
+drawLadder(0);
+document.querySelectorAll('.switch button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.switch button').forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    drawLadder(+b.dataset.ex);
+  });
+});
+
+/* =========================================================
+   2. FAMILY DATA
+   ========================================================= */
+const F = {
+  Pteropodidae:{common:"Old World fruit bats, flying foxes",genera:46,species:197,range:"Africa, South & SE Asia, Australasia, Pacific islands",
+    desc:"The giants. Big forward-facing eyes, a long snout, claws on the second finger, and — almost uniquely among bats — no laryngeal echolocation; they navigate by sight and smell. Only the cave-roosting Rousettus works around this, clicking with its tongue. They are the great pollinators and seed-dispersers of the Old World tropics."},
+  Rhinopomatidae:{common:"Mouse-tailed bats",genera:1,species:6,range:"North Africa through the Middle East to India",
+    desc:"Named for a long, thin tail left almost entirely free of the membrane, unusual among bats. Desert and dry-country specialists that lay down heavy fat reserves and can go dormant when insects vanish."},
+  Craseonycteridae:{common:"Kitti's hog-nosed bat, bumblebee bat",genera:1,species:1,range:"Limestone caves in western Thailand and southern Myanmar",
+    desc:"A family of one. Craseonycteris thonglongyai weighs about two grams, roughly the same as a large bumblebee, which makes it a joint contender for smallest mammal in the world. It has a pig-like snout, no tail, and a very small and fragile range."},
+  Megadermatidae:{common:"False vampire bats",genera:6,species:7,range:"Sub-Saharan Africa, South & SE Asia, northern Australia",
+    desc:"Big-eared carnivores with a tall nose-leaf and huge ears joined at the base. The name is a libel — they take no blood, but they do take frogs, lizards, birds, rodents and other bats, dropping onto prey from a perch and carrying it off to a feeding roost."},
+  Rhinolophidae:{common:"Horseshoe bats",genera:1,species:118,range:"Europe, Africa, Asia, Australasia",
+    desc:"Instantly known by the horseshoe-shaped flap of skin around the nostrils, which shapes the beam of sound they emit through the nose. They are the great specialists of echolocation: they hold one long constant frequency and correct for the Doppler shift of their own flight, so that a fluttering insect wing stands out as a rhythm against a steady tone."},
+  Hipposideridae:{common:"Old World leaf-nosed bats",genera:7,species:94,range:"Africa, southern Asia to Australia",
+    desc:"The horseshoe bats' sister group, with a simpler leaf that lacks the pointed upper lance. Mostly cave-dwellers, often in enormous colonies, and mostly hunters of beetles and moths in cluttered forest."},
+  Rhinonycteridae:{common:"Trident bats",genera:4,species:9,range:"Africa, Arabia, Australia",
+    desc:"Split off from the leaf-nosed bats in 2014 on genetic evidence. Named for the three-pronged upper part of the nose-leaf. Includes the orange leaf-nosed bat of Australia, which lives so close to its heat and water limits that it is confined to a handful of deep caves."},
+
+  Emballonuridae:{common:"Sheath-tailed and sac-winged bats",genera:14,species:55,range:"Tropics worldwide",
+    desc:"The tail pierces the membrane and slides in and out of a sheath as the legs move. Many roost in the open — on tree trunks, in rock crevices, under bridges — rather than deep in caves. Males of several species have a wing pouch that they fill with a fermented perfume and fan at females while singing."},
+  Nycteridae:{common:"Slit-faced bats",genera:1,species:14,range:"Africa, Arabia, Malay Peninsula and Java",
+    desc:"A deep groove runs down the middle of the face from nose to forehead, hiding a complex nose-leaf inside it. The tail ends in a T-shaped tip of cartilage, found nowhere else in mammals. They glean prey off leaves and the ground rather than catching it in flight."},
+  Myzopodidae:{common:"Old World sucker-footed bats",genera:1,species:2,range:"Madagascar only",
+    desc:"Two species on one island, with no close living relatives anywhere — an ancient lineage that once ranged across Africa. Pads on the wrists and ankles stick to smooth surfaces, letting them roost head-up inside the still-furled leaf of a traveller's palm. Where exactly they attach to the rest of the tree is still argued over."},
+  Mystacinidae:{common:"New Zealand short-tailed bats",genera:1,species:2,range:"New Zealand",
+    desc:"One of only two land mammals native to New Zealand. They fold their wings into leathery sheaths and scramble about on the forest floor and up tree trunks, hunting insects in the leaf litter and drinking nectar from a parasitic ground flower that has come to depend on them. A second species has not been recorded since the 1960s."},
+  Thyropteridae:{common:"Disk-winged bats",genera:1,species:5,range:"Southern Mexico to south-eastern Brazil",
+    desc:"Suction cups on the thumbs and ankles, strong enough to hold the whole animal on one disk. They roost head-up in the young furled leaf of a Heliconia, which unrolls within a day, so the group moves house constantly and calls to keep itself together."},
+  Furipteridae:{common:"Smoky bats",genera:2,species:2,range:"Costa Rica to Peru, Brazil and Trinidad",
+    desc:"Tiny, grey and rarely seen. The thumb is almost entirely swallowed by the wing membrane and the face is oddly pug-nosed. They appear to eat moths almost exclusively."},
+  Noctilionidae:{common:"Bulldog or fishing bats",genera:1,species:2,range:"Mexico and the Caribbean to northern Argentina",
+    desc:"Loose-jowled faces and enormous feet. The greater bulldog bat trawls calm water with hooked claws, detecting the ripples a fish makes when it breaks the surface, then gaffs it and stores it in cheek pouches while it keeps flying."},
+  Mormoopidae:{common:"Mustached and ghost-faced bats",genera:2,species:18,range:"Southern USA to Brazil, and the Caribbean",
+    desc:"Stiff bristles fringe the lips in a moustache; in ghost-faced bats the ears wrap round to meet across the forehead, hiding the eyes. They form colonies of hundreds of thousands in hot, humid caves and are pure insect hunters."},
+  Phyllostomidae:{common:"New World leaf-nosed bats",genera:61,species:231,range:"South-western USA to northern Argentina",
+    desc:"The most ecologically varied family of mammals on Earth, split into eleven subfamilies. Within one family you find insect gleaners, fruit eaters, long-tongued nectar feeders that pollinate cacti and agave, carnivores that hunt frogs by their mating calls, and the three vampires. The spear-shaped nose-leaf is the shared badge."},
+  Natalidae:{common:"Funnel-eared bats",genera:3,species:11,range:"Northern Mexico and the Caribbean to Brazil",
+    desc:"Delicate, long-legged and long-tailed, with funnel-shaped ears and a curious gland on the muzzle of adult males. They fly slowly and with great manoeuvrability deep inside hot caves."},
+  Molossidae:{common:"Free-tailed bats",genera:22,species:133,range:"Warm regions worldwide",
+    desc:"Built for speed: long narrow wings, a thick tail projecting well past the membrane, leathery wrinkled faces. Mexican free-tailed bats climb to three kilometres and have been clocked faster in level flight than any other bird or bat, and they gather in the largest warm-blooded aggregations known — millions in a single cave."},
+  Miniopteridae:{common:"Bent-winged bats",genera:1,species:41,range:"Southern Europe, Africa, Asia, Australia, Pacific",
+    desc:"The last joint of the third finger is more than twice the length of the one before it, so the wingtip folds back on itself at rest. Long-distance travellers between summer nursery caves and winter hibernacula. Only recognised as a family of their own in the 2000s."},
+  Cistugidae:{common:"Wing-gland bats",genera:1,species:2,range:"South Africa and Namibia",
+    desc:"Two small species split from the vesper bats in 2010 after genetics showed they had been separate for tens of millions of years. Named for glands scattered along the wing membrane whose purpose is still unknown. Confined to fynbos and Karoo scrub."},
+  Vespertilionidae:{common:"Vesper bats, evening bats",genera:61,species:556,range:"Every continent except Antarctica",
+    desc:"A third of all bat species, and the family most people in temperate countries mean when they say 'bat'. Plain-faced, no nose-leaf, insect-eating almost throughout. It includes Myotis, the second-largest genus of mammals, the pipistrelles, the serotines, and the tree-roosting migratory hoary and red bats."}
+};
+
+/* =========================================================
+   3. CLADOGRAM
+   ========================================================= */
+const leaf = n => ({name:n, leaf:true});
+const clade = (...c) => ({children:c});
+
+const TREE = {name:"Chiroptera", rank:"Order", children:[
+  {name:"Yinpterochiroptera", rank:"Suborder", children:[
+    {name:"Pteropodoidea", rank:"Superfamily", children:[ leaf("Pteropodidae") ]},
+    {name:"Rhinolophoidea", rank:"Superfamily", children:[
+      clade( leaf("Megadermatidae"), clade( leaf("Rhinopomatidae"), leaf("Craseonycteridae") ) ),
+      clade( leaf("Rhinolophidae"), clade( leaf("Hipposideridae"), leaf("Rhinonycteridae") ) )
+    ]}
+  ]},
+  {name:"Yangochiroptera", rank:"Suborder", children:[
+    {name:"Emballonuroidea", rank:"Superfamily", children:[ leaf("Nycteridae"), leaf("Emballonuridae") ]},
+    {name:"Noctilionoidea", rank:"Superfamily", children:[
+      leaf("Myzopodidae"),
+      clade( leaf("Mystacinidae"),
+        clade( leaf("Thyropteridae"),
+          clade( leaf("Furipteridae"),
+            clade( leaf("Noctilionidae"),
+              clade( leaf("Mormoopidae"), leaf("Phyllostomidae") )))))
+    ]},
+    {name:"Vespertilionoidea", rank:"Superfamily", children:[
+      leaf("Natalidae"),
+      clade( leaf("Molossidae"),
+        clade( leaf("Miniopteridae"),
+          clade( leaf("Cistugidae"), leaf("Vespertilionidae") )))
+    ]}
+  ]}
+]};
+
+const SVGNS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById('tree');
+const ROW = 36, TOP = 44, LEFT = 30, TIPX = 400, NAMEX = 414, COUNTX = 872;
+const GAP_SF = 44, GAP_SUB = 84;
+
+function el(tag, attrs, txt){
+  const e = document.createElementNS(SVGNS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  if(txt!=null) e.textContent = txt;
+  return e;
+}
+
+// depth of every node
+let maxDepth = 0;
+(function setDepth(n,d){
+  n.depth = d; if(d>maxDepth) maxDepth = d;
+  if(!n.leaf) n.children.forEach(c=>setDepth(c,d+1));
+})(TREE,0);
+
+// vertical positions, with a gap before each superfamily block
+let leaves = [], cursor = TOP, blocks = [];
+function collect(n){
+  if(n.leaf){ n.y = cursor; cursor += ROW; leaves.push(n); return; }
+  n.children.forEach(collect);
+}
+TREE.children.forEach(sub=>{
+  sub.children.forEach((sf,i)=>{
+    cursor += (i===0 ? GAP_SUB : GAP_SF);
+    const from = leaves.length;
+    collect(sf);
+    blocks.push({ sub: i===0 ? sub.name : null, sf: sf.name, y0: leaves[from].y, members: leaves.slice(from) });
+  });
+});
+(function midY(n){
+  if(n.leaf) return n.y;
+  n.children.forEach(midY);
+  n.y = (n.children[0].y + n.children[n.children.length-1].y)/2;
+  return n.y;
+})(TREE);
+
+const H = cursor + 26;
+svg.setAttribute('viewBox', `0 0 900 ${H}`);
+svg.appendChild(el('rect',{x:0,y:0,width:900,height:H,fill:'#08243c'}));
+
+const STEP = (TIPX - LEFT) / maxDepth;
+const xOf = n => n.leaf ? TIPX : LEFT + n.depth*STEP;
+
+// branches first — labels are painted over them
+(function draw(node){
+  if(node.leaf) return;
+  const px = xOf(node);
+  node.children.forEach(c=>{
+    svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch'}));
+    draw(c);
+  });
+})(TREE);
+
+// column headings
+svg.appendChild(el('text',{x:LEFT, y:26, class:'col-label'}, 'ORDER CHIROPTERA'));
+svg.appendChild(el('text',{x:NAMEX, y:26, class:'col-label'}, 'FAMILY'));
+svg.appendChild(el('text',{x:COUNTX, y:26, class:'col-label','text-anchor':'end'}, 'SPECIES'));
+svg.appendChild(el('line',{x1:LEFT,y1:34,x2:COUNTX,y2:34,stroke:'#3d6f95','stroke-width':'.7'}));
+
+// horizontal suborder + superfamily headings, knocked out of the branch lines
+function heading(text, x, y, cls, fs){
+  const w = text.length * fs * 0.78 + 16;
+  svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9}));
+  svg.appendChild(el('text',{x:x, y:y, class:cls}, text));
+}
+blocks.forEach(b=>{
+  if(b.sub){
+    heading(b.sub.toUpperCase(), LEFT, b.y0 - 54, 'sub-label', 13);
+    svg.appendChild(el('line',{x1:LEFT,y1:b.y0-45,x2:COUNTX,y2:b.y0-45,stroke:'#8a6427','stroke-width':'.8'}));
+  }
+  const n = b.members.reduce((s,l)=>s+F[l.name].species,0);
+  heading(b.sf.toUpperCase(), LEFT, b.y0 - 20, 'sf-label', 10.5);
+  const cx = LEFT + b.sf.length*10.5*0.78 + 20;
+  svg.appendChild(el('rect',{class:'knock',x:cx-6,y:b.y0-32,width:150,height:19}));
+  svg.appendChild(el('text',{x:cx, y:b.y0-20, class:'sf-count'},
+    b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
+});
+
+// tips
+leaves.forEach(l=>{
+  const d = F[l.name];
+  const g = el('g',{class:'tip', tabindex:'0', role:'button','aria-label':l.name+' — '+d.common});
+  g.appendChild(el('rect',{class:'focus-ring',x:NAMEX-8,y:l.y-15,width:COUNTX-NAMEX+16,height:30,rx:2}));
+  g.appendChild(el('rect',{class:'tip-hit',x:NAMEX-8,y:l.y-15,width:COUNTX-NAMEX+16,height:30}));
+  g.appendChild(el('line',{class:'branch branch-tip',x1:TIPX,y1:l.y,x2:NAMEX-10,y2:l.y}));
+  const name = el('text',{class:'tip-name',x:NAMEX,y:l.y-4}, l.name);
+  const com  = el('text',{class:'tip-common',x:NAMEX,y:l.y+10}, d.common);
+  g.appendChild(name); g.appendChild(com);
+  g.appendChild(el('text',{class:'tip-count',x:COUNTX,y:l.y}, d.species===1?'1':'~'+d.species));
+  const pick = ()=>select(l.name,g);
+  g.addEventListener('click',pick);
+  g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
+  svg.appendChild(g);
+  l.g = g;
+});
+
+// lineage lookup for the card
+const LINEAGE = {};
+(function walk(node, path){
+  if(node.leaf){ LINEAGE[node.name] = path; return; }
+  const p = node.name ? path.concat(node.name) : path;
+  node.children.forEach(c=>walk(c,p));
+})(TREE,[]);
+
+const card = document.getElementById('card');
+function select(name, g){
+  document.querySelectorAll('g.tip').forEach(x=>x.classList.remove('active'));
+  if(g) g.classList.add('active');
+  const d = F[name];
+  card.innerHTML =
+    '<p class="card-lineage">'+LINEAGE[name].join(' &rsaquo; ')+' &rsaquo; '+name+'</p>'+
+    '<h3>'+name+'</h3>'+
+    '<p class="common">'+d.common+'</p>'+
+    '<p class="desc">'+d.desc+'</p>'+
+    '<div class="stats">'+
+      '<div class="stat"><b>'+d.genera+'</b><span>Genera</span></div>'+
+      '<div class="stat"><b>'+(d.species===1?'1':'~'+d.species)+'</b><span>Species</span></div>'+
+      '<div class="stat wide"><b>'+d.range+'</b><span>Distribution</span></div>'+
+    '</div>'+
+    '<button type="button" class="jump" data-fam="'+name+'">Open the genera of '+name+' &rarr;</button>';
+}
+select('Phyllostomidae', leaves.find(l=>l.name==='Phyllostomidae').g);
+
+/* =========================================================
+   4. BELOW THE FAMILY
+   ========================================================= */
+/* =========================================================
+   4. THE ATLAS — every family, subfamily, tribe and genus
+   Structure: [subfamily, note, tribes] where a tribe is
+   [tribe name or null, [[genus, species], ...]]
+   ========================================================= */
+const S = (sub,note,tribes)=>({sub,note,tribes});
+const T = (t,g)=>({t,g});
+const G = g => [T(null,g)];              // no tribes used
+const P = g => [S(null,null,G(g))];      // no subfamilies used
+
+const ATLAS = {
+Pteropodidae:[
+  S("Eidolinae","Africa's great migrants. Up to ten million gather in one Zambian swamp forest each November — the largest mammal migration known.",
+    G([["Eidolon",2]])),
+  S("Rousettinae","African and Asian fruit and nectar bats, including the only pteropodids that echolocate.",[
+    T("Rousettini",[["Rousettus",7],["Pilonycteris",1]]),
+    T("Stenonycterini",[["Stenonycteris",1]]),
+    T("Eonycterini",[["Eonycteris",3]]),
+    T("Myonycterini",[["Myonycteris",5],["Megaloglossus",2]]),
+    T("Plerotini",[["Plerotes",1]]),
+    T("Scotonycterini",[["Scotonycteris",3],["Casinycteris",3]]),
+    T("Epomophorini",[["Epomophorus",11],["Epomops",2],["Hypsignathus",1],["Nanonycteris",1]])
+  ]),
+  S("Harpyionycterinae","Bare-backed fruit bats, whose wings meet along the spine so the back looks naked.",
+    G([["Dobsonia",14],["Harpyionycteris",2],["Aproteles",1],["Boneia",1]])),
+  S("Cynopterinae","Small short-faced fruit bats of South and South-East Asia. Several bite leaf ribs until the leaf folds into a tent to roost under.",
+    G([["Cynopterus",7],["Megaerops",4],["Ptenochirus",3],["Dyacopterus",3],["Thoopterus",2],["Balionycteris",2],["Aethalops",2],["Penthetor",1],["Chironax",2],["Sphaerias",1],["Alionycteris",1],["Haplonycteris",1],["Otopteropus",1],["Latidens",1]])),
+  S("Macroglossinae","Blossom bats — tiny, with a long brush-tipped tongue for nectar.",
+    G([["Syconycteris",3],["Macroglossus",2]])),
+  S("Notopterinae","Long-tailed fruit bats of Fiji, Vanuatu and New Caledonia. The only pteropodids with a real tail.",
+    G([["Notopteris",2]])),
+  S("Nyctimeninae","Tube-nosed fruit bats: nostrils on separate stalks, wings spotted yellow-green like lichen.",
+    G([["Nyctimene",16],["Paranyctimene",2]])),
+  S("Pteropodinae","The flying foxes and their island relatives — the largest bats that have ever lived.",[
+    T("Pteropodini",[["Pteropus",59],["Acerodon",5],["Pteralopex",5],["Styloctenium",2],["Desmalopex",2],["Mirimiri",1],["Neopteryx",1]]),
+    T("Melonycterini",[["Melonycteris",1],["Nesonycteris",4]])
+  ])
+],
+Rhinopomatidae:[S(null,"No subfamilies. A single ancient genus, little changed for tens of millions of years.",
+  G([["Rhinopoma",6]]))],
+Craseonycteridae:[S(null,"One genus, one species, one small range in limestone caves along the Thai–Myanmar border.",
+  G([["Craseonycteris",1]]))],
+Megadermatidae:[S(null,"Six genera, six species — an unusual ratio, and a sign of an old lineage thinned by extinction. Eudiscoderma was described only in 2015.",
+  G([["Macroderma",1],["Lyroderma",2],["Megaderma",1],["Cardioderma",1],["Lavia",1],["Eudiscoderma",1]]))],
+Rhinolophidae:[S(null,"One enormous genus, no subfamilies. Specialists instead sort it into species groups by nose-leaf shape and call frequency — the ferrumequinum, philippinensis, trifoliatus, megaphyllus and landeri groups among them. Cryptic species keep appearing: bats identical in the hand turn out to echolocate at different frequencies and not to interbreed.",
+  G([["Rhinolophus",118]]))],
+Hipposideridae:[S(null,"Macronycteris and Doryrhina were cut out of a bloated Hipposideros in the 2010s once genetics showed it was several lineages, not one.",
+  G([["Hipposideros",76],["Macronycteris",5],["Asellia",4],["Aselliscus",3],["Coelops",3],["Doryrhina",2],["Anthops",1]]))],
+Rhinonycteridae:[S(null,"Split from Hipposideridae in 2014. Paratriaenops is confined to Madagascar and the Seychelles, Rhinonicteris to a handful of hot Australian caves.",
+  G([["Triaenops",4],["Paratriaenops",3],["Rhinonicteris",1],["Cloeotis",1]]))],
+
+Nycteridae:[S(null,"One genus. The face is split by a deep furrow that hides the nose-leaf, and the tail ends in a T-shaped tip of cartilage found in no other mammal.",
+  G([["Nycteris",14]]))],
+Emballonuridae:[
+  S("Emballonurinae","Split into an Old World and a New World tribe that parted around 30 million years ago.",[
+    T("Emballonurini · Old World",[["Emballonura",8],["Coleura",4],["Paremballonura",2],["Mosia",1]]),
+    T("Diclidurini · New World",[["Peropteryx",5],["Saccopteryx",5],["Diclidurus",4],["Balantiopteryx",3],["Centronycteris",2],["Rhynchonycteris",1],["Cormura",1],["Cyttarops",1]])
+  ]),
+  S("Taphozoinae","Tomb bats — fast, high-flying, often roosting in ruins and rock clefts.",
+    G([["Taphozous",14],["Saccolaimus",4]]))
+],
+Myzopodidae:[S(null,"Two species on Madagascar and nothing else alive anywhere. Fossils show the lineage once ranged across mainland Africa.",
+  G([["Myzopoda",2]]))],
+Mystacinidae:[S(null,"One genus. M. tuberculata still survives in New Zealand's old forests; M. robusta has not been seen since 1967 and is probably gone.",
+  G([["Mystacina",2]]))],
+Thyropteridae:[S(null,"Suction disks on thumbs and ankles. One disk can hold the whole bat.",
+  G([["Thyroptera",5]]))],
+Furipteridae:[S(null,"Two genera, one species each, both moth specialists and both rarely caught.",
+  G([["Furipterus",1],["Amorphochilus",1]]))],
+Noctilionidae:[S(null,"One genus. N. leporinus trawls water for fish; N. albiventris mostly takes insects but will fish too.",
+  G([["Noctilio",2]]))],
+Mormoopidae:[S(null,"Pteronotus has been split hard in recent years as acoustic and genetic work separated look-alike species.",
+  G([["Pteronotus",16],["Mormoops",2]]))],
+Phyllostomidae:[
+  S("Macrotinae","The earliest branch of the family, and the only phyllostomids that hunt largely by sight in dim light.",
+    G([["Macrotus",2]])),
+  S("Micronycterinae","Little big-eared bats that pluck insects off leaves rather than catching them in the air.",
+    G([["Micronycteris",13],["Lampronycteris",1]])),
+  S("Desmodontinae","The vampires. Three species, each specialising on different prey: Desmodus on mammals, Diaemus and Diphylla mostly on birds.",
+    G([["Desmodus",1],["Diaemus",1],["Diphylla",1]])),
+  S("Lonchorhininae","Sword-nosed bats, with a nose-leaf as long as the ears.",
+    G([["Lonchorhina",6]])),
+  S("Phyllostominae","The big-bodied hunters — the family's carnivores and omnivores.",[
+    T("Phyllostomini",[["Lophostoma",8],["Phyllostomus",4],["Gardnerycteris",3],["Tonatia",3],["Phylloderma",2],["Mimon",2]]),
+    T("Vampyrini",[["Vampyrum",1],["Chrotopterus",1],["Trachops",3]]),
+    T("Macrophyllini",[["Macrophyllum",1]])
+  ]),
+  S("Glossophaginae","Long-tongued nectar feeders. Their tongues carry hair-like papillae that erect with blood pressure, mopping up nectar.",[
+    T("Glossophagini",[["Glossophaga",9],["Leptonycteris",3],["Monophyllus",2]]),
+    T("Choeronycterini",[["Anoura",10],["Choeroniscus",3],["Hylonycteris",1],["Choeronycteris",1],["Musonycteris",1],["Lichonycteris",2],["Scleronycteris",1],["Dryadonycteris",1]]),
+    T("Brachyphyllini",[["Phyllonycteris",2],["Erophylla",2],["Brachyphylla",2]])
+  ]),
+  S("Lonchophyllinae","A second, entirely separate invention of nectar feeding, with a grooved tongue that pumps nectar rather than lapping it.",[
+    T("Lonchophyllini",[["Lonchophylla",13],["Hsunycteris",4],["Xeronycteris",1],["Platalina",1]]),
+    T("Lionycterini",[["Lionycteris",1]])
+  ]),
+  S("Glyphonycterinae","Small understorey insect-eaters, separated from Phyllostominae only in 2016.",
+    G([["Glyphonycteris",3],["Trinycteris",1],["Neonycteris",1]])),
+  S("Carolliinae","Short-tailed fruit bats — the main dispersers of pioneer shrubs like Piper, and among the commonest mammals in Neotropical forest.",
+    G([["Carollia",8]])),
+  S("Rhinophyllinae","Little fruit bats that cut leaves into tents.",
+    G([["Rhinophylla",3]])),
+  S("Stenodermatinae","The fig and canopy-fruit specialists — short broad faces, powerful jaws, and the family's greatest species richness.",[
+    T("Sturnirini",[["Sturnira",25]]),
+    T("Stenodermatini · Vampyressina",[["Platyrrhinus",19],["Chiroderma",7],["Uroderma",5],["Vampyriscus",3],["Vampyressa",6],["Vampyrodes",2],["Mesophylla",1]]),
+    T("Stenodermatini · Ectophyllina",[["Ectophylla",1]]),
+    T("Stenodermatini · Enchisthenina",[["Enchisthenes",1]]),
+    T("Stenodermatini · Artibeina",[["Artibeus",13],["Dermanura",11]]),
+    T("Stenodermatini · Stenodermatina",[["Centurio",1],["Sphaeronycteris",1],["Ametrida",1],["Pygoderma",1],["Phyllops",1],["Ardops",1],["Ariteus",1],["Stenoderma",1]])
+  ])
+],
+Natalidae:[S(null,"One subfamily, three genera. Nyctiellus lepidus of Cuba and the Bahamas is among the smallest bats in the Americas.",
+  G([["Natalus",7],["Chilonatalus",3],["Nyctiellus",1]]))],
+Molossidae:[
+  S("Tomopeatinae","A single species from dry Peruvian valleys, so unlike other molossids that it was long filed with the vesper bats.",
+    G([["Tomopeas",1]])),
+  S("Molossinae","Everything else. Simmons and Cirranello folded Chaerephon into Mops in 2022, which is why Mops is suddenly the family's largest genus.",[
+    T("Tadaridini",[["Mops",36],["Otomops",8],["Tadarida",7],["Nyctinomops",4],["Austronomus",2],["Myopterus",2],["Nyctinomus",1],["Platymops",1],["Sauromys",1]]),
+    T("Molossini",[["Eumops",17],["Molossus",16],["Cynomops",9],["Promops",3],["Molossops",3],["Neoplatymops",1],["Cabreramops",1]]),
+    T("Mormopterini",[["Ozimops",9],["Mormopterus",7],["Micronomus",1],["Setirostris",1]]),
+    T("Cheiromelini",[["Cheiromeles",2]])
+  ])
+],
+Miniopteridae:[S(null,"One genus, and a taxonomic headache: many populations look identical but are genetically deeply separate, so the species count keeps climbing.",
+  G([["Miniopterus",41]]))],
+Cistugidae:[S(null,"Two species. Their split from the vesper bats is roughly as old as the split between horses and rhinos.",
+  G([["Cistugo",2]]))],
+Vespertilionidae:[
+  S("Myotinae","Myotis is the second-largest genus of mammals on Earth and reached every continent but Antarctica, repeatedly evolving the same fishing, gleaning and aerial-hawking habits in different regions.",
+    G([["Myotis",143],["Submyotodon",3],["Eudiscopus",1]])),
+  S("Kerivoulinae","Woolly bats — delicate, funnel-eared forest bats. One Bornean species roosts inside pitcher plants, and the plant lives off its droppings.",
+    G([["Kerivoula",28],["Phoniscus",4]])),
+  S("Murininae","Tube-nosed bats, many of them furry orange and gold, most of them described in the last thirty years.",
+    G([["Murina",53],["Harpiola",2],["Harpiocephalus",1]])),
+  S("Vespertilioninae","The bulk of the family, and the most heavily reshuffled group in bat taxonomy — several tribes below were rearranged in the last decade.",[
+    T("Pipistrellini",[["Alionoctula",17],["Pipistrellus",16],["Nyctalus",8],["Glischropus",5],["Perimyotis",1],["Parastrellus",1],["Scotozous",1]]),
+    T("Vespertilionini",[["Hypsugo",16],["Glauconycteris",15],["Laephotis",9],["Vespadelus",9],["Pseudoromicia",9],["Chalinolobus",8],["Tylonycteris",6],["Scotoecus",5],["Neoromicia",6],["Falsistrellus",2],["Scotorepens",4],["Afronycteris",3],["Afropipistrellus",7],["Nycticeinops",1],["Mimetillus",1],["Vespertilio",2],["Cassistrellus",2],["Philetor",1],["Scoteanax",1],["Scotomanes",1],["Lasionycteris",1],["Vansonia",1],["Mirostrellus",1]]),
+    T("Eptesicini",[["Cnephaeus",15],["Histiotus",11],["Neoeptesicus",10],["Arielulus",6],["Hesperoptenus",5],["Eptesicus",2],["Ia",1],["Rhyneptesicus",1]]),
+    T("Scotophilini",[["Scotophilus",20]]),
+    T("Plecotini",[["Plecotus",18],["Barbastella",6],["Corynorhinus",4],["Otonycteris",2],["Euderma",1],["Idionycteris",1]]),
+    T("Nycticeiini",[["Rhogeessa",12],["Nycticeius",3],["Baeodon",2]]),
+    T("Lasiurini",[["Lasiurus",20]]),
+    T("Nyctophilini",[["Nyctophilus",17],["Pharotis",1]]),
+    T("Antrozoini",[["Antrozous",2],["Bauerus",1]])
+  ])
+]
+};
+
+/* =========================================================
+   5. SPECIES — one level below genus
+   G:[complete?, [[epithet, common name], ...]]
+   complete = 1 means every species in the genus is listed.
+   complete = 0 means a representative selection only.
+   Genera absent from this list have no species shown.
+   ========================================================= */
+const SP = {
+// --- Pteropodidae
+Eidolon:[1,[["helvum","straw-coloured fruit bat"],["dupreanum","Madagascan flying fox"]]],
+Rousettus:[0,[["aegyptiacus","Egyptian fruit bat"],["leschenaultii","Leschenault's rousette"],["amplexicaudatus","Geoffroy's rousette"],["madagascariensis","Madagascan rousette"],["obliviosus","Comoro rousette"]]],
+Pilonycteris:[1,[["celebensis","Sulawesi rousette"]]],
+Stenonycteris:[1,[["lanosus","long-haired rousette"]]],
+Eonycteris:[1,[["spelaea","cave nectar bat"],["major","greater dawn bat"],["robusta","Philippine dawn bat"]]],
+Myonycteris:[0,[["angolensis","Angolan rousette"],["torquata","little collared fruit bat"],["leptodon","western collared fruit bat"],["relicta","East African little collared fruit bat"]]],
+Megaloglossus:[1,[["woermanni","Woermann's long-tongued fruit bat"],["azagnyi","western woolly bat"]]],
+Plerotes:[1,[["anchietae","Anchieta's pygmy fruit bat"]]],
+Scotonycteris:[1,[["zenkeri","Zenker's fruit bat"],["occidentalis","western tear-drop fruit bat"]]],
+Casinycteris:[1,[["argynnis","short-palated fruit bat"],["ophiodon","pouched fruit bat"],["campomaanensis","Campo Ma'an fruit bat"]]],
+Epomophorus:[0,[["wahlbergi","Wahlberg's epauletted fruit bat"],["gambianus","Gambian epauletted fruit bat"],["labiatus","Ethiopian epauletted fruit bat"],["crypturus","Peters's epauletted fruit bat"],["dobsonii","Dobson's epauletted fruit bat"],["pusillus","Peters's dwarf epauletted fruit bat"]]],
+Epomops:[1,[["franqueti","Franquet's epauletted bat"],["buettikoferi","Buettikofer's epauletted bat"]]],
+Hypsignathus:[1,[["monstrosus","hammer-headed bat"]]],
+
+Nanonycteris:[1,[["veldkampii","Veldkamp's dwarf epauletted fruit bat"]]],
+Dobsonia:[0,[["moluccensis","Moluccan naked-backed fruit bat"],["viridis","greenish naked-backed fruit bat"],["minor","lesser naked-backed fruit bat"],["magna","great naked-backed fruit bat"],["peronii","western naked-backed fruit bat"]]],
+Harpyionycteris:[1,[["whiteheadi","Philippine harpy fruit bat"],["celebensis","Sulawesi harpy fruit bat"]]],
+Aproteles:[1,[["bulmerae","Bulmer's fruit bat"]]],
+Boneia:[1,[["bidens","Manado fruit bat"]]],
+Cynopterus:[0,[["sphinx","greater short-nosed fruit bat"],["brachyotis","lesser short-nosed fruit bat"],["horsfieldii","Horsfield's fruit bat"],["titthaecheilus","Indonesian short-nosed fruit bat"],["minutus","minute fruit bat"]]],
+Megaerops:[1,[["ecaudatus","tailless fruit bat"],["kusnotoi","Javan tailless fruit bat"],["wetmorei","white-collared fruit bat"],["niphanae","Ratanaworabhan's fruit bat"]]],
+Ptenochirus:[1,[["jagori","greater musky fruit bat"],["minor","lesser musky fruit bat"],["wetmorei","Mindanao musky fruit bat"]]],
+Dyacopterus:[1,[["spadiceus","Dayak fruit bat"],["brooksi","Brooks's dyak fruit bat"],["rickarti","Rickart's dyak fruit bat"]]],
+Thoopterus:[1,[["nigrescens","swift fruit bat"],["suhaniahae","Sulawesi swift fruit bat"]]],
+Balionycteris:[1,[["maculata","spotted-winged fruit bat"],["seimundi","Seimund's fruit bat"]]],
+Aethalops:[1,[["alecto","grey fruit bat"],["aequalis","Borneo fruit bat"]]],
+Penthetor:[1,[["lucasi","dusky fruit bat"]]],
+Chironax:[1,[["melanocephalus","black-capped fruit bat"]]],
+Sphaerias:[1,[["blanfordi","Blanford's fruit bat"]]],
+Alionycteris:[1,[["paucidentata","Mindanao pygmy fruit bat"]]],
+Haplonycteris:[1,[["fischeri","Fischer's pygmy fruit bat"]]],
+Otopteropus:[1,[["cartilagonodus","Luzon fruit bat"]]],
+Latidens:[1,[["salimalii","Salim Ali's fruit bat"]]],
+Syconycteris:[1,[["australis","common blossom bat"],["hobbit","moss-forest blossom bat"],["carolinae","Halmahera blossom bat"]]],
+Macroglossus:[1,[["minimus","long-tongued nectar bat"],["sobrinus","hill long-tongued fruit bat"]]],
+Notopteris:[1,[["macdonaldi","Fijian blossom bat"],["neocaledonica","New Caledonian blossom bat"]]],
+Nyctimene:[0,[["albiventer","common tube-nosed fruit bat"],["robinsoni","eastern tube-nosed bat"],["cephalotes","Pallas's tube-nosed fruit bat"],["major","island tube-nosed fruit bat"],["draconilla","dragon tube-nosed fruit bat"]]],
+Paranyctimene:[1,[["raptor","unstriped tube-nosed bat"],["tenax","Steadfast tube-nosed bat"]]],
+Pteropus:[0,[["vampyrus","large flying fox"],["medius","Indian flying fox"],["poliocephalus","grey-headed flying fox"],["alecto","black flying fox"],["conspicillatus","spectacled flying fox"],["rodricensis","Rodrigues flying fox"],["niger","Mauritian flying fox"],["tonganus","Pacific flying fox"],["hypomelanus","island flying fox"],["mariannus","Mariana fruit bat"]]],
+Acerodon:[1,[["jubatus","giant golden-crowned flying fox"],["celebensis","Sulawesi flying fox"],["humilis","Talaud flying fox"],["mackloti","Sunda flying fox"],["leucotis","Palawan fruit bat"]]],
+Pteralopex:[1,[["atrata","Bougainville monkey-faced bat"],["anceps",""],["flanneryi","greater monkey-faced bat"],["pulchra","montane monkey-faced bat"],["taki","Guadalcanal monkey-faced bat"]]],
+Styloctenium:[1,[["wallacei","Sulawesi stripe-faced fruit bat"],["mindorensis","Mindoro stripe-faced fruit bat"]]],
+Desmalopex:[1,[["leucopterus","white-winged flying fox"],["microleucopterus","small white-winged flying fox"]]],
+Mirimiri:[1,[["acrodonta","Fijian monkey-faced bat"]]],
+Neopteryx:[1,[["frosti","small-toothed fruit bat"]]],
+Melonycteris:[1,[["melanops","black-bellied fruit bat"]]],
+Nesonycteris:[0,[["woodfordi","Woodford's fruit bat"],["fardoulisi","Fardoulis's blossom bat"]]],
+// --- Rhinolophoidea
+Rhinopoma:[1,[["hardwickii","lesser mouse-tailed bat"],["microphyllum","greater mouse-tailed bat"],["muscatellum","small mouse-tailed bat"],["cystops","Egyptian mouse-tailed bat"],["macinnesi","MacInnes's mouse-tailed bat"],["hadramauticum","Hadramout mouse-tailed bat"]]],
+Craseonycteris:[1,[["thonglongyai","Kitti's hog-nosed bat"]]],
+Macroderma:[1,[["gigas","ghost bat"]]],
+Lyroderma:[1,[["lyra","greater false vampire bat"],["sinense","Chinese false vampire bat"]]],
+Megaderma:[1,[["spasma","lesser false vampire bat"]]],
+Cardioderma:[1,[["cor","heart-nosed bat"]]],
+Lavia:[1,[["frons","yellow-winged bat"]]],
+Eudiscoderma:[1,[["thongareeae","Thongaree's disc-nosed bat"]]],
+Rhinolophus:[0,[["ferrumequinum","greater horseshoe bat"],["hipposideros","lesser horseshoe bat"],["euryale","Mediterranean horseshoe bat"],["blasii","Blasius's horseshoe bat"],["affinis","intermediate horseshoe bat"],["sinicus","Chinese rufous horseshoe bat"],["luctus","woolly horseshoe bat"],["megaphyllus","eastern horseshoe bat"],["landeri","Lander's horseshoe bat"],["philippinensis","large-eared horseshoe bat"]]],
+Hipposideros:[0,[["armiger","great roundleaf bat"],["diadema","diadem leaf-nosed bat"],["caffer","Sundevall's roundleaf bat"],["larvatus","intermediate roundleaf bat"],["cervinus","fawn roundleaf bat"],["ater","dusky roundleaf bat"],["speoris","Schneider's roundleaf bat"],["galeritus","Cantor's roundleaf bat"]]],
+Macronycteris:[0,[["gigas","giant leaf-nosed bat"],["commersoni","Commerson's roundleaf bat"],["vittatus","striped leaf-nosed bat"],["thomensis","São Tomé leaf-nosed bat"]]],
+Asellia:[1,[["tridens","trident leaf-nosed bat"],["arabica","Arabian trident bat"],["patrizii","Patrizi's trident leaf-nosed bat"],["italosomalica","Somali trident bat"]]],
+Aselliscus:[1,[["stoliczkanus","Stoliczka's trident bat"],["tricuspidatus","Temminck's trident bat"],["dongbacana","Dong Bac trident bat"]]],
+Coelops:[1,[["frithii","East Asian tailless leaf-nosed bat"],["robinsoni","Malayan tailless leaf-nosed bat"],["hirsutus","Philippine tailless leaf-nosed bat"]]],
+Doryrhina:[1,[["cyclops","cyclops roundleaf bat"],["camerunensis","Cameroon roundleaf bat"]]],
+Anthops:[1,[["ornatus","flower-faced bat"]]],
+Triaenops:[1,[["persicus","Persian trident bat"],["afer","African trident bat"],["menamena","Rufous trident bat"],["parvus","Dhofar trident bat"]]],
+Paratriaenops:[1,[["furculus","Trouessart's trident bat"],["auritus","Grandidier's trident bat"],["pauliani","Paulian's trident bat"]]],
+Rhinonicteris:[1,[["aurantia","orange leaf-nosed bat"]]],
+Cloeotis:[1,[["percivali","Percival's short-eared trident bat"]]],
+// --- Emballonuroidea
+Nycteris:[0,[["thebaica","Egyptian slit-faced bat"],["grandis","large slit-faced bat"],["hispida","hairy slit-faced bat"],["macrotis","large-eared slit-faced bat"],["javanica","Javan slit-faced bat"],["arge","Bate's slit-faced bat"]]],
+Emballonura:[0,[["monticola","lesser sheath-tailed bat"],["semicaudata","Pacific sheath-tailed bat"],["alecto","small Asian sheath-tailed bat"],["raffrayana","Raffray's sheath-tailed bat"],["beccarii","Beccari's sheath-tailed bat"]]],
+Coleura:[1,[["afra","African sheath-tailed bat"],["seychellensis","Seychelles sheath-tailed bat"],["kibomalandy","Malagasy sheath-tailed bat"]]],
+Paremballonura:[1,[["atrata","Peters's sheath-tailed bat"],["tiavato","western sheath-tailed bat"]]],
+Mosia:[1,[["nigrescens","dark sheath-tailed bat"]]],
+Peropteryx:[0,[["macrotis","lesser dog-like bat"],["kappleri","greater dog-like bat"],["leucoptera","white-winged dog-like bat"],["trinitatis","Trinidad dog-like bat"],["pallidoptera","pale-winged dog-like bat"]]],
+Saccopteryx:[1,[["bilineata","greater sac-winged bat"],["leptura","lesser sac-winged bat"],["canescens","frosted sac-winged bat"],["gymnura","Amazonian sac-winged bat"],["antioquensis","Antioquian sac-winged bat"]]],
+Diclidurus:[1,[["albus","northern ghost bat"],["scutatus","lesser ghost bat"],["ingens","greater ghost bat"],["isabella","Isabelle's ghost bat"]]],
+Balantiopteryx:[1,[["plicata","grey sac-winged bat"],["io","Thomas's sac-winged bat"],["infusca","Ecuadorian sac-winged bat"]]],
+Centronycteris:[1,[["centralis","Thomas's shaggy bat"],["maximiliani","shaggy bat"]]],
+Rhynchonycteris:[1,[["naso","proboscis bat"]]],
+Cormura:[1,[["brevirostris","chestnut sac-winged bat"]]],
+Cyttarops:[1,[["alecto","short-eared bat"]]],
+Taphozous:[0,[["perforatus","Egyptian tomb bat"],["mauritianus","Mauritian tomb bat"],["nudiventris","naked-rumped tomb bat"],["melanopogon","black-bearded tomb bat"],["georgianus","common sheath-tailed bat"],["hildegardeae","Hildegarde's tomb bat"]]],
+Saccolaimus:[1,[["peli","Pel's pouched bat"],["saccolaimus","naked-rumped pouched bat"],["flaviventris","yellow-bellied sheath-tailed bat"],["mixtus","Papuan sheath-tailed bat"],["pluto","Philippine pouched bat"]]],
+// --- Noctilionoidea
+Myzopoda:[1,[["aurita","eastern sucker-footed bat"],["schliemanni","western sucker-footed bat"]]],
+Mystacina:[1,[["tuberculata","lesser short-tailed bat"],["robusta","greater short-tailed bat — probably extinct"]]],
+Thyroptera:[1,[["tricolor","Spix's disk-winged bat"],["discifera","Peters's disk-winged bat"],["lavali","LaVal's disk-winged bat"],["wynneae","Wynne's disk-winged bat"],["devivoi","Devivo's disk-winged bat"]]],
+Furipterus:[1,[["horrens","thumbless bat"]]],
+Amorphochilus:[1,[["schnablii","smoky bat"]]],
+Noctilio:[1,[["leporinus","greater bulldog bat"],["albiventris","lesser bulldog bat"]]],
+Pteronotus:[0,[["parnellii","Parnell's mustached bat"],["davyi","Davy's naked-backed bat"],["gymnonotus","big naked-backed bat"],["quadridens","sooty mustached bat"],["personatus","Wagner's mustached bat"],["macleayii","Macleay's mustached bat"]]],
+Mormoops:[1,[["megalophylla","ghost-faced bat"],["blainvillei","Antillean ghost-faced bat"]]],
+Macrotus:[1,[["waterhousii","Waterhouse's leaf-nosed bat"],["californicus","California leaf-nosed bat"]]],
+Micronycteris:[0,[["megalotis","little big-eared bat"],["microtis","common big-eared bat"],["hirsuta","hairy big-eared bat"],["minuta","white-bellied big-eared bat"],["schmidtorum","Schmidt's big-eared bat"]]],
+Lampronycteris:[1,[["brachyotis","yellow-throated big-eared bat"]]],
+Desmodus:[1,[["rotundus","common vampire bat"]]],
+Diaemus:[1,[["youngi","white-winged vampire bat"]]],
+Diphylla:[1,[["ecaudata","hairy-legged vampire bat"]]],
+Lonchorhina:[1,[["aurita","Tomes's sword-nosed bat"],["orinocensis","Orinoco sword-nosed bat"],["marinkellei","Marinkelle's sword-nosed bat"],["fernandezi","Fernandez's sword-nosed bat"],["mankomara","Sierra Nevada sword-nosed bat"]]],
+Lophostoma:[0,[["silvicolum","white-throated round-eared bat"],["brasiliense","pygmy round-eared bat"],["carrikeri","Carriker's round-eared bat"],["evotis","Davis's round-eared bat"],["schulzi","Schulz's round-eared bat"]]],
+Phyllostomus:[1,[["hastatus","greater spear-nosed bat"],["discolor","pale spear-nosed bat"],["elongatus","lesser spear-nosed bat"],["latifolius","Guianan spear-nosed bat"]]],
+Gardnerycteris:[0,[["crenulatum","striped hairy-nosed bat"],["koepckeae","Koepcke's hairy-nosed bat"]]],
+Tonatia:[1,[["saurophila","stripe-headed round-eared bat"],["bidens","greater round-eared bat"]]],
+Phylloderma:[1,[["stenops","pale-faced bat"]]],
+Mimon:[1,[["bennettii","golden bat"],["cozumelae","Cozumel golden bat"]]],
+Vampyrum:[1,[["spectrum","spectral bat"]]],
+Chrotopterus:[1,[["auritus","big-eared woolly bat"]]],
+Trachops:[0,[["cirrhosus","fringe-lipped bat"]]],
+Macrophyllum:[1,[["macrophyllum","long-legged bat"]]],
+Glossophaga:[0,[["soricina","Pallas's long-tongued bat"],["commissarisi","Commissaris's long-tongued bat"],["leachii","grey long-tongued bat"],["longirostris","Miller's long-tongued bat"]]],
+Leptonycteris:[1,[["yerbabuenae","lesser long-nosed bat"],["nivalis","greater long-nosed bat"],["curasoae","southern long-nosed bat"]]],
+Monophyllus:[1,[["redmani","Leach's single leaf bat"],["plethodon","insular single leaf bat"]]],
+Anoura:[0,[["geoffroyi","Geoffroy's tailless bat"],["caudifer","tailed tailless bat"],["cultrata","handley's tailless bat"],["fistulata","tube-lipped nectar bat"]]],
+Choeroniscus:[0,[["godmani","Godman's long-tongued bat"],["minor","lesser long-tongued bat"],["periosus","greater long-tongued bat"]]],
+Hylonycteris:[1,[["underwoodi","Underwood's long-tongued bat"]]],
+Choeronycteris:[1,[["mexicana","Mexican long-tongued bat"]]],
+Musonycteris:[1,[["harrisoni","banana bat"]]],
+Lichonycteris:[1,[["obscura","dark long-tongued bat"],["degener","brown long-nosed bat"]]],
+Scleronycteris:[1,[["ega","Ega long-tongued bat"]]],
+Dryadonycteris:[1,[["capixaba","dwarf little fruit bat"]]],
+Phyllonycteris:[0,[["poeyi","Cuban flower bat"],["aphylla","Jamaican flower bat"]]],
+Erophylla:[1,[["sezekorni","buffy flower bat"],["bombifrons","brown flower bat"]]],
+Brachyphylla:[1,[["cavernarum","Antillean fruit-eating bat"],["nana","Cuban fruit-eating bat"]]],
+Lonchophylla:[0,[["mordax","Goldman's nectar bat"],["robusta","orange nectar bat"],["dekeyseri","Dekeyser's nectar bat"],["hesperia","western nectar bat"],["handleyi","Handley's nectar bat"]]],
+Hsunycteris:[0,[["thomasi","Thomas's nectar bat"],["pattoni","Patton's nectar bat"],["cadenai","Cadena's nectar bat"]]],
+Xeronycteris:[1,[["vieirai","Vieira's long-tongued bat"]]],
+Platalina:[1,[["genovensium","long-snouted bat"]]],
+Lionycteris:[1,[["spurrelli","chestnut long-tongued bat"]]],
+Glyphonycteris:[1,[["sylvestris","tricolored big-eared bat"],["daviesi","Davies's big-eared bat"],["behnii","Behn's big-eared bat"]]],
+Trinycteris:[1,[["nicefori","Niceforo's big-eared bat"]]],
+Neonycteris:[1,[["pusilla","least big-eared bat"]]],
+Carollia:[0,[["perspicillata","Seba's short-tailed bat"],["brevicauda","silky short-tailed bat"],["castanea","chestnut short-tailed bat"],["sowelli","Sowell's short-tailed bat"],["subrufa","gray short-tailed bat"]]],
+Rhinophylla:[0,[["pumilio","dwarf little fruit bat"],["fischerae","Fischer's little fruit bat"],["alethina","hairy little fruit bat"]]],
+Sturnira:[0,[["lilium","little yellow-shouldered bat"],["ludovici","highland yellow-shouldered bat"],["tildae","Tilda's yellow-shouldered bat"],["magna","greater yellow-shouldered bat"],["erythromos","hairy yellow-shouldered bat"]]],
+Platyrrhinus:[0,[["helleri","Heller's broad-nosed bat"],["lineatus","white-lined broad-nosed bat"],["vittatus","greater broad-nosed bat"],["dorsalis","Thomas's broad-nosed bat"],["infuscus","buffy broad-nosed bat"]]],
+Chiroderma:[0,[["villosum","hairy big-eyed bat"],["salvini","Salvin's big-eyed bat"],["trinitatum","little big-eyed bat"],["doriae","Brazilian big-eyed bat"]]],
+Uroderma:[0,[["bilobatum","tent-making bat"],["magnirostrum","brown tent-making bat"],["convexum","Davis's tent-making bat"]]],
+Vampyriscus:[1,[["bidens","bidentate yellow-eared bat"],["nymphaea","striped yellow-eared bat"],["brocki","Brock's yellow-eared bat"]]],
+Vampyressa:[0,[["pusilla","little yellow-eared bat"],["thyone","northern little yellow-eared bat"],["melissa","Melissa's yellow-eared bat"]]],
+Vampyrodes:[1,[["caraccioli","great stripe-faced bat"],["major","northern stripe-faced bat"]]],
+Mesophylla:[1,[["macconnelli","MacConnell's bat"]]],
+Ectophylla:[1,[["alba","Honduran white bat"]]],
+Enchisthenes:[1,[["hartii","velvety fruit-eating bat"]]],
+Artibeus:[0,[["jamaicensis","Jamaican fruit bat"],["lituratus","great fruit-eating bat"],["planirostris","flat-faced fruit-eating bat"],["obscurus","dark fruit-eating bat"],["fraterculus","fraternal fruit-eating bat"]]],
+Dermanura:[0,[["phaeotis","pygmy fruit-eating bat"],["cinerea","gervais's fruit-eating bat"],["tolteca","Toltec fruit-eating bat"],["watsoni","Thomas's fruit-eating bat"],["azteca","Aztec fruit-eating bat"]]],
+Centurio:[1,[["senex","wrinkle-faced bat"]]],
+Sphaeronycteris:[1,[["toxophyllum","visored bat"]]],
+Ametrida:[1,[["centurio","little white-shouldered bat"]]],
+Pygoderma:[1,[["bilabiatum","Ipanema bat"]]],
+Phyllops:[1,[["falcatus","Cuban fig-eating bat"]]],
+Ardops:[1,[["nichollsi","Antillean fig-eating bat"]]],
+Ariteus:[1,[["flavescens","Jamaican fig-eating bat"]]],
+Stenoderma:[1,[["rufum","red fruit bat"]]],
+// --- Vespertilionoidea
+Natalus:[0,[["stramineus","Mexican greater funnel-eared bat"],["tumidirostris","Trinidadian funnel-eared bat"],["mexicanus","Mexican funnel-eared bat"],["major","Hispaniolan greater funnel-eared bat"],["primus","Cuban greater funnel-eared bat"]]],
+Chilonatalus:[1,[["micropus","Cuban lesser funnel-eared bat"],["tumidifrons","Bahaman lesser funnel-eared bat"],["macer",""]]],
+Nyctiellus:[1,[["lepidus","Gervais's funnel-eared bat"]]],
+Tomopeas:[1,[["ravus","blunt-eared bat"]]],
+Mops:[0,[["condylurus","Angolan free-tailed bat"],["midas","Midas free-tailed bat"],["plicatus","wrinkle-lipped free-tailed bat"],["pumilus","little free-tailed bat"],["jobensis","northern free-tailed bat"],["mops","Malayan free-tailed bat"]]],
+Otomops:[0,[["martiensseni","large-eared free-tailed bat"],["wroughtoni","Wroughton's free-tailed bat"],["madagascariensis","Madagascan free-tailed bat"],["formosus","Johore free-tailed bat"]]],
+Tadarida:[0,[["brasiliensis","Mexican free-tailed bat"],["teniotis","European free-tailed bat"],["insignis","east Asian free-tailed bat"],["fulminans","Madagascan large free-tailed bat"]]],
+Nyctinomus:[1,[["aegyptiacus","Egyptian free-tailed bat"]]],
+Austronomus:[1,[["australis","white-striped free-tailed bat"],["kuboriensis","New Guinea free-tailed bat"]]],
+Nyctinomops:[1,[["macrotis","big free-tailed bat"],["femorosaccus","pocketed free-tailed bat"],["laticaudatus","broad-eared bat"],["aurispinosus","Peale's free-tailed bat"]]],
+Myopterus:[1,[["daubentonii","Daubenton's free-tailed bat"],["whitleyi","bini free-tailed bat"]]],
+Platymops:[1,[["setiger","Peters's flat-headed bat"]]],
+Sauromys:[1,[["petrophilus","Roberts's flat-headed bat"]]],
+Eumops:[0,[["perotis","western mastiff bat"],["glaucinus","Wagner's bonneted bat"],["floridanus","Florida bonneted bat"],["auripendulus","black bonneted bat"],["underwoodi","Underwood's bonneted bat"]]],
+Molossus:[0,[["molossus","Pallas's mastiff bat"],["rufus","black mastiff bat"],["sinaloae","Sinaloan mastiff bat"],["pretiosus","Miller's mastiff bat"]]],
+Cynomops:[0,[["planirostris","southern dog-faced bat"],["abrasus","cinnamon dog-faced bat"],["greenhalli","Greenhall's dog-faced bat"],["paranus","brown dog-faced bat"]]],
+Promops:[0,[["centralis","big crested mastiff bat"],["nasutus","brown mastiff bat"]]],
+Molossops:[1,[["temminckii","dwarf dog-faced bat"],["neglectus","rufous dog-faced bat"]]],
+Neoplatymops:[1,[["mattogrossensis","Mato Grosso dog-faced bat"]]],
+Cabreramops:[1,[["aequatorianus","Ecuadorian dog-faced bat"]]],
+Ozimops:[0,[["planiceps","southern free-tailed bat"],["petersi","inland free-tailed bat"],["ridei","eastern free-tailed bat"],["lumsdenae","northern free-tailed bat"],["loriae","Loria's free-tailed bat"]]],
+Mormopterus:[1,[["jugularis","Peters's goblin bat"],["francoismoutoui","Reunion free-tailed bat"],["acetabulosus","Natal free-tailed bat"]]],
+Micronomus:[1,[["norfolkensis","east-coast free-tailed bat"]]],
+Setirostris:[1,[["eleryi","bristle-faced free-tailed bat"]]],
+Cheiromeles:[1,[["torquatus","naked bulldog bat"],["parvidens","lesser naked bat"]]],
+Miniopterus:[0,[["schreibersii","common bent-wing bat"],["natalensis","Natal long-fingered bat"],["fuliginosus","eastern bent-wing bat"],["australis","little bent-wing bat"],["inflatus","greater long-fingered bat"],["gleni","Glen's long-fingered bat"]]],
+Cistugo:[1,[["lesueuri","Lesueur's wing-gland bat"],["seabrae","Angolan wing-gland bat"]]],
+Myotis:[0,[["lucifugus","little brown bat"],["dasycneme","pond bat"],["brandtii","Brandt's bat"],["alcathoe","Alcathoe bat"],["myotis","greater mouse-eared bat"],["daubentonii","Daubenton's bat"],["vivesi","fish-eating bat"],["nattereri","Natterer's bat"],["bechsteinii","Bechstein's bat"],["sodalis","Indiana bat"],["grisescens","gray bat"],["septentrionalis","northern long-eared bat"],["capaccinii","long-fingered bat"],["mystacinus","whiskered bat"],["emarginatus","Geoffroy's bat"]]],
+Submyotodon:[1,[["latirostris","Taiwan broad-muzzled bat"],["caliginosus","dark broad-muzzled bat"],["moupinensis","Moupin broad-muzzled bat"]]],
+Eudiscopus:[1,[["denticulus","disc-footed bat"]]],
+Kerivoula:[0,[["picta","painted woolly bat"],["hardwickii","Hardwicke's woolly bat"],["papillosa","papillose woolly bat"],["africana","Tanzanian woolly bat"],["lenis","Sri Lankan woolly bat"]]],
+Phoniscus:[1,[["jagorii","Peters's trumpet-eared bat"],["atrox","groove-toothed bat"],["papuensis","golden-tipped bat"],["aerosus","dusky trumpet-eared bat"]]],
+Murina:[0,[["cyclotis","round-eared tube-nosed bat"],["leucogaster","greater tube-nosed bat"],["suilla","brown tube-nosed bat"],["hilgendorfi","Hilgendorf's tube-nosed bat"],["aurata","little tube-nosed bat"]]],
+Harpiola:[0,[["grisea","Peters's tube-nosed bat"],["isodon","Taiwan tube-nosed bat"]]],
+Harpiocephalus:[1,[["harpia","hairy-winged bat"],["mordax","greater hairy-winged bat"]]],
+Pipistrellus:[0,[["pipistrellus","common pipistrelle"],["pygmaeus","soprano pipistrelle"],["nathusii","Nathusius's pipistrelle"],["kuhlii","Kuhl's pipistrelle"],["hesperidus","dusky pipistrelle"],["maderensis","Madeira pipistrelle"],["etula","Bioko pipistrelle"]]],
+Alionoctula:[0,[["abramus","Japanese pipistrelle"],["javanica","Javan pipistrelle"],["tenuis","least pipistrelle"],["coromandra","Indian pipistrelle"],["ceylonica","Kelaart's pipistrelle"]]],
+Afropipistrellus:[0,[["grandidieri","Grandidier's pipistrelle"],["crassulus","broad-headed pipistrelle"],["musciculus","mouse-like pipistrelle"]]],
+Nyctalus:[0,[["noctula","common noctule"],["leisleri","Leisler's bat"],["lasiopterus","greater noctule"],["azoreum","Azores noctule"],["aviator","birdlike noctule"]]],
+Glischropus:[1,[["tylopus","common thick-thumbed bat"],["javanus","Javan thick-thumbed bat"],["bucephalus","Indochinese thick-thumbed bat"],["aquilus","dark thick-thumbed bat"]]],
+Perimyotis:[1,[["subflavus","tricolored bat"]]],
+Parastrellus:[1,[["hesperus","canyon bat"]]],
+Scotozous:[1,[["dormeri","Dormer's bat"]]],
+Hypsugo:[0,[["savii","Savi's pipistrelle"],["pulveratus","Chinese pipistrelle"],["cadornae","Cadorna's pipistrelle"],["alaschanicus","Alashanian pipistrelle"]]],
+Glauconycteris:[0,[["variegata","variegated butterfly bat"],["superba","pied butterfly bat"],["argentata","silvered butterfly bat"],["poensis","Abo butterfly bat"],["beatrix","Beatrix's butterfly bat"]]],
+Laephotis:[0,[["wintoni","De Winton's long-eared bat"],["capensis","Cape serotine"],["botswanae","Botswanan long-eared bat"],["namibensis","Namib long-eared bat"]]],
+Vespadelus:[0,[["vulturnus","little forest bat"],["regulus","southern forest bat"],["darlingtoni","large forest bat"],["pumilus","eastern forest bat"]]],
+Neoromicia:[0,[["zuluensis","Zulu serotine"]]],
+Pseudoromicia:[0,[["brunnea","dark-brown serotine"],["tenuipinnis","white-winged serotine"],["rendalli","Rendall's serotine"]]],
+Chalinolobus:[0,[["gouldii","Gould's wattled bat"],["morio","chocolate wattled bat"],["tuberculatus","New Zealand long-tailed bat"],["nigrogriseus","hoary wattled bat"],["picatus","little pied bat"]]],
+Tylonycteris:[0,[["pachypus","lesser bamboo bat"],["robustula","greater bamboo bat"],["fulvida","lesser club-footed bat"],["malayana","Malayan bamboo bat"]]],
+Scotoecus:[0,[["hirundo","dark-winged lesser house bat"],["albofuscus","light-winged lesser house bat"],["hindei","Hinde's lesser house bat"]]],
+Falsistrellus:[1,[["tasmaniensis","eastern false pipistrelle"],["mackenziei","western false pipistrelle"],["affinis","chocolate pipistrelle"],["petersi","Peters's pipistrelle"]]],
+Scotorepens:[1,[["balstoni","inland broad-nosed bat"],["greyii","little broad-nosed bat"],["orion","eastern broad-nosed bat"],["sanborni","northern broad-nosed bat"]]],
+Afronycteris:[1,[["nana","banana pipistrelle"],["helios","Heller's pipistrelle"]]],
+Nycticeinops:[0,[["schlieffeni","Schlieffen's bat"]]],
+Mimetillus:[1,[["moloneyi","Moloney's flat-headed bat"],["thomasi","Thomas's flat-headed bat"]]],
+Vespertilio:[1,[["murinus","parti-coloured bat"],["sinensis","Asian parti-coloured bat"]]],
+
+Cassistrellus:[1,[["dimissus","surat serotine"],["yokdonensis","Yok Don serotine"]]],
+Philetor:[1,[["brachypterus","rohu's bat"]]],
+Scoteanax:[1,[["rueppellii","greater broad-nosed bat"]]],
+Scotomanes:[1,[["ornatus","harlequin bat"]]],
+Lasionycteris:[1,[["noctivagans","silver-haired bat"]]],
+Vansonia:[1,[["rueppellii","Rüppell's pipistrelle"]]],
+Mirostrellus:[1,[["joffrei","Joffre's pipistrelle"]]],
+Eptesicus:[1,[["fuscus","big brown bat"],["dutertreus","Cuban brown bat"]]],
+Cnephaeus:[0,[["serotinus","serotine"],["nilssonii","northern bat"],["isabellinus","Isabelline serotine"],["hottentotus","long-tailed house bat"],["bottae","Botta's serotine"],["anatolicus","Anatolian serotine"]]],
+Neoeptesicus:[0,[["furinalis","Argentine brown bat"],["brasiliensis","Brazilian brown bat"],["diminutus","diminutive serotine"],["chiriquinus","Chiriquinan serotine"]]],
+Histiotus:[0,[["montanus","small big-eared brown bat"],["macrotus","big-eared brown bat"],["velatus","tropical big-eared brown bat"],["laephotis","Thomas's big-eared brown bat"]]],
+Hesperoptenus:[0,[["tickelli","Tickell's bat"],["blanfordi","Blanford's bat"],["doriae","Doria's false serotine"],["tomesi","large false serotine"]]],
+Arielulus:[0,[["circumdatus","bronze sprite"],["aureocollaris","collared sprite"],["torquatus","necklace sprite"],["societatis","social sprite"],["cuprosus","coppery sprite"]]],
+Ia:[1,[["io","great evening bat"]]],
+Rhyneptesicus:[1,[["nasutus","Sind bat"]]],
+Scotophilus:[0,[["kuhlii","lesser Asiatic yellow bat"],["heathii","greater Asiatic yellow bat"],["dinganii","African yellow bat"],["viridis","green house bat"],["nigrita","giant house bat"],["leucogaster","white-bellied yellow bat"]]],
+Plecotus:[0,[["auritus","brown long-eared bat"],["austriacus","grey long-eared bat"],["macrobullaris","alpine long-eared bat"],["kolombatovici","Balkan long-eared bat"],["sardus","Sardinian long-eared bat"]]],
+Barbastella:[0,[["barbastellus","western barbastelle"],["leucomelas","Asian barbastelle"],["darjelingensis","eastern barbastelle"],["beijingensis","Beijing barbastelle"]]],
+Corynorhinus:[1,[["townsendii","Townsend's big-eared bat"],["rafinesquii","Rafinesque's big-eared bat"],["mexicanus","Mexican big-eared bat"]]],
+Otonycteris:[1,[["hemprichii","desert long-eared bat"],["leucophaea","Turkestani long-eared bat"]]],
+Euderma:[1,[["maculatum","spotted bat"]]],
+Idionycteris:[1,[["phyllotis","Allen's big-eared bat"]]],
+Rhogeessa:[0,[["tumida","black-winged little yellow bat"],["parvula","little yellow bat"],["aeneus","bronze little yellow bat"],["minutilla","tiny yellow bat"]]],
+Nycticeius:[0,[["humeralis","evening bat"]]],
+Baeodon:[1,[["alleni","Allen's yellow bat"],["gracilis","slender yellow bat"]]],
+Lasiurus:[0,[["borealis","eastern red bat"],["cinereus","hoary bat"],["seminolus","Seminole bat"],["intermedius","northern yellow bat"],["ega","southern yellow bat"],["blossevillii","western red bat"],["villosissimus","hairy-tailed bat"]]],
+Nyctophilus:[0,[["geoffroyi","lesser long-eared bat"],["gouldi","Gould's long-eared bat"],["bifax","northern long-eared bat"],["arnhemensis","Arnhem long-eared bat"],["corbeni","south-eastern long-eared bat"]]],
+Pharotis:[1,[["imogene","New Guinea big-eared bat"]]],
+Antrozous:[1,[["pallidus","pallid bat"]]],
+Bauerus:[1,[["dubiaquercus","Van Gelder's bat"]]]
+};
+
+/* =========================================================
+   6. ECHOLOCATION — one profile per family
+   ========================================================= */
+const ECHO = {
+Pteropodidae:{em:"None from the larynx",des:"No echolocation",fq:"—",
+ note:"The great exception. Flying foxes navigate by large forward-facing eyes and a keen nose, and are the only bat family without laryngeal echolocation. Rousettus works around this by clicking its tongue — broadband clicks around 10–60 kHz, crude but enough to find its way through a pitch-dark cave. That is an independent invention, not an inheritance."},
+Rhinopomatidae:{em:"Through the nostrils",des:"Short multi-harmonic FM",fq:"~30–35 kHz",
+ note:"Open-air hunters over desert, so calls are relatively low and long-carrying."},
+Craseonycteridae:{em:"Through the nostrils",des:"Short CF–FM",fq:"~73 kHz",
+ note:"Hovers at the edge of vegetation at dusk, picking insects off foliage and out of the air."},
+Megadermatidae:{em:"Through the nostrils",des:"Very short, very quiet FM",fq:"~25–60 kHz",
+ note:"A whispering bat. Echolocation is almost secondary — these are ambush predators that hang from a perch and listen for the rustle of a mouse, the wingbeat of a beetle or the call of a frog, then drop on it. Huge ears, tiny voice."},
+Rhinolophidae:{em:"Through the nose-leaf",des:"Long constant frequency with brief FM sweeps",fq:"~20–110 kHz",
+ note:"The most sophisticated sonar in the animal kingdom. A horseshoe bat holds one long pure tone, and because its own flight speed would Doppler-shift the returning echo, it lowers the pitch of its call to keep the echo landing exactly on a narrow, hypersensitive band of its cochlea — an auditory fovea. Against that steady tone, the wingbeats of a moth show up as a rhythmic flutter. It can hear a fluttering insect against a background of dense leaves, which broadband sonar cannot do."},
+Hipposideridae:{em:"Through the nose-leaf",des:"Shorter CF–FM",fq:"~65–160 kHz",
+ note:"The same Doppler-compensating trick as horseshoe bats, but with shorter tones and dominated by a different harmonic. Higher frequencies mean finer resolution over shorter range — suited to hunting inside cluttered forest."},
+Rhinonycteridae:{em:"Through the nose-leaf",des:"Very high CF–FM",fq:"~90–212 kHz",
+ note:"Holds the record. Cloeotis percivali calls at around 212 kHz, the highest frequency known in any bat — roughly ten times above the ceiling of human hearing. Such short wavelengths resolve tiny targets but travel almost no distance in air, so it must hunt close in."},
+Nycteridae:{em:"Through the facial groove",des:"Very short, very quiet FM",fq:"~50–110 kHz",
+ note:"Another whisperer. The deep slit down the face channels the beam. Like false vampires, they mostly listen for the sounds prey makes rather than shouting at it."},
+Emballonuridae:{em:"Through the mouth",des:"Narrowband multi-harmonic, shallow QCF",fq:"~25–60 kHz",
+ note:"Open-space foragers with calls that carry. Several species alternate between two frequencies on successive calls, which may help separate their own echoes from a neighbour's. They are also unusually vocal socially, with song-like territorial displays."},
+Myzopodidae:{em:"Through the mouth",des:"Long, quiet, narrowband FM",fq:"~35–45 kHz",
+ note:"Poorly studied — few recordings exist anywhere, which is true of most things about this family."},
+Mystacinidae:{em:"Through the mouth",des:"Broadband FM",fq:"~25–60 kHz",
+ note:"Echolocates normally in flight, but much of its foraging happens on the forest floor, where it folds its wings away and hunts by smell and by listening rather than by sonar."},
+Thyropteridae:{em:"Through the mouth",des:"Short broadband FM, quiet",fq:"~50–100 kHz",
+ note:"Cluttered-space specialists. They also use social calls to find each other: a bat inside a rolled leaf answers a flying group-mate, and the shape of the furled leaf amplifies the exchange like an ear trumpet."},
+Furipteridae:{em:"Through the mouth",des:"Short FM",fq:"above ~90 kHz",
+ note:"Very high and very quiet, matching an exclusive diet of small moths."},
+Noctilionidae:{em:"Through the mouth",des:"CF and QCF blocks with FM sweeps",fq:"~50–70 kHz",
+ note:"The greater bulldog bat cannot see a fish underwater, and sonar does not penetrate the surface. What it detects is the disturbance a fish makes — a fin breaking through, or the ripple rings spreading from below. It then rakes the water blind with its feet."},
+Mormoopidae:{em:"Through the mouth",des:"Long CF in Pteronotus parnellii; short FM in the rest",fq:"~55–90 kHz",
+ note:"A striking case of convergent evolution. Pteronotus parnellii independently evolved the long constant-frequency call and Doppler compensation of Old World horseshoe bats, complete with its own auditory fovea, despite being separated from them by tens of millions of years and an ocean."},
+Phyllostomidae:{em:"Through the nose-leaf",des:"Short, broadband, multi-harmonic, very quiet FM",fq:"~40–100 kHz",
+ note:"The quietest sonar of any family, and the most supplemented. Leaf-nosed bats lean heavily on smell, vision and passive hearing. Trachops locates frogs by eavesdropping on their mating calls and can tell a palatable species from a toxic one by the song alone. Some bat-pollinated flowers have evolved dish-shaped petals that act as acoustic beacons, echoing back a signal the bat cannot miss."},
+Natalidae:{em:"Through the mouth",des:"Quiet broadband FM",fq:"~65–120 kHz",
+ note:"High, faint and short-range, for slow manoeuvring flight deep inside caves."},
+Molossidae:{em:"Through the mouth",des:"Long narrowband QCF",fq:"~11–40 kHz",
+ note:"The opposite design to a leaf-nosed bat. Free-tailed bats fly fast and high in open air where there is nothing to bump into, so they use long, low, loud calls that carry a long way and detect targets far ahead. Otomops calls down around 11 kHz, low enough for people to hear. Several species switch call type depending on whether they are searching or closing in."},
+Miniopteridae:{em:"Through the mouth",des:"FM sweep flattening to QCF",fq:"~50–60 kHz",
+ note:"A middle-ground design for hunting along forest edges and over open country."},
+Cistugidae:{em:"Through the mouth",des:"Broadband FM",fq:"~40–55 kHz",
+ note:"Much like a small Myotis, which is part of why the genus sat inside the vesper bats for so long."},
+Vespertilionidae:{em:"Through the mouth (nasal in some long-eared bats)",des:"FM sweeps in clutter, flattening to QCF in the open",fq:"~12–120 kHz",
+ note:"The most flexible sonar in the order, and the reason this family is everywhere. A single bat adjusts its call within a second: broad, steeply sweeping calls for resolving detail among branches, then long flat calls for scanning open air. The extremes are wide — the spotted bat calls near 12 kHz, low enough to hear unaided, while some Myotis exceed 100 kHz. The long-eared Plecotini go quiet altogether and glean by listening."}
+};
+
+/* --- reference links: search endpoints, so they always resolve --- */
+const LINKS = [
+  ["wikipedia", n => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n)],
+  ["photos",    n => "https://www.inaturalist.org/search?q=" + encodeURIComponent(n)],
+  ["calls",     n => "https://xeno-canto.org/explore?query=" + encodeURIComponent(n)]
+];
+
+/* =========================================================
+   7. TRAITS — "regions|diet|roost" per genus
+   Coarse by necessity: a genus of 130 species will have
+   exceptions to any label put on it.
+   ========================================================= */
+const TRAW = {
+Eidolon:"af mg|fru|tree", Rousettus:"af mg pa io|fru|cave", Stenonycteris:"af|fru|cave",
+Eonycteris:"io|nec|cave", Myonycteris:"af|fru|tree", Megaloglossus:"af|nec|tree",
+Plerotes:"af|fru|tree", Scotonycteris:"af|fru|tree", Casinycteris:"af|fru|tree",
+Epomophorus:"af|fru|tree", Epomops:"af|fru|tree", Hypsignathus:"af|fru|tree",
+Nanonycteris:"af|fru|tree", Dobsonia:"io au|fru|cave",
+Harpyionycteris:"io|fru|tree", Aproteles:"au|fru|cave", Boneia:"io|fru|cave",
+Cynopterus:"io|fru|tent", Megaerops:"io|fru|tree", Ptenochirus:"io|fru|tree",
+Dyacopterus:"io|fru|tree", Thoopterus:"io|fru|tree", Balionycteris:"io|fru|tent",
+Aethalops:"io|fru|tree", Penthetor:"io|fru|cave", Chironax:"io|fru|tree",
+Sphaerias:"io|fru|tree", Alionycteris:"io|fru|tree", Haplonycteris:"io|fru|tree",
+Otopteropus:"io|fru|tree", Latidens:"io|fru|tree", Syconycteris:"au io|nec|tree",
+Macroglossus:"io au|nec|tree", Notopteris:"oc|nec|cave", Nyctimene:"au io|fru|tree",
+Paranyctimene:"au|fru|tree", Pteropus:"io au oc mg af|fru nec|tree", Acerodon:"io|fru|tree",
+Pteralopex:"oc|fru|tree", Styloctenium:"io|fru|tree", Desmalopex:"io|fru|tree",
+Mirimiri:"oc|fru|tree", Neopteryx:"io|fru|tree", Melonycteris:"oc|nec|tree", Nesonycteris:"oc|nec|tree",
+
+Pilonycteris:"io|fru|cave", Asellia:"pa af io|ins|cave", Austronomus:"au|ins|tree",
+Nyctinomus:"pa af io|ins|cave build rock", Afropipistrellus:"af|ins|tree",
+Alionoctula:"io pa au|ins|build tree", Cnephaeus:"pa af io|ins|build tree cave",
+Neoeptesicus:"nt|ins|build tree",
+Rhinopoma:"pa af io|ins|cave", Craseonycteris:"io|ins|cave",
+Macroderma:"au|car ins|cave", Lyroderma:"io|car ins|cave", Megaderma:"io|car ins|cave",
+Cardioderma:"af|car ins|cave", Lavia:"af|ins|tree", Eudiscoderma:"io|ins car|cave",
+Rhinolophus:"pa af io au oc|ins|cave", Hipposideros:"af io au|ins|cave",
+Macronycteris:"af mg|ins|cave", Aselliscus:"io|ins|cave", Coelops:"io|ins|cave",
+Doryrhina:"af|ins|cave", Anthops:"oc|ins|cave", Triaenops:"af mg pa|ins|cave",
+Paratriaenops:"mg|ins|cave", Rhinonicteris:"au|ins|cave", Cloeotis:"af|ins|cave",
+
+Nycteris:"af io|ins car|cave tree", Emballonura:"io au oc|ins|cave", Coleura:"af mg|ins|cave",
+Paremballonura:"mg|ins|cave", Mosia:"au oc|ins|tree", Peropteryx:"nt|ins|cave",
+Saccopteryx:"nt|ins|tree", Diclidurus:"nt|ins|tree", Balantiopteryx:"nt|ins|cave",
+Centronycteris:"nt|ins|tree", Rhynchonycteris:"nt|ins|tree", Cormura:"nt|ins|tree",
+Cyttarops:"nt|ins|tree", Taphozous:"af pa io au|ins|cave build", Saccolaimus:"af io au|ins|tree",
+
+Myzopoda:"mg|ins|odd", Mystacina:"au|ins fru nec|tree", Thyroptera:"nt|ins|odd",
+Furipterus:"nt|ins|cave", Amorphochilus:"nt|ins|cave", Noctilio:"nt|fis ins|tree cave",
+Pteronotus:"nt na|ins|cave", Mormoops:"nt na|ins|cave",
+
+Macrotus:"na nt|ins|cave", Micronycteris:"nt|ins|tree cave", Lampronycteris:"nt|ins|cave",
+Desmodus:"nt|blo|cave", Diaemus:"nt|blo|tree", Diphylla:"nt|blo|cave",
+Lonchorhina:"nt|ins|cave", Lophostoma:"nt|ins|tree", Phyllostomus:"nt|ins fru nec|cave tree",
+Gardnerycteris:"nt|ins|tree", Tonatia:"nt|ins|tree", Phylloderma:"nt|ins fru|tree",
+Mimon:"nt|ins|cave", Vampyrum:"nt|car|tree", Chrotopterus:"nt|car|cave tree",
+Trachops:"nt|car ins|cave tree", Macrophyllum:"nt|ins|cave",
+Glossophaga:"nt|nec ins fru|cave", Leptonycteris:"na nt|nec|cave", Monophyllus:"nt|nec|cave",
+Anoura:"nt|nec|cave", Choeroniscus:"nt|nec|tree", Hylonycteris:"nt|nec|tree",
+Choeronycteris:"na nt|nec|cave", Musonycteris:"nt|nec|tree", Lichonycteris:"nt|nec|tree",
+Scleronycteris:"nt|nec|tree", Dryadonycteris:"nt|nec|tree", Phyllonycteris:"nt|nec fru|cave",
+Erophylla:"nt|nec fru|cave", Brachyphylla:"nt|fru nec|cave", Lonchophylla:"nt|nec|cave",
+Hsunycteris:"nt|nec|tree", Xeronycteris:"nt|nec|rock", Platalina:"nt|nec|cave",
+Lionycteris:"nt|nec|cave", Glyphonycteris:"nt|ins|tree", Trinycteris:"nt|ins|tree",
+Neonycteris:"nt|ins|tree", Carollia:"nt|fru|cave tree", Rhinophylla:"nt|fru|tent",
+Sturnira:"nt|fru|tree", Platyrrhinus:"nt|fru|tent", Chiroderma:"nt|fru|tree",
+Uroderma:"nt|fru|tent", Vampyriscus:"nt|fru|tent", Vampyressa:"nt|fru|tent",
+Vampyrodes:"nt|fru|tent", Mesophylla:"nt|fru|tent", Ectophylla:"nt|fru|tent",
+Enchisthenes:"nt|fru|tree", Artibeus:"nt|fru|tree cave", Dermanura:"nt|fru|tent",
+Centurio:"nt|fru|tree", Sphaeronycteris:"nt|fru|tree", Ametrida:"nt|fru|tree",
+Pygoderma:"nt|fru|tree", Phyllops:"nt|fru|tree", Ardops:"nt|fru|tree",
+Ariteus:"nt|fru|tree", Stenoderma:"nt|fru|tree",
+
+Natalus:"nt|ins|cave", Chilonatalus:"nt|ins|cave", Nyctiellus:"nt|ins|cave",
+Tomopeas:"nt|ins|rock", Mops:"af mg io au oc|ins|cave build tree", Otomops:"af mg io au|ins|cave",
+Tadarida:"pa af io au|ins|cave build rock", Nyctinomops:"na nt|ins|rock build",
+Myopterus:"af|ins|tree", Platymops:"af|ins|rock", Sauromys:"af|ins|rock",
+Eumops:"na nt|ins|tree build", Molossus:"na nt|ins|build tree", Cynomops:"nt|ins|tree",
+Promops:"nt|ins|tree", Molossops:"nt|ins|tree", Neoplatymops:"nt|ins|rock",
+Cabreramops:"nt|ins|tree", Ozimops:"au|ins|tree", Mormopterus:"mg af|ins|build rock",
+Micronomus:"au|ins|tree", Setirostris:"au|ins|tree", Cheiromeles:"io|ins|cave tree",
+Miniopterus:"pa af mg io au oc|ins|cave", Cistugo:"af|ins|rock",
+
+Myotis:"pa na nt af mg io au|ins fis|cave tree build", Submyotodon:"io pa|ins|tree",
+Eudiscopus:"io|ins|odd", Kerivoula:"af io au|ins|odd tree", Phoniscus:"io au|ins|tree",
+Murina:"pa io au|ins|tree", Harpiola:"io pa|ins|tree", Harpiocephalus:"io|ins|tree",
+Pipistrellus:"pa af|ins|build tree", Nyctalus:"pa io|ins|tree",
+Glischropus:"io|ins|odd", Perimyotis:"na|ins|tree cave", Parastrellus:"na|ins|rock",
+Scotozous:"io|ins|build", Hypsugo:"pa af io|ins|rock build", Glauconycteris:"af|ins|tree",
+Laephotis:"af|ins|tree build", Vespadelus:"au|ins|tree cave", Pseudoromicia:"af|ins|tree",
+Chalinolobus:"au oc|ins|tree build", Tylonycteris:"io|ins|odd", Scotoecus:"af io|ins|build tree",
+Neoromicia:"af|ins|tree", Falsistrellus:"au io|ins|tree", Scotorepens:"au|ins|tree",
+Afronycteris:"af|ins|tree", Nycticeinops:"af|ins|tree", Mimetillus:"af|ins|tree",
+Vespertilio:"pa|ins|build", Cassistrellus:"io|ins|tree",
+Philetor:"io au|ins|tree", Scoteanax:"au|ins|tree", Scotomanes:"io|ins|tree",
+Lasionycteris:"na|ins|tree", Vansonia:"af|ins|tree", Mirostrellus:"io|ins|tree",
+Eptesicus:"na nt|ins|build tree cave", Histiotus:"nt|ins|build cave",
+Hesperoptenus:"io|ins|tree", Arielulus:"io pa|ins|tree", Ia:"io|ins|cave",
+Rhyneptesicus:"pa io|ins|rock", Scotophilus:"af mg io|ins|tree build",
+Plecotus:"pa|ins|cave build tree", Barbastella:"pa io|ins|tree build",
+Corynorhinus:"na|ins|cave build", Otonycteris:"pa|ins|rock", Euderma:"na|ins|rock",
+Idionycteris:"na|ins|rock cave", Rhogeessa:"nt na|ins|tree", Nycticeius:"na nt|ins|tree build",
+Baeodon:"nt na|ins|tree", Lasiurus:"na nt|ins|tree", Nyctophilus:"au|ins|tree",
+Pharotis:"au|ins|tree", Antrozous:"na|ins|rock build", Bauerus:"nt|ins|cave"
+};
+const TR = {};
+Object.keys(TRAW).forEach(g=>{
+  const [r,d,ro] = TRAW[g].split('|');
+  TR[g] = {r:r.split(' '), d:d.split(' '), ro:ro.split(' ')};
+});
+
+/* echolocation tags, by family */
+const ETAG = {
+Pteropodidae:["none","clicks"], Rhinopomatidae:["nasal","fm"], Craseonycteridae:["nasal","cf","fm"],
+Megadermatidae:["nasal","fm","whisper"], Rhinolophidae:["nasal","cf"], Hipposideridae:["nasal","cf"],
+Rhinonycteridae:["nasal","cf"], Nycteridae:["nasal","fm","whisper"], Emballonuridae:["oral","qcf","fm"],
+Myzopodidae:["oral","fm"], Mystacinidae:["oral","fm"], Thyropteridae:["oral","fm","whisper"],
+Furipteridae:["oral","fm"], Noctilionidae:["oral","cf","qcf","fm"], Mormoopidae:["oral","cf","fm"],
+Phyllostomidae:["nasal","fm","whisper"], Natalidae:["oral","fm","whisper"], Molossidae:["oral","qcf"],
+Miniopteridae:["oral","fm","qcf"], Cistugidae:["oral","fm"], Vespertilionidae:["oral","fm","qcf"]
+};
+
+/* curated national checklists — species regularly recorded */
+const CHECK = {
+dk:{name:"Denmark", sp:["Myotis daubentonii","Myotis dasycneme","Myotis brandtii","Myotis mystacinus",
+ "Myotis nattereri","Myotis bechsteinii","Myotis myotis","Cnephaeus serotinus","Cnephaeus nilssonii",
+ "Vespertilio murinus","Nyctalus noctula","Nyctalus leisleri","Pipistrellus pipistrellus",
+ "Pipistrellus pygmaeus","Pipistrellus nathusii","Barbastella barbastellus","Plecotus auritus"]},
+gb:{name:"Britain & Ireland", sp:["Rhinolophus ferrumequinum","Rhinolophus hipposideros",
+ "Myotis daubentonii","Myotis nattereri","Myotis mystacinus","Myotis brandtii","Myotis alcathoe",
+ "Myotis bechsteinii","Myotis myotis","Pipistrellus pipistrellus","Pipistrellus pygmaeus",
+ "Pipistrellus nathusii","Nyctalus noctula","Nyctalus leisleri","Cnephaeus serotinus",
+ "Barbastella barbastellus","Plecotus auritus","Plecotus austriacus"]}
+};
+
+/* --- species-level echolocation, where it has been measured --- */
+const ESP = {
+"Rhinolophus ferrumequinum":"CF near 81 kHz — low for a horseshoe bat, and held for up to 60 ms.",
+"Rhinolophus hipposideros":"CF near 110 kHz, among the highest in the genus; very short range.",
+"Rhinolophus euryale":"CF near 104 kHz.",
+"Rhinolophus blasii":"CF near 93 kHz.",
+"Rhinolophus affinis":"CF near 74 kHz, varying by island population.",
+"Rhinolophus sinicus":"CF near 80 kHz; populations differ enough to suggest cryptic species.",
+"Rhinolophus luctus":"CF near 40 kHz — the lowest horseshoe-bat call, matching its large size.",
+"Rhinolophus megaphyllus":"CF near 71 kHz.",
+"Hipposideros armiger":"CF near 68 kHz, dominated by the second harmonic.",
+"Hipposideros diadema":"CF near 55 kHz.",
+"Hipposideros caffer":"CF near 130 kHz.",
+"Hipposideros ater":"CF near 155 kHz.",
+"Cloeotis percivali":"CF near 212 kHz — the highest call frequency recorded in any bat, and extremely faint.",
+"Rhinonicteris aurantia":"CF near 115 kHz.",
+"Triaenops persicus":"CF near 100 kHz.",
+"Asellia tridens":"CF near 120 kHz.",
+"Craseonycteris thonglongyai":"Short CF–FM near 73 kHz, emitted through the nose while hovering.",
+"Rhinopoma hardwickii":"Multi-harmonic FM near 32 kHz; audible as a faint tick to some people.",
+"Rhinopoma microphyllum":"FM near 30 kHz.",
+"Macroderma gigas":"Very faint FM, 20–50 kHz. Hunts mostly by listening for prey on the ground.",
+"Lyroderma lyra":"Faint multi-harmonic FM near 60 kHz; locates prey largely by ear.",
+"Megaderma spasma":"Faint FM, 65–100 kHz.",
+"Cardioderma cor":"Almost silent in approach; hangs and listens for beetles walking.",
+"Lavia frons":"Faint FM near 55 kHz, from a day-active perch-hunter.",
+"Nycteris thebaica":"Very quiet multi-harmonic FM, 60–100 kHz; a gleaner that listens more than it calls.",
+"Nycteris grandis":"Faint FM near 55 kHz; takes frogs and fish as well as insects.",
+"Taphozous perforatus":"Narrowband QCF near 30 kHz.",
+"Taphozous mauritianus":"QCF near 26 kHz, audible to young ears.",
+"Saccolaimus flaviventris":"QCF near 20 kHz — low enough that many people hear it directly.",
+"Saccopteryx bilineata":"Multi-harmonic calls near 45 kHz, alternating between two frequencies.",
+"Rhynchonycteris naso":"Alternating narrowband calls near 100 kHz, very quiet, over water.",
+"Peropteryx macrotis":"Narrowband near 45 kHz.",
+"Diclidurus albus":"QCF near 30 kHz, high above the canopy.",
+"Myzopoda aurita":"Long quiet narrowband FM, 35–45 kHz. Barely studied.",
+"Mystacina tuberculata":"Broadband FM, 25–60 kHz in flight; goes silent when foraging on the ground.",
+"Thyroptera tricolor":"Very faint broadband FM near 65 kHz, plus social calls used to find the roost leaf.",
+"Furipterus horrens":"Extremely faint FM near 110 kHz.",
+"Noctilio leporinus":"Alternates long CF near 55 kHz over open water with FM sweeps on the attack; detects ripples, not the fish itself.",
+"Noctilio albiventris":"CF–FM near 70 kHz.",
+"Pteronotus parnellii":"CF near 60 kHz with Doppler compensation — evolved independently of the Old World horseshoe bats.",
+"Pteronotus davyi":"Short FM near 70 kHz, with no CF component.",
+"Pteronotus gymnonotus":"FM near 55 kHz.",
+"Mormoops megalophylla":"FM near 55 kHz.",
+"Desmodus rotundus":"Faint multi-harmonic FM near 75 kHz; finds prey mainly by smell, heat and by listening to breathing.",
+"Diaemus youngi":"Faint FM; hunts roosting birds largely by sound and scent.",
+"Diphylla ecaudata":"Faint FM near 70 kHz.",
+"Vampyrum spectrum":"Very quiet FM; hunts sleeping birds and rodents mostly by listening.",
+"Trachops cirrhosus":"Faint FM near 70 kHz, but locates túngara frogs by eavesdropping on their calls, and can tell toxic species from edible ones by song alone.",
+"Chrotopterus auritus":"Very faint FM; a listening predator.",
+"Macrotus californicus":"Whispering FM near 55 kHz; unusually, hunts largely by eyesight in dim light.",
+"Micronycteris megalotis":"Very faint broadband FM near 90 kHz, for gleaning insects off leaves.",
+"Lonchorhina aurita":"Loud for a leaf-nosed bat, FM near 60 kHz through an exceptionally long nose-leaf.",
+"Glossophaga soricina":"Faint broadband FM near 75 kHz while hovering at flowers.",
+"Leptonycteris yerbabuenae":"Faint FM near 65 kHz; pollinates agave and columnar cacti.",
+"Anoura geoffroyi":"Faint multi-harmonic FM near 80 kHz.",
+"Carollia perspicillata":"Faint broadband FM, 60–100 kHz, in cluttered understorey.",
+"Artibeus jamaicensis":"Faint FM near 55 kHz; finds ripe figs largely by smell.",
+"Sturnira lilium":"Faint broadband FM near 70 kHz.",
+"Ectophylla alba":"Very faint FM; roosts under leaf tents it cuts itself.",
+"Centurio senex":"Faint FM; the folded facial skin may shape the beam.",
+"Natalus stramineus":"Faint broadband FM, 70–120 kHz.",
+"Tadarida brasiliensis":"QCF near 25 kHz in open air, steepening to FM in clutter; also produces complex courtship song.",
+"Tadarida teniotis":"QCF near 12 kHz — clearly audible to most people.",
+"Nyctinomus aegyptiacus":"QCF near 22 kHz.",
+"Austronomus australis":"QCF near 12 kHz, audible as a distinct metallic tick.",
+"Otomops martiensseni":"QCF near 11 kHz, one of the lowest bat calls known.",
+"Mops condylurus":"QCF near 25 kHz.",
+"Eumops perotis":"QCF near 9 kHz — audible, and carrying over a kilometre.",
+"Molossus molossus":"Alternating QCF near 35 kHz.",
+"Cheiromeles torquatus":"QCF near 20 kHz.",
+"Miniopterus schreibersii":"FM sweep flattening to QCF near 52 kHz.",
+"Miniopterus natalensis":"FM–QCF near 55 kHz.",
+"Cistugo lesueuri":"Broadband FM near 45 kHz.",
+"Myotis lucifugus":"Steep FM sweep 80–40 kHz, ending near 45 kHz; the classic aerial-hawking call.",
+"Myotis myotis":"FM sweep 90–25 kHz; gleans beetles off the ground, listening for their footsteps.",
+"Myotis daubentonii":"FM 75–30 kHz, flattening over water where it trawls insects with its feet.",
+"Myotis dasycneme":"FM near 35 kHz, lower and flatter than most Myotis, for trawling open water.",
+"Myotis brandtii":"FM 85–35 kHz.",
+"Myotis mystacinus":"FM 90–40 kHz, hard to separate acoustically from M. brandtii.",
+"Myotis alcathoe":"FM ending near 50 kHz — the highest terminal frequency of the European Myotis, which is how it was discovered.",
+"Myotis nattereri":"Very broadband FM, 120–20 kHz, faint and short, for gleaning off foliage.",
+"Myotis bechsteinii":"Faint broadband FM 100–30 kHz; a whispering gleaner.",
+"Myotis capaccinii":"FM near 35 kHz, trawling over water.",
+"Myotis vivesi":"FM near 40 kHz; gaffs small fish from the sea surface.",
+"Myotis emarginatus":"Broadband FM, gleaning spiders from walls and ceilings.",
+"Myotis sodalis":"FM ending near 43 kHz.",
+"Myotis septentrionalis":"Broad FM ending near 40 kHz, adapted to cluttered forest.",
+"Myotis grisescens":"FM ending near 45 kHz.",
+"Pipistrellus pipistrellus":"QCF ending near 45 kHz — the frequency that split it from the soprano pipistrelle.",
+"Pipistrellus pygmaeus":"QCF ending near 55 kHz; identical in the hand to P. pipistrellus, separated first by call.",
+"Pipistrellus nathusii":"QCF ending near 39 kHz.",
+"Pipistrellus kuhlii":"QCF ending near 38 kHz.",
+"Alionoctula abramus":"QCF near 45 kHz.",
+"Nyctalus noctula":"Alternating QCF, 20–25 kHz, loud and carrying, high above the canopy.",
+"Nyctalus leisleri":"QCF near 27 kHz.",
+"Nyctalus lasiopterus":"QCF near 18 kHz; the only bat known to catch migrating songbirds in flight.",
+"Perimyotis subflavus":"FM ending near 42 kHz.",
+"Parastrellus hesperus":"FM ending near 50 kHz.",
+"Hypsugo savii":"QCF ending near 34 kHz.",
+"Vespertilio murinus":"QCF near 25 kHz, plus a loud audible song-flight in autumn.",
+"Cnephaeus serotinus":"FM–QCF ending near 27 kHz, loud and slow.",
+"Cnephaeus nilssonii":"QCF near 30 kHz; forages far north, in twilight.",
+"Eptesicus fuscus":"FM sweep 60–25 kHz; the standard laboratory model for echolocation research.",
+"Neoeptesicus furinalis":"FM near 40 kHz.",
+"Scotophilus kuhlii":"QCF near 40 kHz.",
+"Lasiurus cinereus":"Low QCF near 20 kHz in open air, audible to some people.",
+"Lasiurus borealis":"FM–QCF ending near 40 kHz.",
+"Plecotus auritus":"Extremely faint broadband FM, 50–20 kHz. Huge ears do most of the work; it can hear an insect walking on a leaf.",
+"Plecotus austriacus":"Faint FM near 27 kHz.",
+"Barbastella barbastellus":"Alternates two very faint call types near 33 kHz — quiet enough that eared moths, which can hear most bats coming, do not detect it.",
+"Corynorhinus townsendii":"Very faint FM, 25–60 kHz; a whispering gleaner.",
+"Euderma maculatum":"Calls near 10 kHz — plainly audible to humans, and among the lowest of any bat.",
+"Otonycteris hemprichii":"Faint FM near 25 kHz; hunts scorpions on the ground and gets stung doing it.",
+"Antrozous pallidus":"Faint FM near 35 kHz, but locates ground prey mainly by listening for footsteps.",
+"Nyctophilus geoffroyi":"Very faint broadband FM; whispers at close range in clutter.",
+"Kerivoula picta":"Extremely broadband, faint FM, 150–60 kHz — among the widest sweeps known.",
+"Murina cyclotis":"Faint steep FM, gleaning in dense forest.",
+"Tylonycteris pachypus":"FM near 60 kHz; roosts inside bamboo internodes.",
+"Rousettus aegyptiacus":"No laryngeal call. Navigates by sight, but clicks its tongue at 10–60 kHz in dark caves — echolocation reinvented from scratch.",
+"Rousettus amplexicaudatus":"Tongue-clicks, like other Rousettus.",
+"Pteropus vampyrus":"No echolocation at all. Large eyes and an excellent nose.",
+"Pteropus poliocephalus":"No echolocation; navigates visually and is noisy in the audible range.",
+"Eidolon helvum":"No echolocation; migrates by sight over thousands of kilometres."
+};
+
+/* --- render the atlas, grouped exactly like the tree --- */
+const drill = document.getElementById('drill');
+let generaTotal = 0;
+
+const GFAM = {}, GSUB = {};
+let curSub = '';
+blocks.forEach(b=>{
+  if(b.sub) curSub = b.sub;
+  if(b.sub){
+    const h = document.createElement('h3');
+    h.className = 'atlas-sub';
+    h.textContent = b.sub;
+    drill.appendChild(h);
+  }
+  const sfh = document.createElement('p');
+  sfh.className = 'atlas-sf';
+  sfh.textContent = b.sf;
+  drill.appendChild(sfh);
+
+  b.members.forEach(l=>{
+    const name = l.name, d = F[name], struct = ATLAS[name];
+    struct.forEach(sf=>sf.tribes.forEach(tr=>tr.g.forEach(gg=>{
+      GFAM[gg[0]] = name; GSUB[gg[0]] = curSub;
+    })));
+    const nGen = struct.reduce((s,sf)=>s+sf.tribes.reduce((t,tr)=>t+tr.g.length,0),0);
+    generaTotal += nGen;
+    const nSub = struct.filter(s=>s.sub).length;
+
+    const det = document.createElement('details');
+    det.className = 'sub';
+    det.id = 'fam-' + name;
+
+    const bits = [];
+    if(nSub) bits.push(nSub + ' subfamilies');
+    bits.push(nGen + (nGen===1?' genus':' genera'));
+    bits.push('~' + d.species + ' species');
+
+    let body = '';
+    const ec = ECHO[name];
+    if(ec){
+      body += '<div class="echo">'+
+        '<p class="echo-h">Echolocation</p>'+
+        '<div class="echo-grid">'+
+          '<div><span>Emission</span>'+ec.em+'</div>'+
+          '<div><span>Call design</span>'+ec.des+'</div>'+
+          '<div><span>Peak frequency</span>'+ec.fq+'</div>'+
+        '</div>'+
+        '<p class="echo-note">'+ec.note+'</p>'+
+      '</div>';
+    }
+    struct.forEach(sf=>{
+      body += '<div class="subf">';
+      if(sf.sub) body += '<p class="subf-name">'+sf.sub+'</p>';
+      if(sf.note) body += '<p class="subf-note">'+sf.note+'</p>';
+      sf.tribes.forEach(tr=>{
+        body += '<div class="triberow'+(tr.t?'':' no-tribe')+'">';
+        if(tr.t) body += '<span class="tribe">'+tr.t+'</span>';
+        body += '<span class="genera">'+
+          tr.g.map(g=>{
+            const chip = '<i>'+g[0]+'</i><b>'+g[1]+'</b>';
+            return SP[g[0]]
+              ? '<button type="button" class="gen has-sp" data-g="'+g[0]+'" data-n="'+g[1]+'">'+chip+'</button>'
+              : '<span class="gen" data-g="'+g[0]+'">'+chip+'</span>';
+          }).join('')+
+          '</span><div class="splist" hidden></div></div>';
+      });
+      body += '</div>';
+    });
+
+    det.innerHTML =
+      '<summary><span class="fam">'+name+'</span>'+
+      '<span class="famcommon">'+d.common+'</span>'+
+      '<span class="sm">'+bits.join(' · ')+'</span></summary>'+
+      '<div class="subbody">'+body+'</div>';
+    drill.appendChild(det);
+  });
+});
+
+document.getElementById('genera-total').textContent = generaTotal;
+
+/* ---- species layer: expand a genus ---- */
+drill.addEventListener('click', e=>{
+  const btn = e.target.closest('.gen.has-sp');
+  if(!btn) return;
+  const row = btn.closest('.triberow');
+  const panel = row.querySelector('.splist');
+  const wasOpen = btn.classList.contains('open');
+  row.querySelectorAll('.gen.has-sp').forEach(b=>{
+    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
+  });
+  if(wasOpen){ panel.hidden = true; return; }
+
+  const g = btn.dataset.g, n = +btn.dataset.n;
+  const [complete, all] = SP[g];
+  const only = checklistSpecies(g);
+  const list = only ? only.map(ep => all.find(x=>x[0]===ep) || [ep,""]) : all;
+  const head = only
+    ? list.length+' species in <i>'+g+'</i> recorded in '+CHECK[[...FS.chk][0]].name
+    : (complete ? 'All '+n+' species in <i>'+g+'</i>'
+                : list.length+' of '+n+' species in <i>'+g+'</i> — a selection');
+  btn.classList.add('open'); btn.setAttribute('aria-expanded','true');
+  panel.innerHTML =
+    '<p class="sp-head">'+head+'</p><ul class="sp">'+
+    list.map(s=>{
+      const bin = g + ' ' + s[0];
+      const links = LINKS.map(([label,url])=>
+        '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('');
+      const fam = GFAM[g], fe = ECHO[fam];
+      const echo = ESP[bin]
+        ? '<span class="sp-echo">'+ESP[bin]+'</span>'
+        : (fe ? '<span class="sp-echo gen-echo">'+fe.des+', '+fe.fq+' &middot; family profile</span>' : '');
+      return '<li><i>'+bin+'</i>'+(s[1]?'<span>'+s[1]+'</span>':'')+echo+
+             '<span class="sp-links">'+links+'</span></li>';
+    }).join('')+
+    '</ul>';
+  panel.hidden = false;
+});
+
+/* =========================================================
+   8. FILTERS
+   ========================================================= */
+const FDEFS = [
+  {k:'chk', label:'Regional checklist', single:true, opts:[['dk','Denmark · 17 spp.'],['gb','Britain & Ireland · 18 spp.']]},
+  {k:'r', label:'Where it lives', opts:[['pa','Palearctic'],['na','Nearctic'],['nt','Neotropical'],['af','Afrotropical'],['mg','Madagascar'],['io','Indomalayan'],['au','Australasian'],['oc','Oceanian']]},
+  {k:'d', label:'What it eats', opts:[['ins','Insects'],['fru','Fruit'],['nec','Nectar'],['car','Vertebrates'],['fis','Fish'],['blo','Blood']]},
+  {k:'e', label:'How it echolocates', opts:[['cf','Constant frequency'],['fm','Frequency-modulated'],['qcf','Quasi-CF'],['whisper','Whispering'],['nasal','Through the nose'],['oral','Through the mouth'],['none','Does not echolocate']]},
+  {k:'ro', label:'Where it roosts', opts:[['cave','Caves'],['tree','Trees & foliage'],['tent','Leaf tents'],['rock','Rock crevices'],['build','Buildings'],['odd','Unusual sites']]},
+  {k:'c', label:'Clade', opts:[['Yinpterochiroptera','Yinpterochiroptera'],['Yangochiroptera','Yangochiroptera']]}
+];
+const FS = {chk:new Set(), r:new Set(), d:new Set(), e:new Set(), ro:new Set(), c:new Set()};
+
+const fbox = document.getElementById('filters');
+FDEFS.forEach(def=>{
+  const g = document.createElement('div');
+  g.className = 'fgroup';
+  g.innerHTML = '<p class="flabel">'+def.label+'</p><div class="fopts">'+
+    def.opts.map(([v,l])=>'<button type="button" class="fbtn" data-k="'+def.k+'" data-v="'+v+'" aria-pressed="false">'+l+'</button>').join('')+
+    '</div>';
+  fbox.appendChild(g);
+});
+
+function genusMatches(g){
+  const t = TR[g]; if(!t) return false;
+  if(FS.chk.size){
+    const key = [...FS.chk][0];
+    if(!CHECK[key].sp.some(s=>s.slice(0, s.indexOf(' ')) === g)) return false;
+  }
+  if(FS.r.size  && !t.r.some(x=>FS.r.has(x)))   return false;
+  if(FS.d.size  && !t.d.some(x=>FS.d.has(x)))   return false;
+  if(FS.ro.size && !t.ro.some(x=>FS.ro.has(x))) return false;
+  if(FS.e.size){
+    const tags = ETAG[GFAM[g]] || [];
+    if(!tags.some(x=>FS.e.has(x))) return false;
+  }
+  if(FS.c.size && !FS.c.has(GSUB[g])) return false;
+  return true;
+}
+
+function checklistSpecies(g){
+  if(!FS.chk.size) return null;
+  const key = [...FS.chk][0];
+  return CHECK[key].sp.filter(s=>s.slice(0, s.indexOf(' ')) === g).map(s=>s.slice(s.indexOf(' ')+1));
+}
+
+const fsummary = document.getElementById('fsummary');
+const fclear = document.getElementById('fclear');
+
+function applyFilters(){
+  const any = Object.values(FS).some(s=>s.size);
+  fclear.hidden = !any;
+
+  let nGen=0, nFam=0, nSpp=0;
+  const liveFams = new Set();
+
+  document.querySelectorAll('.gen').forEach(chip=>{
+    const g = chip.dataset.g || chip.querySelector('i').textContent;
+    const ok = !any || genusMatches(g);
+    chip.classList.toggle('off', !ok);
+    if(ok){ nGen++; liveFams.add(GFAM[g]); }
+  });
+
+  // roll the hiding up the hierarchy
+  document.querySelectorAll('.triberow').forEach(row=>{
+    const on = row.querySelectorAll('.gen:not(.off)').length;
+    row.classList.toggle('off', !on);
+    if(!on){ const pl = row.querySelector('.splist'); if(pl) pl.hidden = true; }
+  });
+  document.querySelectorAll('.subf').forEach(sf=>{
+    sf.classList.toggle('off', !sf.querySelectorAll('.triberow:not(.off)').length);
+  });
+  document.querySelectorAll('details.sub').forEach(d=>{
+    const on = d.querySelectorAll('.subf:not(.off)').length;
+    d.classList.toggle('off', !on);
+    if(on) nFam++;
+    if(on && any) d.open = true;
+    const echo = d.querySelector('.echo');
+    if(echo) echo.classList.toggle('off', !on);
+  });
+  // headings with nothing under them
+  [...drill.children].forEach(el=>{
+    if(!el.classList.contains('atlas-sub') && !el.classList.contains('atlas-sf')) return;
+    let n = el.nextElementSibling, live = false;
+    while(n && !n.classList.contains('atlas-sub') && !(el.classList.contains('atlas-sf') && n.classList.contains('atlas-sf'))){
+      if(n.tagName === 'DETAILS' && !n.classList.contains('off')) live = true;
+      n = n.nextElementSibling;
+    }
+    el.classList.toggle('off', !live);
+  });
+
+  // species counts + reopen any visible species panels under a checklist
+  document.querySelectorAll('.gen.has-sp.open').forEach(b=>{
+    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
+  });
+  document.querySelectorAll('.splist').forEach(p=>p.hidden = true);
+
+  if(FS.chk.size){
+    nSpp = CHECK[[...FS.chk][0]].sp.length;
+    fsummary.innerHTML = '<b>'+nSpp+' species</b> regularly recorded in '+
+      CHECK[[...FS.chk][0]].name + (any && (FS.r.size||FS.d.size||FS.e.size||FS.ro.size||FS.c.size) ? ', narrowed further' : '') +
+      ' — '+nGen+(nGen===1?' genus in ':' genera in ')+nFam+(nFam===1?' family.':' families.');
+  } else if(any){
+    fsummary.innerHTML = '<b>'+nGen+' of '+generaTotal+' genera</b> match, across '+nFam+
+      (nFam===1?' of the 21 families.':' of the 21 families.');
+  } else {
+    fsummary.innerHTML = 'Showing all <b>'+generaTotal+' genera</b> in 21 families. Combine any criteria below — options within a group widen the result, groups narrow it.';
+  }
+
+  // reflect the filter in the cladogram
+  leaves.forEach(l=>{
+    l.g.classList.toggle('dim', any && !liveFams.has(l.name));
+  });
+}
+
+fbox.addEventListener('click', e=>{
+  const b = e.target.closest('.fbtn'); if(!b) return;
+  const {k,v} = b.dataset, set = FS[k];
+  const def = FDEFS.find(d=>d.k===k);
+  if(def.single){
+    const had = set.has(v);
+    set.clear();
+    fbox.querySelectorAll('.fbtn[data-k="'+k+'"]').forEach(x=>x.setAttribute('aria-pressed','false'));
+    if(!had){ set.add(v); b.setAttribute('aria-pressed','true'); }
+  } else {
+    if(set.has(v)){ set.delete(v); b.setAttribute('aria-pressed','false'); }
+    else { set.add(v); b.setAttribute('aria-pressed','true'); }
+  }
+  applyFilters();
+});
+
+fclear.addEventListener('click', ()=>{
+  Object.values(FS).forEach(s=>s.clear());
+  fbox.querySelectorAll('.fbtn').forEach(b=>b.setAttribute('aria-pressed','false'));
+  document.querySelectorAll('details.sub').forEach(d=>d.open=false);
+  applyFilters();
+});
+
+applyFilters();
+(function(){
+  let named=0, generaWith=0, generaComplete=0;
+  Object.keys(SP).forEach(g=>{ named += SP[g][1].length; generaWith++; if(SP[g][0]) generaComplete++; });
+  const el = document.getElementById('sp-coverage');
+  if(el) el.textContent = named + ' species are named across ' + generaWith +
+    ' of the ' + generaTotal + ' genera, and ' + generaComplete + ' of those lists are complete.';
+})();
+
+/* open a family from the tree */
+function openFamily(name){
+  const d = document.getElementById('fam-'+name);
+  if(!d) return;
+  d.open = true;
+  d.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+}
+card.addEventListener('click', e=>{
+  const btn = e.target.closest('.jump');
+  if(btn) openFamily(btn.dataset.fam);
+});
+</script>
+</body>
+</html>
