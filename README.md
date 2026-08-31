@@ -59,29 +59,6 @@ available at `/lookup.html`.
   when MDD's current genus placement is ahead of GBIF's backbone, e.g. the
   *Eptesicus* → *Cnephaeus* split). Takes a few minutes; re-run after
   regenerating the taxonomy from a new MDD release.
-- **`data/batnames_references.json`** — per-species (falling back to
-  per-genus) literature citations, scraped from
-  [batnames.org](https://batnames.org)'s "Bat Species of the World" database
-  (Simmons & Cirranello, American Museum of Natural History). Shown on a
-  species' lookup card only where batnames.org lists a reference for it —
-  most species do not have a species-specific entry, only a genus-level one
-  (or none at all). **Not cleared for redistribution yet**, so unlike the
-  other data files this one is deliberately never bundled into the published
-  site — `chiroptera-tree.html` loads it with a plain `fetch()` that only
-  succeeds when the page is served locally for lab use; on the published
-  GitLab Pages site the file simply isn't there and the References card
-  doesn't appear. `build.sh` fails the build if this ever ends up inlined
-  regardless. Once permission is in hand, bundle it the same way as the
-  other data files (see the `bundled(...)` calls in `chiroptera-tree.html`
-  and the matching `INLINE` line convention below) and drop this note.
-- **`data/build_batnames_references.py`** — regenerates
-  `batnames_references.json` by fetching each species' page on batnames.org
-  (no bulk export exists, so this is ~1,500 individual requests with a
-  polite delay between them — takes 15–20 minutes). Resumable: progress is
-  cached in `data/raw/batnames_scrape_cache.json` (gitignored), so a re-run
-  only fetches species missing from the cache. Re-run after regenerating the
-  taxonomy from a new MDD release, or periodically to pick up new citations
-  (batnames.org says it updates biannually, April/October).
 
 ## Updating the taxonomy data
 
@@ -134,8 +111,3 @@ correct an entry, add a key there (either a full species binomial like
 Taxonomy data is © the Mammal Diversity Database contributors (ASM
 Biodiversity Committee), used under their stated terms for downstream reuse —
 retain attribution to MDD and its DOI when sharing derived data.
-
-Literature references are curated by batnames.org (Simmons, N.B. and A.L.
-Cirranello, *Bat Species of the World: A taxonomic and geographic database*,
-American Museum of Natural History) — retain attribution to batnames.org when
-sharing derived data.

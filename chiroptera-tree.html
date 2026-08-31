@@ -474,9 +474,6 @@ footer b{color:var(--bone);font-weight:500}
 .lu-card dd{margin:0;color:var(--text)}
 .lu-card .lu-note{margin-top:10px;font-size:12.5px;color:var(--muted);border-top:1px solid rgba(125,178,212,.18);padding-top:9px}
 .lu-card .lu-src{margin-top:7px;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
-.lu-refs{margin-top:24px}
-.lu-reflist{margin:0;padding-left:20px;font-size:12.5px;color:var(--text);display:grid;gap:8px}
-.lu-reflist a{color:var(--ochre);white-space:nowrap}
 .lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;border:1px solid var(--line-dim)}
 .lu-status.lc{color:#8fd19e;border-color:#3a6b45}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
@@ -2300,7 +2297,7 @@ applyFilters();
    9. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, echo: null, danish: {}, batref: null, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, echo: null, danish: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -2346,20 +2343,6 @@ Promise.all([
 }).catch(err=>{
   luState.error = err.message;
 });
-
-/* ---- batnames.org references: local/lab use only, not bundled or published.
-   data/batnames_references.json is scraped from batnames.org (see
-   data/build_batnames_references.py) and isn't cleared for redistribution yet,
-   so unlike the other data files it is deliberately never inlined by build.sh
-   — no "INLINE data/batnames_references.json" marker exists anywhere in this
-   file. This fetch only succeeds when the page is served locally; it fails
-   silently on the published site (the file simply isn't there) and the
-   References card just doesn't appear. Kept out of the main Promise.all above
-   so that failure never blocks the rest of the page. ---- */
-fetch('data/batnames_references.json', {cache: 'no-cache'})
-  .then(r => r.ok ? r.json() : null)
-  .then(b => { luState.batref = b; })
-  .catch(() => { luState.batref = null; });
 
 /* ---- world map: outlines built by data/build_world_map.py ---- */
 let WMAP = null, WMBASE = null;
@@ -2647,16 +2630,6 @@ function luFindEcho(species){
   return { base: fam, override: genusExample || null };
 }
 
-function luFindBatRefs(species){
-  const br = luState.batref;
-  if(!br) return null;
-  const own = br.speciesRefs[species.sciName];
-  if(own && own.length) return { refs: own, level: 'species' };
-  const gen = br.genusRefs[species.genus];
-  if(gen && gen.length) return { refs: gen, level: 'genus' };
-  return null;
-}
-
 function luSpeciesHTML(binomial, compact){
   const s = luState.byName[binomial.toLowerCase()];
   if(!s){
@@ -2692,16 +2665,6 @@ function luDetailHTML(s, compact){
 
   const measured = ESP[bin] ? '<div class="lu-card"><h4>Measured call</h4><div class="lu-note">'+ESP[bin]+'</div></div>' : '';
 
-  const batRefs = luFindBatRefs(s);
-  const refsCard = batRefs ? (
-    '<div class="lu-card lu-refs"><h4>References ('+(batRefs.level==='species' ? 'species-specific' : 'genus-level')+')</h4>'+
-    '<ol class="lu-reflist">'+batRefs.refs.map(r=>
-      '<li>'+luEsc(r.citation)+(r.url ? ' <a href="'+luEsc(r.url)+'" target="_blank" rel="noopener noreferrer">source</a>' : '')+'</li>'
-    ).join('')+'</ol>'+
-    '<div class="lu-src">From <a href="https://batnames.org" target="_blank" rel="noopener">batnames.org</a>'+
-    (batRefs.level==='genus' ? ' — no species-specific entry, showing the genus-level literature instead.' : '.')+'</div></div>'
-  ) : '';
-
   return (compact ? '<p class="card-lineage">'+luEsc(s.family)+' &rsaquo; '+luEsc(s.genus)+'</p>' : '')+
     '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
@@ -2721,11 +2684,9 @@ function luDetailHTML(s, compact){
       '</dl></div>'+
       measured + echoCard+
     '</div>'+
-    refsCard+
     '<p class="lu-prov">Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>. ' +
     'Echolocation figures are a family/genus reference compiled from standard comparative literature (Jones &amp; Holderied 2007; Fenton &amp; Simmons 2015; Neuweiler 2000). ' +
-    'Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records and are shown only where a genuine Danish name is on record. ' +
-    'Literature references are curated by <a href="https://batnames.org" target="_blank" rel="noopener">batnames.org</a> (Simmons &amp; Cirranello, American Museum of Natural History) and shown only where they list one.</p>';
+    'Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records and are shown only where a genuine Danish name is on record.</p>';
 }
 
 function luSelectSpecies(id){
