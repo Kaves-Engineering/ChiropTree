@@ -21,5 +21,8 @@ bundle index.html public/lookup.html
 for f in public/index.html public/lookup.html; do
   grep -q '^INLINE ' "$f" && { echo "$f: data was not inlined" >&2; exit 1; }
   grep -q '"speciesCount"' "$f" || { echo "$f: taxonomy missing" >&2; exit 1; }
+  # batnames.org references aren't cleared for redistribution yet — must never
+  # be bundled into the published pages. See data/build_batnames_references.py.
+  grep -q '"speciesRefs"' "$f" && { echo "$f: batnames.org references leaked into the bundle" >&2; exit 1; }
 done
 echo "built: $(ls -l public | tail -n +2 | wc -l) files"
