@@ -11,8 +11,9 @@ available at `/lookup.html`.
 ## What's here
 
 - **`chiroptera-tree.html`** — the main page: an illustrated essay on bat
-  taxonomy and evolution, a genus-by-genus browser, and (collapsed at the
-  top) the same full species lookup as `index.html`. Deployed as the site's
+  taxonomy and evolution, a genus-by-genus browser, a species lookup in the
+  search bar and drawer, and a clickable world map that lists every species
+  confirmed present in whichever country you click. Deployed as the site's
   homepage.
 - **`index.html`** — a standalone version of just the lookup tool. Search/
   filter across all 1,514 currently recognized bat species; each entry shows
@@ -37,6 +38,21 @@ available at `/lookup.html`.
   exist outside the ~17 species found in Denmark — species without a
   recorded name are simply absent from this file rather than given an
   invented one.
+- **`data/world_map.json`** — country outlines for the range map drawn in
+  every species record: Robinson-projected, simplified SVG path strings plus
+  centre points for the small islands the 110m outlines are too coarse to
+  show, and a name index that resolves all 224 country spellings the MDD
+  export uses. Built from [Natural Earth](https://www.naturalearthdata.com)
+  (public domain).
+- **`data/build_world_map.py`** — regenerates `world_map.json` from two
+  Natural Earth GeoJSON files (auto-fetch commands are in the script's
+  docstring; they land in the gitignored `data/raw/`). It reports any country
+  name in the taxonomy it cannot place — that count should stay at zero. It
+  also re-attributes Crimea from Russia's polygon to Ukraine's (Natural
+  Earth's default draws it as Russian, which reflects control, not recognised
+  sovereignty), using Shapely for that one boolean cut — declared as an inline
+  `uv run` script dependency, so `uv run data/build_world_map.py` picks it up
+  without adding it to the project's own dependencies.
 - **`data/build_danish_names.py`** — regenerates `danish_names.json` by
   querying GBIF's species-match and vernacular-name APIs for every species
   in `chiroptera_taxonomy.json` (falls back to each species' MSW3-era name
@@ -60,15 +76,27 @@ MDD publishes new releases periodically. To pick up a new one:
 
 ## Running locally
 
-The page loads its data via `fetch()`, so it needs to be served over HTTP —
-opening `index.html` directly as a `file://` URL will fail silently on most
-browsers.
+`build.sh` bundles the JSON into the pages, so the built site is two
+self-contained HTML files and needs no server:
+
+```
+sh build.sh          # writes public/index.html and public/lookup.html
+```
+
+The unbuilt `chiroptera-tree.html` / `index.html` in the repo root still load
+their data via `fetch()`, so those need to be served over HTTP — opening them
+as a `file://` URL fails silently on most browsers:
 
 ```
 uv run python -m http.server 8000
 ```
 
-Then open http://localhost:8000/index.html.
+Then open http://localhost:8000/chiroptera-tree.html.
+
+The bundling exists because the site is published behind GitLab Pages access
+control: the page itself loads after sign-in, but a `fetch()` for a data file
+can be bounced to the cross-origin sign-in flow and fail, leaving the page up
+with no data. With the data inside the HTML there is nothing left to fetch.
 
 ## Extending the echolocation data
 

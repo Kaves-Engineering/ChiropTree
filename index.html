@@ -153,10 +153,31 @@ footer a{color:var(--muted)}
 <script>
 const state = { species: [], echo: null, danish: {}, filtered: [], active: null };
 
+/* Data is bundled into this page by build.sh (see the JSON blocks at the end of
+   the document). Opened straight from the working copy those blocks are empty
+   and we fall back to fetching the files next to the page. */
+const domReady = () => document.readyState === 'loading'
+  ? new Promise(r=>document.addEventListener('DOMContentLoaded', r, {once:true}))
+  : Promise.resolve();
+
+function bundled(id, url){
+  // the blocks sit at the end of the document, so wait for the parser to reach
+  // them before looking; only then is falling back to fetch() meaningful
+  return domReady().then(()=>{
+    const el = document.getElementById(id);
+    const txt = el ? el.textContent.trim() : '';
+    if(txt.charAt(0) === '{' || txt.charAt(0) === '[') return JSON.parse(txt);
+    return fetch(url, {cache: 'no-cache'}).then(r=>{
+      if(!r.ok) throw new Error(url + ' — HTTP ' + r.status);
+      return r.json();
+    });
+  });
+}
+
 Promise.all([
-  fetch('data/chiroptera_taxonomy.json').then(r => r.json()),
-  fetch('data/echolocation_reference.json').then(r => r.json()),
-  fetch('data/danish_names.json').then(r => r.json())
+  bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
+  bundled('d-echo', 'data/echolocation_reference.json'),
+  bundled('d-danish', 'data/danish_names.json')
 ]).then(([tax, echo, danish]) => {
   state.species = tax.species;
   state.echo = echo;
@@ -281,6 +302,19 @@ function selectSpecies(id){
 
 document.getElementById('search').addEventListener('input', applyFilter);
 document.getElementById('familyFilter').addEventListener('change', applyFilter);
+</script>
+
+<!-- Bundled data. The build (build.sh) replaces each INLINE line with the file's
+     contents, so the published page needs no extra requests; opened straight from
+     the working copy these stay empty and the loader falls back to fetch(). -->
+<script type="application/json" id="d-taxonomy">
+INLINE data/chiroptera_taxonomy.json
+</script>
+<script type="application/json" id="d-echo">
+INLINE data/echolocation_reference.json
+</script>
+<script type="application/json" id="d-danish">
+INLINE data/danish_names.json
 </script>
 </body>
 </html>

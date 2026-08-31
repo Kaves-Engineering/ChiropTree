@@ -3,11 +3,7 @@ pages:
     - shared
   stage: deploy
   script:
-    - mkdir public
-    - cp chiroptera-tree.html public/index.html
-    - cp index.html public/lookup.html
-    - cp -r data public/
-    - rm -rf public/data/raw
+    - sh build.sh
   artifacts:
     paths:
       - public

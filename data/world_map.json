@@ -1,0 +1,2221 @@
+{
+ "_meta": {
+  "license": "public domain",
+  "projection": "Robinson, cropped at -57 degrees south",
+  "source": "Natural Earth 110m admin-0 countries (outlines) and 50m map subunits (island dots)",
+  "sourceUrl": "https://www.naturalearthdata.com"
+ },
+ "cent": {
+  "AFG": [
+   541.9,
+   115.3
+  ],
+  "AGO": [
+   438.4,
+   230.4
+  ],
+  "ALB": [
+   440.9,
+   99.1
+  ],
+  "ARE": [
+   517.5,
+   142.0
+  ],
+  "ARG": [
+   266.1,
+   295.9
+  ],
+  "ARM": [
+   492.8,
+   102.4
+  ],
+  "ATF": [
+   534.7,
+   326.0
+  ],
+  "AUS": [
+   687.2,
+   262.8
+  ],
+  "AUT": [
+   426.4,
+   83.4
+  ],
+  "AZE": [
+   496.9,
+   101.4
+  ],
+  "BDI": [
+   466.7,
+   211.0
+  ],
+  "BEL": [
+   408.5,
+   75.9
+  ],
+  "BEN": [
+   405.1,
+   178.2
+  ],
+  "BFA": [
+   395.8,
+   172.4
+  ],
+  "BGD": [
+   596.5,
+   144.0
+  ],
+  "BGR": [
+   449.8,
+   95.1
+  ],
+  "BHS": [
+   231.3,
+   141.2
+  ],
+  "BIH": [
+   435.9,
+   91.9
+  ],
+  "BLR": [
+   453.2,
+   69.5
+  ],
+  "BLZ": [
+   205.8,
+   159.1
+  ],
+  "BOL": [
+   259.3,
+   244.0
+  ],
+  "BRA": [
+   274.7,
+   227.2
+  ],
+  "BRN": [
+   655.2,
+   190.9
+  ],
+  "BTN": [
+   594.6,
+   133.8
+  ],
+  "BWA": [
+   453.2,
+   259.4
+  ],
+  "CAF": [
+   445.9,
+   187.0
+  ],
+  "CAN": [
+   235.8,
+   62.8
+  ],
+  "CHE": [
+   416.4,
+   85.4
+  ],
+  "CHL": [
+   254.1,
+   298.6
+  ],
+  "CHN": [
+   617.0,
+   109.2
+  ],
+  "CIV": [
+   385.9,
+   182.9
+  ],
+  "CMR": [
+   429.2,
+   185.5
+  ],
+  "COD": [
+   451.3,
+   212.5
+  ],
+  "COG": [
+   433.1,
+   205.2
+  ],
+  "COL": [
+   238.9,
+   191.6
+  ],
+  "CRI": [
+   213.8,
+   178.2
+  ],
+  "CUB": [
+   226.5,
+   148.2
+  ],
+  "CYP": [
+   469.6,
+   114.8
+  ],
+  "CZE": [
+   430.6,
+   78.1
+  ],
+  "DEU": [
+   420.4,
+   75.1
+  ],
+  "DJI": [
+   493.9,
+   173.2
+  ],
+  "DNK": [
+   417.7,
+   62.6
+  ],
+  "DOM": [
+   245.8,
+   155.8
+  ],
+  "DZA": [
+   406.4,
+   128.2
+  ],
+  "ECU": [
+   225.2,
+   207.0
+  ],
+  "EGY": [
+   467.9,
+   132.0
+  ],
+  "ERI": [
+   487.1,
+   165.9
+  ],
+  "ESH": [
+   374.0,
+   140.5
+  ],
+  "ESP": [
+   390.9,
+   101.9
+  ],
+  "EST": [
+   446.9,
+   56.9
+  ],
+  "ETH": [
+   486.7,
+   180.3
+  ],
+  "FIN": [
+   443.6,
+   42.2
+  ],
+  "FJI": [
+   789.9,
+   247.5
+  ],
+  "FLK": [
+   286.6,
+   332.3
+  ],
+  "FRA": [
+   406.5,
+   85.0
+  ],
+  "GAB": [
+   426.4,
+   203.7
+  ],
+  "GBR": [
+   394.2,
+   68.2
+  ],
+  "GEO": [
+   487.7,
+   96.7
+  ],
+  "GHA": [
+   397.9,
+   182.0
+  ],
+  "GIN": [
+   375.7,
+   176.7
+  ],
+  "GMB": [
+   366.3,
+   168.9
+  ],
+  "GNB": [
+   366.4,
+   172.7
+  ],
+  "GNQ": [
+   422.4,
+   198.9
+  ],
+  "GRC": [
+   447.4,
+   102.8
+  ],
+  "GRL": [
+   338.1,
+   24.1
+  ],
+  "GTM": [
+   201.6,
+   163.8
+  ],
+  "GUY": [
+   269.3,
+   191.6
+  ],
+  "HND": [
+   210.1,
+   165.8
+  ],
+  "HRV": [
+   432.8,
+   90.2
+  ],
+  "HTI": [
+   241.0,
+   155.5
+  ],
+  "HUN": [
+   437.7,
+   83.9
+  ],
+  "IDN": [
+   653.1,
+   202.7
+  ],
+  "IND": [
+   580.6,
+   142.6
+  ],
+  "IRL": [
+   385.5,
+   69.1
+  ],
+  "IRN": [
+   512.1,
+   119.0
+  ],
+  "IRQ": [
+   493.5,
+   118.8
+  ],
+  "ISL": [
+   367.6,
+   42.0
+  ],
+  "ISR": [
+   474.4,
+   122.4
+  ],
+  "ITA": [
+   425.5,
+   94.6
+  ],
+  "JAM": [
+   230.7,
+   157.1
+  ],
+  "JOR": [
+   477.9,
+   124.6
+  ],
+  "JPN": [
+   683.7,
+   113.0
+  ],
+  "KAZ": [
+   527.8,
+   84.4
+  ],
+  "KEN": [
+   484.0,
+   200.1
+  ],
+  "KGZ": [
+   550.3,
+   98.9
+  ],
+  "KHM": [
+   631.4,
+   171.1
+  ],
+  "KOR": [
+   665.0,
+   110.5
+  ],
+  "KOSOVO": [
+   442.3,
+   96.0
+  ],
+  "KWT": [
+   502.0,
+   129.1
+  ],
+  "LAO": [
+   626.9,
+   156.9
+  ],
+  "LBN": [
+   475.4,
+   117.9
+  ],
+  "LBR": [
+   379.7,
+   185.9
+  ],
+  "LBY": [
+   435.6,
+   131.2
+  ],
+  "LKA": [
+   579.1,
+   183.7
+  ],
+  "LSO": [
+   460.6,
+   277.3
+  ],
+  "LTU": [
+   444.5,
+   65.1
+  ],
+  "LVA": [
+   445.5,
+   61.2
+  ],
+  "MAR": [
+   379.7,
+   130.5
+  ],
+  "MDA": [
+   456.0,
+   84.8
+  ],
+  "MDG": [
+   502.9,
+   248.1
+  ],
+  "MEX": [
+   177.1,
+   142.8
+  ],
+  "MKD": [
+   443.9,
+   98.1
+  ],
+  "MLI": [
+   387.2,
+   167.5
+  ],
+  "MMR": [
+   611.8,
+   152.6
+  ],
+  "MNE": [
+   439.2,
+   95.5
+  ],
+  "MNG": [
+   605.3,
+   84.5
+  ],
+  "MOZ": [
+   476.6,
+   247.5
+  ],
+  "MRT": [
+   372.8,
+   155.5
+  ],
+  "MWI": [
+   475.1,
+   235.4
+  ],
+  "MYS": [
+   654.8,
+   193.6
+  ],
+  "NAM": [
+   439.0,
+   257.1
+  ],
+  "NCL": [
+   760.5,
+   256.2
+  ],
+  "NER": [
+   419.2,
+   163.9
+  ],
+  "NGA": [
+   418.5,
+   178.4
+  ],
+  "NIC": [
+   212.7,
+   170.0
+  ],
+  "NLD": [
+   410.4,
+   72.5
+  ],
+  "NOR": [
+   429.6,
+   40.0
+  ],
+  "NORTHERN": [
+   470.0,
+   114.4
+  ],
+  "NPL": [
+   581.3,
+   131.9
+  ],
+  "NZL": [
+   743.3,
+   312.3
+  ],
+  "OMN": [
+   523.2,
+   150.4
+  ],
+  "PAK": [
+   547.4,
+   125.4
+  ],
+  "PAN": [
+   222.2,
+   181.5
+  ],
+  "PER": [
+   236.0,
+   222.4
+  ],
+  "PHL": [
+   667.8,
+   164.2
+  ],
+  "PNG": [
+   723.8,
+   222.4
+  ],
+  "POL": [
+   437.1,
+   73.4
+  ],
+  "PRI": [
+   254.6,
+   156.9
+  ],
+  "PRK": [
+   660.8,
+   102.4
+  ],
+  "PRT": [
+   383.5,
+   102.9
+  ],
+  "PRY": [
+   275.1,
+   261.5
+  ],
+  "PSE": [
+   474.7,
+   122.9
+  ],
+  "QAT": [
+   510.5,
+   139.3
+  ],
+  "ROU": [
+   449.9,
+   87.8
+  ],
+  "RUS": [
+   560.5,
+   56.8
+  ],
+  "RWA": [
+   466.5,
+   207.9
+  ],
+  "SAU": [
+   494.3,
+   142.4
+  ],
+  "SDN": [
+   464.6,
+   170.7
+  ],
+  "SEN": [
+   367.9,
+   168.0
+  ],
+  "SLB": [
+   752.5,
+   222.7
+  ],
+  "SLE": [
+   374.1,
+   181.2
+  ],
+  "SLV": [
+   204.1,
+   168.0
+  ],
+  "SOM": [
+   503.9,
+   186.4
+  ],
+  "SOMALILA": [
+   502.5,
+   176.5
+  ],
+  "SRB": [
+   441.8,
+   92.6
+  ],
+  "SSD": [
+   466.6,
+   182.7
+  ],
+  "SUR": [
+   276.0,
+   193.6
+  ],
+  "SVK": [
+   437.6,
+   80.6
+  ],
+  "SVN": [
+   429.7,
+   87.1
+  ],
+  "SWE": [
+   428.4,
+   47.8
+  ],
+  "SWZ": [
+   467.7,
+   269.3
+  ],
+  "SYR": [
+   479.4,
+   114.5
+  ],
+  "TCD": [
+   439.6,
+   170.2
+  ],
+  "TGO": [
+   401.9,
+   180.5
+  ],
+  "THA": [
+   621.7,
+   169.7
+  ],
+  "TJK": [
+   546.0,
+   106.0
+  ],
+  "TKM": [
+   520.1,
+   104.0
+  ],
+  "TLS": [
+   678.7,
+   224.9
+  ],
+  "TTO": [
+   264.1,
+   176.5
+  ],
+  "TUN": [
+   420.7,
+   117.3
+  ],
+  "TUR": [
+   476.1,
+   106.4
+  ],
+  "TWN": [
+   662.4,
+   142.8
+  ],
+  "TZA": [
+   476.0,
+   219.3
+  ],
+  "UGA": [
+   471.0,
+   199.5
+  ],
+  "UKR": [
+   459.9,
+   81.5
+  ],
+  "URY": [
+   281.4,
+   285.1
+  ],
+  "USA": [
+   214.3,
+   106.7
+  ],
+  "UZB": [
+   532.9,
+   99.4
+  ],
+  "VEN": [
+   251.9,
+   184.7
+  ],
+  "VNM": [
+   632.2,
+   160.9
+  ],
+  "VUT": [
+   766.9,
+   241.6
+  ],
+  "YEM": [
+   502.1,
+   163.9
+  ],
+  "ZAF": [
+   452.9,
+   274.8
+  ],
+  "ZMB": [
+   461.7,
+   235.2
+  ],
+  "ZWE": [
+   464.8,
+   250.3
+  ]
+ },
+ "dots": {
+  "d:Aland": [
+   435.3,
+   53.2
+  ],
+  "d:Alaska": [
+   133.9,
+   51.8
+  ],
+  "d:American Samoa": [
+   24.2,
+   238.9
+  ],
+  "d:Andaman Is.": [
+   604.8,
+   171.5
+  ],
+  "d:Andorra": [
+   403.2,
+   96.0
+  ],
+  "d:Anguilla": [
+   262.0,
+   157.0
+  ],
+  "d:Antigua": [
+   264.6,
+   159.9
+  ],
+  "d:Aruba": [
+   245.7,
+   171.4
+  ],
+  "d:Ascension": [
+   368.2,
+   222.8
+  ],
+  "d:Ashmore and Cartier Islands": [
+   672.7,
+   234.1
+  ],
+  "d:Azores": [
+   347.1,
+   107.8
+  ],
+  "d:Bahrain": [
+   509.0,
+   137.3
+  ],
+  "d:Balearic Islands": [
+   406.1,
+   103.2
+  ],
+  "d:Barbados": [
+   268.7,
+   169.8
+  ],
+  "d:Barbuda": [
+   264.6,
+   158.5
+  ],
+  "d:Bermuda": [
+   263.0,
+   121.6
+  ],
+  "d:Bioko": [
+   419.2,
+   194.0
+  ],
+  "d:Bonin Islands": [
+   706.0,
+   135.8
+  ],
+  "d:Bornholm": [
+   427.7,
+   65.3
+  ],
+  "d:Bougainville": [
+   744.4,
+   218.5
+  ],
+  "d:British Virgin Islands": [
+   258.6,
+   156.5
+  ],
+  "d:Brussels Capital Region": [
+   408.3,
+   75.6
+  ],
+  "d:Cabo Verde": [
+   348.0,
+   164.8
+  ],
+  "d:Canary Islands": [
+   364.6,
+   131.6
+  ],
+  "d:Caribbean Netherlands": [
+   249.3,
+   172.2
+  ],
+  "d:Cayman Islands": [
+   222.4,
+   154.3
+  ],
+  "d:Chatham Islands": [
+   46.3,
+   313.1
+  ],
+  "d:Christmas Island": [
+   633.6,
+   229.3
+  ],
+  "d:Cocos (Keeling) Islands": [
+   613.7,
+   233.5
+  ],
+  "d:Comoros": [
+   495.8,
+   232.2
+  ],
+  "d:Cook Islands": [
+   52.0,
+   256.3
+  ],
+  "d:Corsica": [
+   418.3,
+   96.7
+  ],
+  "d:Crimea": [
+   468.7,
+   89.0
+  ],
+  "d:Curaçao": [
+   247.8,
+   172.2
+  ],
+  "d:Diego Garcia Naval Support Facility": [
+   560.5,
+   221.3
+  ],
+  "d:Dominica": [
+   265.1,
+   164.0
+  ],
+  "d:Easter Island": [
+   164.9,
+   271.1
+  ],
+  "d:England": [
+   396.4,
+   71.8
+  ],
+  "d:Faroe Islands": [
+   388.2,
+   49.0
+  ],
+  "d:Federated States of Micronesia": [
+   750.7,
+   185.6
+  ],
+  "d:Flemish Region": [
+   408.2,
+   75.0
+  ],
+  "d:French Guiana": [
+   281.7,
+   194.0
+  ],
+  "d:French Polynesia": [
+   72.7,
+   247.4
+  ],
+  "d:Galapagos Islands": [
+   197.2,
+   203.9
+  ],
+  "d:Gaza": [
+   473.0,
+   123.8
+  ],
+  "d:Grenada": [
+   263.8,
+   172.4
+  ],
+  "d:Guadeloupe": [
+   264.6,
+   162.2
+  ],
+  "d:Guam": [
+   719.0,
+   169.1
+  ],
+  "d:Guernsey": [
+   395.0,
+   78.9
+  ],
+  "d:Hainan": [
+   640.2,
+   154.3
+  ],
+  "d:Hawaii": [
+   60.4,
+   153.6
+  ],
+  "d:Heard Island and McDonald Islands": [
+   538.5,
+   335.6
+  ],
+  "d:Hokkaido": [
+   686.4,
+   94.4
+  ],
+  "d:Hong Kong S.A.R.": [
+   648.0,
+   146.4
+  ],
+  "d:Honshu": [
+   686.4,
+   110.5
+  ],
+  "d:Isla Sala y Gomez": [
+   233.9,
+   287.5
+  ],
+  "d:Isle of Man": [
+   391.5,
+   67.4
+  ],
+  "d:Izushoto": [
+   695.0,
+   119.6
+  ],
+  "d:Jan Mayen": [
+   386.5,
+   29.8
+  ],
+  "d:Jejudo": [
+   666.6,
+   119.0
+  ],
+  "d:Jersey": [
+   395.9,
+   79.5
+  ],
+  "d:Kaliningrad": [
+   439.5,
+   65.9
+  ],
+  "d:Kiribati": [
+   50.4,
+   198.1
+  ],
+  "d:Kyushu": [
+   676.1,
+   120.9
+  ],
+  "d:Lakshadweep": [
+   561.8,
+   182.1
+  ],
+  "d:Liechtenstein": [
+   418.8,
+   84.6
+  ],
+  "d:Macao S.A.R": [
+   646.7,
+   147.0
+  ],
+  "d:Macquarie Island": [
+   695.7,
+   339.3
+  ],
+  "d:Madeira": [
+   364.1,
+   120.4
+  ],
+  "d:Maldives": [
+   563.2,
+   192.3
+  ],
+  "d:Malta": [
+   430.2,
+   112.6
+  ],
+  "d:Marshall Islands": [
+   779.4,
+   185.0
+  ],
+  "d:Martinique": [
+   265.7,
+   166.0
+  ],
+  "d:Mauritius": [
+   525.5,
+   253.9
+  ],
+  "d:Mayotte": [
+   499.5,
+   235.2
+  ],
+  "d:Monaco": [
+   414.9,
+   93.0
+  ],
+  "d:Montserrat": [
+   263.6,
+   160.7
+  ],
+  "d:Nanseishoto": [
+   675.6,
+   136.2
+  ],
+  "d:Nauru": [
+   770.9,
+   204.2
+  ],
+  "d:New Zealand SubAntarctic islands": [
+   718.7,
+   329.9
+  ],
+  "d:Nicobar Is.": [
+   607.9,
+   185.2
+  ],
+  "d:Niue": [
+   28.7,
+   250.8
+  ],
+  "d:Norfolk Island": [
+   759.2,
+   276.0
+  ],
+  "d:North Island": [
+   762.5,
+   297.3
+  ],
+  "d:Northern Ireland": [
+   387.4,
+   66.7
+  ],
+  "d:Northern Mariana Islands": [
+   720.6,
+   164.7
+  ],
+  "d:Oecussi": [
+   674.9,
+   226.4
+  ],
+  "d:Palau": [
+   698.2,
+   184.0
+  ],
+  "d:Pantelleria": [
+   424.9,
+   110.3
+  ],
+  "d:Peter I Island": [
+   234.8,
+   344.9
+  ],
+  "d:Pitcairn Islands": [
+   122.2,
+   264.2
+  ],
+  "d:Prince Edward Islands": [
+   474.3,
+   320.6
+  ],
+  "d:Principe": [
+   416.4,
+   198.8
+  ],
+  "d:Republic Srpska": [
+   436.6,
+   91.8
+  ],
+  "d:Rio Muni": [
+   422.6,
+   199.1
+  ],
+  "d:Réunion": [
+   521.0,
+   256.0
+  ],
+  "d:Saint Barthelemy": [
+   262.4,
+   157.9
+  ],
+  "d:Saint Helena": [
+   387.5,
+   243.0
+  ],
+  "d:Saint Kitts and Nevis": [
+   262.5,
+   159.3
+  ],
+  "d:Saint Lucia": [
+   265.7,
+   167.9
+  ],
+  "d:Saint Martin": [
+   262.0,
+   157.4
+  ],
+  "d:Saint Pierre and Miquelon": [
+   289.2,
+   85.1
+  ],
+  "d:Saint Vincent and the Grenadines": [
+   265.1,
+   169.5
+  ],
+  "d:Samoa": [
+   20.0,
+   237.1
+  ],
+  "d:San Marino": [
+   425.0,
+   92.5
+  ],
+  "d:Sardinia": [
+   418.3,
+   101.9
+  ],
+  "d:Scotland": [
+   392.1,
+   61.8
+  ],
+  "d:Seychelles": [
+   523.1,
+   214.6
+  ],
+  "d:Shikoku": [
+   680.6,
+   118.4
+  ],
+  "d:Siachen Glacier": [
+   561.5,
+   113.8
+  ],
+  "d:Sicily": [
+   429.4,
+   108.2
+  ],
+  "d:Singapore": [
+   630.7,
+   199.4
+  ],
+  "d:Sint Maarten": [
+   261.9,
+   157.5
+  ],
+  "d:South Georgia": [
+   331.5,
+   338.6
+  ],
+  "d:South Island": [
+   742.7,
+   312.5
+  ],
+  "d:South Orkney Islands": [
+   316.9,
+   344.9
+  ],
+  "d:South Sandwich Islands": [
+   352.0,
+   344.9
+  ],
+  "d:Suqutra": [
+   518.7,
+   171.3
+  ],
+  "d:Svalbard": [
+   421.7,
+   14.7
+  ],
+  "d:São Tomé": [
+   414.7,
+   202.3
+  ],
+  "d:Tasmania": [
+   697.2,
+   308.8
+  ],
+  "d:Tobago": [
+   265.9,
+   174.6
+  ],
+  "d:Tokelau": [
+   18.1,
+   224.4
+  ],
+  "d:Tonga": [
+   18.4,
+   256.1
+  ],
+  "d:Trinidad": [
+   264.4,
+   176.6
+  ],
+  "d:Turks and Caicos Islands": [
+   244.0,
+   148.0
+  ],
+  "d:Tuvalu": [
+   796.8,
+   224.3
+  ],
+  "d:Ulleungdo": [
+   671.1,
+   108.6
+  ],
+  "d:United States Virgin Islands": [
+   258.2,
+   158.2
+  ],
+  "d:Vatican": [
+   425.2,
+   97.6
+  ],
+  "d:Vojvodina": [
+   439.9,
+   89.2
+  ],
+  "d:Wales": [
+   393.1,
+   71.8
+  ],
+  "d:Wallis and Futuna": [
+   7.8,
+   238.8
+  ],
+  "d:Walloon Region": [
+   409.4,
+   76.9
+  ],
+  "d:West Bank": [
+   474.6,
+   122.6
+  ],
+  "d:Zanzibar": [
+   487.3,
+   218.4
+  ]
+ },
+ "h": 344.9,
+ "index": {
+  "afg": "AFG",
+  "afghanistan": "AFG",
+  "ago": "AGO",
+  "aland": "d:Aland",
+  "aland islands": "d:Aland",
+  "alaska": "d:Alaska",
+  "alb": "ALB",
+  "albania": "ALB",
+  "algeria": "DZA",
+  "american samoa": "d:American Samoa",
+  "andaman and nicobar islands": "d:Andaman Is.",
+  "andaman is": "d:Andaman Is.",
+  "andaman islands": "d:Andaman Is.",
+  "andorra": "d:Andorra",
+  "angola": "AGO",
+  "anguilla": "d:Anguilla",
+  "antarctica": "ATA",
+  "antigua": "d:Antigua",
+  "antigua and barbuda": "d:Antigua",
+  "arab republic of egypt": "EGY",
+  "are": "ARE",
+  "arg": "ARG",
+  "argentina": "ARG",
+  "argentine republic": "ARG",
+  "arm": "ARM",
+  "armenia": "ARM",
+  "aruba": "d:Aruba",
+  "ascension": "d:Ascension",
+  "ashmore and cartier is": "d:Ashmore and Cartier Islands",
+  "ashmore and cartier islands": "d:Ashmore and Cartier Islands",
+  "atf": "ATF",
+  "aus": "AUS",
+  "australia": "AUS",
+  "austria": "AUT",
+  "aut": "AUT",
+  "autonomous region of bougainville": "d:Bougainville",
+  "autonomous republic of crimea": "d:Crimea",
+  "aze": "AZE",
+  "azerbaijan": "AZE",
+  "azores": "d:Azores",
+  "bahamas": "BHS",
+  "bahrain": "d:Bahrain",
+  "balearic is": "d:Balearic Islands",
+  "balearic islands": "d:Balearic Islands",
+  "bangladesh": "BGD",
+  "barbados": "d:Barbados",
+  "barbuda": "d:Barbuda",
+  "bdi": "BDI",
+  "bel": "BEL",
+  "belarus": "BLR",
+  "belgium": "BEL",
+  "belize": "BLZ",
+  "ben": "BEN",
+  "benin": "BEN",
+  "bermuda": "d:Bermuda",
+  "bfa": "BFA",
+  "bgd": "BGD",
+  "bgr": "BGR",
+  "bhs": "BHS",
+  "bhutan": "BTN",
+  "bih": "BIH",
+  "bioko": "d:Bioko",
+  "blr": "BLR",
+  "blz": "BLZ",
+  "bol": "BOL",
+  "bolivarian republic of venezuela": "VEN",
+  "bolivia": "BOL",
+  "bonaire": "d:Curaçao",
+  "bonin is": "d:Bonin Islands",
+  "bonin islands": "d:Bonin Islands",
+  "bornholm": "d:Bornholm",
+  "bosnia and herz": "BIH",
+  "bosnia and herzegovina": "BIH",
+  "botswana": "BWA",
+  "bougainville": "d:Bougainville",
+  "bra": "BRA",
+  "brazil": "BRA",
+  "british virgin is": "d:British Virgin Islands",
+  "british virgin islands": "d:British Virgin Islands",
+  "brn": "BRN",
+  "brunei": "BRN",
+  "brunei darussalam": "BRN",
+  "brussels": "d:Brussels Capital Region",
+  "brussels capital region": "d:Brussels Capital Region",
+  "btn": "BTN",
+  "bulgaria": "BGR",
+  "burkina faso": "BFA",
+  "burundi": "BDI",
+  "bwa": "BWA",
+  "cabo verde": "d:Cabo Verde",
+  "caf": "CAF",
+  "cambodia": "KHM",
+  "cameroon": "CMR",
+  "can": "CAN",
+  "canada": "CAN",
+  "canary is": "d:Canary Islands",
+  "canary islands": "d:Canary Islands",
+  "cape verde": "d:Cabo Verde",
+  "caribbean netherlands": "d:Caribbean Netherlands",
+  "cayman is": "d:Cayman Islands",
+  "cayman islands": "d:Cayman Islands",
+  "central african rep": "CAF",
+  "central african republic": "CAF",
+  "chad": "TCD",
+  "chatham is": "d:Chatham Islands",
+  "chatham islands": "d:Chatham Islands",
+  "che": "CHE",
+  "chile": "CHL",
+  "china": "CHN",
+  "chl": "CHL",
+  "chn": "CHN",
+  "christmas i": "d:Christmas Island",
+  "christmas island": "d:Christmas Island",
+  "civ": "CIV",
+  "cmr": "CMR",
+  "co operative republic of guyana": "GUY",
+  "cocos": "d:Cocos (Keeling) Islands",
+  "cocos is": "d:Cocos (Keeling) Islands",
+  "cocos islands": "d:Cocos (Keeling) Islands",
+  "cocos keeling islands": "d:Cocos (Keeling) Islands",
+  "cod": "COD",
+  "cog": "COG",
+  "col": "COL",
+  "colombia": "COL",
+  "commonwealth of australia": "AUS",
+  "commonwealth of puerto rico": "PRI",
+  "commonwealth of the bahamas": "BHS",
+  "comoros": "d:Comoros",
+  "congo": "COG",
+  "cook is": "d:Cook Islands",
+  "cook islands": "d:Cook Islands",
+  "corsica": "d:Corsica",
+  "costa rica": "CRI",
+  "cote d ivoire": "CIV",
+  "cri": "CRI",
+  "crimea": "d:Crimea",
+  "croatia": "HRV",
+  "cub": "CUB",
+  "cuba": "CUB",
+  "curacao": "d:Curaçao",
+  "cyp": "CYP",
+  "cyprus": "CYP",
+  "cze": "CZE",
+  "czech republic": "CZE",
+  "czechia": "CZE",
+  "dem rep congo": "COD",
+  "dem rep korea": "PRK",
+  "democratic people s republic of korea": "PRK",
+  "democratic republic of the congo": "COD",
+  "democratic republic of timor leste": "TLS",
+  "democratic socialist republic of sri lanka": "LKA",
+  "denmark": "DNK",
+  "deu": "DEU",
+  "diego garcia naval support facility": "d:Diego Garcia Naval Support Facility",
+  "diego garcia navy airport": "d:Diego Garcia Naval Support Facility",
+  "diego garcia nsf": "d:Diego Garcia Naval Support Facility",
+  "dji": "DJI",
+  "djibouti": "DJI",
+  "dnk": "DNK",
+  "dom": "DOM",
+  "dominica": "d:Dominica",
+  "dominican rep": "DOM",
+  "dominican republic": "DOM",
+  "dza": "DZA",
+  "east timor": "TLS",
+  "easter i": "d:Easter Island",
+  "easter island": "d:Easter Island",
+  "ecu": "ECU",
+  "ecuador": "ECU",
+  "egy": "EGY",
+  "egypt": "EGY",
+  "el salvador": "SLV",
+  "england": "d:England",
+  "eq guinea": "GNQ",
+  "equatorial guinea": "GNQ",
+  "eri": "ERI",
+  "eritrea": "ERI",
+  "esh": "ESH",
+  "esp": "ESP",
+  "est": "EST",
+  "estonia": "EST",
+  "eswatini": "SWZ",
+  "eth": "ETH",
+  "ethiopia": "ETH",
+  "faeroe is": "d:Faroe Islands",
+  "faeroe islands": "d:Faroe Islands",
+  "falkland is": "FLK",
+  "falkland islands": "FLK",
+  "falkland islands malvinas": "FLK",
+  "faroe islands": "d:Faroe Islands",
+  "federal democratic republic of ethiopia": "ETH",
+  "federal republic of germany": "DEU",
+  "federal republic of nigeria": "NGA",
+  "federal republic of somalia": "SOM",
+  "federated states of micronesia": "d:Federated States of Micronesia",
+  "federative republic of brazil": "BRA",
+  "fiji": "FJI",
+  "fin": "FIN",
+  "finland": "FIN",
+  "fji": "FJI",
+  "flemish": "d:Flemish Region",
+  "flemish brabant": "d:Flemish Region",
+  "flemish region": "d:Flemish Region",
+  "flk": "FLK",
+  "fr polynesia": "d:French Polynesia",
+  "fr s and antarctic lands": "ATF",
+  "fr s antarctic lands": "ATF",
+  "fra": "FRA",
+  "france": "FRA",
+  "french guiana": "d:French Guiana",
+  "french polynesia": "d:French Polynesia",
+  "french republic": "FRA",
+  "french southern and antarctic lands": "ATF",
+  "gab": "GAB",
+  "gabon": "GAB",
+  "gabonese republic": "GAB",
+  "galapagos is": "d:Galapagos Islands",
+  "galapagos islands": "d:Galapagos Islands",
+  "galapagos province": "d:Galapagos Islands",
+  "gambia": "GMB",
+  "gaza": "d:Gaza",
+  "gaza strip": "d:Gaza",
+  "gbr": "GBR",
+  "geo": "GEO",
+  "georgia": "GEO",
+  "germany": "DEU",
+  "gha": "GHA",
+  "ghana": "GHA",
+  "gin": "GIN",
+  "gmb": "GMB",
+  "gnb": "GNB",
+  "gnq": "GNQ",
+  "grc": "GRC",
+  "greece": "GRC",
+  "greenland": "GRL",
+  "grenada": "d:Grenada",
+  "grl": "GRL",
+  "gtm": "GTM",
+  "guadeloupe": "d:Guadeloupe",
+  "guam": "d:Guam",
+  "guatemala": "GTM",
+  "guernsey": "d:Guernsey",
+  "guinea": "GIN",
+  "guinea bissau": "GNB",
+  "guy": "GUY",
+  "guyana": "GUY",
+  "hainan": "d:Hainan",
+  "haiti": "HTI",
+  "hashemite kingdom of jordan": "JOR",
+  "hawaii": "d:Hawaii",
+  "heard i and mcdonald is": "d:Heard Island and McDonald Islands",
+  "heard i and mcdonald islands": "d:Heard Island and McDonald Islands",
+  "heard island and mcdonald islands": "d:Heard Island and McDonald Islands",
+  "hellenic republic": "GRC",
+  "hnd": "HND",
+  "hokkaido": "d:Hokkaido",
+  "hokkaido prefecture": "d:Hokkaido",
+  "honduras": "HND",
+  "hong kong": "d:Hong Kong S.A.R.",
+  "hong kong s a r": "d:Hong Kong S.A.R.",
+  "honshu": "d:Honshu",
+  "hrv": "HRV",
+  "hti": "HTI",
+  "hun": "HUN",
+  "hungary": "HUN",
+  "iceland": "ISL",
+  "idn": "IDN",
+  "ind": "IND",
+  "independent state of papua new guinea": "PNG",
+  "india": "IND",
+  "indonesia": "IDN",
+  "iran": "IRN",
+  "iraq": "IRQ",
+  "ireland": "IRL",
+  "irl": "IRL",
+  "irn": "IRN",
+  "irq": "IRQ",
+  "isl": "ISL",
+  "isla sala y gomez": "d:Isla Sala y Gomez",
+  "isla salas y gomez": "d:Isla Sala y Gomez",
+  "islamic republic of iran": "IRN",
+  "islamic republic of mauritania": "MRT",
+  "islamic republic of pakistan": "PAK",
+  "islamic state of afghanistan": "AFG",
+  "isle of man": "d:Isle of Man",
+  "isr": "ISR",
+  "israel": "ISR",
+  "ita": "ITA",
+  "italian republic": "ITA",
+  "italy": "ITA",
+  "ivory coast": "CIV",
+  "izu islands": "d:Izushoto",
+  "izu shoto": "d:Izushoto",
+  "izushoto": "d:Izushoto",
+  "jam": "JAM",
+  "jamaica": "JAM",
+  "jan mayen": "d:Jan Mayen",
+  "jan mayen i": "d:Jan Mayen",
+  "jan mayen island": "d:Jan Mayen",
+  "japan": "JPN",
+  "jeju province": "d:Jejudo",
+  "jejudo": "d:Jejudo",
+  "jersey": "d:Jersey",
+  "jor": "JOR",
+  "jordan": "JOR",
+  "jpn": "JPN",
+  "kaliningrad": "d:Kaliningrad",
+  "kaliningrad oblast": "d:Kaliningrad",
+  "kaz": "KAZ",
+  "kazakhstan": "KAZ",
+  "ken": "KEN",
+  "kenya": "KEN",
+  "kgz": "KGZ",
+  "khm": "KHM",
+  "kingdom of belgium": "BEL",
+  "kingdom of bhutan": "BTN",
+  "kingdom of cambodia": "KHM",
+  "kingdom of denmark": "DNK",
+  "kingdom of eswatini": "SWZ",
+  "kingdom of lesotho": "LSO",
+  "kingdom of morocco": "MAR",
+  "kingdom of norway": "NOR",
+  "kingdom of saudi arabia": "SAU",
+  "kingdom of spain": "ESP",
+  "kingdom of sweden": "SWE",
+  "kingdom of thailand": "THA",
+  "kingdom of the netherlands": "NLD",
+  "kiribati": "d:Kiribati",
+  "kor": "KOR",
+  "kosovo": "KOSOVO",
+  "kuwait": "KWT",
+  "kwt": "KWT",
+  "kyrgyz republic": "KGZ",
+  "kyrgyzstan": "KGZ",
+  "kyushu": "d:Kyushu",
+  "lakshadweep": "d:Lakshadweep",
+  "lao": "LAO",
+  "lao pdr": "LAO",
+  "lao people s democratic republic": "LAO",
+  "laos": "LAO",
+  "latvia": "LVA",
+  "lbn": "LBN",
+  "lbr": "LBR",
+  "lby": "LBY",
+  "lebanese republic": "LBN",
+  "lebanon": "LBN",
+  "lesotho": "LSO",
+  "liberia": "LBR",
+  "libya": "LBY",
+  "liechtenstein": "d:Liechtenstein",
+  "lithuania": "LTU",
+  "lka": "LKA",
+  "lso": "LSO",
+  "ltu": "LTU",
+  "luxembourg": "LUX",
+  "lva": "LVA",
+  "macao": "d:Macao S.A.R",
+  "macao s a r": "d:Macao S.A.R",
+  "macau": "d:Macao S.A.R",
+  "macquarie i": "d:Macquarie Island",
+  "macquarie island": "d:Macquarie Island",
+  "madagascar": "MDG",
+  "madeira": "d:Madeira",
+  "malawi": "MWI",
+  "malaysia": "MYS",
+  "maldives": "d:Maldives",
+  "mali": "MLI",
+  "malta": "d:Malta",
+  "mar": "MAR",
+  "marshall is": "d:Marshall Islands",
+  "marshall islands": "d:Marshall Islands",
+  "martinique": "d:Martinique",
+  "mauritania": "MRT",
+  "mauritius": "d:Mauritius",
+  "mayotte": "d:Mayotte",
+  "mda": "MDA",
+  "mdg": "MDG",
+  "mex": "MEX",
+  "mexico": "MEX",
+  "micronesia": "d:Federated States of Micronesia",
+  "mkd": "MKD",
+  "mli": "MLI",
+  "mmr": "MMR",
+  "mne": "MNE",
+  "mng": "MNG",
+  "moldova": "MDA",
+  "monaco": "d:Monaco",
+  "mongolia": "MNG",
+  "montenegro": "MNE",
+  "montserrat": "d:Montserrat",
+  "morocco": "MAR",
+  "moz": "MOZ",
+  "mozambique": "MOZ",
+  "mrt": "MRT",
+  "mwi": "MWI",
+  "myanmar": "MMR",
+  "mys": "MYS",
+  "n cyprus": "NORTHERN",
+  "n ireland": "d:Northern Ireland",
+  "n mariana is": "d:Northern Mariana Islands",
+  "n z subantarctic is": "d:New Zealand SubAntarctic islands",
+  "nam": "NAM",
+  "namibia": "NAM",
+  "nansei shoto": "d:Nanseishoto",
+  "nanseishoto": "d:Nanseishoto",
+  "nauru": "d:Nauru",
+  "ncl": "NCL",
+  "negara brunei darussalam": "BRN",
+  "nepal": "NPL",
+  "ner": "NER",
+  "netherlands": "NLD",
+  "new caledonia": "NCL",
+  "new zealand": "NZL",
+  "new zealand subantarctic islands": "d:New Zealand SubAntarctic islands",
+  "nga": "NGA",
+  "nic": "NIC",
+  "nicaragua": "NIC",
+  "nicobar is": "d:Nicobar Is.",
+  "nicobar islands": "d:Nicobar Is.",
+  "niger": "NER",
+  "nigeria": "NGA",
+  "niue": "d:Niue",
+  "nld": "NLD",
+  "nor": "NOR",
+  "norfolk island": "d:Norfolk Island",
+  "north i": "d:North Island",
+  "north island": "d:North Island",
+  "north korea": "PRK",
+  "north macedonia": "MKD",
+  "northern cyprus": "NORTHERN",
+  "northern ireland": "d:Northern Ireland",
+  "northern mariana islands": "d:Northern Mariana Islands",
+  "northern marianas": "d:Northern Mariana Islands",
+  "norway": "NOR",
+  "npl": "NPL",
+  "nzl": "NZL",
+  "oecussi": "d:Oecussi",
+  "ogasawara islands": "d:Bonin Islands",
+  "oman": "OMN",
+  "omn": "OMN",
+  "oriental republic of uruguay": "URY",
+  "pak": "PAK",
+  "pakistan": "PAK",
+  "palau": "d:Palau",
+  "palestine": "PSE",
+  "pan": "PAN",
+  "panama": "PAN",
+  "pante makasar": "d:Oecussi",
+  "pante makassar subdistrict": "d:Oecussi",
+  "pantelleria": "d:Pantelleria",
+  "pantelleria island": "d:Pantelleria",
+  "papua new guinea": "PNG",
+  "paraguay": "PRY",
+  "people s democratic republic of algeria": "DZA",
+  "people s republic of angola": "AGO",
+  "people s republic of bangladesh": "BGD",
+  "people s republic of china": "CHN",
+  "per": "PER",
+  "peru": "PER",
+  "peter i i": "d:Peter I Island",
+  "peter i island": "d:Peter I Island",
+  "philippines": "PHL",
+  "phl": "PHL",
+  "pitcairn is": "d:Pitcairn Islands",
+  "pitcairn islands": "d:Pitcairn Islands",
+  "plurinational state of bolivia": "BOL",
+  "png": "PNG",
+  "pol": "POL",
+  "poland": "POL",
+  "portugal": "PRT",
+  "portuguese republic": "PRT",
+  "pri": "PRI",
+  "prince edward is": "d:Prince Edward Islands",
+  "prince edward islands": "d:Prince Edward Islands",
+  "principe": "d:Principe",
+  "prk": "PRK",
+  "prt": "PRT",
+  "pry": "PRY",
+  "pse": "PSE",
+  "puerto rico": "PRI",
+  "qat": "QAT",
+  "qatar": "QAT",
+  "rep srpska": "d:Republic Srpska",
+  "republic of albania": "ALB",
+  "republic of armenia": "ARM",
+  "republic of austria": "AUT",
+  "republic of azerbaijan": "AZE",
+  "republic of belarus": "BLR",
+  "republic of benin": "BEN",
+  "republic of botswana": "BWA",
+  "republic of bulgaria": "BGR",
+  "republic of burundi": "BDI",
+  "republic of cabo verde": "d:Cabo Verde",
+  "republic of cameroon": "CMR",
+  "republic of chad": "TCD",
+  "republic of chile": "CHL",
+  "republic of colombia": "COL",
+  "republic of costa rica": "CRI",
+  "republic of croatia": "HRV",
+  "republic of cuba": "CUB",
+  "republic of cyprus": "CYP",
+  "republic of djibouti": "DJI",
+  "republic of ecuador": "ECU",
+  "republic of el salvador": "SLV",
+  "republic of equatorial guinea": "GNQ",
+  "republic of estonia": "EST",
+  "republic of fiji": "FJI",
+  "republic of finland": "FIN",
+  "republic of ghana": "GHA",
+  "republic of guatemala": "GTM",
+  "republic of guinea": "GIN",
+  "republic of guinea bissau": "GNB",
+  "republic of haiti": "HTI",
+  "republic of honduras": "HND",
+  "republic of hungary": "HUN",
+  "republic of iceland": "ISL",
+  "republic of india": "IND",
+  "republic of indonesia": "IDN",
+  "republic of iraq": "IRQ",
+  "republic of ivory coast": "CIV",
+  "republic of kazakhstan": "KAZ",
+  "republic of kenya": "KEN",
+  "republic of korea": "KOR",
+  "republic of kosovo": "KOSOVO",
+  "republic of latvia": "LVA",
+  "republic of liberia": "LBR",
+  "republic of lithuania": "LTU",
+  "republic of madagascar": "MDG",
+  "republic of malawi": "MWI",
+  "republic of mali": "MLI",
+  "republic of moldova": "MDA",
+  "republic of mozambique": "MOZ",
+  "republic of namibia": "NAM",
+  "republic of nicaragua": "NIC",
+  "republic of niger": "NER",
+  "republic of north macedonia": "MKD",
+  "republic of panama": "PAN",
+  "republic of paraguay": "PRY",
+  "republic of peru": "PER",
+  "republic of poland": "POL",
+  "republic of rwanda": "RWA",
+  "republic of senegal": "SEN",
+  "republic of serbia": "SRB",
+  "republic of sierra leone": "SLE",
+  "republic of slovenia": "SVN",
+  "republic of somaliland": "SOMALILA",
+  "republic of south africa": "ZAF",
+  "republic of south sudan": "SSD",
+  "republic of suriname": "SUR",
+  "republic of tajikistan": "TJK",
+  "republic of the congo": "COG",
+  "republic of the gambia": "GMB",
+  "republic of the philippines": "PHL",
+  "republic of the sudan": "SDN",
+  "republic of the union of myanmar": "MMR",
+  "republic of trinidad and tobago": "TTO",
+  "republic of tunisia": "TUN",
+  "republic of turkey": "TUR",
+  "republic of uganda": "UGA",
+  "republic of uzbekistan": "UZB",
+  "republic of vanuatu": "VUT",
+  "republic of yemen": "YEM",
+  "republic of zambia": "ZMB",
+  "republic of zimbabwe": "ZWE",
+  "republic srpska": "d:Republic Srpska",
+  "republika srpska": "d:Republic Srpska",
+  "reunion": "d:Réunion",
+  "rio muni": "d:Rio Muni",
+  "romania": "ROU",
+  "rou": "ROU",
+  "rus": "RUS",
+  "russia": "RUS",
+  "russian federation": "RUS",
+  "rwa": "RWA",
+  "rwanda": "RWA",
+  "ryukyu islands": "d:Nanseishoto",
+  "s georgia": "d:South Georgia",
+  "s orkney is": "d:South Orkney Islands",
+  "s orkney islands": "d:South Orkney Islands",
+  "s sandwich is": "d:South Sandwich Islands",
+  "s sudan": "SSD",
+  "saba": "d:Sint Maarten",
+  "sahrawi arab democratic republic": "ESH",
+  "saint barthelemy": "d:Saint Barthelemy",
+  "saint helena": "d:Saint Helena",
+  "saint kitts and nevis": "d:Saint Kitts and Nevis",
+  "saint lucia": "d:Saint Lucia",
+  "saint martin": "d:Saint Martin",
+  "saint pierre and miquelon": "d:Saint Pierre and Miquelon",
+  "saint vincent and the grenadines": "d:Saint Vincent and the Grenadines",
+  "samoa": "d:Samoa",
+  "san marino": "d:San Marino",
+  "sao tome": "d:São Tomé",
+  "sao tome and principe": "d:São Tomé",
+  "sao tome island": "d:São Tomé",
+  "sardinia": "d:Sardinia",
+  "sau": "SAU",
+  "saudi arabia": "SAU",
+  "scotland": "d:Scotland",
+  "sdn": "SDN",
+  "sen": "SEN",
+  "senegal": "SEN",
+  "serbia": "SRB",
+  "seychelles": "d:Seychelles",
+  "shikoku": "d:Shikoku",
+  "siachen glacier": "d:Siachen Glacier",
+  "sicily": "d:Sicily",
+  "sierra leone": "SLE",
+  "singapore": "d:Singapore",
+  "sint eustatius": "d:Sint Maarten",
+  "sint maarten": "d:Sint Maarten",
+  "slb": "SLB",
+  "sle": "SLE",
+  "slovak republic": "SVK",
+  "slovakia": "SVK",
+  "slovenia": "SVN",
+  "slv": "SLV",
+  "socialist republic of vietnam": "VNM",
+  "socotra": "d:Suqutra",
+  "socotra archipelago": "d:Suqutra",
+  "solomon is": "SLB",
+  "solomon islands": "SLB",
+  "som": "SOM",
+  "somalia": "SOM",
+  "somaliland": "SOMALILA",
+  "south africa": "ZAF",
+  "south georgia": "d:South Georgia",
+  "south i": "d:South Island",
+  "south island": "d:South Island",
+  "south korea": "KOR",
+  "south orkney islands": "d:South Orkney Islands",
+  "south sandwich islands": "d:South Sandwich Islands",
+  "south sudan": "SSD",
+  "spain": "ESP",
+  "srb": "SRB",
+  "sri lanka": "LKA",
+  "ssd": "SSD",
+  "st barthelemy": "d:Saint Barthelemy",
+  "st kitts and nevis": "d:Saint Kitts and Nevis",
+  "st martin": "d:Saint Martin",
+  "st pierre and miquelon": "d:Saint Pierre and Miquelon",
+  "st vin and gren": "d:Saint Vincent and the Grenadines",
+  "state of eritrea": "ERI",
+  "state of israel": "ISR",
+  "state of kuwait": "KWT",
+  "state of qatar": "QAT",
+  "sudan": "SDN",
+  "sultanate of oman": "OMN",
+  "suqutra": "d:Suqutra",
+  "sur": "SUR",
+  "suriname": "SUR",
+  "svalbard": "d:Svalbard",
+  "svalbard is": "d:Svalbard",
+  "svalbard islands": "d:Svalbard",
+  "svk": "SVK",
+  "svn": "SVN",
+  "swe": "SWE",
+  "sweden": "SWE",
+  "swiss confederation": "CHE",
+  "switzerland": "CHE",
+  "swz": "SWZ",
+  "syr": "SYR",
+  "syria": "SYR",
+  "syrian arab republic": "SYR",
+  "taiwan": "TWN",
+  "tajikistan": "TJK",
+  "tanzania": "TZA",
+  "tasmania": "d:Tasmania",
+  "tcd": "TCD",
+  "territory of the french southern and antarctic lands": "ATF",
+  "tgo": "TGO",
+  "tha": "THA",
+  "thailand": "THA",
+  "the bahamas": "BHS",
+  "the gambia": "GMB",
+  "timor leste": "TLS",
+  "tjk": "TJK",
+  "tkm": "TKM",
+  "tls": "TLS",
+  "tobago": "d:Tobago",
+  "togo": "TGO",
+  "togolese republic": "TGO",
+  "tokelau": "d:Tokelau",
+  "tonga": "d:Tonga",
+  "trinidad": "d:Trinidad",
+  "trinidad and tobago": "TTO",
+  "tto": "TTO",
+  "tun": "TUN",
+  "tunisia": "TUN",
+  "tur": "TUR",
+  "turkey": "TUR",
+  "turkish republic of northern cyprus": "NORTHERN",
+  "turkmenistan": "TKM",
+  "turks and caicos is": "d:Turks and Caicos Islands",
+  "turks and caicos islands": "d:Turks and Caicos Islands",
+  "tuvalu": "d:Tuvalu",
+  "twn": "TWN",
+  "tza": "TZA",
+  "u s virgin is": "d:United States Virgin Islands",
+  "uga": "UGA",
+  "uganda": "UGA",
+  "ukr": "UKR",
+  "ukraine": "UKR",
+  "ulleungdo": "d:Ulleungdo",
+  "united arab emirates": "ARE",
+  "united kingdom": "GBR",
+  "united kingdom of great britain and northern ireland": "GBR",
+  "united mexican states": "MEX",
+  "united republic of tanzania": "TZA",
+  "united states": "USA",
+  "united states of america": "USA",
+  "united states virgin islands": "d:United States Virgin Islands",
+  "uruguay": "URY",
+  "ury": "URY",
+  "usa": "USA",
+  "uzb": "UZB",
+  "uzbekistan": "UZB",
+  "vanuatu": "VUT",
+  "vatican": "d:Vatican",
+  "vatican city": "d:Vatican",
+  "ven": "VEN",
+  "venezuela": "VEN",
+  "vietnam": "VNM",
+  "vnm": "VNM",
+  "vojvodina": "d:Vojvodina",
+  "vut": "VUT",
+  "w sahara": "ESH",
+  "wales": "d:Wales",
+  "wallis and futuna": "d:Wallis and Futuna",
+  "wallis and futuna is": "d:Wallis and Futuna",
+  "wallis and futuna islands": "d:Wallis and Futuna",
+  "walloon": "d:Walloon Region",
+  "walloon brabant": "d:Walloon Region",
+  "walloon region": "d:Walloon Region",
+  "west bank": "d:West Bank",
+  "west bank and gaza": "PSE",
+  "western sahara": "ESH",
+  "yem": "YEM",
+  "yemen": "YEM",
+  "zaf": "ZAF",
+  "zambia": "ZMB",
+  "zanzibar": "d:Zanzibar",
+  "zimbabwe": "ZWE",
+  "zmb": "ZMB",
+  "zwe": "ZWE"
+ },
+ "shapes": {
+  "AFG": "M537.9 108.9 L541.4 109.8 L542.7 108.9 L543.6 109.4 L543.9 108.3 L545.2 108.3 L546.0 106.1 L547.3 106.7 L548.3 109.6 L549.3 110.5 L551.8 108.6 L555.4 108.8 L555.9 109.5 L549.5 111.0 L548.6 112.1 L549.9 114.4 L549.1 115.5 L549.0 117.4 L547.0 117.3 L548.2 119.0 L547.0 119.6 L546.4 121.1 L546.9 122.6 L546.2 123.3 L543.8 123.4 L543.7 124.1 L542.1 124.1 L541.2 125.5 L541.6 127.7 L539.0 128.7 L533.7 129.1 L529.9 127.8 L531.5 125.6 L531.0 123.9 L529.3 123.5 L527.8 119.9 L528.4 118.5 L527.4 118.2 L527.9 113.2 L530.2 114.1 L531.7 113.8 L531.9 112.7 L534.4 111.5 L534.4 109.5 L536.0 109.0 L536.1 108.2 L537.9 108.9Z",
+  "AGO": "M428.8 214.9 L427.0 217.4 L426.4 215.5 L428.0 214.0 L428.8 214.9ZM427.3 218.2 L429.7 217.6 L436.2 217.7 L438.7 223.2 L440.9 222.6 L442.1 223.0 L443.0 220.9 L444.5 220.3 L445.7 220.3 L445.5 221.2 L448.1 221.2 L448.4 226.8 L449.1 227.8 L448.9 230.8 L451.8 230.2 L452.8 230.4 L453.1 231.1 L453.0 235.4 L448.4 235.3 L448.1 243.3 L450.9 247.0 L446.8 248.0 L441.5 247.6 L440.0 246.4 L430.8 246.7 L429.5 245.6 L425.7 246.4 L425.5 244.8 L426.8 239.2 L428.1 235.9 L430.1 233.2 L430.3 231.3 L428.5 225.9 L429.3 224.4 L427.3 218.2Z",
+  "ALB": "M442.8 100.2 L441.3 103.2 L439.7 101.7 L439.6 98.0 L439.1 96.8 L439.8 95.6 L441.5 96.8 L441.9 99.6 L442.8 100.2Z",
+  "ARE": "M511.7 141.9 L512.2 142.4 L517.0 142.2 L520.9 137.3 L522.0 140.2 L520.9 140.2 L521.2 142.2 L520.3 142.7 L519.5 146.3 L512.9 145.0 L511.7 141.9Z",
+  "ARG": "M270.3 334.5 L273.1 337.4 L279.0 339.5 L278.7 340.7 L272.5 339.9 L270.3 334.5ZM277.2 278.9 L277.2 289.5 L280.3 291.6 L280.4 293.4 L281.9 294.5 L282.0 295.7 L280.7 298.9 L278.0 300.3 L271.7 300.5 L273.2 305.1 L272.2 306.0 L270.2 306.4 L268.0 305.5 L267.4 306.1 L268.4 308.6 L270.0 309.3 L270.9 308.5 L271.9 309.8 L270.2 310.6 L269.1 312.2 L269.5 316.0 L267.6 316.0 L266.4 317.3 L266.5 319.1 L269.1 320.9 L271.1 321.4 L271.2 323.6 L269.4 325.0 L269.1 327.9 L267.7 328.8 L267.4 329.9 L269.1 332.4 L270.9 333.8 L263.4 333.0 L261.3 329.8 L260.0 330.0 L259.0 329.1 L257.8 326.5 L258.9 325.4 L258.9 323.9 L258.2 322.6 L258.0 317.3 L257.3 315.8 L258.0 315.4 L256.4 313.9 L256.7 312.9 L255.5 311.9 L254.1 309.1 L254.7 308.6 L253.4 305.5 L253.0 300.7 L254.0 299.8 L252.1 295.1 L253.3 293.4 L252.7 291.3 L253.3 288.9 L252.8 286.6 L250.3 281.8 L251.0 279.2 L250.4 276.8 L250.8 274.5 L253.1 270.5 L252.3 269.6 L251.9 264.6 L254.2 263.3 L254.3 260.1 L255.8 257.8 L258.8 258.4 L260.2 260.2 L260.9 258.2 L263.4 258.3 L268.2 263.0 L270.0 263.3 L275.1 266.2 L275.6 267.3 L274.0 271.1 L278.7 272.2 L280.3 271.8 L282.0 269.8 L282.1 267.6 L283.1 267.1 L284.4 268.6 L284.6 270.6 L281.6 273.0 L277.2 278.9Z",
+  "ARM": "M495.8 105.4 L495.0 105.4 L493.9 103.6 L489.3 101.7 L488.7 99.6 L491.5 99.2 L492.9 100.3 L492.6 100.9 L493.9 101.7 L493.5 102.5 L495.4 103.6 L495.8 105.4Z",
+  "ATF": "M534.1 324.8 L536.8 325.9 L535.8 327.5 L532.8 327.6 L534.1 324.8Z",
+  "AUS": "M701.1 305.5 L702.2 305.6 L700.4 308.6 L697.6 311.4 L697.3 310.8 L694.8 312.5 L693.3 312.3 L694.5 306.4 L695.3 305.2 L697.9 306.3 L701.1 305.5ZM667.0 283.9 L662.2 285.8 L660.1 288.1 L652.1 288.3 L647.2 291.1 L644.3 291.0 L641.7 288.9 L642.2 287.5 L644.0 286.5 L645.1 283.9 L645.8 277.0 L644.3 268.6 L645.0 269.7 L644.9 267.3 L646.1 269.0 L646.4 267.7 L645.5 264.2 L647.1 260.9 L647.1 259.4 L648.3 257.6 L648.1 259.5 L649.4 257.8 L654.4 255.0 L656.0 255.1 L660.3 253.1 L663.9 252.4 L667.6 248.7 L668.1 246.3 L670.0 244.1 L670.6 246.3 L671.6 245.8 L671.0 244.6 L671.9 243.4 L672.8 244.0 L673.4 242.0 L675.5 239.8 L676.6 239.4 L676.7 238.7 L677.7 239.0 L677.8 238.3 L679.9 237.6 L682.4 240.3 L685.2 240.5 L684.9 239.2 L687.3 236.5 L687.0 235.8 L688.1 234.4 L689.6 233.5 L692.6 233.3 L692.7 232.1 L691.2 231.2 L692.4 230.9 L694.8 232.5 L698.6 233.7 L701.3 232.7 L702.2 233.9 L700.4 236.3 L699.7 236.4 L699.8 237.4 L698.1 240.6 L703.4 245.2 L705.0 245.8 L705.2 246.6 L707.2 247.4 L708.8 246.6 L711.7 240.7 L712.6 234.1 L715.0 229.7 L716.5 235.2 L716.8 239.5 L718.3 238.5 L719.8 240.6 L719.4 243.8 L720.0 245.4 L720.0 250.6 L724.6 254.2 L724.2 254.8 L725.1 256.4 L725.3 259.1 L726.3 258.5 L726.9 259.6 L727.5 259.2 L727.2 261.9 L730.3 266.4 L729.0 271.5 L729.3 273.6 L728.4 275.8 L722.2 284.8 L720.1 286.0 L714.0 292.6 L710.8 297.0 L709.1 297.9 L706.8 298.0 L701.0 301.0 L698.9 299.5 L699.9 298.2 L695.7 300.5 L690.6 298.5 L690.1 296.9 L690.9 293.8 L690.4 292.8 L688.6 292.5 L689.9 291.2 L690.2 289.4 L688.4 291.1 L686.3 291.6 L690.3 287.5 L690.9 285.6 L686.6 288.6 L685.0 290.6 L683.8 289.6 L684.4 288.3 L683.1 285.5 L683.7 284.9 L678.7 282.1 L674.8 282.3 L668.9 284.1 L667.0 283.9Z",
+  "AUT": "M433.1 82.2 L433.1 83.2 L432.0 83.2 L432.4 83.7 L431.5 85.7 L428.9 86.3 L424.4 85.5 L423.9 84.7 L421.8 85.6 L418.6 84.7 L418.8 83.7 L419.4 83.5 L420.4 84.2 L420.7 83.6 L423.8 83.2 L425.4 83.8 L425.1 81.8 L426.4 80.3 L427.9 81.1 L429.6 79.9 L432.1 80.6 L433.0 81.0 L433.1 82.2Z",
+  "AZE": "M494.1 97.7 L497.3 99.4 L498.5 97.8 L501.3 100.9 L503.1 101.7 L501.4 101.9 L501.2 104.7 L500.6 105.3 L500.9 106.5 L498.9 105.3 L499.4 104.1 L498.6 103.3 L495.8 105.4 L495.4 103.6 L493.5 102.5 L493.9 101.7 L491.5 99.2 L491.9 98.8 L494.7 99.6 L493.6 98.0 L494.1 97.7ZM495.0 105.4 L493.6 105.1 L491.9 103.0 L493.9 103.6 L495.0 105.4Z",
+  "BDI": "M467.7 208.9 L468.3 211.3 L466.0 214.1 L465.1 214.2 L464.4 210.0 L465.8 210.2 L466.5 208.8 L467.7 208.9Z",
+  "BEL": "M411.8 75.6 L411.0 78.7 L409.3 77.6 L408.3 77.8 L406.0 75.7 L405.1 75.7 L404.8 74.8 L409.5 74.0 L411.8 75.6Z",
+  "BEN": "M406.0 187.1 L404.1 187.4 L403.6 185.7 L403.7 179.9 L403.2 178.2 L401.7 176.5 L403.2 173.8 L406.3 172.1 L408.0 173.5 L408.4 175.9 L408.2 177.6 L406.4 179.9 L406.0 181.5 L406.0 187.1Z",
+  "BFA": "M388.1 176.8 L388.5 173.4 L390.2 171.3 L390.6 169.6 L391.2 169.0 L392.2 169.3 L393.2 168.8 L395.6 166.2 L397.7 165.2 L398.9 164.8 L400.8 165.3 L400.9 167.7 L402.2 169.3 L402.3 170.5 L404.8 171.1 L404.3 173.6 L403.2 173.8 L402.0 175.2 L393.5 175.3 L393.7 178.6 L392.2 178.0 L390.4 178.7 L388.1 176.8Z",
+  "BGD": "M601.5 147.4 L601.7 149.2 L600.9 148.9 L601.4 150.9 L598.5 145.6 L596.5 145.5 L596.8 146.5 L596.4 147.9 L593.6 147.4 L591.9 143.4 L592.1 141.9 L590.6 141.2 L592.2 139.4 L590.3 138.1 L590.8 136.3 L593.7 137.6 L594.3 139.3 L599.7 140.0 L599.1 142.2 L598.1 142.3 L597.7 143.7 L599.0 145.1 L599.2 143.4 L599.8 143.4 L601.5 147.4Z",
+  "BGR": "M445.3 91.8 L446.0 92.8 L451.3 93.1 L454.5 91.9 L457.3 93.1 L455.9 95.9 L456.7 97.3 L454.9 97.0 L452.9 97.7 L453.1 99.0 L451.3 99.2 L449.7 98.4 L446.7 99.0 L446.3 97.3 L445.2 96.5 L446.2 94.3 L445.2 93.2 L445.3 91.8Z",
+  "BHS": "M230.0 135.5 L232.5 135.4 L232.4 136.0 L230.0 136.4 L230.0 135.5ZM232.7 134.9 L234.2 136.0 L233.5 137.8 L232.7 134.9ZM231.0 139.5 L231.7 139.6 L232.1 141.6 L232.0 143.1 L231.4 143.2 L230.3 141.1 L231.0 139.5Z",
+  "BIH": "M437.5 95.7 L433.0 92.2 L431.4 90.3 L431.7 89.3 L432.5 89.8 L433.8 89.3 L438.6 90.2 L438.2 91.3 L439.2 92.2 L439.1 93.4 L437.6 94.3 L437.5 95.7Z",
+  "BLR": "M451.8 62.8 L454.2 64.0 L457.0 64.3 L457.2 66.0 L459.4 68.5 L461.5 69.5 L459.0 70.2 L460.3 72.5 L458.7 72.7 L458.3 74.4 L448.1 73.0 L444.8 73.8 L443.9 71.6 L445.0 71.1 L443.9 68.2 L445.8 68.2 L447.7 67.3 L447.9 65.9 L449.3 65.2 L448.9 64.1 L451.8 62.8Z",
+  "BLZ": "M204.8 158.1 L206.4 156.4 L207.2 156.7 L206.1 161.3 L204.0 162.9 L204.8 158.1Z",
+  "BOL": "M246.4 230.4 L249.2 230.6 L252.6 227.9 L255.4 227.4 L255.6 232.0 L258.1 234.2 L260.6 234.6 L264.0 236.8 L266.7 237.5 L267.5 240.8 L266.8 240.8 L267.9 243.8 L272.1 243.9 L272.2 246.3 L273.5 247.0 L274.1 248.6 L273.4 251.7 L273.7 253.1 L273.1 253.6 L273.0 252.9 L270.8 251.6 L265.1 252.3 L263.8 258.8 L263.4 258.3 L260.9 258.2 L260.2 260.2 L258.8 258.4 L255.8 257.8 L254.3 260.1 L252.8 260.4 L250.0 254.1 L250.5 251.7 L249.2 250.6 L247.5 247.1 L248.6 244.4 L247.5 242.3 L247.9 241.4 L247.4 240.5 L248.2 239.2 L248.5 234.5 L246.4 230.4Z",
+  "BRA": "M287.7 287.8 L286.9 286.4 L287.6 285.2 L286.1 283.5 L278.5 278.6 L277.2 278.9 L281.6 273.0 L284.6 270.6 L284.4 268.6 L283.1 267.1 L282.1 267.6 L282.4 263.3 L281.6 262.8 L280.0 263.1 L278.7 259.1 L277.2 258.4 L276.4 258.9 L274.0 258.4 L273.9 255.0 L273.1 253.6 L273.7 253.1 L273.4 251.7 L274.1 248.6 L273.5 247.0 L272.2 246.3 L272.1 243.9 L267.9 243.8 L266.8 240.8 L267.5 240.8 L266.7 237.5 L264.0 236.8 L260.6 234.6 L258.1 234.2 L255.6 232.0 L255.4 227.4 L252.6 227.9 L249.2 230.6 L244.1 230.6 L244.0 226.7 L242.3 228.2 L240.3 228.2 L239.4 226.8 L238.0 226.7 L238.4 225.6 L236.1 221.8 L236.6 220.3 L237.9 219.6 L237.6 218.2 L238.3 216.1 L242.9 213.6 L244.9 213.7 L245.8 205.7 L245.4 204.3 L244.4 203.3 L244.4 201.5 L246.1 201.4 L246.2 200.4 L244.9 200.1 L244.9 198.6 L249.3 198.6 L250.0 197.8 L251.0 200.0 L251.4 199.7 L252.6 201.1 L254.4 200.9 L259.3 197.3 L259.2 196.8 L257.3 196.6 L257.1 193.3 L256.1 192.7 L259.9 193.4 L264.7 191.5 L265.5 190.5 L265.2 189.8 L266.4 189.7 L266.9 190.3 L266.6 191.4 L267.8 192.9 L266.8 195.9 L267.5 198.4 L268.9 199.6 L270.0 199.7 L272.7 198.0 L275.6 198.3 L275.7 196.6 L277.6 196.5 L279.9 197.6 L280.6 196.9 L281.4 197.7 L282.4 197.5 L285.3 192.4 L286.1 192.3 L287.8 198.1 L289.0 198.5 L289.0 200.2 L287.3 202.3 L288.0 203.1 L292.0 203.5 L292.1 206.0 L293.7 204.3 L300.3 206.8 L301.4 208.3 L301.0 209.6 L303.6 208.9 L307.9 210.2 L311.2 210.1 L314.5 212.2 L317.4 215.0 L321.0 215.8 L321.8 216.6 L323.0 221.3 L322.2 225.5 L318.1 230.6 L315.3 235.7 L314.7 235.7 L314.2 237.6 L314.5 242.3 L314.0 247.8 L313.4 248.8 L313.2 252.2 L311.2 255.5 L311.0 258.1 L309.3 259.2 L308.9 260.7 L303.2 261.6 L299.3 263.5 L296.9 265.5 L295.4 268.0 L295.8 271.2 L295.3 275.0 L294.0 276.4 L292.2 280.8 L289.4 284.0 L288.8 286.4 L287.7 287.8Z",
+  "BRN": "M656.1 189.2 L656.0 192.0 L655.0 191.9 L654.5 192.8 L653.5 191.5 L656.1 189.2Z",
+  "BTN": "M596.8 133.0 L597.8 133.8 L598.0 135.4 L593.2 135.7 L590.9 134.2 L592.9 131.7 L596.8 133.0Z",
+  "BWA": "M464.0 258.4 L458.8 262.2 L457.3 264.8 L456.1 265.0 L455.4 267.0 L452.3 267.5 L450.4 266.4 L446.5 270.1 L444.9 270.4 L444.8 268.0 L443.0 265.2 L443.3 257.8 L445.4 257.8 L445.8 248.8 L450.8 247.8 L451.6 248.9 L453.0 247.9 L455.3 247.5 L457.2 251.4 L459.5 254.2 L460.5 254.4 L461.0 256.9 L462.7 257.3 L464.0 258.4Z",
+  "CAF": "M460.7 189.7 L456.9 189.7 L455.0 190.6 L454.2 190.0 L451.7 191.3 L450.7 191.0 L449.7 192.7 L446.4 192.0 L443.2 190.2 L441.2 192.3 L441.0 194.1 L438.0 193.5 L435.6 197.2 L435.2 195.3 L432.1 191.0 L432.1 189.2 L432.2 187.2 L433.9 184.2 L435.7 184.0 L436.1 183.4 L437.0 184.0 L439.8 183.0 L441.9 181.2 L441.6 180.3 L444.4 180.2 L446.5 179.0 L448.0 176.3 L450.5 174.8 L452.1 177.5 L451.9 180.3 L455.6 183.2 L455.7 184.0 L458.1 186.4 L458.7 187.9 L460.7 189.7Z",
+  "CAN": "M161.5 80.0 L158.5 76.6 L155.8 75.6 L156.4 73.5 L157.8 72.0 L156.2 70.9 L157.3 69.0 L156.5 67.3 L160.7 63.4 L158.9 61.9 L159.9 57.6 L158.9 55.6 L159.1 54.3 L153.6 56.4 L153.3 53.8 L150.5 53.2 L174.1 32.4 L179.3 34.1 L184.4 32.6 L186.5 32.8 L193.2 31.4 L193.3 32.2 L196.6 30.8 L197.5 31.0 L198.0 32.9 L201.7 31.4 L200.2 33.0 L203.8 32.1 L205.6 32.2 L210.1 33.9 L213.7 34.1 L214.8 35.2 L211.5 36.3 L214.0 36.7 L220.4 36.1 L220.9 37.4 L223.7 36.3 L222.9 35.4 L224.6 34.7 L228.2 34.3 L229.6 36.0 L231.6 35.9 L233.6 36.8 L238.8 36.5 L239.7 35.2 L241.5 34.8 L243.4 35.6 L241.7 37.6 L244.2 35.9 L245.4 35.9 L247.9 33.8 L246.1 31.6 L248.4 29.3 L251.7 27.8 L253.4 28.2 L254.2 29.1 L254.2 31.4 L251.9 32.4 L254.6 32.8 L252.9 35.0 L256.3 33.4 L257.2 34.7 L255.5 36.3 L256.0 37.8 L261.4 34.4 L263.2 32.0 L267.5 32.5 L269.0 33.6 L268.3 34.6 L266.3 35.8 L266.7 36.9 L265.7 38.0 L261.4 39.5 L258.9 39.8 L257.6 39.2 L252.2 43.1 L249.2 44.6 L246.7 44.7 L244.7 45.7 L243.6 47.2 L241.4 47.4 L234.2 51.8 L230.4 56.3 L232.7 56.7 L231.9 60.7 L234.7 60.2 L237.4 61.2 L239.4 63.2 L242.7 64.8 L247.5 65.2 L246.2 67.3 L245.5 69.7 L245.6 72.4 L247.3 74.7 L249.1 73.9 L251.3 71.4 L252.2 67.6 L251.5 66.3 L255.0 65.2 L259.9 62.0 L260.6 60.4 L260.4 58.4 L259.1 56.6 L262.6 54.2 L264.5 48.6 L266.0 48.1 L270.3 48.9 L272.1 48.3 L274.7 50.4 L274.7 51.3 L277.8 51.4 L275.9 56.3 L277.3 56.7 L278.0 58.0 L281.2 56.7 L285.8 53.1 L288.0 60.9 L286.7 62.4 L289.7 65.1 L293.3 66.4 L293.3 68.5 L294.7 68.8 L295.1 69.7 L294.4 72.4 L291.0 74.2 L287.6 75.0 L284.4 77.0 L272.2 77.0 L269.9 78.8 L267.1 79.9 L260.0 85.4 L261.8 85.0 L266.1 81.8 L270.9 79.7 L273.9 79.5 L275.2 80.7 L272.8 82.3 L272.6 86.8 L274.8 88.0 L278.2 87.7 L281.0 84.9 L280.6 86.7 L281.6 87.6 L278.6 89.2 L273.8 90.7 L268.8 93.5 L267.3 93.3 L267.8 91.2 L271.9 89.1 L266.4 89.5 L265.6 88.1 L266.8 84.8 L266.1 84.1 L264.7 84.5 L264.2 83.8 L259.7 88.7 L257.6 89.8 L250.9 89.9 L245.8 93.3 L242.0 93.3 L241.0 93.7 L240.9 95.2 L232.7 98.1 L231.6 97.4 L235.1 93.4 L236.0 89.0 L234.4 87.8 L234.8 87.4 L234.1 87.1 L234.0 86.1 L233.0 86.3 L233.0 85.2 L227.7 81.7 L225.6 82.4 L222.8 81.8 L221.1 82.1 L216.5 80.8 L216.4 79.1 L215.7 79.1 L215.3 80.0 L161.5 80.0ZM254.5 48.3 L256.5 47.3 L258.8 47.3 L255.7 49.0 L254.5 48.9 L254.5 48.3ZM277.1 26.1 L276.3 25.0 L277.8 24.1 L281.1 24.3 L282.9 25.4 L282.6 26.0 L277.1 26.1ZM260.4 49.1 L261.4 48.5 L262.3 49.0 L260.9 50.2 L260.2 50.0 L260.4 49.1ZM259.9 21.6 L258.4 22.4 L255.0 21.7 L259.5 20.4 L259.9 21.6ZM265.1 16.9 L261.8 16.8 L262.0 16.3 L264.9 16.3 L265.5 16.7 L265.1 16.9ZM263.7 14.6 L264.6 15.2 L263.4 15.9 L260.8 16.3 L260.2 15.9 L261.3 14.4 L263.7 14.6ZM267.0 22.8 L261.4 21.9 L262.9 19.9 L262.4 19.1 L258.6 18.3 L260.1 17.6 L266.7 18.3 L267.3 18.9 L266.2 19.6 L267.8 20.5 L277.7 20.1 L280.0 20.3 L280.9 21.0 L280.4 21.7 L276.5 22.7 L267.0 22.8ZM241.6 15.7 L243.3 16.0 L242.0 16.6 L238.6 17.1 L237.3 16.5 L241.6 15.7ZM293.8 74.4 L290.3 78.0 L291.8 77.2 L293.0 77.7 L292.0 78.6 L293.6 79.3 L294.6 78.7 L296.4 79.4 L295.3 81.2 L296.7 80.8 L296.8 83.6 L295.4 85.8 L293.3 85.4 L294.3 83.4 L293.9 83.1 L291.0 85.2 L289.8 85.1 L291.5 84.0 L289.8 83.4 L283.9 83.5 L283.8 82.7 L285.3 81.9 L284.7 81.2 L286.7 79.7 L290.0 75.9 L293.6 73.7 L294.4 73.8 L293.8 74.4ZM258.6 42.3 L261.4 43.8 L260.9 44.8 L262.2 44.7 L263.0 45.4 L261.0 46.1 L258.7 45.6 L258.4 44.6 L252.7 46.9 L253.0 45.6 L250.6 45.8 L252.8 44.7 L256.2 40.9 L257.3 41.1 L256.9 42.1 L258.0 41.7 L258.6 42.3ZM278.0 27.0 L280.0 26.2 L284.1 28.2 L283.7 29.0 L286.9 28.6 L287.6 29.9 L290.9 30.7 L291.7 31.5 L292.1 33.5 L288.5 34.5 L293.9 36.4 L295.2 38.4 L297.7 38.5 L296.4 40.0 L292.1 42.5 L290.5 41.6 L289.1 39.5 L286.7 39.8 L285.8 41.1 L289.0 43.9 L289.0 46.2 L287.6 47.8 L282.4 45.4 L284.9 48.7 L284.8 49.5 L277.5 47.3 L276.0 46.2 L277.0 45.5 L273.2 43.3 L272.9 43.9 L267.8 44.3 L266.8 43.5 L268.9 41.9 L275.8 41.6 L275.7 40.8 L276.9 39.7 L280.4 37.6 L280.3 35.9 L275.7 34.1 L277.1 33.6 L276.3 32.2 L274.2 31.4 L269.8 32.3 L264.3 31.8 L259.1 30.9 L258.4 30.2 L260.9 29.3 L258.7 29.3 L260.0 27.2 L265.1 24.6 L269.5 24.0 L267.3 25.3 L267.4 26.6 L270.2 25.0 L274.8 24.1 L275.7 26.2 L274.4 27.6 L278.0 27.0ZM257.0 23.3 L262.5 23.9 L253.3 27.6 L251.6 27.6 L253.3 24.8 L257.0 23.3ZM219.4 19.5 L228.7 16.9 L233.3 16.7 L228.9 18.7 L220.8 19.9 L219.4 19.5ZM151.9 67.9 L153.8 67.7 L151.1 70.4 L151.2 72.3 L150.4 72.3 L150.0 69.4 L151.3 67.5 L151.9 67.9ZM252.7 13.6 L258.0 14.5 L258.0 15.4 L257.6 16.2 L250.9 15.3 L252.9 14.8 L251.8 14.3 L252.7 13.6ZM159.5 81.2 L158.3 81.6 L155.8 80.5 L154.7 78.0 L153.0 77.6 L153.3 76.3 L153.9 75.7 L158.0 76.9 L158.2 78.9 L159.5 79.9 L159.5 81.2ZM216.8 22.7 L222.2 23.2 L223.6 24.7 L215.7 26.6 L211.0 28.9 L205.7 29.9 L205.9 29.0 L203.7 28.0 L211.3 24.3 L211.3 23.0 L216.8 22.7ZM240.8 20.0 L244.0 19.8 L241.0 21.6 L230.8 22.8 L228.4 22.8 L229.0 22.2 L233.2 21.3 L224.5 21.2 L231.3 18.8 L234.5 19.5 L235.6 20.6 L238.0 20.7 L238.3 18.9 L240.6 18.3 L241.8 18.5 L240.8 20.0ZM236.5 25.5 L237.4 26.3 L235.3 29.7 L238.8 31.7 L237.8 32.6 L235.0 32.8 L235.3 33.7 L234.1 34.4 L229.2 33.5 L216.0 34.9 L216.1 33.9 L214.5 33.3 L212.8 33.5 L212.5 31.8 L221.3 31.0 L213.0 30.7 L213.0 29.9 L217.6 29.1 L213.1 28.6 L218.2 26.2 L223.8 25.0 L224.9 25.4 L223.0 26.4 L227.1 25.7 L228.2 26.8 L231.0 25.7 L231.7 26.4 L230.8 28.4 L232.5 27.6 L233.7 25.5 L236.5 25.5ZM245.1 26.2 L244.7 24.9 L247.5 23.9 L251.9 24.1 L251.7 24.7 L249.3 25.7 L250.8 26.5 L248.8 28.4 L244.1 29.0 L241.5 26.6 L242.2 26.0 L245.1 26.2ZM237.5 24.4 L240.3 24.8 L237.6 26.1 L236.7 24.7 L237.5 24.4ZM256.6 18.4 L256.6 19.3 L253.2 21.6 L250.5 21.8 L249.2 21.5 L250.6 20.4 L248.0 20.5 L249.7 19.1 L256.6 18.4ZM268.7 11.4 L271.7 10.5 L274.9 10.4 L275.6 11.2 L279.4 11.8 L279.2 12.9 L280.2 13.5 L273.6 15.5 L268.2 15.4 L267.6 14.6 L270.1 13.4 L267.5 13.5 L266.7 12.8 L266.8 12.1 L268.7 11.4ZM277.3 9.5 L286.9 8.3 L289.4 8.8 L291.3 8.0 L295.9 7.6 L304.6 7.5 L318.2 8.4 L308.8 10.1 L311.7 10.1 L301.4 12.7 L292.6 13.6 L294.3 13.8 L293.0 14.1 L293.3 15.0 L284.7 17.5 L284.5 17.9 L287.1 17.8 L286.7 18.3 L281.7 19.4 L269.2 18.8 L270.0 18.0 L273.1 17.5 L273.9 16.2 L277.9 16.9 L277.2 15.7 L275.3 15.3 L281.2 13.5 L280.0 12.8 L280.5 11.9 L285.0 12.1 L287.8 11.6 L280.0 11.5 L278.3 11.0 L276.9 10.0 L277.3 9.5ZM276.4 37.3 L273.0 38.0 L273.3 37.0 L274.7 35.7 L276.4 35.4 L277.3 36.0 L276.4 37.3ZM245.4 32.9 L245.7 33.7 L244.1 34.4 L242.4 33.8 L240.9 34.0 L239.5 33.0 L243.4 31.5 L245.4 32.9ZM275.5 77.9 L278.5 78.3 L280.1 79.8 L276.9 79.1 L275.5 77.9ZM274.2 84.9 L274.4 86.0 L277.6 86.3 L275.5 87.5 L273.4 86.4 L273.2 85.6 L274.2 84.9Z",
+  "CHE": "M418.8 83.7 L418.6 84.7 L420.5 85.2 L420.4 86.2 L419.6 86.6 L418.1 86.3 L417.7 87.3 L416.4 87.0 L414.4 87.9 L412.8 86.3 L411.9 86.7 L411.9 85.6 L413.3 84.2 L413.2 83.6 L416.3 83.4 L416.7 82.9 L418.8 83.7Z",
+  "CHL": "M270.3 334.5 L272.5 339.9 L275.7 340.0 L275.5 340.9 L274.2 341.6 L268.3 340.3 L262.9 337.7 L259.1 335.0 L267.1 338.0 L267.5 335.2 L268.8 334.2 L270.3 334.5ZM247.5 247.1 L249.2 250.6 L250.5 251.7 L250.0 254.1 L252.8 260.4 L254.3 260.1 L254.6 260.7 L254.2 263.3 L251.9 264.6 L252.3 269.6 L253.1 270.5 L250.8 274.5 L250.4 276.8 L251.0 279.2 L250.3 281.8 L252.8 286.6 L253.3 288.9 L252.7 291.3 L253.3 293.4 L252.1 295.1 L254.0 299.8 L253.0 300.7 L253.4 305.5 L254.7 308.6 L254.1 309.1 L255.5 311.9 L256.7 312.9 L256.4 313.9 L258.0 315.4 L257.3 315.8 L258.0 317.3 L258.2 322.6 L258.9 323.9 L258.9 325.4 L257.8 326.5 L259.0 329.1 L260.0 330.0 L261.3 329.8 L263.4 333.0 L270.1 333.7 L268.4 333.7 L266.4 335.1 L267.0 337.4 L263.8 336.7 L257.9 333.6 L256.6 332.1 L256.5 330.7 L254.8 329.1 L252.9 324.9 L252.8 322.6 L254.2 320.7 L250.9 319.9 L252.0 317.8 L251.2 313.7 L253.7 314.5 L253.0 309.4 L251.5 308.7 L251.9 311.8 L250.5 311.5 L249.1 303.3 L249.5 301.6 L247.3 296.3 L248.2 296.2 L248.9 284.4 L247.6 280.7 L247.8 278.6 L247.0 275.5 L247.8 272.4 L247.4 256.7 L246.0 249.0 L247.1 248.4 L247.5 247.1Z",
+  "CHN": "M639.6 157.1 L637.7 156.3 L637.3 154.2 L638.2 153.0 L641.8 152.4 L642.4 153.3 L641.3 155.9 L639.6 157.1ZM562.2 96.4 L561.6 95.0 L562.7 94.4 L559.3 90.1 L563.7 88.5 L563.2 84.1 L567.5 84.9 L568.1 83.8 L567.1 81.4 L568.6 81.1 L569.4 79.5 L570.0 79.3 L571.3 81.0 L576.7 83.2 L579.0 85.2 L579.6 88.1 L580.8 89.2 L586.2 89.9 L590.6 91.7 L594.4 95.5 L603.5 95.7 L609.4 97.5 L611.8 97.5 L613.1 98.3 L614.8 97.0 L620.6 96.0 L622.5 95.1 L624.3 93.0 L622.4 91.2 L622.7 89.6 L626.2 90.3 L627.5 89.0 L629.9 88.1 L630.4 86.4 L631.4 85.7 L635.8 85.7 L635.4 84.8 L630.6 82.3 L629.6 83.2 L626.5 83.2 L625.4 82.2 L625.2 77.9 L628.1 78.8 L629.8 77.2 L629.0 76.2 L628.9 73.6 L629.4 72.9 L628.4 71.5 L626.9 71.0 L627.6 69.8 L632.1 69.3 L635.4 70.0 L637.8 70.9 L646.6 78.2 L650.5 79.0 L653.9 80.7 L656.3 83.0 L659.2 83.0 L660.3 82.0 L663.0 81.3 L664.8 89.5 L662.1 89.1 L661.0 89.9 L664.2 95.0 L663.3 95.1 L664.0 96.3 L661.8 94.9 L661.9 96.3 L659.4 97.3 L660.4 98.6 L657.2 97.8 L656.8 99.5 L654.6 102.5 L652.1 103.2 L651.1 104.4 L649.2 105.1 L649.7 103.9 L648.9 102.9 L649.6 101.2 L647.8 99.9 L645.1 102.5 L644.6 104.2 L642.6 104.3 L642.1 105.5 L643.9 107.2 L645.8 107.6 L646.4 108.7 L648.3 109.4 L649.9 107.6 L653.5 108.7 L654.4 110.0 L651.8 110.7 L651.5 112.0 L650.0 113.3 L649.7 115.1 L652.5 116.4 L658.5 123.1 L659.1 125.0 L658.1 125.7 L660.6 127.8 L660.8 131.9 L659.7 132.1 L656.8 141.1 L651.6 145.6 L649.2 145.9 L648.1 147.0 L647.2 146.2 L646.2 147.4 L641.2 149.0 L640.9 151.7 L639.7 151.9 L638.8 150.0 L639.2 149.1 L632.8 148.0 L631.6 147.0 L631.7 145.5 L628.5 144.1 L626.8 145.5 L623.0 145.7 L620.9 146.7 L621.7 149.6 L620.5 149.5 L620.0 147.9 L618.5 148.6 L615.8 147.2 L616.0 145.1 L614.6 144.7 L613.7 142.3 L611.5 142.8 L611.3 139.8 L612.8 137.7 L611.9 133.7 L609.8 131.6 L606.2 131.4 L606.7 130.3 L605.4 128.8 L604.1 129.8 L602.1 129.2 L598.5 132.7 L596.8 133.0 L592.9 131.7 L590.9 134.2 L590.3 132.2 L589.1 132.7 L584.0 131.9 L580.3 130.3 L579.3 129.1 L575.6 127.1 L573.7 126.3 L572.9 126.9 L567.1 123.6 L565.8 120.8 L567.4 121.2 L567.2 119.9 L566.0 118.6 L565.7 116.5 L562.7 113.6 L559.0 112.6 L557.8 110.6 L555.4 108.8 L554.5 106.4 L552.4 106.0 L551.3 103.7 L551.7 103.1 L551.3 102.6 L552.8 101.4 L554.1 100.9 L556.4 101.2 L556.6 99.6 L559.1 99.3 L559.5 98.4 L562.2 97.0 L562.2 96.4Z",
+  "CIV": "M382.2 177.2 L384.8 177.4 L386.3 176.4 L386.6 177.5 L388.1 176.8 L390.4 178.7 L392.2 178.0 L393.7 178.6 L394.3 182.2 L392.8 187.2 L393.7 190.3 L389.7 189.9 L382.9 191.9 L383.2 188.5 L380.9 186.6 L381.6 182.0 L382.7 181.3 L381.6 178.2 L382.2 177.2Z",
+  "CMR": "M432.0 170.5 L432.9 172.1 L433.0 175.5 L434.2 177.8 L431.3 177.7 L430.9 178.9 L433.2 180.7 L434.2 183.5 L432.2 187.2 L432.1 191.0 L435.2 195.3 L435.4 198.5 L431.8 197.3 L421.4 197.1 L421.7 195.1 L418.8 191.6 L419.4 189.1 L420.5 186.7 L422.4 185.2 L424.5 186.2 L426.0 185.3 L430.0 175.7 L431.8 173.8 L432.2 172.5 L431.3 171.5 L431.3 170.7 L432.0 170.5Z",
+  "COD": "M465.1 214.2 L465.7 219.3 L466.9 220.7 L468.1 223.9 L464.2 224.0 L463.0 225.9 L463.4 227.0 L462.6 232.5 L464.7 234.0 L465.4 233.5 L465.5 236.2 L463.8 236.2 L462.1 233.7 L460.4 233.4 L460.0 232.1 L458.6 232.9 L456.9 232.5 L456.1 231.4 L453.7 231.2 L453.6 230.4 L448.9 230.8 L449.1 227.8 L448.4 226.8 L448.1 221.2 L445.5 221.2 L445.7 220.3 L444.5 220.3 L443.0 220.9 L442.1 223.0 L440.9 222.6 L438.7 223.2 L436.2 217.7 L429.7 217.6 L427.3 218.2 L427.0 217.4 L428.0 215.4 L429.4 215.2 L430.2 214.2 L431.4 214.2 L432.4 215.4 L435.5 211.8 L435.5 209.7 L436.4 207.3 L439.2 203.9 L441.2 192.3 L443.2 190.2 L446.4 192.0 L449.7 192.7 L450.7 191.0 L451.7 191.3 L454.2 190.0 L455.8 190.5 L456.9 189.7 L460.7 189.7 L462.1 191.8 L463.1 192.1 L466.0 191.3 L468.5 194.0 L468.3 197.0 L469.2 197.3 L466.4 201.4 L465.7 206.2 L464.4 210.0 L465.1 214.2Z",
+  "COG": "M441.0 194.1 L439.8 198.5 L439.2 203.9 L436.4 207.3 L435.5 209.7 L435.5 211.8 L432.4 215.4 L431.4 214.2 L430.2 214.2 L429.4 215.2 L428.0 214.0 L426.4 215.5 L424.6 212.9 L426.3 211.5 L425.5 209.8 L427.7 208.9 L427.9 207.8 L429.1 209.0 L431.1 209.1 L432.0 206.2 L431.8 204.3 L430.8 202.8 L431.7 199.9 L431.2 199.4 L429.5 199.6 L429.0 197.2 L431.8 197.3 L435.4 198.5 L436.7 194.8 L438.0 193.5 L441.0 194.1Z",
+  "COL": "M251.4 199.7 L251.0 200.0 L250.0 197.8 L249.3 198.6 L244.9 198.6 L244.9 200.1 L246.2 200.4 L246.1 201.4 L244.4 201.5 L244.4 203.3 L245.4 204.3 L245.8 205.7 L244.9 213.7 L243.1 212.3 L244.5 209.7 L242.7 208.6 L237.7 208.7 L236.4 206.0 L233.1 203.0 L232.5 203.3 L230.5 201.8 L228.0 201.9 L227.4 200.8 L224.8 199.4 L224.5 198.6 L225.4 198.4 L225.8 196.3 L226.9 196.1 L228.8 193.2 L228.0 192.6 L228.4 191.1 L228.0 188.8 L228.5 188.2 L227.4 184.7 L227.8 183.5 L228.5 183.7 L228.9 182.9 L228.5 181.4 L229.9 181.1 L232.5 179.1 L233.1 176.2 L234.5 175.0 L237.8 174.6 L241.7 171.6 L243.0 172.4 L242.5 173.3 L241.1 173.7 L238.8 176.6 L237.8 179.9 L238.9 180.0 L239.6 181.7 L239.5 184.2 L240.5 185.3 L244.7 185.4 L246.1 187.5 L249.9 187.1 L250.7 187.5 L249.5 191.5 L250.6 194.5 L249.4 195.8 L250.8 197.2 L251.4 199.7Z",
+  "CRI": "M217.4 178.8 L216.5 179.0 L216.9 180.4 L216.3 182.2 L215.1 181.6 L214.9 180.1 L212.7 178.7 L212.1 177.5 L211.7 178.8 L210.5 177.9 L210.7 175.8 L210.1 175.5 L211.0 174.7 L214.6 175.9 L215.1 175.4 L217.4 178.8Z",
+  "CUB": "M221.5 144.5 L225.1 144.7 L227.7 146.5 L229.8 146.2 L233.4 149.5 L235.3 150.0 L235.1 150.7 L236.7 150.8 L238.2 151.8 L236.4 152.8 L230.2 152.9 L231.9 151.5 L229.7 150.7 L228.7 148.5 L222.1 147.0 L221.5 146.6 L222.4 145.9 L220.2 145.8 L217.2 147.8 L215.2 147.8 L218.1 145.5 L221.5 144.5Z",
+  "CYP": "M468.5 114.5 L471.2 114.9 L469.2 115.9 L468.1 115.6 L467.5 114.6 L468.5 114.5Z",
+  "CZE": "M428.7 74.9 L431.2 75.9 L431.1 76.6 L432.2 77.1 L432.4 76.4 L433.8 76.7 L434.0 77.5 L435.5 77.6 L436.5 78.8 L433.0 81.0 L429.6 79.9 L427.9 81.1 L424.2 78.7 L423.6 76.9 L427.4 74.9 L428.7 74.9Z",
+  "DEU": "M426.5 68.5 L427.0 69.8 L426.5 70.4 L428.7 74.9 L427.4 74.9 L423.6 76.9 L424.2 78.7 L426.4 80.3 L425.1 81.8 L425.4 83.8 L423.8 83.2 L420.7 83.6 L420.4 84.2 L416.7 82.9 L416.3 83.4 L414.6 83.4 L415.7 80.0 L412.9 79.5 L412.0 78.9 L411.6 77.3 L411.4 73.1 L412.5 73.1 L413.0 72.2 L413.3 68.7 L414.9 68.6 L415.2 69.1 L416.5 67.9 L415.8 65.6 L418.4 65.6 L418.5 66.5 L420.4 67.1 L420.5 67.9 L423.3 66.8 L426.5 68.5Z",
+  "DJI": "M493.4 171.3 L494.4 171.5 L495.0 170.9 L495.6 171.7 L495.5 172.8 L494.3 173.4 L495.3 174.0 L494.5 175.4 L492.3 175.1 L492.0 173.6 L493.4 171.3Z",
+  "DNK": "M418.4 65.6 L415.8 65.6 L415.0 64.3 L414.8 61.9 L415.6 60.6 L417.2 60.5 L419.2 59.2 L418.7 61.1 L420.0 62.1 L417.8 64.4 L418.4 65.6ZM422.7 62.9 L423.4 64.1 L422.5 66.0 L420.4 64.7 L420.1 63.7 L422.7 62.9Z",
+  "DOM": "M243.0 157.5 L242.6 156.0 L243.2 155.6 L243.7 152.9 L247.2 153.4 L247.5 154.3 L248.7 154.3 L248.6 155.0 L250.6 156.1 L249.6 157.1 L246.9 156.5 L245.6 157.1 L245.4 156.5 L243.6 158.6 L243.0 157.5Z",
+  "DZA": "M381.3 134.0 L381.4 130.3 L384.9 128.5 L388.8 127.4 L389.7 126.1 L392.2 125.1 L392.3 123.3 L394.5 122.1 L397.2 121.7 L397.6 120.7 L395.5 114.4 L397.5 113.0 L399.7 112.6 L403.1 110.8 L410.0 110.2 L411.1 110.5 L413.0 109.5 L417.5 109.9 L417.1 115.7 L415.8 117.1 L416.0 119.0 L419.2 122.1 L421.0 128.9 L420.9 136.2 L420.1 137.2 L422.3 141.5 L423.3 141.1 L425.0 142.3 L426.0 143.8 L412.4 153.6 L406.9 154.9 L406.9 153.3 L404.5 152.2 L404.0 151.0 L381.3 134.0Z",
+  "ECU": "M232.5 203.3 L232.9 205.2 L232.2 206.8 L229.8 209.4 L227.2 210.4 L225.5 214.3 L224.2 215.4 L223.3 214.1 L221.5 214.0 L221.7 211.4 L222.9 209.6 L222.4 208.5 L221.5 209.6 L220.2 208.5 L220.6 207.8 L220.2 205.5 L221.0 205.2 L222.1 200.9 L224.8 199.4 L227.4 200.8 L228.0 201.9 L230.5 201.8 L232.5 203.3Z",
+  "EGY": "M480.2 147.5 L454.4 147.5 L453.4 129.3 L452.7 127.3 L453.1 125.7 L452.7 124.7 L453.4 123.5 L456.2 123.4 L461.5 125.2 L463.9 123.7 L465.7 123.5 L467.3 123.8 L468.0 125.1 L468.4 124.2 L471.8 125.0 L472.8 124.3 L474.6 128.7 L473.3 132.9 L472.8 133.3 L471.0 131.4 L469.0 128.0 L473.5 137.1 L477.3 142.7 L477.1 144.8 L480.2 147.5Z",
+  "ERI": "M480.2 166.6 L480.8 160.2 L483.1 159.0 L484.1 157.6 L486.3 162.8 L495.0 170.9 L494.4 171.5 L493.4 171.3 L490.1 167.4 L488.1 166.3 L486.0 165.8 L484.8 166.4 L483.4 165.2 L482.8 167.1 L480.2 166.6Z",
+  "ESH": "M381.4 133.3 L381.3 137.8 L374.2 137.6 L374.1 144.1 L372.1 144.3 L371.5 145.6 L371.9 149.2 L363.3 149.2 L362.8 150.0 L362.9 149.0 L367.9 148.8 L369.1 146.8 L369.9 143.3 L373.0 140.6 L375.5 135.2 L379.1 135.3 L381.1 134.6 L381.4 133.3Z",
+  "ESP": "M384.5 109.6 L384.4 108.7 L385.5 107.1 L384.8 106.4 L385.4 104.7 L384.6 103.2 L385.5 103.0 L386.1 99.5 L387.0 98.9 L386.5 97.6 L383.8 97.8 L383.3 96.6 L381.7 97.6 L381.9 95.8 L381.1 94.8 L384.0 93.0 L396.2 93.8 L397.0 94.7 L400.7 95.9 L401.4 95.3 L403.7 96.5 L406.0 96.1 L406.2 97.6 L404.3 99.2 L401.7 99.8 L399.4 104.0 L400.2 105.5 L399.0 106.6 L398.6 108.2 L397.0 108.7 L395.5 110.6 L390.9 110.6 L388.8 112.5 L387.8 112.2 L386.5 110.0 L384.5 109.6Z",
+  "EST": "M449.9 55.1 L450.2 55.5 L449.2 56.8 L450.2 59.0 L449.5 59.8 L448.0 59.8 L445.5 58.6 L444.0 59.0 L444.0 57.6 L443.4 57.9 L442.1 57.1 L441.7 55.7 L446.1 54.8 L449.9 55.1Z",
+  "ETH": "M505.8 182.7 L499.8 190.3 L496.9 190.4 L494.9 192.2 L493.5 192.2 L492.9 193.0 L491.4 193.0 L490.5 192.2 L488.5 193.2 L487.8 194.3 L484.6 193.8 L481.8 191.7 L480.3 191.7 L479.5 190.9 L479.5 189.4 L478.3 189.0 L476.9 186.3 L474.4 183.5 L473.0 183.3 L473.7 181.9 L474.9 181.8 L475.7 176.1 L476.7 175.4 L477.8 172.5 L479.1 171.2 L480.2 166.6 L482.8 167.1 L483.4 165.2 L484.8 166.4 L486.0 165.8 L488.1 166.3 L491.7 169.0 L493.4 171.3 L492.0 173.6 L492.3 175.1 L494.5 175.4 L494.1 176.3 L496.7 179.8 L504.0 182.8 L505.8 182.7Z",
+  "FIN": "M446.1 33.8 L446.3 35.3 L449.1 36.7 L448.0 38.3 L450.6 40.8 L449.9 42.7 L451.8 44.3 L451.5 45.8 L454.4 47.4 L454.0 48.5 L449.6 52.7 L440.6 54.2 L437.6 52.2 L437.6 50.0 L436.4 48.0 L438.3 45.2 L442.8 42.3 L442.5 41.4 L439.2 39.5 L438.5 36.2 L433.3 33.7 L434.2 33.1 L436.2 34.3 L440.1 34.7 L441.4 33.7 L441.9 32.1 L444.2 31.4 L446.5 32.3 L446.1 33.8Z",
+  "FJI": "M795.3 243.3 L795.0 244.5 L791.9 245.7 L791.9 244.7 L795.3 243.3ZM790.3 246.9 L791.0 246.5 L791.6 247.2 L790.9 248.5 L788.3 248.6 L788.4 247.5 L789.4 246.6 L790.3 246.9Z",
+  "FLK": "M283.6 332.6 L285.4 331.2 L287.2 331.8 L288.0 330.8 L289.9 331.9 L289.7 332.7 L287.3 333.5 L286.2 332.6 L285.0 333.7 L283.6 332.6Z",
+  "FRA": "M285.3 192.4 L282.4 197.5 L278.9 197.1 L280.1 193.8 L279.1 190.6 L280.3 188.4 L282.7 189.3 L285.3 192.4ZM412.0 78.9 L415.7 80.0 L414.6 83.4 L413.2 83.6 L413.3 84.2 L411.9 85.6 L411.9 86.7 L412.8 86.3 L413.5 87.4 L414.1 89.0 L413.4 89.8 L414.0 91.7 L415.1 92.0 L414.9 93.1 L413.1 94.5 L409.2 93.8 L406.2 94.6 L406.0 96.1 L403.7 96.5 L401.4 95.3 L400.7 95.9 L397.0 94.7 L396.2 93.8 L397.2 92.3 L397.6 87.4 L394.2 83.5 L391.2 82.6 L391.1 80.8 L393.6 80.3 L396.9 80.9 L396.3 78.1 L398.1 79.2 L402.6 77.3 L403.1 75.3 L404.8 74.8 L405.1 75.7 L406.0 75.7 L408.3 77.8 L409.3 77.6 L412.0 78.9ZM417.7 95.8 L418.9 94.8 L419.3 96.9 L418.8 98.9 L417.8 98.4 L417.3 96.7 L417.7 95.8Z",
+  "GAB": "M425.0 197.2 L428.8 197.0 L429.5 199.6 L431.2 199.4 L431.7 199.9 L430.8 202.8 L431.8 204.3 L432.0 206.2 L431.1 209.1 L429.1 209.0 L427.9 207.8 L427.7 208.9 L425.5 209.8 L426.3 211.5 L424.6 212.9 L419.5 205.7 L421.1 200.3 L425.1 200.2 L425.0 197.2Z",
+  "GBR": "M388.4 68.3 L385.8 67.8 L386.0 65.2 L387.5 65.1 L389.5 66.6 L388.4 68.3ZM394.2 69.4 L394.5 68.0 L393.2 66.5 L391.0 66.1 L390.6 65.4 L391.3 64.4 L390.7 63.7 L389.7 64.8 L389.6 62.6 L388.8 61.4 L389.5 58.9 L391.0 57.1 L394.6 57.0 L392.6 59.6 L396.4 59.3 L395.9 61.2 L394.3 63.3 L396.2 63.4 L397.9 66.5 L399.2 66.8 L400.9 70.5 L403.2 71.0 L403.0 72.5 L402.0 73.2 L402.8 74.5 L401.1 75.7 L395.2 76.4 L394.3 75.9 L393.0 77.0 L391.3 76.8 L389.9 77.7 L388.9 77.2 L391.8 74.7 L393.5 74.1 L390.5 73.7 L390.0 72.8 L392.0 72.0 L391.0 70.7 L391.4 69.2 L394.2 69.4Z",
+  "GEO": "M480.3 93.7 L485.3 94.3 L488.7 95.9 L489.8 95.5 L491.8 96.1 L494.1 97.7 L493.6 98.0 L494.9 99.4 L491.9 98.8 L488.7 99.6 L486.5 98.4 L484.4 98.5 L483.7 95.7 L480.3 93.7Z",
+  "GHA": "M400.1 175.2 L401.6 182.0 L401.3 185.5 L402.4 188.0 L395.6 191.0 L393.7 190.3 L392.8 187.2 L394.3 182.2 L393.5 175.3 L400.1 175.2Z",
+  "GIN": "M369.8 171.2 L372.4 171.9 L374.6 171.6 L374.7 172.5 L375.6 172.2 L377.6 173.1 L379.9 171.9 L381.5 174.2 L380.9 175.7 L381.7 175.7 L382.2 177.2 L381.6 178.2 L382.7 181.3 L381.6 182.0 L381.7 183.5 L380.7 183.5 L380.2 184.5 L379.6 184.5 L378.4 181.4 L376.7 181.9 L376.5 179.6 L375.4 177.6 L372.5 178.1 L370.7 180.5 L366.6 175.1 L367.6 173.9 L369.7 173.2 L369.8 171.2Z",
+  "GMB": "M363.2 168.7 L366.8 168.0 L367.6 168.6 L369.1 168.2 L369.5 168.9 L368.5 169.5 L366.6 168.9 L364.9 169.8 L362.9 169.8 L363.2 168.7Z",
+  "GNB": "M363.2 171.7 L365.7 171.1 L369.8 171.2 L369.7 173.2 L367.6 173.9 L366.6 175.1 L364.5 173.9 L363.2 171.7Z",
+  "GNQ": "M421.4 197.1 L425.0 197.2 L425.1 200.2 L421.1 200.3 L420.7 200.0 L421.4 197.1Z",
+  "GRC": "M455.0 114.1 L454.8 114.8 L451.8 115.0 L449.2 114.1 L449.5 113.1 L450.7 113.9 L455.0 114.1ZM446.7 99.0 L449.7 98.4 L451.3 99.2 L453.1 99.0 L452.9 97.7 L454.0 98.4 L453.1 100.2 L450.8 99.9 L448.4 100.6 L450.0 102.0 L447.8 102.4 L446.6 101.1 L446.3 101.7 L448.0 104.3 L447.3 104.9 L449.6 106.8 L449.8 108.2 L447.8 107.5 L448.5 108.8 L447.2 109.0 L448.2 111.3 L446.8 111.3 L445.0 110.2 L443.6 106.5 L441.3 103.2 L442.8 100.2 L446.7 99.0Z",
+  "GRL": "M338.1 8.4 L349.7 7.0 L364.7 7.1 L372.5 8.2 L358.0 9.3 L366.7 9.6 L369.4 9.2 L370.4 9.7 L368.6 10.6 L378.9 9.4 L382.8 9.7 L383.5 10.4 L376.9 11.8 L372.4 12.0 L375.6 12.1 L372.2 14.6 L371.8 16.7 L373.2 17.9 L368.4 18.6 L370.8 19.5 L370.8 21.1 L369.2 21.3 L370.7 23.0 L367.4 23.2 L368.9 24.0 L368.3 24.7 L363.9 25.0 L365.6 26.4 L365.4 27.3 L362.5 26.5 L361.6 27.0 L365.3 28.8 L365.6 30.4 L362.6 30.8 L359.9 28.8 L360.1 30.2 L358.0 31.3 L364.4 31.5 L354.9 35.1 L348.2 35.8 L343.3 38.9 L339.3 40.4 L333.1 41.6 L331.2 42.9 L329.4 46.0 L326.0 47.8 L326.1 49.5 L323.1 53.6 L320.5 53.8 L318.6 51.9 L315.1 51.9 L313.8 50.7 L313.5 48.5 L311.6 45.6 L311.3 44.2 L311.9 42.2 L310.5 40.2 L311.8 38.6 L311.0 37.8 L313.8 35.3 L316.6 34.5 L318.7 31.9 L313.9 33.3 L312.3 32.6 L312.9 31.2 L314.1 30.1 L318.5 30.6 L315.4 28.6 L313.7 28.9 L312.7 28.4 L315.5 26.5 L313.9 22.2 L312.5 21.4 L313.1 20.6 L309.9 19.5 L299.2 19.6 L296.5 17.9 L303.8 17.2 L295.5 15.9 L296.3 15.2 L308.4 13.4 L309.4 12.7 L306.3 12.1 L315.9 10.3 L315.9 9.7 L323.8 9.0 L329.0 9.5 L333.1 8.7 L340.1 9.8 L337.5 9.0 L338.1 8.4Z",
+  "GTM": "M197.0 166.3 L197.2 164.5 L198.5 162.5 L201.3 162.4 L201.5 161.6 L199.5 159.5 L200.5 159.5 L200.7 158.1 L204.8 158.1 L204.0 162.9 L206.1 163.3 L203.9 165.0 L203.3 166.6 L201.5 168.3 L199.1 167.8 L197.0 166.3Z",
+  "GUY": "M274.4 198.1 L272.7 198.0 L270.0 199.7 L268.9 199.6 L267.5 198.4 L266.8 195.9 L267.8 192.9 L266.6 191.4 L266.9 190.3 L266.4 189.7 L265.2 189.8 L263.8 187.9 L264.4 186.0 L266.4 185.2 L265.6 184.2 L265.9 183.3 L267.7 181.8 L270.4 184.4 L270.4 185.7 L271.3 185.7 L273.3 187.8 L272.8 190.1 L271.5 190.8 L271.2 192.7 L272.1 194.5 L272.8 194.5 L274.4 198.1Z",
+  "HND": "M217.1 165.2 L214.1 166.1 L213.1 165.7 L211.0 168.1 L210.4 167.6 L208.9 168.3 L208.8 169.5 L207.5 170.2 L206.5 169.2 L206.5 167.9 L205.0 168.0 L203.3 166.6 L203.9 165.0 L206.9 163.0 L213.3 162.6 L217.1 165.2Z",
+  "HRV": "M432.7 86.2 L434.9 87.5 L437.3 87.6 L438.6 89.3 L437.9 90.2 L433.8 89.3 L432.5 89.8 L431.7 89.3 L431.4 90.3 L435.6 94.8 L437.5 95.7 L437.3 96.1 L432.2 93.6 L430.4 91.7 L430.7 91.5 L429.7 89.7 L428.4 89.3 L427.8 90.3 L427.2 89.5 L427.2 88.6 L430.4 88.7 L431.2 86.8 L432.7 86.2Z",
+  "HTI": "M243.4 153.3 L243.2 155.6 L242.6 156.0 L243.0 157.5 L239.2 157.0 L238.1 157.5 L237.1 156.7 L237.3 155.9 L240.9 156.5 L241.8 155.9 L240.9 154.8 L241.0 153.9 L239.7 153.5 L240.2 152.8 L243.4 153.3Z",
+  "HUN": "M443.0 81.5 L444.4 82.8 L443.3 83.3 L441.5 86.6 L436.6 88.0 L434.9 87.5 L431.9 85.3 L432.4 83.7 L432.0 83.2 L433.1 83.2 L433.1 82.2 L434.9 83.1 L440.5 81.0 L443.0 81.5Z",
+  "IDN": "M713.1 209.4 L712.1 225.8 L710.3 223.7 L708.1 223.2 L707.5 224.0 L704.7 224.0 L705.8 222.0 L707.3 221.3 L706.0 216.4 L701.8 214.3 L700.0 214.1 L696.7 211.8 L696.0 213.0 L695.2 213.2 L694.7 211.2 L693.1 210.0 L697.1 209.1 L696.9 208.4 L693.7 208.4 L692.8 206.9 L690.9 206.5 L690.0 205.2 L694.1 203.8 L697.7 204.8 L698.5 209.8 L700.7 211.3 L702.7 208.7 L705.3 207.2 L707.3 207.2 L710.7 208.9 L713.1 209.4ZM676.6 225.2 L676.8 226.5 L675.2 228.4 L673.3 228.9 L674.4 226.2 L676.6 225.2ZM697.5 220.2 L697.4 218.3 L698.4 216.6 L698.7 218.5 L697.5 220.2ZM661.7 192.5 L660.5 194.7 L662.2 197.1 L661.8 198.3 L664.4 200.6 L661.7 200.9 L661.1 202.6 L661.1 204.9 L658.9 206.6 L657.8 213.0 L657.5 212.1 L655.0 213.2 L654.1 211.7 L651.5 210.7 L648.8 211.6 L648.0 210.4 L644.7 210.3 L644.5 206.9 L643.4 206.2 L642.1 201.8 L642.3 199.5 L643.6 197.8 L644.0 199.5 L645.5 200.9 L648.4 200.6 L650.7 199.1 L652.8 199.8 L654.6 199.3 L657.2 192.0 L661.7 192.5ZM687.3 209.9 L689.7 210.7 L690.4 212.6 L688.6 211.5 L683.9 211.4 L684.5 210.0 L687.3 209.9ZM681.6 212.4 L680.1 212.0 L679.7 210.9 L682.0 210.7 L682.5 211.6 L681.6 212.4ZM684.1 197.4 L684.3 198.8 L685.6 199.0 L685.9 200.0 L685.8 202.2 L684.7 202.0 L684.4 203.5 L685.2 204.8 L684.6 205.1 L683.0 200.3 L684.1 197.4ZM673.1 200.7 L675.7 200.6 L677.8 198.7 L678.2 199.3 L676.5 201.8 L667.1 202.3 L666.7 204.2 L668.6 206.4 L669.9 205.3 L674.0 204.4 L673.8 205.6 L672.9 205.2 L671.9 206.7 L669.9 207.7 L671.9 210.9 L671.4 211.8 L673.4 214.7 L673.3 216.3 L672.0 217.0 L671.2 216.2 L672.4 214.1 L670.2 215.1 L669.6 214.4 L669.9 213.4 L668.4 211.9 L668.6 209.5 L667.1 210.3 L667.2 216.8 L665.7 217.1 L664.8 216.4 L665.6 214.1 L665.3 211.7 L664.4 211.6 L663.7 209.9 L666.7 201.5 L668.5 199.6 L673.1 200.7ZM666.0 228.7 L663.2 226.9 L665.3 226.4 L667.2 228.0 L667.0 228.6 L666.0 228.7ZM668.7 224.4 L672.2 223.2 L671.8 224.6 L668.4 225.3 L665.5 225.0 L665.5 224.1 L667.3 223.6 L668.7 224.4ZM661.9 223.9 L663.2 223.7 L663.7 224.8 L658.4 225.6 L659.2 224.2 L660.5 224.1 L661.1 223.2 L661.9 223.9ZM640.5 219.0 L640.8 219.9 L645.0 220.2 L645.6 219.1 L649.6 220.3 L650.3 222.0 L653.6 222.4 L656.2 223.9 L653.6 224.9 L651.3 223.9 L647.0 223.8 L642.4 222.3 L639.9 222.4 L635.9 221.4 L635.6 220.3 L633.5 220.1 L635.2 217.7 L637.9 217.9 L640.5 219.0ZM631.9 205.6 L632.9 208.8 L634.6 209.0 L635.6 210.6 L634.7 217.6 L632.2 217.7 L627.7 213.5 L625.2 209.9 L622.5 204.5 L620.6 202.4 L619.0 198.3 L617.0 196.7 L615.7 194.6 L611.7 190.4 L611.4 189.1 L616.3 189.7 L623.5 197.6 L625.8 197.6 L627.7 199.4 L629.0 201.5 L630.7 202.6 L629.8 204.7 L631.9 205.6Z",
+  "IND": "M608.6 131.8 L608.9 134.7 L607.2 134.3 L604.8 136.0 L605.2 137.5 L604.6 140.8 L603.9 142.9 L602.1 142.3 L602.5 146.8 L601.5 147.4 L599.8 143.4 L599.2 143.4 L599.0 145.1 L597.7 143.7 L598.1 142.3 L599.1 142.2 L599.7 140.0 L594.3 139.3 L593.7 137.6 L590.8 136.3 L590.3 138.1 L592.2 139.4 L590.6 141.2 L592.1 141.9 L591.9 143.4 L593.6 147.4 L593.4 148.3 L589.3 148.8 L589.7 150.7 L588.7 152.2 L585.8 153.9 L583.7 156.8 L580.2 160.1 L580.4 161.2 L576.5 162.9 L576.0 164.8 L577.0 170.2 L576.3 172.5 L576.6 176.8 L575.4 176.9 L574.5 178.9 L575.3 179.7 L573.3 180.4 L571.7 182.8 L569.5 180.5 L567.3 174.4 L565.1 170.8 L563.8 166.1 L561.5 162.6 L558.1 149.2 L555.1 150.7 L553.6 150.4 L550.4 147.3 L551.3 146.4 L550.6 145.4 L547.8 143.3 L549.0 141.6 L553.8 141.6 L551.1 136.2 L549.5 135.1 L551.5 132.5 L554.0 132.7 L558.2 124.9 L557.8 123.1 L559.2 121.7 L557.2 120.5 L554.9 116.5 L555.7 115.5 L559.0 116.1 L561.2 115.7 L562.7 113.6 L565.7 116.5 L566.0 118.6 L567.2 119.9 L567.4 121.2 L565.8 120.8 L567.1 123.6 L572.9 126.9 L571.8 128.1 L571.4 130.4 L579.0 134.0 L582.0 134.4 L583.5 135.6 L589.7 136.4 L589.1 132.7 L590.3 132.2 L591.0 134.7 L593.2 135.7 L598.0 135.4 L597.8 133.8 L596.8 133.0 L598.5 132.7 L602.1 129.2 L604.1 129.8 L605.4 128.8 L606.7 130.3 L606.2 131.4 L608.6 131.8Z",
+  "IRL": "M388.4 68.3 L388.6 70.0 L387.1 72.1 L383.7 73.6 L381.0 73.2 L382.7 70.7 L381.9 68.2 L386.0 65.2 L385.8 67.8 L388.4 68.3Z",
+  "IRN": "M503.6 127.6 L502.3 126.3 L502.0 124.9 L501.4 124.9 L501.4 123.1 L500.1 121.2 L497.3 119.8 L495.5 117.4 L495.7 115.5 L496.6 114.6 L496.2 113.1 L494.7 112.4 L491.4 107.4 L491.7 106.6 L490.6 103.7 L491.9 103.0 L493.6 105.1 L495.0 105.4 L498.6 103.3 L499.4 104.1 L498.9 105.3 L500.9 106.5 L501.9 108.4 L503.9 108.9 L505.6 110.1 L508.7 110.6 L511.8 109.9 L514.7 107.4 L518.5 107.2 L522.7 108.8 L525.6 111.0 L527.2 111.1 L527.9 113.2 L527.4 118.2 L528.4 118.5 L527.8 119.9 L529.3 123.5 L531.0 123.9 L531.5 125.6 L529.9 127.8 L532.2 130.7 L534.5 131.8 L534.8 134.0 L535.9 134.4 L536.3 135.6 L533.3 136.9 L532.9 139.8 L523.9 138.1 L522.5 135.0 L521.4 134.6 L517.8 136.3 L515.1 135.4 L512.7 133.5 L510.5 132.8 L506.9 127.0 L505.8 127.4 L504.3 126.6 L503.6 127.6Z",
+  "IRQ": "M483.0 122.0 L481.7 118.9 L486.1 116.3 L486.5 113.3 L486.0 111.4 L488.7 108.8 L492.0 109.8 L492.9 109.4 L494.7 112.4 L496.2 113.1 L496.6 114.6 L495.7 115.5 L495.5 117.4 L497.3 119.8 L500.1 121.2 L501.4 123.1 L501.4 124.9 L502.0 124.9 L502.3 126.3 L503.6 127.6 L500.9 127.3 L499.6 129.7 L495.6 129.5 L489.0 124.4 L483.0 122.0Z",
+  "ISL": "M375.9 39.4 L375.3 40.8 L377.1 42.3 L374.7 44.0 L368.0 45.9 L361.2 44.9 L363.0 43.9 L359.5 42.8 L362.6 42.4 L362.6 41.7 L359.2 41.2 L360.6 39.8 L363.2 39.5 L365.5 41.0 L368.3 39.8 L370.3 40.4 L373.2 39.2 L375.9 39.4Z",
+  "ISR": "M475.5 120.6 L475.2 121.4 L474.4 121.0 L474.1 122.7 L474.7 123.0 L474.1 124.0 L475.1 123.7 L475.3 124.6 L474.6 128.7 L472.8 124.3 L474.0 119.7 L475.5 119.2 L475.5 120.6Z",
+  "ITA": "M420.5 85.2 L421.8 85.6 L423.9 84.7 L424.4 85.5 L427.2 86.1 L427.7 88.4 L426.1 88.0 L424.5 88.9 L424.5 90.8 L425.2 92.1 L427.2 93.4 L428.3 95.4 L430.7 97.4 L432.3 97.4 L432.8 98.0 L432.3 98.5 L437.6 101.4 L437.5 102.8 L436.3 101.6 L434.5 101.2 L433.7 102.8 L435.3 103.7 L435.1 105.0 L434.2 105.2 L433.3 107.3 L432.4 107.5 L433.1 104.9 L431.6 102.2 L422.6 96.4 L421.2 95.0 L420.4 92.5 L417.8 91.4 L414.9 93.1 L415.1 92.0 L414.0 91.7 L413.5 87.4 L414.4 87.9 L416.4 87.0 L417.7 87.3 L418.1 86.3 L420.4 86.2 L420.5 85.2ZM430.5 106.9 L432.0 106.7 L431.4 110.8 L425.7 108.3 L426.0 107.0 L430.5 106.9ZM417.7 100.1 L418.7 99.3 L420.0 101.0 L419.9 104.4 L418.9 104.2 L418.1 105.0 L417.3 104.4 L416.6 99.9 L417.7 100.1Z",
+  "JAM": "M230.3 156.4 L231.7 156.6 L233.1 157.9 L230.9 158.3 L229.7 157.9 L228.5 157.0 L228.9 156.5 L230.3 156.4Z",
+  "JOR": "M475.2 121.4 L475.5 120.6 L477.9 121.6 L481.7 118.9 L483.0 122.0 L478.5 123.6 L480.9 126.1 L480.0 127.4 L478.4 127.7 L477.1 129.4 L474.6 128.7 L475.2 121.4Z",
+  "JPN": "M691.7 104.3 L691.1 106.9 L692.5 109.5 L692.8 111.5 L693.8 112.7 L693.6 114.5 L691.5 115.7 L687.9 115.8 L686.1 118.7 L684.3 117.7 L683.4 115.8 L680.0 116.4 L678.0 117.6 L675.5 117.6 L678.4 119.5 L678.7 123.8 L677.8 124.8 L676.3 123.8 L676.0 121.6 L674.3 120.8 L672.8 119.1 L674.5 118.3 L674.9 116.8 L676.5 115.5 L677.3 113.7 L681.1 113.0 L683.6 113.5 L683.5 109.0 L685.5 110.2 L687.9 106.8 L687.6 103.7 L685.6 100.9 L685.5 99.3 L687.3 98.9 L690.7 102.3 L691.7 104.3ZM689.7 92.4 L690.4 91.4 L692.7 94.2 L690.2 94.9 L690.0 97.3 L685.7 95.6 L686.4 98.3 L684.1 98.4 L682.3 95.9 L682.1 94.0 L684.1 93.9 L681.8 88.5 L685.9 91.1 L689.7 92.4ZM678.9 118.7 L679.4 117.2 L680.7 117.5 L681.2 116.4 L682.9 117.0 L683.6 117.8 L683.0 119.4 L681.8 118.5 L681.0 119.1 L681.0 120.6 L679.3 119.9 L678.9 118.7Z",
+  "KAZ": "M569.4 79.5 L568.6 81.1 L567.1 81.4 L568.1 83.8 L567.5 84.9 L563.2 84.1 L563.7 88.5 L559.3 90.1 L562.7 94.4 L561.6 95.0 L562.2 96.4 L559.5 95.2 L552.4 95.1 L549.2 94.1 L548.3 94.6 L548.4 96.1 L544.8 95.2 L543.6 95.6 L543.5 96.7 L540.4 98.8 L540.0 100.6 L539.3 100.6 L538.4 99.5 L535.8 99.4 L534.7 97.3 L533.7 97.3 L533.1 94.8 L530.2 93.0 L524.5 93.6 L522.0 91.3 L516.1 88.4 L511.4 89.9 L513.8 99.0 L512.8 99.2 L509.3 96.5 L507.2 97.0 L506.5 97.9 L505.9 95.3 L503.3 94.5 L500.4 90.8 L502.4 91.1 L502.0 89.2 L505.5 89.2 L504.4 85.3 L500.6 84.8 L496.9 86.4 L495.8 86.0 L495.7 84.8 L494.1 83.1 L492.6 83.2 L490.6 81.5 L491.4 76.5 L493.8 77.9 L493.5 76.1 L496.7 73.5 L499.6 73.4 L507.0 76.1 L508.6 75.1 L511.7 75.0 L514.6 76.3 L514.9 75.6 L517.6 75.7 L517.6 74.5 L513.9 72.9 L515.3 71.7 L514.7 71.0 L516.3 70.4 L514.3 68.8 L514.9 67.9 L521.6 67.1 L526.5 65.6 L527.7 64.6 L531.3 65.2 L533.0 67.6 L534.7 67.0 L537.4 67.9 L537.9 69.2 L539.6 69.0 L543.2 66.8 L542.9 67.5 L546.2 69.4 L553.3 75.5 L553.8 74.2 L557.1 75.6 L559.5 75.0 L565.3 78.3 L567.7 78.0 L569.4 79.5Z",
+  "KEN": "M487.0 214.6 L483.8 212.1 L483.7 210.7 L475.3 205.3 L475.3 202.6 L477.8 198.1 L475.5 192.2 L478.3 189.0 L479.5 189.4 L479.5 190.9 L480.3 191.7 L481.8 191.7 L484.6 193.8 L487.8 194.3 L488.5 193.2 L490.5 192.2 L491.4 193.0 L492.9 193.0 L491.0 195.9 L491.1 205.0 L492.4 207.1 L489.4 209.3 L487.9 213.8 L487.0 214.6Z",
+  "KGZ": "M543.5 96.7 L543.6 95.6 L544.8 95.2 L548.4 96.1 L548.3 94.6 L549.2 94.1 L552.4 95.1 L559.5 95.2 L562.2 96.4 L562.2 97.0 L559.5 98.4 L559.1 99.3 L556.6 99.6 L556.4 101.2 L554.1 100.9 L551.3 102.6 L551.7 103.1 L551.3 103.7 L547.5 104.1 L544.7 103.3 L542.6 103.5 L542.4 102.0 L544.7 102.5 L545.2 101.7 L546.9 101.9 L548.9 100.1 L546.1 98.8 L544.8 99.4 L543.0 98.5 L544.2 96.9 L543.5 96.7Z",
+  "KHM": "M626.4 172.2 L625.6 169.2 L626.8 167.1 L629.6 166.6 L633.6 168.0 L634.4 166.2 L636.4 167.1 L637.1 168.8 L637.2 171.8 L633.7 173.8 L634.8 175.3 L632.5 175.5 L630.7 176.5 L628.8 176.1 L626.4 172.2Z",
+  "KOR": "M661.1 107.9 L662.1 107.8 L662.3 106.7 L664.5 106.4 L664.5 105.8 L669.0 110.4 L670.5 113.2 L670.3 114.6 L667.4 116.1 L665.6 116.4 L664.3 113.1 L662.2 110.5 L663.5 110.1 L661.1 107.9Z",
+  "KOSOVO": "M441.7 97.7 L440.5 95.9 L441.9 94.2 L443.9 95.6 L443.6 96.7 L441.7 97.7Z",
+  "KWT": "M502.4 127.5 L503.7 131.0 L502.2 131.1 L501.5 129.9 L499.6 129.7 L500.9 127.3 L502.4 127.5Z",
+  "LAO": "M636.4 167.1 L634.4 166.2 L633.6 168.0 L631.7 167.0 L632.3 165.8 L632.1 163.7 L630.0 161.5 L629.5 159.0 L627.5 157.0 L625.9 156.8 L625.5 157.7 L623.5 157.3 L621.5 158.8 L621.3 153.9 L619.8 153.8 L619.4 152.3 L618.3 151.5 L620.2 148.9 L620.5 149.5 L621.7 149.6 L620.9 146.7 L622.0 146.4 L624.9 150.6 L627.6 150.7 L628.8 152.8 L627.0 154.4 L629.9 155.9 L635.7 162.9 L636.6 164.6 L636.4 167.1Z",
+  "LBN": "M475.5 119.2 L474.1 119.6 L474.6 117.6 L475.5 115.7 L476.5 115.8 L476.9 116.8 L475.9 117.8 L475.5 119.2Z",
+  "LBR": "M381.3 183.5 L380.9 186.6 L383.2 188.5 L382.9 191.9 L380.0 190.7 L374.6 185.8 L377.3 181.7 L378.4 181.4 L379.6 184.5 L381.3 183.5Z",
+  "LBY": "M454.4 147.5 L454.6 152.6 L452.1 152.6 L452.1 153.6 L434.4 144.0 L430.7 146.3 L429.5 144.9 L426.0 143.8 L425.0 142.3 L423.3 141.1 L422.3 141.5 L420.1 137.2 L420.9 136.2 L421.1 130.0 L420.2 126.6 L421.2 126.0 L421.1 123.9 L424.2 121.4 L424.2 119.5 L432.3 121.7 L433.4 123.9 L440.7 126.7 L442.6 124.9 L442.0 123.0 L444.1 120.6 L448.4 120.8 L449.2 121.9 L452.8 122.6 L453.4 123.5 L452.7 124.7 L453.1 125.7 L452.7 127.3 L453.4 129.3 L454.4 147.5Z",
+  "LKA": "M581.2 183.9 L581.0 186.6 L578.2 187.9 L577.0 185.9 L576.5 182.2 L577.3 178.2 L578.9 179.6 L581.2 183.9Z",
+  "LSO": "M462.0 275.7 L462.7 276.5 L461.5 278.5 L459.1 280.0 L457.6 278.0 L460.1 275.5 L461.1 274.9 L462.0 275.7Z",
+  "LTU": "M448.9 64.1 L449.3 65.2 L447.9 65.9 L447.7 67.3 L445.8 68.2 L443.9 68.2 L442.4 67.2 L442.3 65.9 L439.4 65.1 L438.7 63.1 L440.7 62.4 L445.6 62.3 L448.9 64.1Z",
+  "LVA": "M449.5 59.8 L450.5 60.3 L451.8 62.8 L448.9 64.1 L445.6 62.3 L440.7 62.4 L438.7 63.1 L438.5 61.4 L439.2 59.9 L440.8 59.1 L442.5 60.9 L444.0 60.8 L444.0 59.0 L445.5 58.6 L448.0 59.8 L449.5 59.8Z",
+  "MAR": "M395.5 114.4 L397.6 120.7 L397.2 121.7 L394.5 122.1 L392.3 123.3 L392.2 125.1 L389.7 126.1 L388.8 127.4 L384.9 128.5 L381.4 130.3 L381.1 134.6 L379.1 135.3 L375.5 135.2 L373.0 140.6 L369.9 143.3 L369.1 146.8 L367.9 148.8 L362.9 149.0 L365.4 143.2 L367.3 141.2 L368.9 136.8 L370.3 135.9 L372.9 132.3 L374.9 132.1 L379.6 127.6 L379.2 124.4 L380.3 121.0 L381.7 119.3 L385.5 117.1 L387.6 112.9 L389.2 112.9 L390.4 114.0 L395.5 114.4Z",
+  "MDA": "M451.9 81.9 L453.6 81.3 L456.0 82.2 L459.3 86.4 L457.0 86.3 L456.1 88.7 L455.4 85.4 L451.9 81.9Z",
+  "MDG": "M509.3 234.2 L510.3 237.0 L510.7 242.4 L510.3 243.1 L509.6 241.7 L509.2 242.4 L509.2 245.3 L508.5 245.9 L508.3 248.0 L501.8 265.6 L498.0 267.3 L495.2 265.7 L494.1 260.2 L494.6 256.6 L495.6 256.1 L497.1 251.8 L496.4 246.7 L497.6 243.7 L501.8 242.6 L505.0 239.6 L505.7 238.3 L505.5 237.2 L506.4 237.6 L508.6 233.2 L509.3 234.2Z",
+  "MEX": "M152.4 121.0 L157.7 120.6 L157.3 121.1 L164.3 124.0 L170.2 124.0 L170.5 123.0 L174.2 123.0 L176.4 125.8 L176.9 128.5 L177.8 129.2 L179.4 130.0 L181.2 128.0 L183.0 128.0 L184.3 129.0 L186.3 133.6 L186.7 136.5 L190.5 137.8 L188.5 141.8 L187.4 146.4 L188.1 151.0 L190.3 155.5 L192.5 156.2 L193.3 157.2 L200.1 155.4 L201.6 154.4 L203.3 150.0 L207.3 148.8 L210.5 148.7 L210.7 150.4 L208.6 153.5 L209.0 153.9 L207.8 156.9 L207.3 156.3 L206.4 156.4 L205.4 157.9 L200.7 158.1 L200.5 159.5 L199.5 159.5 L201.5 161.6 L201.3 162.4 L198.5 162.5 L197.2 164.5 L197.0 166.3 L193.8 162.8 L192.1 162.1 L187.8 163.5 L178.9 159.7 L176.8 157.8 L173.5 156.9 L170.6 154.3 L169.7 152.7 L169.4 151.5 L170.2 151.2 L170.9 149.0 L169.8 145.6 L165.7 139.6 L164.1 138.5 L164.6 136.4 L162.7 134.5 L162.6 132.8 L161.5 132.6 L159.9 130.0 L159.4 127.4 L159.6 124.5 L156.7 122.9 L155.5 127.0 L159.7 135.8 L160.4 141.7 L161.5 141.8 L162.7 144.1 L161.1 145.5 L160.8 143.9 L157.3 140.6 L157.8 137.4 L153.9 134.6 L153.0 133.1 L154.1 133.1 L155.5 131.0 L153.3 128.5 L152.4 121.0Z",
+  "MKD": "M445.2 96.5 L446.3 97.3 L446.7 99.0 L442.8 100.2 L441.9 99.6 L441.6 98.5 L442.0 97.2 L445.2 96.5Z",
+  "MLI": "M374.6 171.6 L373.2 166.1 L374.0 165.6 L374.4 164.2 L376.6 164.8 L378.7 164.5 L379.0 163.9 L387.8 163.9 L388.3 162.1 L386.0 140.1 L389.4 140.0 L404.0 151.0 L404.5 152.2 L406.9 153.3 L406.9 154.9 L409.3 154.7 L409.4 160.5 L408.2 162.2 L408.0 163.7 L403.0 164.3 L402.2 165.2 L397.7 165.2 L395.6 166.2 L393.2 168.8 L392.2 169.3 L391.2 169.0 L390.2 171.3 L388.5 173.4 L388.1 176.8 L386.6 177.5 L386.3 176.4 L384.8 177.4 L382.2 177.2 L381.7 175.7 L380.9 175.7 L381.5 174.2 L379.9 171.9 L377.6 173.1 L375.6 172.2 L374.7 172.5 L374.6 171.6Z",
+  "MMR": "M618.3 151.5 L616.1 153.2 L614.6 153.3 L613.9 156.0 L613.1 156.5 L617.2 162.2 L616.7 164.4 L616.0 164.8 L618.3 168.1 L619.8 173.0 L618.0 177.9 L617.6 176.0 L618.1 174.1 L617.2 172.6 L617.2 169.9 L616.1 168.6 L614.3 162.4 L613.1 160.3 L609.6 163.3 L606.9 162.5 L607.2 159.4 L606.5 157.1 L604.4 154.2 L604.5 153.2 L603.2 152.9 L601.4 150.9 L600.9 148.9 L601.7 149.2 L601.5 147.4 L602.5 146.8 L602.1 142.3 L603.9 142.9 L604.6 140.8 L605.2 137.5 L604.8 136.0 L607.2 134.3 L608.9 134.7 L608.6 131.8 L609.8 131.6 L611.9 133.7 L612.8 137.7 L611.3 139.8 L611.5 142.8 L613.7 142.3 L614.6 144.7 L616.0 145.1 L615.8 147.2 L618.5 148.6 L620.0 147.9 L620.2 148.9 L618.3 151.5Z",
+  "MNE": "M440.5 95.9 L439.8 95.6 L439.1 96.8 L439.3 97.6 L437.3 96.1 L437.6 94.3 L438.6 93.5 L441.0 95.1 L440.5 95.9Z",
+  "MNG": "M570.0 79.3 L571.9 78.9 L576.8 75.6 L580.9 76.4 L582.8 77.5 L587.9 78.3 L588.8 76.6 L587.2 75.1 L587.7 72.7 L595.0 74.5 L596.5 76.4 L599.8 77.4 L603.6 76.6 L605.7 76.9 L610.2 79.3 L614.6 79.7 L618.4 78.7 L620.2 77.0 L623.0 78.1 L625.2 77.9 L625.4 82.2 L626.5 83.2 L629.6 83.2 L630.6 82.3 L635.4 84.8 L635.8 85.7 L631.4 85.7 L630.4 86.4 L629.9 88.1 L627.5 89.0 L626.2 90.3 L622.7 89.6 L622.4 91.2 L624.3 93.0 L622.5 95.1 L620.6 96.0 L614.8 97.0 L613.1 98.3 L611.8 97.5 L609.4 97.5 L603.5 95.7 L594.4 95.5 L590.6 91.7 L586.2 89.9 L580.8 89.2 L579.6 88.1 L579.0 85.2 L576.7 83.2 L571.3 81.0 L570.0 79.3Z",
+  "MOZ": "M476.3 231.9 L480.6 232.4 L482.7 232.0 L483.6 231.2 L487.3 230.3 L489.1 228.8 L489.7 239.8 L488.0 243.4 L486.6 244.9 L482.0 247.1 L476.0 252.6 L475.7 254.4 L476.9 258.6 L477.3 258.4 L476.8 263.6 L471.3 266.7 L470.3 267.6 L470.9 268.8 L470.7 270.1 L469.0 270.1 L468.6 267.0 L469.1 264.2 L467.8 258.9 L471.2 254.0 L472.1 244.9 L468.5 242.8 L466.7 242.8 L466.4 240.1 L473.2 238.0 L474.4 239.2 L475.8 239.6 L475.5 243.6 L476.9 245.1 L477.6 243.4 L478.6 242.9 L478.5 239.6 L477.7 237.8 L476.1 237.0 L475.6 233.8 L476.3 231.9Z",
+  "MRT": "M362.8 150.0 L363.3 149.2 L371.9 149.2 L371.5 145.6 L372.1 144.3 L374.1 144.1 L374.2 137.6 L381.3 137.8 L381.3 134.0 L389.4 140.0 L386.0 140.1 L388.3 162.1 L387.8 163.9 L379.0 163.9 L378.7 164.5 L376.6 164.8 L374.4 164.2 L374.0 165.6 L373.2 166.1 L370.5 162.5 L368.0 161.1 L364.6 161.5 L363.8 162.3 L364.7 157.3 L364.5 152.3 L362.8 150.0Z",
+  "MWI": "M472.5 226.1 L474.7 226.6 L475.8 228.4 L476.1 237.0 L477.7 237.8 L478.5 239.6 L478.6 242.9 L477.6 243.4 L476.9 245.1 L475.5 243.6 L475.8 239.6 L472.0 237.4 L473.5 234.2 L473.1 232.1 L474.0 229.4 L473.5 227.2 L472.5 226.1Z",
+  "MYS": "M621.9 186.6 L622.3 186.2 L624.1 187.3 L624.4 188.6 L625.8 188.3 L626.5 187.2 L628.4 189.0 L629.4 190.7 L629.8 195.9 L630.6 196.5 L631.5 199.6 L630.0 199.8 L625.1 195.9 L622.3 189.5 L621.9 186.6ZM661.7 192.5 L657.2 192.0 L654.6 199.3 L652.8 199.8 L650.7 199.1 L648.4 200.6 L645.5 200.9 L644.0 199.5 L643.6 197.8 L645.2 198.7 L646.9 198.2 L647.3 196.1 L650.9 195.1 L653.5 191.5 L654.5 192.8 L655.0 191.9 L656.0 192.0 L656.1 189.2 L658.7 185.5 L659.6 185.4 L660.8 186.7 L661.0 187.8 L664.4 189.3 L664.3 190.3 L662.8 190.4 L663.3 191.6 L661.7 192.5Z",
+  "NAM": "M443.0 265.2 L442.6 274.5 L439.5 275.9 L437.2 275.3 L436.1 273.5 L435.0 274.8 L432.7 271.0 L431.0 258.5 L429.1 255.4 L427.6 250.8 L425.8 248.3 L425.7 246.4 L429.5 245.6 L430.8 246.7 L440.0 246.4 L441.5 247.6 L446.8 248.0 L452.7 246.4 L454.9 247.1 L451.6 248.9 L450.8 247.8 L445.8 248.8 L445.4 257.8 L443.3 257.8 L443.0 265.2Z",
+  "NCL": "M761.1 255.9 L763.3 258.6 L762.3 259.2 L761.3 258.5 L759.0 256.1 L758.0 253.5 L758.9 253.5 L761.1 255.9Z",
+  "NER": "M432.2 145.4 L432.9 149.3 L434.7 151.6 L433.5 161.0 L430.7 163.4 L429.8 166.7 L430.7 167.7 L430.8 169.3 L432.2 169.3 L431.3 171.5 L428.8 168.7 L427.1 170.1 L424.2 169.2 L419.9 170.6 L417.2 169.3 L415.0 169.9 L412.0 168.0 L409.1 168.8 L408.0 173.5 L406.3 172.1 L404.8 172.8 L404.8 171.1 L402.3 170.5 L402.2 169.3 L400.9 167.7 L400.8 165.3 L402.2 165.2 L403.0 164.3 L408.0 163.7 L408.2 162.2 L409.4 160.5 L409.3 154.7 L412.4 153.6 L426.0 143.8 L429.5 144.9 L430.7 146.3 L432.2 145.4Z",
+  "NGA": "M406.0 187.1 L406.0 181.5 L406.4 179.9 L408.2 177.6 L408.1 171.3 L409.6 168.3 L412.0 168.0 L415.0 169.9 L417.2 169.3 L419.9 170.6 L424.2 169.2 L427.1 170.1 L428.8 168.7 L432.2 172.5 L431.8 173.8 L430.0 175.7 L426.0 185.3 L424.5 186.2 L422.4 185.2 L420.5 186.7 L418.9 190.9 L414.9 192.2 L413.1 192.2 L409.6 187.1 L406.0 187.1Z",
+  "NIC": "M215.1 175.4 L214.6 175.9 L212.9 175.0 L210.6 175.0 L206.7 170.4 L208.8 169.5 L208.9 168.3 L210.4 167.6 L211.0 168.1 L213.1 165.7 L214.1 166.1 L217.1 165.2 L214.8 174.3 L215.1 175.4Z",
+  "NLD": "M413.0 69.2 L413.0 72.2 L412.5 73.1 L411.4 73.1 L411.8 75.6 L409.5 74.0 L406.3 74.3 L407.3 73.7 L408.9 70.1 L411.4 69.1 L413.0 69.2Z",
+  "NOR": "M421.0 12.9 L421.4 12.3 L423.4 12.2 L430.3 14.2 L426.9 15.0 L426.4 16.3 L425.3 16.7 L424.9 18.2 L423.2 18.3 L419.8 17.2 L421.0 16.5 L415.8 14.4 L414.5 12.9 L418.2 12.3 L419.0 12.9 L421.0 12.9ZM449.9 32.7 L446.1 33.8 L446.5 32.3 L444.2 31.4 L441.9 32.1 L441.4 33.7 L440.1 34.7 L436.2 34.3 L434.2 33.1 L432.3 33.8 L432.3 35.2 L429.2 34.8 L429.0 36.0 L427.4 36.0 L422.9 43.0 L423.6 43.8 L423.1 44.7 L421.4 44.7 L420.5 46.8 L420.9 49.8 L422.1 50.9 L421.8 53.6 L419.8 56.5 L418.5 55.1 L415.1 57.8 L412.7 58.3 L410.2 57.1 L408.7 49.4 L410.2 47.9 L414.7 46.0 L417.9 43.7 L424.2 36.5 L430.7 32.1 L434.0 31.2 L436.7 31.3 L438.7 29.7 L444.3 29.3 L449.7 30.8 L447.8 31.4 L449.9 32.7ZM437.8 12.2 L436.1 13.2 L432.1 13.4 L427.9 13.1 L423.9 11.8 L431.3 11.3 L437.8 12.2ZM435.4 16.3 L432.4 17.0 L429.7 16.6 L430.6 16.1 L429.6 15.5 L432.4 15.2 L435.4 16.3Z",
+  "NORTHERN": "M468.5 114.5 L468.9 113.9 L472.2 113.1 L470.9 114.2 L471.2 114.7 L468.5 114.5Z",
+  "NPL": "M589.1 132.7 L589.7 136.4 L583.5 135.6 L582.0 134.4 L579.0 134.0 L571.4 130.4 L571.8 128.1 L573.7 126.3 L584.0 131.9 L589.1 132.7Z",
+  "NZL": "M762.1 303.6 L757.9 306.7 L755.6 307.7 L755.2 306.6 L758.0 304.6 L758.3 303.2 L756.8 302.2 L757.4 301.3 L759.5 300.4 L762.1 296.9 L762.7 294.8 L762.3 289.7 L763.2 289.5 L763.6 290.9 L764.8 291.6 L763.7 296.5 L764.8 294.8 L765.3 295.4 L764.4 297.3 L765.5 298.1 L769.5 297.7 L765.9 301.4 L764.3 301.3 L762.1 303.6ZM740.7 312.3 L745.6 309.7 L752.9 304.7 L752.2 306.8 L754.4 305.8 L753.4 307.9 L747.1 311.8 L746.9 313.0 L742.9 314.0 L737.8 318.1 L733.7 319.9 L729.4 318.9 L729.8 318.0 L736.9 313.7 L740.7 312.3Z",
+  "OMN": "M519.9 145.7 L520.3 142.7 L521.2 142.2 L520.9 140.2 L522.0 140.2 L524.4 142.8 L527.3 143.6 L530.0 146.7 L527.6 151.5 L526.6 151.4 L526.2 152.0 L526.1 155.2 L523.8 156.1 L523.3 157.9 L521.9 157.9 L520.2 160.2 L518.9 160.0 L516.5 161.0 L513.7 155.1 L520.0 152.6 L521.0 147.5 L519.9 145.7Z",
+  "PAK": "M562.7 113.6 L561.2 115.7 L559.0 116.1 L555.7 115.5 L554.9 116.5 L557.2 120.5 L559.2 121.7 L557.8 123.1 L558.2 124.9 L554.0 132.7 L551.5 132.5 L549.5 135.1 L551.1 136.2 L553.8 141.6 L549.0 141.6 L547.8 143.3 L546.1 142.6 L545.3 140.8 L543.3 138.9 L532.9 139.8 L533.3 136.9 L536.3 135.6 L535.9 134.4 L534.8 134.0 L534.5 131.8 L532.2 130.7 L529.9 127.8 L533.7 129.1 L539.0 128.7 L541.6 127.7 L541.2 125.5 L542.1 124.1 L543.7 124.1 L543.8 123.4 L546.2 123.3 L546.9 122.6 L546.4 121.1 L547.0 119.6 L548.2 119.0 L547.0 117.3 L549.0 117.4 L549.1 115.5 L549.9 114.4 L548.6 112.1 L549.5 111.0 L555.9 109.5 L557.8 110.6 L559.0 112.6 L562.7 113.6Z",
+  "PAN": "M228.7 181.1 L228.9 182.9 L228.5 183.7 L227.8 183.5 L227.4 184.7 L226.3 182.6 L226.9 181.9 L224.9 180.2 L222.0 182.0 L221.8 182.5 L222.8 183.9 L221.8 184.6 L220.8 184.7 L220.4 183.2 L219.4 183.5 L219.0 182.5 L216.3 182.2 L216.9 180.4 L216.5 179.0 L217.4 178.8 L218.0 180.2 L219.1 180.2 L219.7 180.8 L223.9 178.7 L225.2 178.8 L227.3 179.6 L228.7 181.1Z",
+  "PER": "M244.9 213.7 L242.9 213.6 L238.3 216.1 L237.6 218.2 L237.9 219.6 L236.6 220.3 L236.1 221.8 L238.4 225.6 L238.0 226.7 L239.4 226.8 L240.3 228.2 L242.3 228.2 L244.0 226.7 L244.1 230.6 L246.4 230.4 L248.5 234.5 L248.2 239.2 L247.4 240.5 L247.9 241.4 L247.5 242.3 L248.6 244.4 L247.1 248.4 L246.0 249.0 L243.7 247.6 L243.4 246.6 L232.7 239.7 L231.7 237.6 L232.0 236.9 L223.3 221.0 L219.8 218.3 L220.5 217.2 L219.3 214.8 L220.0 213.0 L221.7 211.4 L221.5 214.0 L223.3 214.1 L224.2 215.4 L225.5 214.3 L227.2 210.4 L229.8 209.4 L232.2 206.8 L232.9 205.2 L232.5 203.3 L233.1 203.0 L236.4 206.0 L237.7 208.7 L242.7 208.6 L244.5 209.7 L243.1 212.3 L244.9 213.7Z",
+  "PHL": "M666.5 170.9 L665.2 169.0 L667.1 169.1 L667.9 170.0 L667.6 172.2 L666.5 170.9ZM671.2 177.8 L671.7 175.5 L672.9 175.4 L672.7 177.0 L674.1 174.6 L674.2 177.0 L672.2 180.2 L670.8 178.4 L671.2 177.8ZM679.8 181.7 L680.4 184.8 L679.8 187.1 L678.8 184.5 L677.9 185.8 L678.7 187.7 L678.2 188.8 L675.5 187.4 L674.7 185.6 L675.3 184.4 L673.8 183.2 L673.2 184.2 L672.1 184.1 L670.6 185.5 L670.2 184.8 L670.9 182.7 L673.4 181.0 L674.2 182.1 L675.9 181.5 L676.2 180.3 L677.7 180.3 L677.5 178.3 L679.3 179.5 L679.8 181.7ZM662.2 179.4 L659.5 181.8 L663.1 176.8 L664.0 174.3 L664.6 176.3 L662.2 179.4ZM667.8 157.0 L667.6 158.1 L668.6 159.9 L668.4 162.0 L667.3 162.8 L668.0 166.8 L670.1 166.8 L673.1 168.2 L673.7 171.3 L670.9 168.8 L670.4 169.7 L668.8 168.2 L666.9 168.6 L665.7 168.0 L666.3 166.3 L665.6 165.8 L665.4 166.7 L663.7 164.1 L663.2 161.7 L664.2 162.5 L664.1 156.3 L666.9 157.0 L667.5 156.4 L667.8 157.0ZM669.5 174.2 L669.1 173.0 L671.9 173.7 L672.0 174.8 L669.7 176.6 L669.5 174.2ZM677.0 172.3 L677.9 175.1 L676.1 174.4 L677.0 176.8 L676.0 177.4 L675.7 175.6 L675.0 175.5 L674.5 174.0 L675.8 174.2 L675.7 173.2 L674.1 171.3 L676.2 171.3 L677.0 172.3Z",
+  "PNG": "M713.1 209.4 L721.0 212.6 L723.6 215.1 L723.9 216.6 L727.4 218.2 L727.8 219.5 L725.8 219.8 L726.1 221.5 L728.0 223.1 L729.2 225.8 L730.5 225.7 L730.3 226.8 L732.0 227.2 L731.2 227.7 L733.5 228.8 L733.1 229.5 L731.6 229.7 L731.2 229.0 L727.1 228.4 L724.4 225.4 L723.5 223.2 L720.7 222.1 L717.3 223.6 L717.4 225.5 L715.6 226.3 L712.1 225.8 L713.1 209.4ZM738.9 212.1 L739.9 214.2 L739.2 214.9 L738.3 212.4 L734.5 209.8 L735.2 209.2 L738.9 212.1ZM735.6 217.6 L731.9 218.8 L729.0 217.3 L729.2 216.6 L732.4 216.7 L733.2 215.5 L733.3 216.8 L734.6 216.6 L736.5 214.8 L736.4 213.4 L737.7 213.3 L738.0 215.1 L737.2 216.7 L736.0 216.9 L735.6 217.6ZM743.4 216.3 L745.9 219.3 L745.5 220.0 L744.9 220.3 L744.0 219.3 L743.2 217.7 L742.9 215.8 L743.2 215.6 L743.4 216.3Z",
+  "POL": "M443.9 68.2 L445.0 71.1 L443.9 71.6 L446.1 75.9 L443.6 78.9 L444.2 80.0 L441.8 78.9 L438.4 79.5 L437.4 78.6 L436.6 79.0 L435.5 77.6 L434.0 77.5 L433.8 76.7 L432.4 76.4 L432.2 77.1 L431.1 76.6 L431.2 75.9 L428.7 74.9 L426.5 70.4 L427.0 69.8 L426.5 68.5 L432.7 65.9 L434.6 66.3 L434.8 66.9 L442.4 67.2 L443.9 68.2Z",
+  "PRI": "M255.0 156.3 L256.4 157.0 L255.8 157.7 L252.9 157.7 L253.2 156.3 L255.0 156.3Z",
+  "PRK": "M664.0 96.3 L664.6 96.8 L663.7 96.6 L663.2 98.3 L664.3 100.1 L663.2 101.8 L661.5 102.9 L661.8 104.3 L664.5 105.8 L664.5 106.4 L662.3 106.7 L662.1 107.8 L659.8 107.5 L659.3 108.1 L657.6 107.0 L658.0 105.6 L657.2 103.4 L654.6 102.5 L656.8 99.5 L657.2 97.8 L660.4 98.6 L659.4 97.3 L661.9 96.3 L661.8 94.9 L664.0 96.3Z",
+  "PRT": "M381.7 97.6 L383.3 96.6 L383.8 97.8 L386.5 97.6 L387.0 98.9 L386.1 99.5 L385.5 103.0 L384.6 103.2 L385.4 104.7 L384.8 106.4 L385.5 107.1 L384.4 108.7 L384.5 109.6 L383.7 110.2 L381.5 110.1 L381.8 106.6 L380.8 106.4 L380.4 105.5 L382.1 100.4 L381.7 97.6Z",
+  "PRY": "M273.1 253.6 L273.9 255.0 L274.0 258.4 L276.4 258.9 L277.2 258.4 L278.7 259.1 L280.0 263.1 L281.6 262.8 L282.4 263.3 L282.0 269.8 L280.3 271.8 L278.7 272.2 L274.0 271.1 L275.6 267.3 L275.1 266.2 L270.0 263.3 L268.2 263.0 L263.8 258.8 L265.1 252.3 L270.8 251.6 L273.0 252.9 L273.1 253.6Z",
+  "PSE": "M475.1 123.7 L474.1 124.0 L474.7 123.0 L474.1 122.7 L474.4 121.0 L475.2 121.4 L475.1 123.7Z",
+  "QAT": "M509.9 140.6 L509.6 138.8 L510.6 137.2 L511.5 139.4 L511.2 140.9 L509.9 140.6Z",
+  "ROU": "M456.1 88.7 L458.8 89.1 L459.0 89.8 L457.5 90.1 L457.3 93.1 L454.5 91.9 L451.3 93.1 L446.0 92.8 L444.9 91.3 L445.3 90.9 L444.8 90.6 L444.2 91.2 L443.0 90.4 L442.7 89.4 L440.0 87.1 L441.5 86.6 L443.3 83.3 L445.2 82.3 L448.7 83.1 L451.9 81.9 L455.4 85.4 L456.1 88.7Z",
+  "RUS": "M496.4 87.9 L494.6 88.3 L493.2 90.8 L495.5 93.2 L495.7 94.9 L498.5 97.8 L497.3 99.4 L492.7 97.1 L491.8 96.1 L489.8 95.5 L488.7 95.9 L485.3 94.3 L480.3 93.7 L472.9 89.3 L474.3 88.9 L475.5 86.8 L474.3 85.8 L477.0 84.8 L476.8 84.3 L475.1 84.7 L475.0 83.6 L477.7 82.7 L477.1 80.6 L477.5 78.6 L473.4 77.8 L471.9 76.7 L470.5 77.0 L467.9 76.2 L466.9 74.7 L465.4 74.6 L465.4 73.3 L463.9 72.0 L460.3 72.5 L459.0 70.2 L461.5 69.5 L459.4 68.5 L457.2 66.0 L457.0 64.3 L454.2 64.0 L451.8 62.8 L450.5 60.3 L449.5 59.8 L450.2 59.0 L449.2 56.8 L450.2 55.5 L449.9 55.1 L451.7 53.8 L449.6 52.7 L454.0 48.5 L454.4 47.4 L451.5 45.8 L451.8 44.3 L449.9 42.7 L450.6 40.8 L448.0 38.3 L449.1 36.7 L446.3 35.3 L446.1 33.8 L451.4 32.0 L454.4 33.3 L458.9 33.8 L467.5 37.2 L468.1 38.7 L466.6 39.8 L464.1 40.4 L456.2 38.7 L455.0 39.0 L458.2 40.6 L459.3 43.9 L463.2 45.1 L463.1 44.0 L461.8 43.1 L462.7 42.2 L467.2 43.6 L468.4 43.1 L466.8 41.5 L469.9 39.4 L473.3 40.2 L473.8 38.8 L471.9 37.5 L472.2 36.2 L470.5 34.8 L475.3 35.5 L476.7 36.7 L474.8 37.0 L475.2 38.2 L476.8 38.9 L479.2 38.5 L479.1 37.1 L486.9 34.2 L488.2 34.3 L487.2 35.6 L489.3 35.9 L490.1 35.1 L493.1 35.1 L495.1 34.2 L497.6 35.5 L498.7 34.0 L496.4 32.8 L496.9 32.1 L501.9 32.7 L511.8 35.9 L512.2 34.7 L509.6 33.1 L507.5 32.9 L507.5 31.9 L505.1 29.7 L506.8 27.8 L506.5 26.0 L507.4 25.6 L511.8 26.1 L513.0 27.2 L512.7 28.9 L515.7 31.0 L517.2 33.9 L519.8 35.2 L520.0 36.6 L518.6 39.7 L520.7 40.0 L520.9 39.2 L522.4 38.7 L522.1 37.6 L522.9 36.6 L521.2 35.4 L521.0 33.9 L519.2 33.8 L518.0 32.6 L517.9 30.5 L514.6 28.8 L516.4 27.4 L515.0 26.0 L517.3 27.1 L518.2 29.0 L520.2 29.4 L518.3 27.9 L520.3 27.1 L523.5 27.0 L527.3 28.2 L524.5 26.5 L522.6 24.3 L531.7 23.7 L529.6 22.7 L530.2 21.4 L537.3 20.1 L537.2 19.6 L542.6 19.9 L544.7 18.9 L547.4 18.9 L546.8 18.1 L547.2 17.3 L549.6 16.6 L552.9 17.2 L551.5 17.6 L555.2 17.9 L556.8 18.8 L561.8 18.4 L568.5 20.0 L569.5 21.0 L565.5 23.3 L570.5 24.1 L571.4 23.7 L573.7 25.0 L573.7 24.4 L575.8 24.1 L581.1 24.5 L582.6 25.4 L589.4 25.7 L587.5 24.2 L593.6 24.5 L597.5 25.6 L599.8 26.9 L600.0 27.7 L607.6 30.2 L606.3 28.0 L610.0 28.9 L611.9 28.4 L615.8 29.0 L616.2 28.4 L619.2 28.7 L615.4 26.8 L616.2 26.0 L632.1 27.3 L641.7 30.0 L651.1 30.0 L653.8 30.8 L655.8 32.4 L658.7 33.0 L669.3 32.7 L674.8 34.6 L675.9 33.9 L672.6 32.5 L671.9 31.6 L681.0 32.0 L687.2 33.0 L690.8 34.0 L703.9 42.6 L703.1 43.6 L700.7 43.4 L709.1 47.1 L710.9 48.6 L707.0 48.1 L703.3 50.1 L701.9 53.1 L702.6 54.1 L698.1 52.5 L695.7 54.3 L693.9 53.5 L693.3 54.5 L690.6 54.2 L691.7 55.7 L692.1 58.0 L693.3 58.9 L695.9 59.4 L699.5 62.8 L697.9 62.9 L699.3 64.9 L701.2 65.9 L699.1 67.1 L701.1 69.9 L698.9 70.5 L700.7 72.9 L700.1 75.1 L687.5 64.7 L684.8 61.4 L684.9 60.0 L683.8 58.9 L686.0 58.4 L686.3 53.1 L687.2 51.3 L684.6 48.1 L682.8 48.3 L684.0 50.1 L682.7 52.6 L677.8 49.8 L674.2 50.6 L674.3 54.4 L677.3 55.8 L671.4 56.7 L669.8 55.0 L666.7 54.6 L665.6 55.8 L659.8 55.4 L654.6 56.1 L651.3 66.2 L654.5 66.5 L656.6 68.0 L658.9 68.5 L659.1 67.3 L661.3 67.5 L666.2 70.1 L668.0 72.2 L668.6 74.6 L670.9 77.5 L672.9 81.4 L672.5 84.9 L673.0 86.6 L671.0 93.8 L669.2 95.3 L668.0 95.3 L666.0 94.1 L664.4 95.9 L664.6 96.8 L663.3 95.1 L664.2 95.0 L662.8 92.1 L661.0 89.9 L662.1 89.1 L664.8 89.5 L663.0 81.3 L660.3 82.0 L659.2 83.0 L656.3 83.0 L653.9 80.7 L650.5 79.0 L646.6 78.2 L637.8 70.9 L632.1 69.3 L627.6 69.8 L626.9 71.0 L628.4 71.5 L629.4 72.9 L628.9 73.6 L629.0 76.2 L629.8 77.2 L628.1 78.8 L625.2 77.9 L623.0 78.1 L620.2 77.0 L618.4 78.7 L614.6 79.7 L610.2 79.3 L605.7 76.9 L603.6 76.6 L599.8 77.4 L596.5 76.4 L595.0 74.5 L587.7 72.7 L587.2 75.1 L588.8 76.6 L587.9 78.3 L582.8 77.5 L580.9 76.4 L576.8 75.6 L571.9 78.9 L569.4 79.5 L567.7 78.0 L565.3 78.3 L559.5 75.0 L557.1 75.6 L553.8 74.2 L553.3 75.5 L546.2 69.4 L542.9 67.5 L543.2 66.8 L539.6 69.0 L537.9 69.2 L537.4 67.9 L534.7 67.0 L533.0 67.6 L531.3 65.2 L527.7 64.6 L526.5 65.6 L521.6 67.1 L514.9 67.9 L514.3 68.8 L516.3 70.4 L514.7 71.0 L515.3 71.7 L513.9 72.9 L517.6 74.5 L517.6 75.7 L514.9 75.6 L514.6 76.3 L511.7 75.0 L508.6 75.1 L507.0 76.1 L499.6 73.4 L496.7 73.5 L493.5 76.1 L493.8 77.9 L491.4 76.5 L490.6 81.5 L492.6 83.2 L494.1 83.1 L495.7 84.8 L495.8 86.0 L496.9 86.4 L496.4 87.9ZM681.9 28.7 L684.4 30.1 L681.4 29.5 L681.9 28.7ZM625.2 21.4 L624.7 22.2 L622.0 22.0 L617.3 20.7 L625.2 21.4ZM608.1 19.6 L615.2 20.5 L616.4 22.0 L609.0 22.4 L604.1 21.1 L602.7 19.8 L608.1 19.6ZM670.6 71.0 L672.6 73.4 L680.9 80.1 L677.4 79.3 L678.8 82.8 L682.5 85.3 L683.7 87.1 L681.2 85.6 L681.3 87.5 L672.2 75.3 L669.1 72.9 L666.4 69.6 L667.2 68.5 L665.5 67.4 L666.0 67.1 L670.6 71.0ZM614.2 24.1 L615.8 23.9 L620.0 25.2 L614.3 25.0 L613.8 24.9 L614.2 24.1ZM548.6 14.7 L549.2 15.4 L542.1 16.2 L541.6 13.7 L548.6 14.7ZM529.8 10.4 L538.8 12.7 L540.6 14.4 L533.2 14.1 L525.2 11.8 L529.8 10.4ZM484.1 22.3 L483.1 21.4 L489.7 19.3 L498.9 18.0 L500.5 18.7 L500.1 19.3 L491.8 21.1 L488.3 23.0 L485.8 26.9 L487.1 28.6 L491.0 30.3 L484.9 30.2 L484.0 29.3 L480.9 28.8 L480.1 27.7 L481.4 27.2 L480.8 26.1 L482.9 24.4 L481.4 24.1 L484.1 22.3ZM463.8 11.1 L470.3 11.3 L465.7 12.3 L464.0 11.9 L464.4 11.5 L461.3 11.4 L463.8 11.1ZM439.0 67.2 L436.6 66.9 L436.9 65.9 L439.4 65.1 L442.3 65.9 L442.4 67.2 L439.0 67.2ZM109.6 39.1 L109.9 39.7 L111.9 38.1 L115.9 38.4 L116.2 40.4 L110.1 41.6 L105.8 44.2 L104.3 44.2 L104.0 43.4 L102.7 42.7 L103.7 41.8 L100.2 41.7 L100.4 40.9 L102.0 40.1 L99.2 40.7 L98.4 41.7 L96.1 42.6 L109.2 34.0 L111.7 37.8 L109.6 39.1ZM115.6 30.1 L118.4 28.6 L121.0 29.2 L115.6 30.1Z",
+  "RWA": "M467.6 205.7 L468.4 207.1 L468.3 208.6 L466.5 208.8 L465.8 210.2 L464.4 210.0 L465.1 207.0 L467.6 205.7Z",
+  "SAU": "M474.7 129.0 L477.1 129.4 L478.4 127.7 L480.0 127.4 L480.9 126.1 L478.5 123.6 L483.0 122.0 L489.0 124.4 L495.6 129.5 L501.5 129.9 L502.2 131.1 L503.7 131.0 L504.8 133.2 L508.0 135.7 L508.5 138.5 L509.9 140.6 L511.2 140.9 L512.9 145.0 L519.5 146.3 L519.9 145.7 L521.0 147.5 L520.0 152.6 L513.7 155.1 L507.4 156.0 L505.5 157.2 L504.1 159.8 L503.1 160.2 L502.5 159.4 L496.0 159.3 L495.0 158.7 L494.8 160.9 L493.9 161.7 L489.4 153.9 L486.8 151.7 L485.2 149.3 L484.9 146.1 L483.4 143.3 L481.2 141.8 L479.7 138.5 L475.3 132.3 L474.3 132.3 L474.7 129.0Z",
+  "SDN": "M454.4 182.2 L451.9 180.3 L452.1 177.5 L450.8 175.9 L449.2 171.1 L448.4 171.2 L449.1 169.2 L448.9 168.2 L449.6 167.4 L449.1 166.8 L450.6 163.4 L452.5 163.6 L452.1 152.6 L454.6 152.6 L454.4 147.5 L480.2 147.5 L482.0 156.0 L484.1 157.6 L483.1 159.0 L480.8 160.2 L479.9 168.8 L476.7 175.4 L475.7 176.1 L475.2 181.0 L474.6 176.9 L473.4 175.9 L473.3 172.2 L472.3 172.1 L472.1 172.6 L470.8 172.8 L471.6 175.0 L469.4 178.2 L468.2 178.5 L466.3 177.0 L464.1 179.2 L460.0 178.6 L459.2 179.1 L457.0 176.7 L455.4 177.0 L454.3 180.4 L452.9 181.2 L454.4 182.2Z",
+  "SEN": "M363.2 168.7 L361.2 165.8 L362.2 165.3 L364.6 161.5 L368.0 161.1 L370.5 162.5 L373.2 166.1 L374.6 171.6 L365.7 171.1 L363.2 171.7 L362.9 169.8 L364.9 169.8 L366.6 168.9 L368.5 169.5 L369.5 168.9 L369.1 168.2 L367.6 168.6 L366.8 168.0 L363.2 168.7Z",
+  "SLB": "M758.4 229.2 L758.9 230.1 L757.4 230.1 L756.8 228.5 L758.4 229.2ZM757.7 227.0 L757.4 227.5 L755.6 223.8 L756.3 223.8 L757.7 227.0ZM755.8 227.7 L753.6 227.5 L753.4 226.1 L754.9 226.5 L755.8 227.7ZM753.6 223.1 L754.1 224.4 L750.5 221.5 L753.6 223.1Z",
+  "SLE": "M370.7 180.5 L372.5 178.1 L375.4 177.6 L376.5 179.6 L376.7 181.9 L377.3 181.7 L374.6 185.8 L371.3 183.3 L370.7 180.5Z",
+  "SLV": "M203.3 166.6 L205.0 168.0 L206.8 168.2 L206.2 169.8 L201.5 168.3 L203.3 166.6Z",
+  "SOM": "M492.4 207.1 L491.1 205.0 L491.0 195.9 L493.5 192.2 L494.9 192.2 L496.9 190.4 L499.8 190.3 L508.3 179.1 L508.1 174.2 L512.8 172.6 L512.8 176.1 L511.9 179.7 L507.8 189.4 L503.4 195.7 L495.8 202.1 L492.4 207.1Z",
+  "SOMALILA": "M508.1 174.2 L508.3 179.1 L505.8 182.7 L504.0 182.8 L496.7 179.8 L494.1 176.3 L495.3 174.0 L497.5 176.6 L508.1 174.2Z",
+  "SRB": "M437.3 87.6 L440.0 87.1 L442.7 89.4 L443.0 90.4 L444.2 91.2 L444.8 90.6 L445.3 90.9 L444.9 92.3 L446.2 94.3 L445.2 96.5 L443.6 96.7 L443.9 95.6 L441.9 94.2 L440.8 95.3 L438.6 93.5 L439.2 92.2 L438.2 91.3 L438.6 90.2 L437.9 90.2 L438.6 89.3 L437.3 87.6Z",
+  "SSD": "M468.5 194.0 L466.0 191.3 L463.1 192.1 L462.1 191.8 L460.4 188.9 L458.7 187.9 L458.1 186.4 L455.7 184.0 L455.6 183.2 L452.9 181.2 L454.3 180.4 L455.4 177.0 L457.0 176.7 L459.2 179.1 L460.0 178.6 L464.1 179.2 L466.3 177.0 L468.2 178.5 L469.4 178.2 L471.6 175.0 L470.8 172.8 L473.3 172.2 L473.4 175.9 L474.6 176.9 L475.2 181.0 L474.9 181.8 L473.7 181.9 L473.0 183.3 L474.4 183.5 L475.5 184.7 L478.3 189.0 L474.1 193.3 L470.8 193.9 L469.4 193.4 L468.5 194.0Z",
+  "SUR": "M278.9 197.1 L275.7 196.6 L275.6 198.3 L274.4 198.1 L272.8 194.5 L272.1 194.5 L271.2 192.7 L271.5 190.8 L272.8 190.1 L273.3 187.8 L275.9 188.4 L278.0 187.7 L280.3 188.4 L279.1 190.6 L280.1 193.8 L278.9 197.1Z",
+  "SVK": "M443.8 79.8 L442.6 81.7 L440.5 81.0 L434.9 83.1 L433.1 82.2 L432.9 81.3 L433.2 80.5 L434.7 80.3 L435.9 78.8 L437.4 78.6 L438.4 79.5 L441.8 78.9 L443.8 79.8Z",
+  "SVN": "M427.2 86.1 L428.9 86.3 L431.9 85.3 L432.7 86.2 L431.2 86.8 L430.4 88.7 L427.2 88.6 L427.7 88.4 L427.2 86.1Z",
+  "SWE": "M419.8 56.5 L421.8 53.6 L422.1 50.9 L420.9 49.8 L420.5 46.8 L421.4 44.7 L423.1 44.7 L423.6 43.8 L422.9 43.0 L427.4 36.0 L429.0 36.0 L429.2 34.8 L432.3 35.2 L432.3 33.8 L433.3 33.7 L438.5 36.2 L439.2 39.5 L439.9 40.4 L437.2 41.0 L435.8 42.5 L436.3 43.9 L430.8 47.6 L430.0 50.8 L433.3 53.7 L432.0 56.3 L430.2 56.8 L430.0 60.8 L429.2 63.0 L426.9 62.7 L426.1 64.6 L423.9 64.7 L419.8 56.5Z",
+  "SWZ": "M469.0 270.1 L468.5 271.2 L467.2 271.5 L466.0 270.2 L467.0 267.6 L468.7 267.9 L469.0 270.1Z",
+  "SYR": "M475.5 120.6 L475.9 117.8 L476.9 116.8 L476.5 115.8 L475.5 115.7 L475.1 113.8 L476.4 111.7 L476.3 110.3 L477.1 110.8 L479.3 110.1 L482.2 110.5 L484.4 109.6 L487.8 109.2 L486.0 111.4 L486.5 113.3 L486.1 116.3 L477.9 121.6 L475.5 120.6Z",
+  "TCD": "M452.1 153.6 L452.5 163.6 L450.6 163.4 L449.1 166.8 L449.6 167.4 L448.9 168.2 L449.1 169.2 L448.4 171.2 L449.2 171.1 L450.5 174.8 L448.0 176.3 L446.5 179.0 L444.4 180.2 L441.6 180.3 L441.9 181.2 L439.8 183.0 L437.0 184.0 L436.1 183.4 L435.7 184.0 L433.9 184.2 L434.2 183.5 L433.2 180.7 L430.9 178.9 L431.3 177.7 L434.2 177.8 L433.0 175.5 L432.2 169.3 L430.8 169.3 L430.7 167.7 L429.8 166.7 L430.7 163.4 L433.5 161.0 L434.7 151.6 L432.9 149.3 L432.2 145.4 L434.4 144.0 L452.1 153.6Z",
+  "TGO": "M402.0 175.2 L401.7 176.5 L403.2 178.2 L403.7 179.9 L403.6 185.7 L404.1 187.4 L402.4 188.0 L401.3 185.5 L401.6 182.0 L401.0 181.0 L400.8 177.2 L399.9 175.9 L400.1 175.2 L402.0 175.2Z",
+  "THA": "M631.7 167.0 L629.6 166.6 L626.8 167.1 L625.6 169.2 L626.4 172.2 L624.3 171.1 L622.4 171.1 L622.5 169.1 L620.6 169.1 L620.7 171.9 L619.3 177.8 L619.6 179.6 L621.0 179.7 L622.6 184.2 L626.5 187.2 L625.8 188.3 L624.4 188.6 L624.1 187.3 L622.3 186.2 L621.9 186.6 L618.1 181.8 L617.8 183.3 L617.3 181.9 L618.0 177.9 L619.8 173.0 L618.3 168.1 L616.0 164.8 L616.7 164.4 L617.2 162.2 L613.1 156.5 L613.9 156.0 L614.6 153.3 L616.1 153.2 L618.3 151.5 L619.4 152.3 L619.8 153.8 L621.3 153.9 L621.5 158.8 L623.5 157.3 L625.5 157.7 L625.9 156.8 L627.5 157.0 L629.5 159.0 L630.0 161.5 L632.1 163.7 L632.3 165.8 L631.7 167.0Z",
+  "TJK": "M540.7 109.4 L541.2 106.9 L540.3 105.0 L538.7 104.4 L538.9 103.3 L540.7 103.5 L541.4 100.5 L544.0 99.9 L543.9 101.1 L544.4 101.7 L545.2 101.7 L544.7 102.5 L542.4 102.0 L542.6 103.5 L544.7 103.3 L547.5 104.1 L551.3 103.7 L552.4 106.0 L554.5 106.4 L555.4 108.8 L551.8 108.6 L549.3 110.5 L548.3 109.6 L547.3 106.7 L546.0 106.1 L545.2 108.3 L543.9 108.3 L543.6 109.4 L542.7 108.9 L541.4 109.8 L540.7 109.4Z",
+  "TKM": "M506.5 97.9 L507.2 97.0 L509.3 96.5 L512.8 99.2 L516.1 99.0 L515.4 97.7 L518.3 95.4 L521.3 96.8 L522.1 98.7 L523.0 99.3 L526.0 99.6 L527.7 102.2 L532.1 105.1 L537.6 107.4 L537.9 108.9 L536.1 108.2 L536.0 109.0 L534.4 109.5 L534.4 111.5 L531.9 112.7 L531.7 113.8 L530.2 114.1 L527.9 113.2 L527.2 111.1 L525.6 111.0 L522.7 108.8 L518.5 107.2 L514.7 107.4 L513.6 108.8 L511.8 109.3 L510.9 104.9 L509.1 104.1 L509.3 102.4 L507.9 102.2 L507.8 100.1 L509.9 100.7 L511.5 99.9 L508.7 97.0 L507.3 97.6 L507.5 99.5 L506.5 97.9Z",
+  "TLS": "M676.6 225.2 L678.9 224.1 L682.0 224.0 L676.8 226.5 L676.6 225.2Z",
+  "TTO": "M263.7 175.8 L265.4 175.6 L265.2 177.4 L263.0 177.5 L263.7 175.8Z",
+  "TUN": "M420.2 126.6 L419.2 122.1 L416.0 119.0 L415.8 117.1 L417.1 115.7 L417.5 109.9 L419.7 108.9 L421.2 109.2 L421.2 110.5 L422.9 109.6 L422.1 111.3 L422.1 112.5 L422.8 113.1 L422.7 115.2 L421.3 116.5 L421.8 117.9 L422.8 117.9 L424.2 119.5 L424.2 121.4 L421.1 123.9 L421.2 126.0 L420.2 126.6Z",
+  "TUR": "M492.9 109.4 L492.0 109.8 L488.7 108.8 L482.2 110.5 L479.3 110.1 L477.1 110.8 L476.3 110.3 L476.4 111.7 L475.5 112.8 L474.5 111.6 L475.2 110.7 L472.1 110.3 L470.9 111.8 L467.8 112.1 L465.9 110.7 L463.7 110.6 L463.3 111.7 L461.9 112.0 L459.7 110.6 L457.5 110.7 L456.0 108.2 L454.3 106.8 L455.2 104.8 L453.7 103.6 L455.7 101.2 L458.9 101.1 L459.5 99.3 L463.4 99.6 L465.6 98.0 L467.9 97.3 L471.2 97.2 L478.1 99.9 L482.2 99.8 L484.4 98.5 L486.5 98.4 L488.7 99.6 L489.3 101.7 L491.9 103.0 L490.6 103.7 L491.7 106.6 L491.4 107.4 L492.9 109.4ZM452.9 97.7 L454.9 97.0 L456.7 97.3 L457.1 98.3 L458.9 99.1 L458.7 99.7 L456.3 99.8 L453.9 101.9 L453.1 100.2 L454.0 98.4 L452.9 97.7Z",
+  "TWN": "M663.6 141.5 L662.6 147.6 L660.4 143.6 L662.5 139.2 L663.7 140.0 L663.6 141.5Z",
+  "TZA": "M475.3 205.3 L483.7 210.7 L483.8 212.1 L487.0 214.6 L485.9 217.7 L486.0 219.2 L487.4 220.1 L486.8 224.2 L488.4 228.3 L489.1 228.8 L487.3 230.3 L480.6 232.4 L476.3 231.9 L475.8 228.4 L474.7 226.6 L468.1 223.9 L466.9 220.7 L465.7 219.3 L465.1 214.2 L466.0 214.1 L468.3 211.3 L467.7 208.9 L468.3 208.6 L468.4 207.1 L467.6 205.7 L475.3 205.3Z",
+  "UGA": "M475.3 205.3 L468.4 205.4 L466.2 206.5 L465.7 206.2 L466.8 200.2 L469.2 197.3 L468.3 197.0 L468.5 194.0 L469.4 193.4 L470.8 193.9 L474.1 193.3 L475.5 192.2 L476.5 193.9 L477.8 198.1 L475.3 202.6 L475.3 205.3Z",
+  "UKR": "M461.1 72.6 L461.4 72.1 L463.9 72.0 L465.4 73.3 L465.4 74.6 L466.9 74.7 L467.9 76.2 L470.5 77.0 L471.9 76.7 L473.4 77.8 L477.5 78.6 L477.1 80.6 L477.7 82.7 L475.8 82.9 L475.0 83.6 L475.1 84.7 L469.1 86.7 L469.5 88.3 L470.5 88.8 L472.5 88.7 L472.3 89.6 L467.7 91.4 L466.5 90.9 L466.8 89.8 L464.5 89.0 L466.5 87.8 L462.7 86.6 L462.4 85.7 L460.6 86.0 L458.8 89.1 L457.9 88.7 L457.0 89.1 L456.1 88.7 L457.0 86.3 L459.3 86.4 L456.0 82.2 L453.6 81.3 L448.7 83.1 L445.2 82.3 L444.4 82.8 L443.0 81.5 L443.8 79.8 L444.2 80.0 L443.6 78.9 L445.1 76.8 L446.0 76.6 L444.8 73.8 L448.1 73.0 L458.3 74.4 L458.7 72.7 L461.1 72.6Z",
+  "URY": "M277.2 278.9 L278.5 278.6 L286.1 283.5 L287.6 285.2 L286.9 286.4 L287.7 287.8 L287.0 289.4 L284.9 290.8 L282.2 290.6 L280.0 289.5 L278.6 289.6 L277.1 288.2 L277.2 278.9Z",
+  "USA": "M161.5 80.0 L215.3 80.0 L215.7 79.1 L216.4 79.1 L216.5 80.8 L221.1 82.1 L222.8 81.8 L225.6 82.4 L227.7 81.7 L233.0 85.2 L233.0 86.3 L234.0 86.1 L234.1 87.1 L234.8 87.4 L234.4 87.8 L236.0 89.0 L235.1 93.4 L231.7 97.1 L232.2 98.1 L240.9 95.2 L241.0 93.7 L242.0 93.3 L245.8 93.3 L250.9 89.9 L257.6 89.8 L259.7 88.7 L264.2 83.8 L264.7 84.5 L266.1 84.1 L266.8 84.8 L265.6 88.1 L266.5 90.3 L259.3 93.1 L257.3 95.2 L256.8 96.5 L257.1 97.8 L257.9 97.9 L258.0 97.0 L258.4 97.5 L258.0 98.2 L249.8 100.0 L253.0 99.5 L253.4 100.0 L250.3 100.7 L249.2 100.4 L248.3 101.1 L248.9 101.2 L247.9 103.0 L245.8 104.9 L245.0 103.5 L245.2 106.3 L242.5 109.3 L243.5 107.5 L242.7 106.5 L243.0 104.4 L242.3 105.5 L242.3 107.1 L241.1 106.7 L242.2 107.5 L241.8 113.4 L239.9 115.3 L237.6 116.1 L233.5 118.6 L227.4 123.8 L226.6 127.3 L227.8 135.3 L226.3 139.5 L224.6 139.5 L223.7 137.8 L222.2 132.7 L223.0 131.1 L221.4 127.6 L220.6 127.2 L218.3 128.3 L215.9 126.4 L209.0 127.0 L209.3 129.2 L208.8 129.5 L205.7 129.5 L204.4 128.2 L202.4 128.5 L201.0 127.9 L197.7 128.7 L191.6 132.9 L190.4 135.7 L190.5 137.8 L189.6 137.9 L186.7 136.5 L186.3 133.6 L184.3 129.0 L183.0 128.0 L181.2 128.0 L179.4 130.0 L177.8 129.2 L176.9 128.5 L176.4 125.8 L174.2 123.0 L170.5 123.0 L170.2 124.0 L164.3 124.0 L157.3 121.1 L157.7 120.6 L152.4 121.0 L152.5 119.7 L151.7 118.3 L150.8 118.0 L150.8 117.3 L146.9 115.8 L147.2 114.4 L146.3 111.9 L146.5 107.8 L145.4 104.9 L146.1 102.9 L145.7 101.5 L148.4 97.3 L148.8 95.4 L154.1 88.6 L156.7 82.0 L157.2 81.6 L159.5 82.4 L159.1 84.7 L160.0 84.1 L161.5 80.0ZM60.9 152.4 L61.8 153.8 L59.6 155.3 L59.2 153.3 L60.0 151.9 L60.9 152.4ZM105.7 53.0 L106.8 53.2 L104.4 54.4 L103.4 53.4 L105.7 53.0ZM123.0 58.6 L124.1 58.8 L124.1 59.5 L118.6 61.5 L118.3 60.9 L119.2 59.8 L123.0 58.6ZM174.1 32.4 L150.5 53.2 L153.3 53.8 L153.6 56.4 L159.1 54.3 L158.9 55.6 L159.9 57.6 L158.9 61.9 L160.7 63.4 L157.4 66.0 L156.2 64.4 L157.5 62.3 L156.9 60.4 L158.0 58.2 L153.6 58.0 L152.1 57.4 L150.7 54.9 L147.2 53.7 L144.5 53.8 L141.2 51.8 L138.7 52.3 L137.3 53.9 L128.7 55.8 L133.2 52.2 L135.9 51.5 L136.0 50.9 L125.0 55.4 L125.2 56.5 L121.7 58.2 L116.1 59.9 L108.6 63.2 L92.8 67.0 L113.9 59.5 L118.6 56.4 L113.7 57.5 L113.8 56.3 L112.4 57.2 L113.0 56.0 L109.1 57.0 L111.8 54.7 L111.6 53.9 L108.7 54.3 L108.0 52.7 L109.6 51.4 L109.5 50.5 L116.9 46.7 L119.2 46.9 L125.2 45.3 L126.1 44.3 L125.7 43.9 L128.0 43.0 L123.4 44.0 L122.7 43.5 L119.9 43.8 L118.1 43.3 L118.6 42.4 L118.2 41.1 L127.1 39.1 L128.4 39.1 L126.7 40.2 L130.3 40.1 L130.8 38.8 L129.9 38.0 L130.0 36.0 L128.7 35.3 L131.2 34.2 L134.2 34.1 L142.5 31.1 L154.2 29.0 L156.0 29.4 L155.7 30.3 L159.5 30.1 L158.7 30.5 L160.6 30.9 L162.5 30.7 L168.6 31.8 L171.1 31.4 L174.1 32.4ZM106.5 45.3 L110.2 46.4 L107.9 47.1 L107.1 46.2 L105.4 46.3 L106.5 45.3Z",
+  "UZB": "M513.8 99.0 L511.4 89.9 L516.1 88.4 L522.0 91.3 L524.5 93.6 L530.2 93.0 L533.1 94.8 L533.7 97.3 L534.7 97.3 L535.8 99.4 L538.4 99.5 L539.3 100.6 L540.0 100.6 L540.4 98.8 L543.5 96.7 L544.2 96.9 L543.0 98.5 L544.8 99.4 L546.1 98.8 L548.9 100.1 L546.9 101.9 L544.4 101.7 L544.0 99.9 L541.4 100.5 L540.7 103.5 L538.9 103.3 L538.7 104.4 L540.3 105.0 L541.2 106.9 L540.7 109.4 L537.9 108.9 L537.6 107.4 L532.1 105.1 L527.7 102.2 L526.0 99.6 L523.0 99.3 L522.1 98.7 L521.3 96.8 L518.3 95.4 L515.4 97.7 L516.1 99.0 L513.8 99.0Z",
+  "VEN": "M265.2 189.8 L265.5 190.5 L264.7 191.5 L259.9 193.4 L256.1 192.7 L257.1 193.3 L257.3 196.6 L259.2 196.8 L259.3 197.3 L254.4 200.9 L252.6 201.1 L251.4 199.7 L250.8 197.2 L249.4 195.8 L250.6 194.5 L249.5 191.5 L250.7 187.5 L249.9 187.1 L246.1 187.5 L244.7 185.4 L240.5 185.3 L239.5 184.2 L239.6 181.7 L238.9 180.0 L237.8 179.9 L238.8 176.6 L241.1 173.7 L242.5 173.3 L242.4 173.8 L241.1 174.1 L241.6 176.6 L240.6 178.1 L241.3 180.1 L242.3 179.9 L242.8 178.1 L242.2 177.2 L242.2 175.3 L245.0 174.3 L244.8 173.1 L245.6 172.3 L246.3 174.0 L247.9 174.1 L249.2 175.5 L249.2 176.3 L253.6 176.1 L254.8 177.2 L256.5 177.5 L257.8 176.1 L263.2 175.9 L261.3 176.7 L262.0 177.8 L263.8 178.0 L265.4 179.3 L265.7 181.3 L267.7 181.8 L265.9 183.3 L265.6 184.2 L266.4 185.2 L264.4 186.0 L263.8 187.9 L265.2 189.8Z",
+  "VNM": "M630.7 176.5 L632.5 175.5 L634.8 175.3 L633.7 173.8 L637.2 171.8 L637.1 168.8 L635.7 162.9 L629.9 155.9 L627.0 154.4 L628.8 152.8 L627.6 150.7 L624.9 150.6 L622.0 146.4 L623.0 145.7 L626.8 145.5 L628.5 144.1 L631.7 145.5 L631.6 147.0 L632.8 148.0 L635.2 148.7 L632.6 150.8 L631.2 153.2 L631.0 154.9 L635.6 160.9 L639.4 164.4 L641.0 169.1 L641.1 173.5 L632.8 181.2 L631.9 179.6 L632.4 177.9 L630.7 176.5Z",
+  "VUT": "M766.6 242.3 L766.7 239.7 L767.7 240.4 L767.6 242.5 L766.6 242.3Z",
+  "YEM": "M513.7 155.1 L516.5 161.0 L515.0 161.7 L514.7 163.6 L509.1 165.9 L507.2 167.6 L505.6 167.6 L504.3 168.7 L500.6 169.4 L499.2 170.9 L495.9 171.1 L493.7 164.6 L494.1 164.5 L493.9 161.7 L494.8 160.9 L495.0 158.7 L496.0 159.3 L502.5 159.4 L503.1 160.2 L504.1 159.8 L505.5 157.2 L507.4 156.0 L513.7 155.1Z",
+  "ZAF": "M435.0 274.8 L436.1 273.5 L437.2 275.3 L439.5 275.9 L442.6 274.5 L443.0 265.2 L444.8 268.0 L444.9 270.4 L446.5 270.1 L450.4 266.4 L452.3 267.5 L455.4 267.0 L456.1 265.0 L457.3 264.8 L458.8 262.2 L464.0 258.4 L467.8 258.9 L469.1 264.2 L468.7 267.9 L467.0 267.6 L466.0 270.2 L467.2 271.5 L468.5 271.2 L469.0 270.1 L470.7 270.1 L469.6 274.1 L463.9 281.2 L459.6 285.3 L454.5 287.6 L454.2 288.3 L447.5 288.1 L442.1 290.4 L439.6 289.5 L438.6 288.8 L437.9 284.9 L438.6 284.5 L438.6 282.5 L435.0 274.8ZM462.0 275.7 L461.1 274.9 L460.1 275.5 L457.6 278.0 L459.1 280.0 L461.5 278.5 L462.7 276.5 L462.0 275.7Z",
+  "ZMB": "M468.1 223.9 L472.5 226.1 L473.5 227.2 L474.0 229.4 L473.1 232.1 L473.5 234.2 L472.0 237.4 L473.2 238.0 L466.4 240.1 L466.6 241.9 L463.6 243.2 L459.2 248.0 L455.3 247.5 L454.1 246.5 L450.9 247.0 L448.1 243.3 L448.4 235.3 L453.0 235.4 L452.8 230.4 L453.6 230.4 L453.7 231.2 L456.1 231.4 L456.9 232.5 L458.6 232.9 L460.0 232.1 L460.4 233.4 L462.1 233.7 L463.8 236.2 L465.5 236.2 L465.4 233.5 L464.7 234.0 L462.6 232.5 L463.4 227.0 L463.0 225.9 L464.2 224.0 L468.1 223.9Z",
+  "ZWE": "M467.8 258.9 L464.0 258.4 L462.7 257.3 L461.0 256.9 L460.5 254.4 L459.5 254.2 L457.2 251.4 L455.3 247.5 L459.2 248.0 L463.6 243.2 L466.6 241.9 L466.7 242.8 L468.5 242.8 L472.1 244.9 L471.2 254.0 L467.8 258.9Z"
+ },
+ "small": [
+  "ALB",
+  "ATF",
+  "BDI",
+  "BEL",
+  "BHS",
+  "BLZ",
+  "BRN",
+  "BTN",
+  "CYP",
+  "DJI",
+  "FLK",
+  "GMB",
+  "GNB",
+  "GNQ",
+  "HTI",
+  "ISR",
+  "JAM",
+  "KOSOVO",
+  "KWT",
+  "LBN",
+  "LKA",
+  "MKD",
+  "MNE",
+  "NORTHERN",
+  "PRI",
+  "PSE",
+  "QAT",
+  "RWA",
+  "SLV",
+  "SVK",
+  "SVN",
+  "SWZ",
+  "TGO",
+  "TLS",
+  "TTO",
+  "TWN",
+  "VUT"
+ ],
+ "w": 800.0
+}
