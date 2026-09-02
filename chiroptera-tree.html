@@ -138,8 +138,6 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .card .lu-d-sci{font-size:19px;padding-right:0}
 .card .lu-d-common{font-size:12.5px;margin:3px 0 0}
 .card .lu-d-authority{font-size:10px;margin-top:2px}
-.card .lu-chain{margin:9px 0 0;gap:4px}
-.card .lu-chain span{padding:3px 7px;font-size:9.5px}
 .card .lu-links{margin-top:10px;gap:6px 10px}
 .card .lu-links a{width:28px;height:28px}
 .card .lu-facts{gap:12px;margin-top:12px;padding-top:0}
@@ -173,7 +171,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
   margin:0 0 20px;scroll-margin-top:72px;
 }
 
-.card-lineage{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.card-lineage{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;line-height:1.55}
 .card .name-row{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 7px}
 .card h3{font-family:var(--display);font-weight:500;font-size:19px;margin:0;line-height:1.05}
 .card .common{font-size:12.5px;color:var(--ochre);margin:0}
@@ -304,9 +302,6 @@ footer a:hover{color:var(--ochre)}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
-.lu-chain{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em}
-.lu-chain span{padding:4px 9px;background:var(--prussian);border:1px solid var(--line-dim);border-radius:2px;color:var(--muted)}
-.lu-chain span b{color:var(--line);font-weight:500}
 .lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
 .lu-section{background:var(--prussian);border:1px solid rgba(150,190,120,.25);border-radius:4px;padding:16px 18px}
@@ -363,6 +358,7 @@ footer a:hover{color:var(--ochre)}
 }
 .cm-zoom-ctrl button:hover{border-color:var(--ochre);color:var(--ochre)}
 .cm-zoom-ctrl button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cm-land{fill:#274a2e;stroke:none;pointer-events:none}
 .cm-c{fill:#274a2e;stroke:#122015;stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
 .cm-c.has{fill:#345f3a;cursor:pointer}
 .cm-c.has:hover{fill:#4a7a49}
@@ -459,6 +455,7 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
 :root[data-theme="light"] .cm-map svg rect:first-child{fill:#dfe7d8}
 :root[data-theme="light"] .cm-label,
 :root[data-theme="light"] .cm-zoom-ctrl button{background:rgba(243,240,229,.92)}
+:root[data-theme="light"] .cm-land{fill:#b8c9af}
 :root[data-theme="light"] .cm-c{fill:#b8c9af;stroke:#dfe7d8}
 :root[data-theme="light"] .cm-c.has{fill:#8fab84}
 :root[data-theme="light"] .cm-c.has:hover{fill:#70966d}
@@ -1839,6 +1836,9 @@ function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
   if(!mapEl) return;
   let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" fill="#122015"/>';
+  // dissolved land mass, under the countries: fills the sub-pixel slivers that
+  // independent per-country simplification leaves along shared borders
+  if(WMAP.land) body += '<path class="cm-land" d="'+WMAP.land+'"/>';
   body += WMBASE.map(([k,d])=>{
     const e = CM[k];
     const has = e && (e.confirmed.length || e.maybe.length);
@@ -2294,9 +2294,10 @@ function luDetailHTML(s, compact){
   const dk = luState.danish[s.sciName];
   const bin = luNiceName(s.sciName);
 
-  const chain = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
+  // the full rank ladder, shown as one breadcrumb above the name
+  const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k=>s[k] && s[k]!=='NA')
-    .map(k=>'<span>'+k+': <b>'+luEsc(s[k])+'</b></span>').join('');
+    .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
   const callRows = [];
   if(ESP[bin]) callRows.push('<dt>Species call</dt><dd>'+luEsc(ESP[bin])+'</dd>');
@@ -2315,12 +2316,11 @@ function luDetailHTML(s, compact){
     '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
 
   return '<figure class="inat-photo" aria-busy="true"></figure>'+
-    (compact ? '<p class="card-lineage">'+luEsc(s.family)+' &rsaquo; '+luEsc(s.genus)+'</p>' : '')+
+    '<p class="card-lineage">'+lineage+'</p>'+
     '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
     (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+' <span class="lu-dk-src">('+luEsc(dk.source)+')</span></p>' : '')+
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
-    '<div class="lu-chain">'+chain+'</div>'+
     '<div class="lu-links">'+links+'</div>'+
     '<div class="lu-facts">'+
       '<section class="lu-section"><h4>Taxonomy &amp; status</h4><dl>'+
