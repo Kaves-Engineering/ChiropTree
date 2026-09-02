@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0a1620">
-<title>Marine mammals — three returns to the sea</title>
+<meta name="theme-color" content="#0d140f">
+<title>Marine mammals — three lineages that went back to the sea</title>
 <script>
 (function(){
   try{
@@ -20,29 +20,29 @@
 <style>
 :root{
   color-scheme:dark;
-  --abyss:#0a1620;
-  --prussian:#132534;
-  --prussian-2:#1a3446;
-  --line:#7fb8c9;
-  --line-dim:#3f6b78;
-  --bone:#eef4f1;
-  --text:#d9e4e2;
-  --muted:#a7b9bd;
+  --abyss:#0d140f;
+  --prussian:#1a2f1c;
+  --prussian-2:#22422a;
+  --line:#a9c98c;
+  --line-dim:#5b7a49;
+  --bone:#f4f1e6;
+  --text:#dfe4d6;
+  --muted:#b7bfa9;
   --ochre:#e8ab4c;
   --ochre-dim:#8a6427;
-  --panel:#0d1c26;
-  --ink-on-accent:#0d1c26;
-  --line-fill:#7fb8c9;
+  --panel:#101d16;
+  --ink-on-accent:#14211a;
+  --line-fill:#a9c98c;
   --ochre-fill:#e8ab4c;
 
-  --border-rgb:110,170,185;
-  --border2-rgb:130,185,195;
-  --card-rgb:12,24,32;
-  --fbtn-rgb:13,28,38;
-  --tag-rgb:22,40,50;
-  --tag-hover-rgb:30,55,66;
-  --input-rgb:19,37,52;
-  --abyss-rgb:10,22,32;
+  --border-rgb:150,190,120;
+  --border2-rgb:178,210,150;
+  --card-rgb:14,26,19;
+  --fbtn-rgb:16,29,22;
+  --tag-rgb:28,50,30;
+  --tag-hover-rgb:38,66,40;
+  --input-rgb:26,47,28;
+  --abyss-rgb:13,20,15;
 
   --display:"Fraunces",Georgia,serif;
   --body:"Lexend","Helvetica Neue",Arial,sans-serif;
@@ -53,52 +53,52 @@
 
 :root[data-theme="light"]{
   color-scheme:light;
-  --abyss:#eef3f4;
-  --prussian:#dce8ea;
-  --prussian-2:#c9dcdf;
-  --line:#2f6478;
-  --line-dim:#7ca3ac;
-  --bone:#16242a;
-  --text:#293a3d;
-  --muted:#57696c;
+  --abyss:#f6f4ea;
+  --prussian:#eae6d4;
+  --prussian-2:#ddd7bd;
+  --line:#4f6b3a;
+  --line-dim:#8a9b74;
+  --bone:#20261c;
+  --text:#31382a;
+  --muted:#5c6350;
   --ochre:#9a5f14;
   --ochre-dim:#c99248;
-  --panel:#fbfdfd;
-  --ink-on-accent:#0d1c26;
+  --panel:#fffdf5;
+  --ink-on-accent:#14211a;
 
-  --border-rgb:70,110,120;
-  --border2-rgb:60,100,110;
-  --card-rgb:251,253,253;
-  --fbtn-rgb:251,253,253;
-  --tag-rgb:226,236,237;
-  --tag-hover-rgb:214,228,230;
-  --input-rgb:251,253,253;
-  --abyss-rgb:238,243,244;
+  --border-rgb:120,130,95;
+  --border2-rgb:110,120,85;
+  --card-rgb:255,253,245;
+  --fbtn-rgb:255,253,245;
+  --tag-rgb:236,231,211;
+  --tag-hover-rgb:226,220,196;
+  --input-rgb:255,253,245;
+  --abyss-rgb:246,244,234;
 }
 @media (prefers-color-scheme:light){
   :root:not([data-theme="dark"]){
     color-scheme:light;
-    --abyss:#eef3f4;
-    --prussian:#dce8ea;
-    --prussian-2:#c9dcdf;
-    --line:#2f6478;
-    --line-dim:#7ca3ac;
-    --bone:#16242a;
-    --text:#293a3d;
-    --muted:#57696c;
+    --abyss:#f6f4ea;
+    --prussian:#eae6d4;
+    --prussian-2:#ddd7bd;
+    --line:#4f6b3a;
+    --line-dim:#8a9b74;
+    --bone:#20261c;
+    --text:#31382a;
+    --muted:#5c6350;
     --ochre:#9a5f14;
     --ochre-dim:#c99248;
-    --panel:#fbfdfd;
-    --ink-on-accent:#0d1c26;
+    --panel:#fffdf5;
+    --ink-on-accent:#14211a;
 
-    --border-rgb:70,110,120;
-    --border2-rgb:60,100,110;
-    --card-rgb:251,253,253;
-    --fbtn-rgb:251,253,253;
-    --tag-rgb:226,236,237;
-    --tag-hover-rgb:214,228,230;
-    --input-rgb:251,253,253;
-    --abyss-rgb:238,243,244;
+    --border-rgb:120,130,95;
+    --border2-rgb:110,120,85;
+    --card-rgb:255,253,245;
+    --fbtn-rgb:255,253,245;
+    --tag-rgb:236,231,211;
+    --tag-hover-rgb:226,220,196;
+    --input-rgb:255,253,245;
+    --abyss-rgb:246,244,234;
   }
 }
 [data-theme="light"] body::after{background:none}
@@ -124,6 +124,7 @@ body{
   overflow-x:hidden;
 }
 
+/* paper grain */
 body::before{
   content:"";
   position:fixed;inset:0;
@@ -135,11 +136,16 @@ body::before{
 body::after{
   content:"";
   position:fixed;inset:0;pointer-events:none;z-index:98;
-  background:radial-gradient(120% 90% at 50% 8%, rgba(30,75,90,.18), rgba(10,22,32,0) 62%);
+  background:radial-gradient(120% 90% at 50% 8%, rgba(45,80,48,.16), rgba(13,20,15,0) 62%);
 }
 
 .wrap{max-width:1640px;margin:0 auto;padding:0 var(--pad)}
 
+/* ---------- top grid: tree + map side by side, boxes aligned, flush to the top ----------
+   Both columns lead with the exact same shape — a heading, then a collapsed
+   "about" toggle — so the treebox and the map naturally land on the same Y
+   without needing any row-syncing trick. Nothing that can wrap or change
+   height (like the tools buttons) is allowed before the box. */
 .top-grid{display:grid;grid-template-columns:1fr}
 #tree-section,#country-map{
   padding-top:clamp(18px,2.6vw,28px);
@@ -155,6 +161,7 @@ body::after{
   #country-map{grid-column:2;min-width:0}
 }
 
+/* ---------- intro card (condensed, sits below tree + map) ---------- */
 .intro-card{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 40px;align-items:center;
   margin:clamp(40px,5.5vw,72px) 0;
@@ -179,16 +186,17 @@ h1 em{font-style:italic;color:var(--line)}
   margin:12px 0 0;max-width:58ch;font-size:14.5px;line-height:1.58;color:var(--text);
 }
 .figures{
-  display:grid;grid-template-columns:repeat(3,auto);gap:6px 30px;flex:none;
+  display:grid;grid-template-columns:repeat(2,auto);gap:6px 30px;flex:none;
 }
 .fig{padding:0;border-right:none}
 .fig b{display:block;font-family:var(--display);font-size:19px;font-weight:500;line-height:1}
 .fig span{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 @media (max-width:760px){
   .intro-card{grid-template-columns:1fr}
-  .figures{grid-template-columns:repeat(3,auto);border-top:1px solid var(--line-dim);padding-top:14px}
+  .figures{grid-template-columns:repeat(4,auto);border-top:1px solid var(--line-dim);padding-top:14px}
 }
 
+/* ---------- sections ---------- */
 section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(var(--border-rgb),.2);scroll-margin-top:70px}
 .sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
 .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ochre)}
@@ -199,6 +207,7 @@ h2{
 .lede{max-width:62ch;color:var(--text);margin:14px 0 0}
 .lede + .lede{margin-top:12px}
 
+/* ---------- rank ladder ---------- */
 .switch{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 30px}
 .switch button{
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
@@ -211,7 +220,7 @@ h2{
 .ladder{list-style:none;margin:0;padding:0;border-top:1px solid rgba(var(--border-rgb),.22)}
 .rung{
   display:grid;
-  grid-template-columns:150px minmax(0,1.35fr) minmax(0,1fr) 92px;
+  grid-template-columns:118px minmax(0,1.35fr) minmax(0,1fr) 92px;
   gap:0 20px;align-items:center;
   padding:13px 0;border-bottom:1px solid rgba(var(--border-rgb),.12);
 }
@@ -221,7 +230,7 @@ h2{
 .rung.above .r-rank{color:var(--muted)}
 .taxon{font-family:var(--display);font-size:clamp(17px,2.4vw,23px);font-weight:500;line-height:1.15}
 .taxon.ital{font-style:italic}
-.gloss{font-size:14.5px;color:#9db7bc;line-height:1.5}
+.gloss{font-size:14.5px;color:#b3bfa6;line-height:1.5}
 .count{text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
 .bar{grid-column:1 / -1;height:2px;background:rgba(var(--border-rgb),.13);margin-top:10px;position:relative}
 .bar i{position:absolute;inset:0 auto 0 0;background:var(--line);display:block;transition:width .5s cubic-bezier(.2,.7,.2,1)}
@@ -229,29 +238,30 @@ h2{
 .rung.above .bar{display:none}
 .note-inline{font-family:var(--mono);font-size:11px;color:var(--ochre);letter-spacing:.04em}
 
+/* ---------- tree ---------- */
 .treebox{
   margin-top:0;
-  border:1px solid rgba(110,170,185,.22);
-  background:#0f2028;
+  border:1px solid rgba(150,190,120,.22);
+  background:#16281a;
   border-radius:3px;
   overflow-x:auto;
   overflow-y:visible;
   -webkit-overflow-scrolling:touch;
 }
 svg#tree{display:block;width:100%;height:auto}
-.tree-bg{fill:#0f2028}
-.tree-hr{stroke:#4a7f8c}
+.tree-bg{fill:#16281a}
+.tree-hr{stroke:#567f52}
 .tree-hr-accent{stroke:#8a6427}
-.branch{stroke:#3f6b78;stroke-width:1.2;fill:none;stroke-linecap:square}
+.branch{stroke:#5b7a49;stroke-width:1.2;fill:none;stroke-linecap:square}
 .tip-hit{fill:transparent;cursor:pointer}
-.tip-name{font-family:var(--display);font-size:19px;font-weight:500;fill:#eef4f1;cursor:pointer;dominant-baseline:middle}
-.tip-common{font-family:var(--body);font-size:15px;fill:#a2bcc0;dominant-baseline:middle}
-.tip-count{font-family:var(--mono);font-size:14.5px;fill:#a7b9bd;text-anchor:end;dominant-baseline:middle}
-.col-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;fill:#a7b9bd}
+.tip-name{font-family:var(--display);font-size:19px;font-weight:500;fill:#f4f1e6;cursor:pointer;dominant-baseline:middle}
+.tip-common{font-family:var(--body);font-size:15px;fill:#adb9a0;dominant-baseline:middle}
+.tip-count{font-family:var(--mono);font-size:14.5px;fill:#b7bfa9;text-anchor:end;dominant-baseline:middle}
+.col-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;fill:#b7bfa9}
 .sub-label{font-family:var(--mono);font-size:16.5px;letter-spacing:.26em;text-transform:uppercase;fill:var(--ochre)}
-.sf-label{font-family:var(--mono);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;fill:#7fb8c9}
-.sf-count{font-family:var(--mono);font-size:13.5px;letter-spacing:.06em;fill:#82a0a6}
-.knock{fill:#0f2028}
+.sf-label{font-family:var(--mono);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;fill:#a9c98c}
+.sf-count{font-family:var(--mono);font-size:13.5px;letter-spacing:.06em;fill:#8f9c85}
+.knock{fill:#16281a}
 g.tip:hover .tip-name,g.tip:focus-visible .tip-name{fill:var(--ochre)}
 g.tip:hover .branch-tip,g.tip.active .branch-tip{stroke:var(--ochre);stroke-width:2}
 g.tip.active .tip-name{fill:var(--ochre)}
@@ -259,10 +269,11 @@ g.tip:focus-visible{outline:none}
 .focus-ring{fill:none;stroke:none}
 g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3}
 
+/* ---------- detail card (dense) ---------- */
 .card.empty{border-left-color:var(--line-dim);background:rgba(var(--card-rgb),.35)}
 .card-empty{padding:4px 0 2px}
 .ce-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-.ce-text{margin:0;color:#8ea3a6;font-size:13.5px;line-height:1.5;max-width:34ch}
+.ce-text{margin:0;color:#96a488;font-size:13.5px;line-height:1.5;max-width:34ch}
 .card .lu-d-sci{font-size:19px;padding-right:0}
 .card .lu-d-common{font-size:12.5px;margin:3px 0 0}
 .card .lu-d-authority{font-size:10px;margin-top:2px}
@@ -277,6 +288,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .card .lu-status{padding:1px 7px}
 .card .lu-prov{margin-top:12px;font-size:11px;padding-top:10px}
 
+/* sits below the tree + map grid — the one shared detail card */
 .card{
   border:1px solid rgba(var(--border-rgb),.28);border-left:3px solid var(--ochre);
   background:rgba(var(--card-rgb),.75);padding:14px 18px;border-radius:2px;
@@ -305,6 +317,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 }
 .jump:hover{color:var(--bone);background:none}
 
+/* ---------- filters ---------- */
 .filters{
   margin-top:34px;display:grid;gap:0;
   border-top:1px solid rgba(var(--border2-rgb),.22);
@@ -343,6 +356,7 @@ g.tip{transition:opacity .25s}
 
 @media (max-width:640px){ .fgroup{grid-template-columns:1fr} }
 
+/* ---------- the atlas ---------- */
 .drill{margin-top:34px;display:grid;gap:10px}
 .atlas-sub{
   font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
@@ -387,7 +401,7 @@ summary .sm{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:
   border:1px solid rgba(var(--border2-rgb),.26);border-radius:2px;padding:4px 10px;background:rgba(var(--tag-rgb),.55);
 }
 .gen i{font-family:var(--display);font-style:italic;font-size:15px;color:var(--bone)}
-.gen b{font-family:var(--mono);font-size:10.5px;font-weight:400;color:#8ba4a8}
+.gen b{font-family:var(--mono);font-size:10.5px;font-weight:400;color:#9aa88f}
 button.gen{font:inherit;cursor:pointer;text-align:left;transition:.15s}
 button.gen:hover{border-color:var(--ochre);background:rgba(var(--tag-hover-rgb),.7)}
 button.gen:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
@@ -407,17 +421,29 @@ ul.sp li{
   break-inside:avoid;padding:5px 0 5px 12px;border-left:1px solid rgba(var(--border2-rgb),.3);margin-bottom:3px;
 }
 ul.sp li i{display:block;font-family:var(--display);font-style:italic;font-size:15px;color:var(--bone)}
-ul.sp li span{display:block;font-size:13.5px;color:#9fb6ba;line-height:1.4}
-ul.sp li span.sp-note{
-  margin-top:5px;font-size:13.5px;color:#c9d9da;line-height:1.48;
+ul.sp li span{display:block;font-size:13.5px;color:#b3bfa6;line-height:1.4}
+ul.sp li span.sp-echo{
+  margin-top:5px;font-size:13.5px;color:#d3d8c8;line-height:1.48;
   padding-left:9px;border-left:2px solid var(--ochre-dim);
 }
+ul.sp li span.sp-echo.gen-echo{color:#93a186;border-left-color:rgba(var(--border2-rgb),.22);font-style:italic}
 ul.sp li span.sp-dk{color:var(--ochre)}
-ul.sp li span.sp-status{
-  display:inline-block;margin-top:4px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
-  padding:1px 7px;border-radius:9px;border:1px solid var(--line-dim);color:var(--muted);
-}
 @media (max-width:640px){ ul.sp{columns:1} }
+
+.echo{
+  padding:16px 0 4px;border-top:1px solid rgba(232,171,76,.28);
+}
+.echo-h{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre);margin:0 0 12px;
+}
+.echo-grid{display:flex;flex-wrap:wrap;gap:14px 34px;margin-bottom:12px}
+.echo-grid > div{font-size:14px;color:var(--bone);max-width:34ch}
+.echo-grid span{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#8f9c85;margin-bottom:3px;
+}
+.echo-note{margin:0;font-size:14px;color:var(--text);max-width:72ch;line-height:1.55}
 
 ul.sp li span.sp-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px}
 .sp-links a{
@@ -438,15 +464,16 @@ ul.sp li span.sp-links{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px}
   text-decoration:none;border-bottom:1px solid var(--ochre-dim);
 }
 .src a:hover{color:var(--ochre);border-color:var(--ochre)}
-.src p{margin:0;font-size:14.5px;color:#a8bdc0;line-height:1.55}
+.src p{margin:0;font-size:14.5px;color:#b8c2ac;line-height:1.55}
 @media (max-width:640px){ .src{grid-template-columns:1fr} }
 
-footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:44px 0 70px;color:#a8bdc0;font-size:14.5px}
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:44px 0 70px;color:#b8c2ac;font-size:14.5px}
 footer p{max-width:70ch;margin:0 0 12px}
 footer b{color:var(--bone);font-weight:500}
 
 @media (max-width:720px){
-  .rung{grid-template-columns:110px 1fr;gap:2px 14px}
+  .rung{grid-template-columns:96px 1fr;gap:2px 14px}
   .gloss{grid-column:1 / -1;order:4;padding-top:4px}
   .count{grid-column:2;text-align:left;order:3;padding-top:2px}
   .triberow{grid-template-columns:1fr}
@@ -456,6 +483,7 @@ footer b{color:var(--bone);font-weight:500}
   *{transition:none!important;animation:none!important}
 }
 
+/* ---------- sticky topbar with the search field ---------- */
 .topbar{
   position:sticky;top:0;z-index:60;
   background:rgba(var(--abyss-rgb),.88);backdrop-filter:blur(10px);
@@ -473,7 +501,7 @@ footer b{color:var(--bone);font-weight:500}
   color:var(--muted);text-decoration:none;transition:.15s;
 }
 .tb-nav a:hover{color:var(--ochre)}
-@media (max-width:860px){ .tb-nav{display:none} }
+@media (max-width:800px){ .tb-nav{display:none} }
 @media (max-width:520px){ .tb-brand{display:none} }
 
 .tb-search{margin-left:auto;position:relative;width:min(330px,58vw)}
@@ -512,7 +540,8 @@ footer b{color:var(--bone);font-weight:500}
   color:var(--line-dim);border-bottom:1px solid rgba(var(--border-rgb),.16);
 }
 
-.lu-scrim{position:fixed;inset:0;background:rgba(6,12,16,.62);z-index:70;opacity:0;pointer-events:none;transition:opacity .26s}
+/* ---------- species drawer ---------- */
+.lu-scrim{position:fixed;inset:0;background:rgba(9,14,10,.62);z-index:70;opacity:0;pointer-events:none;transition:opacity .26s}
 .lu-scrim.open{opacity:1;pointer-events:auto}
 .lu-drawer{
   position:fixed;top:0;right:0;bottom:0;width:min(640px,94vw);z-index:80;
@@ -529,6 +558,7 @@ footer b{color:var(--bone);font-weight:500}
 }
 .lu-close:hover{border-color:var(--ochre);color:var(--ochre)}
 
+/* ---------- lookup rows & detail (shared by dropdown and drawer) ---------- */
 .lu-row{padding:9px 14px;border-bottom:1px solid rgba(var(--border-rgb),.10);cursor:pointer}
 .lu-row:hover,.lu-row:focus-visible{background:var(--prussian);outline:none}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
@@ -542,10 +572,6 @@ footer b{color:var(--bone);font-weight:500}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
-.lu-lineage{
-  display:inline-block;margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ochre);border:1px solid var(--ochre-dim);border-radius:20px;padding:3px 11px;
-}
 .lu-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-top:6px}
 .lu-head-main{min-width:0}
 .lu-head .lu-links{margin-top:2px;flex-shrink:0}
@@ -559,18 +585,15 @@ footer b{color:var(--bone);font-weight:500}
 .lu-card .lu-note{margin-top:10px;font-size:13.5px;color:var(--muted);border-top:1px solid rgba(var(--border-rgb),.18);padding-top:9px}
 .lu-card .lu-src{margin-top:7px;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
 .lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;border:1px solid var(--line-dim)}
-.lu-status.lc{color:#7fd1a8;border-color:#3a6b52}
+.lu-status.lc{color:#8fd19e;border-color:#3a6b45}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
 .lu-status.en,.lu-status.cr{color:#e88a8a;border-color:#8a3a3a}
-.lu-status.ex{color:#c47ee8;border-color:#6b3a8a}
-.lu-status.dd,.lu-status.na,.lu-status.ne{color:var(--muted)}
-[data-theme="light"] .lu-status.lc{color:#2f7a5a;border-color:#7fd1a8}
+.lu-status.dd,.lu-status.na{color:var(--muted)}
+[data-theme="light"] .lu-status.lc{color:#2f7a45;border-color:#8fd19e}
 [data-theme="light"] .lu-status.en,[data-theme="light"] .lu-status.cr{color:#a83535;border-color:#e88a8a}
-[data-theme="light"] .lu-status.ex{color:#7a2fa8;border-color:#c47ee8}
 @media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]) .lu-status.lc{color:#2f7a5a;border-color:#7fd1a8}
+  :root:not([data-theme="dark"]) .lu-status.lc{color:#2f7a45;border-color:#8fd19e}
   :root:not([data-theme="dark"]) .lu-status.en,:root:not([data-theme="dark"]) .lu-status.cr{color:#a83535;border-color:#e88a8a}
-  :root:not([data-theme="dark"]) .lu-status.ex{color:#7a2fa8;border-color:#c47ee8}
 }
 .lu-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px}
 .lu-links a{
@@ -588,16 +611,17 @@ footer b{color:var(--bone);font-weight:500}
 
 .lu-prov a{color:var(--line)}
 
+/* ---------- country browse map ---------- */
 .cm-map-wrap{margin-top:0}
 .cm-map{position:relative}
-.cm-map svg{display:block;width:100%;height:auto;background:#0c1c24;border:1px solid rgba(110,170,185,.22);border-radius:3px;cursor:grab;touch-action:none}
+.cm-map svg{display:block;width:100%;height:auto;background:#122015;border:1px solid rgba(150,190,120,.22);border-radius:3px;cursor:grab;touch-action:none}
 .cm-map svg.dragging{cursor:grabbing}
 .cm-zoom-g{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .cm-zoom-g.no-anim{transition:none}
 .cm-label{
   position:absolute;top:10px;left:10px;z-index:2;pointer-events:none;max-width:calc(100% - 76px);
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ochre);background:rgba(10,22,32,.85);border:1px solid var(--ochre-dim);
+  color:var(--ochre);background:rgba(13,20,15,.85);border:1px solid var(--ochre-dim);
   padding:6px 12px;border-radius:2px;opacity:0;transform:translateY(-4px);
   transition:opacity .2s,transform .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
@@ -606,21 +630,21 @@ footer b{color:var(--bone);font-weight:500}
 .cm-zoom-ctrl button{
   width:26px;height:26px;display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:14px;line-height:1;
-  background:rgba(10,22,32,.85);border:1px solid #3f6b78;color:#d9e4e2;
+  background:rgba(13,20,15,.85);border:1px solid #5b7a49;color:#dfe4d6;
   border-radius:2px;cursor:pointer;transition:.15s;
 }
 .cm-zoom-ctrl button:hover{border-color:var(--ochre);color:var(--ochre)}
 .cm-zoom-ctrl button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.cm-bg{fill:#0c1c24}
-.cm-c{fill:#1c3745;stroke:#0c1c24;stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
-.cm-c.has{fill:#2a5468;cursor:pointer}
-.cm-c.has:hover{fill:#3d7188}
+.cm-bg{fill:#122015}
+.cm-c{fill:#274a2e;stroke:#122015;stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
+.cm-c.has{fill:#345f3a;cursor:pointer}
+.cm-c.has:hover{fill:#4a7a49}
 .cm-c.range{fill:var(--ochre-dim)}
 .cm-c.range:hover{fill:#a9822f}
 .cm-c.sel{fill:var(--ochre)}
 .cm-c.range.sel{fill:var(--ochre)}
-.cm-d{fill:#4a8394;stroke:#0c1c24;stroke-width:.8;cursor:pointer;transition:fill .12s}
-.cm-d:hover{fill:#6bb0bd}
+.cm-d{fill:#5c8759;stroke:#122015;stroke-width:.8;cursor:pointer;transition:fill .12s}
+.cm-d:hover{fill:#7fae6e}
 .cm-d.range{fill:var(--ochre-dim)}
 .cm-d.sel{fill:var(--ochre)}
 .cm-d.range.sel{fill:var(--ochre)}
@@ -628,6 +652,8 @@ footer b{color:var(--bone);font-weight:500}
 .cm-mode{margin:16px 0 0}
 .cm-panel-head{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--muted);margin:14px 0 10px;line-height:1.55}
 .cm-panel-head b{color:var(--ochre);font-weight:500;font-family:var(--display);font-style:italic;font-size:15px;letter-spacing:0}
+/* flat, clickable species list — picking one opens it in the tree above and
+   fills the single shared detail card; there is no second cladogram here */
 .cm-list{
   border:1px solid rgba(var(--border-rgb),.22);border-radius:4px;max-height:46vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
   display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));align-content:start;
@@ -635,6 +661,7 @@ footer b{color:var(--bone);font-weight:500}
 .cm-list .lu-row .lu-sci{font-size:16px}
 .cm-list .lu-none{grid-column:1 / -1}
 
+/* ---------- collapsible sections ---------- */
 details.fold > summary{
   list-style:none;cursor:pointer;display:block;position:relative;padding-right:104px;
 }
@@ -653,6 +680,7 @@ details.fold > summary:focus-visible{outline:2px solid var(--ochre);outline-offs
 .lede-block{margin-top:6px}
 .lede-block .lede:first-of-type{margin-top:0}
 
+/* ---------- expandable tree ---------- */
 .tree-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 12px}
 .tree-tools button{
   font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
@@ -670,29 +698,30 @@ g.trow{cursor:pointer;transition:opacity .25s}
 g.trow.dim{opacity:.22}
 g.trow.dim:hover{opacity:.5}
 g.trow .trow-hit{fill:transparent}
-g.trow:hover .trow-hit{fill:rgba(130,185,195,.07)}
+g.trow:hover .trow-hit{fill:rgba(178,210,150,.07)}
 g.trow:focus-visible{outline:none}
 g.trow:focus-visible .trow-hit{fill:rgba(232,171,76,.15)}
-.t-subfam{font-family:var(--display);font-size:17px;font-weight:500;fill:#eef4f1;dominant-baseline:middle}
+.t-subfam{font-family:var(--display);font-size:17px;font-weight:500;fill:#f4f1e6;dominant-baseline:middle}
 .t-tribe{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;fill:var(--ochre);dominant-baseline:middle}
-.t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:#e6f0ee;dominant-baseline:middle}
-.t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:#b9d0d3;dominant-baseline:middle}
-.t-note{font-family:var(--body);font-size:14px;fill:#82a0a6;dominant-baseline:middle}
-.t-count{font-family:var(--mono);font-size:13px;fill:#82a0a6;text-anchor:end;dominant-baseline:middle}
-.sub-branch{stroke:rgba(130,185,195,.34);stroke-width:1}
-.t-knot{fill:#3f6b78}
+.t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:#eef0e2;dominant-baseline:middle}
+.t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:#c3cdb8;dominant-baseline:middle}
+.t-note{font-family:var(--body);font-size:14px;fill:#8f9c85;dominant-baseline:middle}
+.t-count{font-family:var(--mono);font-size:13px;fill:#8f9c85;text-anchor:end;dominant-baseline:middle}
+.sub-branch{stroke:rgba(178,210,150,.34);stroke-width:1}
+.t-knot{fill:#5b7a49}
 .t-knot.shut{fill:var(--ochre-dim)}
-.t-knot.open{fill:#0f2028;stroke:var(--ochre);stroke-width:1.5}
-.t-knot.leaf{fill:#3f6b78}
+.t-knot.open{fill:#16281a;stroke:var(--ochre);stroke-width:1.5}
+.t-knot.leaf{fill:#567f52}
 g.tip:hover .t-knot.shut,g.trow:hover .t-knot.shut{fill:var(--ochre)}
 g.trow:hover .t-genus,g.trow:hover .t-species,g.trow:hover .t-subfam{fill:var(--ochre)}
 g.trow.species.active .t-species{fill:var(--ochre)}
 g.trow.species.active .trow-hit{fill:rgba(232,171,76,.12)}
 g.trow.static{cursor:default}
 g.trow.static:hover .trow-hit{fill:none}
-g.trow.static:hover .t-genus{fill:#e6f0ee}
+g.trow.static:hover .t-genus{fill:#eef0e2}
 .fam-open .tip-name{fill:var(--ochre)}
 
+/* ---------- light mode: tree + map read as light cards, matching .intro-card ---------- */
 [data-theme="light"] .treebox{background:var(--panel);border-color:rgba(var(--border-rgb),.35)}
 [data-theme="light"] .tree-bg{fill:var(--panel)}
 [data-theme="light"] .tree-hr{stroke:var(--line-dim)}
@@ -713,12 +742,12 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 [data-theme="light"] .sub-branch{stroke:rgba(var(--border2-rgb),.5)}
 [data-theme="light"] .t-knot{fill:var(--line-dim)}
 [data-theme="light"] .t-knot.open{fill:var(--panel)}
-[data-theme="light"] .t-knot.leaf{fill:#3a7f8c}
+[data-theme="light"] .t-knot.leaf{fill:#4f7a4a}
 [data-theme="light"] g.trow.static:hover .t-genus{fill:var(--bone)}
 
 [data-theme="light"] .cm-map svg{background:var(--panel);border-color:rgba(var(--border-rgb),.35)}
 [data-theme="light"] .cm-bg{fill:var(--panel)}
-[data-theme="light"] .cm-c{fill:#cfe2e6;stroke:var(--panel)}
+[data-theme="light"] .cm-c{fill:#d3e0bf;stroke:var(--panel)}
 [data-theme="light"] .cm-d{stroke:var(--panel)}
 [data-theme="light"] .cm-label{background:rgba(var(--card-rgb),.95);color:var(--ochre);border-color:var(--ochre-dim)}
 [data-theme="light"] .cm-zoom-ctrl button{background:rgba(var(--card-rgb),.95);border-color:var(--line-dim);color:var(--text)}
@@ -728,15 +757,14 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 
 <div class="topbar">
   <div class="topbar-in">
-    <a class="tb-brand" href="#top">Three returns to the <em>sea</em></a>
+    <a class="tb-brand" href="#top">Back to the <em>sea</em></a>
     <nav class="tb-nav">
-      <a href="#tree-section">Trees</a>
+      <a href="#tree-section">Tree</a>
       <a href="#country-map">Map</a>
-      <a href="#convergence">Convergence</a>
       <a href="#ranks">Ranks</a>
       <a href="#below">Atlas</a>
       <a href="#sources">Sources</a>
-      <a href="chiroptera-tree.html">Bats ↗</a>
+      <a href="chiroptera-tree.html">Bats &rarr;</a>
     </nav>
     <div class="tb-search">
       <span class="tb-ico" aria-hidden="true">⌕</span>
@@ -757,16 +785,10 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 
 <!-- ================= TREE ================= -->
 <section id="tree-section">
-  <div class="switch" role="group" aria-label="Choose which lineage's tree to show" id="lineage-switch">
-    <button type="button" data-lin="Cetacea" aria-pressed="true">Cetacea</button>
-    <button type="button" data-lin="Sirenia" aria-pressed="false">Sirenia</button>
-    <button type="button" data-lin="Pinnipedia" aria-pressed="false">Pinnipedia</button>
-  </div>
-  <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the currently selected marine mammal lineage"></svg></div>
+  <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the 18 living marine mammal families"></svg></div>
   <div class="tree-tools">
     <button type="button" id="t-collapse">Collapse all</button>
     <button type="button" id="t-expandsub">Open every family</button>
-    <span class="tt-hint" id="tt-hint">Each lineage is its own tree — switching above starts fresh</span>
   </div>
 </section>
 
@@ -798,50 +820,34 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 
 <section class="intro-card">
   <div>
-    <p class="eyebrow">Three lineages, one ocean</p>
-    <h1>Three returns to the <em>sea</em></h1>
-    <p class="deck">A whale, a dugong and a walrus have no ancestor in common that was not also the ancestor of a cow, a hedgehog and a cat. "Marine mammal" is not a branch of the family tree — it is three separate branches that each, independently, walked back into the water. This page keeps them apart: three lineages, three trees, one shared atlas and map.</p>
+    <p class="eyebrow">Three lineages, one way of life</p>
+    <h1>Back to the <em>sea</em></h1>
+    <p class="deck">Bats are a clade: every one of them descends from a single flying ancestor. &ldquo;Marine mammal&rdquo; is not. It is a job description that three unrelated groups of land mammals filled independently — whales from hoofed stock, sirenians from the elephant side of the tree, seals from the carnivorans — and the resemblance between them is something water imposed, not something they inherited.</p>
   </div>
   <div class="figures">
-    <div class="fig"><b id="fig-species">—</b><span>Species</span></div>
-    <div class="fig"><b id="fig-families">—</b><span>Families</span></div>
-    <div class="fig"><b>3</b><span>Independent lineages</span></div>
+    <div class="fig"><b>18</b><span>Living families</span></div>
+    <div class="fig"><b>3</b><span>Lineages</span></div>
+    <div class="fig"><b id="genera-total">—</b><span>Genera</span></div>
+    <div class="fig"><b>144</b><span>Species</span></div>
   </div>
-</section>
-
-<!-- ================= CONVERGENCE ================= -->
-<section id="convergence">
-  <details class="fold" open>
-    <summary>
-      <div class="sec-head"><span class="sec-num">I</span><h2>Not a clade — a convergence</h2></div>
-      <p class="fold-lede">Why whales, manatees and seals are grouped together at all, when genetics places their closest relatives on land.</p>
-    </summary>
-    <div class="fold-body">
-      <p class="lede">Order Chiroptera, the bats, is a real clade: every bat descends from one flying ancestor, and nothing that isn't a bat descends from it too. "Marine mammal" is a different kind of group entirely — an ecological label, not a taxonomic one. It gathers together whatever mammal lineages independently committed to life in water, however distantly related they are on the tree.</p>
-      <p class="lede">Three lineages qualify here, and each took the plunge on its own schedule, from its own starting point:</p>
-      <p class="lede"><b>Cetacea</b> — whales, dolphins and porpoises — split from a group of small, even-toed, hoofed land mammals around 50 million years ago. Their closest living relative is not a seal or a manatee; it is the hippopotamus. Fossils from Pakistan show the intermediate steps: <i>Pakicetus</i>, a land animal with a whale-like inner ear; <i>Ambulocetus</i>, a "walking whale" that could still haul out; <i>Basilosaurus</i>, fully aquatic but retaining tiny, functionless hind legs. Modern taxonomy reflects this ancestry bluntly — the Mammal Diversity Database files Cetacea as a suborder inside Artiodactyla, the even-toed ungulates, alongside cattle, pigs and camels, not as an order of its own.</p>
-      <p class="lede"><b>Sirenia</b> — manatees and the dugong — took a separate path from a separate start, around the same geological period, from herbivorous land mammals related to elephants and hyraxes. They are the only fully herbivorous marine mammals, grazing seagrass meadows the way their remote cousins graze savanna.</p>
-      <p class="lede"><b>Pinnipedia</b> — seals, sea lions and the walrus — are the most recent arrivals, entering the water within the last 25–30 million years from carnivoran ancestors related to bears and weasels. Unlike cetaceans and sirenians, they never cut the tie to land completely: every pinniped still hauls out to breed, molt or rest.</p>
-      <p class="lede">What looks like a shared body plan across all three — a streamlined torso, flippers instead of legs, a thick fat layer instead of fur — is convergent evolution: water imposes the same handful of physical solutions on any large mammal that spends enough time in it, regardless of where that mammal started. A dolphin's fluke and a dugong's tail both drive the animal by beating up and down, not side to side like a fish's tail, because both evolved from a mammal's flexible spine rather than a fish's rigid one — a signature of independent invention, not shared ancestry.</p>
-      <p class="lede"><b>Echolocation is the clearest case of what convergence does and does not share.</b> Toothed whales (Odontoceti — dolphins, porpoises, sperm and beaked whales) generate ultrasonic clicks in the nasal passages, focus them through a fatty "melon" in the forehead, and read the echoes to hunt and navigate in total darkness — active biosonar, evolved once, early, within Odontoceti, and never lost. Baleen whales (Mysticeti) never evolved it; they filter-feed and communicate instead with some of the lowest-frequency, longest-carrying sounds any animal produces — a blue whale's calls can in principle cross an ocean basin. Sirenians have no echolocation of any kind. Pinnipeds have no echolocation either — but several species, phocid seals especially, use their whiskers (vibrissae) to detect the hydrodynamic trail a fish leaves behind and follow it blind, a completely different sensory trick sometimes confused with sonar because both let the animal "see" in the dark. Three lineages, three unrelated answers — one that invented true biosonar, one that never needed it, and one that reads the water itself instead.</p>
-    </div>
-  </details>
 </section>
 
 <!-- ================= RANKS ================= -->
 <section id="ranks">
   <details class="fold">
     <summary>
-      <div class="sec-head"><span class="sec-num">II</span><h2>The ladder of ranks</h2></div>
-      <p class="fold-lede">One worked example per lineage: how a single animal is filed from kingdom down to species, and where the three paths actually separate.</p>
+      <div class="sec-head"><span class="sec-num">I</span><h2>The ladder of ranks</h2></div>
+      <p class="fold-lede">Background: what a rank actually is, and where four marine mammals land when you file them from kingdom down to species.</p>
     </summary>
     <div class="fold-body">
-      <p class="lede">Follow any of the three examples down and notice where it splits from the others: all three share Kingdom, Phylum and Class, and nothing below that. There is no rank at which "marine mammal" itself appears — it never needed to, because the three lineages were never one thing to begin with.</p>
+      <p class="lede">A rank is just a level of nesting. Each step down describes a smaller, more closely related group, and every group at every level is contained entirely inside the one above it. Family sits in the middle: broad enough to share an obvious body plan and way of life, narrow enough that its members are unmistakably kin.</p>
+      <p class="lede">Follow any of the four below and watch where it splits from the others. They share Kingdom, Phylum and Class — and then nothing. There is no rung at which &ldquo;marine mammal&rdquo; appears, because the group was never one thing to begin with. Note where the whales sit: inside Artiodactyla, the even-toed hoofed mammals, alongside the hippos that are their closest living relatives.</p>
 
       <div class="switch" role="group" aria-label="Choose a worked example">
-        <button type="button" data-ex="0" aria-pressed="true">Common bottlenose dolphin</button>
-        <button type="button" data-ex="1" aria-pressed="false">West Indian manatee</button>
-        <button type="button" data-ex="2" aria-pressed="false">Harbor seal</button>
+        <button type="button" data-ex="0" aria-pressed="true">Blue whale</button>
+        <button type="button" data-ex="1" aria-pressed="false">Killer whale</button>
+        <button type="button" data-ex="2" aria-pressed="false">Dugong</button>
+        <button type="button" data-ex="3" aria-pressed="false">Walrus</button>
       </div>
 
       <ul class="ladder" id="ladder"></ul>
@@ -853,12 +859,13 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 <section id="below">
   <details class="fold">
     <summary>
-      <div class="sec-head"><span class="sec-num">III</span><h2>The flat atlas, with filters</h2></div>
-      <p class="fold-lede">Every family in all three lineages, laid out flat: subfamilies and tribes where MDD recognises them, every genus, and every species inside it — no representative subsets, the group is small enough to show in full.</p>
+      <div class="sec-head"><span class="sec-num">II</span><h2>The flat atlas, with filters</h2></div>
+      <p class="fold-lede">The same content as the tree, laid out flat and filterable by ocean, diet, where it rests, biosonar or regional checklist. Filtering here also dims the tree above.</p>
     </summary>
     <div class="fold-body">
-      <p class="lede">All 18 families opened up, grouped by lineage first. Every genus listed here is completely expandable to species — with 144 species total across all three lineages, there is no need for the "representative selection" compromise a group of 1,500-plus species would force.</p>
-      <p class="lede">Filtering below works on genera, and each lineage's cladogram above dims to match while that lineage is the one on screen. "Ocean / realm" reflects MDD's own <code>biogeographicRealm</code> field, rolled up to genus level; it is drawn straight from the data, not assigned by hand.</p>
+      <p class="lede">All 18 families opened up, grouped by lineage: subfamilies, tribes where they are used, and every genus, with the number of species in each. Genera marked with a dot open one level further, to the species themselves.</p>
+      <p class="lede">Every genus lists every one of its species. With 144 species in total there is no need for the labelled-selection compromise a group of 1,500-plus would force — the largest genus here, <em>Mesoplodon</em>, has 16. <span id="sp-coverage"></span></p>
+      <p class="lede">The filters below work on genera, and the cladogram above dims to match. Ocean, diet and haul-out are labelled at genus level, which is blunt: a wide-ranging genus will always have exceptions to whatever label it carries. Biosonar is labelled at family level, and only as a yes or no — see the note in the footer on why there are no call figures here. The two regional checklists are curated species lists, not derived from the range data.</p>
       <div class="filters" id="filters"></div>
       <div class="fstatus"><p id="fsummary"></p><button type="button" id="fclear" hidden>Clear all filters</button></div>
       <div class="drill" id="drill"></div>
@@ -867,34 +874,36 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
 </section>
 
 <section id="sources">
-  <div class="sec-head"><span class="sec-num">IV</span><h2>Where to look next</h2></div>
+  <div class="sec-head"><span class="sec-num">III</span><h2>Where to look next</h2></div>
   <div class="lede-block">
-    <p class="lede">Each species above carries links to <em>search results</em>, not individual pages — a search box always resolves, a guessed page address often doesn't.</p>
+    <p class="lede">Each species above carries links to <em>search results</em>, not to individual pages — a search box always resolves, whereas a guessed page address often does not. Coverage is good for the large whales, the temperate dolphins and the northern seals, and thin for beaked whales, which is a fair reflection of how little anyone has seen of them.</p>
   </div>
 
   <div class="sources">
-    <div class="src"><a href="https://www.watkins.whoi.edu" target="_blank" rel="noopener noreferrer">Watkins Marine Mammal Sound Database</a>
-      <p>Woods Hole Oceanographic Institution's long-running archive of marine mammal recordings — the closest marine equivalent to a call library, though far less complete than bat call archives: most cetacean recordings come from strandings, tagged animals or opportunistic encounters rather than systematic surveys.</p></div>
-    <div class="src"><a href="https://seamap.env.duke.edu" target="_blank" rel="noopener noreferrer">OBIS-SEAMAP</a>
-      <p>Duke University's aggregated biotelemetry and sightings database for marine mammals, sea turtles and seabirds — survey tracklines, satellite tag tracks and observation records pooled from hundreds of contributing projects.</p></div>
+    <div class="src"><a href="https://www.marinemammalscience.org/species-information/list-marine-mammal-species-subspecies/" target="_blank" rel="noopener noreferrer">Society for Marine Mammalogy</a>
+      <p>Its Committee on Taxonomy maintains the standing list of marine mammal species and subspecies, revised annually. This is the specialist authority for the group, and the reference to check this page against — it will drift ahead of what MDD has folded in.</p></div>
+    <div class="src"><a href="https://cis.whoi.edu/science/B/whalesounds/index.cfm" target="_blank" rel="noopener noreferrer">Watkins Marine Mammal Sound Database</a>
+      <p>Woods Hole's archive of roughly 70 years of recordings, covering about 60 species — the closest thing this group has to a single open call library. Start here for what any of these animals actually sound like.</p></div>
     <div class="src"><a href="https://www.inaturalist.org" target="_blank" rel="noopener noreferrer">iNaturalist</a>
-      <p>Photographs of live animals, community-identified. Coverage is strongest for coastal species people actually encounter — seals hauled out, dolphins from whale-watching boats — and thin for anything pelagic or deep-diving.</p></div>
+      <p>Photographs of live animals, community-identified. Strong for coastal species and whale-watching routes, sparse for anything that lives past the shelf edge. This is what the "photos" link searches.</p></div>
     <div class="src"><a href="https://www.gbif.org" target="_blank" rel="noopener noreferrer">GBIF</a>
-      <p>Aggregated occurrence records from museums, strandings networks and surveys worldwide. The source for this page's country-distribution supplement (see the footer below).</p></div>
+      <p>Aggregated occurrence records from museums, surveys and strandings worldwide. Good for answering "where has this actually been recorded", and the source of the country supplement merged into the map on this page.</p></div>
     <div class="src"><a href="https://www.iucnredlist.org" target="_blank" rel="noopener noreferrer">IUCN Red List</a>
-      <p>Conservation status, threats and range maps, written by specialist assessor groups — the Cetacean Specialist Group, the Sirenia Specialist Group, the Pinniped Specialist Group. Essential reading: several species on this page are among the most endangered mammals on Earth.</p></div>
+      <p>Conservation status, threats and range maps, written by specialist assessors. The place to check before trusting any distribution statement here — and the source for the status shown on every species record.</p></div>
     <div class="src"><a href="https://www.mammaldiversity.org/explore/taxonomy-table/" target="_blank" rel="noopener noreferrer">Mammal Diversity Database</a>
-      <p>The American Society of Mammalogists' running list of every mammal species, updated a few times a year and downloadable as CSV. The source for every count on this page — including the placement of Cetacea inside Artiodactyla and the pinniped families inside Carnivora that this page's whole premise depends on.</p></div>
+      <p>The American Society of Mammalogists' running list of every mammal species, updated a few times a year and downloadable as CSV. Its taxonomy table is the source for every count, rank and country on this page. Version 2.5 places all 102 cetaceans inside Artiodactyla, and unlike its bat coverage it fills in subfamily and tribe for these families itself.</p></div>
+    <div class="src"><a href="https://obis.org" target="_blank" rel="noopener noreferrer">OBIS</a>
+      <p>The Ocean Biodiversity Information System — the marine counterpart to GBIF, pooling survey and tracking data. Better than any country list for animals whose real range is a current, a shelf edge or a migration corridor rather than a coastline.</p></div>
     <div class="src"><a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
-      <p>Public-domain map data. The range map is drawn from the same Natural Earth outlines and small-island dataset built for the bat pages on this site — reused here unmodified, since a coastline is a coastline regardless of which animal is being mapped.</p></div>
+      <p>Public-domain map data. The range map is drawn from Natural Earth's country outlines with small islands marked as dots, and — unlike the bat page's map — it keeps Antarctica, which 28 of these species need. The countries themselves come from MDD and GBIF, not from Natural Earth: the map only draws what the checklist already says.</p></div>
   </div>
 </section>
 
 <footer>
-  <p><b>How firm is any of this?</b> The species-level taxonomy is reasonably settled for most groups here, with two live exceptions worth flagging. Beaked whales (Ziphiidae) are still being split: several <i>Mesoplodon</i> species were described only in the last two decades from strandings and genetics alone, and at least one — the spade-toothed whale, <i>Mesoplodon traversii</i> — has never been seen alive by scientists. River dolphins are not one another's closest relatives despite the resemblance: the Amazon, La Plata, Ganges/Indus and (extinct) Yangtze river dolphins are placed in four separate families, another case of convergence rather than shared ancestry, this time for a riverine rather than a marine lifestyle.</p>
-  <p><b>Where the numbers come from.</b> Every count on this page is taken from the Mammal Diversity Database v2.5, filtered to suborder Cetacea (inside Artiodactyla), order Sirenia, and families Otariidae/Phocidae/Odobenidae (inside Carnivora) — see <code>data/build_marine_mammal_taxonomy.py</code> for the exact filter. Subfamily and tribe placements are MDD's own, not assigned by hand, unlike the bat pages on this site where that layer had to be curated separately.</p>
-  <p><b>What's missing on purpose.</b> The bat pages on this site carry a hand-compiled echolocation reference — call type, duty cycle, peak frequency, cited to specific literature — because that data exists in comparative form across bat families. No equivalent citable dataset was at hand for cetacean biosonar, so rather than invent numbers that would look as authoritative as the bat data without being verified the same way, this page discusses echolocation only qualitatively, in the convergence essay above, and drops the per-species echolocation card entirely.</p>
-  <p><b>The numbers move, but less than the bats'.</b> With around 144 species against the bats' 1,500-plus, this group is far more fully described and far more stable — but not static. The vaquita (<i>Phocoena sinus</i>) is down to an estimated single-digit or low double-digit population in the northern Gulf of California; the baiji (<i>Lipotes vexillifer</i>) has not been confirmed alive since 2004 and is considered functionally extinct; Steller's sea cow (<i>Hydrodamalis gigas</i>) was hunted to extinction within 27 years of its scientific description in 1741. Treat every distribution and status figure here as current to MDD v2.5 and the IUCN assessment it cites, not as a live count.</p>
+  <p><b>How firm is any of this?</b> The three lineages are not in doubt, and neither is the awkward fact underneath them: they are not each other's closest relatives. Whales sit inside Artiodactyla next to hippos, sirenians belong with elephants and hyraxes, pinnipeds with bears and weasels. Below that it softens. Whether the pinnipeds entered the water once or twice was argued for a century — one origin is now the settled answer — and the split drawn here between Otarioidea and Phocoidea is a convenience, not a consensus. Inside Delphinidae the arrangement is frankly unstable, which is why MDD leaves <i>Orcinus</i>, <i>Lagenorhynchus</i> and <i>Leucopleurus</i> in <i>incertae sedis</i> rather than forcing them into a subfamily.</p>
+  <p><b>Where the numbers come from.</b> Every count here is taken from the Mammal Diversity Database v2.5: 144 living and recently extinct species, 67 genera, 18 families. Unlike the bat page, no rank on this page is supplied by hand — MDD's own table carries subfamily and tribe for these families, so the atlas groupings, the cladogram and the ladder are all read straight out of it. The lineage totals are Cetacea 102, Pinnipedia 37, Sirenia 5.</p>
+  <p><b>Why there are no call figures.</b> The toothed whales are among the most accomplished echolocators alive, and the sperm whale's click is the loudest sound any animal makes. None of that is quantified here. The bat page carries a hand-compiled table of call type, duty cycle and peak frequency per family; no equivalent reference was compiled for these animals, and inventing one would have produced numbers that look citable and are not. The filter therefore answers only "does this family hunt with biosonar", which is a fact rather than a measurement. Pinnipeds answer no: seals track prey by hearing, sight, and in several species by reading the hydrodynamic wake a fish leaves behind with their whiskers, which is not sonar.</p>
+  <p><b>The numbers move, and three have stopped.</b> Species counts here are rising for the same reason they are everywhere — genetics splitting one widespread species into several. MDD v2.5 breaks the killer whale into three, cuts <i>Lagenorhynchus</i> down to a single species with the rest moved to <i>Leucopleurus</i> and <i>Aethalodelphis</i>, and folds the grey whale into Balaenopteridae. Three species in this list are already gone: Steller's sea cow, hunted out within 27 years of being described; the Caribbean monk seal; and the Japanese sea lion. The baiji is still listed as living, which is a formality — a full survey of the Yangtze in 2006 found none.</p>
 </footer>
 
 </div>
@@ -921,7 +930,7 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
     btn.setAttribute('aria-label', label);
     btn.setAttribute('title', label);
     const meta = document.querySelector('meta[name="theme-color"]');
-    if(meta) meta.setAttribute('content', isLight ? '#eef3f4' : '#0a1620');
+    if(meta) meta.setAttribute('content', isLight ? '#f6f4ea' : '#0d140f');
   }
   apply(root.getAttribute('data-theme') || 'dark');
   btn.addEventListener('click', function(){
@@ -930,102 +939,188 @@ g.trow.static:hover .t-genus{fill:#e6f0ee}
     try{ localStorage.setItem('theme', next); }catch(e){}
   });
 })();
-</script>
 
-<script>
 /* =========================================================
-   1. FAMILY / SUBFAMILY TEXT
-   Unlike the bat pages, the structure below (family, subfamily,
-   tribe, genus, species and their counts) is NOT hand-transcribed
-   into a parallel data structure -- it is read straight out of
-   marine_mammal_taxonomy.json at load time, since MDD already
-   carries subfamily/tribe placement for this group and the whole
-   set is small enough (144 species) to walk directly. Only the
-   descriptive prose below -- what a family IS, in plain language --
-   is hand-authored, keyed by the real family/subfamily names.
+   1. RANK LADDER
    ========================================================= */
-const FAMILY_TEXT = {
-Balaenidae:{common:"Right whales and the bowhead",range:"North Atlantic, North Pacific and Southern Ocean coastal waters; the bowhead circles the Arctic.",
-  desc:"The stockiest baleen whales relative to their length, with no dorsal fin and an immense, strongly bowed jaw carrying the longest baleen plates of any whale. “Right whale” is a whalers’ name: slow, blubber-rich and prone to float when killed, they were judged the “right” whale to hunt — which is why two of the three right whale species remain among the most endangered large animals alive."},
-Balaenopteridae:{common:"Rorquals",range:"All oceans, from the tropics to the pack ice.",
-  desc:"Streamlined baleen whales with a pleated throat that balloons out to engulf a huge mouthful of water and prey, then contracts to force the water back out through the baleen — lunge-feeding, among the largest and fastest biomechanical movements of any living animal. The family includes the blue whale, the largest animal known to have existed."},
-Cetotheriidae:{common:"Pygmy right whale",range:"Cool waters of the Southern Hemisphere.",
-  desc:"A single small, poorly known baleen whale. Once shuffled between the rorquals and the right whales on anatomy alone, genetics eventually placed it in a family of its own — effectively a living relict of a lineage otherwise known only from fossils."},
-Delphinidae:{common:"Oceanic dolphins",range:"All oceans, plus a few brackish estuaries and enclosed seas.",
-  desc:"By far the most species-rich cetacean family, ranging from small coastal dolphins to the killer whale — the largest dolphin and an apex predator across every ocean. All are toothed and echolocating, and most are intensely social, travelling and cooperating to hunt in pods from a handful of animals to several thousand."},
-Iniidae:{common:"Amazon river dolphins (botos)",range:"The Amazon and Orinoco river basins, South America.",
-  desc:"Pink-tinged, flexible-necked dolphins — unlike ocean dolphins, their neck vertebrae are not fused, letting the head turn independently of the body to hunt among flooded-forest roots. They navigate the Amazon’s zero-visibility water almost entirely by echolocation."},
-Kogiidae:{common:"Pygmy and dwarf sperm whales",range:"Warm and temperate waters worldwide, mostly far offshore.",
-  desc:"Small, deep-diving squid-eaters, rarely seen alive and known mostly from strandings. When alarmed they can release a cloud of reddish-brown intestinal fluid, a defensive trick with no equivalent elsewhere among cetaceans."},
-Lipotidae:{common:"Baiji, Yangtze river dolphin",range:"The middle and lower Yangtze River, China — not confirmed alive since 2004.",
-  desc:"A single species, declared functionally extinct after a thorough 2006 survey found none. Habitat loss, boat traffic, entanglement and pollution along one of the world’s busiest rivers are usually cited together as the cause — widely considered the first cetacean extinction directly attributable to human activity."},
-Monodontidae:{common:"Beluga and narwhal",range:"Arctic and subarctic seas, circumpolar.",
-  desc:"The two Arctic specialists among toothed whales, both lacking a dorsal fin — replaced by a low ridge — which lets them travel under sea ice without a fin to catch on it. The narwhal’s famous tusk is an erupted left canine, spiralled and shot through with sensory nerve endings whose exact function is still debated."},
-Phocoenidae:{common:"Porpoises",range:"Cold and temperate coastal waters worldwide.",
-  desc:"Smaller and stockier than dolphins, with spade-shaped rather than conical teeth. The family includes the vaquita, the most endangered marine mammal on Earth — confined to a small part of the northern Gulf of California and reduced to an estimated handful of individuals by bycatch in illegal gillnets."},
-Physeteridae:{common:"Sperm whale",range:"All oceans, favouring deep water far from shore.",
-  desc:"The largest toothed predator alive and the deepest-diving, routinely descending well over a kilometre after squid. The spermaceti organ in its huge head focuses and may help generate the loudest sound produced by any animal — clicks used for echolocation, and possibly, at close range, to stun prey."},
-Platanistidae:{common:"Ganges and Indus river dolphins",range:"The Ganges, Brahmaputra and Indus river systems, South Asia.",
-  desc:"Essentially blind — the eye has no lens and cannot form an image — and swims characteristically on its side, one flipper trailing near the riverbed. Navigates entirely by echolocation through the silt-laden water it lives in."},
-Pontoporiidae:{common:"Franciscana",range:"Coastal Atlantic waters of Brazil, Uruguay and Argentina.",
-  desc:"A small coastal dolphin with the longest beak relative to body length of any cetacean. Its habit of foraging close to shore puts it in direct competition with coastal gillnet fisheries, which are its main threat."},
-Ziphiidae:{common:"Beaked whales",range:"Deep offshore waters worldwide.",
-  desc:"The deepest and longest divers among mammals — a Cuvier’s beaked whale has been tracked past 2,900 metres and nearly 3.7 hours submerged. Most species are known chiefly from strandings, several described from bones alone; males typically keep only one or two pairs of teeth, erupted as tusks for sparring rather than feeding, since beaked whales are suction feeders that need no teeth to catch prey."},
-Dugongidae:{common:"Dugong (and the extinct Steller’s sea cow)",range:"Coastal Indian and western Pacific Ocean waters, East Africa to northern Australia.",
-  desc:"The dugong is the only living sirenian with a fluked, whale-like tail rather than a rounded paddle, and the only one that never leaves salt water, grazing seagrass meadows exclusively. Its extinct relative Steller’s sea cow, a kelp-eating giant of the Bering Sea, was hunted to extinction within 27 years of its scientific description in 1741."},
-Trichechidae:{common:"Manatees",range:"Warm coastal, estuarine and river waters of the Americas and West Africa.",
-  desc:"Three species with a rounded, paddle-shaped tail, moving freely between salt, brackish and fresh water and grazing a wide range of aquatic vegetation. A slow metabolism leaves them vulnerable to cold snaps, and their habit of surfacing in shallow, boat-trafficked water makes vessel strikes a leading cause of death."},
-Otariidae:{common:"Eared seals: fur seals and sea lions",range:"Cool coastal waters of the Pacific, Southern Ocean, and South Atlantic — absent from the North Atlantic.",
-  desc:"Pinnipeds with small external ear flaps and hind flippers that rotate forward, letting them walk — even gallop — on land far more capably than true seals. They swim chiefly by rowing with their long fore-flippers."},
-Phocidae:{common:"True (earless) seals",range:"Every ocean, from the tropics to both polar ice caps.",
-  desc:"Pinnipeds with no external ear flap, unable to rotate their hind flippers forward — on land they move by wriggling on their belly, but in water the same hind flippers make them the more efficient swimmers and divers of the two seal families. The family spans the ice seals of the Arctic and Antarctic pack ice and the elephant seals, the deepest- and longest-diving pinnipeds known."},
-Odobenidae:{common:"Walrus",range:"Arctic coastal and pack-ice waters, circumpolar.",
-  desc:"A single living species. The tusks are enormously elongated canine teeth, used mainly for hauling out onto ice and for social dominance display rather than for hunting — a common misconception. Walruses instead feed on seafloor mollusks, using suction to strip them from their shells and a dense field of facial whiskers to find them by touch in dark or silty water."}
-};
+// the largest group any of these sit inside — Artiodactyla, which holds the
+// whales along with every hoofed mammal — so the ladder bars stay in scale
+const TOTAL = 374;
 
-const SUBFAM_TEXT = {
-"Delphininae":"The common and bottlenose dolphins and their close kin — the dolphins most people picture when they hear the word.",
-"Globicephalinae":"The “blackfish” — pilot whales, the killer whale’s smaller relatives, the false killer whale, the pygmy killer whale and the melon-headed whale. Despite the name, most are true dolphins, not whales; large-bodied, deep-diving and intensely social.",
-"Lissodelphininae":"Right-whale dolphins and their relatives — several species here (Lissodelphis) have no dorsal fin at all, a rare trait among open-ocean dolphins.",
-"incertae sedis":"Placed within the family but not yet assigned to a subfamily with confidence — taxonomic housekeeping, not a biological grouping.",
-"Hyperoodontinae":"The bottlenose whales and the sprawling genus Mesoplodon, which alone accounts for a third of all living cetacean species and is still being split as new genetic lineages turn up in strandings.",
-"Berardiinae":"Berardius, the largest beaked whales — more social and more often seen at the surface in groups than most of their deep-diving relatives.",
-"Ziphiinae":"A single wide-ranging species, Cuvier’s beaked whale — the deepest- and longest-diving mammal on record.",
-"Monachinae":"The southern true seals — monk seals, Antarctic pack-ice seals and the elephant seals — as opposed to the Phocinae, the mostly-northern true seals.",
-"Phocinae":"The northern true seals — harbor, harp, ringed, bearded and hooded seals among them — as opposed to the Monachinae.",
-"Lobodontini":"The Antarctic pack-ice specialists: crabeater, leopard, Ross and Weddell seals, collectively the most numerous large wild mammal biomass on Earth by some estimates, thanks to the crabeater seal alone.",
-"Miroungini":"The elephant seals — the largest pinnipeds by far, and the deepest- and longest-diving of all, routinely exceeding 1,500 metres.",
-"Monachini":"The monk seals — the most imperilled pinniped lineage: the Caribbean monk seal was declared extinct in 2008, and both surviving species (Hawaiian and Mediterranean) are critically endangered.",
-"Cystophorini":"A single species, the hooded seal, named for the inflatable nasal sac adult males display and use in territorial contests.",
-"Erignathini":"A single species, the bearded seal — named for the dense, long whiskers it uses to forage on the Arctic seafloor.",
-"Phocini":"The bulk of the northern true seals: harbor, spotted, ringed, harp and grey seals among them, spanning from fully marine Arctic ice-breeders to the landlocked, freshwater Saimaa and Baikal seals.",
-"Dugonginae":"The living dugong.",
-"Hydrodamalinae":"Steller’s sea cow — extinct since the 18th century, the only member of Sirenia never confined to warm water, having lived in the cold Bering Sea.",
-"Trichechinae":"The three manatee species."
-};
+const examples = [
+  {
+    label:"Blue whale",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Artiodactyla",      n:374, gloss:"Even-toed hoofed mammals — and, nested well inside them, every whale. Their closest living relatives are the hippos."},
+      {rank:"Suborder",    taxon:"Cetacea",           n:102, gloss:"Whales, dolphins and porpoises. Fully aquatic for about 40 million years."},
+      {rank:"Infraorder",  taxon:"Mysticeti",         n:16,  gloss:"Baleen instead of teeth: filter feeders that strain prey from the water."},
+      {rank:"Superfamily", taxon:"Balaenopteroidea",  n:11,  gloss:"The lunge feeders, with pleated throats that balloon out around a mouthful."},
+      {rank:"Family",      taxon:"Balaenopteridae",   n:11,  gloss:"Rorquals — and since MDD folded it in, the grey whale."},
+      {rank:"Genus",       taxon:"Balaenoptera",      n:9,   gloss:"The blue, fin, sei, minke and Bryde's whales."},
+      {rank:"Species",     taxon:"Balaenoptera musculus", n:1, ital:true, terminal:true, gloss:"The largest animal that has ever lived — larger than any dinosaur, and it eats krill."}
+    ]
+  },
+  {
+    label:"Killer whale",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Artiodactyla",   n:374, gloss:"Same hoofed ancestry as the blue whale."},
+      {rank:"Suborder",    taxon:"Cetacea",        n:102, gloss:"All whales, dolphins and porpoises."},
+      {rank:"Infraorder",  taxon:"Odontoceti",     n:86,  gloss:"Teeth instead of baleen, and active biosonar — the branch that hunts by sound."},
+      {rank:"Superfamily", taxon:"Delphinoidea",   n:51,  gloss:"Dolphins, porpoises, beluga and narwhal."},
+      {rank:"Family",      taxon:"Delphinidae",    n:41,  gloss:"Oceanic dolphins — the largest and youngest cetacean family."},
+      {rank:"Subfamily",   taxon:"incertae sedis", n:null, gloss:"Latin for \u201cof uncertain position\u201d. The killer whale is hard to place inside its own family, so MDD declines to guess.", skip:true},
+      {rank:"Genus",       taxon:"Orcinus",        n:3,   gloss:"Split into three species in recent revisions, where older references have one."},
+      {rank:"Species",     taxon:"Orcinus orca",   n:1, ital:true, terminal:true, gloss:"The ocean's top predator, with hunting traditions that differ between neighbouring groups and are taught, not inherited."}
+    ]
+  },
+  {
+    label:"Dugong",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Sirenia",       n:5,  gloss:"An entire order of five species, all of them marine or riverine grazers. Their nearest relatives on land are elephants and hyraxes."},
+      {rank:"Family",      taxon:"Dugongidae",    n:2,  gloss:"The dugong, and Steller's sea cow — extinct since 1768."},
+      {rank:"Subfamily",   taxon:"Dugonginae",    n:1,  gloss:"One surviving species."},
+      {rank:"Genus",       taxon:"Dugong",        n:1,  gloss:"A genus of one, and the only sirenian that never enters fresh water."},
+      {rank:"Species",     taxon:"Dugong dugon",  n:1, ital:true, terminal:true, gloss:"Crops seagrass at the root, leaving visible furrows across the meadow. The likely origin of the mermaid story."}
+    ]
+  },
+  {
+    label:"Walrus",
+    rows:[
+      {rank:"Kingdom",  taxon:"Animalia", above:true},
+      {rank:"Phylum",   taxon:"Chordata", above:true},
+      {rank:"Class",    taxon:"Mammalia", above:true},
+      {rank:"Order",       taxon:"Carnivora",   n:320, gloss:"Cats, dogs, bears, weasels — and the seals, which are carnivorans that went to sea."},
+      {rank:"Suborder",    taxon:"Caniformia",  n:187, gloss:"The dog-like half of the order. Pinnipeds sit in here, not with the cats."},
+      {rank:"Infraorder",  taxon:"Arctoidea",   n:147, gloss:"Bears, weasels, raccoons and seals. \u201cPinnipedia\u201d itself is a clade, not a rank MDD records."},
+      {rank:"Family",      taxon:"Odobenidae",  n:1,   gloss:"A family reduced to a single living species."},
+      {rank:"Subfamily",   taxon:"Odobeninae",  n:1,   gloss:"Ranks below family survive here even though only one animal is left to fill them."},
+      {rank:"Tribe",       taxon:"Odobenini",   n:1,   gloss:"An optional rank, retained from a time when the family had more members to sort."},
+      {rank:"Genus",       taxon:"Odobenus",    n:1,   gloss:"One genus, one species."},
+      {rank:"Species",     taxon:"Odobenus rosmarus", n:1, ital:true, terminal:true, gloss:"Finds clams in the dark with 600-odd whiskers and sucks them out of their shells."}
+    ]
+  }
+];
 
-function famRange(fam, species){
-  const t = FAMILY_TEXT[fam];
-  if(t) return t.range;
-  return '';
+const ladder = document.getElementById('ladder');
+function barPct(n){ return n ? (Math.log10(n+1)/Math.log10(TOTAL+1))*100 : 0; }
+
+function drawLadder(i){
+  ladder.innerHTML = '';
+  examples[i].rows.forEach(r=>{
+    const li = document.createElement('li');
+    li.className = 'rung' + (r.above?' above':'') + (r.terminal?' terminal':'');
+    const count = r.skip ? '<span class="note-inline">optional rank</span>'
+                : (r.n ? (r.n===1 ? '1 species' : '~'+r.n.toLocaleString()+' spp.') : '');
+    li.innerHTML =
+      '<span class="r-rank">'+r.rank+'</span>'+
+      '<span class="taxon'+(r.ital?' ital':'')+'">'+r.taxon+'</span>'+
+      '<span class="gloss">'+(r.gloss||'')+'</span>'+
+      '<span class="count">'+count+'</span>'+
+      (r.above?'':'<span class="bar"><i style="width:0"></i></span>');
+    ladder.appendChild(li);
+    const bar = li.querySelector('.bar i');
+    if(bar) requestAnimationFrame(()=>{ bar.style.width = barPct(r.n)+'%'; });
+  });
 }
+drawLadder(0);
+document.querySelectorAll('.switch button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.switch button').forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    drawLadder(+b.dataset.ex);
+  });
+});
 
 /* =========================================================
-   2. GENERIC TREE ENGINE
-   Adapted from the Chiroptera tree page's rendering code, but
-   the underlying node data (famChildren/genusChildren) is built
-   from the fetched taxonomy JSON rather than a hand-authored
-   ATLAS/SP literal -- see buildLineage() below.
+   2. FAMILY DATA
    ========================================================= */
+const F = {
+  Balaenidae:{common:"Right and bowhead whales",genera:2,species:4,range:"Arctic, and temperate waters of both hemispheres",
+    desc:"Enormously thick blubber, no throat grooves and no dorsal fin. They feed by skimming — swimming forward, mouth open, straining copepods through baleen up to three metres long. Slow, fat and floating when dead, which is precisely why whalers named them the “right” whales to kill, and why three of the four species are still recovering."},
+  Balaenopteridae:{common:"Rorquals, including the blue and grey whales",genera:3,species:11,range:"All oceans",
+    desc:"The lunge feeders. Pleated throat grooves let the mouth balloon out around a volume of water larger than the whale itself, which is then forced back out through the baleen. The group holds the largest animal that has ever lived, and — since MDD folded Eschrichtius in — the grey whale, whose bottom-ploughing for amphipods is unlike anything else here."},
+  Cetotheriidae:{common:"Pygmy right whale",genera:1,species:1,range:"Cool temperate waters of the Southern Ocean",
+    desc:"One living species, and for a long time it sat alone in its own family. Fossil work then matched it to the cetotheres, a group everyone had assumed died out millions of years ago, making Caperea the last of a lineage rather than an offshoot of the right whales it was named for. It is rarely seen alive and much of its biology is simply unknown."},
+  Physeteridae:{common:"Sperm whale",genera:1,species:1,range:"All deep oceans",
+    desc:"The largest toothed predator alive and the deepest-diving mammal, working the sea floor two kilometres down in total darkness for an hour at a time. The huge nose is an acoustic instrument: it generates the loudest sound produced by any animal, a directional click used to find squid. Females and young live in lasting matrilineal groups with dialects of their own."},
+  Kogiidae:{common:"Pygmy and dwarf sperm whales",genera:1,species:2,range:"Deep tropical and temperate waters worldwide",
+    desc:"Small relatives of the sperm whale with the same spermaceti apparatus at a fraction of the size. When startled they release a cloud of reddish-brown intestinal fluid and vanish behind it, the only cetaceans known to use a squid's trick. Rarely seen at sea; most of what is known comes from strandings."},
+  Platanistidae:{common:"South Asian river dolphins",genera:1,species:2,range:"The Ganges, Brahmaputra and Indus river systems",
+    desc:"Effectively blind — the eye has no lens and registers little more than direction of light — and they swim on one side, trailing a flipper along the bottom while scanning with sonar. They are the most distinctive of the river dolphins and among the most threatened, cut into isolated populations by barrages and dams."},
+  Lipotidae:{common:"Baiji, Yangtze river dolphin",genera:1,species:1,range:"The Yangtze river, China",
+    desc:"A family of one, and almost certainly a family of none. A dedicated survey in 2006 failed to find a single animal and declared it functionally extinct — the first cetacean driven out by humans, not by hunting but by the accumulated weight of dam building, boat traffic, fishing gear and pollution along the world's busiest river."},
+  Iniidae:{common:"Amazon river dolphins",genera:1,species:4,range:"The Amazon and Orinoco basins",
+    desc:"Pink, loose-necked and nearly blind, navigating turbid floodwater almost entirely by sonar. In the wet season they swim out of the river channels and hunt among the trunks of flooded forest. Fused neck vertebrae have been lost here too, so the head swings freely — useful in a habitat full of obstacles."},
+  Pontoporiidae:{common:"Franciscana",genera:1,species:1,range:"Coastal south-western Atlantic, from Brazil to Argentina",
+    desc:"A river dolphin that does not live in a river. It is the franciscana's ancestors that were riverine; this one has moved out into shallow coastal water, keeping the long thin beak — the longest relative to body size of any cetacean — and the murky-water sonar. Bycatch in gillnets is the pressing threat."},
+  Ziphiidae:{common:"Beaked whales",genera:6,species:24,range:"Deep water in all oceans",
+    desc:"The least known large animals on Earth. They are deep-diving squid specialists — a Cuvier's beaked whale holds the mammal record at nearly four hours submerged — and several species have never been seen alive, being known only from skulls washed ashore. Most males carry a single pair of tusks used for fighting each other, and the females are toothless."},
+  Monodontidae:{common:"Beluga and narwhal",genera:2,species:2,range:"Arctic and subarctic",
+    desc:"Two Arctic specialists with no dorsal fin — an advantage under pack ice — and unfused neck vertebrae, so unlike other whales they can turn their heads. The narwhal's tusk is a single spiralled left canine, grown through the lip, packed with nerve endings and now thought to be as much a sensory organ and social signal as a weapon."},
+  Phocoenidae:{common:"Porpoises",genera:3,species:8,range:"Temperate and cold coastal waters, plus Asian rivers",
+    desc:"Small, blunt-headed and spade-toothed rather than cone-toothed, and quite separate from the dolphins they are often confused with. They echolocate with narrow-band high-frequency clicks pitched above the hearing of killer whales, which appears to be a way of staying inaudible to their main predator. The family holds the most endangered marine mammal on Earth."},
+  Delphinidae:{common:"Oceanic dolphins",genera:19,species:41,range:"All oceans, plus some tropical rivers and estuaries",
+    desc:"The largest and most varied cetacean family, and the youngest — most of it radiated within the last ten million years. It runs from the five-foot Hector's dolphin to the killer whale, and includes the most socially complex animals in the sea, with matrilineal groups, learned hunting traditions that differ between neighbouring populations, and signature whistles that work like names."},
+  Trichechidae:{common:"Manatees",genera:1,species:3,range:"Caribbean and Atlantic coasts, the Amazon, and West Africa",
+    desc:"Slow herbivores of warm shallow water, distinguished from the dugong by a rounded, paddle-shaped tail. Their teeth march forward through the jaw and are replaced from behind throughout life, an adaptation to a diet of abrasive vegetation. All three species are vulnerable to cold, to boat strikes, and to the loss of the warm-water refuges they need in winter."},
+  Dugongidae:{common:"Dugong and the Steller's sea cow",genera:2,species:2,range:"Indo-Pacific coasts; the sea cow, the north Pacific",
+    desc:"Seagrass grazers of the shallows, with a downturned snout for cropping the plants at the root. The family also holds the largest sirenian ever recorded, Steller's sea cow — a nine-metre north Pacific animal described in 1741 and hunted out within 27 years of its discovery."},
+  Otariidae:{common:"Eared seals, sea lions and fur seals",genera:7,species:16,range:"Pacific, Southern Ocean and southern Atlantic coasts",
+    desc:"The pinnipeds that still work well on land: visible external ear flaps, hind flippers that rotate forward, and a gait that is close to walking. They swim with the fore flippers, like birds flying underwater, rather than sculling with the rear. Breeding is loud, crowded and strongly polygynous, with the largest bulls holding territory against everything that approaches."},
+  Odobenidae:{common:"Walrus",genera:1,species:1,range:"Arctic and subarctic coasts",
+    desc:"A family of one, and the only pinniped that feeds mainly on bottom-dwelling molluscs, which it finds in the dark with a dense array of stiff whiskers and takes by suction rather than by biting. Both sexes grow tusks, used for hauling out onto ice and for status. It needs shallow water and sea ice over it, which is a difficult combination to keep."},
+  Phocidae:{common:"True or earless seals",genera:14,species:20,range:"Both polar regions, plus temperate and a few tropical coasts",
+    desc:"No ear flaps, and hind flippers that cannot turn forward, so on land they hump along on their bellies — the price of being the better divers. They swim by sculling with the hind flippers, pup fast on ice or beach, and include the deepest and longest-diving pinnipeds. The family spans both poles, and the two monk seal genera are the only members left in warm water."},
+};
+
+/* =========================================================
+   3. CLADOGRAM — expandable to species
+   ========================================================= */
+const leaf = n => ({name:n, leaf:true});
+const clade = (...c) => ({children:c});
+
+const TREE = {name:null, rank:"Marine mammals", children:[
+  {name:"Mysticeti", rank:"Parvorder", children:[
+    {name:"Balaenoidea", rank:"Superfamily", children:[ leaf("Balaenidae") ]},
+    {name:"Balaenopteroidea", rank:"Superfamily", children:[ leaf("Balaenopteridae") ]},
+    {name:"Cetotherioidea", rank:"Superfamily", children:[ leaf("Cetotheriidae") ]},
+  ]},
+  {name:"Odontoceti", rank:"Parvorder", children:[
+    {name:"Physeteroidea", rank:"Superfamily", children:[ leaf("Physeteridae"), leaf("Kogiidae") ]},
+    {name:"Platanistoidea", rank:"Superfamily", children:[ leaf("Platanistidae") ]},
+    {name:"Lipotoidea", rank:"Superfamily", children:[ leaf("Lipotidae") ]},
+    {name:"Inioidea", rank:"Superfamily", children:[ leaf("Iniidae"), leaf("Pontoporiidae") ]},
+    {name:"Ziphioidea", rank:"Superfamily", children:[ leaf("Ziphiidae") ]},
+    {name:"Delphinoidea", rank:"Superfamily", children:[ leaf("Monodontidae"), leaf("Phocoenidae"), leaf("Delphinidae") ]},
+  ]},
+  {name:"Sirenia", rank:"Order", children:[
+    {name:"Trichechoidea", rank:"Superfamily", children:[ leaf("Trichechidae") ]},
+    {name:"Dugongoidea", rank:"Superfamily", children:[ leaf("Dugongidae") ]},
+  ]},
+  {name:"Pinnipedia", rank:"Clade in Carnivora", children:[
+    {name:"Otarioidea", rank:"Superfamily", children:[ leaf("Otariidae"), leaf("Odobenidae") ]},
+    {name:"Phocoidea", rank:"Superfamily", children:[ leaf("Phocidae") ]},
+  ]},
+]};
+
 const SVGNS = "http://www.w3.org/2000/svg";
 const svg = document.getElementById('tree');
-const VW = 700;
+const VW = 700;                            // viewBox width
 const TOP = 40, LEFT = 16, TIPX = 110, COUNTX = VW - 24;
 const GAP_SF = 46, GAP_SUB = 88;
 const RH = {fam:46, subfam:30, tribe:25, genus:25, species:24};
-const STEP2 = 14;
-const PX = l => TIPX + l*STEP2;
-const LX = l => PX(l) + 9;
+const STEP2 = 14;                          // one nesting step below the family
+const PX = l => TIPX + l*STEP2;            // branch point of a level
+const LX = l => PX(l) + 9;                 // where its label starts
 
 function el(tag, attrs, txt){
   const e = document.createElementNS(SVGNS, tag);
@@ -1034,49 +1129,67 @@ function el(tag, attrs, txt){
   return e;
 }
 
-function knot(x, y, state){
-  return state === 'open'
-    ? el('circle',{class:'t-knot open', cx:x, cy:y, r:3.2})
-    : el('circle',{class:'t-knot '+state, cx:x, cy:y, r:state==='leaf'?1.7:2.9});
-}
+// depth of every backbone node
+let maxDepth = 0;
+(function setDepth(n,d){
+  n.depth = d; if(d>maxDepth) maxDepth = d;
+  if(!n.leaf) n.children.forEach(c=>setDepth(c,d+1));
+})(TREE,0);
 
-const leaf = n => ({name:n, leaf:true});
-const clade = (...c) => ({children:c});
-
-function setDepth(n,d){
-  n.depth = d; if(!n.leaf) n.children.forEach(c=>setDepth(c,d+1));
-  return n._maxDepth = n.leaf ? d : Math.max(...n.children.map(c=>c._maxDepth));
-}
-
-function buildBlocks(tree){
-  const blocks = [];
-  tree.children.forEach(sub=>{
-    sub.children.forEach((sf,i)=>{
-      const members = [];
-      (function gather(n){ n.leaf ? members.push(n.name) : n.children.forEach(gather); })(sf);
-      blocks.push({ sub: i===0 ? sub.name : null, clade: sub.name, sf: sf.name, members });
-    });
+// structural grouping: one entry per superfamily, in drawing order
+const BLOCKS = [];
+TREE.children.forEach(sub=>{
+  sub.children.forEach((sf,i)=>{
+    const members = [];
+    (function gather(n){ n.leaf ? members.push(n.name) : n.children.forEach(gather); })(sf);
+    BLOCKS.push({ sub: i===0 ? sub.name : null, clade: sub.name, sf: sf.name, members });
   });
-  return blocks;
-}
+});
 
-function buildLineageLookup(tree){
-  const LINEAGE = {};
-  (function lwalk(node, path){
-    if(node.leaf){ LINEAGE[node.name] = path; return; }
-    const p = node.name ? path.concat(node.name) : path;
-    node.children.forEach(c=>lwalk(c,p));
-  })(tree,[]);
-  return LINEAGE;
-}
+// lineage lookup for the card
+const LINEAGE = {};
+(function lwalk(node, path){
+  if(node.leaf){ LINEAGE[node.name] = path; return; }
+  const p = node.name ? path.concat(node.name) : path;
+  node.children.forEach(c=>lwalk(c,p));
+})(TREE,[]);
 
+/* ---- what hangs below a family, built on demand from the atlas ---- */
+const kidCache = {};
+function famChildren(fam){
+  if(kidCache[fam]) return kidCache[fam];
+  const out = [];
+  (ATLAS[fam]||[]).forEach((sf, si)=>{
+    const tribeNodes = [];
+    sf.tribes.forEach((tr, ti)=>{
+      const genera = tr.g.map(g=>({
+        kind:'genus', name:g[0], n:g[1], fam, key:'g:'+g[0]
+      }));
+      if(tr.t) tribeNodes.push({kind:'tribe', name:tr.t, fam, children:genera, key:'t:'+fam+'|'+si+'|'+ti});
+      else tribeNodes.push(...genera);
+    });
+    if(sf.sub) out.push({kind:'subfam', name:sf.sub, note:sf.note, fam, children:tribeNodes, key:'s:'+fam+'|'+si});
+    else out.push(...tribeNodes);
+  });
+  return (kidCache[fam] = out);
+}
+function genusChildren(g){
+  const e = SP[g];
+  if(!e) return null;
+  return e[1].map(s=>({kind:'species', name:g+' '+s[0], note:s[1]||'', key:'x:'+g+' '+s[0]}));
+}
+function nodeChildren(n){
+  return n.kind==='genus' ? genusChildren(n.name) : (n.children||null);
+}
 function countGenera(list){
   return list.reduce((s,n)=> s + (n.kind==='genus' ? 1 : countGenera(n.children||[])), 0);
 }
 function countSpecies(list){
   return list.reduce((s,n)=> s + (n.kind==='genus' ? n.n : countSpecies(n.children||[])), 0);
 }
-
+/* ---- render: a "tree context" bundles everything one cladogram instance
+   needs (its own svg, card, open/selection state and data) so the exact
+   same drawing/interaction code can drive several independent trees ---- */
 function makeTreeCtx(o){
   return Object.assign({
     open: new Set(), famG: {}, selected: null, selectedSp: null,
@@ -1084,14 +1197,20 @@ function makeTreeCtx(o){
   }, o);
 }
 
-let dimSet = null;
-let mainCtx = null;
+let dimSet = null; // families surviving the ATLAS filters, or null (main tree only)
+let mainCtx = null; // set once the main tree is built, at the bottom of this script
 
-let countrySpeciesSet = null;
-let countryLive = null;
-let countryTreeMode = 'dim';
+let countrySpeciesSet = null; // "Genus species" binomials confirmed in the selected country, or null
+let countryLive = null;       // {liveFamilies, live, famCount, genusCount} derived from countrySpeciesSet
+let countryTreeMode = 'dim';  // 'dim' (gray out the rest) or 'filter' (show only the live branches)
 
-function computeCountryLiveKeys(ctx, speciesSet){
+// walk the full taxonomy once per country selection, marking every family/
+// subfamily/tribe/genus/species node that has at least one descendant
+// (or is itself) confirmed in the selected country, and tallying how many
+// live species sit under each family and genus (used by "show only" mode,
+// where the on-screen counts must reflect what's actually shown, not the
+// species totals for the whole world)
+function computeCountryLiveKeys(speciesSet){
   const live = new Set(), liveFamilies = new Set();
   const famCount = {}, genusCount = {};
   function walk(list){
@@ -1099,7 +1218,7 @@ function computeCountryLiveKeys(ctx, speciesSet){
     list.forEach(n=>{
       let count;
       if(n.kind === 'genus'){
-        const kids = ctx.genusChildren(n.name) || [];
+        const kids = genusChildren(n.name) || [];
         count = 0;
         kids.forEach(sp=>{ if(speciesSet.has(sp.name)){ live.add(sp.key); count++; } });
         if(count) genusCount[n.name] = count;
@@ -1111,13 +1230,15 @@ function computeCountryLiveKeys(ctx, speciesSet){
     });
     return total;
   }
-  Object.keys(ctx.famInfo).forEach(fam=>{
-    const count = walk(ctx.famChildren(fam));
+  Object.keys(F).forEach(fam=>{
+    const count = walk(famChildren(fam));
     if(count){ liveFamilies.add(fam); famCount[fam] = count; }
   });
   return {live, liveFamilies, famCount, genusCount};
 }
 
+// live descendant counts, used only in "show only" mode — mirrors
+// countGenera/countSpecies but counts just the surviving species
 function liveGeneraCount(list){
   return list.reduce((s,n)=> s + (n.kind==='genus' ? (countryLive.genusCount[n.name]?1:0) : liveGeneraCount(n.children||[])), 0);
 }
@@ -1137,20 +1258,23 @@ function applyTreeDim(){
   });
 }
 
-/* =========================================================
-   3. DRAW / INTERACT — unchanged in spirit from the bat page's
-   single-tree version, but every ctx now carries its own tree,
-   blocks, famInfo, famChildren and genusChildren, so swapping
-   mainCtx's data (see switchLineage()) is enough to make the same
-   drawing code render a completely different lineage.
-   ========================================================= */
+// node marker sitting on the branch point
+function knot(x, y, state){
+  return state === 'open'
+    ? el('circle',{class:'t-knot open', cx:x, cy:y, r:3.2})
+    : el('circle',{class:'t-knot '+state, cx:x, cy:y, r:state==='leaf'?1.7:2.9});
+}
+
 function ctxDrawTree(ctx){
   const svg = ctx.svg;
   while(svg.firstChild) svg.removeChild(svg.firstChild);
   ctx.famG = {};
 
+  // "show only" mode: prune every branch down to what's actually live in the
+  // selected country, instead of drawing the full tree and dimming the rest
   const filtering = (ctx === mainCtx) && countryTreeMode === 'filter' && !!countryLive;
 
+  /* ---------- 1. layout ---------- */
   let posY = TOP;
   const rows = [], links = [], famY = {}, headings = [];
 
@@ -1170,6 +1294,10 @@ function ctxDrawTree(ctx){
     });
   }
 
+  // the suborder heading belongs to whichever block is the first *surviving*
+  // one under it — not always the first block in TREE order, since country
+  // filtering can knock out that first superfamily while a later one (with
+  // live families) still needs the suborder label above it
   let lastCladeShown = null;
   ctx.blocks.forEach(b=>{
     const members = filtering ? b.members.filter(f=>countryLive.liveFamilies.has(f)) : b.members;
@@ -1191,6 +1319,9 @@ function ctxDrawTree(ctx){
     });
   });
 
+  // in "show only" mode the backbone (order > suborder > superfamily > family)
+  // needs pruning down to just the live families too, or it'll try to draw
+  // branches to families that never got a row (and therefore no Y position)
   function filterTree(node, liveFamilies){
     if(node.leaf) return liveFamilies.has(node.name) ? node : null;
     const kids = node.children.map(c=>filterTree(c, liveFamilies)).filter(Boolean);
@@ -1199,7 +1330,7 @@ function ctxDrawTree(ctx){
   const backboneTree = filtering ? filterTree(ctx.tree, countryLive.liveFamilies) : ctx.tree;
 
   if(backboneTree){
-    (function setD(n,d){ n.depth=d; if(!n.leaf) n.children.forEach(c=>setD(c,d+1)); })(backboneTree, 0);
+    (function setDepth(n,d){ n.depth=d; if(!n.leaf) n.children.forEach(c=>setDepth(c,d+1)); })(backboneTree, 0);
     (function midY(n){
       if(n.leaf) return (n.y = famY[n.name]);
       n.children.forEach(midY);
@@ -1212,7 +1343,8 @@ function ctxDrawTree(ctx){
   svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
   svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg'}));
 
-  const STEP = (TIPX - LEFT) / Math.max(1, ctx.tree._maxDepth);
+  /* ---------- 2. backbone, then the branches that continue below a family ---------- */
+  const STEP = (TIPX - LEFT) / maxDepth;
   const xOf = n => n.leaf ? TIPX : LEFT + n.depth*STEP;
   if(backboneTree) (function draw(node){
     if(node.leaf) return;
@@ -1224,6 +1356,7 @@ function ctxDrawTree(ctx){
   })(backboneTree);
   links.forEach(d=> svg.appendChild(el('path',{d, class:'branch sub-branch'})));
 
+  /* ---------- 3. column headings ---------- */
   svg.appendChild(el('text',{x:LX(0), y:24, class:'col-label'}, 'FAMILY ▸ SUBFAMILY ▸ GENUS ▸ SPECIES'));
   svg.appendChild(el('text',{x:COUNTX, y:24, class:'col-label','text-anchor':'end'}, 'SPECIES'));
   svg.appendChild(el('line',{x1:LEFT,y1:32,x2:COUNTX,y2:32,class:'tree-hr','stroke-width':'.7'}));
@@ -1246,6 +1379,7 @@ function ctxDrawTree(ctx){
       b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
   });
 
+  /* ---------- 4. rows ---------- */
   rows.forEach(r=>{
     if(r.kind === 'fam'){
       const d = ctx.famInfo[r.name], isOpen = ctx.open.has('f:'+r.name);
@@ -1349,62 +1483,60 @@ function ctxSelect(ctx, name){
   ctx.card.classList.remove('empty');
   Object.keys(ctx.famG).forEach(n=>ctx.famG[n].classList.toggle('active', n===name));
   ctx.svg.querySelectorAll('g.trow.species.active').forEach(g=>g.classList.remove('active'));
-  const d = ctx.famInfo[name];
+  const d = F[name];
+  const stats = ctx.famInfo[name];
   const isOpen = ctx.open.has('f:'+name);
   ctx.card.innerHTML =
-    '<p class="card-lineage">'+ctx.lineageLookup[name].join(' &rsaquo; ')+' &rsaquo; '+name+'</p>'+
+    '<p class="card-lineage">'+LINEAGE[name].join(' &rsaquo; ')+' &rsaquo; '+name+'</p>'+
     '<div class="name-row"><h3>'+name+'</h3><span class="common">'+d.common+'</span></div>'+
     '<p class="desc">'+d.desc+'</p>'+
     '<div class="chips">'+
-      '<span class="chip"><b>'+d.genera+'</b> '+(d.genera===1?'genus':'genera')+'</span>'+
-      '<span class="chip"><b>'+(d.species===1?'1':d.species)+'</b> '+(d.species===1?'species':'spp.')+'</span>'+
+      '<span class="chip"><b>'+stats.genera+'</b> '+(stats.genera===1?'genus':'genera')+'</span>'+
+      '<span class="chip"><b>'+(stats.species===1?'1':'~'+stats.species)+'</b> '+(stats.species===1?'species':'spp.')+'</span>'+
     '</div>'+
     '<p class="range-line">Range: <b>'+d.range+'</b></p>'+
     '<button type="button" class="jump" data-fam="'+name+'">'+
       (isOpen ? 'Close this branch' : 'Open '+name+' in the tree')+' &rarr;</button>';
 }
 
+/* locate a genus within the ATLAS: which subfamily/tribe it hangs under */
+function findGenusPath(family, genus){
+  const subs = ATLAS[family];
+  if(!subs) return null;
+  for(let si=0; si<subs.length; si++){
+    const sf = subs[si];
+    for(let ti=0; ti<sf.tribes.length; ti++){
+      const tr = sf.tribes[ti];
+      if(tr.g.some(g=>g[0]===genus)) return {family, si, ti, hasSub: !!sf.sub, hasTribe: !!tr.t};
+    }
+  }
+  return null;
+}
+
+/* scroll an arbitrary tree row into view on the page */
 function scrollRowIntoView(g){
   const rect = g && g.querySelector('rect');
   if(!rect) return;
   rect.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
 }
 
-/* open a species from search/atlas/country map: switches mainCtx to the
-   right lineage first if the current tab doesn't hold that family, since
-   (unlike the bat page) a species may not exist in whichever tree is
-   currently on screen */
-function openTreeToSpecies(lineage, family, genus, binomial){
-  if(mainCtx.lineageKey !== lineage) switchLineage(lineage, {skipCardReset:true});
-  const ctx = mainCtx;
-  const path = findGenusPath(ctx, family, genus);
+/* open the main tree's family/subfamily/tribe/genus branch down to one
+   species and select it (used by search results, which always jump to
+   the main tree regardless of which cladogram triggered the search) */
+function openTreeToSpecies(family, genus, binomial){
+  const path = findGenusPath(family, genus);
   if(!path) return false;
-  ctx.open.add('f:'+family);
-  if(path.hasSub) ctx.open.add('s:'+family+'|'+path.si);
-  if(path.hasTribe) ctx.open.add('t:'+family+'|'+path.si+'|'+path.ti);
-  ctx.open.add('g:'+genus);
-  ctxDrawTree(ctx);
-  ctxShowSpecies(ctx, binomial);
+  mainCtx.open.add('f:'+family);
+  if(path.hasSub) mainCtx.open.add('s:'+family+'|'+path.si);
+  if(path.hasTribe) mainCtx.open.add('t:'+family+'|'+path.si+'|'+path.ti);
+  mainCtx.open.add('g:'+genus);
+  ctxDrawTree(mainCtx);
+  ctxShowSpecies(mainCtx, binomial);
   scrollRowIntoView(document.querySelector('g.trow.species.active'));
   return true;
 }
 
-function findGenusPath(ctx, family, genus){
-  const struct = ctx.famChildren(family);
-  for(let si=0; si<struct.length; si++){
-    const sf = struct[si];
-    const tribes = sf.kind==='subfam' ? sf.children : [sf];
-    for(let ti=0; ti<tribes.length; ti++){
-      const tr = tribes[ti];
-      const genera = tr.kind==='tribe' ? tr.children : [tr];
-      if(genera.some(g=>g.kind==='genus' && g.name===genus)){
-        return {family, si, ti, hasSub: sf.kind==='subfam', hasTribe: tr.kind==='tribe'};
-      }
-    }
-  }
-  return null;
-}
-
+/* a species picked in any cladogram fills that instance's own panel */
 function ctxShowSpecies(ctx, binomial){
   ctx.selectedSp = binomial; ctx.selected = null;
   ctx.card.classList.remove('empty');
@@ -1418,17 +1550,502 @@ function ctxShowSpecies(ctx, binomial){
     ctx.card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
   }
 }
-</script>
 
-<script>
 /* =========================================================
-   4. LOAD DATA, BUILD THE THREE LINEAGES
+   4. THE ATLAS — every family, subfamily, tribe and genus
+   Structure: [subfamily, note, tribes] where a tribe is
+   [tribe name or null, [[genus, species], ...]]
    ========================================================= */
+const S = (sub,note,tribes)=>({sub,note,tribes});
+const T = (t,g)=>({t,g});
+const G = g => [T(null,g)];              // no tribes used
+const P = g => [S(null,null,G(g))];      // no subfamilies used
+
+const ATLAS = {
+Balaenidae:[
+  S(null,null,[T(null,[["Balaena",1], ["Eubalaena",3]])])],
+Balaenopteridae:[
+  S(null,null,[T(null,[["Balaenoptera",9], ["Eschrichtius",1], ["Megaptera",1]])])],
+Cetotheriidae:[
+  S("Neobalaeninae","The pygmy right whale, and with it the last of the cetotheres.",[T(null,[["Caperea",1]])])],
+Physeteridae:[
+  S(null,null,[T(null,[["Physeter",1]])])],
+Kogiidae:[
+  S("Kogiinae","The two small sperm whales.",[T(null,[["Kogia",2]])])],
+Platanistidae:[
+  S(null,null,[T(null,[["Platanista",2]])])],
+Lipotidae:[
+  S(null,null,[T(null,[["Lipotes",1]])])],
+Iniidae:[
+  S(null,null,[T(null,[["Inia",4]])])],
+Pontoporiidae:[
+  S(null,null,[T(null,[["Pontoporia",1]])])],
+Ziphiidae:[
+  S("Berardiinae","Baird’s and Arnoux’s beaked whales, the largest of the family.",[T(null,[["Berardius",3]])]),
+  S("Hyperoodontinae","The bottlenose whales and Mesoplodon — sixteen species, several known from almost nothing.",[T(null,[["Hyperoodon",2], ["Indopacetus",1], ["Mesoplodon",16]])]),
+  S("incertae sedis","Shepherd’s beaked whale, the one member of the family with a full set of functional teeth.",[T(null,[["Tasmacetus",1]])]),
+  S("Ziphiinae","Cuvier’s beaked whale, the most widespread and most often stranded of the family.",[T(null,[["Ziphius",1]])])],
+Monodontidae:[
+  S(null,null,[T(null,[["Delphinapterus",1], ["Monodon",1]])])],
+Phocoenidae:[
+  S(null,null,[T(null,[["Neophocaena",3], ["Phocoena",4], ["Phocoenoides",1]])])],
+Delphinidae:[
+  S("Delphininae","The typical beaked dolphins — bottlenose, common, spotted and humpback dolphins.",[T(null,[["Delphinus",2], ["Lagenodelphis",1], ["Sotalia",2], ["Sousa",4], ["Stenella",5], ["Tursiops",3]])]),
+  S("Globicephalinae","The blackfish: pilot whales, false killer whale, melon-headed and pygmy killer whales, plus Risso’s dolphin and the snubfin dolphins.",[T(null,[["Feresa",1], ["Globicephala",2], ["Grampus",1], ["Orcaella",2], ["Peponocephala",1], ["Pseudorca",1], ["Steno",1]])]),
+  S("incertae sedis","Genera whose position inside the family is not settled — including Orcinus, the killer whale, which sits awkwardly wherever it is put.",[T(null,[["Lagenorhynchus",1], ["Leucopleurus",1], ["Orcinus",3]])]),
+  S("Lissodelphininae","Southern-cool-water dolphins — the finless right whale dolphins and the Cephalorhynchus group.",[T(null,[["Aethalodelphis",2], ["Cephalorhynchus",6], ["Lissodelphis",2]])])],
+Trichechidae:[
+  S("Trichechinae","The manatees. One lineage, split between the Caribbean, the Amazon and West Africa.",[T(null,[["Trichechus",3]])])],
+Dugongidae:[
+  S("Dugonginae","The one surviving dugong lineage, tied to Indo-Pacific seagrass meadows.",[T(null,[["Dugong",1]])]),
+  S("Hydrodamalinae","Steller’s sea cow alone: a cold-water giant with no teeth, described by naturalists on a shipwrecked expedition in 1741 and gone by 1768.",[T(null,[["Hydrodamalis",1]])])],
+Otariidae:[
+  S(null,null,[T(null,[["Arctocephalus",8], ["Callorhinus",1], ["Eumetopias",1], ["Neophoca",1], ["Otaria",1], ["Phocarctos",1], ["Zalophus",3]])])],
+Odobenidae:[
+  S("Odobeninae","A single living genus at the end of a family that was once far more varied.",[T("Odobenini",[["Odobenus",1]])])],
+Phocidae:[
+  S("Monachinae","The southern seals: monk seals in warm water, elephant seals in the temperate south, and the four Antarctic ice seals.",[T("Lobodontini",[["Hydrurga",1], ["Leptonychotes",1], ["Lobodon",1], ["Ommatophoca",1]]),T("Miroungini",[["Mirounga",2]]),T("Monachini",[["Monachus",1], ["Neomonachus",2]])]),
+  S("Phocinae","The northern seals, all of them tied to the Arctic and the north Atlantic and Pacific.",[T("Cystophorini",[["Cystophora",1]]),T("Erignathini",[["Erignathus",1]]),T("Phocini",[["Histriophoca",1], ["Pagophilus",1], ["Halichoerus",1], ["Phoca",2], ["Pusa",4]])])],
+};
+
+/* =========================================================
+   5. SPECIES — one level below genus
+   G:[complete?, [[epithet, common name], ...]]
+   complete = 1 means every species in the genus is listed.
+   complete = 0 means a representative selection only.
+   Genera absent from this list have no species shown.
+   ========================================================= */
+const SP = {
+// --- Mysticeti
+Balaena:[1,[["mysticetus","Bowhead Whale"]]],
+Eubalaena:[1,[["australis","Southern Right Whale"], ["glacialis","North Atlantic Right Whale"], ["japonica","North Pacific Right Whale"]]],
+Balaenoptera:[1,[["acutorostrata","Common Minke Whale"], ["bonaerensis","Antarctic Minke Whale"], ["borealis","Sei Whale"], ["brydei","Bryde's Whale"], ["edeni","Eden's Whale"], ["musculus","Blue Whale"], ["omurai","Omura's Whale"], ["physalus","Fin Whale"], ["ricei","Rice's Whale"]]],
+Eschrichtius:[1,[["robustus","Gray Whale"]]],
+Megaptera:[1,[["novaeangliae","Humpback Whale"]]],
+Caperea:[1,[["marginata","Pygmy Right Whale"]]],
+// --- Odontoceti
+Physeter:[1,[["macrocephalus","Sperm Whale"]]],
+Kogia:[1,[["breviceps","Pygmy Sperm Whale"], ["sima","Dwarf Sperm Whale"]]],
+Platanista:[1,[["gangetica","Ganges River Dolphin"], ["minor","Indus River Dolphin"]]],
+Lipotes:[1,[["vexillifer","Baiji"]]],
+Inia:[1,[["araguaiaensis","Araguaian River Dolphin"], ["boliviensis","Bolivian River Dolphin"], ["geoffrensis","Amazon River Dolphin"], ["humboldtiana","Orinoco River Dolphin"]]],
+Pontoporia:[1,[["blainvillei","Franciscana"]]],
+Berardius:[1,[["arnuxii","Arnoux's Beaked Whale"], ["bairdii","Baird's Beaked Whale"], ["minimus","Least Beaked Whale"]]],
+Hyperoodon:[1,[["ampullatus","Northern Bottlenose Whale"], ["planifrons","Southern Bottlenose Whale"]]],
+Indopacetus:[1,[["pacificus","Longman's Beaked Whale"]]],
+Mesoplodon:[1,[["bidens","Sowerby's Beaked Whale"], ["bowdoini","Andrews's Beaked Whale"], ["carlhubbsi","Hubbs's Beaked Whale"], ["densirostris","Blainville's Beaked Whale"], ["eueu","Ramari's Beaked Whale"], ["europaeus","Gervais's Beaked Whale"], ["ginkgodens","Ginkgo-toothed Beaked Whale"], ["grayi","Gray's Beaked Whale"], ["hectori","Hector's Beaked Whale"], ["hotaula","Deraniyagala's Beaked Whale"], ["layardii","Strap-toothed Whale"], ["mirus","True's Beaked Whale"], ["perrini","Perrin's Beaked Whale"], ["peruvianus","Pygmy Beaked Whale"], ["stejnegeri","Stejneger's Beaked Whale"], ["traversii","Spade-toothed Whale"]]],
+Tasmacetus:[1,[["shepherdi","Shepherd's Beaked Whale"]]],
+Ziphius:[1,[["cavirostris","Cuvier's Beaked Whale"]]],
+Delphinapterus:[1,[["leucas","Beluga"]]],
+Monodon:[1,[["monoceros","Narwhal"]]],
+Neophocaena:[1,[["asiaeorientalis","Yangtze Finless Porpoise"], ["phocaenoides","Indo-Pacific Finless Porpoise"], ["sunameri","East Asian Finless Porpoise"]]],
+Phocoena:[1,[["dioptrica","Spectacled Porpoise"], ["phocoena","Harbor Porpoise"], ["sinus","Vaquita"], ["spinipinnis","Burmeister's Porpoise"]]],
+Phocoenoides:[1,[["dalli","Dall's Porpoise"]]],
+Delphinus:[1,[["bairdii","Eastern Pacific Long-beaked Common Dolphin"], ["delphis","Panglobal Common Dolphin"]]],
+Lagenodelphis:[1,[["hosei","Fraser's Dolphin"]]],
+Sotalia:[1,[["fluviatilis","Tucuxi"], ["guianensis","Guiana Dolphin"]]],
+Sousa:[1,[["chinensis","Indo-Pacific Humpback Dolphin"], ["plumbea","Indian Humpback Dolphin"], ["sahulensis","Australian Humpback Dolphin"], ["teuszii","Atlantic Humpback Dolphin"]]],
+Stenella:[1,[["attenuata","Pantropical Spotted Dolphin"], ["clymene","Clymene Dolphin"], ["coeruleoalba","Striped Dolphin"], ["frontalis","Atlantic Spotted Dolphin"], ["longirostris","Spinner Dolphin"]]],
+Tursiops:[1,[["aduncus","Indo-Pacific Bottlenose Dolphin"], ["erebennus","Tamanend's Bottlenose Dolphin"], ["truncatus","Common Bottlenose Dolphin"]]],
+Feresa:[1,[["attenuata","Pygmy Killer Whale"]]],
+Globicephala:[1,[["macrorhynchus","Short-finned Pilot Whale"], ["melas","Long-finned Pilot Whale"]]],
+Grampus:[1,[["griseus","Risso's Dolphin"]]],
+Orcaella:[1,[["brevirostris","Irrawaddy Dolphin"], ["heinsohni","Australian Snubfin Dolphin"]]],
+Peponocephala:[1,[["electra","Melon-headed Whale"]]],
+Pseudorca:[1,[["crassidens","False Killer Whale"]]],
+Steno:[1,[["bredanensis","Rough-toothed Dolphin"]]],
+Lagenorhynchus:[1,[["albirostris","White-beaked Dolphin"]]],
+Leucopleurus:[1,[["acutus","Atlantic White-sided Dolphin"]]],
+Orcinus:[1,[["ater","Resident Killer Whale"], ["orca","Common Killer Whale"], ["rectipinnus","Bigg's Killer Whale"]]],
+Aethalodelphis:[1,[["obliquidens","Pacific White-sided Dolphin"], ["obscurus","Dusky Dolphin"]]],
+Cephalorhynchus:[1,[["australis","Peale's Dolphin"], ["commersonii","Commerson's Dolphin"], ["cruciger","Hourglass Dolphin"], ["eutropia","Chilean Dolphin"], ["heavisidii","Heaviside's Dolphin"], ["hectori","Hector's Dolphin"]]],
+Lissodelphis:[1,[["borealis","Northern Right-whale Dolphin"], ["peronii","Southern Right-whale Dolphin"]]],
+// --- Sirenia
+Trichechus:[1,[["inunguis","Amazonian Manatee"], ["manatus","West Indian Manatee"], ["senegalensis","West African Manatee"]]],
+Dugong:[1,[["dugon","Dugong"]]],
+Hydrodamalis:[1,[["gigas","Steller's Sea Cow"]]],
+// --- Pinnipedia
+Arctocephalus:[1,[["australis","South American Fur Seal"], ["forsteri","New Zealand Fur Seal"], ["galapagoensis","Galapagos Fur Seal"], ["gazella","Antarctic Fur Seal"], ["philippii","Juan Fernandez Fur Seal"], ["pusillus","Afro-Australian Fur Seal"], ["townsendi","Guadalupe Fur Seal"], ["tropicalis","Subantarctic Fur Seal"]]],
+Callorhinus:[1,[["ursinus","Northern Fur Seal"]]],
+Eumetopias:[1,[["jubatus","Steller Sea Lion"]]],
+Neophoca:[1,[["cinerea","Australian Sea Lion"]]],
+Otaria:[1,[["flavescens","South American Sea Lion"]]],
+Phocarctos:[1,[["hookeri","New Zealand Sea Lion"]]],
+Zalophus:[1,[["californianus","California Sea Lion"], ["japonicus","Japanese Sea Lion"], ["wollebaeki","Galapagos Sea Lion"]]],
+Odobenus:[1,[["rosmarus","Walrus"]]],
+Hydrurga:[1,[["leptonyx","Leopard Seal"]]],
+Leptonychotes:[1,[["weddellii","Weddell Seal"]]],
+Lobodon:[1,[["carcinophaga","Crabeater Seal"]]],
+Ommatophoca:[1,[["rossii","Ross Seal"]]],
+Mirounga:[1,[["angustirostris","Northern Elephant Seal"], ["leonina","Southern Elephant Seal"]]],
+Monachus:[1,[["monachus","Mediterranean Monk Seal"]]],
+Neomonachus:[1,[["schauinslandi","Hawaiian Monk Seal"], ["tropicalis","Caribbean Monk Seal"]]],
+Cystophora:[1,[["cristata","Hooded Seal"]]],
+Erignathus:[1,[["barbatus","Bearded Seal"]]],
+Histriophoca:[1,[["fasciata","Ribbon Seal"]]],
+Pagophilus:[1,[["groenlandicus","Harp Seal"]]],
+Halichoerus:[1,[["grypus","Gray Seal"]]],
+Phoca:[1,[["largha","Spotted Seal"], ["vitulina","Harbor Seal"]]],
+Pusa:[1,[["caspica","Caspian Seal"], ["hispida","Ringed Seal"], ["saimensis","Saimaa Seal"], ["sibirica","Baikal Seal"]]],
+};
+
+/* =========================================================
+   6. ECHOLOCATION — one profile per family
+   ========================================================= */
+/* No marine equivalent of the bat page's per-family echolocation reference was
+   compiled, and inventing call figures would produce numbers that look citable
+   and are not. These stay empty on purpose: every code path below is the
+   master's, and simply renders nothing. Whether a family uses biosonar at all
+   is a fact, and lives in ETAG. */
+const ECHO = {};
+
+/* --- reference links: search endpoints, so they always resolve --- */
+const LINKS = [
+  ["wikipedia", n => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n)],
+  ["photos",    n => "https://www.inaturalist.org/search?q=" + encodeURIComponent(n)],
+  ["records",   n => "https://www.gbif.org/species/search?q=" + encodeURIComponent(n)]
+];
+
+/* =========================================================
+   7. TRAITS — "regions|diet|roost" per genus
+   Coarse by necessity: a genus of 130 species will have
+   exceptions to any label put on it.
+   ========================================================= */
+const TRAW = {
+  Balaena:"arc|kri|sea", Eubalaena:"atl pac|kri|sea",
+  Balaenoptera:"glob|kri fis|sea", Eschrichtius:"pac|ben|sea", Megaptera:"glob|kri fis|sea",
+  Caperea:"sou|kri|sea",
+  Physeter:"glob|squ|sea",
+  Kogia:"glob|squ fis|sea",
+  Platanista:"riv|fis|riv",
+  Lipotes:"riv|fis|riv",
+  Inia:"riv|fis|riv",
+  Pontoporia:"atl|fis squ|sea",
+  Berardius:"glob|squ fis|sea", Hyperoodon:"glob|squ fis|sea", Indopacetus:"glob|squ fis|sea", Mesoplodon:"glob|squ fis|sea", Tasmacetus:"glob|squ fis|sea", Ziphius:"glob|squ fis|sea",
+  Delphinapterus:"arc|fis squ ben|sea", Monodon:"arc|fis squ|sea",
+  Neophocaena:"pac ind riv|fis squ|sea", Phocoena:"atl pac|fis|sea", Phocoenoides:"atl pac|fis|sea",
+  Delphinus:"glob|fis squ|sea", Lagenodelphis:"glob|fis squ|sea", Sotalia:"atl riv|fis squ|sea", Sousa:"ind atl pac|fis|sea", Stenella:"glob|fis squ|sea", Tursiops:"glob|fis squ|sea", Feresa:"glob|fis squ|sea", Globicephala:"glob|squ fis|sea", Grampus:"glob|squ|sea", Orcaella:"ind pac riv|fis squ|sea", Peponocephala:"glob|fis squ|sea", Pseudorca:"glob|fis squ ver|sea", Steno:"glob|fis squ|sea", Lagenorhynchus:"glob|fis squ|sea", Leucopleurus:"glob|fis squ|sea", Orcinus:"glob|ver fis squ|sea", Aethalodelphis:"glob|fis squ|sea", Cephalorhynchus:"glob|fis squ|sea", Lissodelphis:"glob|fis squ|sea",
+  Trichechus:"atl riv|veg|sea riv",
+  Dugong:"ind pac|veg|sea", Hydrodamalis:"pac|veg|sea",
+  Arctocephalus:"pac sou atl|fis squ|land", Callorhinus:"pac sou atl|fis squ|land", Eumetopias:"pac sou atl|fis squ|land", Neophoca:"pac sou atl|fis squ|land", Otaria:"pac sou atl|fis squ|land", Phocarctos:"pac sou atl|fis squ|land", Zalophus:"pac sou atl|fis squ|land",
+  Odobenus:"arc|ben|ice land",
+  Hydrurga:"sou|ver kri fis|ice", Leptonychotes:"sou|fis squ|ice", Lobodon:"sou|kri|ice", Ommatophoca:"sou|squ fis|ice", Mirounga:"sou pac|squ fis|land", Monachus:"atl|fis squ|land", Neomonachus:"atl pac|fis squ|land", Cystophora:"arc atl|fis squ|ice", Erignathus:"arc|ben fis|ice", Histriophoca:"arc pac|fis ben|ice", Pagophilus:"arc atl|fis kri|ice", Halichoerus:"atl|fis|land ice", Phoca:"arc atl pac|fis|land ice", Pusa:"arc|fis kri|ice",
+};
+const TR = {};
+Object.keys(TRAW).forEach(g=>{
+  const [r,d,ro] = TRAW[g].split('|');
+  TR[g] = {r:r.split(' '), d:d.split(' '), ro:ro.split(' ')};
+});
+
+/* echolocation tags, by family */
+const ETAG = {
+Balaenidae:["none"], Balaenopteridae:["none"], Cetotheriidae:["none"], 
+Physeteridae:["bio"], Kogiidae:["bio"], Platanistidae:["bio"], Lipotidae:["bio"], Iniidae:["bio"], Pontoporiidae:["bio"], Ziphiidae:["bio"], Monodontidae:["bio"], Phocoenidae:["bio"], Delphinidae:["bio"], 
+Trichechidae:["none"], Dugongidae:["none"], 
+Otariidae:["none"], Odobenidae:["none"], Phocidae:["none"], 
+};
+
+/* curated national checklists — species regularly recorded */
+const CHECK = {
+dk:{name:"Danish waters", sp:["Phocoena phocoena","Phoca vitulina","Halichoerus grypus",
+ "Lagenorhynchus albirostris","Balaenoptera acutorostrata"]},
+gb:{name:"British & Irish waters", sp:["Phocoena phocoena","Tursiops truncatus","Delphinus delphis",
+ "Leucopleurus acutus","Lagenorhynchus albirostris","Grampus griseus","Globicephala melas",
+ "Balaenoptera acutorostrata","Balaenoptera physalus","Megaptera novaeangliae","Orcinus orca",
+ "Phoca vitulina","Halichoerus grypus"]}
+};
+
+/* --- species-level echolocation, where it has been measured --- */
+const ESP = {};
+
+/* --- render the atlas, grouped exactly like the tree --- */
+const drill = document.getElementById('drill');
+let generaTotal = 0;
+
+const GFAM = {}, GSUB = {};
+let curSub = '';
+BLOCKS.forEach(b=>{
+  if(b.sub) curSub = b.sub;
+  if(b.sub){
+    const h = document.createElement('h3');
+    h.className = 'atlas-sub';
+    h.textContent = b.sub;
+    drill.appendChild(h);
+  }
+  const sfh = document.createElement('p');
+  sfh.className = 'atlas-sf';
+  sfh.textContent = b.sf;
+  drill.appendChild(sfh);
+
+  b.members.forEach(name=>{
+    const d = F[name], struct = ATLAS[name];
+    struct.forEach(sf=>sf.tribes.forEach(tr=>tr.g.forEach(gg=>{
+      GFAM[gg[0]] = name; GSUB[gg[0]] = curSub;
+    })));
+    const nGen = struct.reduce((s,sf)=>s+sf.tribes.reduce((t,tr)=>t+tr.g.length,0),0);
+    generaTotal += nGen;
+    const nSub = struct.filter(s=>s.sub).length;
+
+    const det = document.createElement('details');
+    det.className = 'sub';
+    det.id = 'fam-' + name;
+
+    const bits = [];
+    if(nSub) bits.push(nSub + ' subfamilies');
+    bits.push(nGen + (nGen===1?' genus':' genera'));
+    bits.push('~' + d.species + ' species');
+
+    let body = '';
+    const ec = ECHO[name];
+    if(ec){
+      body += '<div class="echo">'+
+        '<p class="echo-h">Echolocation</p>'+
+        '<div class="echo-grid">'+
+          '<div><span>Emission</span>'+ec.em+'</div>'+
+          '<div><span>Call design</span>'+ec.des+'</div>'+
+          '<div><span>Peak frequency</span>'+ec.fq+'</div>'+
+        '</div>'+
+        '<p class="echo-note">'+ec.note+'</p>'+
+      '</div>';
+    }
+    struct.forEach(sf=>{
+      body += '<div class="subf">';
+      if(sf.sub) body += '<p class="subf-name">'+sf.sub+'</p>';
+      if(sf.note) body += '<p class="subf-note">'+sf.note+'</p>';
+      sf.tribes.forEach(tr=>{
+        body += '<div class="triberow'+(tr.t?'':' no-tribe')+'">';
+        if(tr.t) body += '<span class="tribe">'+tr.t+'</span>';
+        body += '<span class="genera">'+
+          tr.g.map(g=>{
+            const chip = '<i>'+g[0]+'</i><b>'+g[1]+'</b>';
+            return SP[g[0]]
+              ? '<button type="button" class="gen has-sp" data-g="'+g[0]+'" data-n="'+g[1]+'">'+chip+'</button>'
+              : '<span class="gen" data-g="'+g[0]+'">'+chip+'</span>';
+          }).join('')+
+          '</span><div class="splist" hidden></div></div>';
+      });
+      body += '</div>';
+    });
+
+    det.innerHTML =
+      '<summary><span class="fam">'+name+'</span>'+
+      '<span class="famcommon">'+d.common+'</span>'+
+      '<span class="sm">'+bits.join(' · ')+'</span></summary>'+
+      '<div class="subbody">'+body+'</div>';
+    drill.appendChild(det);
+  });
+});
+
+document.getElementById('genera-total').textContent = generaTotal;
+
+/* ---- species layer: expand a genus ---- */
+drill.addEventListener('click', e=>{
+  const btn = e.target.closest('.gen.has-sp');
+  if(!btn) return;
+  const row = btn.closest('.triberow');
+  const panel = row.querySelector('.splist');
+  const wasOpen = btn.classList.contains('open');
+  row.querySelectorAll('.gen.has-sp').forEach(b=>{
+    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
+  });
+  if(wasOpen){ panel.hidden = true; return; }
+
+  const g = btn.dataset.g, n = +btn.dataset.n;
+  const [complete, all] = SP[g];
+  const only = checklistSpecies(g);
+  const list = only ? only.map(ep => all.find(x=>x[0]===ep) || [ep,""]) : all;
+  const head = only
+    ? list.length+' species in <i>'+g+'</i> recorded in '+CHECK[[...FS.chk][0]].name
+    : (complete ? 'All '+n+' species in <i>'+g+'</i>'
+                : list.length+' of '+n+' species in <i>'+g+'</i> — a selection');
+  btn.classList.add('open'); btn.setAttribute('aria-expanded','true');
+  panel.innerHTML =
+    '<p class="sp-head">'+head+'</p><ul class="sp">'+
+    list.map(s=>{
+      const bin = g + ' ' + s[0];
+      const links = LINKS.map(([label,url])=>
+        '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('');
+      const fam = GFAM[g], fe = ECHO[fam];
+      const echo = ESP[bin]
+        ? '<span class="sp-echo">'+ESP[bin]+'</span>'
+        : (fe ? '<span class="sp-echo gen-echo">'+fe.des+', '+fe.fq+' &middot; family profile</span>' : '');
+      const dk = luState.danish[bin.replace(' ','_')];
+      const dkSpan = dk ? '<span class="sp-dk">🇩🇰 '+dk.name+'</span>' : '';
+      return '<li><i>'+bin+'</i>'+(s[1]?'<span>'+s[1]+'</span>':'')+dkSpan+echo+
+             '<span class="sp-links">'+links+'</span></li>';
+    }).join('')+
+    '</ul>';
+  panel.hidden = false;
+});
+
+/* =========================================================
+   8. FILTERS
+   ========================================================= */
+const FDEFS = [
+  {k:'chk', label:'Regional checklist', single:true, opts:[['dk','Danish waters · 5 spp.'],['gb','British & Irish waters · 13 spp.']]},
+  {k:'r', label:'Where it lives', opts:[['glob','All oceans'],['atl','Atlantic'],['pac','Pacific'],['ind','Indian Ocean'],['arc','Arctic'],['sou','Southern Ocean'],['riv','Rivers & estuaries']]},
+  {k:'d', label:'What it eats', opts:[['fis','Fish'],['squ','Squid & cephalopods'],['kri','Krill & plankton'],['ben','Seabed invertebrates'],['ver','Birds & mammals'],['veg','Seagrass & water plants']]},
+  {k:'e', label:'Hunts with biosonar', opts:[['bio','Yes — active biosonar'],['none','No']]},
+  {k:'ro', label:'Where it rests or breeds', opts:[['sea','Never leaves the water'],['ice','Pack ice'],['land','Beaches & rocky shores'],['riv','Rivers']]},
+  {k:'c', label:'Lineage', opts:[['Mysticeti','Mysticeti'],['Odontoceti','Odontoceti'],['Sirenia','Sirenia'],['Pinnipedia','Pinnipedia']]}
+];
+const FS = {chk:new Set(), r:new Set(), d:new Set(), e:new Set(), ro:new Set(), c:new Set()};
+
+const fbox = document.getElementById('filters');
+FDEFS.forEach(def=>{
+  const g = document.createElement('div');
+  g.className = 'fgroup';
+  g.innerHTML = '<p class="flabel">'+def.label+'</p><div class="fopts">'+
+    def.opts.map(([v,l])=>'<button type="button" class="fbtn" data-k="'+def.k+'" data-v="'+v+'" aria-pressed="false">'+l+'</button>').join('')+
+    '</div>';
+  fbox.appendChild(g);
+});
+
+function genusMatches(g){
+  const t = TR[g]; if(!t) return false;
+  if(FS.chk.size){
+    const key = [...FS.chk][0];
+    if(!CHECK[key].sp.some(s=>s.slice(0, s.indexOf(' ')) === g)) return false;
+  }
+  if(FS.r.size  && !t.r.some(x=>FS.r.has(x)))   return false;
+  if(FS.d.size  && !t.d.some(x=>FS.d.has(x)))   return false;
+  if(FS.ro.size && !t.ro.some(x=>FS.ro.has(x))) return false;
+  if(FS.e.size){
+    const tags = ETAG[GFAM[g]] || [];
+    if(!tags.some(x=>FS.e.has(x))) return false;
+  }
+  if(FS.c.size && !FS.c.has(GSUB[g])) return false;
+  return true;
+}
+
+function checklistSpecies(g){
+  if(!FS.chk.size) return null;
+  const key = [...FS.chk][0];
+  return CHECK[key].sp.filter(s=>s.slice(0, s.indexOf(' ')) === g).map(s=>s.slice(s.indexOf(' ')+1));
+}
+
+const fsummary = document.getElementById('fsummary');
+const fclear = document.getElementById('fclear');
+
+function applyFilters(){
+  const any = Object.values(FS).some(s=>s.size);
+  fclear.hidden = !any;
+
+  let nGen=0, nFam=0, nSpp=0;
+  const liveFams = new Set();
+
+  document.querySelectorAll('.gen').forEach(chip=>{
+    const g = chip.dataset.g || chip.querySelector('i').textContent;
+    const ok = !any || genusMatches(g);
+    chip.classList.toggle('off', !ok);
+    if(ok){ nGen++; liveFams.add(GFAM[g]); }
+  });
+
+  // roll the hiding up the hierarchy
+  document.querySelectorAll('.triberow').forEach(row=>{
+    const on = row.querySelectorAll('.gen:not(.off)').length;
+    row.classList.toggle('off', !on);
+    if(!on){ const pl = row.querySelector('.splist'); if(pl) pl.hidden = true; }
+  });
+  document.querySelectorAll('.subf').forEach(sf=>{
+    sf.classList.toggle('off', !sf.querySelectorAll('.triberow:not(.off)').length);
+  });
+  document.querySelectorAll('details.sub').forEach(d=>{
+    const on = d.querySelectorAll('.subf:not(.off)').length;
+    d.classList.toggle('off', !on);
+    if(on) nFam++;
+    if(on && any) d.open = true;
+    const echo = d.querySelector('.echo');
+    if(echo) echo.classList.toggle('off', !on);
+  });
+  // headings with nothing under them
+  [...drill.children].forEach(el=>{
+    if(!el.classList.contains('atlas-sub') && !el.classList.contains('atlas-sf')) return;
+    let n = el.nextElementSibling, live = false;
+    while(n && !n.classList.contains('atlas-sub') && !(el.classList.contains('atlas-sf') && n.classList.contains('atlas-sf'))){
+      if(n.tagName === 'DETAILS' && !n.classList.contains('off')) live = true;
+      n = n.nextElementSibling;
+    }
+    el.classList.toggle('off', !live);
+  });
+
+  // species counts + reopen any visible species panels under a checklist
+  document.querySelectorAll('.gen.has-sp.open').forEach(b=>{
+    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
+  });
+  document.querySelectorAll('.splist').forEach(p=>p.hidden = true);
+
+  if(FS.chk.size){
+    nSpp = CHECK[[...FS.chk][0]].sp.length;
+    fsummary.innerHTML = '<b>'+nSpp+' species</b> regularly recorded in '+
+      CHECK[[...FS.chk][0]].name + (any && (FS.r.size||FS.d.size||FS.e.size||FS.ro.size||FS.c.size) ? ', narrowed further' : '') +
+      ' — '+nGen+(nGen===1?' genus in ':' genera in ')+nFam+(nFam===1?' family.':' families.');
+  } else if(any){
+    fsummary.innerHTML = '<b>'+nGen+' of '+generaTotal+' genera</b> match, across '+nFam+
+      (nFam===1?' of the 18 families.':' of the 18 families.');
+  } else {
+    fsummary.innerHTML = 'Showing all <b>'+generaTotal+' genera</b> in 18 families. Combine any criteria below — options within a group widen the result, groups narrow it.';
+  }
+
+  // reflect the filter in the cladogram
+  dimSet = any ? liveFams : null;
+  applyTreeDim();
+}
+
+fbox.addEventListener('click', e=>{
+  const b = e.target.closest('.fbtn'); if(!b) return;
+  const {k,v} = b.dataset, set = FS[k];
+  const def = FDEFS.find(d=>d.k===k);
+  if(def.single){
+    const had = set.has(v);
+    set.clear();
+    fbox.querySelectorAll('.fbtn[data-k="'+k+'"]').forEach(x=>x.setAttribute('aria-pressed','false'));
+    if(!had){ set.add(v); b.setAttribute('aria-pressed','true'); }
+  } else {
+    if(set.has(v)){ set.delete(v); b.setAttribute('aria-pressed','false'); }
+    else { set.add(v); b.setAttribute('aria-pressed','true'); }
+  }
+  applyFilters();
+});
+
+fclear.addEventListener('click', ()=>{
+  Object.values(FS).forEach(s=>s.clear());
+  fbox.querySelectorAll('.fbtn').forEach(b=>b.setAttribute('aria-pressed','false'));
+  document.querySelectorAll('details.sub').forEach(d=>d.open=false);
+  applyFilters();
+});
+
+applyFilters();
+(function(){
+  let named=0, generaWith=0, generaComplete=0;
+  Object.keys(SP).forEach(g=>{ named += SP[g][1].length; generaWith++; if(SP[g][0]) generaComplete++; });
+  const el = document.getElementById('sp-coverage');
+  if(el) el.textContent = named + ' species are named across ' + generaWith +
+    ' of the ' + generaTotal + ' genera, and ' + generaComplete + ' of those lists are complete.';
+})();
+
+/* =========================================================
+   9. SPECIES LOOKUP — search field top right, detail in a drawer
+   (namespaced lu* to avoid collisions with the page code above)
+   ========================================================= */
+const luState = { species: [], byName:{}, echo: null, danish: {}, filtered: [], active: null, ready:false };
+const luInput   = document.getElementById('lu-search');
+const luResults = document.getElementById('lu-results');
+const luDrawer  = document.getElementById('lu-drawer');
+const luScrim   = document.getElementById('lu-scrim');
+const luDetail  = document.getElementById('lu-detail');
+const LU_MAX = 40;
+
+/* Data is bundled into this page by build.sh (see the JSON blocks at the end of
+   the document). Opened straight from the working copy those blocks are empty
+   and we fall back to fetching the files next to the page. */
 const domReady = () => document.readyState === 'loading'
   ? new Promise(r=>document.addEventListener('DOMContentLoaded', r, {once:true}))
   : Promise.resolve();
 
 function bundled(id, url){
+  // the blocks sit at the end of the document, so wait for the parser to reach
+  // them before looking; only then is falling back to fetch() meaningful
   return domReady().then(()=>{
     const el = document.getElementById(id);
     const txt = el ? el.textContent.trim() : '';
@@ -1440,6 +2057,9 @@ function bundled(id, url){
   });
 }
 
+// data/build_country_distribution.py adds countries GBIF has real occurrence
+// records for but MDD's own countryDistribution column omits (see its
+// docstring). Additive only -- never removes or overrides an MDD country.
 function luMergeCountrySupplement(species, supplement){
   if(!supplement) return;
   species.forEach(s=>{
@@ -1455,546 +2075,353 @@ function luMergeCountrySupplement(species, supplement){
   });
 }
 
-const luState = { species: [], byName:{}, danish: {}, filtered: [], active: null, ready:false };
-const LINEAGE_KEYS = ['Cetacea','Sirenia','Pinnipedia'];
-const LINEAGES = {}; // lineage key -> {tree, blocks, famInfo, famChildren, genusChildren, lineageLookup, species}
-
-function luNiceName(sci){ return sci.replace('_',' '); }
-function luEsc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-/* group a lineage's species into the {kind,name,children,n,key} node model
-   ctxDrawTree expects, straight from MDD's own subfamily/tribe/genus columns */
-function buildLineage(key, species, treeSpec){
-  const byFamily = {};
-  species.forEach(s=>{
-    (byFamily[s.family] || (byFamily[s.family] = [])).push(s);
-  });
-
-  const famInfo = {};
-  Object.keys(byFamily).forEach(fam=>{
-    const rows = byFamily[fam];
-    const genera = new Set(rows.map(r=>r.genus));
-    const t = FAMILY_TEXT[fam] || {common:fam, desc:'', range:''};
-    famInfo[fam] = { common:t.common, desc:t.desc, range:t.range, genera:genera.size, species:rows.length };
-  });
-
-  const kidCache = {};
-  function famChildren(fam){
-    if(kidCache[fam]) return kidCache[fam];
-    const rows = byFamily[fam] || [];
-    // group by subfamily -> tribe -> genus, preserving MDD's phylosort order
-    const subOrder = [], subMap = {};
-    rows.forEach(s=>{
-      const subKey = (s.subfamily && s.subfamily !== 'NA') ? s.subfamily : '';
-      if(!(subKey in subMap)){ subMap[subKey] = { tribeOrder: [], tribeMap: {} }; subOrder.push(subKey); }
-      const subEntry = subMap[subKey];
-      const trKey = (s.tribe && s.tribe !== 'NA') ? s.tribe : '';
-      if(!(trKey in subEntry.tribeMap)){ subEntry.tribeMap[trKey] = { genOrder: [], genMap: {} }; subEntry.tribeOrder.push(trKey); }
-      const trEntry = subEntry.tribeMap[trKey];
-      if(!(s.genus in trEntry.genMap)){ trEntry.genMap[s.genus] = 0; trEntry.genOrder.push(s.genus); }
-      trEntry.genMap[s.genus]++;
-    });
-    const out = [];
-    subOrder.forEach((subKey, si)=>{
-      const subEntry = subMap[subKey];
-      const tribeNodes = [];
-      subEntry.tribeOrder.forEach((trKey, ti)=>{
-        const trEntry = subEntry.tribeMap[trKey];
-        const genera = trEntry.genOrder.map(g=>({kind:'genus', name:g, n:trEntry.genMap[g], fam, key:'g:'+g}));
-        if(trKey) tribeNodes.push({kind:'tribe', name:trKey, fam, children:genera, key:'t:'+fam+'|'+si+'|'+ti});
-        else tribeNodes.push(...genera);
-      });
-      if(subKey) out.push({kind:'subfam', name:subKey, note:SUBFAM_TEXT[subKey]||'', fam, children:tribeNodes, key:'s:'+fam+'|'+si});
-      else out.push(...tribeNodes);
-    });
-    return (kidCache[fam] = out);
-  }
-
-  function genusChildren(g){
-    const rows = species.filter(s=>s.genus===g);
-    if(!rows.length) return null;
-    return rows.map(s=>({
-      kind:'species', name: luNiceName(s.sciName), note: s.mainCommonName||'',
-      sciName: s.sciName, key:'x:'+luNiceName(s.sciName)
-    }));
-  }
-
-  const tree = treeSpec;
-  setDepth(tree, 0);
-  const blocks = buildBlocks(tree);
-  const lineageLookup = buildLineageLookup(tree);
-
-  return { key, species, famInfo, famChildren, genusChildren,
-    nodeChildren: n => n.kind==='genus' ? genusChildren(n.name) : (n.children||null),
-    tree, blocks, lineageLookup };
-}
-
-function buildTreeSpecs(){
-  return {
-    Cetacea: {name:"Cetacea", children:[
-      {name:"Mysticeti", children:[
-        {name:"Balaenoidea", children:[ leaf("Balaenidae") ]},
-        {name:"Balaenopteroidea", children:[ leaf("Balaenopteridae") ]},
-        {name:"Cetotherioidea", children:[ leaf("Cetotheriidae") ]}
-      ]},
-      {name:"Odontoceti", children:[
-        {name:"Physeteroidea", children:[ leaf("Physeteridae"), leaf("Kogiidae") ]},
-        {name:"Ziphioidea", children:[ leaf("Ziphiidae") ]},
-        {name:"Platanistoidea", children:[ leaf("Platanistidae") ]},
-        {name:"Inioidea", children:[ leaf("Iniidae"), leaf("Pontoporiidae") ]},
-        {name:"Lipotoidea", children:[ leaf("Lipotidae") ]},
-        {name:"Delphinoidea", children:[ leaf("Delphinidae"), leaf("Monodontidae"), leaf("Phocoenidae") ]}
-      ]}
-    ]},
-    Sirenia: {name:"Sirenia", children:[
-      {name:"Sirenia", children:[
-        {name:"Manatees & dugong", children:[ leaf("Dugongidae"), leaf("Trichechidae") ]}
-      ]}
-    ]},
-    Pinnipedia: {name:"Pinnipedia", children:[
-      {name:"Pinnipedia", children:[
-        {name:"Seals, sea lions & walrus", children:[ leaf("Otariidae"), leaf("Phocidae"), leaf("Odobenidae") ]}
-      ]}
-    ]}
-  };
-}
-
 Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json')
 ]).then(([tax, danish, countrySupp])=>{
   luState.species = tax.species;
+  // no echolocation reference ships for these animals; luFindEcho already has
+  // the honest fallback for it, and the drawer says so per species
+  luState.echo = null;
   luState.danish = danish;
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
   luState.ready = true;
   luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
-  luInput.placeholder = 'Search ' + tax._meta.speciesCount + ' marine mammals…';
-
-  document.getElementById('fig-species').textContent = tax._meta.speciesCount;
-  document.getElementById('fig-families').textContent = tax._meta.familyCount;
-
-  const specs = buildTreeSpecs();
-  LINEAGE_KEYS.forEach(k=>{
-    LINEAGES[k] = buildLineage(k, luState.species.filter(s=>s.lineage===k), specs[k]);
-  });
-
-  buildLadder();
-  buildAtlas();
-  buildFilters();
-
-  mainCtx = makeTreeCtx(Object.assign({
-    svg, card: document.getElementById('card'),
-    emptyHTML: CARD_EMPTY, onDrawn: applyTreeDim
-  }, LINEAGES.Cetacea));
-  mainCtx.lineageKey = 'Cetacea';
-  ctxCardReset(mainCtx);
-  ctxDrawTree(mainCtx);
-
+  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
 }).catch(err=>{
   luState.error = err.message;
-  document.getElementById('fig-species').textContent = '—';
-  const c = document.getElementById('card');
-  if(c) c.innerHTML = '<div class="card-empty"><p class="ce-eyebrow">Failed to load</p><p class="ce-text">'+luEsc(err.message)+'</p></div>';
 });
 
+/* ---- world map: outlines built by data/build_world_map.py ---- */
 let WMAP = null, WMBASE = null;
 bundled('d-worldmap', 'data/marine_world_map.json').then(m=>{
   WMAP = m;
   WMBASE = Object.keys(m.shapes).map(k=>[k, m.shapes[k]]);
   cmMaybeInit();
 }).catch(()=>{ WMAP = false; cmMaybeInit(); });
-</script>
 
-<script>
-/* =========================================================
-   5. RANK LADDER — one worked example per lineage, counts pulled
-   live from the loaded taxonomy rather than typed in twice.
-   ========================================================= */
-function famCount(list, pred){ return list.filter(pred).length; }
-
-function buildLadder(){
-  const all = luState.species;
-  const meta = luState.meta;
-  const cet = all.filter(s=>s.lineage==='Cetacea');
-  const sir = all.filter(s=>s.lineage==='Sirenia');
-  const pin = all.filter(s=>s.lineage==='Pinnipedia');
-
-  window.LADDER_EXAMPLES = [
-    { label:"Common bottlenose dolphin", rows:[
-      {rank:"Kingdom", taxon:"Animalia", above:true},
-      {rank:"Phylum", taxon:"Chordata", above:true},
-      {rank:"Class", taxon:"Mammalia", above:true},
-      {rank:"Suborder", taxon:"Cetacea", n:cet.length, gloss:"Whales, dolphins and porpoises — filed by MDD inside order Artiodactyla, since genetics places them among the even-toed ungulates."},
-      {rank:"Infraorder", taxon:"Odontoceti", n:famCount(cet,s=>s.infraorder==='Odontoceti'), gloss:"Toothed whales. Every species here echolocates; no baleen whale does."},
-      {rank:"Superfamily", taxon:"Delphinoidea", n:famCount(cet,s=>s.superfamily==='Delphinoidea'), gloss:"Dolphins, belugas/narwhal and porpoises — the toothed whales' largest radiation."},
-      {rank:"Family", taxon:"Delphinidae", n:famCount(cet,s=>s.family==='Delphinidae'), gloss:"Oceanic dolphins — the single most species-rich cetacean family."},
-      {rank:"Genus", taxon:"Tursiops", n:famCount(cet,s=>s.genus==='Tursiops'), gloss:"The bottlenose dolphins."},
-      {rank:"Species", taxon:"Tursiops truncatus", n:1, ital:true, terminal:true, gloss:"The dolphin most people picture — coastal and pelagic populations worldwide, and the most studied cetacean in captivity and the wild alike."}
-    ]},
-    { label:"West Indian manatee", rows:[
-      {rank:"Kingdom", taxon:"Animalia", above:true},
-      {rank:"Phylum", taxon:"Chordata", above:true},
-      {rank:"Class", taxon:"Mammalia", above:true},
-      {rank:"Order", taxon:"Sirenia", n:sir.length, gloss:"Manatees and the dugong — the only fully aquatic herbivorous mammals, distant relatives of elephants and hyraxes."},
-      {rank:"Family", taxon:"Trichechidae", n:famCount(sir,s=>s.family==='Trichechidae'), gloss:"The manatees, as opposed to Dugongidae (the dugong and the extinct Steller's sea cow)."},
-      {rank:"Genus", taxon:"Trichechus", n:famCount(sir,s=>s.genus==='Trichechus'), gloss:"All three living manatee species."},
-      {rank:"Species", taxon:"Trichechus manatus", n:1, ital:true, terminal:true, gloss:"Florida to northern Brazil — the manatee most familiar to North American and Caribbean audiences."}
-    ]},
-    { label:"Harbor seal", rows:[
-      {rank:"Kingdom", taxon:"Animalia", above:true},
-      {rank:"Phylum", taxon:"Chordata", above:true},
-      {rank:"Class", taxon:"Mammalia", above:true},
-      {rank:"Order", taxon:"Carnivora", n:null, gloss:"The most recent lineage to return to the sea — carnivorans, related to bears and weasels, not to whales or manatees.", skip:true},
-      {rank:"— informal —", taxon:"Pinnipedia", n:pin.length, gloss:"Seals, sea lions and the walrus — not a formal rank in MDD's own table, but universally used for this group of three families within Carnivora."},
-      {rank:"Family", taxon:"Phocidae", n:famCount(pin,s=>s.family==='Phocidae'), gloss:"True (earless) seals, as opposed to the eared seals (Otariidae) and the walrus (Odobenidae)."},
-      {rank:"Subfamily", taxon:"Phocinae", n:famCount(pin,s=>s.subfamily==='Phocinae'), gloss:"The mostly-northern true seals."},
-      {rank:"Tribe", taxon:"Phocini", n:famCount(pin,s=>s.tribe==='Phocini'), gloss:"The bulk of Phocinae — harbor, harp, ringed and grey seals among them."},
-      {rank:"Genus", taxon:"Phoca", n:famCount(pin,s=>s.genus==='Phoca'), gloss:"Harbor and spotted seals."},
-      {rank:"Species", taxon:"Phoca vitulina", n:1, ital:true, terminal:true, gloss:"The most widely distributed pinniped in the Northern Hemisphere, and the one most people encounter hauled out on a beach or rock."}
-    ]}
-  ];
-
-  const TOTAL = meta.speciesCount;
-  const ladder = document.getElementById('ladder');
-  function barPct(n){ return n ? (Math.log10(n+1)/Math.log10(TOTAL+1))*100 : 0; }
-  window.drawLadder = function(i){
-    ladder.innerHTML = '';
-    LADDER_EXAMPLES[i].rows.forEach(r=>{
-      const li = document.createElement('li');
-      li.className = 'rung' + (r.above?' above':'') + (r.terminal?' terminal':'');
-      const count = r.skip ? '<span class="note-inline">informal group below</span>'
-                  : (r.n ? (r.n===1 ? '1 species' : r.n+' spp.') : '');
-      li.innerHTML =
-        '<span class="r-rank">'+r.rank+'</span>'+
-        '<span class="taxon'+(r.ital?' ital':'')+'">'+r.taxon+'</span>'+
-        '<span class="gloss">'+(r.gloss||'')+'</span>'+
-        '<span class="count">'+count+'</span>'+
-        (r.above?'':'<span class="bar"><i style="width:0"></i></span>');
-      ladder.appendChild(li);
-      const bar = li.querySelector('.bar i');
-      if(bar) requestAnimationFrame(()=>{ bar.style.width = barPct(r.n)+'%'; });
-    });
-  };
-  drawLadder(0);
-  document.querySelectorAll('#ranks .switch button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      document.querySelectorAll('#ranks .switch button').forEach(x=>x.setAttribute('aria-pressed','false'));
-      b.setAttribute('aria-pressed','true');
-      drawLadder(+b.dataset.ex);
-    });
-  });
+function wmNorm(x){
+  return x.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+          .replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
 }
 
-const CARD_EMPTY =
-  '<div class="card-empty">'+
-    '<p class="ce-eyebrow">Nothing selected</p>'+
-    '<p class="ce-text">Click a family in the tree to open its branch, then follow it down to a species. '+
-    'Whatever you pick shows up here.</p>'+
-  '</div>';
-
-/* =========================================================
-   6. LINEAGE SWITCHER — swaps mainCtx's data in place so the one
-   svg/card pair the rest of the code already knows how to drive
-   renders a different lineage's tree entirely
-   ========================================================= */
-function switchLineage(key, opts){
-  opts = opts || {};
-  if(!LINEAGES[key]) return;
-  mainCtx = makeTreeCtx(Object.assign({
-    svg, card: document.getElementById('card'),
-    emptyHTML: CARD_EMPTY, onDrawn: applyTreeDim
-  }, LINEAGES[key]));
-  mainCtx.lineageKey = key;
-  dimSet = null; countrySpeciesSet = null; countryLive = null;
-  document.querySelectorAll('#lineage-switch button').forEach(b=>{
-    b.setAttribute('aria-pressed', b.dataset.lin===key ? 'true' : 'false');
+// "Angola|Benin?|..." -> what to paint
+function wmResolve(list){
+  const shapes = {}, dots = {};
+  let named = 0, unmatched = 0;
+  (list||'').split('|').forEach(raw=>{
+    const t = raw.trim();
+    if(!t || t==='NA') return;
+    named++;
+    const maybe = t.endsWith('?');
+    const key = WMAP.index[wmNorm(maybe ? t.slice(0,-1) : t)];
+    if(!key){ unmatched++; return; }
+    const bag = key.indexOf('d:')===0 ? dots : shapes;
+    // true means every record for this place was flagged uncertain
+    bag[key] = (key in bag) ? (bag[key] && maybe) : maybe;
   });
-  if(!opts.skipCardReset) ctxCardReset(mainCtx);
-  ctxDrawTree(mainCtx);
-  // a country selection doesn't carry over cleanly across lineages (the set
-  // of live species differs entirely), so re-derive it against the new tree
-  if(cmSelected) applyCountryFilterToMainTree();
-  if(typeof FS !== 'undefined' && Object.values(FS).some(s=>s.size)) applyFilters();
-}
-document.querySelectorAll('#lineage-switch button').forEach(b=>{
-  b.addEventListener('click', ()=>switchLineage(b.dataset.lin));
-});
-
-document.getElementById('t-collapse').addEventListener('click', ()=>{
-  mainCtx.open.clear(); ctxCardReset(mainCtx); ctxDrawTree(mainCtx);
-  document.querySelector('.treebox').scrollIntoView({block:'nearest'});
-});
-document.getElementById('t-expandsub').addEventListener('click', ()=>{
-  const allOpen = mainCtx.blocks.every(b=>b.members.every(f=>mainCtx.open.has('f:'+f)));
-  mainCtx.blocks.forEach(b=>b.members.forEach(f=>{
-    allOpen ? mainCtx.open.delete('f:'+f) : mainCtx.open.add('f:'+f);
-  }));
-  ctxDrawTree(mainCtx);
-});
-document.getElementById('card').addEventListener('click', e=>{
-  const btn = e.target.closest('.jump');
-  if(btn) ctxToggleFamily(mainCtx, btn.dataset.fam);
-});
-</script>
-
-<script>
-/* =========================================================
-   7. FLAT ATLAS — all three lineages, all 18 families, every
-   genus expandable to every species (the whole group is small
-   enough that there is no "representative selection" needed).
-   ========================================================= */
-const LINEAGE_LABEL = {Cetacea:'Cetacea — whales, dolphins & porpoises', Sirenia:'Sirenia — manatees & dugong', Pinnipedia:'Pinnipedia — seals, sea lions & walrus'};
-let generaTotal = 0;
-const GFAM = {}, GLIN = {};
-
-function statusLabel(code){
-  if(!code) return 'NA';
-  return code.split(' ')[0]; // strip "(as ...)" MDD synonym annotations
-}
-function statusClassOf(code){ return statusLabel(code).toLowerCase(); }
-
-function buildAtlas(){
-  const drill = document.getElementById('drill');
-  drill.innerHTML = '';
-  generaTotal = 0;
-
-  LINEAGE_KEYS.forEach(linKey=>{
-    const h = document.createElement('h3');
-    h.className = 'atlas-sub';
-    h.textContent = LINEAGE_LABEL[linKey];
-    drill.appendChild(h);
-
-    const lin = LINEAGES[linKey];
-    const families = Object.keys(lin.famInfo).sort((a,b)=>{
-      // keep MDD's own phylosort order rather than alphabetical
-      const fa = lin.species.find(s=>s.family===a).phylosort;
-      const fb = lin.species.find(s=>s.family===b).phylosort;
-      return fa - fb;
-    });
-
-    families.forEach(name=>{
-      const d = lin.famInfo[name], struct = lin.famChildren(name);
-      struct.forEach(sf=>{
-        const genera = sf.kind==='subfam' ? sf.children : [sf];
-        genera.forEach(tr=>{
-          const gs = tr.kind==='tribe' ? tr.children : [tr];
-          gs.forEach(gg=>{ if(gg.kind==='genus'){ GFAM[gg.name]=name; GLIN[gg.name]=linKey; } });
-        });
-      });
-      generaTotal += d.genera;
-
-      const det = document.createElement('details');
-      det.className = 'sub';
-      det.id = 'fam-' + name;
-      const bits = [ d.genera + (d.genera===1?' genus':' genera'), d.species + (d.species===1?' species':' species') ];
-
-      // subfam-kind entries each get their own labelled block; bare
-      // tribe/genus entries (families MDD gives no subfamily at all) are
-      // pooled into a single unlabelled block instead of one per genus
-      function renderTribeRow(tr){
-        const isTribe = tr.kind==='tribe';
-        const genera = isTribe ? tr.children : [tr];
-        return '<div class="triberow'+(isTribe?'':' no-tribe')+'">'+
-          (isTribe ? '<span class="tribe">'+tr.name+'</span>' : '')+
-          '<span class="genera">'+genera.map(g=>
-            '<button type="button" class="gen has-sp" data-g="'+g.name+'" data-n="'+g.n+'"><i>'+g.name+'</i><b>'+g.n+'</b></button>'
-          ).join('')+'</span><div class="splist" hidden></div></div>';
-      }
-      let body = '';
-      const bareEntries = [];
-      struct.forEach(sf=>{
-        if(sf.kind === 'subfam'){
-          body += '<div class="subf"><p class="subf-name">'+sf.name+'</p>'+
-            (sf.note ? '<p class="subf-note">'+sf.note+'</p>' : '')+
-            sf.children.map(renderTribeRow).join('')+'</div>';
-        } else {
-          bareEntries.push(sf);
-        }
-      });
-      if(bareEntries.length) body += '<div class="subf">'+bareEntries.map(renderTribeRow).join('')+'</div>';
-
-      det.innerHTML =
-        '<summary><span class="fam">'+name+'</span>'+
-        '<span class="famcommon">'+d.common+'</span>'+
-        '<span class="sm">'+bits.join(' · ')+'</span></summary>'+
-        '<div class="subbody">'+body+'</div>';
-      drill.appendChild(det);
-    });
-  });
-
+  return {shapes, dots, named, unmatched};
 }
 
-const LINKS = [
-  ["Wikipedia", n => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n)],
-  ["photos",    n => "https://www.inaturalist.org/search?q=" + encodeURIComponent(n)],
-  ["IUCN",      n => "https://www.iucnredlist.org/search?query=" + encodeURIComponent(n) ]
-];
+/* ---- browse-by-country map: click a country, list the marine mammals confirmed there ---- */
+let CM = null, cmReady = false, cmSelected = null;
 
-document.getElementById('drill').addEventListener('click', e=>{
-  const btn = e.target.closest('.gen.has-sp');
-  if(!btn) return;
-  const row = btn.closest('.triberow');
-  const panel = row.querySelector('.splist');
-  const wasOpen = btn.classList.contains('open');
-  row.querySelectorAll('.gen.has-sp').forEach(b=>{
-    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
-  });
-  if(wasOpen){ panel.hidden = true; return; }
-
-  const g = btn.dataset.g;
-  const lin = LINEAGES[GLIN[g]];
-  const list = lin.genusChildren(g) || [];
-  btn.classList.add('open'); btn.setAttribute('aria-expanded','true');
-  panel.innerHTML =
-    '<p class="sp-head">All '+list.length+(list.length===1?' species':' species')+' in <i>'+g+'</i></p><ul class="sp">'+
-    list.map(sp=>{
-      const bin = sp.name;
-      const links = LINKS.map(([label,url])=>
-        '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('');
-      const dk = luState.danish[sp.sciName];
-      const dkSpan = dk ? '<span class="sp-dk">🇩🇰 '+dk.name+'</span>' : '';
-      const rec = luState.byName[bin.toLowerCase()];
-      const status = rec ? '<span class="sp-status">'+statusLabel(rec.iucnStatus)+'</span>' : '';
-      return '<li><i>'+bin+'</i>'+(sp.note?'<span>'+luEsc(sp.note)+'</span>':'')+dkSpan+status+
-             '<span class="sp-links">'+links+'</span></li>';
-    }).join('')+
-    '</ul>';
-  panel.hidden = false;
-});
-
-/* =========================================================
-   8. FILTERS — genus-level, data-driven from MDD's own
-   biogeographicRealm field (no hand-assigned tags for this one,
-   unlike the bat page's diet/roost tags, since the field already
-   exists and rolling it up per genus needs no interpretation)
-   ========================================================= */
-const FDEFS = [
-  {k:'lin', label:'Lineage', opts:[['Cetacea','Cetacea'],['Sirenia','Sirenia'],['Pinnipedia','Pinnipedia']]},
-  {k:'realm', label:'Ocean / realm', opts:[['Marine','Marine'],['Nearctic','Nearctic'],['Palearctic','Palearctic'],['Neotropic','Neotropical'],['Afrotropic','Afrotropical'],['Indomalaya','Indomalayan']]},
-  {k:'status', label:'Conservation status', opts:[['LC','Least concern'],['NT','Near threatened'],['VU','Vulnerable'],['EN','Endangered'],['CR','Critically endangered'],['EX','Extinct'],['DD','Data deficient']]}
-];
-const FS = {lin:new Set(), realm:new Set(), status:new Set()};
-const GENUS_REALM = {}, GENUS_STATUS = {};
-
-function buildFilters(){
+function cmBuildIndex(){
+  const byKey = {};
   luState.species.forEach(s=>{
-    (s.biogeographicRealm||'').split('|').forEach(r=>{
-      if(!r.trim()) return;
-      (GENUS_REALM[s.genus] || (GENUS_REALM[s.genus]=new Set())).add(r.trim());
+    (s.countryDistribution||'').split('|').forEach(raw=>{
+      const t = raw.trim();
+      if(!t || t==='NA') return;
+      const maybe = t.endsWith('?');
+      const name = maybe ? t.slice(0,-1).trim() : t;
+      if(!name) return;
+      const key = WMAP.index[wmNorm(name)];
+      if(!key) return;
+      let e = byKey[key];
+      if(!e) e = byKey[key] = { confirmed:[], maybe:[], name: key.indexOf('d:')===0 ? key.slice(2) : name };
+      if(maybe) e.maybe.push(s); else e.confirmed.push(s);
     });
-    (GENUS_STATUS[s.genus] || (GENUS_STATUS[s.genus]=new Set())).add(statusLabel(s.iucnStatus));
   });
-
-  const fbox = document.getElementById('filters');
-  fbox.innerHTML = '';
-  FDEFS.forEach(def=>{
-    const g = document.createElement('div');
-    g.className = 'fgroup';
-    g.innerHTML = '<p class="flabel">'+def.label+'</p><div class="fopts">'+
-      def.opts.map(([v,l])=>'<button type="button" class="fbtn" data-k="'+def.k+'" data-v="'+v+'" aria-pressed="false">'+l+'</button>').join('')+
-      '</div>';
-    fbox.appendChild(g);
-  });
-  fbox.addEventListener('click', e=>{
-    const b = e.target.closest('.fbtn'); if(!b) return;
-    const {k,v} = b.dataset, set = FS[k];
-    if(set.has(v)){ set.delete(v); b.setAttribute('aria-pressed','false'); }
-    else { set.add(v); b.setAttribute('aria-pressed','true'); }
-    applyFilters();
-  });
-  document.getElementById('fclear').addEventListener('click', ()=>{
-    Object.values(FS).forEach(s=>s.clear());
-    fbox.querySelectorAll('.fbtn').forEach(b=>b.setAttribute('aria-pressed','false'));
-    document.querySelectorAll('details.sub').forEach(d=>d.open=false);
-    applyFilters();
-  });
-  applyFilters();
+  CM = byKey;
 }
 
-function genusMatches(g){
-  if(FS.lin.size && !FS.lin.has(GLIN[g])) return false;
-  if(FS.realm.size){
-    const r = GENUS_REALM[g];
-    if(!r || ![...FS.realm].some(x=>r.has(x))) return false;
-  }
-  if(FS.status.size){
-    const st = GENUS_STATUS[g];
-    if(!st || ![...FS.status].some(x=>st.has(x))) return false;
-  }
-  return true;
+// the full range (shapes+dots) of whichever species is currently open in the
+// detail card, or null — painted on the main map in a second shade of yellow
+let speciesRange = null;
+
+// picking a species anywhere in the main tree (or the country list) paints
+// its full range on the map above, in a second shade of yellow; picking a
+// family, or clearing the card, turns that back off
+function cmShowSpeciesRange(binomial){
+  const s = binomial ? luState.byName[binomial.toLowerCase()] : null;
+  speciesRange = (s && WMAP) ? wmResolve(s.countryDistribution||'') : null;
+  const note = document.getElementById('cm-range-note');
+  if(note) note.hidden = !speciesRange;
+  if(cmReady) cmRenderMap();
 }
 
-function applyFilters(){
-  const any = Object.values(FS).some(s=>s.size);
-  document.getElementById('fclear').hidden = !any;
+function cmRenderMap(){
+  const mapEl = document.getElementById('cm-map-svg');
+  if(!mapEl) return;
+  let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" class="cm-bg"/>';
+  body += WMBASE.map(([k,d])=>{
+    const e = CM[k];
+    const has = e && (e.confirmed.length || e.maybe.length);
+    const inRange = speciesRange && (k in speciesRange.shapes);
+    const cls = 'cm-c'+(has?' has':'')+(inRange?' range':'')+(k===cmSelected?' sel':'');
+    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
+    return '<path class="'+cls+'" data-key="'+luEsc(k)+'" d="'+d+'">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</path>';
+  }).join('');
+  if(cmSelected && WMAP.small.indexOf(cmSelected) >= 0){
+    const c = WMAP.cent[cmSelected];
+    if(c) body += '<circle class="cm-ring" cx="'+c[0]+'" cy="'+c[1]+'" r="5"/>';
+  }
+  Object.keys(WMAP.dots).forEach(k=>{
+    const e = CM[k];
+    const inRange = speciesRange && (k in speciesRange.dots);
+    if(!(e && (e.confirmed.length || e.maybe.length)) && !inRange) return;
+    const c = WMAP.dots[k];
+    if(!c) return;
+    const cls = 'cm-d'+(inRange?' range':'')+(k===cmSelected?' sel':'');
+    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
+    body += '<circle class="'+cls+'" data-key="'+luEsc(k)+'" cx="'+c[0]+'" cy="'+c[1]+'" r="3">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</circle>';
+  });
+  mapEl.innerHTML = '<svg viewBox="0 0 '+WMAP.w+' '+WMAP.h+'" role="img" aria-label="World map, click a country to list its marine mammals">'+
+    '<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
+  cmApplyView(true);
+  cmUpdateLabel();
+}
 
-  let nGen=0, nFam=0;
-  const liveFams = new Set();
+/* ---- pan / zoom: a transform on the <g> wrapping the map's own content,
+   reapplied after every cmRenderMap() rebuild so a redraw (new country
+   selected, a species range painted) doesn't reset the current view ---- */
+let cmView = {scale:1, x:0, y:0};
+let cmDrag = null; // {startClientX, startClientY, startX, startY} while a pointer is down
+const CM_MIN_SCALE = 1, CM_MAX_SCALE = 12;
 
-  document.querySelectorAll('.gen').forEach(chip=>{
-    const g = chip.dataset.g || chip.querySelector('i').textContent;
-    const ok = !any || genusMatches(g);
-    chip.classList.toggle('off', !ok);
-    if(ok){ nGen++; liveFams.add(GFAM[g]); }
-  });
+function cmClampView(v){
+  const scale = Math.min(CM_MAX_SCALE, Math.max(CM_MIN_SCALE, v.scale));
+  // keep at least a sliver of the map on-screen at any pan position
+  const maxX = WMAP.w * 0.9, maxY = WMAP.h * 0.9;
+  const minX = WMAP.w*(1-scale) - WMAP.w*0.9, minY = WMAP.h*(1-scale) - WMAP.h*0.9;
+  return { scale, x: Math.min(maxX, Math.max(minX, v.x)), y: Math.min(maxY, Math.max(minY, v.y)) };
+}
 
-  document.querySelectorAll('.triberow').forEach(row=>{
-    const on = row.querySelectorAll('.gen:not(.off)').length;
-    row.classList.toggle('off', !on);
-    if(!on){ const pl = row.querySelector('.splist'); if(pl) pl.hidden = true; }
+function cmApplyView(noAnim){
+  const g = document.getElementById('cm-zoom-g');
+  if(!g) return;
+  g.classList.toggle('no-anim', !!noAnim);
+  g.setAttribute('transform', 'translate('+cmView.x+' '+cmView.y+') scale('+cmView.scale+')');
+}
+
+function cmSetView(v, animate){
+  cmView = cmClampView(v);
+  cmApplyView(!animate);
+}
+
+function cmResetView(animate){ cmSetView({scale:1, x:0, y:0}, animate); }
+
+// point a screen (client) coordinate to viewBox units, independent of how
+// the svg itself is currently scaled on the page
+function cmClientToViewBox(clientX, clientY){
+  const svg = document.querySelector('#cm-map-svg svg');
+  if(!svg) return null;
+  const rect = svg.getBoundingClientRect();
+  if(!rect.width || !rect.height) return null;
+  return {
+    x: (clientX - rect.left) / rect.width * WMAP.w,
+    y: (clientY - rect.top) / rect.height * WMAP.h
+  };
+}
+
+function cmZoomAt(vx, vy, factor){
+  const newScale = Math.min(CM_MAX_SCALE, Math.max(CM_MIN_SCALE, cmView.scale * factor));
+  const x = vx - (vx - cmView.x) / cmView.scale * newScale;
+  const y = vy - (vy - cmView.y) / cmView.scale * newScale;
+  cmSetView({scale:newScale, x, y}, false);
+}
+
+// centre the view on a country's centroid at a fixed, comfortable zoom level
+function cmZoomToCountry(key){
+  const isDot = key.indexOf('d:') === 0;
+  const c = isDot ? WMAP.dots[key] : WMAP.cent[key];
+  if(!c) return;
+  const scale = isDot || WMAP.small.indexOf(key) >= 0 ? 7 : 3;
+  cmSetView({ scale, x: WMAP.w/2 - scale*c[0], y: WMAP.h/2 - scale*c[1] }, true);
+}
+
+function cmUpdateLabel(){
+  const label = document.getElementById('cm-label');
+  if(!label) return;
+  const e = cmSelected && CM[cmSelected];
+  label.textContent = e ? e.name : '';
+  label.classList.toggle('show', !!e);
+}
+
+function cmWireZoomControls(){
+  const mapEl = document.getElementById('cm-map');
+  if(!mapEl) return;
+  mapEl.addEventListener('wheel', e=>{
+    e.preventDefault();
+    const p = cmClientToViewBox(e.clientX, e.clientY);
+    if(!p) return;
+    cmZoomAt(p.x, p.y, e.deltaY < 0 ? 1.35 : 1/1.35);
+  }, {passive:false});
+
+  mapEl.addEventListener('pointerdown', e=>{
+    if(e.target.closest('.cm-zoom-ctrl')) return;
+    const svg = document.querySelector('#cm-map-svg svg');
+    if(!svg) return;
+    cmDrag = {id:e.pointerId, svg, startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, moved:false};
+    // pointer capture is NOT taken here: capturing on pointerdown retargets
+    // the pointerup/mouseup/click that follow to the capturing element even
+    // for a plain click with zero movement (verified in Chromium — the up
+    // and click events come back targeted at the <svg> root, never at the
+    // country <path>/<circle> underneath), which silently breaks selecting a
+    // country. Capture only gets taken once movement past the drag
+    // threshold is confirmed, in pointermove below — a real click never
+    // reaches that point, so it's never captured and resolves normally.
   });
-  document.querySelectorAll('.subf').forEach(sf=>{
-    sf.classList.toggle('off', !sf.querySelectorAll('.triberow:not(.off)').length);
-  });
-  document.querySelectorAll('details.sub').forEach(d=>{
-    const on = d.querySelectorAll('.subf:not(.off)').length;
-    d.classList.toggle('off', !on);
-    if(on) nFam++;
-    if(on && any) d.open = true;
-  });
-  [...document.getElementById('drill').children].forEach(el=>{
-    if(!el.classList.contains('atlas-sub')) return;
-    let n = el.nextElementSibling, live = false;
-    while(n && !n.classList.contains('atlas-sub')){
-      if(n.tagName === 'DETAILS' && !n.classList.contains('off')) live = true;
-      n = n.nextElementSibling;
+  mapEl.addEventListener('pointermove', e=>{
+    if(!cmDrag || e.pointerId !== cmDrag.id) return;
+    const svg = cmDrag.svg;
+    const rect = svg.getBoundingClientRect();
+    if(!rect.width) return;
+    // "did this become a drag" is judged in real screen pixels, not viewBox
+    // units — the map can render anywhere from ~300px to 900px wide, so a
+    // fixed viewBox-unit threshold could be under a single screen pixel and
+    // flag ordinary mouse-hand jitter on a plain click as a drag
+    if(!cmDrag.moved && (Math.abs(e.clientX-cmDrag.startClientX) > 4 || Math.abs(e.clientY-cmDrag.startClientY) > 4)){
+      cmDrag.moved = true;
+      svg.setPointerCapture(cmDrag.id);
+      svg.classList.add('dragging');
     }
-    el.classList.toggle('off', !live);
+    if(!cmDrag.moved) return;
+    const dx = (e.clientX - cmDrag.startClientX) / rect.width * WMAP.w;
+    const dy = (e.clientY - cmDrag.startClientY) / rect.height * WMAP.h;
+    cmSetView({scale:cmView.scale, x:cmDrag.startX+dx, y:cmDrag.startY+dy}, false);
   });
-
-  document.querySelectorAll('.gen.has-sp.open').forEach(b=>{
-    b.classList.remove('open'); b.setAttribute('aria-expanded','false');
-  });
-  document.querySelectorAll('.splist').forEach(p=>p.hidden = true);
-
-  const fsummary = document.getElementById('fsummary');
-  if(any){
-    fsummary.innerHTML = '<b>'+nGen+' of '+generaTotal+' genera</b> match, across '+nFam+
-      (nFam===1?' of 18 families.':' of 18 families.');
-  } else {
-    fsummary.innerHTML = 'Showing all <b>'+generaTotal+' genera</b> across all three lineages and 18 families. Combine any criteria below — options within a group widen the result, groups narrow it.';
+  function endDrag(e){
+    if(!cmDrag || e.pointerId !== cmDrag.id) return;
+    const svg = cmDrag.svg;
+    if(cmDrag.moved){
+      svg.classList.remove('dragging');
+      if(svg.hasPointerCapture(cmDrag.id)) svg.releasePointerCapture(cmDrag.id);
+      // a drag that actually moved the map shouldn't also register as a
+      // click on whatever country happens to be under the pointer when it lifts
+      cmSuppressNextClick = true;
+    }
+    cmDrag = null;
   }
+  mapEl.addEventListener('pointerup', endDrag);
+  mapEl.addEventListener('pointercancel', endDrag);
 
-  dimSet = any ? liveFams : null;
-  applyTreeDim();
+  document.getElementById('cm-zoom-in').addEventListener('click', ()=>cmZoomAt(WMAP.w/2, WMAP.h/2, 1.6));
+  document.getElementById('cm-zoom-out').addEventListener('click', ()=>cmZoomAt(WMAP.w/2, WMAP.h/2, 1/1.6));
+  document.getElementById('cm-zoom-reset').addEventListener('click', ()=>cmResetView(true));
 }
-</script>
+let cmSuppressNextClick = false;
 
-<script>
-/* =========================================================
-   9. SPECIES SEARCH — top-right search field, detail in a drawer
-   (namespaced lu* to match the bat pages' convention)
-   ========================================================= */
-const luInput   = document.getElementById('lu-search');
-const luResults = document.getElementById('lu-results');
-const luDrawer  = document.getElementById('lu-drawer');
-const luScrim   = document.getElementById('lu-scrim');
-const luDetail  = document.getElementById('lu-detail');
-const LU_MAX = 40;
+/* the map's own panel is just a flat, clickable list of the species confirmed
+   in the selected country — picking one opens it in the (single) main tree
+   and fills the one shared detail card. There is no second cladogram here. */
+function cmRenderList(){
+  const head = document.getElementById('cm-panel-head');
+  const list = document.getElementById('cm-list');
+  if(!head || !list) return;
+  if(!cmSelected){
+    head.textContent = 'Select a country on the map.';
+    list.innerHTML = '';
+    return;
+  }
+  const e = CM[cmSelected];
+  const rows = e.confirmed.slice();
+  head.innerHTML = '<b>'+luEsc(e.name)+'</b> — '+rows.length+' confirmed species'+
+    (e.maybe.length ? ', '+e.maybe.length+' further uncertain' : '');
+  if(!rows.length){
+    list.innerHTML = '<div class="lu-none">No confirmed records here'+
+      (e.maybe.length ? ' — '+e.maybe.length+' uncertain record'+(e.maybe.length===1?'':'s')+' only.' : '.')+'</div>';
+    return;
+  }
+  list.innerHTML = rows.map(s=>{
+    const dk = luState.danish[s.sciName];
+    return '<div class="lu-row" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+
+      '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
+      (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
+      (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
+      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></div>';
+  }).join('');
+}
+
+document.getElementById('cm-list').addEventListener('click', e=>{
+  const row = e.target.closest('.lu-row');
+  if(row) luSelectSpecies(row.dataset.id);
+});
+document.getElementById('cm-list').addEventListener('keydown', e=>{
+  const row = e.target.closest('.lu-row');
+  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id); }
+});
+
+function cmOnMapClick(e){
+  if(cmSuppressNextClick){ cmSuppressNextClick = false; return; }
+  const el = e.target.closest('[data-key]');
+  if(!el) return;
+  const key = el.getAttribute('data-key');
+  const entry = CM[key];
+  if(!entry || (!entry.confirmed.length && !entry.maybe.length)) return;
+  cmSelected = (cmSelected === key) ? null : key;
+  cmRenderMap();
+  cmRenderList();
+  applyCountryFilterToMainTree();
+  if(cmSelected) cmZoomToCountry(cmSelected); else cmResetView(true);
+}
+
+function applyCountryFilterToMainTree(){
+  if(!cmSelected){
+    countrySpeciesSet = null; countryLive = null;
+  } else {
+    const e = CM[cmSelected];
+    countrySpeciesSet = new Set((e ? e.confirmed : []).map(s=>luNiceName(s.sciName)));
+    countryLive = computeCountryLiveKeys(countrySpeciesSet);
+  }
+  // a full redraw is needed (not just re-toggling the dim class): in "show
+  // only" mode, which rows exist at all depends on the country selection
+  ctxDrawTree(mainCtx);
+}
+
+function setCountryTreeMode(mode){
+  if(countryTreeMode === mode) return;
+  countryTreeMode = mode;
+  document.getElementById('cm-mode-dim').setAttribute('aria-pressed', mode==='dim' ? 'true' : 'false');
+  document.getElementById('cm-mode-filter').setAttribute('aria-pressed', mode==='filter' ? 'true' : 'false');
+  ctxDrawTree(mainCtx);
+}
+document.getElementById('cm-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
+document.getElementById('cm-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
+
+function cmMaybeInit(){
+  if(cmReady || !luState.ready || WMAP===null) return;
+  cmReady = true;
+  const mapEl = document.getElementById('cm-map');
+  const svgHolder = document.getElementById('cm-map-svg');
+  if(!mapEl || !svgHolder) return;
+  if(WMAP === false){
+    svgHolder.innerHTML = '<div class="wm-pending">Map data failed to load.</div>';
+    return;
+  }
+  cmBuildIndex();
+  cmRenderMap();
+  cmRenderList();
+  mapEl.addEventListener('click', cmOnMapClick);
+  cmWireZoomControls();
+}
+
+function luNiceName(sci){ return sci.replace('_',' '); }
+function luEsc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 function luApplyFilter(){
   const q = luInput.value.trim().toLowerCase();
@@ -2012,7 +2439,6 @@ function luApplyFilter(){
       (s.otherCommonNames||'').toLowerCase().includes(q) ||
       s.genus.toLowerCase().includes(q) ||
       s.family.toLowerCase().includes(q) ||
-      s.lineage.toLowerCase().includes(q) ||
       (dk && dk.allNames.some(n=>n.toLowerCase().includes(q)))
     );
   });
@@ -2023,7 +2449,7 @@ function luApplyFilter(){
 function luRenderResults(){
   const list = luState.filtered;
   if(!list.length){
-    luResults.innerHTML = '<div class="lu-none">Nothing matches that. Try a genus, a family, a lineage or a common name.</div>';
+    luResults.innerHTML = '<div class="lu-none">Nothing matches that. Try a genus, a family or a common name.</div>';
     return;
   }
   const shown = list.slice(0, LU_MAX);
@@ -2035,10 +2461,10 @@ function luRenderResults(){
       '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
       (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
       (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
-      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+' · '+luEsc(s.lineage)+'</span></div>';
+      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></div>';
   }).join('');
   if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
-    luState.meta.speciesCount+' species, '+luState.meta.familyCount+' families, 3 lineages</div>';
+    luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' families</div>';
   luResults.innerHTML = html;
 }
 
@@ -2100,7 +2526,15 @@ function luCloseDrawer(){
 luScrim.addEventListener('click', luCloseDrawer);
 document.getElementById('lu-close').addEventListener('click', luCloseDrawer);
 
-function luStatusClass(code){ return statusClassOf(code) || 'na'; }
+function luStatusClass(code){ return (code||'na').toLowerCase(); }
+
+function luFindEcho(species){
+  const fam = luState.echo && luState.echo.families[species.family];
+  if(!fam) return null;
+  const sciSpace = luNiceName(species.sciName);
+  const genusExample = fam.genusExamples && (fam.genusExamples[sciSpace] || fam.genusExamples[species.genus]);
+  return { base: fam, override: genusExample || null };
+}
 
 function luSpeciesHTML(binomial, compact){
   const s = luState.byName[binomial.toLowerCase()];
@@ -2114,6 +2548,8 @@ function luSpeciesHTML(binomial, compact){
 }
 
 function luDetailHTML(s, compact){
+  const echo = luFindEcho(s);
+  const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
   const dk = luState.danish[s.sciName];
   const bin = luNiceName(s.sciName);
 
@@ -2121,8 +2557,19 @@ function luDetailHTML(s, compact){
     .filter(k=>s[k] && s[k]!=='NA')
     .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
+  const echoCard = merged ? (
+    '<div class="lu-card"><h4>Echolocation (family/genus reference)</h4><dl>'+
+    '<dt>Call type</dt><dd>'+(merged.callType||'—')+'</dd>'+
+    '<dt>Duty cycle</dt><dd>'+(merged.dutyCycle||'—')+'</dd>'+
+    '<dt>Peak frequency</dt><dd>'+(merged.peakFrequencyKHz ? merged.peakFrequencyKHz.join('–')+' kHz' : '—')+'</dd>'+
+    '</dl>'+(merged.foragingNote ? '<div class="lu-note">'+merged.foragingNote+'</div>' : '')+
+    '<div class="lu-src">'+(echo.override ? 'Genus-level example' : 'Family-level typical range')+' — illustrative, not verified per species.</div></div>'
+  ) : '<div class="lu-card"><h4>Echolocation</h4><div class="lu-note">No reference data for family "'+luEsc(s.family)+'" yet.</div></div>';
+
   const links = LINKS.map(([label,url])=>
     '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('');
+
+  const measured = ESP[bin] ? '<div class="lu-card"><h4>Measured call</h4><div class="lu-note">'+ESP[bin]+'</div></div>' : '';
 
   return '<p class="card-lineage">'+chain+'</p>'+
     '<div class="lu-head">'+
@@ -2131,29 +2578,22 @@ function luDetailHTML(s, compact){
         (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
         (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+' <span class="lu-dk-src">('+luEsc(dk.source)+')</span></p>' : '')+
         '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
-        '<span class="lu-lineage">'+luEsc(s.lineage)+'</span>'+
       '</div>'+
       '<div class="lu-links">'+links+'</div>'+
     '</div>'+
     '<div class="lu-grid2">'+
       '<div class="lu-card"><h4>Taxonomy &amp; status</h4><dl>'+
-        '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+luEsc(s.iucnStatus||'NA')+'</span></dd>'+
+        '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+(s.iucnStatus||'NA')+'</span></dd>'+
         '<dt>Extinct</dt><dd>'+(s.extinct==='1' ? 'Yes' : 'No')+'</dd>'+
         '<dt>Realm</dt><dd>'+luEsc(s.biogeographicRealm||'—')+'</dd>'+
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></div>'+
-      '<div class="lu-card"><h4>Lineage</h4><div class="lu-note">'+lineageBlurb(s.lineage)+'</div></div>'+
+      measured + echoCard+
     '</div>'+
-    '<p class="lu-prov">Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>. ' +
-    'Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records and are shown only where a genuine Danish name is on record. ' +
-    'No echolocation data is shown for marine mammals — see the convergence essay above for why.</p>';
-}
-
-function lineageBlurb(lin){
-  if(lin === 'Cetacea') return 'Whales, dolphins and porpoises — filed by MDD as suborder Cetacea within order Artiodactyla, since their closest living relatives are even-toed ungulates (hippos above all), not other marine mammals.';
-  if(lin === 'Sirenia') return 'Manatees and the dugong — the only fully herbivorous marine mammals, distantly related to elephants and hyraxes, not to whales or seals.';
-  return 'Seals, sea lions and the walrus — the three pinniped families of order Carnivora, related to bears and weasels, and the most recent of the three lineages to return to the sea.';
+    '<p class="lu-prov">Taxonomy: Mammal Diversity Database v2.5 — <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">doi:10.5281/zenodo.21654811</a>, which places the cetaceans inside Artiodactyla. ' +
+    'No echolocation reference is shipped for these species — see the footer for why. ' +
+    'Danish names come from <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a> vernacular-name records and are shown only where a genuine Danish name is on record.</p>';
 }
 
 function luSelectSpecies(id){
@@ -2161,314 +2601,55 @@ function luSelectSpecies(id){
   luCloseResults();
   const s = luState.species.find(x=>x.id===id);
   if(!s) return;
-  const opened = openTreeToSpecies(s.lineage, s.family, s.genus, luNiceName(s.sciName));
+  const opened = openTreeToSpecies(s.family, s.genus, luNiceName(s.sciName));
   if(!opened){
+    // fallback for anything not represented in the cladogram (shouldn’t happen — every genus is in the atlas)
     luDetail.innerHTML = luDetailHTML(s, false);
     luOpenDrawer();
   }
 }
-</script>
 
-<script>
 /* =========================================================
-   10. COUNTRY MAP — identical mechanism to the bat pages' map, but
-   against data/marine_world_map.json rather than their world_map.json:
-   same build script (--marine), same projection, Antarctica drawn instead
-   of cropped away. 37 of the 144 species here range there, so the bat
-   map's -57 degree crop would silently swallow a quarter of the ranges.
-   The map is taller as a result (viewBox h 405.8 vs 344.9) — every
-   measurement below reads WMAP.w/WMAP.h, so nothing here hardcodes it.
+   10. START THE TREE
    ========================================================= */
-function wmNorm(x){
-  return x.normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase()
-          .replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
-}
+const CARD_EMPTY =
+  '<div class="card-empty">'+
+    '<p class="ce-eyebrow">Nothing selected</p>'+
+    '<p class="ce-text">Click a family in the tree to open its branch, then follow it down to a species. '+
+    'Whatever you pick shows up here.</p>'+
+  '</div>';
 
-function wmResolve(list){
-  const shapes = {}, dots = {};
-  let named = 0, unmatched = 0;
-  (list||'').split('|').forEach(raw=>{
-    const t = raw.trim();
-    if(!t || t==='NA') return;
-    named++;
-    const maybe = t.endsWith('?');
-    const key = WMAP.index[wmNorm(maybe ? t.slice(0,-1) : t)];
-    if(!key){ unmatched++; return; }
-    const bag = key.indexOf('d:')===0 ? dots : shapes;
-    bag[key] = (key in bag) ? (bag[key] && maybe) : maybe;
-  });
-  return {shapes, dots, named, unmatched};
-}
-
-let CM = null, cmReady = false, cmSelected = null;
-
-function cmBuildIndex(){
-  const byKey = {};
-  luState.species.forEach(s=>{
-    (s.countryDistribution||'').split('|').forEach(raw=>{
-      const t = raw.trim();
-      if(!t || t==='NA') return;
-      const maybe = t.endsWith('?');
-      const name = maybe ? t.slice(0,-1).trim() : t;
-      if(!name) return;
-      const key = WMAP.index[wmNorm(name)];
-      if(!key) return;
-      let e = byKey[key];
-      if(!e) e = byKey[key] = { confirmed:[], maybe:[], name: key.indexOf('d:')===0 ? key.slice(2) : name };
-      if(maybe) e.maybe.push(s); else e.confirmed.push(s);
-    });
-  });
-  CM = byKey;
-}
-
-let speciesRange = null;
-
-function cmShowSpeciesRange(binomial){
-  const s = binomial ? luState.byName[binomial.toLowerCase()] : null;
-  speciesRange = (s && WMAP) ? wmResolve(s.countryDistribution||'') : null;
-  const note = document.getElementById('cm-range-note');
-  if(note) note.hidden = !speciesRange;
-  if(cmReady) cmRenderMap();
-}
-
-function cmRenderMap(){
-  const mapEl = document.getElementById('cm-map-svg');
-  if(!mapEl) return;
-  let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" class="cm-bg"/>';
-  body += WMBASE.map(([k,d])=>{
-    const e = CM[k];
-    const has = e && (e.confirmed.length || e.maybe.length);
-    const inRange = speciesRange && (k in speciesRange.shapes);
-    const cls = 'cm-c'+(has?' has':'')+(inRange?' range':'')+(k===cmSelected?' sel':'');
-    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
-    return '<path class="'+cls+'" data-key="'+luEsc(k)+'" d="'+d+'">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</path>';
-  }).join('');
-  if(cmSelected && WMAP.small.indexOf(cmSelected) >= 0){
-    const c = WMAP.cent[cmSelected];
-    if(c) body += '<circle class="cm-ring" cx="'+c[0]+'" cy="'+c[1]+'" r="5"/>';
-  }
-  Object.keys(WMAP.dots).forEach(k=>{
-    const e = CM[k];
-    const inRange = speciesRange && (k in speciesRange.dots);
-    if(!(e && (e.confirmed.length || e.maybe.length)) && !inRange) return;
-    const c = WMAP.dots[k];
-    if(!c) return;
-    const cls = 'cm-d'+(inRange?' range':'')+(k===cmSelected?' sel':'');
-    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
-    body += '<circle class="'+cls+'" data-key="'+luEsc(k)+'" cx="'+c[0]+'" cy="'+c[1]+'" r="3">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</circle>';
-  });
-  mapEl.innerHTML = '<svg viewBox="0 0 '+WMAP.w+' '+WMAP.h+'" role="img" aria-label="World map, click a country to list its marine mammals">'+
-    '<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
-  cmApplyView(true);
-  cmUpdateLabel();
-}
-
-let cmView = {scale:1, x:0, y:0};
-let cmDrag = null;
-const CM_MIN_SCALE = 1, CM_MAX_SCALE = 12;
-
-function cmClampView(v){
-  const scale = Math.min(CM_MAX_SCALE, Math.max(CM_MIN_SCALE, v.scale));
-  const maxX = WMAP.w * 0.9, maxY = WMAP.h * 0.9;
-  const minX = WMAP.w*(1-scale) - WMAP.w*0.9, minY = WMAP.h*(1-scale) - WMAP.h*0.9;
-  return { scale, x: Math.min(maxX, Math.max(minX, v.x)), y: Math.min(maxY, Math.max(minY, v.y)) };
-}
-
-function cmApplyView(noAnim){
-  const g = document.getElementById('cm-zoom-g');
-  if(!g) return;
-  g.classList.toggle('no-anim', !!noAnim);
-  g.setAttribute('transform', 'translate('+cmView.x+' '+cmView.y+') scale('+cmView.scale+')');
-}
-
-function cmSetView(v, animate){
-  cmView = cmClampView(v);
-  cmApplyView(!animate);
-}
-
-function cmResetView(animate){ cmSetView({scale:1, x:0, y:0}, animate); }
-
-function cmClientToViewBox(clientX, clientY){
-  const svg = document.querySelector('#cm-map-svg svg');
-  if(!svg) return null;
-  const rect = svg.getBoundingClientRect();
-  if(!rect.width || !rect.height) return null;
-  return {
-    x: (clientX - rect.left) / rect.width * WMAP.w,
-    y: (clientY - rect.top) / rect.height * WMAP.h
-  };
-}
-
-function cmZoomAt(vx, vy, factor){
-  const newScale = Math.min(CM_MAX_SCALE, Math.max(CM_MIN_SCALE, cmView.scale * factor));
-  const x = vx - (vx - cmView.x) / cmView.scale * newScale;
-  const y = vy - (vy - cmView.y) / cmView.scale * newScale;
-  cmSetView({scale:newScale, x, y}, false);
-}
-
-function cmZoomToCountry(key){
-  const isDot = key.indexOf('d:') === 0;
-  const c = isDot ? WMAP.dots[key] : WMAP.cent[key];
-  if(!c) return;
-  const scale = isDot || WMAP.small.indexOf(key) >= 0 ? 7 : 3;
-  cmSetView({ scale, x: WMAP.w/2 - scale*c[0], y: WMAP.h/2 - scale*c[1] }, true);
-}
-
-function cmUpdateLabel(){
-  const label = document.getElementById('cm-label');
-  if(!label) return;
-  const e = cmSelected && CM[cmSelected];
-  label.textContent = e ? e.name : '';
-  label.classList.toggle('show', !!e);
-}
-
-function cmWireZoomControls(){
-  const mapEl = document.getElementById('cm-map');
-  if(!mapEl) return;
-  mapEl.addEventListener('wheel', e=>{
-    e.preventDefault();
-    const p = cmClientToViewBox(e.clientX, e.clientY);
-    if(!p) return;
-    cmZoomAt(p.x, p.y, e.deltaY < 0 ? 1.35 : 1/1.35);
-  }, {passive:false});
-
-  mapEl.addEventListener('pointerdown', e=>{
-    if(e.target.closest('.cm-zoom-ctrl')) return;
-    const svg = document.querySelector('#cm-map-svg svg');
-    if(!svg) return;
-    cmDrag = {id:e.pointerId, svg, startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, moved:false};
-  });
-  mapEl.addEventListener('pointermove', e=>{
-    if(!cmDrag || e.pointerId !== cmDrag.id) return;
-    const svg = cmDrag.svg;
-    const rect = svg.getBoundingClientRect();
-    if(!rect.width) return;
-    if(!cmDrag.moved && (Math.abs(e.clientX-cmDrag.startClientX) > 4 || Math.abs(e.clientY-cmDrag.startClientY) > 4)){
-      cmDrag.moved = true;
-      svg.setPointerCapture(cmDrag.id);
-      svg.classList.add('dragging');
-    }
-    if(!cmDrag.moved) return;
-    const dx = (e.clientX - cmDrag.startClientX) / rect.width * WMAP.w;
-    const dy = (e.clientY - cmDrag.startClientY) / rect.height * WMAP.h;
-    cmSetView({scale:cmView.scale, x:cmDrag.startX+dx, y:cmDrag.startY+dy}, false);
-  });
-  function endDrag(e){
-    if(!cmDrag || e.pointerId !== cmDrag.id) return;
-    const svg = cmDrag.svg;
-    if(cmDrag.moved){
-      svg.classList.remove('dragging');
-      if(svg.hasPointerCapture(cmDrag.id)) svg.releasePointerCapture(cmDrag.id);
-      cmSuppressNextClick = true;
-    }
-    cmDrag = null;
-  }
-  mapEl.addEventListener('pointerup', endDrag);
-  mapEl.addEventListener('pointercancel', endDrag);
-
-  document.getElementById('cm-zoom-in').addEventListener('click', ()=>cmZoomAt(WMAP.w/2, WMAP.h/2, 1.6));
-  document.getElementById('cm-zoom-out').addEventListener('click', ()=>cmZoomAt(WMAP.w/2, WMAP.h/2, 1/1.6));
-  document.getElementById('cm-zoom-reset').addEventListener('click', ()=>cmResetView(true));
-}
-let cmSuppressNextClick = false;
-
-function cmRenderList(){
-  const head = document.getElementById('cm-panel-head');
-  const list = document.getElementById('cm-list');
-  if(!head || !list) return;
-  if(!cmSelected){
-    head.textContent = 'Select a country on the map.';
-    list.innerHTML = '';
-    return;
-  }
-  const e = CM[cmSelected];
-  const rows = e.confirmed.slice();
-  head.innerHTML = '<b>'+luEsc(e.name)+'</b> — '+rows.length+' confirmed species'+
-    (e.maybe.length ? ', '+e.maybe.length+' further uncertain' : '');
-  if(!rows.length){
-    list.innerHTML = '<div class="lu-none">No confirmed records here'+
-      (e.maybe.length ? ' — '+e.maybe.length+' uncertain record'+(e.maybe.length===1?'':'s')+' only.' : '.')+'</div>';
-    return;
-  }
-  list.innerHTML = rows.map(s=>{
-    const dk = luState.danish[s.sciName];
-    return '<div class="lu-row" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+
-      '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
-      (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
-      (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
-      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+' · '+luEsc(s.lineage)+'</span></div>';
-  }).join('');
-}
-
-document.getElementById('cm-list').addEventListener('click', e=>{
-  const row = e.target.closest('.lu-row');
-  if(row) luSelectSpecies(row.dataset.id);
-});
-document.getElementById('cm-list').addEventListener('keydown', e=>{
-  const row = e.target.closest('.lu-row');
-  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id); }
+mainCtx = makeTreeCtx({
+  svg, card: document.getElementById('card'),
+  tree: TREE, blocks: BLOCKS, famInfo: F,
+  famChildren, nodeChildren: n => n.kind==='genus' ? genusChildren(n.name) : (n.children||null),
+  emptyHTML: CARD_EMPTY, onDrawn: applyTreeDim
 });
 
-function cmOnMapClick(e){
-  if(cmSuppressNextClick){ cmSuppressNextClick = false; return; }
-  const el = e.target.closest('[data-key]');
-  if(!el) return;
-  const key = el.getAttribute('data-key');
-  const entry = CM[key];
-  if(!entry || (!entry.confirmed.length && !entry.maybe.length)) return;
-  cmSelected = (cmSelected === key) ? null : key;
-  cmRenderMap();
-  cmRenderList();
-  applyCountryFilterToMainTree();
-  if(cmSelected) cmZoomToCountry(cmSelected); else cmResetView(true);
-}
+ctxCardReset(mainCtx);
+ctxDrawTree(mainCtx);
 
-function applyCountryFilterToMainTree(){
-  if(!mainCtx) return;
-  if(!cmSelected){
-    countrySpeciesSet = null; countryLive = null;
-  } else {
-    const e = CM[cmSelected];
-    countrySpeciesSet = new Set((e ? e.confirmed : []).map(s=>luNiceName(s.sciName)));
-    countryLive = computeCountryLiveKeys(mainCtx, countrySpeciesSet);
-  }
+mainCtx.card.addEventListener('click', e=>{
+  const btn = e.target.closest('.jump');
+  if(btn){ ctxToggleFamily(mainCtx, btn.dataset.fam); return; }
+});
+
+document.getElementById('t-collapse').addEventListener('click', ()=>{
+  mainCtx.open.clear(); ctxCardReset(mainCtx); ctxDrawTree(mainCtx);
+  document.querySelector('.treebox').scrollIntoView({block:'nearest'});
+});
+document.getElementById('t-expandsub').addEventListener('click', ()=>{
+  const allOpen = BLOCKS.every(b=>b.members.every(f=>mainCtx.open.has('f:'+f)));
+  BLOCKS.forEach(b=>b.members.forEach(f=>{
+    allOpen ? mainCtx.open.delete('f:'+f) : mainCtx.open.add('f:'+f);
+  }));
   ctxDrawTree(mainCtx);
-}
-
-function setCountryTreeMode(mode){
-  if(countryTreeMode === mode) return;
-  countryTreeMode = mode;
-  document.getElementById('cm-mode-dim').setAttribute('aria-pressed', mode==='dim' ? 'true' : 'false');
-  document.getElementById('cm-mode-filter').setAttribute('aria-pressed', mode==='filter' ? 'true' : 'false');
-  ctxDrawTree(mainCtx);
-}
-document.getElementById('cm-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
-document.getElementById('cm-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
-
-function cmMaybeInit(){
-  if(cmReady || !luState.ready || WMAP===null) return;
-  cmReady = true;
-  const mapEl = document.getElementById('cm-map');
-  const svgHolder = document.getElementById('cm-map-svg');
-  if(!mapEl || !svgHolder) return;
-  if(WMAP === false){
-    svgHolder.innerHTML = '<div class="wm-pending">Map data failed to load.</div>';
-    return;
-  }
-  cmBuildIndex();
-  cmRenderMap();
-  cmRenderList();
-  mapEl.addEventListener('click', cmOnMapClick);
-  cmWireZoomControls();
-}
+});
 </script>
 
-<!-- Bundled data. A future extension of build.sh could inline these the same
-     way it does for the bat pages (see "INLINE data/..." there) -- the
-     "INLINE " marker lines below follow that exact same convention so the
-     bundling script needs no special-casing to pick these up too. Opened
-     straight from the working copy these stay empty and the loader falls
-     back to fetch(). -->
+<!-- Bundled data. The build (build.sh) replaces each INLINE line with the file’s
+     contents, so the published page needs no extra requests; opened straight from
+     the working copy these stay empty and the loader falls back to fetch(). -->
 <script type="application/json" id="d-taxonomy">
 INLINE data/marine_mammal_taxonomy.json
 </script>
@@ -2483,10 +2664,3 @@ INLINE data/marine_world_map.json
 </script>
 </body>
 </html>
-
-
-
-
-
-
-

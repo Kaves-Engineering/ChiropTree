@@ -82,9 +82,23 @@ A parallel set of pages covering marine mammals, built from the same MDD
 release by the same mechanisms. They are separate files throughout — nothing
 here changes what the bat pages show.
 
-- **`marine-mammal-tree.html`** / **`marine-mammal-lookup.html`** — the tree
-  page and the lookup tool, mirroring `chiroptera-tree.html` and
-  `index.html`. Deployed as `/marine.html` and `/marine-lookup.html`.
+- **`marine-mammal-tree.html`** — **generated, do not edit by hand.**
+  `chiroptera-tree.html` is the master; this page is stamped out of it by
+  `data/build_marine_mammal_page.py`, which copies the skeleton verbatim —
+  CSS, markup and every line of interaction code — and swaps only content:
+  the prose, the data blocks, and the data-file paths. The two pages link to
+  each other from the top nav. Change the bat page, re-run the script, and
+  the marine page inherits the change; every swap is anchored on an exact
+  string and the build exits loudly if one stops matching, so the two cannot
+  silently drift apart. Deployed as `/marine.html`.
+- **`data/build_marine_mammal_page.py`** — does that stamping, and
+  **`data/build_marine_mammal_data_blocks.py`** — holds what it stamps in.
+  Everything structural in there (which genus sits in which subfamily or
+  tribe, the species lists, every count) is derived from MDD; only the
+  natural history prose and the coarse ecology tags are hand-authored, which
+  is the same split the master page uses.
+- **`marine-mammal-lookup.html`** — the lookup tool, mirroring `index.html`.
+  Deployed as `/marine-lookup.html`.
 - **`data/marine_mammal_taxonomy.json`** — 144 species, 18 families, 67
   genera, built by **`data/build_marine_mammal_taxonomy.py`**. Unlike
   Chiroptera, marine mammals are not a clade: the file is the union of
