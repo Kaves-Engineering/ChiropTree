@@ -58,10 +58,9 @@ Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/
   `data/build_country_distribution.py`; a country only counts if it has at
   least 3 non-fossil, non-captive, present-status records, to filter out
   vagrants/escapes/misidentifications. Merged into `countryDistribution`
-  client-side at page load (see `luMergeCountrySupplement`/
-  `mergeCountrySupplement` in the two pages) — additive only, never removes
-  or overrides an MDD-asserted country, and untouched by re-running
-  `build_taxonomy.py` against a new MDD release.
+  client-side at page load (see `luMergeCountrySupplement` in either page) —
+  additive only, never removes or overrides an MDD-asserted country, and
+  untouched by re-running `build_taxonomy.py` against a new MDD release.
 - **`data/build_country_distribution.py`** — regenerates
   `gbif_country_supplement.json`. Caches per-species GBIF results in
   `data/raw/gbif_country_cache.json` (gitignored) so an interrupted run
@@ -109,13 +108,12 @@ here changes what the bat pages show.
   the three lineages are counted separately in `_meta`. The pages lead with
   that polyphyly rather than papering over it.
 - **`data/marine_mammal_danish_names.json`** / **`..._gbif_country_supplement.json`**
-  — same GBIF sources as the bat data, built by the matching
-  `build_marine_mammal_*.py` scripts. **The country supplement is currently
-  loaded by neither page:** the unified-explorer rewrite dropped that merge
-  from the bat page, and the marine page follows the master. It costs the
-  marine map 11 places — Antarctica falls from 28 species to 22, and Svalbard
-  from 19 to none, since MDD's own country column never names it. Rewiring it
-  is a few lines in the master, which the clone would then inherit.
+  — same GBIF sources and same client-side merge as the bat data, built by the
+  matching `build_marine_mammal_*.py` scripts. The supplement matters more
+  here than it does for bats: MDD's country column never names Svalbard, so
+  without it the walrus, bowhead, and ringed and bearded seals have no Arctic
+  presence on the map at all. It is worth 11 clickable places, Antarctica 22
+  species → 28, and Svalbard 0 → 19.
 - **`data/marine_world_map.json`** — the range map. Built by the *same*
   `data/build_world_map.py` with `--marine`, which differs in one respect:
   it draws Antarctica instead of cropping it at 57°S. Species range there —

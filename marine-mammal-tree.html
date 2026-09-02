@@ -1300,13 +1300,35 @@ function bundled(id, url){
   });
 }
 
+// data/build_country_distribution.py adds countries GBIF has real occurrence
+// records for but MDD's own countryDistribution column omits (see its
+// docstring). MDD's column is a checklist that lags the records: without this
+// it misses Svalbard entirely -- no walrus, no bowhead. Additive only -- it
+// never removes or overrides a country MDD does assert.
+function luMergeCountrySupplement(species, supplement){
+  if(!supplement) return;
+  species.forEach(s=>{
+    const extra = supplement[s.sciName];
+    if(!extra || !extra.length) return;
+    const existing = new Set((s.countryDistribution||'').split('|')
+      .map(x=>x.trim().replace(/\?$/,'').toLowerCase()).filter(Boolean));
+    const add = extra.filter(c=>!existing.has(c.toLowerCase()));
+    if(!add.length) return;
+    s.countryDistribution = (s.countryDistribution && s.countryDistribution!=='NA')
+      ? s.countryDistribution + '|' + add.join('|')
+      : add.join('|');
+  });
+}
+
 Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
-  bundled('d-danish', 'data/marine_mammal_danish_names.json')
-]).then(([tax, danish])=>{
+  bundled('d-danish', 'data/marine_mammal_danish_names.json'),
+  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json')
+]).then(([tax, danish, countrySupp])=>{
   luState.species = tax.species;
   luState.echo = null;  // see the ECHO note above
   luState.danish = danish;
+  luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
   luState.ready = true;
   randomBat.disabled = false;
@@ -1971,6 +1993,9 @@ INLINE data/marine_mammal_taxonomy.json
 </script>
 <script type="application/json" id="d-danish">
 INLINE data/marine_mammal_danish_names.json
+</script>
+<script type="application/json" id="d-countries">
+INLINE data/marine_mammal_gbif_country_supplement.json
 </script>
 <script type="application/json" id="d-worldmap">
 INLINE data/marine_world_map.json

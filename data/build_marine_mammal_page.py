@@ -104,12 +104,20 @@ sub("""  ["Xeno-canto calls", n => "https://xeno-canto.org/explore?query=" + enc
 sub("""Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
   bundled('d-echo', 'data/echolocation_reference.json'),
-  bundled('d-danish', 'data/danish_names.json')""",
+  bundled('d-danish', 'data/danish_names.json'),
+  bundled('d-countries', 'data/gbif_country_supplement.json')""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
-  bundled('d-danish', 'data/marine_mammal_danish_names.json')""")
+  bundled('d-danish', 'data/marine_mammal_danish_names.json'),
+  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json')""")
 
-sub("]).then(([tax, echo, danish])=>{", "]).then(([tax, danish])=>{")
+sub("]).then(([tax, echo, danish, countrySupp])=>{", "]).then(([tax, danish, countrySupp])=>{")
+
+# the supplement matters more here than on the bat page: MDD's country column
+# never names Svalbard, so without this the walrus, bowhead and ringed and
+# bearded seals have no Arctic presence on the map at all
+sub("""// it misses 4 of Denmark's 17 established bat species. Additive only -- it""",
+    """// it misses Svalbard entirely -- no walrus, no bowhead. Additive only -- it""")
 sub("  luState.echo = echo;", "  luState.echo = null;  // see the ECHO note above")
 
 sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';""",
@@ -127,6 +135,9 @@ INLINE data/echolocation_reference.json
 <script type="application/json" id="d-danish">
 INLINE data/danish_names.json
 </script>
+<script type="application/json" id="d-countries">
+INLINE data/gbif_country_supplement.json
+</script>
 <script type="application/json" id="d-worldmap">
 INLINE data/world_map.json
 </script>""",
@@ -135,6 +146,9 @@ INLINE data/marine_mammal_taxonomy.json
 </script>
 <script type="application/json" id="d-danish">
 INLINE data/marine_mammal_danish_names.json
+</script>
+<script type="application/json" id="d-countries">
+INLINE data/marine_mammal_gbif_country_supplement.json
 </script>
 <script type="application/json" id="d-worldmap">
 INLINE data/marine_world_map.json
