@@ -76,6 +76,11 @@ SUBNOTE = {
 # ------------------------------------------------------------------ ecology tags
 # r = water it lives in, d = what it eats, ro = where it rests or breeds,
 # e = how it finds prey. Coarse by necessity, exactly as on the bat page.
+#
+# Currently unused: the master's "unified explorer" rewrite dropped the atlas
+# filters these fed, so build_marine_mammal_page.py stamps in only F, TREE,
+# ATLAS and SP. Kept because the tags are real work and cheap to carry, and
+# because the filters may come back.
 FAM_TAGS = {
 "Balaenidae":       dict(r="arc atl pac",     d="kri",         ro="sea",      e="none"),
 "Balaenopteridae":  dict(r="glob",            d="kri fis",     ro="sea",      e="none"),

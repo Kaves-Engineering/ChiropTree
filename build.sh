@@ -16,11 +16,9 @@ bundle() {
 rm -rf public
 mkdir public
 bundle chiroptera-tree.html public/index.html
-bundle index.html public/lookup.html
 bundle marine-mammal-tree.html public/marine.html
-bundle marine-mammal-lookup.html public/marine-lookup.html
 
-for f in public/index.html public/lookup.html public/marine.html public/marine-lookup.html; do
+for f in public/index.html public/marine.html; do
   grep -q '^INLINE ' "$f" && { echo "$f: data was not inlined" >&2; exit 1; }
   grep -q '"speciesCount"' "$f" || { echo "$f: taxonomy missing" >&2; exit 1; }
 done

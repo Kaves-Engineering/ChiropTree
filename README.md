@@ -1,25 +1,16 @@
 # Tree of Bat Life
 
-A lightweight, static lookup tool for bat (Chiroptera) taxonomy, phylogenetic
-placement, and echolocation call characteristics — built for lab use, no
-backend required.
+A lightweight, static tree and range map for bat (Chiroptera) taxonomy,
+phylogenetic placement, and echolocation call characteristics. Built for lab
+use, with no backend required.
 
-Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/ — this
-serves `chiroptera-tree.html` as the homepage, with the standalone lookup
-available at `/lookup.html`.
+Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/
 
 ## What's here
 
-- **`chiroptera-tree.html`** — the main page: an illustrated essay on bat
-  taxonomy and evolution, a genus-by-genus browser, a species lookup in the
-  search bar and drawer, and a clickable world map that lists every species
-  confirmed present in whichever country you click. Deployed as the site's
-  homepage.
-- **`index.html`** — a standalone version of just the lookup tool. Search/
-  filter across all 1,514 currently recognized bat species; each entry shows
-  its taxonomic chain (order → suborder → family → genus), IUCN status,
-  distribution, and echolocation call parameters where known. Deployed at
-  `/lookup.html` on the live site.
+- **`chiroptera-tree.html`** — the main page: an expandable bat taxonomy tree,
+  species search with licensed iNaturalist photos, and a clickable country
+  range map. Deployed as the site's homepage.
 - **`data/chiroptera_taxonomy.json`** — generated taxonomy data, Chiroptera
   subset of the [Mammal Diversity Database](https://www.mammaldiversity.org)
   (MDD) v2.5 release ([doi:10.5281/zenodo.21654811](https://doi.org/10.5281/zenodo.21654811)).
@@ -86,19 +77,29 @@ here changes what the bat pages show.
   `chiroptera-tree.html` is the master; this page is stamped out of it by
   `data/build_marine_mammal_page.py`, which copies the skeleton verbatim —
   CSS, markup and every line of interaction code — and swaps only content:
-  the prose, the data blocks, and the data-file paths. The two pages link to
-  each other from the top nav. Change the bat page, re-run the script, and
-  the marine page inherits the change; every swap is anchored on an exact
-  string and the build exits loudly if one stops matching, so the two cannot
-  silently drift apart. Deployed as `/marine.html`.
+  the data blocks, the data-file paths, and the strings that name the animals.
+  The two pages link to each other from the top nav. Change the bat page,
+  re-run the script, and the marine page inherits the change; every swap is
+  anchored on an exact string and the build exits loudly if one stops
+  matching, so the two cannot silently drift apart. Deployed as
+  `/marine.html`.
+
+  That guard rail has already earned its keep once: the "unified explorer"
+  rewrite of the bat page removed three of its five sections, and the next
+  run of this script stopped on the first anchor rather than emitting a page
+  half-built from a master that no longer existed. Re-pointing the anchors is
+  the maintenance cost of the arrangement, and it is the cost that keeps the
+  two pages the same page.
 - **`data/build_marine_mammal_page.py`** — does that stamping, and
   **`data/build_marine_mammal_data_blocks.py`** — holds what it stamps in.
   Everything structural in there (which genus sits in which subfamily or
   tribe, the species lists, every count) is derived from MDD; only the
   natural history prose and the coarse ecology tags are hand-authored, which
   is the same split the master page uses.
-- **`marine-mammal-lookup.html`** — the lookup tool, mirroring `index.html`.
-  Deployed as `/marine-lookup.html`.
+- **`marine-mammal-lookup.html`** — **not currently published.** It mirrored
+  `index.html`, the standalone lookup, which the unified-explorer rewrite
+  deleted; with no counterpart left on the bat side it is out of `build.sh`
+  and kept only pending a decision to revive or delete it.
 - **`data/marine_mammal_taxonomy.json`** — 144 species, 18 families, 67
   genera, built by **`data/build_marine_mammal_taxonomy.py`**. Unlike
   Chiroptera, marine mammals are not a clade: the file is the union of
@@ -108,22 +109,29 @@ here changes what the bat pages show.
   the three lineages are counted separately in `_meta`. The pages lead with
   that polyphyly rather than papering over it.
 - **`data/marine_mammal_danish_names.json`** / **`..._gbif_country_supplement.json`**
-  — same GBIF sources and same client-side merge as the bat pages, built by
-  the matching `build_marine_mammal_*.py` scripts.
+  — same GBIF sources as the bat data, built by the matching
+  `build_marine_mammal_*.py` scripts. **The country supplement is currently
+  loaded by neither page:** the unified-explorer rewrite dropped that merge
+  from the bat page, and the marine page follows the master. It costs the
+  marine map 11 places — Antarctica falls from 28 species to 22, and Svalbard
+  from 19 to none, since MDD's own country column never names it. Rewiring it
+  is a few lines in the master, which the clone would then inherit.
 - **`data/marine_world_map.json`** — the range map. Built by the *same*
   `data/build_world_map.py` with `--marine`, which differs in one respect:
-  it draws Antarctica instead of cropping it at 57°S. 28 of these species
-  range there — blue, fin and minke whales, the Weddell, crabeater, leopard
-  and Ross seals, the southern elephant seal — so the bat map's crop would
-  silently swallow a quarter of the ranges. The map is correspondingly
-  taller (viewBox height 405.8 vs 344.9); the page reads the height from the
-  data, so nothing hardcodes it.
+  it draws Antarctica instead of cropping it at 57°S. Species range there —
+  blue, fin and minke whales, the Weddell, crabeater, leopard and Ross seals,
+  the southern elephant seal — so the bat map's crop would silently swallow a
+  large share of the ranges. The map is correspondingly taller (viewBox
+  height 405.8 vs 344.9); the page reads the height from the data, so nothing
+  hardcodes it.
 
 There is deliberately **no** marine equivalent of
-`echolocation_reference.json`. Odontocetes do echolocate, and the essay says
-so, but no comparable per-family reference was compiled — inventing call
-parameters to fill the same card would have produced numbers that look
-citable and are not.
+`echolocation_reference.json`. Odontocetes are formidable echolocators, but no
+comparable per-family reference was compiled, and inventing call parameters to
+fill the same card would have produced numbers that look citable and are not.
+`ECHO` and `ESP` are therefore stamped in as empty objects: every code path is
+the master's and simply renders nothing, and the species drawer falls back to
+the master's own "no reference data" wording.
 
 Building the marine data (the bat commands are unchanged):
 
@@ -150,11 +158,10 @@ MDD publishes new releases periodically. To pick up a new one:
 
 ## Running locally
 
-`build.sh` bundles the JSON into the pages, so the built site is two
-self-contained HTML files and needs no server:
+`build.sh` bundles the JSON into one self-contained HTML file:
 
 ```
-sh build.sh          # writes public/index.html and public/lookup.html
+sh build.sh          # writes public/index.html
 ```
 
 On Windows, open the bundled tree page directly without starting a local
@@ -171,9 +178,9 @@ restarts, install the current-user Windows startup shortcut:
 powershell -ExecutionPolicy Bypass -File .\install-startup-shortcut.ps1
 ```
 
-The unbuilt `chiroptera-tree.html` / `index.html` in the repo root still load
-their data via `fetch()`, so those need to be served over HTTP — opening them
-as a `file://` URL fails silently on most browsers:
+The unbuilt `chiroptera-tree.html` in the repo root loads its data via
+`fetch()`, so it needs to be served over HTTP. Opening it as a `file://` URL
+fails silently on most browsers:
 
 ```
 uv run python -m http.server 8000

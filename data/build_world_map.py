@@ -54,9 +54,23 @@ OUT = os.path.join(HERE, "world_map.json")
 OUT_MARINE = os.path.join(HERE, "marine_world_map.json")
 
 W = 800.0            # projected width in px
-EPS = 0.40           # Douglas-Peucker tolerance, px
-MIN_RING_AREA = 1.2  # drop projected rings smaller than this, px^2
+EPS = 0.15           # Douglas-Peucker tolerance, px
+MIN_RING_AREA = 0.3  # drop projected rings smaller than this, px^2
+LAND_EPS = float(os.environ.get("MAP_LAND_EPS", 0.6))  # underlay only; see land_path
+#   At the old 110m defaults (0.40 / 1.2) the area filter dropped Cape Verde
+#   entirely -- it is named by the taxonomy, so that showed up as an unmatched
+#   country. These values keep it. Coverage must stay at 0 unmatched.
 LAT_MIN = -57.0      # crop Antarctica; no bats there
+
+# The drawn outlines come from Natural Earth's 50m countries file. 110m is a
+# world-at-a-glance scale: it straightens fjords, drops most islands and draws
+# Denmark as two blobs. 50m keeps recognisable coastline at the size this map
+# is actually viewed, at the cost of a bigger payload -- which is what EPS and
+# MIN_RING_AREA below are for. Both are overridable from the environment so the
+# detail/size trade-off can be swept without editing this file.
+COUNTRIES = os.environ.get("NE_COUNTRIES", "ne_50m_admin_0_countries.geojson")
+EPS = float(os.environ.get("MAP_EPS", EPS))
+MIN_RING_AREA = float(os.environ.get("MAP_MIN_AREA", MIN_RING_AREA))
 
 # --marine builds the variant the marine-mammal page needs instead: 37 of the
 # 144 species there (Weddell, crabeater, leopard and Ross seals, the southern
@@ -172,8 +186,9 @@ def polys(geom):
                 yield ring
 
 
-def to_path(geom):
+def to_path(geom, eps=None):
     """Project, simplify and serialise one feature's geometry."""
+    eps = EPS if eps is None else eps
     out, box = [], None
     for ring in polys(geom):
         pts = []
@@ -183,7 +198,7 @@ def to_path(geom):
             pts.append(project(lon, lat))
         if len(pts) < 4:
             continue
-        pts = simplify(pts, EPS)
+        pts = simplify(pts, eps)
         if len(pts) < 4 or ring_area(pts) < MIN_RING_AREA:
             continue
         xs = [p[0] for p in pts]
@@ -310,10 +325,43 @@ def fix_crimea(features):
     ukraine["geometry"] = sg.mapping(ukr_geom.union(crimea))
 
 
+def land_path(features):
+    """One path for the whole land mass, drawn under the countries.
+
+    Each country is simplified on its own, so a border shared by two of them
+    comes out as two slightly different lines and the gap between shows the
+    ocean through -- thin holes along borders. Unioning the *unsimplified*
+    polygons first dissolves every internal border, so what gets simplified
+    here is coastline only and there is nothing to disagree with. The page
+    paints this underneath in the base land colour; a sliver then shows land,
+    not sea. Cheaper and steadier than making the country outlines share a
+    topology.
+    """
+    import shapely.ops
+    import shapely.geometry as sg
+
+    geoms = []
+    for f in features:
+        if f["properties"].get("ADMIN") == "Antarctica":
+            continue
+        g = f.get("geometry")
+        if not g:
+            continue
+        try:
+            geoms.append(sg.shape(g).buffer(0))
+        except Exception:
+            pass
+    if not geoms:
+        return ""
+    d, _ = to_path(sg.mapping(shapely.ops.unary_union(geoms)), LAND_EPS)
+    return d
+
+
 def main():
-    c110 = load(os.path.join(RAW, "ne_110m_admin_0_countries.geojson"))
+    c110 = load(os.path.join(RAW, COUNTRIES))
     s50 = load(os.path.join(RAW, "ne_50m_admin_0_map_subunits.geojson"))
     fix_crimea(c110["features"])
+    land = land_path(c110["features"])
 
     shapes, small, index, cent = {}, [], {}, {}
 
@@ -380,13 +428,15 @@ def main():
 
     payload = {
         "_meta": {
-            "source": "Natural Earth 110m admin-0 countries (outlines) and 50m map subunits (island dots)",
+            "source": ("Natural Earth " + ("50m" if "50m" in COUNTRIES else "110m")
+                       + " admin-0 countries (outlines) and 50m map subunits (island dots)"),
             "sourceUrl": "https://www.naturalearthdata.com",
             "projection": "Robinson, cropped at %g degrees south" % LAT_MIN,
             "license": "public domain",
         },
         "w": round(W, 1),
         "h": H,
+        "land": land,
         "shapes": shapes,
         "dots": dots,
         "cent": cent,
@@ -400,6 +450,7 @@ def main():
 
     print("viewBox 0 0 %g %g" % (W, H))
     print("%d polygons, %d dots, %d name aliases" % (len(shapes), len(dots), len(index)))
+    print("land underlay: %.0f KB of path" % (len(land) / 1024.0))
     print("%.0f KB" % (os.path.getsize(OUT) / 1024.0))
 
     # coverage report against the taxonomy the page ships
