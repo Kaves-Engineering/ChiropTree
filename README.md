@@ -59,6 +59,22 @@ available at `/lookup.html`.
   when MDD's current genus placement is ahead of GBIF's backbone, e.g. the
   *Eptesicus* → *Cnephaeus* split). Takes a few minutes; re-run after
   regenerating the taxonomy from a new MDD release.
+- **`data/gbif_country_supplement.json`** — countries GBIF has real
+  occurrence records for that MDD's own `countryDistribution` column omits
+  (MDD's country list is a checklist column that lags real-world records —
+  e.g. it was missing 4 of Denmark's 17 established species). Built from
+  [GBIF](https://www.gbif.org) occurrence data by
+  `data/build_country_distribution.py`; a country only counts if it has at
+  least 3 non-fossil, non-captive, present-status records, to filter out
+  vagrants/escapes/misidentifications. Merged into `countryDistribution`
+  client-side at page load (see `luMergeCountrySupplement`/
+  `mergeCountrySupplement` in the two pages) — additive only, never removes
+  or overrides an MDD-asserted country, and untouched by re-running
+  `build_taxonomy.py` against a new MDD release.
+- **`data/build_country_distribution.py`** — regenerates
+  `gbif_country_supplement.json`. Caches per-species GBIF results in
+  `data/raw/gbif_country_cache.json` (gitignored) so an interrupted run
+  resumes cheaply; takes roughly 10–20 minutes for the full species list.
 
 ## Updating the taxonomy data
 

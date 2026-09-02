@@ -1,0 +1,2424 @@
+{
+ "Acerodon_jubatus": [
+  "Northern Mariana Islands"
+ ],
+ "Afronycteris_helios": [
+  "Cameroon"
+ ],
+ "Afropipistrellus_crassulus": [
+  "Cote d'Ivoire"
+ ],
+ "Afropipistrellus_eisentrauti": [
+  "Kenya"
+ ],
+ "Alionoctula_abramus": [
+  "Hong Kong",
+  "Indonesia"
+ ],
+ "Alionoctula_ceylonica": [
+  "Thailand"
+ ],
+ "Alionoctula_javanica": [
+  "Afghanistan",
+  "Hong Kong",
+  "Japan",
+  "Pakistan",
+  "Papua New Guinea",
+  "Taiwan"
+ ],
+ "Alionoctula_papuana": [
+  "Australia"
+ ],
+ "Alionoctula_paterculus": [
+  "Nepal",
+  "Pakistan"
+ ],
+ "Alionoctula_tenuis": [
+  "Australia",
+  "Christmas Island",
+  "Papua New Guinea",
+  "Solomon Islands"
+ ],
+ "Ametrida_centurio": [
+  "Colombia"
+ ],
+ "Anoura_caudifer": [
+  "Panama"
+ ],
+ "Antrozous_pallidus": [
+  "Cuba"
+ ],
+ "Ardops_nichollsi": [
+  "France",
+  "Netherlands"
+ ],
+ "Arielulus_circumdatus": [
+  "India"
+ ],
+ "Artibeus_aequatorialis": [
+  "Paraguay"
+ ],
+ "Artibeus_intermedius": [
+  "Colombia",
+  "Peru",
+  "Venezuela"
+ ],
+ "Artibeus_jamaicensis": [
+  "Bolivia",
+  "Brazil",
+  "Ecuador",
+  "France",
+  "French Guiana",
+  "Guyana",
+  "Paraguay",
+  "Peru",
+  "Saint Barthélemy",
+  "Suriname",
+  "Trinidad and Tobago",
+  "Turks and Caicos Islands",
+  "Venezuela"
+ ],
+ "Artibeus_planirostris": [
+  "Saint Vincent and the Grenadines"
+ ],
+ "Asellia_tridens": [
+  "Democratic Republic of the Congo"
+ ],
+ "Austronomus_australis": [
+  "Cambodia",
+  "Dominican Republic",
+  "Kenya",
+  "United States"
+ ],
+ "Balantiopteryx_io": [
+  "Honduras",
+  "Romania"
+ ],
+ "Balionycteris_maculata": [
+  "Thailand"
+ ],
+ "Barbastella_barbastellus": [
+  "Netherlands"
+ ],
+ "Barbastella_caspica": [
+  "Kazakhstan"
+ ],
+ "Barbastella_darjelingensis": [
+  "Kyrgyzstan"
+ ],
+ "Barbastella_leucomelas": [
+  "China",
+  "India",
+  "Japan"
+ ],
+ "Brachyphylla_cavernarum": [
+  "Anguilla",
+  "Cuba",
+  "Dominican Republic",
+  "France",
+  "Saint Barthélemy"
+ ],
+ "Brachyphylla_nana": [
+  "Jamaica"
+ ],
+ "Carollia_benkeithi": [
+  "Colombia"
+ ],
+ "Carollia_brevicauda": [
+  "Belize",
+  "Costa Rica",
+  "Guatemala",
+  "Honduras",
+  "Jamaica",
+  "Mexico",
+  "Nicaragua",
+  "Trinidad and Tobago"
+ ],
+ "Carollia_castanea": [
+  "Bolivia",
+  "Brazil",
+  "French Guiana",
+  "Guatemala",
+  "Mexico",
+  "Suriname"
+ ],
+ "Carollia_perspicillata": [
+  "Cuba",
+  "France",
+  "Jamaica",
+  "United States"
+ ],
+ "Carollia_sowelli": [
+  "Colombia"
+ ],
+ "Carollia_subrufa": [
+  "Belize",
+  "Brazil",
+  "Colombia",
+  "Guyana",
+  "Panama"
+ ],
+ "Chalinolobus_gouldii": [
+  "New Caledonia"
+ ],
+ "Chalinolobus_tuberculatus": [
+  "Australia"
+ ],
+ "Chilonatalus_macer": [
+  "Dominican Republic"
+ ],
+ "Chilonatalus_micropus": [
+  "Cuba"
+ ],
+ "Chilonatalus_tumidifrons": [
+  "Colombia"
+ ],
+ "Chiroderma_gorgasi": [
+  "Peru"
+ ],
+ "Chiroderma_trinitatum": [
+  "Panama"
+ ],
+ "Cnephaeus_nilssonii": [
+  "Denmark",
+  "Georgia",
+  "Luxembourg",
+  "Åland Islands"
+ ],
+ "Cnephaeus_serotinus": [
+  "Algeria",
+  "Finland",
+  "Jersey",
+  "Morocco",
+  "Myanmar",
+  "South Korea",
+  "Taiwan"
+ ],
+ "Coelops_robinsoni": [
+  "Philippines"
+ ],
+ "Coleura_afra": [
+  "Djibouti",
+  "Egypt",
+  "Sierra Leone"
+ ],
+ "Corynorhinus_rafinesquii": [
+  "Mexico"
+ ],
+ "Cynomops_abrasus": [
+  "Colombia",
+  "French Guiana",
+  "Guyana",
+  "Suriname"
+ ],
+ "Cynomops_greenhalli": [
+  "French Guiana",
+  "Suriname"
+ ],
+ "Cynomops_mexicanus": [
+  "Honduras",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Cynomops_milleri": [
+  "Colombia"
+ ],
+ "Cynomops_planirostris": [
+  "Panama"
+ ],
+ "Cynopterus_brachyotis": [
+  "Philippines",
+  "Zimbabwe"
+ ],
+ "Cynopterus_horsfieldii": [
+  "Vietnam"
+ ],
+ "Cynopterus_luzoniensis": [
+  "Malaysia",
+  "Singapore",
+  "Vietnam"
+ ],
+ "Cynopterus_sphinx": [
+  "Hong Kong",
+  "Macao",
+  "Papua New Guinea",
+  "Philippines",
+  "Singapore",
+  "Zimbabwe"
+ ],
+ "Dermanura_cinerea": [
+  "Bolivia",
+  "Colombia",
+  "Peru",
+  "Trinidad and Tobago"
+ ],
+ "Dermanura_glauca": [
+  "Honduras",
+  "Trinidad and Tobago"
+ ],
+ "Dermanura_rava": [
+  "Panama"
+ ],
+ "Dermanura_tolteca": [
+  "Colombia"
+ ],
+ "Dermanura_watsoni": [
+  "Colombia"
+ ],
+ "Desmodus_rotundus": [
+  "Montenegro",
+  "United States"
+ ],
+ "Dobsonia_moluccensis": [
+  "Australia",
+  "Papua New Guinea"
+ ],
+ "Doryrhina_cyclops": [
+  "Sudan"
+ ],
+ "Eidolon_dupreanum": [
+  "Sierra Leone",
+  "Sudan",
+  "Uganda"
+ ],
+ "Eidolon_helvum": [
+  "Madagascar",
+  "Mauritania",
+  "United States"
+ ],
+ "Emballonura_semicaudata": [
+  "Marshall Islands",
+  "Northern Mariana Islands",
+  "Seychelles"
+ ],
+ "Eonycteris_major": [
+  "Philippines"
+ ],
+ "Epomophorus_crypturus": [
+  "Kenya"
+ ],
+ "Epomophorus_gambianus": [
+  "Botswana",
+  "Gabon",
+  "South Africa",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Epomophorus_grandis": [
+  "Democratic Republic of the Congo"
+ ],
+ "Epomophorus_labiatus": [
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Epomophorus_wahlbergi": [
+  "Saudi Arabia"
+ ],
+ "Epomops_buettikoferi": [
+  "Chile"
+ ],
+ "Epomops_franqueti": [
+  "Guinea",
+  "Liberia",
+  "Rwanda",
+  "Sierra Leone"
+ ],
+ "Eptesicus_fuscus": [
+  "Argentina",
+  "Bahamas",
+  "Cayman Islands",
+  "Cuba",
+  "Dominica",
+  "Dominican Republic",
+  "El Salvador",
+  "Haiti",
+  "Jamaica",
+  "Puerto Rico"
+ ],
+ "Erophylla_sezekorni": [
+  "Dominican Republic",
+  "Haiti",
+  "Puerto Rico",
+  "United States"
+ ],
+ "Eumops_auripendulus": [
+  "France",
+  "Zambia"
+ ],
+ "Eumops_bonariensis": [
+  "Bolivia",
+  "Costa Rica",
+  "Mexico",
+  "Venezuela"
+ ],
+ "Eumops_floridanus": [
+  "Cuba"
+ ],
+ "Eumops_glaucinus": [
+  "Costa Rica",
+  "Cuba",
+  "Ecuador",
+  "Honduras",
+  "Jamaica",
+  "Mexico",
+  "Panama",
+  "Peru",
+  "United States"
+ ],
+ "Eumops_hansae": [
+  "Colombia",
+  "Paraguay"
+ ],
+ "Eumops_maurus": [
+  "French Guiana"
+ ],
+ "Eumops_perotis": [
+  "Colombia"
+ ],
+ "Gardnerycteris_crenulata": [
+  "Costa Rica",
+  "Guatemala",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Glauconycteris_beatrix": [
+  "Kenya",
+  "Uganda"
+ ],
+ "Glauconycteris_egeria": [
+  "Democratic Republic of the Congo"
+ ],
+ "Glauconycteris_poensis": [
+  "South Sudan"
+ ],
+ "Glischropus_bucephalus": [
+  "Malaysia"
+ ],
+ "Glischropus_tylopus": [
+  "Laos",
+  "Vietnam"
+ ],
+ "Glossophaga_leachii": [
+  "Belize",
+  "Panama"
+ ],
+ "Glossophaga_soricina": [
+  "Belize",
+  "Costa Rica",
+  "El Salvador",
+  "Germany",
+  "Guatemala",
+  "Honduras",
+  "Jamaica",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Saint Vincent and the Grenadines"
+ ],
+ "Glyphonycteris_behnii": [
+  "Peru"
+ ],
+ "Glyphonycteris_sylvestris": [
+  "Finland",
+  "French Guiana",
+  "Guyana"
+ ],
+ "Harpiola_isodon": [
+  "China"
+ ],
+ "Hipposideros_abae": [
+  "Sudan"
+ ],
+ "Hipposideros_alongensis": [
+  "Thailand"
+ ],
+ "Hipposideros_armiger": [
+  "Hong Kong"
+ ],
+ "Hipposideros_ater": [
+  "Philippines",
+  "Vietnam"
+ ],
+ "Hipposideros_beatus": [
+  "Benin",
+  "Kenya",
+  "Senegal"
+ ],
+ "Hipposideros_bicolor": [
+  "China",
+  "Hong Kong",
+  "India",
+  "Laos",
+  "Myanmar",
+  "Pakistan",
+  "Sri Lanka",
+  "Taiwan",
+  "Vietnam"
+ ],
+ "Hipposideros_caffer": [
+  "Benin",
+  "Burundi",
+  "Cameroon",
+  "Central African Republic",
+  "Chad",
+  "Cote d'Ivoire",
+  "Equatorial Guinea",
+  "Ethiopia",
+  "Gabon",
+  "Ghana",
+  "Guinea",
+  "Kenya",
+  "Liberia",
+  "Mali",
+  "Mauritania",
+  "Morocco",
+  "Niger",
+  "Nigeria",
+  "Republic of the Congo",
+  "Rwanda",
+  "Senegal",
+  "Sierra Leone",
+  "Somalia",
+  "Sudan",
+  "Tanzania",
+  "Togo",
+  "Uganda",
+  "Yemen"
+ ],
+ "Hipposideros_cervinus": [
+  "Sri Lanka"
+ ],
+ "Hipposideros_cineraceus": [
+  "Nepal"
+ ],
+ "Hipposideros_diadema": [
+  "India",
+  "Singapore"
+ ],
+ "Hipposideros_dinops": [
+  "Indonesia"
+ ],
+ "Hipposideros_fuliginosus": [
+  "Benin",
+  "Ethiopia"
+ ],
+ "Hipposideros_fulvus": [
+  "Malaysia"
+ ],
+ "Hipposideros_galeritus": [
+  "Australia",
+  "India",
+  "Papua New Guinea",
+  "Philippines",
+  "Solomon Islands",
+  "Sri Lanka",
+  "Vanuatu"
+ ],
+ "Hipposideros_gentilis": [
+  "Hong Kong"
+ ],
+ "Hipposideros_grandis": [
+  "Bangladesh"
+ ],
+ "Hipposideros_inornatus": [
+  "Indonesia",
+  "Papua New Guinea"
+ ],
+ "Hipposideros_lamottei": [
+  "Liberia",
+  "Sierra Leone"
+ ],
+ "Hipposideros_larvatus": [
+  "China"
+ ],
+ "Hipposideros_lylei": [
+  "India"
+ ],
+ "Hipposideros_nicobarulae": [
+  "India"
+ ],
+ "Hipposideros_pomona": [
+  "Cambodia",
+  "China",
+  "Laos",
+  "Malaysia",
+  "Myanmar",
+  "Nigeria",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Hipposideros_ruber": [
+  "Zimbabwe"
+ ],
+ "Hipposideros_speoris": [
+  "Indonesia",
+  "Zimbabwe"
+ ],
+ "Hipposideros_turpis": [
+  "Thailand",
+  "Vietnam"
+ ],
+ "Histiotus_macrotus": [
+  "Bolivia"
+ ],
+ "Histiotus_montanus": [
+  "Colombia",
+  "Ecuador"
+ ],
+ "Hypsignathus_monstrosus": [
+  "Sudan",
+  "United States",
+  "Zambia"
+ ],
+ "Hypsugo_cadornae": [
+  "China"
+ ],
+ "Hypsugo_imbricatus": [
+  "India",
+  "Philippines"
+ ],
+ "Hypsugo_macrotis": [
+  "Kenya"
+ ],
+ "Hypsugo_pulveratus": [
+  "Hong Kong"
+ ],
+ "Hypsugo_savii": [
+  "Andorra",
+  "Cabo Verde",
+  "Germany",
+  "Greece",
+  "Malta",
+  "South Korea"
+ ],
+ "Kerivoula_argentata": [
+  "Rwanda",
+  "Senegal"
+ ],
+ "Kerivoula_cuprosa": [
+  "Kenya"
+ ],
+ "Kerivoula_hardwickii": [
+  "China",
+  "India",
+  "Nepal",
+  "Sri Lanka"
+ ],
+ "Kerivoula_kachinensis": [
+  "China",
+  "India"
+ ],
+ "Kerivoula_lenis": [
+  "Laos",
+  "Thailand"
+ ],
+ "Kerivoula_myrella": [
+  "Indonesia"
+ ],
+ "Kerivoula_smithii": [
+  "Central African Republic"
+ ],
+ "Kerivoula_titania": [
+  "China",
+  "Taiwan"
+ ],
+ "Kerivoula_whiteheadi": [
+  "Malaysia"
+ ],
+ "Laephotis_capensis": [
+  "Madagascar",
+  "Saudi Arabia"
+ ],
+ "Laephotis_malagasyensis": [
+  "Kenya"
+ ],
+ "Laephotis_stanleyi": [
+  "Tanzania"
+ ],
+ "Lasionycteris_noctivagans": [
+  "Bermuda",
+  "Saint Pierre and Miquelon"
+ ],
+ "Lasiurus_blossevillii": [
+  "Chile",
+  "Costa Rica",
+  "Guatemala",
+  "Mexico",
+  "Panama",
+  "United States"
+ ],
+ "Lasiurus_borealis": [
+  "Argentina",
+  "Brazil",
+  "Chile",
+  "Colombia",
+  "Costa Rica",
+  "Cuba",
+  "Dominican Republic",
+  "Ecuador",
+  "Haiti",
+  "Panama",
+  "Paraguay",
+  "Peru",
+  "Puerto Rico",
+  "Suriname",
+  "Trinidad and Tobago",
+  "Turks and Caicos Islands",
+  "Uruguay",
+  "Venezuela"
+ ],
+ "Lasiurus_ega": [
+  "French Guiana"
+ ],
+ "Lasiurus_frantzii": [
+  "Bolivia",
+  "Colombia",
+  "Peru",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Lasiurus_intermedius": [
+  "Guyana"
+ ],
+ "Lasiurus_seminolus": [
+  "Bermuda"
+ ],
+ "Lasiurus_villosissimus": [
+  "Ecuador"
+ ],
+ "Lasiurus_xanthinus": [
+  "Brazil"
+ ],
+ "Lavia_frons": [
+  "Egypt",
+  "Zimbabwe"
+ ],
+ "Leptonycteris_curasoae": [
+  "Guatemala",
+  "Mexico",
+  "United States"
+ ],
+ "Lichonycteris_obscura": [
+  "Brazil",
+  "French Guiana"
+ ],
+ "Lionycteris_spurrelli": [
+  "Brazil"
+ ],
+ "Lonchophylla_handleyi": [
+  "Colombia"
+ ],
+ "Lonchophylla_mordax": [
+  "Colombia",
+  "Costa Rica",
+  "Ecuador",
+  "Panama"
+ ],
+ "Lophostoma_brasiliense": [
+  "Belize",
+  "Costa Rica",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Lophostoma_silvicola": [
+  "Argentina",
+  "Mexico"
+ ],
+ "Lyroderma_lyra": [
+  "Cambodia",
+  "China",
+  "Laos",
+  "Malaysia",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Macronycteris_commersonii": [
+  "Angola",
+  "Botswana",
+  "Cameroon",
+  "Central African Republic",
+  "Cote d'Ivoire",
+  "Democratic Republic of the Congo",
+  "Equatorial Guinea",
+  "Gabon",
+  "Ghana",
+  "Kenya",
+  "Mozambique",
+  "Namibia",
+  "Nigeria",
+  "Rwanda",
+  "Sao Tome and Principe",
+  "South Africa",
+  "Tanzania",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Macronycteris_gigas": [
+  "Burkina Faso",
+  "Madagascar",
+  "Namibia",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Macronycteris_vittata": [
+  "Benin",
+  "Gambia",
+  "Madagascar",
+  "Mali"
+ ],
+ "Macrotus_waterhousii": [
+  "United States"
+ ],
+ "Megaerops_ecaudatus": [
+  "Myanmar",
+  "Vietnam"
+ ],
+ "Megaerops_niphanae": [
+  "China"
+ ],
+ "Megaloglossus_azagnyi": [
+  "Cameroon",
+  "Nigeria"
+ ],
+ "Megaloglossus_woermanni": [
+  "Cote d'Ivoire",
+  "Ghana",
+  "Guinea",
+  "Liberia"
+ ],
+ "Micronycteris_megalotis": [
+  "Belize",
+  "Costa Rica",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Micronycteris_microtis": [
+  "Peru"
+ ],
+ "Micronycteris_schmidtorum": [
+  "Ecuador"
+ ],
+ "Mimetillus_moloneyi": [
+  "Sudan"
+ ],
+ "Mimon_bennettii": [
+  "Costa Rica",
+  "Guatemala",
+  "Honduras",
+  "Mexico"
+ ],
+ "Miniopterus_africanus": [
+  "Mozambique"
+ ],
+ "Miniopterus_arenarius": [
+  "Sudan",
+  "Tanzania",
+  "Uganda",
+  "Zambia"
+ ],
+ "Miniopterus_australis": [
+  "East Timor",
+  "France",
+  "Philippines"
+ ],
+ "Miniopterus_fraterculus": [
+  "Angola",
+  "Cameroon",
+  "Kenya",
+  "Madagascar",
+  "Malawi",
+  "Nigeria",
+  "Tanzania",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Miniopterus_fuscus": [
+  "China",
+  "Indonesia",
+  "Malaysia",
+  "Thailand"
+ ],
+ "Miniopterus_inflatus": [
+  "Eritrea",
+  "Ethiopia",
+  "Liberia",
+  "Madagascar"
+ ],
+ "Miniopterus_macrocneme": [
+  "France"
+ ],
+ "Miniopterus_magnater": [
+  "Hong Kong",
+  "Japan"
+ ],
+ "Miniopterus_medius": [
+  "Japan",
+  "New Caledonia",
+  "South Africa",
+  "Vanuatu"
+ ],
+ "Miniopterus_minor": [
+  "Central African Republic",
+  "Comoros",
+  "Madagascar",
+  "Sao Tome and Principe"
+ ],
+ "Miniopterus_natalensis": [
+  "Ethiopia"
+ ],
+ "Miniopterus_orianae": [
+  "Hungary",
+  "Indonesia",
+  "Papua New Guinea",
+  "Philippines",
+  "Solomon Islands"
+ ],
+ "Miniopterus_paululus": [
+  "New Caledonia",
+  "Papua New Guinea"
+ ],
+ "Miniopterus_pusillus": [
+  "Democratic Republic of the Congo",
+  "New Caledonia",
+  "Papua New Guinea"
+ ],
+ "Miniopterus_schreibersii": [
+  "Afghanistan",
+  "Australia",
+  "Burundi",
+  "Cameroon",
+  "China",
+  "Comoros",
+  "Czech Republic",
+  "Democratic Republic of the Congo",
+  "Ethiopia",
+  "Germany",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Japan",
+  "Kenya",
+  "Madagascar",
+  "Malaysia",
+  "Mozambique",
+  "Myanmar",
+  "Namibia",
+  "Nepal",
+  "Papua New Guinea",
+  "Philippines",
+  "Saudi Arabia",
+  "South Africa",
+  "Taiwan",
+  "Tanzania",
+  "Thailand",
+  "Uganda",
+  "Ukraine",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Miniopterus_villiersi": [
+  "Cameroon",
+  "Democratic Republic of the Congo"
+ ],
+ "Mirostrellus_joffrei": [
+  "China"
+ ],
+ "Molossus_aztecus": [
+  "Costa Rica",
+  "El Salvador"
+ ],
+ "Molossus_coibensis": [
+  "Bolivia",
+  "Guatemala"
+ ],
+ "Molossus_currentium": [
+  "Colombia",
+  "Costa Rica",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Molossus_melini": [
+  "Brazil"
+ ],
+ "Molossus_molossus": [
+  "Cayman Islands",
+  "Cuba",
+  "Dominican Republic",
+  "France",
+  "Haiti",
+  "Jamaica",
+  "Netherlands",
+  "Saint Barthélemy",
+  "Zimbabwe"
+ ],
+ "Molossus_rufus": [
+  "Argentina",
+  "Belize",
+  "Costa Rica",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Paraguay",
+  "Zimbabwe"
+ ],
+ "Molossus_sinaloae": [
+  "Belize",
+  "Colombia",
+  "Costa Rica",
+  "French Guiana",
+  "Guatemala",
+  "Honduras",
+  "Nicaragua",
+  "Panama",
+  "Suriname",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Molossus_tropidorhynchus": [
+  "United States"
+ ],
+ "Monophyllus_plethodon": [
+  "Netherlands",
+  "Puerto Rico"
+ ],
+ "Mops_ansorgei": [
+  "Botswana",
+  "Malawi"
+ ],
+ "Mops_bivittatus": [
+  "Sudan"
+ ],
+ "Mops_brachypterus": [
+  "Benin"
+ ],
+ "Mops_condylurus": [
+  "Guinea",
+  "Madagascar",
+  "Mauritania",
+  "Republic of the Congo"
+ ],
+ "Mops_demonstrator": [
+  "Kenya"
+ ],
+ "Mops_jobensis": [
+  "Solomon Islands",
+  "Vanuatu"
+ ],
+ "Mops_major": [
+  "Cameroon",
+  "Central African Republic",
+  "Chad"
+ ],
+ "Mops_nanulus": [
+  "Sudan",
+  "Togo"
+ ],
+ "Mops_nigeriae": [
+  "Cote d'Ivoire",
+  "Niger"
+ ],
+ "Mops_plicatus": [
+  "Australia",
+  "Kenya"
+ ],
+ "Mops_pumilus": [
+  "Burundi",
+  "Cameroon",
+  "Central African Republic",
+  "Chad",
+  "Gabon",
+  "Guinea",
+  "Madagascar",
+  "Mauritania",
+  "Mayotte",
+  "Rwanda",
+  "Sao Tome and Principe",
+  "Seychelles"
+ ],
+ "Mops_pusillus": [
+  "Botswana",
+  "Burkina Faso",
+  "Eswatini",
+  "Ethiopia",
+  "Gabon",
+  "Kenya",
+  "Madagascar",
+  "Malawi",
+  "Mozambique",
+  "Nigeria",
+  "Republic of the Congo",
+  "Sao Tome and Principe",
+  "South Africa",
+  "South Sudan",
+  "Sudan",
+  "Tanzania",
+  "Uganda",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Mops_sarasinorum": [
+  "Democratic Republic of the Congo"
+ ],
+ "Mops_thersites": [
+  "Togo"
+ ],
+ "Mops_trevori": [
+  "Sudan"
+ ],
+ "Mormoops_blainvillei": [
+  "Mexico"
+ ],
+ "Mormoops_megalophylla": [
+  "Cuba"
+ ],
+ "Mormopterus_acetabulosus": [
+  "France",
+  "Réunion"
+ ],
+ "Mormopterus_francoismoutoui": [
+  "France",
+  "Switzerland"
+ ],
+ "Mosia_nigrescens": [
+  "Guinea"
+ ],
+ "Murina_aurata": [
+  "Japan",
+  "Laos",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Murina_cyclotis": [
+  "Indonesia",
+  "Malaysia"
+ ],
+ "Murina_eleryi": [
+  "Myanmar"
+ ],
+ "Murina_florium": [
+  "East Timor"
+ ],
+ "Murina_huttonii": [
+  "Laos",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Murina_leucogaster": [
+  "Japan",
+  "Russia",
+  "South Korea"
+ ],
+ "Murina_tubinaris": [
+  "China",
+  "Laos",
+  "Myanmar",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Myonycteris_angolensis": [
+  "Namibia",
+  "Sudan"
+ ],
+ "Myonycteris_torquata": [
+  "Cote d'Ivoire",
+  "Ghana",
+  "Guinea",
+  "Liberia",
+  "Nigeria",
+  "Sao Tome and Principe",
+  "Togo",
+  "Zambia"
+ ],
+ "Myotis_adversus": [
+  "Australia",
+  "China",
+  "Papua New Guinea",
+  "Philippines",
+  "Solomon Islands",
+  "Taiwan"
+ ],
+ "Myotis_alcathoe": [
+  "Bosnia and Herzegovina",
+  "Montenegro",
+  "Switzerland"
+ ],
+ "Myotis_annectans": [
+  "Indonesia"
+ ],
+ "Myotis_ater": [
+  "Laos"
+ ],
+ "Myotis_auriculus": [
+  "Guatemala"
+ ],
+ "Myotis_blythii": [
+  "Algeria",
+  "Germany",
+  "Malta",
+  "Morocco",
+  "Tunisia"
+ ],
+ "Myotis_brandtii": [
+  "Mongolia",
+  "South Korea",
+  "Åland Islands"
+ ],
+ "Myotis_capaccinii": [
+  "Switzerland"
+ ],
+ "Myotis_chiloensis": [
+  "Costa Rica",
+  "Peru"
+ ],
+ "Myotis_chinensis": [
+  "Hong Kong"
+ ],
+ "Myotis_crypticus": [
+  "Switzerland"
+ ],
+ "Myotis_dasycneme": [
+  "Finland"
+ ],
+ "Myotis_daubentonii": [
+  "Armenia",
+  "Azerbaijan",
+  "China",
+  "Isle of Man",
+  "Japan",
+  "South Korea",
+  "Vietnam",
+  "Åland Islands"
+ ],
+ "Myotis_davidii": [
+  "Slovenia"
+ ],
+ "Myotis_formosus": [
+  "Indonesia",
+  "Laos",
+  "Philippines",
+  "South Korea"
+ ],
+ "Myotis_frater": [
+  "Japan",
+  "Russia"
+ ],
+ "Myotis_goudotii": [
+  "Comoros"
+ ],
+ "Myotis_handleyi": [
+  "Colombia"
+ ],
+ "Myotis_keaysi": [
+  "Costa Rica",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Panama"
+ ],
+ "Myotis_keenii": [
+  "Mexico"
+ ],
+ "Myotis_leibii": [
+  "Mexico"
+ ],
+ "Myotis_lucifugus": [
+  "Mexico",
+  "Saint Pierre and Miquelon"
+ ],
+ "Myotis_macropus": [
+  "Indonesia",
+  "Solomon Islands",
+  "Vanuatu"
+ ],
+ "Myotis_montivagus": [
+  "Laos",
+  "Malaysia",
+  "Vietnam"
+ ],
+ "Myotis_muricola": [
+  "Pakistan",
+  "Papua New Guinea",
+  "Taiwan"
+ ],
+ "Myotis_myotis": [
+  "Algeria",
+  "Armenia",
+  "Belarus",
+  "China",
+  "Denmark",
+  "Guatemala",
+  "Morocco",
+  "Sweden",
+  "Tunisia",
+  "United Kingdom",
+  "United States"
+ ],
+ "Myotis_mystacinus": [
+  "Afghanistan",
+  "China",
+  "Denmark",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Isle of Man",
+  "Israel",
+  "Malaysia",
+  "Pakistan",
+  "Syria"
+ ],
+ "Myotis_nattereri": [
+  "Algeria",
+  "Georgia",
+  "Guernsey",
+  "Iran",
+  "Isle of Man",
+  "Israel",
+  "Italy",
+  "Japan",
+  "Jersey",
+  "Morocco",
+  "Portugal",
+  "Spain",
+  "Syria"
+ ],
+ "Myotis_nesopolus": [
+  "Colombia",
+  "Netherlands"
+ ],
+ "Myotis_nigricans": [
+  "Barbados",
+  "Belize",
+  "Dominica",
+  "Grenada",
+  "Guatemala",
+  "Mexico"
+ ],
+ "Myotis_nipalensis": [
+  "China"
+ ],
+ "Myotis_pilosus": [
+  "Hong Kong"
+ ],
+ "Myotis_ruber": [
+  "Ecuador"
+ ],
+ "Myotis_sibiricus": [
+  "France"
+ ],
+ "Myotis_siligorensis": [
+  "China",
+  "Laos",
+  "Malaysia",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Myotis_simus": [
+  "Bolivia"
+ ],
+ "Myotis_soror": [
+  "China"
+ ],
+ "Myotis_tricolor": [
+  "Saudi Arabia"
+ ],
+ "Myotis_vivesi": [
+  "United States"
+ ],
+ "Nanonycteris_veldkampii": [
+  "Democratic Republic of the Congo",
+  "Gabon"
+ ],
+ "Natalus_major": [
+  "Cuba",
+  "Jamaica"
+ ],
+ "Natalus_stramineus": [
+  "Belize",
+  "Brazil",
+  "Colombia",
+  "Costa Rica",
+  "Dominican Republic",
+  "Guatemala",
+  "Jamaica",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Natalus_tumidirostris": [
+  "Ecuador",
+  "France"
+ ],
+ "Neoeptesicus_andinus": [
+  "Panama"
+ ],
+ "Neoeptesicus_brasiliensis": [
+  "Cuba"
+ ],
+ "Neoeptesicus_diminutus": [
+  "Colombia"
+ ],
+ "Neonycteris_pusilla": [
+  "Colombia"
+ ],
+ "Neoromicia_anchietae": [
+  "Eswatini",
+  "Madagascar",
+  "Malawi",
+  "South Africa",
+  "Zimbabwe"
+ ],
+ "Neoromicia_guineensis": [
+  "Angola"
+ ],
+ "Neoromicia_somalica": [
+  "Angola",
+  "Madagascar",
+  "Zambia"
+ ],
+ "Noctilio_albiventris": [
+  "France"
+ ],
+ "Noctilio_leporinus": [
+  "Curaçao",
+  "Saint Barthélemy",
+  "Zimbabwe"
+ ],
+ "Nyctalus_azoreum": [
+  "Portugal"
+ ],
+ "Nyctalus_lasiopterus": [
+  "Japan",
+  "Netherlands"
+ ],
+ "Nyctalus_leisleri": [
+  "Andorra",
+  "Denmark",
+  "Estonia",
+  "Isle of Man"
+ ],
+ "Nyctalus_noctula": [
+  "Palestine",
+  "Portugal"
+ ],
+ "Nyctalus_plancyi": [
+  "Hong Kong",
+  "India",
+  "Nepal",
+  "Thailand"
+ ],
+ "Nycteris_arge": [
+  "Central African Republic"
+ ],
+ "Nycteris_gambiensis": [
+  "Burkina Faso"
+ ],
+ "Nycteris_intermedia": [
+  "Central African Republic"
+ ],
+ "Nycteris_javanica": [
+  "Malaysia"
+ ],
+ "Nycteris_macrotis": [
+  "South Africa"
+ ],
+ "Nycteris_thebaica": [
+  "Oman"
+ ],
+ "Nycteris_woodi": [
+  "Democratic Republic of the Congo"
+ ],
+ "Nycticeinops_schlieffenii": [
+  "Madagascar"
+ ],
+ "Nyctiellus_lepidus": [
+  "Mexico"
+ ],
+ "Nyctimene_albiventris": [
+  "Solomon Islands"
+ ],
+ "Nyctimene_cyclotis": [
+  "Papua New Guinea"
+ ],
+ "Nyctimene_robinsoni": [
+  "Indonesia",
+  "Solomon Islands"
+ ],
+ "Nyctophilus_timoriensis": [
+  "Australia",
+  "Papua New Guinea"
+ ],
+ "Otomops_formosus": [
+  "Philippines"
+ ],
+ "Otomops_martiensseni": [
+  "Ethiopia",
+  "Yemen"
+ ],
+ "Otonycteris_hemprichii": [
+  "Afghanistan",
+  "Pakistan"
+ ],
+ "Ozimops_beccarii": [
+  "Australia"
+ ],
+ "Ozimops_lumsdenae": [
+  "Papua New Guinea"
+ ],
+ "Ozimops_planiceps": [
+  "Papua New Guinea"
+ ],
+ "Peropteryx_macrotis": [
+  "Aruba",
+  "France",
+  "Grenada",
+  "Trinidad and Tobago"
+ ],
+ "Peropteryx_trinitatis": [
+  "Colombia"
+ ],
+ "Phoniscus_jagorii": [
+  "China"
+ ],
+ "Phylloderma_stenops": [
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua"
+ ],
+ "Phyllostomus_discolor": [
+  "Germany"
+ ],
+ "Phyllostomus_hastatus": [
+  "United States",
+  "Zimbabwe"
+ ],
+ "Pipistrellus_inexspectatus": [
+  "Cote d'Ivoire",
+  "Kenya"
+ ],
+ "Pipistrellus_kuhlii": [
+  "Andorra",
+  "Belarus",
+  "Belgium",
+  "Cameroon",
+  "Djibouti",
+  "Ethiopia",
+  "Kenya",
+  "Liberia",
+  "Malta",
+  "Netherlands",
+  "Poland",
+  "Slovakia",
+  "South Africa",
+  "Sudan",
+  "Tanzania",
+  "Uganda",
+  "United Kingdom",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Pipistrellus_maderensis": [
+  "Portugal",
+  "Spain"
+ ],
+ "Pipistrellus_nanulus": [
+  "Tanzania"
+ ],
+ "Pipistrellus_nathusii": [
+  "Isle of Man",
+  "Jersey",
+  "Åland Islands"
+ ],
+ "Pipistrellus_pipistrellus": [
+  "Andorra",
+  "Colombia",
+  "Guernsey",
+  "Iraq",
+  "Isle of Man",
+  "Jersey",
+  "Norway",
+  "United States"
+ ],
+ "Pipistrellus_pygmaeus": [
+  "Belgium",
+  "Finland",
+  "Isle of Man",
+  "Luxembourg",
+  "Montenegro",
+  "Netherlands",
+  "North Macedonia"
+ ],
+ "Pipistrellus_rusticus": [
+  "Saudi Arabia"
+ ],
+ "Platymops_setiger": [
+  "Sudan"
+ ],
+ "Platyrrhinus_angustirostris": [
+  "Costa Rica",
+  "El Salvador",
+  "French Guiana",
+  "Guatemala",
+  "Guyana",
+  "Panama",
+  "Suriname"
+ ],
+ "Platyrrhinus_aurarius": [
+  "Colombia"
+ ],
+ "Platyrrhinus_dorsalis": [
+  "Bolivia",
+  "French Guiana",
+  "Panama",
+  "Peru",
+  "Venezuela"
+ ],
+ "Platyrrhinus_fusciventris": [
+  "Colombia"
+ ],
+ "Platyrrhinus_guianensis": [
+  "Brazil"
+ ],
+ "Platyrrhinus_helleri": [
+  "Bolivia",
+  "Brazil",
+  "French Guiana",
+  "Guyana",
+  "Peru",
+  "Suriname",
+  "Trinidad and Tobago"
+ ],
+ "Platyrrhinus_incarum": [
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Platyrrhinus_lineatus": [
+  "Colombia",
+  "Peru",
+  "Venezuela"
+ ],
+ "Platyrrhinus_matapalensis": [
+  "Colombia"
+ ],
+ "Platyrrhinus_umbratus": [
+  "Panama"
+ ],
+ "Platyrrhinus_vittatus": [
+  "Bolivia",
+  "Peru"
+ ],
+ "Plecotus_auritus": [
+  "Andorra",
+  "Brazil",
+  "China",
+  "Guernsey",
+  "Isle of Man",
+  "Japan",
+  "Jersey",
+  "Mongolia",
+  "Pakistan"
+ ],
+ "Plecotus_austriacus": [
+  "Afghanistan",
+  "Algeria",
+  "Andorra",
+  "China",
+  "Iran",
+  "Israel",
+  "Jersey",
+  "Kyrgyzstan",
+  "Morocco",
+  "Pakistan",
+  "Palestine",
+  "Serbia",
+  "Syria",
+  "Tunisia"
+ ],
+ "Plecotus_kolombatovici": [
+  "Libya",
+  "Morocco"
+ ],
+ "Plecotus_macrobullaris": [
+  "Andorra",
+  "Israel"
+ ],
+ "Plecotus_sacrimontis": [
+  "China",
+  "Russia"
+ ],
+ "Plecotus_teneriffae": [
+  "Morocco",
+  "Spain"
+ ],
+ "Promops_davisoni": [
+  "Panama"
+ ],
+ "Pseudoromicia_roseveari": [
+  "Cameroon"
+ ],
+ "Pseudoromicia_tenuipinnis": [
+  "South Sudan",
+  "Sudan"
+ ],
+ "Ptenochirus_wetmorei": [
+  "Malaysia"
+ ],
+ "Pteronotus_davyi": [
+  "Belize",
+  "El Salvador",
+  "Guatemala",
+  "Mexico",
+  "Panama"
+ ],
+ "Pteronotus_fulvus": [
+  "Nicaragua"
+ ],
+ "Pteronotus_fuscus": [
+  "Belize",
+  "El Salvador",
+  "Panama",
+  "Peru"
+ ],
+ "Pteronotus_gymnonotus": [
+  "Belize"
+ ],
+ "Pteronotus_mesoamericanus": [
+  "Colombia"
+ ],
+ "Pteronotus_mexicanus": [
+  "Honduras"
+ ],
+ "Pteronotus_parnellii": [
+  "Belize",
+  "Bolivia",
+  "Brazil",
+  "Colombia",
+  "Costa Rica",
+  "Dominican Republic",
+  "El Salvador",
+  "French Guiana",
+  "Guatemala",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Mexico",
+  "Panama",
+  "Peru",
+  "Puerto Rico",
+  "Saint Vincent and the Grenadines",
+  "Suriname",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Pteronotus_personatus": [
+  "Cuba",
+  "El Salvador",
+  "Guatemala",
+  "Mexico"
+ ],
+ "Pteronotus_psilotis": [
+  "Colombia"
+ ],
+ "Pteronotus_quadridens": [
+  "United States"
+ ],
+ "Pteronotus_rubiginosus": [
+  "Colombia",
+  "Costa Rica",
+  "France",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Trinidad and Tobago"
+ ],
+ "Pteropus_admiralitatum": [
+  "Australia"
+ ],
+ "Pteropus_brunneus": [
+  "Indonesia",
+  "Papua New Guinea"
+ ],
+ "Pteropus_dasymallus": [
+  "Namibia"
+ ],
+ "Pteropus_griseus": [
+  "Philippines"
+ ],
+ "Pteropus_hypomelanus": [
+  "India"
+ ],
+ "Pteropus_lylei": [
+  "India"
+ ],
+ "Pteropus_mariannus": [
+  "Northern Mariana Islands",
+  "Palau",
+  "Solomon Islands",
+  "United States"
+ ],
+ "Pteropus_melanopogon": [
+  "Australia",
+  "Papua New Guinea"
+ ],
+ "Pteropus_melanotus": [
+  "India",
+  "Philippines"
+ ],
+ "Pteropus_niger": [
+  "Madagascar"
+ ],
+ "Pteropus_ornatus": [
+  "France",
+  "Zimbabwe"
+ ],
+ "Pteropus_pelagicus": [
+  "Australia"
+ ],
+ "Pteropus_pelewensis": [
+  "Guam"
+ ],
+ "Pteropus_poliocephalus": [
+  "United States"
+ ],
+ "Pteropus_rayneri": [
+  "Madagascar"
+ ],
+ "Pteropus_rodricensis": [
+  "Jersey",
+  "United States"
+ ],
+ "Pteropus_seychellensis": [
+  "Benin",
+  "Comoros",
+  "Madagascar",
+  "Mayotte",
+  "Tanzania"
+ ],
+ "Pteropus_temminckii": [
+  "Papua New Guinea"
+ ],
+ "Pteropus_tonganus": [
+  "French Polynesia",
+  "India",
+  "Sri Lanka"
+ ],
+ "Pteropus_vampyrus": [
+  "Australia",
+  "Bangladesh",
+  "Germany",
+  "India",
+  "Madagascar",
+  "Maldives",
+  "Nepal",
+  "Norway",
+  "Pakistan",
+  "Sri Lanka",
+  "United States",
+  "Zimbabwe"
+ ],
+ "Rhinolophus_affinis": [
+  "Hong Kong",
+  "Sri Lanka"
+ ],
+ "Rhinolophus_alcyone": [
+  "Kenya",
+  "South Africa"
+ ],
+ "Rhinolophus_andamanensis": [
+  "India"
+ ],
+ "Rhinolophus_blasii": [
+  "France"
+ ],
+ "Rhinolophus_borneensis": [
+  "Vietnam"
+ ],
+ "Rhinolophus_capensis": [
+  "Mozambique"
+ ],
+ "Rhinolophus_clivosus": [
+  "Burundi",
+  "Chad",
+  "Democratic Republic of the Congo",
+  "Eritrea",
+  "Eswatini",
+  "Ethiopia",
+  "Kenya",
+  "Malawi",
+  "Mozambique",
+  "Namibia",
+  "Rwanda",
+  "South Africa",
+  "South Sudan",
+  "Sudan",
+  "Tanzania",
+  "Uganda",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Rhinolophus_cognatus": [
+  "India"
+ ],
+ "Rhinolophus_cornutus": [
+  "China",
+  "Myanmar",
+  "Taiwan",
+  "Thailand"
+ ],
+ "Rhinolophus_darlingi": [
+  "Angola",
+  "Namibia",
+  "Saudi Arabia"
+ ],
+ "Rhinolophus_deckenii": [
+  "Malawi"
+ ],
+ "Rhinolophus_denti": [
+  "Mozambique",
+  "Zimbabwe"
+ ],
+ "Rhinolophus_dobsoni": [
+  "Ethiopia"
+ ],
+ "Rhinolophus_eloquens": [
+  "Angola",
+  "Sudan"
+ ],
+ "Rhinolophus_episcopus": [
+  "Thailand"
+ ],
+ "Rhinolophus_euryale": [
+  "Belgium",
+  "Egypt",
+  "Switzerland"
+ ],
+ "Rhinolophus_ferrumequinum": [
+  "Afghanistan",
+  "Belgium",
+  "China",
+  "Georgia",
+  "Japan",
+  "Netherlands",
+  "South Africa",
+  "South Korea",
+  "Taiwan",
+  "United States",
+  "Uzbekistan"
+ ],
+ "Rhinolophus_francisi": [
+  "Vietnam"
+ ],
+ "Rhinolophus_fumigatus": [
+  "Democratic Republic of the Congo",
+  "Equatorial Guinea",
+  "Somalia"
+ ],
+ "Rhinolophus_hildebrandtii": [
+  "Botswana",
+  "Malawi",
+  "Mozambique",
+  "Saudi Arabia",
+  "South Africa",
+  "Sudan",
+  "Uganda",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Rhinolophus_hipposideros": [
+  "Andorra",
+  "Belarus",
+  "Isle of Man",
+  "Netherlands"
+ ],
+ "Rhinolophus_landeri": [
+  "Kenya",
+  "Malawi",
+  "Morocco",
+  "Mozambique",
+  "Namibia",
+  "Rwanda",
+  "Tanzania",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Rhinolophus_lepidus": [
+  "Indonesia",
+  "Laos",
+  "Malaysia",
+  "Sri Lanka"
+ ],
+ "Rhinolophus_lobatus": [
+  "Kenya",
+  "Sudan",
+  "Tanzania"
+ ],
+ "Rhinolophus_luctus": [
+  "Cambodia",
+  "China",
+  "India",
+  "Laos",
+  "Malaysia",
+  "Myanmar",
+  "Namibia",
+  "Taiwan",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Rhinolophus_maclaudi": [
+  "Democratic Republic of the Congo",
+  "Uganda"
+ ],
+ "Rhinolophus_macrotis": [
+  "China",
+  "Laos",
+  "Philippines",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Rhinolophus_malayanus": [
+  "Indonesia"
+ ],
+ "Rhinolophus_megaphyllus": [
+  "Indonesia",
+  "Vietnam"
+ ],
+ "Rhinolophus_mehelyi": [
+  "Bosnia and Herzegovina",
+  "Lebanon"
+ ],
+ "Rhinolophus_monoceros": [
+  "China",
+  "India"
+ ],
+ "Rhinolophus_morio": [
+  "Indonesia"
+ ],
+ "Rhinolophus_pearsonii": [
+  "Malaysia"
+ ],
+ "Rhinolophus_philippinensis": [
+  "Australia"
+ ],
+ "Rhinolophus_pumilus": [
+  "China"
+ ],
+ "Rhinolophus_pusillus": [
+  "Hong Kong",
+  "Japan"
+ ],
+ "Rhinolophus_rouxii": [
+  "Laos",
+  "Nepal"
+ ],
+ "Rhinolophus_simulator": [
+  "Botswana",
+  "Guinea",
+  "Nigeria"
+ ],
+ "Rhinolophus_sinicus": [
+  "Hong Kong",
+  "Laos",
+  "Thailand"
+ ],
+ "Rhinolophus_stheno": [
+  "Cambodia",
+  "China",
+  "Laos"
+ ],
+ "Rhinolophus_subbadius": [
+  "Laos",
+  "Vietnam"
+ ],
+ "Rhinolophus_yunanensis": [
+  "Thailand"
+ ],
+ "Rhinophylla_fischerae": [
+  "Guyana"
+ ],
+ "Rhinopoma_cystops": [
+  "Iraq"
+ ],
+ "Rhinopoma_hardwickii": [
+  "Egypt",
+  "Ethiopia",
+  "Israel",
+  "Jordan",
+  "Kenya",
+  "Mauritania",
+  "Morocco",
+  "Palestine",
+  "Saudi Arabia",
+  "Senegal",
+  "Sudan",
+  "Syria",
+  "Yemen"
+ ],
+ "Rhogeessa_io": [
+  "Belize",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico"
+ ],
+ "Rhogeessa_minutilla": [
+  "Trinidad and Tobago"
+ ],
+ "Rhogeessa_parvula": [
+  "Colombia",
+  "Costa Rica",
+  "El Salvador",
+  "Guatemala",
+  "Nicaragua"
+ ],
+ "Rhogeessa_tumida": [
+  "Belize",
+  "Brazil",
+  "Colombia",
+  "Costa Rica",
+  "Ecuador",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Nicaragua",
+  "Panama",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Rousettus_aegyptiacus": [
+  "Benin",
+  "Indonesia",
+  "South Sudan",
+  "United States"
+ ],
+ "Rousettus_amplexicaudatus": [
+  "India"
+ ],
+ "Rousettus_leschenaultii": [
+  "Hong Kong",
+  "Malaysia"
+ ],
+ "Rousettus_madagascariensis": [
+  "Gabon"
+ ],
+ "Saccopteryx_gymnura": [
+  "Colombia"
+ ],
+ "Saccopteryx_leptura": [
+  "France"
+ ],
+ "Scotoecus_albofuscus": [
+  "Central African Republic"
+ ],
+ "Scotoecus_hindei": [
+  "Sudan"
+ ],
+ "Scotoecus_hirundo": [
+  "Cote d'Ivoire",
+  "Malawi",
+  "Zambia"
+ ],
+ "Scotonycteris_occidentalis": [
+  "Cameroon",
+  "Nigeria"
+ ],
+ "Scotonycteris_zenkeri": [
+  "Central African Republic",
+  "Cote d'Ivoire",
+  "Democratic Republic of the Congo",
+  "Gabon",
+  "Ghana",
+  "Liberia"
+ ],
+ "Scotophilus_borbonicus": [
+  "Kenya",
+  "Madagascar",
+  "South Africa",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Scotophilus_colias": [
+  "Tanzania",
+  "Uganda"
+ ],
+ "Scotophilus_kuhlii": [
+  "Bhutan",
+  "Hong Kong"
+ ],
+ "Scotophilus_leucogaster": [
+  "Yemen"
+ ],
+ "Scotophilus_nigrita": [
+  "Central African Republic",
+  "Equatorial Guinea",
+  "Ethiopia",
+  "Namibia",
+  "Sierra Leone"
+ ],
+ "Scotophilus_nigritellus": [
+  "Kenya",
+  "Uganda"
+ ],
+ "Scotophilus_robustus": [
+  "Sri Lanka"
+ ],
+ "Scotophilus_trujilloi": [
+  "Madagascar",
+  "Réunion",
+  "South Africa",
+  "Zambia",
+  "Zimbabwe"
+ ],
+ "Scotophilus_viridis": [
+  "Benin",
+  "Cote d'Ivoire",
+  "Ghana",
+  "Nigeria",
+  "Sierra Leone",
+  "Sudan"
+ ],
+ "Scotorepens_balstoni": [
+  "Papua New Guinea"
+ ],
+ "Scotorepens_greyii": [
+  "Indonesia"
+ ],
+ "Sturnira_bogotensis": [
+  "Bolivia"
+ ],
+ "Sturnira_hondurensis": [
+  "Costa Rica",
+  "Panama"
+ ],
+ "Sturnira_lilium": [
+  "Belize",
+  "Colombia",
+  "Costa Rica",
+  "Dominica",
+  "Ecuador",
+  "El Salvador",
+  "French Guiana",
+  "Guatemala",
+  "Guyana",
+  "Honduras",
+  "Martinique",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Peru",
+  "Saint Vincent and the Grenadines",
+  "Suriname",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Sturnira_ludovici": [
+  "Costa Rica",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Panama",
+  "Peru"
+ ],
+ "Sturnira_luisi": [
+  "Mexico",
+  "Venezuela"
+ ],
+ "Sturnira_mordax": [
+  "Colombia"
+ ],
+ "Sturnira_oporaphilum": [
+  "Colombia",
+  "Costa Rica"
+ ],
+ "Sturnira_parvidens": [
+  "Argentina",
+  "Bolivia",
+  "Brazil",
+  "Colombia",
+  "Ecuador",
+  "Guyana",
+  "Panama",
+  "Suriname",
+  "Venezuela"
+ ],
+ "Sturnira_sorianoi": [
+  "Colombia"
+ ],
+ "Syconycteris_australis": [
+  "Solomon Islands"
+ ],
+ "Tadarida_brasiliensis": [
+  "Japan",
+  "Netherlands",
+  "Puerto Rico",
+  "Zimbabwe"
+ ],
+ "Tadarida_insignis": [
+  "Laos"
+ ],
+ "Tadarida_lobata": [
+  "Malawi"
+ ],
+ "Tadarida_teniotis": [
+  "Andorra",
+  "China",
+  "India",
+  "Laos"
+ ],
+ "Taphozous_longimanus": [
+  "Vietnam"
+ ],
+ "Taphozous_nudiventris": [
+  "Cabo Verde",
+  "Mali"
+ ],
+ "Taphozous_perforatus": [
+  "Cameroon"
+ ],
+ "Thyroptera_discifera": [
+  "Ecuador"
+ ],
+ "Thyroptera_lavali": [
+  "Colombia"
+ ],
+ "Tonatia_bidens": [
+  "Colombia",
+  "Costa Rica",
+  "Ecuador",
+  "French Guiana",
+  "Guatemala",
+  "Guyana",
+  "Honduras",
+  "Panama",
+  "Peru",
+  "Trinidad and Tobago",
+  "Venezuela"
+ ],
+ "Trachops_cirrhosus": [
+  "Belize",
+  "El Salvador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua"
+ ],
+ "Trachops_coffini": [
+  "Ecuador",
+  "Guyana",
+  "Panama",
+  "Suriname",
+  "Venezuela"
+ ],
+ "Triaenops_persicus": [
+  "Central African Republic",
+  "Ethiopia",
+  "Madagascar",
+  "Mozambique",
+  "Tanzania"
+ ],
+ "Tylonycteris_fulvida": [
+  "Hong Kong"
+ ],
+ "Tylonycteris_pachypus": [
+  "Cambodia",
+  "China",
+  "India",
+  "Laos",
+  "Myanmar",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Tylonycteris_robustula": [
+  "Cambodia",
+  "China",
+  "India",
+  "Laos",
+  "Myanmar",
+  "Singapore",
+  "Thailand",
+  "Vietnam"
+ ],
+ "Uroderma_bilobatum": [
+  "Belize",
+  "Costa Rica",
+  "El Salvador",
+  "France",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Uroderma_convexum": [
+  "Venezuela"
+ ],
+ "Uroderma_davisi": [
+  "Costa Rica"
+ ],
+ "Uroderma_magnirostrum": [
+  "Honduras"
+ ],
+ "Vampyressa_pusilla": [
+  "Belize",
+  "Bolivia",
+  "Colombia",
+  "Costa Rica",
+  "Ecuador",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama",
+  "Peru",
+  "Venezuela"
+ ],
+ "Vampyressa_thyone": [
+  "Panama",
+  "Suriname"
+ ],
+ "Vampyrodes_caraccioli": [
+  "Belize",
+  "Costa Rica",
+  "Guatemala",
+  "Honduras",
+  "Mexico",
+  "Nicaragua",
+  "Panama"
+ ],
+ "Vampyrodes_major": [
+  "Brazil",
+  "Ecuador",
+  "Peru",
+  "Venezuela"
+ ],
+ "Vansonia_rueppellii": [
+  "Nigeria"
+ ],
+ "Vespadelus_pumilus": [
+  "Burkina Faso"
+ ],
+ "Vespertilio_murinus": [
+  "Mexico"
+ ],
+ "Vespertilio_sinensis": [
+  "United Kingdom"
+ ]
+}

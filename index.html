@@ -174,14 +174,34 @@ function bundled(id, url){
   });
 }
 
+// data/build_country_distribution.py adds countries GBIF has real occurrence
+// records for but MDD's own countryDistribution column omits (see its
+// docstring). Additive only -- never removes or overrides an MDD country.
+function mergeCountrySupplement(species, supplement){
+  if(!supplement) return;
+  species.forEach(s=>{
+    const extra = supplement[s.sciName];
+    if(!extra || !extra.length) return;
+    const existing = new Set((s.countryDistribution||'').split('|')
+      .map(x=>x.trim().replace(/\?$/,'').toLowerCase()).filter(Boolean));
+    const add = extra.filter(c=>!existing.has(c.toLowerCase()));
+    if(!add.length) return;
+    s.countryDistribution = (s.countryDistribution && s.countryDistribution!=='NA')
+      ? s.countryDistribution + '|' + add.join('|')
+      : add.join('|');
+  });
+}
+
 Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
   bundled('d-echo', 'data/echolocation_reference.json'),
-  bundled('d-danish', 'data/danish_names.json')
-]).then(([tax, echo, danish]) => {
+  bundled('d-danish', 'data/danish_names.json'),
+  bundled('d-countries', 'data/gbif_country_supplement.json')
+]).then(([tax, echo, danish, countrySupp]) => {
   state.species = tax.species;
   state.echo = echo;
   state.danish = danish;
+  mergeCountrySupplement(state.species, countrySupp);
   document.getElementById('headMeta').innerHTML =
     `${tax._meta.speciesCount} species · ${tax._meta.familyCount} families · ${tax._meta.genusCount} genera — ` +
     `<a href="${tax._meta.sourceUrl}" target="_blank" rel="noopener">${tax._meta.source}</a>`;
@@ -315,6 +335,9 @@ INLINE data/echolocation_reference.json
 </script>
 <script type="application/json" id="d-danish">
 INLINE data/danish_names.json
+</script>
+<script type="application/json" id="d-countries">
+INLINE data/gbif_country_supplement.json
 </script>
 </body>
 </html>
