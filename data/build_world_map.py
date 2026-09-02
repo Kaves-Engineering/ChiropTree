@@ -30,6 +30,11 @@ inline metadata block just below without touching the project's own
 dependencies.
 
 Run:  uv run data/build_world_map.py
+      uv run data/build_world_map.py --marine
+
+The --marine run writes data/marine_world_map.json instead, identical except
+that Antarctica is drawn rather than cropped away -- the marine-mammal page
+needs it, the bat page does not. Neither run touches the other's output.
 """
 # /// script
 # dependencies = ["shapely"]
@@ -46,10 +51,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, "raw")
 OUT = os.path.join(HERE, "world_map.json")
 
+OUT_MARINE = os.path.join(HERE, "marine_world_map.json")
+
 W = 800.0            # projected width in px
 EPS = 0.40           # Douglas-Peucker tolerance, px
 MIN_RING_AREA = 1.2  # drop projected rings smaller than this, px^2
 LAT_MIN = -57.0      # crop Antarctica; no bats there
+
+# --marine builds the variant the marine-mammal page needs instead: 37 of the
+# 144 species there (Weddell, crabeater, leopard and Ross seals, the southern
+# elephant seal, the Antarctic fur seal...) list Antarctica as range, so the
+# continent this script otherwise drops has to be drawn and clickable. Only
+# these three settings differ; the bat map is left exactly as it is.
+MARINE_LAT_MIN = -90.0
+SKIP_ANTARCTICA = True
+TAXONOMY = os.path.join(HERE, "chiroptera_taxonomy.json")
 
 # Robinson interpolation table, latitude 0..90 in 5 degree steps
 RX = [1.0000, 0.9986, 0.9954, 0.9900, 0.9822, 0.9730, 0.9600, 0.9427, 0.9216,
@@ -81,6 +97,22 @@ H = round((_Y1 - _Y0) * SCALE, 1)
 def project(lon, lat):
     x, y = robinson(lon, lat)
     return ((x - _X0) * SCALE, (_Y1 - y) * SCALE)
+
+
+def configure_marine():
+    """Switch the module to the marine-mammal variant (see MARINE_LAT_MIN).
+
+    Only the southern crop moves, so _Y0 and the viewBox height derived from
+    it are the sole projection constants that need recomputing -- _X0/_X1 and
+    SCALE are longitude-derived and unaffected.
+    """
+    global LAT_MIN, _Y0, H, OUT, SKIP_ANTARCTICA, TAXONOMY
+    LAT_MIN = MARINE_LAT_MIN
+    _, _Y0 = robinson(0, LAT_MIN)
+    H = round((_Y1 - _Y0) * SCALE, 1)
+    OUT = OUT_MARINE
+    SKIP_ANTARCTICA = False
+    TAXONOMY = os.path.join(HERE, "marine_mammal_taxonomy.json")
 
 
 def norm(s):
@@ -207,6 +239,32 @@ ALIASES = {
     "micronesia": "Federated States of Micronesia",
     "cocos islands": "Cocos Is.",
     "galapagos islands": "Galapagos Islands",
+    # sub-Antarctic and remote territories the marine-mammal taxonomy names;
+    # Natural Earth carries the dots, just under a different spelling. MDD
+    # treats South Georgia and the South Sandwich Islands as one territory
+    # where Natural Earth splits them -- point it at South Georgia, which is
+    # where essentially all of the fur and elephant seals actually breed.
+    "pitcairn": "Pitcairn Islands",
+    "faroe": "Faroe Islands",
+    "south georgia and the south sandwich islands": "South Georgia",
+    # GBIF's own long-form country titles, which the occurrence supplement
+    # feeds back in verbatim. Natural Earth carries all of these, just under
+    # a shorter name, and each groups islands the map keeps separate -- point
+    # them at the one that carries the animals. Svalbard matters most here:
+    # walrus, bowhead, ringed and bearded seal all range there.
+    "svalbard and jan mayen": "Svalbard",
+    "saint helena ascension and tristan da cunha": "Saint Helena",
+    "micronesia federated states of": "Micronesia",
+    "virgin islands british": "British Virgin Islands",
+    "virgin islands u s": "United States Virgin Islands",
+    "bonaire sint eustatius and saba": "Curacao",
+}
+
+# Places Natural Earth's 50m subunits leave out entirely, so there is no dot
+# to alias to. Bouvet Island is 49 km^2 and uninhabited, but it is a real
+# Antarctic fur seal breeding site and the marine taxonomy lists it.
+EXTRA_DOTS = {
+    "Bouvet Island": (3.36, -54.42),
 }
 
 
@@ -268,7 +326,7 @@ def main():
     # 1. the polygons that actually get drawn
     for f in c110["features"]:
         p = f["properties"]
-        if p.get("ADMIN") == "Antarctica":
+        if SKIP_ANTARCTICA and p.get("ADMIN") == "Antarctica":
             continue
         key = p.get("ISO_A3_EH") or p.get("ISO_A3") or p.get("ADMIN")
         if not key or key == "-99":
@@ -304,6 +362,14 @@ def main():
         dots[key] = c
         add_names(p, key, DOT_KEYS)
 
+    # 2b. hand-placed dots for the few places Natural Earth omits altogether
+    for name, (lon, lat) in EXTRA_DOTS.items():
+        if norm(name) in index:
+            continue                      # Natural Earth covers it after all
+        key = "d:" + name
+        dots[key] = [round(v, 1) for v in project(lon, max(lat, LAT_MIN))]
+        index.setdefault(norm(name), key)
+
     # 3. hand-written spellings
     for a, target in ALIASES.items():
         k = index.get(norm(target))
@@ -337,7 +403,7 @@ def main():
     print("%.0f KB" % (os.path.getsize(OUT) / 1024.0))
 
     # coverage report against the taxonomy the page ships
-    tax = load(os.path.join(HERE, "chiroptera_taxonomy.json"))
+    tax = load(TAXONOMY)
     seen, miss = set(), set()
     for s in tax["species"]:
         v = (s.get("countryDistribution") or "").strip()
@@ -356,4 +422,9 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+
+    if "--marine" in sys.argv[1:]:
+        configure_marine()
+        print("marine variant: Antarctica kept, cropped at %g degrees south" % LAT_MIN)
     main()

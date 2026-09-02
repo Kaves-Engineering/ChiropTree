@@ -1,0 +1,740 @@
+{
+ "Aethalodelphis_obscurus": [
+  "French Southern and Antarctic Lands",
+  "Heard Island and McDonald Islands",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Uruguay"
+ ],
+ "Arctocephalus_australis": [
+  "Australia",
+  "Ecuador",
+  "Germany",
+  "New Caledonia",
+  "United Kingdom"
+ ],
+ "Arctocephalus_forsteri": [
+  "Belize",
+  "Costa Rica",
+  "French Polynesia",
+  "French Southern and Antarctic Lands"
+ ],
+ "Arctocephalus_galapagoensis": [
+  "Colombia"
+ ],
+ "Arctocephalus_gazella": [
+  "Bouvet Island",
+  "Falkland Islands",
+  "Heard Island and McDonald Islands",
+  "Norway",
+  "United Kingdom",
+  "Uruguay"
+ ],
+ "Arctocephalus_philippii": [
+  "Mexico",
+  "United States"
+ ],
+ "Arctocephalus_pusillus": [
+  "Germany",
+  "New Zealand"
+ ],
+ "Arctocephalus_tropicalis": [
+  "Heard Island and McDonald Islands",
+  "Réunion",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "United Kingdom",
+  "Uruguay"
+ ],
+ "Balaena_mysticetus": [
+  "Argentina",
+  "Denmark",
+  "Netherlands",
+  "Svalbard and Jan Mayen",
+  "Sweden",
+  "United Kingdom"
+ ],
+ "Balaenoptera_acutorostrata": [
+  "Colombia",
+  "Ecuador",
+  "Falkland Islands",
+  "Faroe Islands",
+  "French Polynesia",
+  "French Southern and Antarctic Lands",
+  "Germany",
+  "Guernsey",
+  "Heard Island and McDonald Islands",
+  "Isle of Man",
+  "Israel",
+  "Martinique",
+  "Réunion",
+  "Saint Pierre and Miquelon",
+  "South Georgia and the South Sandwich Islands",
+  "Sri Lanka",
+  "Suriname",
+  "Svalbard and Jan Mayen",
+  "Sweden",
+  "Virgin Islands (British)",
+  "Wallis and Futuna",
+  "Western Sahara",
+  "Åland Islands"
+ ],
+ "Balaenoptera_bonaerensis": [
+  "French Southern and Antarctic Lands",
+  "Saint Pierre and Miquelon"
+ ],
+ "Balaenoptera_borealis": [
+  "Antarctica",
+  "Denmark",
+  "Faroe Islands",
+  "France",
+  "French Southern and Antarctic Lands",
+  "Germany",
+  "Guadeloupe",
+  "India",
+  "Micronesia (Federated States of)",
+  "Netherlands",
+  "New Caledonia",
+  "Northern Mariana Islands",
+  "Saint Pierre and Miquelon",
+  "Senegal",
+  "Svalbard and Jan Mayen"
+ ],
+ "Balaenoptera_brydei": [
+  "Micronesia (Federated States of)",
+  "Northern Mariana Islands",
+  "Portugal"
+ ],
+ "Balaenoptera_edeni": [
+  "Angola",
+  "Aruba",
+  "Benin",
+  "Bonaire, Sint Eustatius and Saba",
+  "Brazil",
+  "Chile",
+  "Colombia",
+  "Costa Rica",
+  "Curaçao",
+  "Denmark",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Eritrea",
+  "France",
+  "French Polynesia",
+  "Gabon",
+  "Ghana",
+  "Guadeloupe",
+  "Guam",
+  "Guatemala",
+  "Hong Kong",
+  "Iran",
+  "Kuwait",
+  "Mauritania",
+  "Mexico",
+  "Micronesia (Federated States of)",
+  "Namibia",
+  "New Caledonia",
+  "New Zealand",
+  "Nicaragua",
+  "Northern Mariana Islands",
+  "Oman",
+  "Pakistan",
+  "Panama",
+  "Peru",
+  "Portugal",
+  "South Africa",
+  "Spain",
+  "Sri Lanka",
+  "United Arab Emirates",
+  "United States",
+  "Uruguay",
+  "Venezuela",
+  "Western Sahara"
+ ],
+ "Balaenoptera_musculus": [
+  "Antarctica",
+  "Denmark",
+  "Faroe Islands",
+  "French Guiana",
+  "French Polynesia",
+  "French Southern and Antarctic Lands",
+  "Heard Island and McDonald Islands",
+  "Netherlands",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Sweden"
+ ],
+ "Balaenoptera_omurai": [
+  "Micronesia (Federated States of)",
+  "Taiwan"
+ ],
+ "Balaenoptera_physalus": [
+  "Colombia",
+  "Cote d'Ivoire",
+  "Faroe Islands",
+  "French Guiana",
+  "French Southern and Antarctic Lands",
+  "Heard Island and McDonald Islands",
+  "India",
+  "Monaco",
+  "Poland",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Sri Lanka",
+  "Suriname",
+  "Svalbard and Jan Mayen",
+  "Taiwan",
+  "Uruguay",
+  "Venezuela",
+  "Western Sahara"
+ ],
+ "Berardius_minimus": [
+  "Russia"
+ ],
+ "Caperea_marginata": [
+  "French Southern and Antarctic Lands"
+ ],
+ "Cephalorhynchus_commersonii": [
+  "Australia"
+ ],
+ "Cephalorhynchus_cruciger": [
+  "Heard Island and McDonald Islands"
+ ],
+ "Cystophora_cristata": [
+  "Belgium",
+  "Guadeloupe",
+  "Netherlands",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen"
+ ],
+ "Delphinapterus_leucas": [
+  "Antarctica",
+  "Australia",
+  "China",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen"
+ ],
+ "Delphinus_delphis": [
+  "Angola",
+  "Antarctica",
+  "Bermuda",
+  "Cabo Verde",
+  "Faroe Islands",
+  "Finland",
+  "French Polynesia",
+  "French Southern and Antarctic Lands",
+  "Guernsey",
+  "Isle of Man",
+  "Jersey",
+  "Papua New Guinea",
+  "Philippines",
+  "Republic of the Congo",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Sweden",
+  "Western Sahara"
+ ],
+ "Dugong_dugon": [
+  "Taiwan",
+  "Vanuatu"
+ ],
+ "Erignathus_barbatus": [
+  "Ireland",
+  "Svalbard and Jan Mayen",
+  "Sweden"
+ ],
+ "Eschrichtius_robustus": [
+  "France",
+  "Israel",
+  "Namibia",
+  "Netherlands",
+  "Spain",
+  "Sweden",
+  "United Kingdom"
+ ],
+ "Eubalaena_australis": [
+  "Réunion",
+  "Saint Helena, Ascension and Tristan da Cunha"
+ ],
+ "Eubalaena_glacialis": [
+  "Brazil",
+  "Denmark",
+  "France",
+  "Ireland",
+  "Italy",
+  "Japan",
+  "Netherlands",
+  "Saint Pierre and Miquelon",
+  "South Africa",
+  "Sweden",
+  "Western Sahara"
+ ],
+ "Eumetopias_jubatus": [
+  "Chile",
+  "Ecuador"
+ ],
+ "Feresa_attenuata": [
+  "Chile",
+  "French Southern and Antarctic Lands",
+  "Guadeloupe",
+  "Martinique",
+  "Northern Mariana Islands",
+  "Philippines",
+  "Réunion",
+  "Western Sahara"
+ ],
+ "Globicephala_macrorhynchus": [
+  "Belgium",
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "France",
+  "French Southern and Antarctic Lands",
+  "Northern Mariana Islands",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Western Sahara"
+ ],
+ "Globicephala_melas": [
+  "Dominican Republic",
+  "Faroe Islands",
+  "Guernsey",
+  "Guinea-Bissau",
+  "Heard Island and McDonald Islands",
+  "Japan",
+  "Jersey",
+  "Martinique",
+  "Mexico",
+  "Nicaragua",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon"
+ ],
+ "Grampus_griseus": [
+  "Cabo Verde",
+  "French Southern and Antarctic Lands",
+  "Iceland",
+  "Isle of Man",
+  "Jersey",
+  "Northern Mariana Islands",
+  "Réunion",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Western Sahara"
+ ],
+ "Halichoerus_grypus": [
+  "Faroe Islands",
+  "Guernsey",
+  "Isle of Man",
+  "Jersey",
+  "Saint Pierre and Miquelon",
+  "South Georgia and the South Sandwich Islands",
+  "Åland Islands"
+ ],
+ "Hydrurga_leptonyx": [
+  "Argentina",
+  "Heard Island and McDonald Islands"
+ ],
+ "Hyperoodon_ampullatus": [
+  "Belgium",
+  "Faroe Islands",
+  "Poland",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen"
+ ],
+ "Hyperoodon_planifrons": [
+  "French Polynesia",
+  "French Southern and Antarctic Lands",
+  "Heard Island and McDonald Islands",
+  "South Georgia and the South Sandwich Islands"
+ ],
+ "Indopacetus_pacificus": [
+  "Réunion",
+  "Wallis and Futuna"
+ ],
+ "Inia_geoffrensis": [
+  "Bolivia",
+  "United States"
+ ],
+ "Kogia_breviceps": [
+  "Saint Pierre and Miquelon",
+  "South Africa"
+ ],
+ "Kogia_sima": [
+  "France",
+  "French Southern and Antarctic Lands",
+  "Italy",
+  "Northern Mariana Islands",
+  "Saint Helena, Ascension and Tristan da Cunha"
+ ],
+ "Lagenodelphis_hosei": [
+  "France",
+  "Saint Barthélemy"
+ ],
+ "Lagenorhynchus_albirostris": [
+  "Faroe Islands",
+  "Isle of Man",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen"
+ ],
+ "Leptonychotes_weddellii": [
+  "India",
+  "United Kingdom"
+ ],
+ "Leucopleurus_acutus": [
+  "Faroe Islands",
+  "Saint Pierre and Miquelon"
+ ],
+ "Lissodelphis_peronii": [
+  "Antarctica",
+  "France",
+  "French Southern and Antarctic Lands",
+  "Mauritania",
+  "United States"
+ ],
+ "Lobodon_carcinophaga": [
+  "French Southern and Antarctic Lands",
+  "Heard Island and McDonald Islands",
+  "United Kingdom",
+  "United States"
+ ],
+ "Megaptera_novaeangliae": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "Faroe Islands",
+  "Finland",
+  "French Southern and Antarctic Lands",
+  "Greece",
+  "Hong Kong",
+  "Italy",
+  "Northern Mariana Islands",
+  "Poland",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Virgin Islands (British)",
+  "Virgin Islands (U.S.)",
+  "Western Sahara"
+ ],
+ "Mesoplodon_bidens": [
+  "Faroe Islands",
+  "Ireland"
+ ],
+ "Mesoplodon_densirostris": [
+  "Cabo Verde",
+  "Martinique",
+  "Netherlands",
+  "Norfolk Island",
+  "Northern Mariana Islands"
+ ],
+ "Mesoplodon_europaeus": [
+  "Cabo Verde",
+  "Cayman Islands",
+  "Mexico",
+  "Saint Helena, Ascension and Tristan da Cunha"
+ ],
+ "Mesoplodon_grayi": [
+  "Netherlands"
+ ],
+ "Mesoplodon_layardii": [
+  "Heard Island and McDonald Islands",
+  "Namibia",
+  "South Georgia and the South Sandwich Islands"
+ ],
+ "Mesoplodon_mirus": [
+  "Bangladesh"
+ ],
+ "Mesoplodon_peruvianus": [
+  "United States"
+ ],
+ "Mirounga_angustirostris": [
+  "United Kingdom"
+ ],
+ "Mirounga_leonina": [
+  "Bouvet Island",
+  "Colombia",
+  "Germany",
+  "Heard Island and McDonald Islands",
+  "Mexico",
+  "Réunion",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "United Kingdom"
+ ],
+ "Monachus_monachus": [
+  "Western Sahara"
+ ],
+ "Monodon_monoceros": [
+  "Belgium",
+  "Svalbard and Jan Mayen",
+  "United States"
+ ],
+ "Neophoca_cinerea": [
+  "Falkland Islands"
+ ],
+ "Neophocaena_asiaeorientalis": [
+  "Indonesia",
+  "Japan",
+  "South Korea",
+  "Taiwan"
+ ],
+ "Neophocaena_phocaenoides": [
+  "Canada",
+  "Hong Kong",
+  "Japan",
+  "South Korea",
+  "United States"
+ ],
+ "Odobenus_rosmarus": [
+  "Antarctica",
+  "Faroe Islands",
+  "Ireland",
+  "Svalbard and Jan Mayen"
+ ],
+ "Ommatophoca_rossii": [
+  "Argentina",
+  "Russia"
+ ],
+ "Orcaella_brevirostris": [
+  "Australia"
+ ],
+ "Orcinus_orca": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "Faroe Islands",
+  "Isle of Man",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Virgin Islands (British)",
+  "Virgin Islands (U.S.)",
+  "Western Sahara"
+ ],
+ "Otaria_flavescens": [
+  "France",
+  "Japan"
+ ],
+ "Pagophilus_groenlandicus": [
+  "Belgium",
+  "Estonia",
+  "Netherlands",
+  "Portugal",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Sweden"
+ ],
+ "Peponocephala_electra": [
+  "Cabo Verde",
+  "French Southern and Antarctic Lands",
+  "Northern Mariana Islands",
+  "United Kingdom"
+ ],
+ "Phoca_largha": [
+  "Vietnam"
+ ],
+ "Phoca_vitulina": [
+  "Faroe Islands",
+  "Isle of Man",
+  "Poland",
+  "Saint Pierre and Miquelon",
+  "South Korea",
+  "Svalbard and Jan Mayen"
+ ],
+ "Phocoena_phocoena": [
+  "Faroe Islands",
+  "Greece",
+  "Guernsey",
+  "Isle of Man",
+  "Jersey",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Western Sahara",
+  "Åland Islands"
+ ],
+ "Phocoena_sinus": [
+  "United States"
+ ],
+ "Physeter_macrocephalus": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "Cocos (Keeling) Islands",
+  "Cuba",
+  "Faroe Islands",
+  "French Southern and Antarctic Lands",
+  "Micronesia (Federated States of)",
+  "Monaco",
+  "Northern Mariana Islands",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Svalbard and Jan Mayen",
+  "Sweden",
+  "Tokelau",
+  "Virgin Islands (British)",
+  "Virgin Islands (U.S.)",
+  "Western Sahara"
+ ],
+ "Platanista_gangetica": [
+  "Pakistan",
+  "United States"
+ ],
+ "Pseudorca_crassidens": [
+  "Falkland Islands",
+  "French Southern and Antarctic Lands",
+  "Micronesia (Federated States of)",
+  "Northern Mariana Islands"
+ ],
+ "Pusa_hispida": [
+  "Netherlands",
+  "Svalbard and Jan Mayen"
+ ],
+ "Pusa_sibirica": [
+  "Germany",
+  "Japan"
+ ],
+ "Sotalia_fluviatilis": [
+  "French Guiana",
+  "Guyana",
+  "Nicaragua",
+  "Suriname",
+  "Venezuela"
+ ],
+ "Sousa_chinensis": [
+  "Australia",
+  "Egypt",
+  "Eritrea",
+  "Hong Kong",
+  "Israel",
+  "Macao",
+  "Madagascar",
+  "Mayotte",
+  "Oman",
+  "Saudi Arabia",
+  "South Africa",
+  "Sri Lanka"
+ ],
+ "Sousa_plumbea": [
+  "Jordan"
+ ],
+ "Sousa_teuszii": [
+  "Western Sahara"
+ ],
+ "Stenella_attenuata": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "France",
+  "French Southern and Antarctic Lands",
+  "Micronesia (Federated States of)",
+  "Namibia",
+  "New Caledonia",
+  "Nicaragua",
+  "Northern Mariana Islands",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "United Kingdom",
+  "Uzbekistan"
+ ],
+ "Stenella_clymene": [
+  "France",
+  "Portugal",
+  "Western Sahara"
+ ],
+ "Stenella_coeruleoalba": [
+  "Cabo Verde",
+  "Chile",
+  "French Southern and Antarctic Lands",
+  "Guernsey",
+  "Jersey",
+  "Libya",
+  "Mauritania",
+  "Mexico",
+  "Monaco",
+  "Northern Mariana Islands",
+  "Réunion",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Saint Pierre and Miquelon",
+  "Tunisia",
+  "Turkey",
+  "Western Sahara"
+ ],
+ "Stenella_frontalis": [
+  "Anguilla",
+  "Cabo Verde",
+  "France",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Virgin Islands (U.S.)",
+  "Western Sahara"
+ ],
+ "Stenella_longirostris": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "France",
+  "French Southern and Antarctic Lands",
+  "Mayotte",
+  "Northern Mariana Islands",
+  "Portugal",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Western Sahara"
+ ],
+ "Steno_bredanensis": [
+  "Cabo Verde",
+  "French Southern and Antarctic Lands",
+  "Netherlands",
+  "Northern Mariana Islands",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "United Kingdom"
+ ],
+ "Tasmacetus_shepherdi": [
+  "Saint Helena, Ascension and Tristan da Cunha"
+ ],
+ "Trichechus_inunguis": [
+  "French Guiana"
+ ],
+ "Trichechus_manatus": [
+  "Germany",
+  "Virgin Islands (U.S.)"
+ ],
+ "Tursiops_aduncus": [
+  "Argentina",
+  "France",
+  "Hong Kong",
+  "Israel",
+  "Mexico",
+  "New Caledonia",
+  "Réunion",
+  "South Korea"
+ ],
+ "Tursiops_erebennus": [
+  "Mexico"
+ ],
+ "Tursiops_truncatus": [
+  "Bonaire, Sint Eustatius and Saba",
+  "Cabo Verde",
+  "Faroe Islands",
+  "Finland",
+  "French Southern and Antarctic Lands",
+  "Guernsey",
+  "Hong Kong",
+  "Iceland",
+  "Isle of Man",
+  "Jersey",
+  "Micronesia (Federated States of)",
+  "Mozambique",
+  "Northern Mariana Islands",
+  "Norway",
+  "Saint Barthélemy",
+  "Saint Helena, Ascension and Tristan da Cunha",
+  "Sweden",
+  "Virgin Islands (British)",
+  "Virgin Islands (U.S.)",
+  "Western Sahara"
+ ],
+ "Zalophus_californianus": [
+  "Denmark",
+  "Ecuador",
+  "Germany",
+  "Japan"
+ ],
+ "Ziphius_cavirostris": [
+  "Cabo Verde",
+  "French Southern and Antarctic Lands",
+  "Northern Mariana Islands"
+ ]
+}

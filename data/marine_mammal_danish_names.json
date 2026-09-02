@@ -1,0 +1,496 @@
+{
+ "Arctocephalus_australis": {
+  "allNames": [
+   "Sydamerikansk pelssæl"
+  ],
+  "name": "Sydamerikansk pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "Arctocephalus_forsteri": {
+  "allNames": [
+   "New Zealandsk pelssæl"
+  ],
+  "name": "New Zealandsk pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "Arctocephalus_galapagoensis": {
+  "allNames": [
+   "Galápagos-pelssæl"
+  ],
+  "name": "Galápagos-pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "Arctocephalus_gazella": {
+  "allNames": [
+   "Kerguelen-pelssæl"
+  ],
+  "name": "Kerguelen-pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "Arctocephalus_pusillus": {
+  "allNames": [
+   "Afro-australsk pelssæl",
+   "Sydafrikansk pelssæl"
+  ],
+  "name": "Afro-australsk pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "Balaena_mysticetus": {
+  "allNames": [
+   "Grønlandshval",
+   "bartfisch"
+  ],
+  "name": "Grønlandshval",
+  "source": "The IUCN Red List of Threatened Species"
+ },
+ "Balaenoptera_acutorostrata": {
+  "allNames": [
+   "Vågehval"
+  ],
+  "name": "Vågehval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Balaenoptera_bonaerensis": {
+  "allNames": [
+   "Antarktisk vågehval"
+  ],
+  "name": "Antarktisk vågehval",
+  "source": "Catalogue of Life"
+ },
+ "Balaenoptera_borealis": {
+  "allNames": [
+   "Sejhval",
+   "sejhval"
+  ],
+  "name": "Sejhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Balaenoptera_brydei": {
+  "allNames": [
+   "Brydeshval"
+  ],
+  "name": "Brydeshval",
+  "source": "World Register of Marine Species"
+ },
+ "Balaenoptera_edeni": {
+  "allNames": [
+   "Brydeshval"
+  ],
+  "name": "Brydeshval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Balaenoptera_musculus": {
+  "allNames": [
+   "Blåhval",
+   "blåhval"
+  ],
+  "name": "Blåhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Balaenoptera_physalus": {
+  "allNames": [
+   "Finhval"
+  ],
+  "name": "Finhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Cephalorhynchus_hectori": {
+  "allNames": [
+   "Hectors delfin"
+  ],
+  "name": "Hectors delfin",
+  "source": "Catalogue of Life"
+ },
+ "Cystophora_cristata": {
+  "allNames": [
+   "Klapmyds",
+   "klapmyds"
+  ],
+  "name": "Klapmyds",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Delphinapterus_leucas": {
+  "allNames": [
+   "Belugahval",
+   "Hvidhval"
+  ],
+  "name": "Hvidhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Delphinus_delphis": {
+  "allNames": [
+   "Almindelig delfin",
+   "Almindelige delfiner"
+  ],
+  "name": "Almindelig delfin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Dugong_dugon": {
+  "allNames": [
+   "Dygong"
+  ],
+  "name": "Dygong",
+  "source": "Catalogue of Life"
+ },
+ "Erignathus_barbatus": {
+  "allNames": [
+   "Remmesæl",
+   "remmesæl"
+  ],
+  "name": "Remmesæl",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "Eschrichtius_robustus": {
+  "allNames": [
+   "gråhval"
+  ],
+  "name": "gråhval",
+  "source": "World Register of Marine Species"
+ },
+ "Eubalaena_glacialis": {
+  "allNames": [
+   "Nordkaper",
+   "biscayrhval",
+   "noordkaper",
+   "nordhval",
+   "nordkaper",
+   "svarthval"
+  ],
+  "name": "Nordkaper",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Eumetopias_jubatus": {
+  "allNames": [
+   "Stellers søløve"
+  ],
+  "name": "Stellers søløve",
+  "source": "Catalogue of Life"
+ },
+ "Feresa_attenuata": {
+  "allNames": [
+   "Dværgspækhugger"
+  ],
+  "name": "Dværgspækhugger",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Globicephala_melas": {
+  "allNames": [
+   "Grindhval",
+   "Langluffet grindehval"
+  ],
+  "name": "Langluffet grindehval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Grampus_griseus": {
+  "allNames": [
+   "Rissosdelfin",
+   "halvrgindehvaler"
+  ],
+  "name": "Rissosdelfin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Halichoerus_grypus": {
+  "allNames": [
+   "Gråsæl",
+   "gråsæl"
+  ],
+  "name": "Gråsæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Hydrodamalis_gigas": {
+  "allNames": [
+   "Stellers søko"
+  ],
+  "name": "Stellers søko",
+  "source": "Catalogue of Life"
+ },
+ "Hydrurga_leptonyx": {
+  "allNames": [
+   "søleopard"
+  ],
+  "name": "søleopard",
+  "source": "Catalogue of Life"
+ },
+ "Hyperoodon_ampullatus": {
+  "allNames": [
+   "Døgling",
+   "Nordlig Døgling",
+   "dögling",
+   "døgling",
+   "naebhval"
+  ],
+  "name": "Døgling",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Inia_geoffrensis": {
+  "allNames": [
+   "Amazondelfinen"
+  ],
+  "name": "Amazondelfinen",
+  "source": "Catalogue of Life"
+ },
+ "Lagenorhynchus_albirostris": {
+  "allNames": [
+   "Hvidnæse",
+   "hvidnæse"
+  ],
+  "name": "Hvidnæse",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Megaptera_novaeangliae": {
+  "allNames": [
+   "Pukkelhval"
+  ],
+  "name": "Pukkelhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Mesoplodon_bidens": {
+  "allNames": [
+   "Almindelig næbhval",
+   "Næbhval",
+   "almindelig næbhval"
+  ],
+  "name": "Almindelig næbhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Mesoplodon_densirostris": {
+  "allNames": [
+   "Blainvilles næbhval"
+  ],
+  "name": "Blainvilles næbhval",
+  "source": "The IUCN Red List of Threatened Species"
+ },
+ "Mesoplodon_stejnegeri": {
+  "allNames": [
+   "Stejnegers næbhval"
+  ],
+  "name": "Stejnegers næbhval",
+  "source": "Catalogue of Life"
+ },
+ "Mirounga_angustirostris": {
+  "allNames": [
+   "Nordlig Søelefant"
+  ],
+  "name": "Nordlig Søelefant",
+  "source": "Catalogue of Life"
+ },
+ "Mirounga_leonina": {
+  "allNames": [
+   "Sydlig søelefant"
+  ],
+  "name": "Sydlig søelefant",
+  "source": "Catalogue of Life"
+ },
+ "Monachus_monachus": {
+  "allNames": [
+   "Middelhavsmunkesæl",
+   "Munkesæl",
+   "munkesæl"
+  ],
+  "name": "Middelhavsmunkesæl",
+  "source": "Catalogue of Life"
+ },
+ "Monodon_monoceros": {
+  "allNames": [
+   "Narhval",
+   "narhval"
+  ],
+  "name": "Narhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Neomonachus_schauinslandi": {
+  "allNames": [
+   "Stillehavsmunkesæl"
+  ],
+  "name": "Stillehavsmunkesæl",
+  "source": "Catalogue of Life"
+ },
+ "Odobenus_rosmarus": {
+  "allNames": [
+   "Hvalros",
+   "hvalros"
+  ],
+  "name": "Hvalros",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Orcinus_orca": {
+  "allNames": [
+   "Spækhugger"
+  ],
+  "name": "Spækhugger",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pagophilus_groenlandicus": {
+  "allNames": [
+   "Grønlandssæl"
+  ],
+  "name": "Grønlandssæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Phoca_largha": {
+  "allNames": [
+   "Larghasæl"
+  ],
+  "name": "Larghasæl",
+  "source": "Catalogue of Life"
+ },
+ "Phoca_vitulina": {
+  "allNames": [
+   "Spættet sæl",
+   "spættet sæl"
+  ],
+  "name": "Spættet sæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Phocarctos_hookeri": {
+  "allNames": [
+   "Newzealandsk søløve"
+  ],
+  "name": "Newzealandsk søløve",
+  "source": "Catalogue of Life"
+ },
+ "Phocoena_phocoena": {
+  "allNames": [
+   "Almindeligt marsvin",
+   "Marsvin"
+  ],
+  "name": "Marsvin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Phocoena_spinipinnis": {
+  "allNames": [
+   "Pigfinnemarsvin"
+  ],
+  "name": "Pigfinnemarsvin",
+  "source": "Catalogue of Life"
+ },
+ "Physeter_macrocephalus": {
+  "allNames": [
+   "Kaskelot",
+   "Kaskelothval"
+  ],
+  "name": "Kaskelot",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pseudorca_crassidens": {
+  "allNames": [
+   "Halvspækhugger",
+   "halvspækhugger"
+  ],
+  "name": "Halvspækhugger",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pusa_hispida": {
+  "allNames": [
+   "Ringsæl"
+  ],
+  "name": "Ringsæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Pusa_sibirica": {
+  "allNames": [
+   "Bajkalsæl"
+  ],
+  "name": "Bajkalsæl",
+  "source": "Catalogue of Life"
+ },
+ "Sotalia_fluviatilis": {
+  "allNames": [
+   "Tucuxi-delfin"
+  ],
+  "name": "Tucuxi-delfin",
+  "source": "Catalogue of Life"
+ },
+ "Sousa_chinensis": {
+  "allNames": [
+   "Indopacifisk pukkeldelfin"
+  ],
+  "name": "Indopacifisk pukkeldelfin",
+  "source": "Catalogue of Life"
+ },
+ "Sousa_plumbea": {
+  "allNames": [
+   "Indisk pukkeldelfin"
+  ],
+  "name": "Indisk pukkeldelfin",
+  "source": "Catalogue of Life"
+ },
+ "Sousa_teuszii": {
+  "allNames": [
+   "Atlantisk pukkeldelfin"
+  ],
+  "name": "Atlantisk pukkeldelfin",
+  "source": "Catalogue of Life"
+ },
+ "Stenella_coeruleoalba": {
+  "allNames": [
+   "Stribet delfin",
+   "stribet delfin"
+  ],
+  "name": "Stribet delfin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Stenella_longirostris": {
+  "allNames": [
+   "Langnæbbet delfin"
+  ],
+  "name": "Langnæbbet delfin",
+  "source": "Catalogue of Life"
+ },
+ "Tasmacetus_shepherdi": {
+  "allNames": [
+   "Mangetandet næbhval"
+  ],
+  "name": "Mangetandet næbhval",
+  "source": "Catalogue of Life"
+ },
+ "Trichechus_manatus": {
+  "allNames": [
+   "Vestindisk manat"
+  ],
+  "name": "Vestindisk manat",
+  "source": "Catalogue of Life"
+ },
+ "Trichechus_senegalensis": {
+  "allNames": [
+   "Vestafrikansk manat"
+  ],
+  "name": "Vestafrikansk manat",
+  "source": "Catalogue of Life"
+ },
+ "Tursiops_aduncus": {
+  "allNames": [
+   "Indopacifisk øresvin"
+  ],
+  "name": "Indopacifisk øresvin",
+  "source": "Catalogue of Life"
+ },
+ "Tursiops_truncatus": {
+  "allNames": [
+   "Øresvin"
+  ],
+  "name": "Øresvin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "Zalophus_japonicus": {
+  "allNames": [
+   "Japansk søløve"
+  ],
+  "name": "Japansk søløve",
+  "source": "Catalogue of Life"
+ },
+ "Zalophus_wollebaeki": {
+  "allNames": [
+   "Galapagossøløve"
+  ],
+  "name": "Galapagossøløve",
+  "source": "Catalogue of Life"
+ },
+ "Ziphius_cavirostris": {
+  "allNames": [
+   "Småhovedet hval"
+  ],
+  "name": "Småhovedet hval",
+  "source": "National Checklist of all species occurring in Denmark"
+ }
+}

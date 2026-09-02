@@ -76,6 +76,50 @@ available at `/lookup.html`.
   `data/raw/gbif_country_cache.json` (gitignored) so an interrupted run
   resumes cheaply; takes roughly 10–20 minutes for the full species list.
 
+## The marine mammal pages
+
+A parallel set of pages covering marine mammals, built from the same MDD
+release by the same mechanisms. They are separate files throughout — nothing
+here changes what the bat pages show.
+
+- **`marine-mammal-tree.html`** / **`marine-mammal-lookup.html`** — the tree
+  page and the lookup tool, mirroring `chiroptera-tree.html` and
+  `index.html`. Deployed as `/marine.html` and `/marine-lookup.html`.
+- **`data/marine_mammal_taxonomy.json`** — 144 species, 18 families, 67
+  genera, built by **`data/build_marine_mammal_taxonomy.py`**. Unlike
+  Chiroptera, marine mammals are not a clade: the file is the union of
+  Cetacea (102 spp., which MDD v2.5 nests inside Artiodactyla), Sirenia
+  (5 spp.) and the pinniped families Otariidae/Phocidae/Odobenidae within
+  Carnivora (37 spp.). Every species record carries a `lineage` field, and
+  the three lineages are counted separately in `_meta`. The pages lead with
+  that polyphyly rather than papering over it.
+- **`data/marine_mammal_danish_names.json`** / **`..._gbif_country_supplement.json`**
+  — same GBIF sources and same client-side merge as the bat pages, built by
+  the matching `build_marine_mammal_*.py` scripts.
+- **`data/marine_world_map.json`** — the range map. Built by the *same*
+  `data/build_world_map.py` with `--marine`, which differs in one respect:
+  it draws Antarctica instead of cropping it at 57°S. 28 of these species
+  range there — blue, fin and minke whales, the Weddell, crabeater, leopard
+  and Ross seals, the southern elephant seal — so the bat map's crop would
+  silently swallow a quarter of the ranges. The map is correspondingly
+  taller (viewBox height 405.8 vs 344.9); the page reads the height from the
+  data, so nothing hardcodes it.
+
+There is deliberately **no** marine equivalent of
+`echolocation_reference.json`. Odontocetes do echolocate, and the essay says
+so, but no comparable per-family reference was compiled — inventing call
+parameters to fill the same card would have produced numbers that look
+citable and are not.
+
+Building the marine data (the bat commands are unchanged):
+
+```
+uv run python data/build_marine_mammal_taxonomy.py
+uv run data/build_world_map.py --marine
+uv run python data/build_marine_mammal_danish_names.py
+uv run python data/build_marine_mammal_country_distribution.py
+```
+
 ## Updating the taxonomy data
 
 MDD publishes new releases periodically. To pick up a new one:
