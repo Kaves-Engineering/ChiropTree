@@ -169,10 +169,6 @@ h2{
   overflow-y:visible;
   -webkit-overflow-scrolling:touch;
 }
-.scroll-hint{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);margin:14px 0 0;
-}
 svg#tree{display:block;width:100%;height:auto}
 .branch{stroke:var(--line-dim);stroke-width:1.2;fill:none;stroke-linecap:square}
 .tip-hit{fill:transparent;cursor:pointer}
@@ -199,8 +195,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .card .lu-d-sci{font-size:19px;padding-right:0}
 .card .lu-d-common{font-size:12.5px;margin:3px 0 0}
 .card .lu-d-authority{font-size:10px;margin-top:2px}
-.card .lu-chain{margin:9px 0 0;gap:4px}
-.card .lu-chain span{padding:3px 7px;font-size:9.5px}
+.card .lu-chain{margin:9px 0 0;font-size:10px}
 .card .lu-range-note{margin:9px 0 0;font-size:12px}
 .card .lu-links{margin-top:10px;gap:6px 10px}
 .card .lu-links a{padding:5px 10px;font-size:9.5px}
@@ -488,9 +483,7 @@ footer b{color:var(--bone);font-weight:500}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
-.lu-chain{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em}
-.lu-chain span{padding:4px 9px;background:var(--prussian);border:1px solid var(--line-dim);border-radius:2px;color:var(--muted)}
-.lu-chain span b{color:var(--line);font-weight:500}
+.lu-chain{margin:14px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--muted)}
 .lu-grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-grid2{grid-template-columns:1fr} }
 .lu-card{background:var(--prussian);border:1px solid rgba(150,190,120,.25);border-radius:4px;padding:16px 18px}
@@ -558,7 +551,6 @@ footer b{color:var(--bone);font-weight:500}
 .cm-d.sel{fill:var(--ochre)}
 .cm-d.range.sel{fill:var(--ochre)}
 .cm-ring{fill:none;stroke:var(--ochre);stroke-width:1.4;pointer-events:none}
-.cm-hint{margin:8px 0 0;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .cm-mode{margin:16px 0 0}
 .cm-panel-head{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--muted);margin:14px 0 10px;line-height:1.55}
 .cm-panel-head b{color:var(--ochre);font-weight:500;font-family:var(--display);font-style:italic;font-size:15px;letter-spacing:0}
@@ -587,19 +579,8 @@ details.fold > summary:focus-visible{outline:2px solid var(--ochre);outline-offs
 .fold-lede{max-width:62ch;color:var(--muted);margin:12px 0 0;font-size:14.5px}
 .fold-body{padding-top:10px}
 
-.lede-fold{margin-top:6px}
-.lede-fold > summary{
-  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--line-dim);padding:3px 0;transition:color .15s;
-}
-.lede-fold > summary::-webkit-details-marker{display:none}
-.lede-fold > summary::before{content:"▸";display:inline-block;color:var(--line-dim);transition:transform .15s}
-.lede-fold[open] > summary::before{transform:rotate(90deg)}
-.lede-fold > summary:hover{color:var(--ochre)}
-.lede-fold > summary:hover::before{color:var(--ochre)}
-.lede-fold > summary:focus-visible{outline:2px solid var(--ochre);outline-offset:4px}
-.lede-fold .lede:first-of-type{margin-top:12px}
+.lede-block{margin-top:6px}
+.lede-block .lede:first-of-type{margin-top:0}
 
 /* ---------- expandable tree ---------- */
 .tree-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 12px}
@@ -672,27 +653,24 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
 <!-- ================= TREE ================= -->
 <section id="tree-section">
   <div class="sec-head"><span class="sec-num">I</span><h2>The tree of families</h2></div>
-  <details class="lede-fold">
-    <summary>About this section</summary>
+  <div class="lede-block">
     <p class="lede">Genetic evidence broke the old split between big fruit bats and small echolocating bats. Flying foxes turned out to be nested beside horseshoe bats, not opposite all the rest — so the two suborders below are <em>Yinpterochiroptera</em> and <em>Yangochiroptera</em>. Superfamilies group the families inside each.</p>
     <p class="lede">Click a family to open its branch: the tree carries on into subfamilies, tribes where they are used, every genus, and then the species themselves. Whatever you click — family or species — opens in the detail card below.</p>
-  </details>
+  </div>
 
   <div class="treebox"><svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg></div>
   <div class="tree-tools">
     <button type="button" id="t-collapse">Collapse all</button>
     <button type="button" id="t-expandsub">Open every family</button>
   </div>
-  <p class="scroll-hint">The tree grows taller as you open families — scroll the page down to keep following it</p>
 </section>
 
 <!-- ================= COUNTRY MAP ================= -->
 <section id="country-map">
   <div class="sec-head"><span class="sec-num">II</span><h2>Browse by country</h2></div>
-  <details class="lede-fold">
-    <summary>About this section</summary>
+  <div class="lede-block">
     <p class="lede">Click a country to list every bat species confirmed to live there, and mark it in the tree above — small island territories the outline is too coarse to show are plotted as dots. Pick a species from the tree or the list below and this same map switches to showing everywhere else it lives, in a second shade of yellow.</p>
-  </details>
+  </div>
 
   <div class="cm-map-wrap">
     <div class="cm-map" id="cm-map">
@@ -704,7 +682,6 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
         <button type="button" id="cm-zoom-reset" aria-label="Reset zoom">&#9678;</button>
       </div>
     </div>
-    <p class="cm-hint">Click a country or island dot to mark it in the tree above and zoom to it. Scroll to zoom, drag to pan.</p>
     <div class="switch cm-mode" role="group" aria-label="How a country selection marks the tree">
       <button type="button" id="cm-mode-dim" aria-pressed="true">Gray out others</button>
       <button type="button" id="cm-mode-filter" aria-pressed="false">Show only this country</button>
@@ -774,10 +751,9 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
 
 <section id="sources">
   <div class="sec-head"><span class="sec-num">V</span><h2>Where to look next</h2></div>
-  <details class="lede-fold">
-    <summary>About this section</summary>
+  <div class="lede-block">
     <p class="lede">Each species above carries three links. They point at <em>search results</em>, not at individual pages — I can’t verify 623 separate URLs, and a search box always resolves whereas a guessed page address often doesn’t. Expect good coverage for European, North American and Australian bats and thin coverage for tropical ones.</p>
-  </details>
+  </div>
 
   <div class="sources">
     <div class="src"><a href="https://www.chirovox.org" target="_blank" rel="noopener noreferrer">ChiroVox</a>
@@ -965,9 +941,8 @@ const TREE = {name:"Chiroptera", rank:"Order", children:[
     ]}
   ]},
   {name:"Yangochiroptera", rank:"Suborder", children:[
-    {name:"Emballonuroidea", rank:"Superfamily", children:[ leaf("Nycteridae"), leaf("Emballonuridae") ]},
+    {name:"Emballonuroidea", rank:"Superfamily", children:[ leaf("Nycteridae"), leaf("Emballonuridae"), leaf("Myzopodidae") ]},
     {name:"Noctilionoidea", rank:"Superfamily", children:[
-      leaf("Myzopodidae"),
       clade( leaf("Mystacinidae"),
         clade( leaf("Thyropteridae"),
           clade( leaf("Furipteridae"),
@@ -1437,27 +1412,33 @@ const ATLAS = {
 Pteropodidae:[
   S("Eidolinae","Africa’s great migrants. Up to ten million gather in one Zambian swamp forest each November — the largest mammal migration known.",
     G([["Eidolon",2]])),
-  S("Rousettinae","African and Asian fruit and nectar bats, including the only pteropodids that echolocate.",[
-    T("Rousettini",[["Rousettus",7],["Pilonycteris",1]]),
+  S("Epomophorinae","African and Asian fruit and nectar bats, including the only pteropodids that echolocate.",[
+    T("Rousettini",[["Rousettus",7]]),
     T("Stenonycterini",[["Stenonycteris",1]]),
     T("Eonycterini",[["Eonycteris",3]]),
     T("Myonycterini",[["Myonycteris",5],["Megaloglossus",2]]),
     T("Plerotini",[["Plerotes",1]]),
     T("Scotonycterini",[["Scotonycteris",3],["Casinycteris",3]]),
-    T("Epomophorini",[["Epomophorus",11],["Epomops",2],["Hypsignathus",1],["Nanonycteris",1]])
+    T("Epomophorini",[["Epomophorus",11],["Epomops",2],["Hypsignathus",1],["Nanonycteris",1]]),
+    T(null,[["Pilonycteris",1]])
   ]),
-  S("Harpyionycterinae","Bare-backed fruit bats, whose wings meet along the spine so the back looks naked.",
-    G([["Dobsonia",14],["Harpyionycteris",2],["Aproteles",1],["Boneia",1]])),
-  S("Cynopterinae","Small short-faced fruit bats of South and South-East Asia. Several bite leaf ribs until the leaf folds into a tent to roost under.",
-    G([["Cynopterus",7],["Megaerops",4],["Ptenochirus",3],["Dyacopterus",3],["Thoopterus",2],["Balionycteris",2],["Aethalops",2],["Penthetor",1],["Chironax",2],["Sphaerias",1],["Alionycteris",1],["Haplonycteris",1],["Otopteropus",1],["Latidens",1]])),
-  S("Macroglossinae","Blossom bats — tiny, with a long brush-tipped tongue for nectar.",
+  S("Harpyionycterinae","Bare-backed fruit bats, whose wings meet along the spine so the back looks naked.",[
+    T("Dobsoniini",[["Dobsonia",14],["Aproteles",1]]),
+    T("Harpyionycterini",[["Harpyionycteris",2],["Boneia",1]])
+  ]),
+  S("Cynopterinae","Small short-faced fruit bats of South and South-East Asia. Several bite leaf ribs until the leaf folds into a tent to roost under.",[
+    T("Cynopterini",[["Cynopterus",7],["Megaerops",4],["Ptenochirus",3]]),
+    T("Balionycterini",[["Dyacopterus",3],["Thoopterus",2],["Balionycteris",2],["Aethalops",2],["Penthetor",1],["Chironax",2],["Sphaerias",1],["Alionycteris",1],["Haplonycteris",1],["Otopteropus",1],["Latidens",1]])
+  ]),
+  S("Macroglossusinae","Blossom bats — tiny, with a long brush-tipped tongue for nectar.",
     G([["Syconycteris",3],["Macroglossus",2]])),
-  S("Notopterinae","Long-tailed fruit bats of Fiji, Vanuatu and New Caledonia. The only pteropodids with a real tail.",
+  S("Notopterisinae","Long-tailed fruit bats of Fiji, Vanuatu and New Caledonia. The only pteropodids with a real tail.",
     G([["Notopteris",2]])),
   S("Nyctimeninae","Tube-nosed fruit bats: nostrils on separate stalks, wings spotted yellow-green like lichen.",
     G([["Nyctimene",16],["Paranyctimene",2]])),
   S("Pteropodinae","The flying foxes and their island relatives — the largest bats that have ever lived.",[
-    T("Pteropodini",[["Pteropus",65],["Acerodon",5],["Pteralopex",5],["Styloctenium",2],["Desmalopex",2],["Mirimiri",1],["Neopteryx",1]]),
+    T("Pteropodini",[["Pteropus",65],["Acerodon",5],["Styloctenium",2],["Neopteryx",1]]),
+    T("Pteralopini",[["Pteralopex",5],["Desmalopex",2],["Mirimiri",1]]),
     T("Melonycterini",[["Melonycteris",1],["Nesonycteris",4]])
   ])
 ],
@@ -1501,14 +1482,16 @@ Phyllostomidae:[
     G([["Macrotus",2]])),
   S("Micronycterinae","Little big-eared bats that pluck insects off leaves rather than catching them in the air.",
     G([["Micronycteris",13],["Lampronycteris",1]])),
-  S("Desmodontinae","The vampires. Three species, each specialising on different prey: Desmodus on mammals, Diaemus and Diphylla mostly on birds.",
-    G([["Desmodus",1],["Diaemus",1],["Diphylla",1]])),
+  S("Desmodontinae","The vampires. Three species, each specialising on different prey: Desmodus on mammals, Diaemus and Diphylla mostly on birds.",[
+    T("Desmodontini",[["Desmodus",1],["Diaemus",1]]),
+    T("Diphyllini",[["Diphylla",1]])
+  ]),
   S("Lonchorhininae","Sword-nosed bats, with a nose-leaf as long as the ears.",
     G([["Lonchorhina",6]])),
   S("Phyllostominae","The big-bodied hunters — the family’s carnivores and omnivores.",[
-    T("Phyllostomini",[["Lophostoma",8],["Phyllostomus",4],["Gardnerycteris",3],["Tonatia",3],["Phylloderma",2],["Mimon",2]]),
-    T("Vampyrini",[["Vampyrum",1],["Chrotopterus",1],["Trachops",3]]),
-    T("Macrophyllini",[["Macrophyllum",1]])
+    T("Phyllostomini",[["Lophostoma",8],["Phyllostomus",4],["Gardnerycteris",3],["Tonatia",3],["Phylloderma",2]]),
+    T("Vampyrini",[["Vampyrum",1],["Chrotopterus",1],["Mimon",2]]),
+    T("Macrophyllini",[["Macrophyllum",1],["Trachops",3]])
   ]),
   S("Glossophaginae","Long-tongued nectar feeders. Their tongues carry hair-like papillae that erect with blood pressure, mopping up nectar.",[
     T("Glossophagini",[["Glossophaga",9],["Leptonycteris",3],["Monophyllus",2]]),
@@ -1516,8 +1499,8 @@ Phyllostomidae:[
     T("Brachyphyllini",[["Phyllonycteris",2],["Erophylla",2],["Brachyphylla",2]])
   ]),
   S("Lonchophyllinae","A second, entirely separate invention of nectar feeding, with a grooved tongue that pumps nectar rather than lapping it.",[
-    T("Lonchophyllini",[["Lonchophylla",13],["Hsunycteris",4],["Xeronycteris",1],["Platalina",1]]),
-    T("Lionycterini",[["Lionycteris",1]])
+    T("Lonchophyllini",[["Lonchophylla",13],["Xeronycteris",1],["Platalina",1],["Lionycteris",1]]),
+    T("Hsunycterini",[["Hsunycteris",4]])
   ]),
   S("Glyphonycterinae","Small understorey insect-eaters, separated from Phyllostominae only in 2016.",
     G([["Glyphonycteris",3],["Trinycteris",1],["Neonycteris",1]])),
@@ -1558,15 +1541,14 @@ Vespertilionidae:[
   S("Murininae","Tube-nosed bats, many of them furry orange and gold, most of them described in the last thirty years.",
     G([["Murina",53],["Harpiola",2],["Harpiocephalus",1]])),
   S("Vespertilioninae","The bulk of the family, and the most heavily reshuffled group in bat taxonomy — several tribes below were rearranged in the last decade.",[
-    T("Pipistrellini",[["Alionoctula",19],["Pipistrellus",16],["Nyctalus",8],["Glischropus",5],["Perimyotis",1],["Parastrellus",1],["Scotozous",1]]),
-    T("Vespertilionini",[["Hypsugo",16],["Glauconycteris",15],["Laephotis",9],["Vespadelus",9],["Pseudoromicia",9],["Chalinolobus",8],["Tylonycteris",6],["Scotoecus",5],["Neoromicia",6],["Falsistrellus",2],["Scotorepens",4],["Afronycteris",3],["Afropipistrellus",7],["Nycticeinops",1],["Mimetillus",1],["Vespertilio",2],["Cassistrellus",2],["Philetor",1],["Scoteanax",1],["Scotomanes",1],["Lasionycteris",1],["Vansonia",1],["Mirostrellus",1]]),
-    T("Eptesicini",[["Cnephaeus",15],["Histiotus",11],["Neoeptesicus",10],["Arielulus",6],["Hesperoptenus",5],["Eptesicus",2],["Ia",1],["Rhyneptesicus",1]]),
+    T("Pipistrellini",[["Alionoctula",19],["Pipistrellus",16],["Nyctalus",8],["Glischropus",5],["Scotoecus",5],["Scotozous",1],["Vansonia",1]]),
+    T("Vespertilionini",[["Hypsugo",16],["Nyctophilus",17],["Laephotis",9],["Vespadelus",9],["Pseudoromicia",9],["Chalinolobus",8],["Tylonycteris",6],["Neoromicia",6],["Afropipistrellus",7],["Falsistrellus",2],["Afronycteris",3],["Nycticeinops",1],["Mimetillus",1],["Vespertilio",2],["Cassistrellus",2],["Philetor",1],["Pharotis",1],["Mirostrellus",1]]),
+    T("Nycticeiini",[["Cnephaeus",15],["Glauconycteris",15],["Histiotus",11],["Neoeptesicus",10],["Scotorepens",4],["Arielulus",6],["Hesperoptenus",5],["Eptesicus",2],["Nycticeius",3],["Scoteanax",1],["Scotomanes",1],["Lasionycteris",1],["Ia",1]]),
     T("Scotophilini",[["Scotophilus",20]]),
     T("Plecotini",[["Plecotus",18],["Barbastella",6],["Corynorhinus",4],["Otonycteris",2],["Euderma",1],["Idionycteris",1]]),
-    T("Nycticeiini",[["Rhogeessa",12],["Nycticeius",3],["Baeodon",2]]),
     T("Lasiurini",[["Lasiurus",20]]),
-    T("Nyctophilini",[["Nyctophilus",17],["Pharotis",1]]),
-    T("Antrozoini",[["Antrozous",2],["Bauerus",1]])
+    T("Antrozoini",[["Rhogeessa",12],["Antrozous",2],["Baeodon",2],["Bauerus",1]]),
+    T(null,[["Perimyotis",1],["Parastrellus",1],["Rhyneptesicus",1]])
   ])
 ]
 };
@@ -2910,7 +2892,7 @@ function luDetailHTML(s, compact){
 
   const chain = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k=>s[k] && s[k]!=='NA')
-    .map(k=>'<span>'+k+': <b>'+luEsc(s[k])+'</b></span>').join('');
+    .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
   const echoCard = merged ? (
     '<div class="lu-card"><h4>Echolocation (family/genus reference)</h4><dl>'+
@@ -2931,7 +2913,7 @@ function luDetailHTML(s, compact){
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
     (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+' <span class="lu-dk-src">('+luEsc(dk.source)+')</span></p>' : '')+
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
-    '<div class="lu-chain">'+chain+'</div>'+
+    '<p class="lu-chain">'+chain+'</p>'+
     (s.countryDistribution ? '<p class="lu-range-note">Its range is highlighted on the map above, in a second shade of yellow.</p>' : '')+
     '<div class="lu-links">'+links+'</div>'+
     '<div class="lu-grid2">'+
