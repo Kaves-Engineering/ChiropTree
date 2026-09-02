@@ -1,25 +1,16 @@
 # Tree of Bat Life
 
-A lightweight, static lookup tool for bat (Chiroptera) taxonomy, phylogenetic
-placement, and echolocation call characteristics — built for lab use, no
-backend required.
+A lightweight, static tree and range map for bat (Chiroptera) taxonomy,
+phylogenetic placement, and echolocation call characteristics. Built for lab
+use, with no backend required.
 
-Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/ — this
-serves `chiroptera-tree.html` as the homepage, with the standalone lookup
-available at `/lookup.html`.
+Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/
 
 ## What's here
 
-- **`chiroptera-tree.html`** — the main page: an illustrated essay on bat
-  taxonomy and evolution, a genus-by-genus browser, a species lookup in the
-  search bar and drawer, and a clickable world map that lists every species
-  confirmed present in whichever country you click. Deployed as the site's
-  homepage.
-- **`index.html`** — a standalone version of just the lookup tool. Search/
-  filter across all 1,514 currently recognized bat species; each entry shows
-  its taxonomic chain (order → suborder → family → genus), IUCN status,
-  distribution, and echolocation call parameters where known. Deployed at
-  `/lookup.html` on the live site.
+- **`chiroptera-tree.html`** — the main page: an expandable bat taxonomy tree,
+  species search with licensed iNaturalist photos, and a clickable country
+  range map. Deployed as the site's homepage.
 - **`data/chiroptera_taxonomy.json`** — generated taxonomy data, Chiroptera
   subset of the [Mammal Diversity Database](https://www.mammaldiversity.org)
   (MDD) v2.5 release ([doi:10.5281/zenodo.21654811](https://doi.org/10.5281/zenodo.21654811)).
@@ -76,11 +67,10 @@ MDD publishes new releases periodically. To pick up a new one:
 
 ## Running locally
 
-`build.sh` bundles the JSON into the pages, so the built site is two
-self-contained HTML files and needs no server:
+`build.sh` bundles the JSON into one self-contained HTML file:
 
 ```
-sh build.sh          # writes public/index.html and public/lookup.html
+sh build.sh          # writes public/index.html
 ```
 
 On Windows, open the bundled tree page directly without starting a local
@@ -97,9 +87,9 @@ restarts, install the current-user Windows startup shortcut:
 powershell -ExecutionPolicy Bypass -File .\install-startup-shortcut.ps1
 ```
 
-The unbuilt `chiroptera-tree.html` / `index.html` in the repo root still load
-their data via `fetch()`, so those need to be served over HTTP — opening them
-as a `file://` URL fails silently on most browsers:
+The unbuilt `chiroptera-tree.html` in the repo root loads its data via
+`fetch()`, so it needs to be served over HTTP. Opening it as a `file://` URL
+fails silently on most browsers:
 
 ```
 uv run python -m http.server 8000
