@@ -83,6 +83,20 @@ self-contained HTML files and needs no server:
 sh build.sh          # writes public/index.html and public/lookup.html
 ```
 
+On Windows, open the bundled tree page directly without starting a local
+server:
+
+```
+powershell -ExecutionPolicy Bypass -File .\open-tree.ps1
+```
+
+To keep the `http://localhost:8000/chiroptera-tree.html` URL available after
+restarts, install the current-user Windows startup shortcut:
+
+```
+powershell -ExecutionPolicy Bypass -File .\install-startup-shortcut.ps1
+```
+
 The unbuilt `chiroptera-tree.html` / `index.html` in the repo root still load
 their data via `fetch()`, so those need to be served over HTTP — opening them
 as a `file://` URL fails silently on most browsers:

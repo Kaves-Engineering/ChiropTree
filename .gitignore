@@ -13,3 +13,8 @@ wheels/
 data/raw/
 public/
 
+# Local Claude Code tooling (session-local, not project content)
+.claude/
+.agents/
+skills-lock.json
+
