@@ -9,6 +9,7 @@ import json
 import time
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from PIL import Image
@@ -30,7 +31,7 @@ def photo_for(name: str) -> dict | None:
     photo = taxon and taxon.get("default_photo")
     if not photo or (photo.get("license_code") or "").lower() not in ALLOWED:
         return None
-    return {"photo": photo, "sourceUrl": f"https://www.inaturalist.org/taxa/{taxon['id']}"}
+    return {"photo": photo, "sourceUrl": f"https://www.inaturalist.org/taxa/{taxon['id']}", "providerAssetId": str(photo.get("id", ""))}
 
 
 def save_image(mdd_id: str, photo: dict) -> tuple[str, int, int]:
@@ -45,33 +46,43 @@ def save_image(mdd_id: str, photo: dict) -> tuple[str, int, int]:
     return hashlib.sha256(source).hexdigest(), hashlib.sha256(path.read_bytes()).hexdigest(), image.width, image.height
 
 
+def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[str, dict | None]:
+    if existing["status"] == "available" and not refresh:
+        return mdd_id, None
+    choice = photo_for(record["sciName"].replace("_", " "))
+    if not choice:
+        return mdd_id, None
+    photo = choice["photo"]
+    if refresh and existing.get("providerAssetId") == choice["providerAssetId"] and existing.get("license") == photo["license_code"].upper():
+        return mdd_id, None
+    source_hash, output_hash, width, height = save_image(mdd_id, photo)
+    return mdd_id, {
+        "status": "available", "path": f"images/{mdd_id}.webp", "sourceUrl": choice["sourceUrl"],
+        "providerAssetId": choice["providerAssetId"], "attribution": photo.get("attribution") or "iNaturalist contributor",
+        "license": photo["license_code"].upper(), "alt": record["sciName"].replace("_", " "),
+        "sourceHash": source_hash, "outputHash": output_hash, "width": width, "height": height,
+    }
+
+
 def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     taxa = {}
     for filename in ("chiroptera_taxonomy.json", "marine_mammal_taxonomy.json"):
         for record in json.loads((HERE / filename).read_text(encoding="utf-8"))["species"]:
             taxa[record["id"]] = record
-    for mdd_id, record in taxa.items():
-        if manifest["assets"][mdd_id]["status"] == "available":
-            continue
-        try:
-            choice = photo_for(record["sciName"].replace("_", " "))
-            if not choice:
-                continue
-            photo = choice["photo"]
-            source_hash, output_hash, width, height = save_image(mdd_id, photo)
-            manifest["assets"][mdd_id] = {
-                "status": "available", "path": f"images/{mdd_id}.webp", "sourceUrl": choice["sourceUrl"],
-                "attribution": photo.get("attribution") or "iNaturalist contributor",
-                "license": photo["license_code"].upper(), "alt": record["sciName"].replace("_", " "),
-                "sourceHash": source_hash, "outputHash": output_hash, "width": width, "height": height,
-            }
-            print(f"{mdd_id}: saved")
-        except Exception as error:  # noqa: BLE001
-            print(f"{mdd_id}: {error}")
-        finally:
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        futures = {pool.submit(sync_one, mdd_id, record, manifest["assets"][mdd_id], True): mdd_id for mdd_id, record in taxa.items()}
+        for future in as_completed(futures):
+            mdd_id = futures[future]
+            try:
+                _, asset = future.result()
+                if asset:
+                    manifest["assets"][mdd_id] = asset
+                    print(f"{mdd_id}: saved")
+            except Exception as error:  # noqa: BLE001
+                print(f"{mdd_id}: {error}")
             MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-            time.sleep(0.15)
+            time.sleep(0.05)
 
 
 if __name__ == "__main__":
