@@ -13,7 +13,7 @@ cp data/*.json public/data/
 cp manifest.webmanifest public/
 if [ -d data/images ]; then cp -R data/images/. public/data/images/; fi
 
-release=$(sha256sum public/index.html public/marine.html data/media-manifest.json | sha256sum | cut -c1-16)
+release=$(sha256sum public/index.html public/marine.html public/data/*.json | sha256sum | cut -c1-16)
 sed "s/__RELEASE__/$release/" service-worker.js > public/service-worker.js
 
 for f in public/index.html public/marine.html; do

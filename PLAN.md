@@ -87,8 +87,11 @@ silently disappears after a successful prior match without being reported.
    URL, provider asset ID, author, licence, attribution text, retrieval time,
    dimensions, and source and output hashes in a JSON manifest.
 3. Add a local placeholder for unavailable images. Remove runtime iNaturalist
-   calls from the published page, while retaining source links and attribution
-   in the card.
+   calls as a required dependency, while retaining source links and attribution
+   in the card. When no local thumbnail exists and the browser is online,
+   optionally fetch an exact-taxon iNaturalist fallback. Accept CC0, CC-BY,
+   and CC-BY-SA only. Show its attribution immediately and cache both image and
+   metadata for later offline use. Card content must not wait for this request.
 4. Retain a valid prior thumbnail if refresh fails. A new release may replace
    it only after validation. Test missing images, invalid licences, corrupt
    files, and interrupted refreshes.
@@ -109,7 +112,8 @@ published thumbnail has complete attribution.
    switch the active release. On failure, retain the prior working release.
    Show installed release version and offline-pack state.
 4. Test first install, offline restart, incomplete image-pack install, cache
-   eviction, and update failure with the static server used in CI.
+   eviction, first and repeated live-image fallback, rejected licences, and
+   update failure with the static server used in CI.
 
 Done when taxonomy, search, map, names, calls, and installed images work with
 the network disabled, and a failed update leaves the prior release usable.
