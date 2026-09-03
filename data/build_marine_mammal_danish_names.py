@@ -16,6 +16,7 @@ import time
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import UTC, datetime
 from pathlib import Path
 
 TAXONOMY = Path(__file__).parent / "marine_mammal_taxonomy.json"
@@ -70,6 +71,7 @@ def danish_name_for(sci_name_space, fallback_name_space=None):
 def main():
     tax = json.loads(TAXONOMY.read_text(encoding="utf-8"))
     species = tax["species"]
+    previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
     results = {}
     done = 0
     total = len(species)
@@ -89,11 +91,17 @@ def main():
             except Exception:  # noqa: BLE001
                 res = None
             if res:
-                results[species["id"]] = {
+                record = {
                     **res,
                     "mddId": species["id"],
                     "matchMethod": "accepted-name-or-msw3-fallback",
                 }
+                old = previous.get(species["id"], {})
+                unchanged = all(old.get(key) == value for key, value in record.items())
+                record["retrievedAt"] = old.get("retrievedAt") if unchanged and old.get("retrievedAt") else datetime.now(UTC).isoformat()
+                results[species["id"]] = record
+            elif species["id"] in previous:
+                results[species["id"]] = {**previous[species["id"]], "stale": True}
             if done % 50 == 0:
                 print(f"{done}/{total} checked, {len(results)} Danish names found so far")
 

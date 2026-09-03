@@ -10,6 +10,7 @@ import time
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import UTC, datetime
 from pathlib import Path
 
 from PIL import Image
@@ -29,21 +30,27 @@ def photo_for(name: str) -> dict | None:
     data = get_json("https://api.inaturalist.org/v1/taxa?q=" + urllib.parse.quote(name) + "&rank=species&per_page=10")
     taxon = next((item for item in data.get("results", []) if item.get("name", "").lower() == name.lower()), None)
     photo = taxon and taxon.get("default_photo")
-    if not photo or (photo.get("license_code") or "").lower() not in ALLOWED:
-        return None
-    return {"photo": photo, "sourceUrl": f"https://www.inaturalist.org/taxa/{taxon['id']}", "providerAssetId": str(photo.get("id", ""))}
+    if photo and (photo.get("license_code") or "").lower() in ALLOWED:
+        return {"photo": photo, "sourceUrl": f"https://www.inaturalist.org/taxa/{taxon['id']}", "providerAssetId": str(photo.get("id", ""))}
+    query = urllib.parse.urlencode({"taxon_name": name, "quality_grade": "research", "photos": "true", "order_by": "votes", "per_page": 30})
+    observations = get_json("https://api.inaturalist.org/v1/observations?" + query)
+    for observation in observations.get("results", []):
+        for candidate in observation.get("photos", []):
+            if (candidate.get("license_code") or "").lower() in ALLOWED:
+                return {"photo": candidate, "sourceUrl": f"https://www.inaturalist.org/observations/{observation['id']}", "providerAssetId": str(candidate.get("id", ""))}
+    return None
 
 
-def save_image(mdd_id: str, photo: dict) -> tuple[str, int, int]:
+def prepare_image(photo: dict) -> tuple[bytes, str, str, int, int]:
     url = photo.get("original_url") or photo["url"]
     with urllib.request.urlopen(url, timeout=60) as response:
         source = response.read()
     image = Image.open(io.BytesIO(source)).convert("RGB")
     image.thumbnail((320, 320))
-    path = HERE / "images" / f"{mdd_id}.webp"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    image.save(path, "WEBP", quality=78, method=6)
-    return hashlib.sha256(source).hexdigest(), hashlib.sha256(path.read_bytes()).hexdigest(), image.width, image.height
+    output = io.BytesIO()
+    image.save(output, "WEBP", quality=78, method=6)
+    content = output.getvalue()
+    return content, hashlib.sha256(source).hexdigest(), hashlib.sha256(content).hexdigest(), image.width, image.height
 
 
 def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[str, dict | None]:
@@ -53,14 +60,21 @@ def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[
     if not choice:
         return mdd_id, None
     photo = choice["photo"]
-    if refresh and existing.get("providerAssetId") == choice["providerAssetId"] and existing.get("license") == photo["license_code"].upper():
+    content, source_hash, output_hash, width, height = prepare_image(photo)
+    if existing.get("sourceHash") == source_hash and existing.get("license") == photo["license_code"].upper():
         return mdd_id, None
-    source_hash, output_hash, width, height = save_image(mdd_id, photo)
+    relative = f"images/{mdd_id}-{output_hash[:12]}.webp"
+    path = HERE / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(".webp.tmp")
+    temporary.write_bytes(content)
+    temporary.replace(path)
     return mdd_id, {
-        "status": "available", "path": f"images/{mdd_id}.webp", "sourceUrl": choice["sourceUrl"],
+        "status": "available", "path": relative, "sourceUrl": choice["sourceUrl"],
         "providerAssetId": choice["providerAssetId"], "attribution": photo.get("attribution") or "iNaturalist contributor",
         "license": photo["license_code"].upper(), "alt": record["sciName"].replace("_", " "),
-        "sourceHash": source_hash, "outputHash": output_hash, "width": width, "height": height,
+        "retrievedAt": datetime.now(UTC).isoformat(), "sourceHash": source_hash,
+        "outputHash": output_hash, "width": width, "height": height,
     }
 
 
@@ -81,8 +95,10 @@ def main() -> None:
                     print(f"{mdd_id}: saved")
             except Exception as error:  # noqa: BLE001
                 print(f"{mdd_id}: {error}")
-            MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
             time.sleep(0.05)
+    temporary = MANIFEST.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    temporary.replace(MANIFEST)
 
 
 if __name__ == "__main__":

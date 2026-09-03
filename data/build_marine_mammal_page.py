@@ -11,7 +11,9 @@ Every replacement is anchored on an exact string and the build exits loudly if
 one stops matching, so the two pages cannot silently drift apart. When the
 master is redesigned, this script is what fails first and tells you where.
 """
-import re, os, sys
+import os
+import re
+import sys
 
 import build_marine_mammal_data_blocks as data
 
@@ -30,7 +32,7 @@ def grab(name):
     that alternative the non-greedy match runs past it and swallows the next
     block whole.
     """
-    m = re.search(r"^const %s = .*?^\]?};$" % name, blocks, re.S | re.M)
+    m = re.search(r"^const %s = .*?^\]?};$" % name, blocks, re.DOTALL | re.MULTILINE)
     if not m:
         sys.exit("generated block not found: " + name)
     return m.group(0)
@@ -47,11 +49,13 @@ def sub(old, new, count=1):
 def swap_const(name, close="\n};"):
     """Replace a whole `const NAME = {...};` block with the generated one."""
     global html
-    i = html.find("const %s = {" % name)
+    declaration = "let" if "let %s = {" % name in html else "const"
+    i = html.find("%s %s = {" % (declaration, name))
     if i < 0:
         sys.exit("const not found in master: " + name)
     j = html.find(close, i)
-    html = html[:i] + grab(name) + html[j + len(close):]
+    block = grab(name).replace("const %s" % name, "%s %s" % (declaration, name), 1)
+    html = html[:i] + block + html[j + len(close):]
     hits.append("const " + name)
 
 # ----------------------------------------------------------------- palette
@@ -155,49 +159,14 @@ sub("]).then(([tax, calls, danish, countrySupp, danishCalls, media])=>{", "]).th
 sub("""// it misses 4 of Denmark's 17 established bat species. Additive only -- it""",
     """// it misses Svalbard entirely -- no walrus, no bowhead. Additive only -- it""")
 sub("  luState.echo = calls;", "  luState.echo = null;  // see the ECHO note above")
+sub("  luState.directCalls = danishCalls.species || {};", "  luState.directCalls = {};")
+sub("  luState.directCallReferences = danishCalls.references || {};", "  luState.directCallReferences = {};")
 
 sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';""",
     """  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';""")
 
 sub("bundled('d-worldmap', 'data/world_map.json')",
     "bundled('d-worldmap', 'data/marine_world_map.json')")
-
-sub("""<script type="application/json" id="d-taxonomy">
-INLINE data/chiroptera_taxonomy.json
-</script>
-<script type="application/json" id="d-calls">
-INLINE data/call-records.json
-</script>
-<script type="application/json" id="d-danish">
-INLINE data/danish_names.json
-</script>
-<script type="application/json" id="d-countries">
-INLINE data/gbif_country_supplement.json
-</script>
-<script type="application/json" id="d-danish-calls">
-INLINE data/danish_call_measurements.json
-</script>
-<script type="application/json" id="d-media">
-INLINE data/media-manifest.json
-</script>
-<script type="application/json" id="d-worldmap">
-INLINE data/world_map.json
-</script>""",
-    """<script type="application/json" id="d-taxonomy">
-INLINE data/marine_mammal_taxonomy.json
-</script>
-<script type="application/json" id="d-danish">
-INLINE data/marine_mammal_danish_names.json
-</script>
-<script type="application/json" id="d-countries">
-INLINE data/marine_mammal_gbif_country_supplement.json
-</script>
-<script type="application/json" id="d-media">
-INLINE data/media-manifest.json
-</script>
-<script type="application/json" id="d-worldmap">
-INLINE data/marine_world_map.json
-</script>""")
 
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
 

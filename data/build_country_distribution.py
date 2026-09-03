@@ -28,9 +28,9 @@ worker cap and retry/backoff below). Safe to re-run: results are cached in
 data/raw/gbif_country_cache.json so an interrupted run resumes cheaply.
 """
 import json
+import re
 import time
 import unicodedata
-import re
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -61,7 +61,7 @@ def fetch_json(url, retries=4):
             req = urllib.request.Request(url, headers={"User-Agent": "treeofbatlife-lookup/1.0"})
             with urllib.request.urlopen(req, timeout=20) as r:
                 return json.loads(r.read().decode("utf-8"))
-        except Exception:
+        except Exception:  # noqa: BLE001
             if attempt == retries - 1:
                 return None
             time.sleep(1.5 * (attempt + 1))
@@ -150,9 +150,10 @@ def main():
             sci = futures[fut]
             try:
                 _, counts = fut.result()
-            except Exception:
+            except Exception:  # noqa: BLE001
                 counts = None
-            cache[sci] = counts if counts is not None else {}
+            if counts is not None:
+                cache[sci] = counts
             done += 1
             if done % 50 == 0:
                 print(f"{done}/{len(todo)} fetched")
@@ -162,11 +163,14 @@ def main():
     CACHE.parent.mkdir(parents=True, exist_ok=True)
     CACHE.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
 
-    supplement = {}
+    previous = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    supplement = {s["sciName"]: previous[s["sciName"]] for s in species if s["sciName"] in previous}
     unmatched_countries = set()
     for s in species:
         sci = s["sciName"]
-        counts = cache.get(sci) or {}
+        if sci not in cache:
+            continue
+        counts = cache[sci]
         existing = {norm(n.strip().rstrip("?")) for n in (s.get("countryDistribution") or "").split("|") if n.strip()}
         added = []
         for iso2, count in counts.items():
@@ -190,6 +194,8 @@ def main():
             added.append(name)
         if added:
             supplement[sci] = sorted(added)
+        else:
+            supplement.pop(sci, None)
 
     OUT.write_text(json.dumps(supplement, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
     total_added = sum(len(v) for v in supplement.values())

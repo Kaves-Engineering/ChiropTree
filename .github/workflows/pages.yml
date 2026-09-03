@@ -23,7 +23,9 @@ jobs:
       - name: Validate release
         run: uv run data/validate_release.py
       - name: Build site
-        run: sh build.sh
+        run: |
+          sh build.sh
+          uv run data/smoke_test.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

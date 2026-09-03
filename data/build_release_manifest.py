@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -25,7 +26,7 @@ def main() -> None:
     assert source_hash == marine["_meta"]["sourceChecksum"]
     files = {name: {"sha256": digest(HERE / name), "bytes": (HERE / name).stat().st_size} for name in FILES}
     payload = {
-        "releaseId": f"mdd-v2.5-{source_hash[:12]}",
+        "releaseId": f"mdd-v{re.search(r'v([\d.]+)', bats['_meta']['source']).group(1)}-{source_hash[:12]}",
         "source": {"doi": bats["_meta"]["sourceDoi"], "sha256": source_hash},
         "counts": {"bats": bats["_meta"]["speciesCount"], "marineMammals": marine["_meta"]["speciesCount"]},
         "files": files,

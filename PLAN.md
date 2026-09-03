@@ -146,3 +146,10 @@ release changes nothing, and an approved release deploys once.
   matching files.
 - Bat and marine outputs build, load, and pass offline smoke tests.
 - The optional image pack stays within the approved size limit.
+
+## Status
+
+Implemented. Release validation, deterministic builds, SQLite import/export,
+MDD-ID joins, cited calls, local/live licensed media, atomic offline caches,
+latest-MDD proposals, change reports, GitHub Pages deployment, and bat/marine
+smoke tests are enforced in CI.

@@ -3,7 +3,10 @@
 import csv
 import hashlib
 import json
+import os
+import re
 import sqlite3
+import urllib.parse
 import urllib.request
 from collections.abc import Callable
 from pathlib import Path
@@ -11,7 +14,9 @@ from pathlib import Path
 HERE = Path(__file__).parent
 SOURCE_DOI = "10.5281/zenodo.21654811"
 SOURCE_URL = "https://zenodo.org/api/records/21654811/files/MDD_v2.5_6904species.csv/content"
+SOURCE_VERSION = "2.5"
 RAW = HERE / "raw" / "MDD_v2.5_6904species.csv"
+CONCEPT_RECORD = "4139722"
 
 FIELDS = (
     "id", "sciName", "phylosort", "mainCommonName", "otherCommonNames",
@@ -27,6 +32,17 @@ RANK_FIELDS = (
 
 
 def ensure_raw_csv() -> Path:
+    global RAW, SOURCE_DOI, SOURCE_URL, SOURCE_VERSION
+    if os.environ.get("MDD_LATEST") == "1":
+        query = urllib.parse.urlencode({"q": f"conceptrecid:{CONCEPT_RECORD}", "sort": "mostrecent", "size": 1, "all_versions": "true"})
+        request = urllib.request.Request(f"https://zenodo.org/api/records?{query}", headers={"User-Agent": "chiroptree-data/1.0"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            release = json.load(response)["hits"]["hits"][0]
+        file = next(item for item in release["files"] if re.fullmatch(r"MDD_v[\d.]+_\d+species\.csv", item["key"]))
+        SOURCE_DOI = release["doi"]
+        SOURCE_URL = file["links"]["self"]
+        SOURCE_VERSION = re.search(r"MDD_v([\d.]+)_", file["key"]).group(1)
+        RAW = HERE / "raw" / file["key"]
     if not RAW.exists():
         RAW.parent.mkdir(parents=True, exist_ok=True)
         print(f"Downloading MDD release CSV from {SOURCE_URL} ...")
@@ -144,7 +160,7 @@ def export_taxonomy(
         raise ValueError("Taxonomy selection has no species")
     payload = {
         "_meta": {
-            "source": "Mammal Diversity Database v2.5",
+            "source": f"Mammal Diversity Database v{SOURCE_VERSION}",
             "sourceDoi": release[0],
             "sourceUrl": "https://www.mammaldiversity.org",
             "sourceChecksum": release[2],

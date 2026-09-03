@@ -21,26 +21,44 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
+      - name: Check MDD release
+        id: source
+        run: uv run data/check_mdd_release.py
       - name: Rebuild derived data
+        if: ${{ steps.source.outputs.changed == 'true' }}
+        env:
+          MDD_LATEST: '1'
         run: |
           uv run data/build_taxonomy.py
           uv run data/build_marine_mammal_taxonomy.py
           uv run data/build_danish_names.py
           uv run data/build_marine_mammal_danish_names.py
+          uv run data/build_country_distribution.py
+          uv run data/build_marine_mammal_country_distribution.py
           uv run data/build_call_records.py
           uv run data/build_media_manifest.py
+      - name: Refresh media
+        if: ${{ inputs.refresh_media }}
+        run: uv run --with pillow data/sync_media.py
+      - name: Validate proposal
+        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
+        run: |
           uv run data/build_marine_mammal_page.py
           uv run data/build_release_manifest.py
           uv run data/validate_release.py
           sh build.sh
-      - name: Refresh media
-        if: ${{ inputs.refresh_media }}
-        run: uv run --with pillow data/sync_media.py
+          uv run data/smoke_test.py
+      - name: Write change report
+        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
+        run: |
+          git diff --stat > /tmp/data-update-report.txt
+          git diff --numstat -- data/*.json >> /tmp/data-update-report.txt
       - name: Create review PR
+        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
         uses: peter-evans/create-pull-request@v7
         with:
           branch: automation/data-update
           delete-branch: true
           title: Propose data update
           commit-message: Refresh derived data
-          body: Automated source check. Review taxonomy, Danish names, media, and output changes before merge.
+          body-path: /tmp/data-update-report.txt
