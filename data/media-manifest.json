@@ -1262,7 +1262,16 @@
    "status": "unavailable"
   },
   "1004777": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004777.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41389",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Balantiopteryx io",
+   "sourceHash": "23f81654fd4a3fd13166d0b4a432ae9c34eab0fe4289335ab1f29f59540c39d2",
+   "outputHash": "806a354493aedc912ab260726c8952814d77254bba1acd2d9e13ab2ad4191f35",
+   "width": 75,
+   "height": 75
   },
   "1004778": {
    "status": "unavailable"
@@ -1334,7 +1343,16 @@
    "status": "unavailable"
   },
   "1004801": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004801.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41392",
+   "attribution": "(c) \nIsland Conservation Society, some rights reserved (CC BY)",
+   "license": "CC-BY",
+   "alt": "Coleura seychellensis",
+   "sourceHash": "ea7123c9e1349db016e5215f8280e778050db08279f696ab42759e629cad2b95",
+   "outputHash": "695e9cd6b6246417c6ff1f5638a0145f569fedc910eb0af30d2c300258e6242f",
+   "width": 75,
+   "height": 75
   },
   "1004802": {
    "status": "unavailable"
@@ -1385,7 +1403,16 @@
    "status": "unavailable"
   },
   "1004818": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004818.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41384",
+   "attribution": "(c) coenobita, some rights reserved (CC BY), uploaded by coenobita",
+   "license": "CC-BY",
+   "alt": "Taphozous australis",
+   "sourceHash": "1e6fc7996e0b89830591d3c3ce058b12fe11e7477622872db00cae52cd0568a3",
+   "outputHash": "51692cd5019d951381f9d4d534dc2b19bb66b08e3b4b509f5e78c886d4dcfc78",
+   "width": 75,
+   "height": 75
   },
   "1004819": {
    "status": "unavailable"
@@ -1406,10 +1433,28 @@
    "status": "unavailable"
   },
   "1004825": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004825.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41380",
+   "attribution": "(c) Frank Vassen, some rights reserved (CC BY)",
+   "license": "CC-BY",
+   "alt": "Taphozous mauritianus",
+   "sourceHash": "0a71df1ea7ed56d6601894a109c0478ccaec227632d04d6b5d86a60b61b08a7e",
+   "outputHash": "567b4f3cde92fb5dfd15f7bf44d490b1638e717d9413a1fa0f9ab02f8791c6c6",
+   "width": 75,
+   "height": 75
   },
   "1004826": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004826.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41376",
+   "attribution": "(c) Aditya Joshi, some rights reserved (CC BY-SA)",
+   "license": "CC-BY-SA",
+   "alt": "Taphozous melanopogon",
+   "sourceHash": "28b8e90b8eab2309c8375dd9a71c3628a53edfe99941c1fcd64deb71bafff12d",
+   "outputHash": "371009f96f24f1a0bd5b1bb8c4c86dfb245e2faeb2d7db353c5f48f694e8d7b3",
+   "width": 75,
+   "height": 75
   },
   "1004827": {
    "status": "unavailable"
@@ -1463,7 +1508,16 @@
    "status": "unavailable"
   },
   "1004845": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004845.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41192",
+   "attribution": "(c) Wynand Uys, some rights reserved (CC BY), uploaded by Wynand Uys",
+   "license": "CC-BY",
+   "alt": "Nycteris thebaica",
+   "sourceHash": "fa077998f008930183363aaf39cfc80bf6eb719cf9b8bfc61e195444913d97f7",
+   "outputHash": "53c0bc2c5aeda7ccd2e6b56f263d061a7008df037bf31abc613f40e89b8a529d",
+   "width": 75,
+   "height": 75
   },
   "1004846": {
    "status": "unavailable"
@@ -1490,7 +1544,16 @@
    "status": "unavailable"
   },
   "1004854": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004854.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1076872",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Pteronotus fulvus",
+   "sourceHash": "32b7534f98e3d3f2021d83ed1f82161e54094850f1f24b29507a0853d256a8d2",
+   "outputHash": "bc8ace121ecb04c4a54723659537167e27df36d36163256a76ad2da3d9fb4fbf",
+   "width": 75,
+   "height": 75
   },
   "1004855": {
    "status": "unavailable"
@@ -1505,7 +1568,16 @@
    "status": "unavailable"
   },
   "1004859": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004859.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1453920",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY",
+   "alt": "Pteronotus mexicanus",
+   "sourceHash": "1f3aa1f74322e17a2f2ce264491a2c240b2a28b17efd7cc299f4ba26a433a208",
+   "outputHash": "96195a506cefddc82b23bcfe0c26ef66529203307c7cd8cb214f3225c8fe1b4f",
+   "width": 75,
+   "height": 75
   },
   "1004860": {
    "status": "unavailable"
@@ -1532,7 +1604,16 @@
    "status": "unavailable"
   },
   "1004868": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004868.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41214",
+   "attribution": "(c) Auckland Museum, some rights reserved (CC BY)",
+   "license": "CC-BY",
+   "alt": "Mystacina robusta",
+   "sourceHash": "01f8522c70d626df44f30bfde4abf6b0fdbf80359c9cedf38b459518fdfa74ce",
+   "outputHash": "7debc9804548626250b7f0bfb3620e768312d04e0276f1c08987a3955aaf57eb",
+   "width": 75,
+   "height": 75
   },
   "1004869": {
    "status": "unavailable"
@@ -1568,7 +1649,16 @@
    "status": "unavailable"
   },
   "1004880": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004880.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41168",
+   "attribution": "(c) Tomás Carranza Perales, some rights reserved (CC BY), uploaded by Tomás Carranza Perales",
+   "license": "CC-BY",
+   "alt": "Desmodus rotundus",
+   "sourceHash": "dd9ed304540ed3d4afb1640e83186ad8e8692b2d93bfaead954239125a76e67f",
+   "outputHash": "7d35e897f311eb04dc9aa000d177dd46cfc075699047b8878327d418b87825ba",
+   "width": 75,
+   "height": 75
   },
   "1004881": {
    "status": "unavailable"
@@ -1622,7 +1712,16 @@
    "status": "unavailable"
   },
   "1004898": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004898.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1370844",
+   "attribution": "(c) Navarro-Zarco Luis Armando LANZ, some rights reserved (CC BY), uploaded by Navarro-Zarco Luis Armando LANZ",
+   "license": "CC-BY",
+   "alt": "Anoura peruana",
+   "sourceHash": "e7a955836d29acf909b201c57fd92039d27996f357309cf2a5f30dea4a3d0706",
+   "outputHash": "47482cde9cc0b1a5c6fc50aca2cf855954f7fef158dbe42112fcd3af8e09dd93",
+   "width": 75,
+   "height": 75
   },
   "1004899": {
    "status": "unavailable"
@@ -1664,7 +1763,16 @@
    "status": "unavailable"
   },
   "1004912": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004912.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41091",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Glossophaga morenoi",
+   "sourceHash": "d89623da3216ced12e2d148386ee90be2381a8c6339ff6d852f1a2ea7f80c1a2",
+   "outputHash": "3498a9aa6be5a17290ada3ec70473c6bbeaf03c77d57b9d9c66ec7c1b1edb4d5",
+   "width": 75,
+   "height": 75
   },
   "1004913": {
    "status": "unavailable"
@@ -1739,7 +1847,16 @@
    "status": "unavailable"
   },
   "1004937": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004937.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41099",
+   "attribution": "(c) Ricardo Moratelli, Daniela Dias, some rights reserved (CC BY)",
+   "license": "CC-BY",
+   "alt": "Lonchophylla mordax",
+   "sourceHash": "d175d057c361e84a18a3ae2756ddd71c6ef1bdeb79ffe96fea4bd351a36a6be2",
+   "outputHash": "0d691530577868650cafee1e1be9a6205d449f6f32551d6dbbc3c114053fd9b9",
+   "width": 75,
+   "height": 75
   },
   "1004938": {
    "status": "unavailable"
@@ -1988,7 +2105,16 @@
    "status": "unavailable"
   },
   "1005022": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005022.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41015",
+   "attribution": "no rights reserved, uploaded by Carlos Henrique Russi",
+   "license": "CC0",
+   "alt": "Chiroderma doriae",
+   "sourceHash": "3418ef84e12e21ed9a994656391c00dcb2b456c2db11a18466664cc11e9ed0f0",
+   "outputHash": "13d0aecab6ba2a6b8056e9ef245522625d0e7643e9e20388eb041e12bd69bd27",
+   "width": 75,
+   "height": 75
   },
   "1005023": {
    "status": "unavailable"
@@ -2252,7 +2378,16 @@
    "status": "unavailable"
   },
   "1005112": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005112.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40595",
+   "attribution": "(c) Takaaki Hattori, some rights reserved (CC BY), uploaded by Takaaki Hattori",
+   "license": "CC-BY",
+   "alt": "Miniopterus fuscus",
+   "sourceHash": "2c01d1cd982cf8f5c7d51b81a05d66be0cabfffde2e31bd07abbd906459417e5",
+   "outputHash": "6eb117fb70c5b983e7580cb2a0c4ecc0aa2589572f16e9ca5855ac0bb1953835",
+   "width": 75,
+   "height": 75
   },
   "1005113": {
    "status": "unavailable"
@@ -2618,7 +2753,16 @@
    "status": "unavailable"
   },
   "1005234": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005234.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41313",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Nyctinomops aurispinosus",
+   "sourceHash": "7ad3caaad2e18c70e943b7c43a53c36de69215819f16c2619fc49db9909c807c",
+   "outputHash": "07819225fbaf96a36d0518c26e6d75441f3ea98a408ab950ad1f695030077e90",
+   "width": 75,
+   "height": 75
   },
   "1005235": {
    "status": "unavailable"

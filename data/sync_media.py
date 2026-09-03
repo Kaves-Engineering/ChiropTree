@@ -42,7 +42,7 @@ def save_image(mdd_id: str, photo: dict) -> tuple[str, int, int]:
     path = HERE / "images" / f"{mdd_id}.webp"
     path.parent.mkdir(parents=True, exist_ok=True)
     image.save(path, "WEBP", quality=78, method=6)
-    return hashlib.sha256(source).hexdigest(), image.width, image.height
+    return hashlib.sha256(source).hexdigest(), hashlib.sha256(path.read_bytes()).hexdigest(), image.width, image.height
 
 
 def main() -> None:
@@ -59,12 +59,12 @@ def main() -> None:
             if not choice:
                 continue
             photo = choice["photo"]
-            source_hash, width, height = save_image(mdd_id, photo)
+            source_hash, output_hash, width, height = save_image(mdd_id, photo)
             manifest["assets"][mdd_id] = {
                 "status": "available", "path": f"images/{mdd_id}.webp", "sourceUrl": choice["sourceUrl"],
                 "attribution": photo.get("attribution") or "iNaturalist contributor",
                 "license": photo["license_code"].upper(), "alt": record["sciName"].replace("_", " "),
-                "sourceHash": source_hash, "width": width, "height": height,
+                "sourceHash": source_hash, "outputHash": output_hash, "width": width, "height": height,
             }
             print(f"{mdd_id}: saved")
         except Exception as error:  # noqa: BLE001
