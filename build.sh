@@ -14,12 +14,19 @@ bundle() {
 }
 
 rm -rf public
-mkdir public
+mkdir -p public/data/images
 bundle chiroptera-tree.html public/index.html
 bundle marine-mammal-tree.html public/marine.html
+cp manifest.webmanifest public/
+cp data/media-manifest.json public/data/
+if [ -d data/images ]; then cp -R data/images/. public/data/images/; fi
+
+release=$(sha256sum public/index.html public/marine.html data/media-manifest.json | sha256sum | cut -c1-16)
+sed "s/__RELEASE__/$release/" service-worker.js > public/service-worker.js
 
 for f in public/index.html public/marine.html; do
   grep -q '^INLINE ' "$f" && { echo "$f: data was not inlined" >&2; exit 1; }
   grep -q '"speciesCount"' "$f" || { echo "$f: taxonomy missing" >&2; exit 1; }
 done
+grep -q '__RELEASE__' public/service-worker.js && { echo "service worker release missing" >&2; exit 1; }
 echo "built: $(ls -l public | tail -n +2 | wc -l) files"

@@ -3,6 +3,7 @@
   "source": "Mammal Diversity Database v2.5",
   "sourceDoi": "10.5281/zenodo.21654811",
   "sourceUrl": "https://www.mammaldiversity.org",
+  "sourceChecksum": "0d07a7e9409712fa86c1e3afadcf4c67bf4f9e16d5693a878e11ec1bf6860493",
   "speciesCount": 1514,
   "familyCount": 21,
   "genusCount": 238

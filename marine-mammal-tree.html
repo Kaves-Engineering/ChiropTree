@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08161e">
+<link rel="manifest" href="manifest.webmanifest">
 <script>
 try {
   const savedTheme = localStorage.getItem('chiroptera-theme');
@@ -1047,10 +1048,7 @@ function ctxDrawTree(ctx){
       if(n.note) t.appendChild(el('tspan',{class:'t-note',dx:'11'}, n.note));
       g.appendChild(t);
       const pick = ()=>ctxShowSpecies(ctx, n.name);
-      const preload = ()=>preloadInatPhoto(n.name).catch(()=>{});
       g.addEventListener('click', pick);
-      g.addEventListener('pointerenter', preload);
-      g.addEventListener('focus', preload);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
     }
     svg.appendChild(g);
@@ -1162,7 +1160,8 @@ function ctxShowSpecies(ctx, binomial){
     g.classList.toggle('active', g.getAttribute('aria-label').indexOf(binomial) === 0);
   });
   ctx.card.innerHTML = luSpeciesHTML(binomial, true);
-  loadInatPhoto(binomial, ctx.card.querySelector('.inat-photo'));
+  const species = luState.byName[binomial.toLowerCase()];
+  loadLocalPhoto(species && luState.media[species.id], ctx.card.querySelector('.inat-photo'));
   if(ctx === mainCtx) cmShowSpeciesRange(binomial);
   if(ctx.card.getBoundingClientRect().top < 0 || ctx.card.getBoundingClientRect().top > innerHeight-120){
     ctx.card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
@@ -1325,7 +1324,7 @@ const ESP = {};
    2. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, echo: null, danish: {}, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, echo: null, danish: {}, media: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -1345,7 +1344,6 @@ function chooseRandomBat(){
 }
 function preloadRandomBat(){
   if(!queuedRandomBat || queuedRandomBat.id === luState.active) queuedRandomBat = chooseRandomBat();
-  if(queuedRandomBat) preloadInatPhoto(luNiceName(queuedRandomBat.sciName)).catch(()=>{});
 }
 randomBat.addEventListener('pointerenter', preloadRandomBat);
 randomBat.addEventListener('pointerdown', preloadRandomBat);
@@ -1402,11 +1400,13 @@ function luMergeCountrySupplement(species, supplement){
 Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
-  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json')
-]).then(([tax, danish, countrySupp])=>{
+  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
+  bundled('d-media', 'data/media-manifest.json')
+]).then(([tax, danish, countrySupp, media])=>{
   luState.species = tax.species;
   luState.echo = null;  // see the ECHO note above
   luState.danish = danish;
+  luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
   luState.ready = true;
@@ -1756,7 +1756,6 @@ function luRenderResults(){
     return;
   }
   const shown = list.slice(0, LU_MAX);
-  if(shown.length===1) prefetchInatPhotoById(shown[0].id);
   let html = '<div class="lu-count">'+list.length+' match'+(list.length===1?'':'es')+
              (list.length>LU_MAX ? ' — first '+LU_MAX+' shown' : '')+'</div>';
   html += shown.map(s=>{
@@ -1779,16 +1778,6 @@ luResults.addEventListener('click', e=>{
   const row = e.target.closest('.lu-row');
   if(row) luSelectSpecies(row.dataset.id);
 });
-function prefetchInatPhotoById(id){
-  const species = luState.species.find(s=>s.id===id);
-  if(species) preloadInatPhoto(luNiceName(species.sciName)).catch(()=>{});
-}
-function prefetchResultPhoto(e){
-  const row = e.target.closest('.lu-row');
-  if(row) prefetchInatPhotoById(row.dataset.id);
-}
-luResults.addEventListener('pointerover', prefetchResultPhoto);
-luResults.addEventListener('focusin', prefetchResultPhoto);
 luResults.addEventListener('keydown', e=>{
   const row = e.target.closest('.lu-row');
   if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id); }
@@ -1861,84 +1850,15 @@ function luSpeciesHTML(binomial, compact){
   return luDetailHTML(s, compact);
 }
 
-const inatPhotoCache = new Map();
-const inatPhotoPreloads = new Map();
-function inatPhotoURL(url){
-  return String(url||'').replace(/\/(square|medium)\./, '/small.');
-}
-function inatObservationPhoto(binomial){
-  const params = new URLSearchParams({
-    taxon_name:binomial,
-    photos:'true',
-    quality_grade:'research',
-    photo_license:'cc0,cc-by,cc-by-sa',
-    order_by:'votes',
-    order:'desc',
-    per_page:'1'
-  });
-  return fetch('https://api.inaturalist.org/v1/observations?'+params)
-    .then(r=>{ if(!r.ok) throw new Error('iNaturalist HTTP '+r.status); return r.json(); })
-    .then(data=>{
-      const observation = (data.results||[]).find(o=>o.photos && o.photos.length);
-      const photo = observation && observation.photos[0];
-      if(!photo) return null;
-      return {
-        url:inatPhotoURL(photo.url),
-        href:'https://www.inaturalist.org/observations/'+observation.id,
-        attribution:photo.attribution||'iNaturalist contributor',
-        license:(photo.license_code||'').toUpperCase()
-      };
-    });
-}
-function fetchInatPhoto(binomial){
-  if(inatPhotoCache.has(binomial)) return inatPhotoCache.get(binomial);
-  const params = new URLSearchParams({
-    q:binomial,
-    rank:'species',
-    per_page:'5'
-  });
-  const request = fetch('https://api.inaturalist.org/v1/taxa?'+params)
-    .then(r=>{ if(!r.ok) throw new Error('iNaturalist HTTP '+r.status); return r.json(); })
-    .then(data=>{
-      const taxon = (data.results||[]).find(t=>t.name && t.name.toLowerCase()===binomial.toLowerCase());
-      const photo = taxon && taxon.default_photo;
-      if(!photo || !photo.license_code) return inatObservationPhoto(binomial);
-      return {
-        url:inatPhotoURL(photo.url),
-        href:'https://www.inaturalist.org/taxa/'+taxon.id,
-        attribution:photo.attribution||'iNaturalist contributor',
-        license:(photo.license_code||'').toUpperCase()
-      };
-    })
-    .catch(err=>{ inatPhotoCache.delete(binomial); throw err; });
-  inatPhotoCache.set(binomial, request);
-  return request;
-}
-function preloadInatPhoto(binomial){
-  return fetchInatPhoto(binomial).then(photo=>{
-    if(photo && !inatPhotoPreloads.has(binomial)){
-      const image = new Image();
-      image.src = photo.url;
-      inatPhotoPreloads.set(binomial, image);
-    }
-    return photo;
-  });
-}
-async function loadInatPhoto(binomial, host){
-  if(!host) return;
-  try {
-    const photo = await fetchInatPhoto(binomial);
-    if(!host.isConnected) return;
-    if(!photo){ host.remove(); return; }
-    host.removeAttribute('aria-busy');
-    host.innerHTML = '<a href="'+luEsc(photo.href)+'" target="_blank" rel="noopener noreferrer">'+
-      '<img src="'+luEsc(photo.url)+'" alt="'+luEsc(binomial)+'" loading="eager" fetchpriority="high" decoding="async">'+
-      '<figcaption>'+luEsc(photo.attribution)+(photo.license?' · '+luEsc(photo.license):'')+' · iNaturalist</figcaption></a>';
-    const image = host.querySelector('img');
-    image.addEventListener('error', ()=>host.remove(), {once:true});
-  } catch (_) {
-    if(host.isConnected) host.remove();
-  }
+function loadLocalPhoto(asset, host){
+  if(!host || !asset || asset.status !== 'available') return;
+  host.removeAttribute('aria-busy');
+  const source = asset.sourceUrl ? '<a href="'+luEsc(asset.sourceUrl)+'" target="_blank" rel="noopener noreferrer">' : '';
+  const close = asset.sourceUrl ? '</a>' : '';
+  host.innerHTML = source+
+    '<img src="'+luEsc(asset.path)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
+    '<figcaption>'+luEsc(asset.attribution)+' · '+luEsc(asset.license)+' · iNaturalist</figcaption>'+close;
+  host.querySelector('img').addEventListener('error', ()=>host.remove(), {once:true});
 }
 
 function luDetailHTML(s, compact){
@@ -1946,6 +1866,7 @@ function luDetailHTML(s, compact){
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
   const dk = luState.danish[s.sciName];
   const bin = luNiceName(s.sciName);
+  const media = luState.media[s.id];
 
   // the full rank ladder, shown as one breadcrumb above the name
   const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
@@ -1968,7 +1889,7 @@ function luDetailHTML(s, compact){
   const links = LINKS.map(([label,url,icon])=>
     '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
 
-  return '<figure class="inat-photo" aria-busy="true"></figure>'+
+  return (media && media.status === 'available' ? '<figure class="inat-photo" aria-busy="true"></figure>' : '')+
     '<p class="card-lineage">'+lineage+'</p>'+
     '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
@@ -1995,12 +1916,11 @@ function luSelectSpecies(id, focusCard = false){
   const s = luState.species.find(x=>x.id===id);
   if(!s) return;
   const binomial = luNiceName(s.sciName);
-  preloadInatPhoto(binomial).catch(()=>{});
   const opened = openTreeToSpecies(s.family, s.genus, binomial, focusCard);
   if(!opened){
     // fallback for anything not represented in the cladogram
     luDetail.innerHTML = luDetailHTML(s, false);
-    loadInatPhoto(binomial, luDetail.querySelector('.inat-photo'));
+    loadLocalPhoto(luState.media[s.id], luDetail.querySelector('.inat-photo'));
     luOpenDrawer();
   }
 }
@@ -2076,8 +1996,14 @@ INLINE data/marine_mammal_danish_names.json
 <script type="application/json" id="d-countries">
 INLINE data/marine_mammal_gbif_country_supplement.json
 </script>
+<script type="application/json" id="d-media">
+INLINE data/media-manifest.json
+</script>
 <script type="application/json" id="d-worldmap">
 INLINE data/marine_world_map.json
+</script>
+<script>
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
 </script>
 </body>
 </html>
