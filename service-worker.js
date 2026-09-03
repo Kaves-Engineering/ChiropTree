@@ -2,6 +2,7 @@ const CACHE = 'chiroptree-__RELEASE__';
 const CORE = [
   './', './index.html', './marine.html', './manifest.webmanifest',
   './data/chiroptera_taxonomy.json', './data/call-records.json',
+  './data/danish_call_measurements.json',
   './data/danish_names.json', './data/gbif_country_supplement.json',
   './data/world_map.json', './data/marine_mammal_taxonomy.json',
   './data/marine_mammal_danish_names.json',
@@ -20,8 +21,10 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
+  if (event.request.method !== 'GET') return;
+  const sameOrigin = new URL(event.request.url).origin === self.location.origin;
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+    if (!sameOrigin) return response;
     const copy = response.clone();
     caches.open(CACHE).then(cache => cache.put(event.request, copy));
     return response;

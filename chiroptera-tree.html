@@ -1168,7 +1168,7 @@ function ctxShowSpecies(ctx, binomial){
   });
   ctx.card.innerHTML = luSpeciesHTML(binomial, true);
   const species = luState.byName[binomial.toLowerCase()];
-  loadLocalPhoto(species && luState.media[species.id], ctx.card.querySelector('.inat-photo'));
+  loadSpeciesPhoto(species, ctx.card.querySelector('.inat-photo'));
   if(ctx === mainCtx) cmShowSpeciesRange(binomial);
   if(ctx.card.getBoundingClientRect().top < 0 || ctx.card.getBoundingClientRect().top > innerHeight-120){
     ctx.card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
@@ -2300,15 +2300,53 @@ function luSpeciesHTML(binomial, compact){
   return luDetailHTML(s, compact);
 }
 
-function loadLocalPhoto(asset, host){
-  if(!host || !asset || asset.status !== 'available') return;
+const LIVE_MEDIA_CACHE = 'chiroptree-live-media-v1';
+const LIVE_MEDIA_LICENSES = new Set(['cc0','cc-by','cc-by-sa']);
+const livePhotoRequests = new Map();
+
+function renderPhoto(asset, host){
+  if(!host || !asset) return;
   host.removeAttribute('aria-busy');
   const source = asset.sourceUrl ? '<a href="'+luEsc(asset.sourceUrl)+'" target="_blank" rel="noopener noreferrer">' : '';
   const close = asset.sourceUrl ? '</a>' : '';
   host.innerHTML = source+
-    '<img src="'+luEsc(asset.path)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
+    '<img src="'+luEsc(asset.path||asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
     '<figcaption>'+luEsc(asset.attribution)+' · '+luEsc(asset.license)+' · iNaturalist</figcaption>'+close;
   host.querySelector('img').addEventListener('error', ()=>host.remove(), {once:true});
+}
+
+async function livePhotoFor(species){
+  if(!navigator.onLine) return null;
+  const key = 'chiroptree-live-media:'+species.id;
+  try {
+    const saved = JSON.parse(localStorage.getItem(key));
+    if(saved && LIVE_MEDIA_LICENSES.has(saved.license.toLowerCase())) return saved;
+  } catch (_) {}
+  const binomial = luNiceName(species.sciName);
+  const taxa = await fetch('https://api.inaturalist.org/v1/taxa?q='+encodeURIComponent(binomial)+'&rank=species&per_page=10').then(r=>r.ok?r.json():Promise.reject(r.status));
+  const taxon = (taxa.results||[]).find(t=>t.name && t.name.toLowerCase()===binomial.toLowerCase());
+  let photo = taxon && taxon.default_photo;
+  let sourceUrl = taxon && 'https://www.inaturalist.org/taxa/'+taxon.id;
+  if(!photo || !LIVE_MEDIA_LICENSES.has(String(photo.license_code||'').toLowerCase())){
+    const observations = await fetch('https://api.inaturalist.org/v1/observations?taxon_name='+encodeURIComponent(binomial)+'&photos=true&quality_grade=research&photo_license=cc0,cc-by,cc-by-sa&order_by=votes&order=desc&per_page=10').then(r=>r.ok?r.json():Promise.reject(r.status));
+    const observation = (observations.results||[]).find(o=>o.photos&&o.photos.some(p=>LIVE_MEDIA_LICENSES.has(String(p.license_code||'').toLowerCase())));
+    photo = observation && observation.photos.find(p=>LIVE_MEDIA_LICENSES.has(String(p.license_code||'').toLowerCase()));
+    sourceUrl = observation && 'https://www.inaturalist.org/observations/'+observation.id;
+  }
+  if(!photo) return null;
+  const asset = {url:String(photo.url||'').replace(/\/(square|medium)\./,'/small.'),sourceUrl,attribution:photo.attribution||'iNaturalist contributor',license:String(photo.license_code).toUpperCase(),alt:binomial};
+  localStorage.setItem(key, JSON.stringify(asset));
+  if('caches' in window) fetch(asset.url).then(response=>response.ok?caches.open(LIVE_MEDIA_CACHE).then(cache=>cache.put(asset.url,response)):null).catch(()=>{});
+  return asset;
+}
+
+function loadSpeciesPhoto(species, host){
+  if(!host || !species) return;
+  const local = luState.media[species.id];
+  if(local && local.status==='available'){ renderPhoto(local,host); return; }
+  let request = livePhotoRequests.get(species.id);
+  if(!request){ request=livePhotoFor(species); livePhotoRequests.set(species.id,request); }
+  request.then(asset=>asset&&host.isConnected?renderPhoto(asset,host):host.remove()).catch(()=>host.isConnected&&host.remove());
 }
 
 function luDetailHTML(s, compact){
@@ -2317,7 +2355,7 @@ function luDetailHTML(s, compact){
   const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
-  const directCall = luState.directCalls[bin];
+  const directCall = luState.directCalls[s.id];
   const callReference = directCall ? luState.directCallReferences[directCall.reference] : merged && luState.echo.references[merged.referenceId];
   const sources = [
     '<a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">MDD v2.5</a>'
@@ -2349,7 +2387,7 @@ function luDetailHTML(s, compact){
   const links = LINKS.map(([label,url,icon])=>
     '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
 
-  return (media && media.status === 'available' ? '<figure class="inat-photo" aria-busy="true"></figure>' : '')+
+  return '<figure class="inat-photo" aria-busy="true"></figure>'+
     '<p class="card-lineage">'+lineage+'</p>'+
     '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
@@ -2379,7 +2417,7 @@ function luSelectSpecies(id, focusCard = false){
   if(!opened){
     // fallback for anything not represented in the cladogram
     luDetail.innerHTML = luDetailHTML(s, false);
-    loadLocalPhoto(luState.media[s.id], luDetail.querySelector('.inat-photo'));
+    loadSpeciesPhoto(s, luDetail.querySelector('.inat-photo'));
     luOpenDrawer();
   }
 }
