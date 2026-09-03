@@ -12,7 +12,7 @@ JSON, image manifest, and site output from those inputs. Do not commit a
 binary SQLite database as the only reviewable record.
 
 Use CC0, CC-BY, and CC-BY-SA images only. GitHub Pages is the production
-deployment. The image-pack size limit remains to be set before bulk download.
+deployment. Limit the optional image pack to 60 MiB.
 
 ## 1. Lock down current behaviour
 
@@ -146,3 +146,10 @@ release changes nothing, and an approved release deploys once.
   matching files.
 - Bat and marine outputs build, load, and pass offline smoke tests.
 - The optional image pack stays within the approved size limit.
+
+## Status
+
+Implemented. Release validation, deterministic builds, SQLite import/export,
+MDD-ID joins, cited calls, local/live licensed media, atomic offline caches,
+latest-MDD proposals, change reports, GitHub Pages deployment, and bat/marine
+smoke tests are enforced in CI.

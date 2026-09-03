@@ -288,6 +288,9 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:24px 0 32px;color:var(--footer-ink);font:10.5px/1.6 var(--mono);letter-spacing:.04em}
 footer a{color:var(--line);text-underline-offset:3px}
 footer a:hover{color:var(--ochre)}
+.offline-pack{margin-left:8px;padding:5px 9px;border:1px solid var(--line-dim);border-radius:2px;background:transparent;color:var(--line);font:inherit;cursor:pointer}
+.offline-pack:hover,.offline-pack:focus-visible{border-color:var(--ochre);color:var(--ochre)}
+.offline-pack:disabled{cursor:wait;opacity:.65}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
 }
@@ -626,8 +629,10 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 </div><!-- /top-grid -->
 
 <footer>
-  Source: <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener noreferrer">Mammal Diversity Database v2.5</a>
+  Source: <a id="mdd-source" href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener noreferrer">Mammal Diversity Database v2.5</a>
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
+  · <span id="release-status">Loading release…</span>
+  <button class="offline-pack" id="offline-pack" type="button">Save images offline</button>
 </footer>
 
 </div>
@@ -1179,7 +1184,7 @@ const T = (t,g)=>({t,g});
 const G = g => [T(null,g)];              // no tribes used
 const P = g => [S(null,null,G(g))];      // no subfamilies used
 
-const ATLAS = {
+let ATLAS = {
 Balaenidae:[
   S(null,null,[T(null,[["Balaena",1], ["Eubalaena",3]])])],
 Balaenopteridae:[
@@ -1233,7 +1238,7 @@ Phocidae:[
    complete = 0 means a representative selection only.
    Genera absent from this list have no species shown.
    ========================================================= */
-const SP = {
+let SP = {
 // --- Mysticeti
 Balaena:[1,[["mysticetus","Bowhead Whale"]]],
 Eubalaena:[1,[["australis","Southern Right Whale"], ["glacialis","North Atlantic Right Whale"], ["japonica","North Pacific Right Whale"]]],
@@ -1357,9 +1362,7 @@ randomBat.addEventListener('click', ()=>{
   luSelectSpecies(species.id, true);
 });
 
-/* Data is bundled into this page by build.sh (see the JSON blocks at the end of
-   the document). Opened straight from the working copy those blocks are empty
-   and we fall back to fetching the files next to the page. */
+/* Release data stays separate so the shell renders and updates quickly. */
 const domReady = () => document.readyState === 'loading'
   ? new Promise(r=>document.addEventListener('DOMContentLoaded', r, {once:true}))
   : Promise.resolve();
@@ -1368,14 +1371,46 @@ function bundled(id, url){
   // the blocks sit at the end of the document, so wait for the parser to reach
   // them before looking; only then is falling back to fetch() meaningful
   return domReady().then(()=>{
-    const el = document.getElementById(id);
-    const txt = el ? el.textContent.trim() : '';
-    if(txt.charAt(0) === '{' || txt.charAt(0) === '[') return JSON.parse(txt);
     return fetch(url, {cache: 'no-cache'}).then(r=>{
       if(!r.ok) throw new Error(url + ' — HTTP ' + r.status);
       return r.json();
     });
   });
+}
+
+function luBuildDisplayTaxonomy(species){
+  const families = new Map(), speciesByGenus = new Map();
+  species.forEach(record=>{
+    const subfamily = !record.subfamily || record.subfamily==='NA' ? '' : record.subfamily;
+    const tribe = !record.tribe || record.tribe==='NA' ? '' : record.tribe;
+    if(!families.has(record.family)) families.set(record.family,new Map());
+    const subs = families.get(record.family);
+    if(!subs.has(subfamily)) subs.set(subfamily,new Map());
+    const tribes = subs.get(subfamily);
+    if(!tribes.has(tribe)) tribes.set(tribe,new Map());
+    const genera = tribes.get(tribe);
+    genera.set(record.genus,(genera.get(record.genus)||0)+1);
+    if(!speciesByGenus.has(record.genus)) speciesByGenus.set(record.genus,[]);
+    speciesByGenus.get(record.genus).push([
+      record.specificEpithet || luNiceName(record.sciName).split(' ').slice(1).join(' '),
+      record.mainCommonName || ''
+    ]);
+  });
+  ATLAS = {};
+  families.forEach((subs,family)=>{
+    ATLAS[family] = [];
+    subs.forEach((tribes,subfamily)=>{
+      const rows = [];
+      tribes.forEach((genera,tribe)=>rows.push(T(tribe||null,[...genera])));
+      ATLAS[family].push(S(subfamily||null,null,rows));
+    });
+    if(F[family]){
+      F[family].genera = new Set(species.filter(item=>item.family===family).map(item=>item.genus)).size;
+      F[family].species = species.filter(item=>item.family===family).length;
+    }
+  });
+  SP = Object.fromEntries([...speciesByGenus].map(([genus,rows])=>[genus,[1,rows]]));
+  Object.keys(kidCache).forEach(key=>delete kidCache[key]);
 }
 
 // data/build_country_distribution.py adds countries GBIF has real occurrence
@@ -1405,19 +1440,25 @@ Promise.all([
   bundled('d-media', 'data/media-manifest.json')
 ]).then(([tax, danish, countrySupp, media])=>{
   luState.species = tax.species;
+  luBuildDisplayTaxonomy(luState.species);
   luState.echo = null;  // see the ECHO note above
   luState.danish = danish;
-  luState.directCalls = danishCalls.species || {};
-  luState.directCallReferences = danishCalls.references || {};
+  luState.directCalls = {};
+  luState.directCallReferences = {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
+  const sourceLink = document.getElementById('mdd-source');
+  sourceLink.href = 'https://doi.org/'+tax._meta.sourceDoi;
+  sourceLink.textContent = tax._meta.source;
   luState.ready = true;
   randomBat.disabled = false;
+  if(mainCtx) ctxDrawTree(mainCtx);
   luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
   luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
+  updateOfflineStatus();
 }).catch(err=>{
   luState.error = err.message;
 });
@@ -1863,7 +1904,7 @@ function renderPhoto(asset, host){
   const source = asset.sourceUrl ? '<a href="'+luEsc(asset.sourceUrl)+'" target="_blank" rel="noopener noreferrer">' : '';
   const close = asset.sourceUrl ? '</a>' : '';
   host.innerHTML = source+
-    '<img src="'+luEsc(asset.path||asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
+    '<img src="'+luEsc(asset.path?'data/'+asset.path:asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
     '<figcaption>'+luEsc(asset.attribution)+' · '+luEsc(asset.license)+' · iNaturalist</figcaption>'+close;
   host.querySelector('img').addEventListener('error', ()=>host.remove(), {once:true});
 }
@@ -1902,6 +1943,39 @@ function loadSpeciesPhoto(species, host){
   request.then(asset=>asset&&host.isConnected?renderPhoto(asset,host):host.remove()).catch(()=>host.isConnected&&host.remove());
 }
 
+async function updateOfflineStatus(){
+  const status = document.getElementById('release-status');
+  if(!status || !luState.meta) return;
+  const release = String(luState.meta.sourceChecksum||'unknown').slice(0,12);
+  const cacheName = 'chiroptree-images-'+release;
+  const cache = 'caches' in window && await caches.open(cacheName);
+  const installed = cache && !!(await cache.match('image-pack-complete-'+release));
+  status.textContent = 'Release '+release+(installed?' · images offline':'');
+}
+
+async function installOfflineImages(){
+  const button = document.getElementById('offline-pack');
+  if(!button || !('caches' in window) || !luState.meta) return;
+  const release = String(luState.meta.sourceChecksum).slice(0,12);
+  const cacheName = 'chiroptree-images-'+release;
+  const urls = Object.values(luState.media).filter(asset=>asset.status==='available').map(asset=>'data/'+asset.path);
+  button.disabled = true;
+  try {
+    const cache = await caches.open(cacheName);
+    for(let i=0;i<urls.length;i+=20){
+      button.textContent = 'Saving '+Math.min(i+20,urls.length)+'/'+urls.length;
+      await cache.addAll(urls.slice(i,i+20));
+    }
+    await cache.put('image-pack-complete-'+release,new Response('ok'));
+    const names = await caches.keys();
+    await Promise.all(names.filter(name=>name.startsWith('chiroptree-images-')&&name!==cacheName).map(name=>caches.delete(name)));
+    button.textContent = 'Images saved';
+    updateOfflineStatus();
+  } catch(_){ button.textContent = 'Retry image download'; }
+  finally { button.disabled = false; }
+}
+document.getElementById('offline-pack').addEventListener('click',installOfflineImages);
+
 function luDetailHTML(s, compact){
   const echo = luFindEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
@@ -1911,7 +1985,7 @@ function luDetailHTML(s, compact){
   const directCall = luState.directCalls[s.id];
   const callReference = directCall ? luState.directCallReferences[directCall.reference] : merged && luState.echo.references[merged.referenceId];
   const sources = [
-    '<a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">MDD v2.5</a>'
+    '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
   if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
   if(callReference) sources.push(callReference.url
@@ -1925,7 +1999,6 @@ function luDetailHTML(s, compact){
 
   const callRows = [];
   if(directCall) callRows.push('<dt>Reference call</dt><dd>'+luEsc(directCall.summary)+'</dd>');
-  if(ESP[bin]) callRows.push('<dt>Species call</dt><dd>'+luEsc(ESP[bin])+'</dd>');
   if(merged){
     callRows.push('<dt>Call type</dt><dd>'+luEsc(merged.callType||'—')+'</dd>');
     callRows.push('<dt>Duty cycle</dt><dd>'+luEsc(merged.dutyCycle||'—')+'</dd>');
@@ -2034,24 +2107,6 @@ treeToggle.addEventListener('click', ()=>{
 });
 </script>
 
-<!-- Bundled data. The build (build.sh) replaces each INLINE line with the file’s
-     contents, so the published page needs no extra requests; opened straight from
-     the working copy these stay empty and the loader falls back to fetch(). -->
-<script type="application/json" id="d-taxonomy">
-INLINE data/marine_mammal_taxonomy.json
-</script>
-<script type="application/json" id="d-danish">
-INLINE data/marine_mammal_danish_names.json
-</script>
-<script type="application/json" id="d-countries">
-INLINE data/marine_mammal_gbif_country_supplement.json
-</script>
-<script type="application/json" id="d-media">
-INLINE data/media-manifest.json
-</script>
-<script type="application/json" id="d-worldmap">
-INLINE data/marine_world_map.json
-</script>
 <script>
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
 </script>
