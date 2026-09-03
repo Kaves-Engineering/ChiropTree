@@ -95,6 +95,25 @@ here changes what the bat pages show.
   tribe, the species lists, every count) is derived from MDD; only the
   natural history prose and the coarse ecology tags are hand-authored, which
   is the same split the master page uses.
+- **`data/marine_palette.css`** — the marine page's colour palette. Every
+  colour in `chiroptera-tree.html` resolves through one delimited region
+  (`/* ===== PALETTE ===== */` ... `/* ===== /PALETTE ===== */`) of named
+  tokens — surface, ink, map, and status colours, in both themes — and
+  nothing outside that region names a colour directly. The build script lifts
+  that region out of the master and drops this file in, after checking every
+  token the master defines is also defined here; a palette missing one fails
+  the build instead of silently painting an element transparent. The bat page
+  reads as a cave at night: dark leaf-litter ground, lichen green for
+  structure, one warm lamplit accent. This is that same system moved into
+  cold water — deep sea and glacial blue for ground and structure — with the
+  accent kept warm on purpose, since that is what a marine mammal actually
+  is: a warm body in a cold ocean.
+- The two pages also share a **page switch** in the top bar (next to the
+  title, where "The branching of bats" / "Three ways into water" sits) —
+  both destinations always visible, the current one held down. It replaces
+  what was a one-way arrow link, and is itself part of the master/clone
+  split: one `.pageswitch` block, `aria-current` swapped by the build script
+  to mark whichever page it's rendering.
 - **`marine-mammal-lookup.html`** — **not currently published.** It mirrored
   `index.html`, the standalone lookup, which the unified-explorer rewrite
   deleted; with no counterpart left on the bat side it is out of `build.sh`

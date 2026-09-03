@@ -54,17 +54,48 @@ def swap_const(name, close="\n};"):
     html = html[:i] + grab(name) + html[j + len(close):]
     hits.append("const " + name)
 
+# ----------------------------------------------------------------- palette
+# The whole palette is one delimited region in the master, so the clone can
+# carry a different one without touching a single structural rule. Both files
+# must name the same tokens: a token used by the sheet but missing from the
+# marine palette would fall back to nothing and paint an element transparent,
+# so check before swapping rather than after rendering.
+palette = open(os.path.join(HERE, "marine_palette.css"), encoding="utf-8").read().strip()
+START, END = "/* ===== PALETTE ", "/* ===== /PALETTE ==================================================== */"
+i, j = html.find(START), html.find(END)
+if i < 0 or j < 0:
+    sys.exit("palette markers not found in the master")
+master_palette = html[i:j + len(END)]
+master_tokens = set(re.findall(r'(--[\w-]+):', master_palette))
+marine_tokens = set(re.findall(r'(--[\w-]+):', palette))
+missing = master_tokens - marine_tokens
+if missing:
+    sys.exit("marine_palette.css is missing tokens the master defines: %s" % sorted(missing))
+html = html[:i] + palette + html[j + len(END):]
+hits.append("palette region (%d tokens)" % len(marine_tokens))
+
 # ----------------------------------------------------------------- head/chrome
 sub("<title>Chiroptera — bat tree and range map</title>",
     "<title>Marine mammals — tree and range map</title>")
 
-sub('<a class="tb-brand" href="#top">The branching of <em>bats</em></a>',
-    '<a class="tb-brand" href="#top">Back to the <em>sea</em></a>')
+# the browser chrome colour is set from markup and from JS, and has to track
+# --abyss in both themes
+sub('<meta name="theme-color" content="#0d140f">',
+    '<meta name="theme-color" content="#08161e">')
+sub("theme === 'light' ? '#f3f0e5' : '#0d140f'",
+    "theme === 'light' ? '#eef3f7' : '#08161e'", count=2)
 
-# the master carries "Marine mammals ->"; the clone carries the return trip in
-# the same nav slot
-sub('      <a href="marine-mammal-tree.html">Marine mammals &rarr;</a>',
-    '      <a href="chiroptera-tree.html">Bats &rarr;</a>')
+# Chiroptera is one clade and the title can say so. These three lineages
+# entered the water separately, so the marine title counts the entrances
+# instead of naming a branch.
+sub('<a class="tb-brand" href="#top">The branching of <em>bats</em></a>',
+    '<a class="tb-brand" href="#top">Three ways into <em>water</em></a>')
+
+# the switch keeps both destinations; only which one is held down changes
+sub("""      <a class="ps-opt" href="chiroptera-tree.html" aria-current="page">Bats</a>
+      <a class="ps-opt" href="marine-mammal-tree.html">Marine mammals</a>""",
+    """      <a class="ps-opt" href="chiroptera-tree.html">Bats</a>
+      <a class="ps-opt" href="marine-mammal-tree.html" aria-current="page">Marine mammals</a>""")
 
 sub('placeholder="Search any bat…"', 'placeholder="Search any marine mammal…"')
 sub('aria-label="Show a random bat" title="Random bat"',

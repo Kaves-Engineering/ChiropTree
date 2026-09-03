@@ -22,42 +22,125 @@ try {
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Lexend:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  color-scheme:dark;
-  --abyss:#0d140f;
-  --prussian:#1a2f1c;
-  --prussian-2:#22422a;
-  --line:#a9c98c;
-  --line-dim:#5b7a49;
-  --bone:#f4f1e6;
-  --text:#dfe4d6;
-  --muted:#b7bfa9;
-  --ochre:#e8ab4c;
-  --ochre-dim:#8a6427;
-
   --display:"Fraunces",Georgia,serif;
   --body:"Lexend","Helvetica Neue",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 
   --pad:clamp(18px,4vw,56px);
 }
+
+/* ===== PALETTE =====================================================
+   Every colour in the sheet resolves through these two blocks, so the
+   whole palette is one swappable unit: data/build_marine_mammal_page.py
+   lifts the region between these markers out and drops the marine one in.
+   Nothing below this region names a colour directly -- if you find
+   yourself adding a hex further down, add a token here instead.
+
+   Chiroptera reads as a cave at night: dark leaf-litter ground, lichen
+   green for structure, and one warm lamplit accent to touch.
+   =================================================================== */
+:root{
+  color-scheme:dark;
+  --abyss:#0d140f;          /* page ground */
+  --prussian:#1a2f1c;       /* raised surface */
+  --prussian-2:#22422a;
+  --panel:#101d16;          /* drawer, search results */
+  --canvas:#16281a;         /* the tree's own field */
+  --line:#a9c98c;           /* structure: rules, branches, labels */
+  --line-dim:#5b7a49;
+  --rule:#8a6427;           /* the hairline under a suborder heading */
+  --bone:#f4f1e6;           /* brightest ink */
+  --text:#dfe4d6;
+  --muted:#b7bfa9;
+  --ochre:#e8ab4c;          /* the one accent: selection, focus, active */
+  --ochre-dim:#8a6427;
+
+  --ink-strong:#eef0e2;     /* tree rows, genus down to species */
+  --ink-mid:#c3cdb8;
+  --ink-soft:#adb9a0;
+  --ink-faint:#8f9c85;
+  --knot-leaf:#567f52;
+  --footer-ink:#b8c2ac;
+  --placeholder:#899783;
+
+  --map-water:#122015;      /* the range map, unpainted */
+  --map-land:#274a2e;
+  --map-has:#345f3a;        /* a country this taxon is recorded in */
+  --map-has-hover:#4a7a49;
+  --map-dot:#5c8759;        /* islands too small to draw as shapes */
+  --map-dot-hover:#7fae6e;
+  --range-hover:#a9822f;
+
+  /* IUCN status is data, not decoration: these stay put across palettes */
+  --st-good:#8fd19e;  --st-good-b:#3a6b45;
+  --st-bad:#e88a8a;   --st-bad-b:#8a3a3a;
+
+  /* triplets, for the places that need an alpha */
+  --border-rgb:150,190,120;
+  --border2-rgb:178,210,150;
+  --hover-rgb:178,210,150;
+  --ochre-rgb:232,171,76;
+  --abyss-rgb:13,20,15;
+  --card-rgb:14,26,19;
+  --scrim-rgb:9,14,10;
+  --input-rgb:26,47,28;
+  --glow-rgb:45,80,48;
+  --card-a:.75; --bar-a:.88; --input-a:.85; --scrim-a:.62;
+  --shadow:0 26px 64px rgba(0,0,0,.55);
+}
 :root[data-theme="light"]{
   color-scheme:light;
   --abyss:#f3f0e5;
   --prussian:#e4eadc;
   --prussian-2:#d4dfca;
+  --panel:#eef0e5;
+  --canvas:#e8ecdf;
   --line:#315f3a;
   --line-dim:#7d9272;
+  --rule:#6f896b;
   --bone:#17251a;
   --text:#26352a;
   --muted:#5d6d5d;
   --ochre:#9b5c13;
   --ochre-dim:#b98a4d;
+
+  --ink-strong:#1d2c20;
+  --ink-mid:#394b3b;
+  --ink-soft:#60705d;
+  --ink-faint:#60705d;
+  --knot-leaf:#64835f;
+  --footer-ink:#526552;
+  --placeholder:#677766;
+
+  --map-water:#dfe7d8;
+  --map-land:#b8c9af;
+  --map-has:#8fab84;
+  --map-has-hover:#70966d;
+  --map-dot:#71936d;
+  --map-dot-hover:#527a54;
+  --range-hover:#b37222;
+
+  --st-good:#266438;  --st-good-b:#579664;
+  --st-bad:#9b3232;   --st-bad-b:#bd6b6b;
+
+  --border-rgb:150,190,120;
+  --border2-rgb:150,190,120;
+  --hover-rgb:49,95,58;
+  --ochre-rgb:155,92,19;
+  --abyss-rgb:243,240,229;
+  --card-rgb:228,234,220;
+  --scrim-rgb:33,45,35;
+  --input-rgb:228,234,220;
+  --glow-rgb:113,145,104;
+  --card-a:.78; --bar-a:.9;  --input-a:.92; --scrim-a:.42;
+  --shadow:0 22px 52px rgba(40,52,38,.18);
 }
+/* ===== /PALETTE ==================================================== */
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 .fbtn,.gen,.switch button,.tree-tools button,.jump,#fclear,.lu-close,g.tip,g.trow,button.gen{
-  touch-action:manipulation;-webkit-tap-highlight-color:rgba(232,171,76,.25);
+  touch-action:manipulation;-webkit-tap-highlight-color:rgba(var(--ochre-rgb),.25);
 }
 body{
   margin:0;
@@ -82,7 +165,7 @@ body::before{
 body::after{
   content:"";
   position:fixed;inset:0;pointer-events:none;z-index:98;
-  background:radial-gradient(120% 90% at 50% 8%, rgba(45,80,48,.16), rgba(13,20,15,0) 62%);
+  background:radial-gradient(120% 90% at 50% 8%, rgba(var(--glow-rgb),.16), rgba(var(--abyss-rgb),0) 62%);
 }
 
 .wrap{max-width:1640px;margin:0 auto;padding:0 var(--pad)}
@@ -103,29 +186,32 @@ body::after{
   #country-map{grid-column:2;min-width:0}
 }
 
-section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(150,190,120,.2);scroll-margin-top:70px}
+section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(var(--border-rgb),.2);scroll-margin-top:70px}
 
 /* ---------- tree ---------- */
 .treebox{
   position:relative;
   margin-top:0;
-  border:1px solid rgba(150,190,120,.22);
-  background:#16281a;
+  border:1px solid rgba(var(--border-rgb),.22);
+  background:var(--canvas);
   border-radius:3px;
   overflow-x:auto;
   overflow-y:visible;
   -webkit-overflow-scrolling:touch;
 }
 svg#tree{display:block;width:100%;height:auto}
+.tree-bg{fill:var(--canvas)}
+.tree-rule{stroke:var(--rule)}
+.cm-bg{fill:var(--map-water)}
 .branch{stroke:var(--line-dim);stroke-width:1.2;fill:none;stroke-linecap:square}
 .tip-hit{fill:transparent;cursor:pointer}
 .tip-name{font-family:var(--display);font-size:19px;font-weight:500;fill:var(--bone);cursor:pointer;dominant-baseline:middle}
-.tip-common{font-family:var(--body);font-size:15px;fill:#adb9a0;dominant-baseline:middle}
+.tip-common{font-family:var(--body);font-size:15px;fill:var(--ink-soft);dominant-baseline:middle}
 .tip-count{font-family:var(--mono);font-size:14.5px;fill:var(--muted);text-anchor:end;dominant-baseline:middle}
 .sub-label{font-family:var(--mono);font-size:16.5px;letter-spacing:.26em;text-transform:uppercase;fill:var(--ochre)}
 .sf-label{font-family:var(--mono);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;fill:var(--line)}
-.sf-count{font-family:var(--mono);font-size:13.5px;letter-spacing:.06em;fill:#8f9c85}
-.knock{fill:#16281a}
+.sf-count{font-family:var(--mono);font-size:13.5px;letter-spacing:.06em;fill:var(--ink-faint)}
+.knock{fill:var(--canvas)}
 g.tip:hover .tip-name,g.tip:focus-visible .tip-name{fill:var(--ochre)}
 g.tip:hover .branch-tip,g.tip.active .branch-tip{stroke:var(--ochre);stroke-width:2}
 g.tip.active .tip-name{fill:var(--ochre)}
@@ -150,7 +236,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .card .lu-facts,.card .lu-prov{clear:both}
 .inat-photo{
   float:right;width:min(34%,220px);min-height:120px;aspect-ratio:4/3;margin:0 0 14px 18px;
-  overflow:hidden;border:1px solid rgba(150,190,120,.25);border-radius:2px;
+  overflow:hidden;border:1px solid rgba(var(--border-rgb),.25);border-radius:2px;
   background:linear-gradient(110deg,var(--prussian) 35%,var(--prussian-2) 50%,var(--prussian) 65%);
   background-size:220% 100%;animation:photo-loading 1.4s linear infinite;
 }
@@ -166,8 +252,8 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 
 /* sits below the tree + map grid — the one shared detail card */
 .card{
-  border:1px solid rgba(150,190,120,.28);border-left:3px solid var(--ochre);
-  background:rgba(14,26,19,.75);padding:14px 18px;border-radius:2px;
+  border:1px solid rgba(var(--border-rgb),.28);border-left:3px solid var(--ochre);
+  background:rgba(var(--card-rgb),var(--card-a));padding:14px 18px;border-radius:2px;
   margin:0 0 20px;scroll-margin-top:72px;
 }
 
@@ -179,7 +265,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 9px}
 .chip{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--bone);
-  background:rgba(178,210,150,.1);border:1px solid rgba(178,210,150,.22);border-radius:20px;
+  background:rgba(var(--border2-rgb),.1);border:1px solid rgba(var(--border2-rgb),.22);border-radius:20px;
   padding:4px 11px;
 }
 .chip b{color:var(--ochre);font-weight:500;font-family:var(--mono)}
@@ -194,7 +280,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .jump:hover{color:var(--bone);background:none}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid rgba(178,210,150,.2);padding:24px 0 32px;color:#b8c2ac;font:10.5px/1.6 var(--mono);letter-spacing:.04em}
+footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:24px 0 32px;color:var(--footer-ink);font:10.5px/1.6 var(--mono);letter-spacing:.04em}
 footer a{color:var(--line);text-underline-offset:3px}
 footer a:hover{color:var(--ochre)}
 @media (prefers-reduced-motion:reduce){
@@ -204,8 +290,8 @@ footer a:hover{color:var(--ochre)}
 /* ---------- sticky topbar with the search field ---------- */
 .topbar{
   position:sticky;top:0;z-index:60;
-  background:rgba(13,20,15,.88);backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(150,190,120,.2);
+  background:rgba(var(--abyss-rgb),var(--bar-a));backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(var(--border-rgb),.2);
 }
 .topbar-in{
   max-width:1640px;margin:0 auto;padding:10px var(--pad);
@@ -213,6 +299,26 @@ footer a:hover{color:var(--ochre)}
 }
 .tb-brand{font-family:var(--display);font-size:17px;font-weight:500;color:var(--bone);text-decoration:none;white-space:nowrap}
 .tb-brand em{font-style:italic;color:var(--line)}
+
+/* The two trees are sister pages, so the way across is a switch rather than
+   a link: both destinations always visible, the current one held down. It
+   sits with the title because it names what you are looking at. */
+.pageswitch{
+  display:flex;flex:none;gap:2px;padding:2px;
+  border:1px solid rgba(var(--border-rgb),.26);border-radius:999px;
+  background:rgba(var(--card-rgb),.5);
+}
+.ps-opt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;white-space:nowrap;
+  padding:6px 13px;border-radius:999px;transition:color .15s,background .15s;
+}
+.ps-opt:hover{color:var(--bone)}
+.ps-opt[aria-current="page"]{
+  background:rgba(var(--ochre-rgb),.15);color:var(--ochre);
+  box-shadow:inset 0 0 0 1px rgba(var(--ochre-rgb),.34);
+}
+.ps-opt:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .tb-nav{display:flex;gap:18px}
 .tb-nav a{
   display:flex;align-items:center;justify-content:center;width:32px;height:32px;
@@ -244,10 +350,10 @@ footer a:hover{color:var(--ochre)}
 
 .tb-search{margin-left:auto;position:relative;width:min(330px,58vw)}
 .tb-search input{
-  width:100%;background:rgba(26,47,28,.85);border:1px solid var(--line-dim);color:var(--text);
+  width:100%;background:rgba(var(--input-rgb),var(--input-a));border:1px solid var(--line-dim);color:var(--text);
   font-family:var(--body);font-size:13.5px;padding:8px 44px 8px 32px;border-radius:999px;
 }
-.tb-search input::placeholder{color:#899783}
+.tb-search input::placeholder{color:var(--placeholder)}
 .tb-search input:focus{outline:none;border-color:var(--ochre);background:var(--prussian)}
 .tb-ico,.tb-kbd{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--line-dim)}
 .tb-ico{left:11px;font-size:12px}
@@ -257,25 +363,25 @@ footer a:hover{color:var(--ochre)}
 .tb-results{
   position:absolute;top:calc(100% + 9px);right:0;width:min(440px,90vw);
   max-height:min(560px,70vh);overflow-y:auto;overscroll-behavior:contain;
-  background:#101d16;border:1px solid var(--line-dim);border-radius:4px;
-  box-shadow:0 26px 64px rgba(0,0,0,.55);
+  background:var(--panel);border:1px solid var(--line-dim);border-radius:4px;
+  box-shadow:var(--shadow);
 }
 .tb-results .lu-foot{
   padding:9px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--line-dim);
-  border-top:1px solid rgba(150,190,120,.16);
+  border-top:1px solid rgba(var(--border-rgb),.16);
 }
 .lu-none{padding:18px 14px;font-size:13px;color:var(--muted);font-style:italic}
 .lu-count{
   padding:8px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--line-dim);border-bottom:1px solid rgba(150,190,120,.16);
+  color:var(--line-dim);border-bottom:1px solid rgba(var(--border-rgb),.16);
 }
 
 /* ---------- species drawer ---------- */
-.lu-scrim{position:fixed;inset:0;background:rgba(9,14,10,.62);z-index:70;opacity:0;pointer-events:none;transition:opacity .26s}
+.lu-scrim{position:fixed;inset:0;background:rgba(var(--scrim-rgb),var(--scrim-a));z-index:70;opacity:0;pointer-events:none;transition:opacity .26s}
 .lu-scrim.open{opacity:1;pointer-events:auto}
 .lu-drawer{
   position:fixed;top:0;right:0;bottom:0;width:min(640px,94vw);z-index:80;
-  background:#101d16;border-left:1px solid var(--line-dim);
+  background:var(--panel);border-left:1px solid var(--line-dim);
   transform:translateX(101%);transition:transform .28s cubic-bezier(.2,.7,.2,1);
   overflow-y:auto;overscroll-behavior:contain;padding:clamp(22px,3vw,36px);
 }
@@ -289,7 +395,7 @@ footer a:hover{color:var(--ochre)}
 .lu-close:hover{border-color:var(--ochre);color:var(--ochre)}
 
 /* ---------- lookup rows & detail (shared by dropdown and drawer) ---------- */
-.lu-row{padding:9px 14px;border-bottom:1px solid rgba(150,190,120,.10);cursor:pointer}
+.lu-row{padding:9px 14px;border-bottom:1px solid rgba(var(--border-rgb),.10);cursor:pointer}
 .lu-row:hover,.lu-row:focus-visible{background:var(--prussian);outline:none}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
 .lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:14.5px;color:var(--bone)}
@@ -304,7 +410,7 @@ footer a:hover{color:var(--ochre)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
 .lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
-.lu-section{background:var(--prussian);border:1px solid rgba(150,190,120,.25);border-radius:4px;padding:16px 18px}
+.lu-section{background:var(--prussian);border:1px solid rgba(var(--border-rgb),.25);border-radius:4px;padding:16px 18px}
 .lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);font-weight:500}
 .lu-section dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:14px}
 .lu-section dt{color:var(--muted);white-space:nowrap}
@@ -312,9 +418,9 @@ footer a:hover{color:var(--ochre)}
 .lu-section .lu-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
 .lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
 .lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;border:1px solid var(--line-dim)}
-.lu-status.lc{color:#8fd19e;border-color:#3a6b45}
+.lu-status.lc{color:var(--st-good);border-color:var(--st-good-b)}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
-.lu-status.en,.lu-status.cr{color:#e88a8a;border-color:#8a3a3a}
+.lu-status.en,.lu-status.cr{color:var(--st-bad);border-color:var(--st-bad-b)}
 .lu-status.dd,.lu-status.na{color:var(--muted)}
 .lu-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px}
 .lu-links a{
@@ -325,7 +431,7 @@ footer a:hover{color:var(--ochre)}
 .lu-links a:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .lu-links svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .lu-links .wiki-mark{font:18px/1 Georgia,serif;transform:translateY(-1px)}
-.lu-prov{margin-top:26px;font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid rgba(150,190,120,.18);padding-top:14px}
+.lu-prov{margin-top:26px;font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid rgba(var(--border-rgb),.18);padding-top:14px}
 
 .wm-pending{
   font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
@@ -337,14 +443,14 @@ footer a:hover{color:var(--ochre)}
 /* ---------- country browse map ---------- */
 .cm-map-wrap{margin-top:0}
 .cm-map{position:relative}
-.cm-map svg{display:block;width:100%;height:auto;background:#122015;border:1px solid rgba(150,190,120,.22);border-radius:3px;cursor:grab;touch-action:none}
+.cm-map svg{display:block;width:100%;height:auto;background:var(--map-water);border:1px solid rgba(var(--border-rgb),.22);border-radius:3px;cursor:grab;touch-action:none}
 .cm-map svg.dragging{cursor:grabbing}
 .cm-zoom-g{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .cm-zoom-g.no-anim{transition:none}
 .cm-label{
   position:absolute;top:10px;left:10px;z-index:2;pointer-events:none;max-width:calc(100% - 76px);
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ochre);background:rgba(13,20,15,.85);border:1px solid var(--ochre-dim);
+  color:var(--ochre);background:rgba(var(--abyss-rgb),.85);border:1px solid var(--ochre-dim);
   padding:6px 12px;border-radius:2px;opacity:0;transform:translateY(-4px);
   transition:opacity .2s,transform .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
@@ -353,21 +459,21 @@ footer a:hover{color:var(--ochre)}
 .cm-zoom-ctrl button{
   width:26px;height:26px;display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:14px;line-height:1;
-  background:rgba(13,20,15,.85);border:1px solid var(--line-dim);color:var(--text);
+  background:rgba(var(--abyss-rgb),.85);border:1px solid var(--line-dim);color:var(--text);
   border-radius:2px;cursor:pointer;transition:.15s;
 }
 .cm-zoom-ctrl button:hover{border-color:var(--ochre);color:var(--ochre)}
 .cm-zoom-ctrl button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.cm-land{fill:#274a2e;stroke:none;pointer-events:none}
-.cm-c{fill:#274a2e;stroke:#122015;stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
-.cm-c.has{fill:#345f3a;cursor:pointer}
-.cm-c.has:hover{fill:#4a7a49}
+.cm-land{fill:var(--map-land);stroke:none;pointer-events:none}
+.cm-c{fill:var(--map-land);stroke:var(--map-water);stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
+.cm-c.has{fill:var(--map-has);cursor:pointer}
+.cm-c.has:hover{fill:var(--map-has-hover)}
 .cm-c.range{fill:var(--ochre-dim)}
-.cm-c.range:hover{fill:#a9822f}
+.cm-c.range:hover{fill:var(--range-hover)}
 .cm-c.sel{fill:var(--ochre)}
 .cm-c.range.sel{fill:var(--ochre)}
-.cm-d{fill:#5c8759;stroke:#122015;stroke-width:.8;cursor:pointer;transition:fill .12s}
-.cm-d:hover{fill:#7fae6e}
+.cm-d{fill:var(--map-dot);stroke:var(--map-water);stroke-width:.8;cursor:pointer;transition:fill .12s}
+.cm-d:hover{fill:var(--map-dot-hover)}
 .cm-d.range{fill:var(--ochre-dim)}
 .cm-d.sel{fill:var(--ochre)}
 .cm-d.range.sel{fill:var(--ochre)}
@@ -378,16 +484,22 @@ footer a:hover{color:var(--ochre)}
   background:transparent;border:0;color:var(--muted);padding:5px;border-radius:0;cursor:pointer;transition:.15s;
 }
 .cm-mode button:hover{color:var(--ochre)}
-.cm-mode button[aria-pressed="true"]{background:rgba(178,210,150,.1);color:var(--ochre)}
+.cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
 .cm-mode button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .cm-mode svg{width:16px;height:16px;overflow:visible}
 .cm-mode .mode-globe{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round}
 .cm-mode .mode-country{fill:currentColor;stroke:none}
 
 @media (max-width:620px){
+  /* three rows: title, then the switch (it names what's on screen, so it
+     stays with the title rather than sliding down to the search's row),
+     then search plus the icon cluster, which fit together at any phone
+     width once the switch is out of their way */
   .topbar-in{flex-wrap:wrap;gap:10px 14px}
   .tb-brand{font-size:15px;flex-basis:100%}
-  .tb-search{width:auto;margin-left:0;flex:1 1 180px}
+  .pageswitch{flex-basis:100%}
+  .tb-search{width:auto;margin-left:0;flex:1 1 150px}
+  .ps-opt{padding:6px 10px;letter-spacing:.08em}
 }
 
 /* ---------- expandable tree ---------- */
@@ -398,76 +510,37 @@ footer a:hover{color:var(--ochre)}
 }
 .tree-tools button:hover{color:var(--ochre)}
 .tree-tools button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.tree-tools .cm-mode button[aria-pressed="true"]{background:rgba(178,210,150,.1);color:var(--ochre)}
+.tree-tools .cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
 .tree-tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 g.trow{cursor:pointer;transition:opacity .25s}
 g.trow.dim{opacity:.22}
 g.trow.dim:hover{opacity:.5}
 g.trow .trow-hit{fill:transparent}
-g.trow:hover .trow-hit{fill:rgba(178,210,150,.07)}
+g.trow:hover .trow-hit{fill:rgba(var(--hover-rgb),.07)}
 g.trow:focus-visible{outline:none}
-g.trow:focus-visible .trow-hit{fill:rgba(232,171,76,.15)}
+g.trow:focus-visible .trow-hit{fill:rgba(var(--ochre-rgb),.15)}
 .t-subfam{font-family:var(--display);font-size:17px;font-weight:500;fill:var(--bone);dominant-baseline:middle}
 .t-tribe{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;fill:var(--ochre);dominant-baseline:middle}
-.t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:#eef0e2;dominant-baseline:middle}
-.t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:#c3cdb8;dominant-baseline:middle}
-.t-note{font-family:var(--body);font-size:14px;fill:#8f9c85;dominant-baseline:middle}
-.t-count{font-family:var(--mono);font-size:13px;fill:#8f9c85;text-anchor:end;dominant-baseline:middle}
-.sub-branch{stroke:rgba(178,210,150,.34);stroke-width:1}
+.t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:var(--ink-strong);dominant-baseline:middle}
+.t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:var(--ink-mid);dominant-baseline:middle}
+.t-note{font-family:var(--body);font-size:14px;fill:var(--ink-faint);dominant-baseline:middle}
+.t-count{font-family:var(--mono);font-size:13px;fill:var(--ink-faint);text-anchor:end;dominant-baseline:middle}
+.sub-branch{stroke:rgba(var(--border2-rgb),.34);stroke-width:1}
 .t-knot{fill:var(--line-dim)}
 .t-knot.shut{fill:var(--ochre-dim)}
-.t-knot.open{fill:#16281a;stroke:var(--ochre);stroke-width:1.5}
-.t-knot.leaf{fill:#567f52}
+.t-knot.open{fill:var(--canvas);stroke:var(--ochre);stroke-width:1.5}
+.t-knot.leaf{fill:var(--knot-leaf)}
 g.tip:hover .t-knot.shut,g.trow:hover .t-knot.shut{fill:var(--ochre)}
 g.trow:hover .t-genus,g.trow:hover .t-species,g.trow:hover .t-subfam{fill:var(--ochre)}
 g.trow.species.active .t-species{fill:var(--ochre)}
-g.trow.species.active .trow-hit{fill:rgba(232,171,76,.12)}
+g.trow.species.active .trow-hit{fill:rgba(var(--ochre-rgb),.12)}
 g.trow.static{cursor:default}
 g.trow.static:hover .trow-hit{fill:none}
-g.trow.static:hover .t-genus{fill:#eef0e2}
+g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 .fam-open .tip-name{fill:var(--ochre)}
 
 /* ---------- field-notebook light theme ---------- */
 :root[data-theme="light"] body::before{opacity:.035;mix-blend-mode:multiply}
-:root[data-theme="light"] body::after{background:radial-gradient(120% 90% at 50% 8%,rgba(113,145,104,.15),rgba(243,240,229,0) 62%)}
-:root[data-theme="light"] .treebox,
-:root[data-theme="light"] .knock{background:#e8ecdf;fill:#e8ecdf}
-:root[data-theme="light"] svg#tree > rect:first-child{fill:#e8ecdf}
-:root[data-theme="light"] svg#tree > line{stroke:#6f896b}
-:root[data-theme="light"] .tip-common,
-:root[data-theme="light"] .sf-count,
-:root[data-theme="light"] .t-note,
-:root[data-theme="light"] .t-count{fill:#60705d}
-:root[data-theme="light"] .t-genus{fill:#1d2c20}
-:root[data-theme="light"] .t-species{fill:#394b3b}
-:root[data-theme="light"] .t-knot.open{fill:#e8ecdf}
-:root[data-theme="light"] .t-knot.leaf{fill:#64835f}
-:root[data-theme="light"] g.trow.static:hover .t-genus{fill:#1d2c20}
-:root[data-theme="light"] .card{background:rgba(228,234,220,.78)}
-:root[data-theme="light"] footer{color:#526552}
-:root[data-theme="light"] .topbar{background:rgba(243,240,229,.9)}
-:root[data-theme="light"] .tb-search input{background:rgba(228,234,220,.92)}
-:root[data-theme="light"] .tb-search input::placeholder{color:#677766}
-:root[data-theme="light"] .tb-results,
-:root[data-theme="light"] .lu-drawer{background:#eef0e5;box-shadow:0 26px 64px rgba(38,53,42,.2)}
-:root[data-theme="light"] .lu-scrim{background:rgba(33,45,35,.42)}
-:root[data-theme="light"] .cm-map svg{background:#dfe7d8}
-:root[data-theme="light"] .cm-map svg rect:first-child{fill:#dfe7d8}
-:root[data-theme="light"] .cm-label,
-:root[data-theme="light"] .cm-zoom-ctrl button{background:rgba(243,240,229,.92)}
-:root[data-theme="light"] .cm-land{fill:#b8c9af}
-:root[data-theme="light"] .cm-c{fill:#b8c9af;stroke:#dfe7d8}
-:root[data-theme="light"] .cm-c.has{fill:#8fab84}
-:root[data-theme="light"] .cm-c.has:hover{fill:#70966d}
-:root[data-theme="light"] .cm-c.range:hover{fill:#b37222}
-:root[data-theme="light"] .cm-d{fill:#71936d;stroke:#dfe7d8}
-:root[data-theme="light"] .cm-d:hover{fill:#527a54}
-:root[data-theme="light"] g.trow:hover .trow-hit{fill:rgba(49,95,58,.08)}
-:root[data-theme="light"] g.trow:focus-visible .trow-hit,
-:root[data-theme="light"] g.trow.species.active .trow-hit{fill:rgba(155,92,19,.12)}
-:root[data-theme="light"] .lu-status.lc{color:#266438;border-color:#579664}
-:root[data-theme="light"] .lu-status.en,
-:root[data-theme="light"] .lu-status.cr{color:#9b3232;border-color:#bd6b6b}
 </style>
 </head>
 <body>
@@ -475,6 +548,10 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
 <div class="topbar">
   <div class="topbar-in">
     <a class="tb-brand" href="#top">The branching of <em>bats</em></a>
+    <nav class="pageswitch" aria-label="Choose a group">
+      <a class="ps-opt" href="chiroptera-tree.html" aria-current="page">Bats</a>
+      <a class="ps-opt" href="marine-mammal-tree.html">Marine mammals</a>
+    </nav>
     <div class="tb-search">
       <span class="tb-ico" aria-hidden="true">⌕</span>
       <input type="search" id="lu-search" placeholder="Search any bat…" autocomplete="off"
@@ -488,7 +565,6 @@ g.trow.static:hover .t-genus{fill:#eef0e2}
       </svg>
     </button>
     <nav class="tb-nav" aria-label="Project links">
-      <a href="marine-mammal-tree.html">Marine mammals &rarr;</a>
       <a href="https://github.com/Kaves-Engineering/ChiropTree" target="_blank" rel="noopener noreferrer" aria-label="View ChiropTree on GitHub">
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.23.49-2.7-1.08-2.7-1.08-.37-.93-.9-1.18-.9-1.18-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.68 7.68 0 0 1 8 3.73c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.74.54 1.49l-.01 2.32c0 .21.14.46.55.38A8 8 0 0 0 8 0Z"/>
@@ -886,7 +962,7 @@ function ctxDrawTree(ctx){
 
   const H = posY + 22;
   svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
-  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,fill:'#16281a'}));
+  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg'}));
 
   /* ---------- 2. backbone, then the branches that continue below a family ---------- */
   const STEP = (TIPX - LEFT) / maxDepth;
@@ -909,7 +985,7 @@ function ctxDrawTree(ctx){
   headings.forEach(({b,y0})=>{
     if(b.sub){
       heading(b.sub.toUpperCase(), LEFT, y0 - 75, 'sub-label', 16.5);
-      svg.appendChild(el('line',{x1:LEFT,y1:y0-64,x2:COUNTX,y2:y0-64,stroke:'#8a6427','stroke-width':'.8'}));
+      svg.appendChild(el('line',{x1:LEFT,y1:y0-64,x2:COUNTX,y2:y0-64,class:'tree-rule','stroke-width':'.8'}));
     }
     const n = b.members.reduce((s,f)=>s+(filtering ? (countryLive.famCount[f]||0) : ctx.famInfo[f].species),0);
     heading(b.sf.toUpperCase(), LEFT+18, y0 - 32, 'sf-label', 13.5);
@@ -1858,7 +1934,7 @@ function cmShowSpeciesRange(binomial){
 function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
   if(!mapEl) return;
-  let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" fill="#122015"/>';
+  let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" class="cm-bg"/>';
   // dissolved land mass, under the countries: fills the sub-pixel slivers that
   // independent per-country simplification leaves along shared borders
   if(WMAP.land) body += '<path class="cm-land" d="'+WMAP.land+'"/>';

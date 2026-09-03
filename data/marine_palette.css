@@ -1,0 +1,110 @@
+/* ===== PALETTE =====================================================
+   The marine mammal palette. build_marine_mammal_page.py swaps this in
+   for the region between the PALETTE markers in chiroptera-tree.html;
+   the two files carry the same token names in the same order, and the
+   build fails if a name here is missing there.
+
+   The bat page is a cave at night: dark ground, lichen green for
+   structure, one warm lamplit accent. This is that same system moved
+   into cold water. Ground and structure go to deep sea and glacial
+   blue -- but the accent stays warm on purpose, because that is what a
+   marine mammal is: a warm body in a cold ocean. Land is drawn quiet
+   and slate here; on this map the water is the subject, not the margin.
+   =================================================================== */
+:root{
+  color-scheme:dark;
+  --abyss:#08161e;          /* page ground: past the depth red light reaches */
+  --prussian:#14303f;       /* raised surface -- the token finally earns its name */
+  --prussian-2:#1b3f52;
+  --panel:#0d2431;          /* drawer, search results */
+  --canvas:#102b3a;         /* the tree's own field */
+  --line:#93c4d8;           /* structure: rules, branches, labels */
+  --line-dim:#47788f;
+  --rule:#8d5730;           /* the hairline under a lineage heading */
+  --bone:#eef5f8;           /* brightest ink */
+  --text:#d2e2ea;
+  --muted:#9db4c0;
+  --ochre:#f0a06a;          /* the one accent: selection, focus, active */
+  --ochre-dim:#8d5730;
+
+  --ink-strong:#e6f1f6;     /* tree rows, genus down to species */
+  --ink-mid:#b7cdd9;
+  --ink-soft:#a2b8c4;
+  --ink-faint:#7f97a5;
+  --knot-leaf:#4e8298;
+  --footer-ink:#a7bcc7;
+  --placeholder:#7d95a1;
+
+  --map-water:#0a1f2b;      /* the range map, unpainted */
+  --map-land:#24455a;
+  --map-has:#2f6a86;        /* a country this taxon is recorded in */
+  --map-has-hover:#3f86a6;
+  --map-dot:#5aa0bf;        /* islands too small to draw as shapes */
+  --map-dot-hover:#7cc0dc;
+  --range-hover:#c9793d;
+
+  /* IUCN status is data, not decoration: unchanged from the bat page */
+  --st-good:#8fd19e;  --st-good-b:#3a6b45;
+  --st-bad:#e88a8a;   --st-bad-b:#8a3a3a;
+
+  /* triplets, for the places that need an alpha */
+  --border-rgb:120,170,200;
+  --border2-rgb:150,200,225;
+  --hover-rgb:150,200,225;
+  --ochre-rgb:240,160,106;
+  --abyss-rgb:8,22,30;
+  --card-rgb:14,38,52;
+  --scrim-rgb:5,16,23;
+  --input-rgb:20,48,63;
+  --glow-rgb:30,80,110;
+  --card-a:.75; --bar-a:.88; --input-a:.85; --scrim-a:.62;
+  --shadow:0 26px 64px rgba(0,0,0,.55);
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --abyss:#eef3f7;
+  --prussian:#dde8ee;
+  --prussian-2:#c8d9e3;
+  --panel:#f6fafc;
+  --canvas:#e6eef3;
+  --line:#235c78;
+  --line-dim:#7fa0b2;
+  --rule:#a3673a;
+  --bone:#0e2029;
+  --text:#1d3540;
+  --muted:#55707e;
+  --ochre:#9a5520;
+  --ochre-dim:#c08c60;
+
+  --ink-strong:#17303c;
+  --ink-mid:#35525f;
+  --ink-faint:#5d7684;
+  --ink-soft:#5d7684;
+  --knot-leaf:#5b8398;
+  --footer-ink:#52707e;
+  --placeholder:#67848f;
+
+  --map-water:#dbe8ef;
+  --map-land:#b6c9d5;
+  --map-has:#86aec6;
+  --map-has-hover:#6795b2;
+  --map-dot:#6f9db6;
+  --map-dot-hover:#4d7f9c;
+  --range-hover:#b3712c;
+
+  --st-good:#266438;  --st-good-b:#579664;
+  --st-bad:#9b3232;   --st-bad-b:#bd6b6b;
+
+  --border-rgb:120,165,190;
+  --border2-rgb:120,165,190;
+  --hover-rgb:35,92,120;
+  --ochre-rgb:154,85,32;
+  --abyss-rgb:238,243,247;
+  --card-rgb:221,232,238;
+  --scrim-rgb:20,38,48;
+  --input-rgb:221,232,238;
+  --glow-rgb:100,140,165;
+  --card-a:.78; --bar-a:.9;  --input-a:.92; --scrim-a:.42;
+  --shadow:0 22px 52px rgba(20,45,60,.18);
+}
+/* ===== /PALETTE ==================================================== */
