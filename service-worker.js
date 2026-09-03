@@ -1,5 +1,13 @@
 const CACHE = 'chiroptree-__RELEASE__';
-const CORE = ['./', './index.html', './marine.html', './manifest.webmanifest'];
+const CORE = [
+  './', './index.html', './marine.html', './manifest.webmanifest',
+  './data/chiroptera_taxonomy.json', './data/call-records.json',
+  './data/danish_names.json', './data/gbif_country_supplement.json',
+  './data/world_map.json', './data/marine_mammal_taxonomy.json',
+  './data/marine_mammal_danish_names.json',
+  './data/marine_mammal_gbif_country_supplement.json', './data/marine_world_map.json',
+  './data/media-manifest.json'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));

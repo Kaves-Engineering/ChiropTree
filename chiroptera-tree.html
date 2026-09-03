@@ -1844,13 +1844,13 @@ function luMergeCountrySupplement(species, supplement){
 
 Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
-  bundled('d-echo', 'data/echolocation_reference.json'),
+  bundled('d-calls', 'data/call-records.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, echo, danish, countrySupp, media])=>{
+]).then(([tax, calls, danish, countrySupp, media])=>{
   luState.species = tax.species;
-  luState.echo = echo;
+  luState.echo = calls;
   luState.danish = danish;
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
@@ -2181,7 +2181,7 @@ function luApplyFilter(){
     return;
   }
   luState.filtered = luState.species.filter(s=>{
-    const dk = luState.danish[s.sciName];
+    const dk = luState.danish[s.id];
     return (
       s.sciName.toLowerCase().replace('_',' ').includes(q) ||
       (s.mainCommonName||'').toLowerCase().includes(q) ||
@@ -2310,7 +2310,7 @@ function loadLocalPhoto(asset, host){
 function luDetailHTML(s, compact){
   const echo = luFindEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
-  const dk = luState.danish[s.sciName];
+  const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
 
@@ -2329,7 +2329,7 @@ function luDetailHTML(s, compact){
   const callSection = '<section class="lu-section"><h4>Call</h4>'+
     (callRows.length ? '<dl>'+callRows.join('')+'</dl>' : '<p class="lu-note">No reference data for '+luEsc(s.family)+'.</p>')+
     (merged && merged.foragingNote ? '<p class="lu-note">'+luEsc(merged.foragingNote)+'</p>' : '')+
-    (merged ? '<p class="lu-src">'+(echo.override ? 'Genus reference' : 'Family reference')+'. Not verified per species.</p>' : '')+
+    (merged ? '<p class="lu-src">'+(echo.override ? 'Genus guide' : 'Family guide')+'. Not verified per species.</p>' : '')+
     '</section>';
 
   const links = LINKS.map(([label,url,icon])=>
@@ -2436,8 +2436,8 @@ treeToggle.addEventListener('click', ()=>{
 <script type="application/json" id="d-taxonomy">
 INLINE data/chiroptera_taxonomy.json
 </script>
-<script type="application/json" id="d-echo">
-INLINE data/echolocation_reference.json
+<script type="application/json" id="d-calls">
+INLINE data/call-records.json
 </script>
 <script type="application/json" id="d-danish">
 INLINE data/danish_names.json

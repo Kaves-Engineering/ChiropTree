@@ -11,10 +11,8 @@ records, and release manifest as reviewable text. Generate SQLite, browser
 JSON, image manifest, and site output from those inputs. Do not commit a
 binary SQLite database as the only reviewable record.
 
-Before code starts, approve the supported image licences, the maximum optional
-image-pack size, and whether GitLab Pages remains the production deployment.
-The repo currently deploys through both GitLab and GitHub workflows. Pick one
-as production, then remove or disable the other only if that is intended.
+Use CC0, CC-BY, and CC-BY-SA images only. GitHub Pages is the production
+deployment. The image-pack size limit remains to be set before bulk download.
 
 ## 1. Lock down current behaviour
 

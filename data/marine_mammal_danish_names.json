@@ -1,153 +1,322 @@
 {
- "Arctocephalus_australis": {
+ "1000529": {
   "allNames": [
-   "Sydamerikansk pelssæl"
+   "Dygong"
   ],
-  "name": "Sydamerikansk pelssæl",
+  "gbifKey": 9729967,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Dugong dugon (Müller, 1776)",
+  "mddId": "1000529",
+  "name": "Dygong",
   "source": "Catalogue of Life"
  },
- "Arctocephalus_forsteri": {
+ "1000530": {
   "allNames": [
-   "New Zealandsk pelssæl"
+   "Stellers søko"
   ],
-  "name": "New Zealandsk pelssæl",
+  "gbifKey": 2435289,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Hydrodamalis gigas (Zimmermann, 1780)",
+  "mddId": "1000530",
+  "name": "Stellers søko",
   "source": "Catalogue of Life"
  },
- "Arctocephalus_galapagoensis": {
+ "1000532": {
   "allNames": [
-   "Galápagos-pelssæl"
+   "Vestindisk manat"
   ],
-  "name": "Galápagos-pelssæl",
+  "gbifKey": 2435296,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Trichechus manatus Linnaeus, 1758",
+  "mddId": "1000532",
+  "name": "Vestindisk manat",
   "source": "Catalogue of Life"
  },
- "Arctocephalus_gazella": {
+ "1000533": {
   "allNames": [
-   "Kerguelen-pelssæl"
+   "Vestafrikansk manat"
   ],
-  "name": "Kerguelen-pelssæl",
+  "gbifKey": 2435294,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Trichechus senegalensis Link, 1795",
+  "mddId": "1000533",
+  "name": "Vestafrikansk manat",
   "source": "Catalogue of Life"
  },
- "Arctocephalus_pusillus": {
+ "1005894": {
+  "allNames": [
+   "Hvalros",
+   "hvalros"
+  ],
+  "gbifKey": 5218819,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Odobenus rosmarus (Linnaeus, 1758)",
+  "mddId": "1005894",
+  "name": "Hvalros",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005895": {
   "allNames": [
    "Afro-australsk pelssæl",
    "Sydafrikansk pelssæl"
   ],
+  "gbifKey": 2433475,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Arctocephalus pusillus (Schreber, 1775)",
+  "mddId": "1005895",
   "name": "Afro-australsk pelssæl",
   "source": "Catalogue of Life"
  },
- "Balaena_mysticetus": {
+ "1005896": {
   "allNames": [
-   "Grønlandshval",
-   "bartfisch"
+   "Sydamerikansk pelssæl"
   ],
-  "name": "Grønlandshval",
-  "source": "The IUCN Red List of Threatened Species"
- },
- "Balaenoptera_acutorostrata": {
-  "allNames": [
-   "Vågehval"
-  ],
-  "name": "Vågehval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Balaenoptera_bonaerensis": {
-  "allNames": [
-   "Antarktisk vågehval"
-  ],
-  "name": "Antarktisk vågehval",
+  "gbifKey": 2433480,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Arctocephalus australis (Zimmermann, 1783)",
+  "mddId": "1005896",
+  "name": "Sydamerikansk pelssæl",
   "source": "Catalogue of Life"
  },
- "Balaenoptera_borealis": {
+ "1005897": {
   "allNames": [
-   "Sejhval",
-   "sejhval"
+   "New Zealandsk pelssæl"
   ],
-  "name": "Sejhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Balaenoptera_brydei": {
-  "allNames": [
-   "Brydeshval"
-  ],
-  "name": "Brydeshval",
-  "source": "World Register of Marine Species"
- },
- "Balaenoptera_edeni": {
-  "allNames": [
-   "Brydeshval"
-  ],
-  "name": "Brydeshval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Balaenoptera_musculus": {
-  "allNames": [
-   "Blåhval",
-   "blåhval"
-  ],
-  "name": "Blåhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Balaenoptera_physalus": {
-  "allNames": [
-   "Finhval"
-  ],
-  "name": "Finhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Cephalorhynchus_hectori": {
-  "allNames": [
-   "Hectors delfin"
-  ],
-  "name": "Hectors delfin",
+  "gbifKey": 2433474,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Arctocephalus forsteri (Lesson, 1828)",
+  "mddId": "1005897",
+  "name": "New Zealandsk pelssæl",
   "source": "Catalogue of Life"
  },
- "Cystophora_cristata": {
+ "1005898": {
+  "allNames": [
+   "Galápagos-pelssæl"
+  ],
+  "gbifKey": 2433473,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Arctocephalus galapagoensis Heller, 1904",
+  "mddId": "1005898",
+  "name": "Galápagos-pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "1005899": {
+  "allNames": [
+   "Kerguelen-pelssæl"
+  ],
+  "gbifKey": 2433472,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Arctocephalus gazella (Peters, 1875)",
+  "mddId": "1005899",
+  "name": "Kerguelen-pelssæl",
+  "source": "Catalogue of Life"
+ },
+ "1005904": {
+  "allNames": [
+   "Stellers søløve"
+  ],
+  "gbifKey": 2433462,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eumetopias jubatus (Schreber, 1776)",
+  "mddId": "1005904",
+  "name": "Stellers søløve",
+  "source": "Catalogue of Life"
+ },
+ "1005907": {
+  "allNames": [
+   "Newzealandsk søløve"
+  ],
+  "gbifKey": 2433467,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phocarctos hookeri (Gray, 1844)",
+  "mddId": "1005907",
+  "name": "Newzealandsk søløve",
+  "source": "Catalogue of Life"
+ },
+ "1005909": {
+  "allNames": [
+   "Japansk søløve"
+  ],
+  "gbifKey": 2433459,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Zalophus japonicus (Peters, 1866)",
+  "mddId": "1005909",
+  "name": "Japansk søløve",
+  "source": "Catalogue of Life"
+ },
+ "1005910": {
+  "allNames": [
+   "Galapagossøløve"
+  ],
+  "gbifKey": 2433460,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Zalophus wollebaeki Sivertsen, 1953",
+  "mddId": "1005910",
+  "name": "Galapagossøløve",
+  "source": "Catalogue of Life"
+ },
+ "1005911": {
   "allNames": [
    "Klapmyds",
    "klapmyds"
   ],
+  "gbifKey": 5219378,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Cystophora cristata (Erxleben, 1777)",
+  "mddId": "1005911",
   "name": "Klapmyds",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Delphinapterus_leucas": {
-  "allNames": [
-   "Belugahval",
-   "Hvidhval"
-  ],
-  "name": "Hvidhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Delphinus_delphis": {
-  "allNames": [
-   "Almindelig delfin",
-   "Almindelige delfiner"
-  ],
-  "name": "Almindelig delfin",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Dugong_dugon": {
-  "allNames": [
-   "Dygong"
-  ],
-  "name": "Dygong",
-  "source": "Catalogue of Life"
- },
- "Erignathus_barbatus": {
+ "1005912": {
   "allNames": [
    "Remmesæl",
    "remmesæl"
   ],
+  "gbifKey": 2434816,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Erignathus barbatus (Erxleben, 1777)",
+  "mddId": "1005912",
   "name": "Remmesæl",
   "source": "EUNIS Biodiversity Database"
  },
- "Eschrichtius_robustus": {
+ "1005913": {
   "allNames": [
-   "gråhval"
+   "Gråsæl",
+   "gråsæl"
   ],
-  "name": "gråhval",
-  "source": "World Register of Marine Species"
+  "gbifKey": 2434806,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Halichoerus grypus (Fabricius, 1791)",
+  "mddId": "1005913",
+  "name": "Gråsæl",
+  "source": "National Checklist of all species occurring in Denmark"
  },
- "Eubalaena_glacialis": {
+ "1005915": {
+  "allNames": [
+   "søleopard"
+  ],
+  "gbifKey": 2434790,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Hydrurga leptonyx (de Blainville, 1820)",
+  "mddId": "1005915",
+  "name": "søleopard",
+  "source": "Catalogue of Life"
+ },
+ "1005918": {
+  "allNames": [
+   "Nordlig Søelefant"
+  ],
+  "gbifKey": 2434813,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Mirounga angustirostris (Gill, 1866)",
+  "mddId": "1005918",
+  "name": "Nordlig Søelefant",
+  "source": "Catalogue of Life"
+ },
+ "1005919": {
+  "allNames": [
+   "Sydlig søelefant"
+  ],
+  "gbifKey": 2434814,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Mirounga leonina (Linnaeus, 1758)",
+  "mddId": "1005919",
+  "name": "Sydlig søelefant",
+  "source": "Catalogue of Life"
+ },
+ "1005920": {
+  "allNames": [
+   "Middelhavsmunkesæl",
+   "Munkesæl",
+   "munkesæl"
+  ],
+  "gbifKey": 2434779,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Monachus monachus (Hermann, 1779)",
+  "mddId": "1005920",
+  "name": "Middelhavsmunkesæl",
+  "source": "Catalogue of Life"
+ },
+ "1005921": {
+  "allNames": [
+   "Stillehavsmunkesæl"
+  ],
+  "gbifKey": 8646426,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Neomonachus schauinslandi (Matschie, 1905)",
+  "mddId": "1005921",
+  "name": "Stillehavsmunkesæl",
+  "source": "Catalogue of Life"
+ },
+ "1005924": {
+  "allNames": [
+   "Grønlandssæl"
+  ],
+  "gbifKey": 2434801,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pagophilus groenlandicus (Erxleben, 1777)",
+  "mddId": "1005924",
+  "name": "Grønlandssæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005925": {
+  "allNames": [
+   "Larghasæl"
+  ],
+  "gbifKey": 2434791,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phoca largha Pallas, 1811",
+  "mddId": "1005925",
+  "name": "Larghasæl",
+  "source": "Catalogue of Life"
+ },
+ "1005926": {
+  "allNames": [
+   "Spættet sæl",
+   "spættet sæl"
+  ],
+  "gbifKey": 2434793,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phoca vitulina Linnaeus, 1758",
+  "mddId": "1005926",
+  "name": "Spættet sæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005928": {
+  "allNames": [
+   "Ringsæl"
+  ],
+  "gbifKey": 5219369,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pusa hispida (Schreber, 1775)",
+  "mddId": "1005928",
+  "name": "Ringsæl",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005929": {
+  "allNames": [
+   "Bajkalsæl"
+  ],
+  "gbifKey": 5219368,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pusa sibirica (Gmelin, 1788)",
+  "mddId": "1005929",
+  "name": "Bajkalsæl",
+  "source": "Catalogue of Life"
+ },
+ "1006393": {
+  "allNames": [
+   "Grønlandshval",
+   "bartfisch"
+  ],
+  "gbifKey": 2440330,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaena mysticetus Linnaeus, 1758",
+  "mddId": "1006393",
+  "name": "Grønlandshval",
+  "source": "The IUCN Red List of Threatened Species"
+ },
+ "1006395": {
   "allNames": [
    "Nordkaper",
    "biscayrhval",
@@ -156,62 +325,356 @@
    "nordkaper",
    "svarthval"
   ],
+  "gbifKey": 2440339,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eubalaena glacialis (Müller, 1776)",
+  "mddId": "1006395",
   "name": "Nordkaper",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Eumetopias_jubatus": {
+ "1006397": {
   "allNames": [
-   "Stellers søløve"
+   "Vågehval"
   ],
-  "name": "Stellers søløve",
+  "gbifKey": 2440728,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera acutorostrata Lacépède, 1804",
+  "mddId": "1006397",
+  "name": "Vågehval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006398": {
+  "allNames": [
+   "Antarktisk vågehval"
+  ],
+  "gbifKey": 7759914,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera bonaerensis Burmeister, 1867",
+  "mddId": "1006398",
+  "name": "Antarktisk vågehval",
   "source": "Catalogue of Life"
  },
- "Feresa_attenuata": {
+ "1006399": {
+  "allNames": [
+   "Sejhval",
+   "sejhval"
+  ],
+  "gbifKey": 2440709,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera borealis Lesson, 1828",
+  "mddId": "1006399",
+  "name": "Sejhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006400": {
+  "allNames": [
+   "Brydeshval"
+  ],
+  "gbifKey": 2440714,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera edeni Anderson, 1879",
+  "mddId": "1006400",
+  "name": "Brydeshval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006401": {
+  "allNames": [
+   "Blåhval",
+   "blåhval"
+  ],
+  "gbifKey": 2440735,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera musculus (Linnaeus, 1758)",
+  "mddId": "1006401",
+  "name": "Blåhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006403": {
+  "allNames": [
+   "Finhval"
+  ],
+  "gbifKey": 2440718,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera physalus (Linnaeus, 1758)",
+  "mddId": "1006403",
+  "name": "Finhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006404": {
+  "allNames": [
+   "gråhval"
+  ],
+  "gbifKey": 2440704,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eschrichtius robustus (Lilljeborg, 1861)",
+  "mddId": "1006404",
+  "name": "gråhval",
+  "source": "World Register of Marine Species"
+ },
+ "1006405": {
+  "allNames": [
+   "Pukkelhval"
+  ],
+  "gbifKey": 5220086,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Megaptera novaeangliae (Borowski, 1781)",
+  "mddId": "1006405",
+  "name": "Pukkelhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006410": {
+  "allNames": [
+   "Hectors delfin"
+  ],
+  "gbifKey": 5220033,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Cephalorhynchus hectori (P.-J.van Bénéden, 1881)",
+  "mddId": "1006410",
+  "name": "Hectors delfin",
+  "source": "Catalogue of Life"
+ },
+ "1006411": {
+  "allNames": [
+   "Almindelig delfin",
+   "Almindelige delfiner"
+  ],
+  "gbifKey": 8324617,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Delphinus delphis Linnaeus, 1758",
+  "mddId": "1006411",
+  "name": "Almindelig delfin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006412": {
   "allNames": [
    "Dværgspækhugger"
   ],
+  "gbifKey": 2440530,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Feresa attenuata Gray, 1874",
+  "mddId": "1006412",
   "name": "Dværgspækhugger",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Globicephala_melas": {
+ "1006414": {
   "allNames": [
    "Grindhval",
    "Langluffet grindehval"
   ],
+  "gbifKey": 2440596,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Globicephala melas (Traill, 1809)",
+  "mddId": "1006414",
   "name": "Langluffet grindehval",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Grampus_griseus": {
+ "1006415": {
   "allNames": [
    "Rissosdelfin",
    "halvrgindehvaler"
   ],
+  "gbifKey": 5220027,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Grampus griseus (G.Cuvier, 1812)",
+  "mddId": "1006415",
   "name": "Rissosdelfin",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Halichoerus_grypus": {
+ "1006417": {
   "allNames": [
-   "Gråsæl",
-   "gråsæl"
+   "Hvidnæse",
+   "hvidnæse"
   ],
-  "name": "Gråsæl",
+  "gbifKey": 5220081,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Lagenorhynchus albirostris (Gray, 1846)",
+  "mddId": "1006417",
+  "name": "Hvidnæse",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Hydrodamalis_gigas": {
+ "1006423": {
   "allNames": [
-   "Stellers søko"
+   "Spækhugger"
   ],
-  "name": "Stellers søko",
+  "gbifKey": 2440483,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Orcinus orca (Linnaeus, 1758)",
+  "mddId": "1006423",
+  "name": "Spækhugger",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006425": {
+  "allNames": [
+   "Halvspækhugger",
+   "halvspækhugger"
+  ],
+  "gbifKey": 2440440,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pseudorca crassidens (Owen, 1846)",
+  "mddId": "1006425",
+  "name": "Halvspækhugger",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006430": {
+  "allNames": [
+   "Tucuxi-delfin"
+  ],
+  "gbifKey": 2440537,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Sotalia fluviatilis (Gervais & Deville, 1853)",
+  "mddId": "1006430",
+  "name": "Tucuxi-delfin",
   "source": "Catalogue of Life"
  },
- "Hydrurga_leptonyx": {
+ "1006432": {
   "allNames": [
-   "søleopard"
+   "Indopacifisk pukkeldelfin"
   ],
-  "name": "søleopard",
+  "gbifKey": 2440495,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Sousa chinensis (Osbeck, 1765)",
+  "mddId": "1006432",
+  "name": "Indopacifisk pukkeldelfin",
   "source": "Catalogue of Life"
  },
- "Hyperoodon_ampullatus": {
+ "1006433": {
+  "allNames": [
+   "Indisk pukkeldelfin"
+  ],
+  "gbifKey": 2440506,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Sousa plumbea (G.Cuvier, 1829)",
+  "mddId": "1006433",
+  "name": "Indisk pukkeldelfin",
+  "source": "Catalogue of Life"
+ },
+ "1006435": {
+  "allNames": [
+   "Atlantisk pukkeldelfin"
+  ],
+  "gbifKey": 2440505,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Sousa teuszii (Kükenthal, 1892)",
+  "mddId": "1006435",
+  "name": "Atlantisk pukkeldelfin",
+  "source": "Catalogue of Life"
+ },
+ "1006438": {
+  "allNames": [
+   "Stribet delfin",
+   "stribet delfin"
+  ],
+  "gbifKey": 5220055,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Stenella coeruleoalba (Meyen, 1833)",
+  "mddId": "1006438",
+  "name": "Stribet delfin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006440": {
+  "allNames": [
+   "Langnæbbet delfin"
+  ],
+  "gbifKey": 5220060,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Stenella longirostris (Gray, 1828)",
+  "mddId": "1006440",
+  "name": "Langnæbbet delfin",
+  "source": "Catalogue of Life"
+ },
+ "1006442": {
+  "allNames": [
+   "Indopacifisk øresvin"
+  ],
+  "gbifKey": 2440455,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Tursiops aduncus (Ehrenberg, 1833)",
+  "mddId": "1006442",
+  "name": "Indopacifisk øresvin",
+  "source": "Catalogue of Life"
+ },
+ "1006443": {
+  "allNames": [
+   "Øresvin"
+  ],
+  "gbifKey": 2440447,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Tursiops truncatus (Montagu, 1821)",
+  "mddId": "1006443",
+  "name": "Øresvin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006444": {
+  "allNames": [
+   "Belugahval",
+   "Hvidhval"
+  ],
+  "gbifKey": 5220003,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Delphinapterus leucas (Pallas, 1776)",
+  "mddId": "1006444",
+  "name": "Hvidhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006445": {
+  "allNames": [
+   "Narhval",
+   "narhval"
+  ],
+  "gbifKey": 5220008,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Monodon monoceros Linnaeus, 1758",
+  "mddId": "1006445",
+  "name": "Narhval",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006450": {
+  "allNames": [
+   "Almindeligt marsvin",
+   "Marsvin"
+  ],
+  "gbifKey": 2440669,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phocoena phocoena (Linnaeus, 1758)",
+  "mddId": "1006450",
+  "name": "Marsvin",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006452": {
+  "allNames": [
+   "Pigfinnemarsvin"
+  ],
+  "gbifKey": 2440666,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phocoena spinipinnis Burmeister, 1865",
+  "mddId": "1006452",
+  "name": "Pigfinnemarsvin",
+  "source": "Catalogue of Life"
+ },
+ "1006456": {
+  "allNames": [
+   "Amazondelfinen"
+  ],
+  "gbifKey": 2440314,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Inia geoffrensis (Blainville, 1817)",
+  "mddId": "1006456",
+  "name": "Amazondelfinen",
+  "source": "Catalogue of Life"
+ },
+ "1006461": {
+  "allNames": [
+   "Kaskelot",
+   "Kaskelothval"
+  ],
+  "gbifKey": 8123917,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Physeter macrocephalus Linnaeus, 1758",
+  "mddId": "1006461",
+  "name": "Kaskelot",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006466": {
   "allNames": [
    "Døgling",
    "Nordlig Døgling",
@@ -219,278 +682,79 @@
    "døgling",
    "naebhval"
   ],
+  "gbifKey": 5220013,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Hyperoodon ampullatus (Forster, 1770)",
+  "mddId": "1006466",
   "name": "Døgling",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Inia_geoffrensis": {
-  "allNames": [
-   "Amazondelfinen"
-  ],
-  "name": "Amazondelfinen",
-  "source": "Catalogue of Life"
- },
- "Lagenorhynchus_albirostris": {
-  "allNames": [
-   "Hvidnæse",
-   "hvidnæse"
-  ],
-  "name": "Hvidnæse",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Megaptera_novaeangliae": {
-  "allNames": [
-   "Pukkelhval"
-  ],
-  "name": "Pukkelhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Mesoplodon_bidens": {
+ "1006469": {
   "allNames": [
    "Almindelig næbhval",
    "Næbhval",
    "almindelig næbhval"
   ],
+  "gbifKey": 2440412,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Mesoplodon bidens (Sowerby, 1804)",
+  "mddId": "1006469",
   "name": "Almindelig næbhval",
   "source": "National Checklist of all species occurring in Denmark"
  },
- "Mesoplodon_densirostris": {
+ "1006472": {
   "allNames": [
    "Blainvilles næbhval"
   ],
+  "gbifKey": 2440403,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Mesoplodon densirostris (Blainville, 1817)",
+  "mddId": "1006472",
   "name": "Blainvilles næbhval",
   "source": "The IUCN Red List of Threatened Species"
  },
- "Mesoplodon_stejnegeri": {
+ "1006482": {
   "allNames": [
    "Stejnegers næbhval"
   ],
+  "gbifKey": 2440402,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Mesoplodon stejnegeri True, 1885",
+  "mddId": "1006482",
   "name": "Stejnegers næbhval",
   "source": "Catalogue of Life"
  },
- "Mirounga_angustirostris": {
-  "allNames": [
-   "Nordlig Søelefant"
-  ],
-  "name": "Nordlig Søelefant",
-  "source": "Catalogue of Life"
- },
- "Mirounga_leonina": {
-  "allNames": [
-   "Sydlig søelefant"
-  ],
-  "name": "Sydlig søelefant",
-  "source": "Catalogue of Life"
- },
- "Monachus_monachus": {
-  "allNames": [
-   "Middelhavsmunkesæl",
-   "Munkesæl",
-   "munkesæl"
-  ],
-  "name": "Middelhavsmunkesæl",
-  "source": "Catalogue of Life"
- },
- "Monodon_monoceros": {
-  "allNames": [
-   "Narhval",
-   "narhval"
-  ],
-  "name": "Narhval",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Neomonachus_schauinslandi": {
-  "allNames": [
-   "Stillehavsmunkesæl"
-  ],
-  "name": "Stillehavsmunkesæl",
-  "source": "Catalogue of Life"
- },
- "Odobenus_rosmarus": {
-  "allNames": [
-   "Hvalros",
-   "hvalros"
-  ],
-  "name": "Hvalros",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Orcinus_orca": {
-  "allNames": [
-   "Spækhugger"
-  ],
-  "name": "Spækhugger",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pagophilus_groenlandicus": {
-  "allNames": [
-   "Grønlandssæl"
-  ],
-  "name": "Grønlandssæl",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Phoca_largha": {
-  "allNames": [
-   "Larghasæl"
-  ],
-  "name": "Larghasæl",
-  "source": "Catalogue of Life"
- },
- "Phoca_vitulina": {
-  "allNames": [
-   "Spættet sæl",
-   "spættet sæl"
-  ],
-  "name": "Spættet sæl",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Phocarctos_hookeri": {
-  "allNames": [
-   "Newzealandsk søløve"
-  ],
-  "name": "Newzealandsk søløve",
-  "source": "Catalogue of Life"
- },
- "Phocoena_phocoena": {
-  "allNames": [
-   "Almindeligt marsvin",
-   "Marsvin"
-  ],
-  "name": "Marsvin",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Phocoena_spinipinnis": {
-  "allNames": [
-   "Pigfinnemarsvin"
-  ],
-  "name": "Pigfinnemarsvin",
-  "source": "Catalogue of Life"
- },
- "Physeter_macrocephalus": {
-  "allNames": [
-   "Kaskelot",
-   "Kaskelothval"
-  ],
-  "name": "Kaskelot",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pseudorca_crassidens": {
-  "allNames": [
-   "Halvspækhugger",
-   "halvspækhugger"
-  ],
-  "name": "Halvspækhugger",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pusa_hispida": {
-  "allNames": [
-   "Ringsæl"
-  ],
-  "name": "Ringsæl",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pusa_sibirica": {
-  "allNames": [
-   "Bajkalsæl"
-  ],
-  "name": "Bajkalsæl",
-  "source": "Catalogue of Life"
- },
- "Sotalia_fluviatilis": {
-  "allNames": [
-   "Tucuxi-delfin"
-  ],
-  "name": "Tucuxi-delfin",
-  "source": "Catalogue of Life"
- },
- "Sousa_chinensis": {
-  "allNames": [
-   "Indopacifisk pukkeldelfin"
-  ],
-  "name": "Indopacifisk pukkeldelfin",
-  "source": "Catalogue of Life"
- },
- "Sousa_plumbea": {
-  "allNames": [
-   "Indisk pukkeldelfin"
-  ],
-  "name": "Indisk pukkeldelfin",
-  "source": "Catalogue of Life"
- },
- "Sousa_teuszii": {
-  "allNames": [
-   "Atlantisk pukkeldelfin"
-  ],
-  "name": "Atlantisk pukkeldelfin",
-  "source": "Catalogue of Life"
- },
- "Stenella_coeruleoalba": {
-  "allNames": [
-   "Stribet delfin",
-   "stribet delfin"
-  ],
-  "name": "Stribet delfin",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Stenella_longirostris": {
-  "allNames": [
-   "Langnæbbet delfin"
-  ],
-  "name": "Langnæbbet delfin",
-  "source": "Catalogue of Life"
- },
- "Tasmacetus_shepherdi": {
+ "1006484": {
   "allNames": [
    "Mangetandet næbhval"
   ],
+  "gbifKey": 2440383,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Tasmacetus shepherdi Oliver, 1937",
+  "mddId": "1006484",
   "name": "Mangetandet næbhval",
   "source": "Catalogue of Life"
  },
- "Trichechus_manatus": {
-  "allNames": [
-   "Vestindisk manat"
-  ],
-  "name": "Vestindisk manat",
-  "source": "Catalogue of Life"
- },
- "Trichechus_senegalensis": {
-  "allNames": [
-   "Vestafrikansk manat"
-  ],
-  "name": "Vestafrikansk manat",
-  "source": "Catalogue of Life"
- },
- "Tursiops_aduncus": {
-  "allNames": [
-   "Indopacifisk øresvin"
-  ],
-  "name": "Indopacifisk øresvin",
-  "source": "Catalogue of Life"
- },
- "Tursiops_truncatus": {
-  "allNames": [
-   "Øresvin"
-  ],
-  "name": "Øresvin",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Zalophus_japonicus": {
-  "allNames": [
-   "Japansk søløve"
-  ],
-  "name": "Japansk søløve",
-  "source": "Catalogue of Life"
- },
- "Zalophus_wollebaeki": {
-  "allNames": [
-   "Galapagossøløve"
-  ],
-  "name": "Galapagossøløve",
-  "source": "Catalogue of Life"
- },
- "Ziphius_cavirostris": {
+ "1006485": {
   "allNames": [
    "Småhovedet hval"
   ],
+  "gbifKey": 2440369,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Ziphius cavirostris G.Cuvier, 1823",
+  "mddId": "1006485",
   "name": "Småhovedet hval",
   "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1006520": {
+  "allNames": [
+   "Brydeshval"
+  ],
+  "gbifKey": 2440715,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Balaenoptera brydei Olsen, 1913",
+  "mddId": "1006520",
+  "name": "Brydeshval",
+  "source": "World Register of Marine Species"
  }
 }

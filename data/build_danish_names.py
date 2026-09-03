@@ -9,8 +9,8 @@ omitted from the output -- we do not invent names.
 """
 import json
 import time
-import urllib.request
 import urllib.parse
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -29,7 +29,7 @@ def fetch_json(url, retries=3):
             req = urllib.request.Request(url, headers={"User-Agent": "treeofbatlife-lookup/1.0"})
             with urllib.request.urlopen(req, timeout=15) as r:
                 return json.loads(r.read().decode("utf-8"))
-        except Exception:
+        except Exception:  # noqa: BLE001
             if attempt == retries - 1:
                 return None
             time.sleep(1.5 * (attempt + 1))
@@ -58,6 +58,8 @@ def danish_name_for(sci_name_space, fallback_name_space=None):
         "name": pick["vernacularName"],
         "source": pick.get("source", "GBIF"),
         "allNames": all_names,
+        "gbifKey": match["usageKey"],
+        "matchedName": match.get("scientificName", sci_name_space),
     }
 
 
@@ -74,16 +76,20 @@ def main():
             msw3 = s.get("MSW3_sciName") or ""
             fallback = msw3.replace("_", " ") if msw3 and msw3 != "NA" else None
             fut = pool.submit(danish_name_for, s["sciName"].replace("_", " "), fallback)
-            futures[fut] = s["sciName"]
+            futures[fut] = s
         for fut in as_completed(futures):
-            sci = futures[fut]
+            species = futures[fut]
             done += 1
             try:
                 res = fut.result()
-            except Exception as e:
+            except Exception:  # noqa: BLE001
                 res = None
             if res:
-                results[sci] = res
+                results[species["id"]] = {
+                    **res,
+                    "mddId": species["id"],
+                    "matchMethod": "accepted-name-or-msw3-fallback",
+                }
             if done % 100 == 0:
                 print(f"{done}/{total} checked, {len(results)} Danish names found so far")
 

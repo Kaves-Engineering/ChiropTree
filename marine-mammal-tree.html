@@ -1735,7 +1735,7 @@ function luApplyFilter(){
     return;
   }
   luState.filtered = luState.species.filter(s=>{
-    const dk = luState.danish[s.sciName];
+    const dk = luState.danish[s.id];
     return (
       s.sciName.toLowerCase().replace('_',' ').includes(q) ||
       (s.mainCommonName||'').toLowerCase().includes(q) ||
@@ -1864,7 +1864,7 @@ function loadLocalPhoto(asset, host){
 function luDetailHTML(s, compact){
   const echo = luFindEcho(s);
   const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
-  const dk = luState.danish[s.sciName];
+  const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
 
@@ -1883,7 +1883,7 @@ function luDetailHTML(s, compact){
   const callSection = '<section class="lu-section"><h4>Call</h4>'+
     (callRows.length ? '<dl>'+callRows.join('')+'</dl>' : '<p class="lu-note">No reference data for '+luEsc(s.family)+'.</p>')+
     (merged && merged.foragingNote ? '<p class="lu-note">'+luEsc(merged.foragingNote)+'</p>' : '')+
-    (merged ? '<p class="lu-src">'+(echo.override ? 'Genus reference' : 'Family reference')+'. Not verified per species.</p>' : '')+
+    (merged ? '<p class="lu-src">'+(echo.override ? 'Genus guide' : 'Family guide')+'. Not verified per species.</p>' : '')+
     '</section>';
 
   const links = LINKS.map(([label,url,icon])=>
