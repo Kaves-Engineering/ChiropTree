@@ -1040,7 +1040,17 @@
    "status": "unavailable"
   },
   "1004700": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004700.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40705",
+   "providerAssetId": "20180840",
+   "attribution": "(c) P.O. Nameer, Sandeep Das, Praveen Mohandas, some rights reserved (CC BY)",
+   "license": "CC-BY",
+   "alt": "Rhinolophus lepidus",
+   "sourceHash": "8146049729d8117e680ba61a301082457f75efbef45a5f31e3ee85f280419a3c",
+   "outputHash": "7560d71aa582ed7f7c0ac64352f7e5a84d9aec480158804bc3c2ed539ac63738",
+   "width": 75,
+   "height": 75
   },
   "1004701": {
    "status": "unavailable"
@@ -1265,6 +1275,7 @@
    "status": "available",
    "path": "images/1004777.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41389",
+   "providerAssetId": "49590655",
    "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
    "license": "CC-BY-SA",
    "alt": "Balantiopteryx io",
@@ -1346,6 +1357,7 @@
    "status": "available",
    "path": "images/1004801.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41392",
+   "providerAssetId": "178596261",
    "attribution": "(c) \nIsland Conservation Society, some rights reserved (CC BY)",
    "license": "CC-BY",
    "alt": "Coleura seychellensis",
@@ -1406,6 +1418,7 @@
    "status": "available",
    "path": "images/1004818.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41384",
+   "providerAssetId": "15086900",
    "attribution": "(c) coenobita, some rights reserved (CC BY), uploaded by coenobita",
    "license": "CC-BY",
    "alt": "Taphozous australis",
@@ -1436,6 +1449,7 @@
    "status": "available",
    "path": "images/1004825.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41380",
+   "providerAssetId": "19436",
    "attribution": "(c) Frank Vassen, some rights reserved (CC BY)",
    "license": "CC-BY",
    "alt": "Taphozous mauritianus",
@@ -1448,6 +1462,7 @@
    "status": "available",
    "path": "images/1004826.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41376",
+   "providerAssetId": "485945",
    "attribution": "(c) Aditya Joshi, some rights reserved (CC BY-SA)",
    "license": "CC-BY-SA",
    "alt": "Taphozous melanopogon",
@@ -1511,6 +1526,7 @@
    "status": "available",
    "path": "images/1004845.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41192",
+   "providerAssetId": "58316419",
    "attribution": "(c) Wynand Uys, some rights reserved (CC BY), uploaded by Wynand Uys",
    "license": "CC-BY",
    "alt": "Nycteris thebaica",
@@ -1547,6 +1563,7 @@
    "status": "available",
    "path": "images/1004854.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/1076872",
+   "providerAssetId": "18656148",
    "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
    "license": "CC-BY-SA",
    "alt": "Pteronotus fulvus",
@@ -1571,6 +1588,7 @@
    "status": "available",
    "path": "images/1004859.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/1453920",
+   "providerAssetId": "499940523",
    "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY), uploaded by Juan Cruzado Cortés",
    "license": "CC-BY",
    "alt": "Pteronotus mexicanus",
@@ -1607,6 +1625,7 @@
    "status": "available",
    "path": "images/1004868.webp",
    "sourceUrl": "https://www.inaturalist.org/taxa/41214",
+   "providerAssetId": "13050710",
    "attribution": "(c) Auckland Museum, some rights reserved (CC BY)",
    "license": "CC-BY",
    "alt": "Mystacina robusta",
@@ -2222,7 +2241,17 @@
    "status": "unavailable"
   },
   "1005058": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005058.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1581530",
+   "providerAssetId": "586070195",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY",
+   "alt": "Uroderma davisi",
+   "sourceHash": "bdff1a8eaa0f1b05c28b713e27354c1b6229a64d5333b222c70bf9e10c45cf65",
+   "outputHash": "b5e7986ced95d06c37fce6b2a281215aee6d690fdba8fb6a243fad8fe5fe0b11",
+   "width": 75,
+   "height": 75
   },
   "1005059": {
    "status": "unavailable"
