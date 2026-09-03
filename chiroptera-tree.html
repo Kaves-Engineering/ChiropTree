@@ -242,10 +242,10 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
   background:linear-gradient(110deg,var(--prussian) 35%,var(--prussian-2) 50%,var(--prussian) 65%);
   background-size:220% 100%;animation:photo-loading 1.4s linear infinite;
 }
-.inat-photo:not([aria-busy="true"]){min-height:0;animation:none;background:none;border:none;overflow:visible}
+.inat-photo:not([aria-busy="true"]){min-height:0;aspect-ratio:auto;animation:none;background:none;border:none;overflow:visible}
 .inat-photo a{display:block;color:var(--muted);text-decoration:none}
 .inat-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:transparent}
-.inat-photo figcaption{margin-top:6px;font:9px/1.45 var(--mono);letter-spacing:.03em;color:var(--muted)}
+.inat-photo figcaption{margin-top:6px;font:9px/1.45 var(--mono);letter-spacing:.03em;color:var(--muted);overflow-wrap:anywhere}
 .inat-photo a:hover figcaption{color:var(--ochre)}
 @keyframes photo-loading{to{background-position:-220% 0}}
 @media (max-width:600px){
@@ -401,6 +401,9 @@ footer a:hover{color:var(--ochre)}
 
 /* ---------- lookup rows & detail (shared by dropdown and drawer) ---------- */
 .lu-row{padding:9px 14px;border-bottom:1px solid rgba(var(--border-rgb),.10);cursor:pointer}
+.lu-row.has-thumb{display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:center}
+.lu-row-thumb{display:block;width:42px;height:42px;object-fit:cover;border:1px solid rgba(var(--border-rgb),.2);border-radius:2px;background:var(--canvas)}
+.lu-row-copy{display:block;min-width:0}
 .lu-row:hover,.lu-row:focus-visible{background:var(--prussian);outline:none}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
 .lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:14.5px;color:var(--bone)}
@@ -2250,12 +2253,16 @@ function luRenderResults(){
   let html = '<div class="lu-count">'+list.length+' match'+(list.length===1?'':'es')+
              (list.length>LU_MAX ? ' — first '+LU_MAX+' shown' : '')+'</div>';
   html += shown.map(s=>{
-    const dk = luState.danish[s.sciName];
-    return '<div class="lu-row" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+
+    const dk = luState.danish[s.id];
+    const media = luState.media[s.id];
+    const thumbnail = media && media.status==='available'
+      ? '<img class="lu-row-thumb" src="data/'+luEsc(media.path)+'" alt="" loading="lazy" decoding="async">'
+      : '';
+    return '<div class="lu-row'+(thumbnail?' has-thumb':'')+'" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+thumbnail+'<span class="lu-row-copy">'+
       '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
       (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
       (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
-      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></div>';
+      '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></span></div>';
   }).join('');
   if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
     luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' families</div>';
