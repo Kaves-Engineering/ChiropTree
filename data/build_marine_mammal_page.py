@@ -139,6 +139,7 @@ sub("""Promise.all([
   bundled('d-calls', 'data/call-records.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
+  bundled('d-danish-calls', 'data/danish_call_measurements.json'),
   bundled('d-media', 'data/media-manifest.json')""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
@@ -146,7 +147,7 @@ sub("""Promise.all([
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
   bundled('d-media', 'data/media-manifest.json')""")
 
-sub("]).then(([tax, calls, danish, countrySupp, media])=>{", "]).then(([tax, danish, countrySupp, media])=>{")
+sub("]).then(([tax, calls, danish, countrySupp, danishCalls, media])=>{", "]).then(([tax, danish, countrySupp, media])=>{")
 
 # the supplement matters more here than on the bat page: MDD's country column
 # never names Svalbard, so without this the walrus, bowhead and ringed and
@@ -172,6 +173,9 @@ INLINE data/danish_names.json
 </script>
 <script type="application/json" id="d-countries">
 INLINE data/gbif_country_supplement.json
+</script>
+<script type="application/json" id="d-danish-calls">
+INLINE data/danish_call_measurements.json
 </script>
 <script type="application/json" id="d-media">
 INLINE data/media-manifest.json

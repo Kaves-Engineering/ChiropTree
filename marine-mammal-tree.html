@@ -1325,7 +1325,7 @@ const ESP = {};
    2. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, echo: null, danish: {}, media: {}, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, echo: null, danish: {}, directCalls: {}, directCallReferences: {}, media: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -1407,6 +1407,8 @@ Promise.all([
   luState.species = tax.species;
   luState.echo = null;  // see the ECHO note above
   luState.danish = danish;
+  luState.directCalls = danishCalls.species || {};
+  luState.directCallReferences = danishCalls.references || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
@@ -1868,6 +1870,15 @@ function luDetailHTML(s, compact){
   const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
+  const directCall = luState.directCalls[bin];
+  const callReference = directCall ? luState.directCallReferences[directCall.reference] : merged && luState.echo.references[merged.referenceId];
+  const sources = [
+    '<a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">MDD v2.5</a>'
+  ];
+  if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
+  if(callReference) sources.push(callReference.url
+    ? '<a href="'+luEsc(callReference.url)+'" target="_blank" rel="noopener">Call reference</a>'
+    : luEsc(callReference.citation));
 
   // the full rank ladder, shown as one breadcrumb above the name
   const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
@@ -1875,6 +1886,7 @@ function luDetailHTML(s, compact){
     .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
   const callRows = [];
+  if(directCall) callRows.push('<dt>Reference call</dt><dd>'+luEsc(directCall.summary)+'</dd>');
   if(ESP[bin]) callRows.push('<dt>Species call</dt><dd>'+luEsc(ESP[bin])+'</dd>');
   if(merged){
     callRows.push('<dt>Call type</dt><dd>'+luEsc(merged.callType||'—')+'</dd>');
@@ -1884,7 +1896,7 @@ function luDetailHTML(s, compact){
   const callSection = '<section class="lu-section"><h4>Call</h4>'+
     (callRows.length ? '<dl>'+callRows.join('')+'</dl>' : '<p class="lu-note">No reference data for '+luEsc(s.family)+'.</p>')+
     (merged && merged.foragingNote ? '<p class="lu-note">'+luEsc(merged.foragingNote)+'</p>' : '')+
-    (merged ? '<p class="lu-src">'+(echo.override ? 'Genus guide' : 'Family guide')+'. Not verified per species.</p>' : '')+
+    (directCall ? '<p class="lu-src">'+luEsc(directCall.context)+'</p>' : merged ? '<p class="lu-src">'+(echo.override ? 'Genus guide' : 'Family guide')+'. Not verified per species.</p>' : '')+
     '</section>';
 
   const links = LINKS.map(([label,url,icon])=>
@@ -1894,7 +1906,7 @@ function luDetailHTML(s, compact){
     '<p class="card-lineage">'+lineage+'</p>'+
     '<p class="lu-d-sci">'+luEsc(bin)+'</p>'+
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
-    (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+' <span class="lu-dk-src">('+luEsc(dk.source)+')</span></p>' : '')+
+    (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+'</p>' : '')+
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
     '<div class="lu-links">'+links+'</div>'+
     '<div class="lu-facts">'+
@@ -1907,8 +1919,7 @@ function luDetailHTML(s, compact){
       '</dl></section>'+
       callSection+
     '</div>'+
-    '<p class="lu-prov">Sources: <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener">MDD v2.5</a>'+
-    (dk ? ' · <a href="https://www.gbif.org" target="_blank" rel="noopener">GBIF</a>' : '')+'</p>';
+    '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
 
 function luSelectSpecies(id, focusCard = false){
