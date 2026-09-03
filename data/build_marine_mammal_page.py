@@ -90,6 +90,8 @@ sub("theme === 'light' ? '#f3f0e5' : '#0d140f'",
 # instead of naming a branch.
 sub('<a class="tb-brand" href="#top">The branching of <em>bats</em></a>',
     '<a class="tb-brand" href="#top">Three ways into <em>water</em></a>')
+sub('<link rel="preload" href="data/world_map.json" as="fetch" type="application/json">',
+    '<link rel="preload" href="data/marine_world_map.json" as="fetch" type="application/json">')
 
 # the switch keeps both destinations; only which one is held down changes
 sub("""      <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
