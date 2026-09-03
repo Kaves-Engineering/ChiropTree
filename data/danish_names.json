@@ -1,225 +1,349 @@
 {
- "Barbastella_barbastellus": {
-  "allNames": [
-   "Bredøret flagermus"
-  ],
-  "name": "Bredøret flagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Cnephaeus_nilssonii": {
-  "allNames": [
-   "Nordflagermus"
-  ],
-  "name": "Nordflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Cnephaeus_serotinus": {
-  "allNames": [
-   "Sydflagermus"
-  ],
-  "name": "Sydflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Eidolon_helvum": {
+ "1004389": {
   "allNames": [
    "Gul flyvehund"
   ],
+  "gbifKey": 2432851,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eidolon helvum (Kerr, 1792)",
+  "mddId": "1004389",
   "name": "Gul flyvehund",
   "source": "Catalogue of Life"
  },
- "Myotis_bechsteinii": {
-  "allNames": [
-   "Bechsteins flagermus"
-  ],
-  "name": "Bechsteins flagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_blythii": {
-  "allNames": [
-   "Lille museøre"
-  ],
-  "name": "Lille museøre",
-  "source": "EUNIS Biodiversity Database"
- },
- "Myotis_brandtii": {
-  "allNames": [
-   "Brandts flagermus"
-  ],
-  "name": "Brandts flagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_capaccinii": {
-  "allNames": [
-   "Capaccinis flagermus",
-   "Capaccinnis flagermus"
-  ],
-  "name": "Capaccinis flagermus",
-  "source": "EUNIS Biodiversity Database"
- },
- "Myotis_dasycneme": {
-  "allNames": [
-   "Damflagermus"
-  ],
-  "name": "Damflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_daubentonii": {
-  "allNames": [
-   "Vandflagermus"
-  ],
-  "name": "Vandflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_emarginatus": {
-  "allNames": [
-   "Geoffroys flagermus"
-  ],
-  "name": "Geoffroys flagermus",
-  "source": "EUNIS Biodiversity Database"
- },
- "Myotis_myotis": {
-  "allNames": [
-   "Stor museøre"
-  ],
-  "name": "Stor museøre",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_mystacinus": {
-  "allNames": [
-   "Skægflagermus"
-  ],
-  "name": "Skægflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Myotis_nattereri": {
-  "allNames": [
-   "Frynseflagermus"
-  ],
-  "name": "Frynseflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Nyctalus_lasiopterus": {
-  "allNames": [
-   "Stor brunflagermus"
-  ],
-  "name": "Stor brunflagermus",
-  "source": "EUNIS Biodiversity Database"
- },
- "Nyctalus_leisleri": {
-  "allNames": [
-   "Leislers flagermus"
-  ],
-  "name": "Leislers flagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Nyctalus_noctula": {
-  "allNames": [
-   "Brunflagermus"
-  ],
-  "name": "Brunflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Phyllostomus_discolor": {
-  "allNames": [
-   "lys spydnæseflagermus"
-  ],
-  "name": "lys spydnæseflagermus",
-  "source": "Catalogue of Life"
- },
- "Pipistrellus_kuhlii": {
-  "allNames": [
-   "Kuhlflagermus",
-   "Kuhls flagermus"
-  ],
-  "name": "Kuhlflagermus",
-  "source": "Catalogue of Life"
- },
- "Pipistrellus_nathusii": {
-  "allNames": [
-   "Troldflagermus"
-  ],
-  "name": "Troldflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pipistrellus_pipistrellus": {
-  "allNames": [
-   "Dværgflagermus",
-   "Pipistrelflagermus"
-  ],
-  "name": "Pipistrelflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Pipistrellus_pygmaeus": {
-  "allNames": [
-   "Dværgflagermus"
-  ],
-  "name": "Dværgflagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Plecotus_auritus": {
-  "allNames": [
-   "Brun langøre",
-   "Langøret flagermus"
-  ],
-  "name": "Brun langøre",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Plecotus_austriacus": {
-  "allNames": [
-   "Grå langøret flagermus"
-  ],
-  "name": "Grå langøret flagermus",
-  "source": "National Checklist of all species occurring in Denmark"
- },
- "Rhinolophus_blasii": {
+ "1004661": {
   "allNames": [
    "Blasius hesteskonæse",
    "Blasius' hesteskonæse"
   ],
+  "gbifKey": 2432666,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Rhinolophus blasii Peters, 1867",
+  "mddId": "1004661",
   "name": "Blasius hesteskonæse",
   "source": "EUNIS Biodiversity Database"
  },
- "Rhinolophus_euryale": {
+ "1004682": {
   "allNames": [
    "Middelhavs hesteskonæse",
    "Middelhavshesteskonæse"
   ],
+  "gbifKey": 2432621,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Rhinolophus euryale Blasius, 1853",
+  "mddId": "1004682",
   "name": "Middelhavs hesteskonæse",
   "source": "EUNIS Biodiversity Database"
  },
- "Rhinolophus_ferrumequinum": {
+ "1004684": {
   "allNames": [
    "Stor hesteskonæse"
   ],
+  "gbifKey": 2432655,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Rhinolophus ferrumequinum (Schreber, 1774)",
+  "mddId": "1004684",
   "name": "Stor hesteskonæse",
   "source": "Catalogue of Life"
  },
- "Rhinolophus_hipposideros": {
+ "1004693": {
   "allNames": [
    "Lille hestekonæse",
    "Lille hesteskonæse"
   ],
+  "gbifKey": 2432614,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Rhinolophus hipposideros (Bechstein, 1800)",
+  "mddId": "1004693",
   "name": "Lille hestekonæse",
   "source": "EUNIS Biodiversity Database"
  },
- "Rhinolophus_mehelyi": {
+ "1004713": {
   "allNames": [
    "Mehelys hesteskonæse"
   ],
+  "gbifKey": 2432667,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Rhinolophus mehelyi Matschie, 1901",
+  "mddId": "1004713",
   "name": "Mehelys hesteskonæse",
   "source": "EUNIS Biodiversity Database"
  },
- "Tadarida_teniotis": {
+ "1004980": {
+  "allNames": [
+   "lys spydnæseflagermus"
+  ],
+  "gbifKey": 2433280,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Phyllostomus discolor Wagner, 1843",
+  "mddId": "1004980",
+  "name": "lys spydnæseflagermus",
+  "source": "Catalogue of Life"
+ },
+ "1005267": {
   "allNames": [
    "Buldogflagermus"
   ],
+  "gbifKey": 2433009,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Tadarida teniotis (Rafinesque, 1814)",
+  "mddId": "1005267",
   "name": "Buldogflagermus",
   "source": "EUNIS Biodiversity Database"
  },
- "Vespertilio_murinus": {
+ "1005375": {
+  "allNames": [
+   "Bechsteins flagermus"
+  ],
+  "gbifKey": 2432427,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis bechsteinii (Kuhl, 1817)",
+  "mddId": "1005375",
+  "name": "Bechsteins flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005376": {
+  "allNames": [
+   "Lille museøre"
+  ],
+  "gbifKey": 2432414,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis blythii (Tomes, 1857)",
+  "mddId": "1005376",
+  "name": "Lille museøre",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "1005380": {
+  "allNames": [
+   "Brandts flagermus"
+  ],
+  "gbifKey": 7261875,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis brandtii (Eversmann, 1845)",
+  "mddId": "1005380",
+  "name": "Brandts flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005384": {
+  "allNames": [
+   "Capaccinis flagermus",
+   "Capaccinnis flagermus"
+  ],
+  "gbifKey": 2432430,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis capaccinii (Bonaparte, 1837)",
+  "mddId": "1005384",
+  "name": "Capaccinis flagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "1005394": {
+  "allNames": [
+   "Damflagermus"
+  ],
+  "gbifKey": 2432452,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis dasycneme (Boie, 1825)",
+  "mddId": "1005394",
+  "name": "Damflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005395": {
+  "allNames": [
+   "Vandflagermus"
+  ],
+  "gbifKey": 2432439,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis daubentonii (Kuhl, 1817)",
+  "mddId": "1005395",
+  "name": "Vandflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005402": {
+  "allNames": [
+   "Geoffroys flagermus"
+  ],
+  "gbifKey": 2432470,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis emarginatus (E.Geoffroy, 1806)",
+  "mddId": "1005402",
+  "name": "Geoffroys flagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "1005443": {
+  "allNames": [
+   "Stor museøre"
+  ],
+  "gbifKey": 2432416,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis myotis (Borkhausen, 1797)",
+  "mddId": "1005443",
+  "name": "Stor museøre",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005444": {
+  "allNames": [
+   "Skægflagermus"
+  ],
+  "gbifKey": 9754263,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis mystacinus (Kuhl, 1817)",
+  "mddId": "1005444",
+  "name": "Skægflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005445": {
+  "allNames": [
+   "Frynseflagermus"
+  ],
+  "gbifKey": 2432389,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Myotis nattereri (Kuhl, 1817)",
+  "mddId": "1005445",
+  "name": "Frynseflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005526": {
+  "allNames": [
+   "Nordflagermus"
+  ],
+  "gbifKey": 7261816,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eptesicus nilssonii (Keyserling & Blasius, 1839)",
+  "mddId": "1005526",
+  "name": "Nordflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005531": {
+  "allNames": [
+   "Sydflagermus"
+  ],
+  "gbifKey": 2432359,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Eptesicus serotinus (Schreber, 1774)",
+  "mddId": "1005531",
+  "name": "Sydflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005604": {
+  "allNames": [
+   "Stor brunflagermus"
+  ],
+  "gbifKey": 5218525,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Nyctalus lasiopterus (Schreber, 1780)",
+  "mddId": "1005604",
+  "name": "Stor brunflagermus",
+  "source": "EUNIS Biodiversity Database"
+ },
+ "1005605": {
+  "allNames": [
+   "Leislers flagermus"
+  ],
+  "gbifKey": 5218522,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Nyctalus leisleri (Kuhl, 1817)",
+  "mddId": "1005605",
+  "name": "Leislers flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005607": {
+  "allNames": [
+   "Brunflagermus"
+  ],
+  "gbifKey": 5218524,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Nyctalus noctula (Schreber, 1774)",
+  "mddId": "1005607",
+  "name": "Brunflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005623": {
+  "allNames": [
+   "Kuhlflagermus",
+   "Kuhls flagermus"
+  ],
+  "gbifKey": 5218464,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pipistrellus kuhlii (Kuhl, 1817)",
+  "mddId": "1005623",
+  "name": "Kuhlflagermus",
+  "source": "Catalogue of Life"
+ },
+ "1005628": {
+  "allNames": [
+   "Troldflagermus"
+  ],
+  "gbifKey": 5218471,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pipistrellus nathusii (Keyserling & Blasius, 1839)",
+  "mddId": "1005628",
+  "name": "Troldflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005632": {
+  "allNames": [
+   "Dværgflagermus",
+   "Pipistrelflagermus"
+  ],
+  "gbifKey": 5218465,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pipistrellus pipistrellus (Schreber, 1774)",
+  "mddId": "1005632",
+  "name": "Pipistrelflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005633": {
+  "allNames": [
+   "Dværgflagermus"
+  ],
+  "gbifKey": 5707150,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Pipistrellus pygmaeus (Leach, 1825)",
+  "mddId": "1005633",
+  "name": "Dværgflagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005649": {
+  "allNames": [
+   "Bredøret flagermus"
+  ],
+  "gbifKey": 2432582,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Barbastella barbastellus (Schreber, 1774)",
+  "mddId": "1005649",
+  "name": "Bredøret flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005662": {
+  "allNames": [
+   "Brun langøre",
+   "Langøret flagermus"
+  ],
+  "gbifKey": 5218507,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Plecotus auritus (Linnaeus, 1758)",
+  "mddId": "1005662",
+  "name": "Brun langøre",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005663": {
+  "allNames": [
+   "Grå langøret flagermus"
+  ],
+  "gbifKey": 5739437,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Plecotus austriacus (J.Fischer, 1829)",
+  "mddId": "1005663",
+  "name": "Grå langøret flagermus",
+  "source": "National Checklist of all species occurring in Denmark"
+ },
+ "1005792": {
   "allNames": [
    "Skimmelflagermus"
   ],
+  "gbifKey": 2432564,
+  "matchMethod": "accepted-name-or-msw3-fallback",
+  "matchedName": "Vespertilio murinus Linnaeus, 1758",
+  "mddId": "1005792",
   "name": "Skimmelflagermus",
   "source": "National Checklist of all species occurring in Denmark"
  }

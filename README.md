@@ -4,7 +4,7 @@ A lightweight, static tree and range map for bat (Chiroptera) taxonomy,
 phylogenetic placement, and echolocation call characteristics. Built for lab
 use, with no backend required.
 
-Live site (GitLab Pages): https://chiroptree-911c6f.pages.sdu.dk/
+Published with GitHub Pages.
 
 ## What's here
 
@@ -175,7 +175,7 @@ MDD publishes new releases periodically. To pick up a new one:
 
 ## Running locally
 
-`build.sh` bundles the JSON into one self-contained HTML file:
+`build.sh` writes the GitHub Pages site and its cacheable data files:
 
 ```
 sh build.sh          # writes public/index.html
@@ -205,10 +205,9 @@ uv run python -m http.server 8000
 
 Then open http://localhost:8000/chiroptera-tree.html.
 
-The bundling exists because the site is published behind GitLab Pages access
-control: the page itself loads after sign-in, but a `fetch()` for a data file
-can be bounced to the cross-origin sign-in flow and fail, leaving the page up
-with no data. With the data inside the HTML there is nothing left to fetch.
+GitHub Pages serves the data files directly. The service worker precaches the
+application shell and core data after first visit, so the explorer works
+offline without parsing a multi-megabyte HTML document at startup.
 
 ## Extending the echolocation data
 

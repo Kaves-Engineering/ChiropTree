@@ -28,35 +28,14 @@ https://doi.org/10.5281/zenodo.4139722 (concept DOI, always resolves to latest),
 update SOURCE_URL/SOURCE_DOI below (keep in sync with build_taxonomy.py), delete
 data/raw/, and re-run this script.
 """
-import csv
 import json
-import urllib.request
 from pathlib import Path
 
-SOURCE_DOI = "10.5281/zenodo.21654811"
-SOURCE_URL = "https://zenodo.org/api/records/21654811/files/MDD_v2.5_6904species.csv/content"
+from taxonomy_store import build_database, export_taxonomy
 
-RAW = Path(__file__).parent / "raw" / "MDD_v2.5_6904species.csv"
 OUT = Path(__file__).parent / "marine_mammal_taxonomy.json"
 
 PINNIPED_FAMILIES = {"Otariidae", "Phocidae", "Odobenidae"}
-
-
-def ensure_raw_csv():
-    if RAW.exists():
-        return
-    RAW.parent.mkdir(parents=True, exist_ok=True)
-    print(f"Downloading MDD release CSV from {SOURCE_URL} ...")
-    urllib.request.urlretrieve(SOURCE_URL, RAW)
-
-FIELDS = [
-    "id", "sciName", "phylosort", "mainCommonName", "otherCommonNames",
-    "order", "suborder", "infraorder", "superfamily", "family", "subfamily",
-    "tribe", "genus", "subgenus", "specificEpithet",
-    "authoritySpeciesAuthor", "authoritySpeciesYear",
-    "countryDistribution", "continentDistribution", "biogeographicRealm",
-    "iucnStatus", "extinct", "MSW3_sciName",
-]
 
 
 def lineage_of(row):
@@ -74,22 +53,14 @@ def lineage_of(row):
 
 
 def main():
-    ensure_raw_csv()
-    with RAW.open(encoding="utf-8-sig", newline="") as f:
-        reader = csv.DictReader(f)
-        marine = []
-        for row in reader:
-            lineage = lineage_of(row)
-            if lineage is None:
-                continue
-            rec = {k: row[k] for k in FIELDS}
-            rec["lineage"] = lineage
-            marine.append(rec)
+    def include(row):
+        return lineage_of(row) is not None
 
-    marine.sort(key=lambda r: float(r["phylosort"]))
+    def add_lineage(row):
+        row["lineage"] = lineage_of(row)
 
-    families = sorted({m["family"] for m in marine})
-    genera = sorted({m["genus"] for m in marine})
+    payload = export_taxonomy(build_database(), OUT, include, add_lineage)
+    marine = payload["species"]
 
     counts = {}
     for lineage in ("Cetacea", "Sirenia", "Pinnipedia"):
@@ -100,14 +71,8 @@ def main():
             "genusCount": len({m["genus"] for m in members}),
         }
 
-    payload = {
-        "_meta": {
-            "source": "Mammal Diversity Database v2.5",
-            "sourceDoi": SOURCE_DOI,
-            "sourceUrl": "https://www.mammaldiversity.org",
-            "speciesCount": len(marine),
-            "familyCount": len(families),
-            "genusCount": len(genera),
+    payload["_meta"].update(
+        {
             "lineages": {
                 "Cetacea": "Suborder Cetacea within order Artiodactyla in MDD's "
                            "current placement (whales, dolphins, porpoises) -- "
@@ -125,13 +90,14 @@ def main():
                 "See _meta.lineages / _meta.counts and the `lineage` field on "
                 "every species record."
             ),
-        },
-        "families": families,
-        "species": marine,
-    }
+        }
+    )
 
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"Wrote {len(marine)} marine mammal species across {len(families)} families to {OUT}")
+    print(
+        f"Wrote {len(marine)} marine mammal species across "
+        f"{payload['_meta']['familyCount']} families to {OUT}"
+    )
     for lineage, c in counts.items():
         print(f"  {lineage}: {c['speciesCount']} species, {c['familyCount']} families, {c['genusCount']} genera")
 

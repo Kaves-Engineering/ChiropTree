@@ -92,10 +92,10 @@ sub('<a class="tb-brand" href="#top">The branching of <em>bats</em></a>',
     '<a class="tb-brand" href="#top">Three ways into <em>water</em></a>')
 
 # the switch keeps both destinations; only which one is held down changes
-sub("""      <a class="ps-opt" href="chiroptera-tree.html" aria-current="page">Bats</a>
-      <a class="ps-opt" href="marine-mammal-tree.html">Marine mammals</a>""",
-    """      <a class="ps-opt" href="chiroptera-tree.html">Bats</a>
-      <a class="ps-opt" href="marine-mammal-tree.html" aria-current="page">Marine mammals</a>""")
+sub("""      <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
+      <a class="ps-opt" href="marine.html">Marine mammals</a>""",
+    """      <a class="ps-opt" href="index.html">Bats</a>
+      <a class="ps-opt" href="marine.html" aria-current="page">Marine mammals</a>""")
 
 sub('placeholder="Search any bat…"', 'placeholder="Search any marine mammal…"')
 sub('aria-label="Show a random bat" title="Random bat"',
@@ -134,22 +134,24 @@ sub("""  ["Xeno-canto calls", n => "https://xeno-canto.org/explore?query=" + enc
 # ------------------------------------------------------------------ data wiring
 sub("""Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
-  bundled('d-echo', 'data/echolocation_reference.json'),
+  bundled('d-calls', 'data/call-records.json'),
   bundled('d-danish', 'data/danish_names.json'),
-  bundled('d-countries', 'data/gbif_country_supplement.json')""",
+  bundled('d-countries', 'data/gbif_country_supplement.json'),
+  bundled('d-media', 'data/media-manifest.json')""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
-  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json')""")
+  bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
+  bundled('d-media', 'data/media-manifest.json')""")
 
-sub("]).then(([tax, echo, danish, countrySupp])=>{", "]).then(([tax, danish, countrySupp])=>{")
+sub("]).then(([tax, calls, danish, countrySupp, media])=>{", "]).then(([tax, danish, countrySupp, media])=>{")
 
 # the supplement matters more here than on the bat page: MDD's country column
 # never names Svalbard, so without this the walrus, bowhead and ringed and
 # bearded seals have no Arctic presence on the map at all
 sub("""// it misses 4 of Denmark's 17 established bat species. Additive only -- it""",
     """// it misses Svalbard entirely -- no walrus, no bowhead. Additive only -- it""")
-sub("  luState.echo = echo;", "  luState.echo = null;  // see the ECHO note above")
+sub("  luState.echo = calls;", "  luState.echo = null;  // see the ECHO note above")
 
 sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';""",
     """  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';""")
@@ -160,14 +162,17 @@ sub("bundled('d-worldmap', 'data/world_map.json')",
 sub("""<script type="application/json" id="d-taxonomy">
 INLINE data/chiroptera_taxonomy.json
 </script>
-<script type="application/json" id="d-echo">
-INLINE data/echolocation_reference.json
+<script type="application/json" id="d-calls">
+INLINE data/call-records.json
 </script>
 <script type="application/json" id="d-danish">
 INLINE data/danish_names.json
 </script>
 <script type="application/json" id="d-countries">
 INLINE data/gbif_country_supplement.json
+</script>
+<script type="application/json" id="d-media">
+INLINE data/media-manifest.json
 </script>
 <script type="application/json" id="d-worldmap">
 INLINE data/world_map.json
@@ -181,15 +186,18 @@ INLINE data/marine_mammal_danish_names.json
 <script type="application/json" id="d-countries">
 INLINE data/marine_mammal_gbif_country_supplement.json
 </script>
+<script type="application/json" id="d-media">
+INLINE data/media-manifest.json
+</script>
 <script type="application/json" id="d-worldmap">
 INLINE data/marine_world_map.json
 </script>""")
 
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
 
-# the Promise.all destructuring must lose `echo` along with the fetch
-if re.search(r"\.then\(\(\[tax, echo, danish", html):
-    sys.exit("d-echo was removed from the fetch list but the destructuring still names it")
+# the Promise.all destructuring must lose `calls` along with the fetch
+if re.search(r"\.then\(\(\[tax, calls, danish", html):
+    sys.exit("d-calls was removed from the fetch list but the destructuring still names it")
 
 print("applied %d replacements" % len(hits))
 print("wrote %s (%d KB)" % (DST, os.path.getsize(DST) / 1024))

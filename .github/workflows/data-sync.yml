@@ -1,0 +1,44 @@
+name: Propose data update
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      refresh_media:
+        description: Refresh eligible image snapshots
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Rebuild derived data
+        run: |
+          uv run data/build_taxonomy.py
+          uv run data/build_marine_mammal_taxonomy.py
+          uv run data/build_danish_names.py
+          uv run data/build_marine_mammal_danish_names.py
+          uv run data/build_call_records.py
+          uv run data/build_media_manifest.py
+          uv run data/build_marine_mammal_page.py
+          sh build.sh
+      - name: Refresh media
+        if: ${{ inputs.refresh_media }}
+        run: uv run --with pillow data/sync_media.py
+      - name: Create review PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/data-update
+          delete-branch: true
+          title: Propose data update
+          commit-message: Refresh derived data
+          body: Automated source check. Review taxonomy, Danish names, media, and output changes before merge.

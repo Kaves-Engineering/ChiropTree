@@ -1,25 +1,23 @@
 #!/bin/sh
 # Build the published site into public/.
 #
-# The pages are served from GitLab Pages with access control on, where a
-# fetch() for a data file can be bounced to the cross-origin sign-in flow and
-# fail CORS even though the page itself loaded. So the data is bundled into the
-# HTML here: every line reading "INLINE <path>" is replaced by that file's
-# contents, filling the <script type="application/json"> blocks at the end of
-# each page.
+# Build the static GitHub Pages site. Data stays as separate files so browsers
+# can parse the interface before loading the taxonomy and cache it separately.
 set -eu
 
-bundle() {
-  awk '/^INLINE /{f=$2; while((getline l < f) > 0) print l; close(f); next} {print}' "$1" > "$2"
-}
-
 rm -rf public
-mkdir public
-bundle chiroptera-tree.html public/index.html
-bundle marine-mammal-tree.html public/marine.html
+mkdir -p public/data/images
+cp chiroptera-tree.html public/index.html
+cp marine-mammal-tree.html public/marine.html
+cp data/*.json public/data/
+cp manifest.webmanifest public/
+if [ -d data/images ]; then cp -R data/images/. public/data/images/; fi
+
+release=$(sha256sum public/index.html public/marine.html data/media-manifest.json | sha256sum | cut -c1-16)
+sed "s/__RELEASE__/$release/" service-worker.js > public/service-worker.js
 
 for f in public/index.html public/marine.html; do
-  grep -q '^INLINE ' "$f" && { echo "$f: data was not inlined" >&2; exit 1; }
-  grep -q '"speciesCount"' "$f" || { echo "$f: taxonomy missing" >&2; exit 1; }
+  grep -q "data/.*taxonomy.json" "$f" || { echo "$f: taxonomy URL missing" >&2; exit 1; }
 done
+grep -q '__RELEASE__' public/service-worker.js && { echo "service worker release missing" >&2; exit 1; }
 echo "built: $(ls -l public | tail -n +2 | wc -l) files"
