@@ -88,6 +88,16 @@ def validate_media(all_ids: set[str]) -> None:
     print(f"Validated {len(assets)} media records; image pack {total / 1024 / 1024:.1f} MiB")
 
 
+def validate_manifest() -> None:
+    manifest = load("release.json")
+    for name, expected in manifest["files"].items():
+        path = HERE / name
+        assert path.is_file(), f"release manifest: missing {name}"
+        content = path.read_bytes()
+        assert len(content) == expected["bytes"], f"release manifest: size mismatch for {name}"
+        assert hashlib.sha256(content).hexdigest() == expected["sha256"], f"release manifest: hash mismatch for {name}"
+
+
 def main() -> None:
     bats = load("chiroptera_taxonomy.json")
     marine = load("marine_mammal_taxonomy.json")
@@ -99,6 +109,7 @@ def main() -> None:
     validate_map(bats, "world_map.json")
     validate_map(marine, "marine_world_map.json")
     validate_media(bat_ids | marine_ids)
+    validate_manifest()
     print("Release validation passed")
 
 

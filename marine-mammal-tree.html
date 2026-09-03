@@ -288,6 +288,9 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:24px 0 32px;color:var(--footer-ink);font:10.5px/1.6 var(--mono);letter-spacing:.04em}
 footer a{color:var(--line);text-underline-offset:3px}
 footer a:hover{color:var(--ochre)}
+.offline-pack{margin-left:8px;padding:5px 9px;border:1px solid var(--line-dim);border-radius:2px;background:transparent;color:var(--line);font:inherit;cursor:pointer}
+.offline-pack:hover,.offline-pack:focus-visible{border-color:var(--ochre);color:var(--ochre)}
+.offline-pack:disabled{cursor:wait;opacity:.65}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
 }
@@ -628,6 +631,8 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 <footer>
   Source: <a href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener noreferrer">Mammal Diversity Database v2.5</a>
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
+  · <span id="release-status">Loading release…</span>
+  <button class="offline-pack" id="offline-pack" type="button">Save images offline</button>
 </footer>
 
 </div>
@@ -1418,6 +1423,7 @@ Promise.all([
   luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
+  updateOfflineStatus();
 }).catch(err=>{
   luState.error = err.message;
 });
@@ -1863,7 +1869,7 @@ function renderPhoto(asset, host){
   const source = asset.sourceUrl ? '<a href="'+luEsc(asset.sourceUrl)+'" target="_blank" rel="noopener noreferrer">' : '';
   const close = asset.sourceUrl ? '</a>' : '';
   host.innerHTML = source+
-    '<img src="'+luEsc(asset.path||asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
+    '<img src="'+luEsc(asset.path?'data/'+asset.path:asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+
     '<figcaption>'+luEsc(asset.attribution)+' · '+luEsc(asset.license)+' · iNaturalist</figcaption>'+close;
   host.querySelector('img').addEventListener('error', ()=>host.remove(), {once:true});
 }
@@ -1901,6 +1907,37 @@ function loadSpeciesPhoto(species, host){
   if(!request){ request=livePhotoFor(species); livePhotoRequests.set(species.id,request); }
   request.then(asset=>asset&&host.isConnected?renderPhoto(asset,host):host.remove()).catch(()=>host.isConnected&&host.remove());
 }
+
+async function updateOfflineStatus(){
+  const status = document.getElementById('release-status');
+  if(!status || !luState.meta) return;
+  const release = String(luState.meta.sourceChecksum||'unknown').slice(0,12);
+  const cacheName = 'chiroptree-images-'+release;
+  const installed = 'caches' in window && await caches.has(cacheName);
+  status.textContent = 'Release '+release+(installed?' · images offline':'');
+}
+
+async function installOfflineImages(){
+  const button = document.getElementById('offline-pack');
+  if(!button || !('caches' in window) || !luState.meta) return;
+  const release = String(luState.meta.sourceChecksum).slice(0,12);
+  const cacheName = 'chiroptree-images-'+release;
+  const urls = Object.values(luState.media).filter(asset=>asset.status==='available').map(asset=>'data/'+asset.path);
+  button.disabled = true;
+  try {
+    const cache = await caches.open(cacheName);
+    for(let i=0;i<urls.length;i+=20){
+      button.textContent = 'Saving '+Math.min(i+20,urls.length)+'/'+urls.length;
+      await cache.addAll(urls.slice(i,i+20));
+    }
+    const names = await caches.keys();
+    await Promise.all(names.filter(name=>name.startsWith('chiroptree-images-')&&name!==cacheName).map(name=>caches.delete(name)));
+    button.textContent = 'Images saved';
+    updateOfflineStatus();
+  } catch(_){ button.textContent = 'Retry image download'; }
+  finally { button.disabled = false; }
+}
+document.getElementById('offline-pack').addEventListener('click',installOfflineImages);
 
 function luDetailHTML(s, compact){
   const echo = luFindEcho(s);

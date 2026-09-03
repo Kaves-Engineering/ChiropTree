@@ -1,4 +1,4 @@
-const CACHE = 'chiroptree-__RELEASE__';
+const CACHE = 'chiroptree-core-__RELEASE__';
 const CORE = [
   './', './index.html', './marine.html', './manifest.webmanifest',
   './data/chiroptera_taxonomy.json', './data/call-records.json',
@@ -7,7 +7,7 @@ const CORE = [
   './data/world_map.json', './data/marine_mammal_taxonomy.json',
   './data/marine_mammal_danish_names.json',
   './data/marine_mammal_gbif_country_supplement.json', './data/marine_world_map.json',
-  './data/media-manifest.json'
+  './data/media-manifest.json', './data/release.json'
 ];
 
 self.addEventListener('install', event => {
@@ -16,7 +16,7 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(
-    keys.filter(key => key.startsWith('chiroptree-') && key !== CACHE).map(key => caches.delete(key))
+    keys.filter(key => key.startsWith('chiroptree-core-') && key !== CACHE).map(key => caches.delete(key))
   )).then(() => self.clients.claim()));
 });
 

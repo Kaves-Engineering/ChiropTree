@@ -30,6 +30,7 @@ jobs:
           uv run data/build_call_records.py
           uv run data/build_media_manifest.py
           uv run data/build_marine_mammal_page.py
+          uv run data/build_release_manifest.py
           uv run data/validate_release.py
           sh build.sh
       - name: Refresh media

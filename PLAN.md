@@ -12,7 +12,7 @@ JSON, image manifest, and site output from those inputs. Do not commit a
 binary SQLite database as the only reviewable record.
 
 Use CC0, CC-BY, and CC-BY-SA images only. GitHub Pages is the production
-deployment. The image-pack size limit remains to be set before bulk download.
+deployment. Limit the optional image pack to 60 MiB.
 
 ## 1. Lock down current behaviour
 
