@@ -21,7 +21,8 @@ def main() -> None:
         "version": 1,
         "references": {
             "starter-comparative-guide": {
-                "citation": "; ".join(source["_meta"]["primary_sources"]),
+            "citation": "; ".join(source["_meta"]["primary_sources"]),
+            "url": "https://doi.org/10.1098/rspb.2006.3653",
                 "scope": "Comparative family/genus guide. Not species-verified.",
             }
         },

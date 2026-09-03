@@ -1,0 +1,24 @@
+{
+ "references": {
+  "obrist-2004": {"url":"https://doi.org/10.1515/mamm.2004.030","label":"Obrist, Boesch & Flückiger 2004, table 1"},
+  "denzinger-2001": {"url":"https://doi.org/10.1007/s003590100223","label":"Denzinger et al. 2001"},
+  "vaughan-1997": {"url":"https://doi.org/10.1080/09524622.1997.9753331","label":"Vaughan, Jones & Harris 1997"},
+  "teixeira-2009": {"url":"https://doi.org/10.3161/150811009X465802","label":"Teixeira & Jesus 2009"}
+ },
+ "species": {
+  "Eptesicus nilssonii":{"summary":"Search calls: peak energy ~30 kHz, 11 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Myotis brandtii":{"summary":"Search calls: peak energy ~46 kHz, 5 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Myotis mystacinus":{"summary":"Search calls: peak energy ~47 kHz, 4 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Myotis daubentonii":{"summary":"Search calls: peak energy ~43 kHz, 4 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Myotis nattereri":{"summary":"Search calls: peak energy ~40 kHz, 4 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Pipistrellus pipistrellus":{"summary":"Search calls: peak energy ~47 kHz, 6 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Pipistrellus pygmaeus":{"summary":"Search calls: peak energy ~56 kHz, 6 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Nyctalus noctula":{"summary":"Search calls: peak energy ~22 kHz, 14 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Nyctalus leisleri":{"summary":"Search calls: peak energy ~27 kHz, 9 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Vespertilio murinus":{"summary":"Search calls: peak energy ~25 kHz, 15 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Plecotus auritus":{"summary":"Search calls: peak energy ~38 kHz, 3 ms.","context":"Swiss reference calls.","reference":"obrist-2004"},
+  "Barbastella barbastellus":{"summary":"Search calls: 31–44 kHz, 2 ms.","context":"Search calls, two alternating types.","reference":"denzinger-2001"},
+  "Eptesicus serotinus":{"summary":"Search calls: peak energy ~34 kHz, 7 ms.","context":"British reference calls.","reference":"vaughan-1997"},
+  "Plecotus austriacus":{"summary":"Search calls: peak energy ~48 kHz, 3 ms.","context":"Cluttered-habitat calls, Madeira.","reference":"teixeira-2009"}
+ }
+}
