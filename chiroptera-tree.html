@@ -417,7 +417,7 @@ footer a:hover{color:var(--ochre)}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
-.lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
+.lu-facts{display:grid;grid-template-columns:1fr;gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
 .lu-section{background:var(--prussian);border:1px solid rgba(var(--border-rgb),.25);border-radius:4px;padding:16px 18px}
 .lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);font-weight:500}
@@ -1779,7 +1779,7 @@ const ESP = {
    2. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, echo: null, danish: {}, directCalls: {}, directCallReferences: {}, media: {}, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, danish: {}, media: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -1884,18 +1884,13 @@ function luMergeCountrySupplement(species, supplement){
 
 Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
-  bundled('d-calls', 'data/call-records.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
-  bundled('d-danish-calls', 'data/danish_call_measurements.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, calls, danish, countrySupp, danishCalls, media])=>{
+]).then(([tax, danish, countrySupp, media])=>{
   luState.species = tax.species;
   luBuildDisplayTaxonomy(luState.species);
-  luState.echo = calls;
   luState.danish = danish;
-  luState.directCalls = danishCalls.species || {};
-  luState.directCallReferences = danishCalls.references || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
@@ -2330,14 +2325,6 @@ document.getElementById('lu-close').addEventListener('click', luCloseDrawer);
 
 function luStatusClass(code){ return (code||'na').toLowerCase(); }
 
-function luFindEcho(species){
-  const fam = luState.echo && luState.echo.families[species.family];
-  if(!fam) return null;
-  const sciSpace = luNiceName(species.sciName);
-  const genusExample = fam.genusExamples && (fam.genusExamples[sciSpace] || fam.genusExamples[species.genus]);
-  return { base: fam, override: genusExample || null };
-}
-
 function luSpeciesHTML(binomial, compact){
   const s = luState.byName[binomial.toLowerCase()];
   if(!s){
@@ -2434,38 +2421,18 @@ async function installOfflineImages(){
 document.getElementById('offline-pack').addEventListener('click',installOfflineImages);
 
 function luDetailHTML(s, compact){
-  const echo = luFindEcho(s);
-  const merged = echo ? Object.assign({}, echo.base, echo.override||{}) : null;
   const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
-  const directCall = luState.directCalls[s.id];
-  const callReference = directCall ? luState.directCallReferences[directCall.reference] : merged && luState.echo.references[merged.referenceId];
   const sources = [
     '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
   if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
-  if(callReference) sources.push(callReference.url
-    ? '<a href="'+luEsc(callReference.url)+'" target="_blank" rel="noopener">Call reference</a>'
-    : luEsc(callReference.citation));
 
   // the full rank ladder, shown as one breadcrumb above the name
   const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
     .filter(k=>s[k] && s[k]!=='NA')
     .map(k=>luEsc(s[k])).join(' &rsaquo; ');
-
-  const callRows = [];
-  if(directCall) callRows.push('<dt>Reference call</dt><dd>'+luEsc(directCall.summary)+'</dd>');
-  if(merged){
-    callRows.push('<dt>Call type</dt><dd>'+luEsc(merged.callType||'—')+'</dd>');
-    callRows.push('<dt>Duty cycle</dt><dd>'+luEsc(merged.dutyCycle||'—')+'</dd>');
-    callRows.push('<dt>Reference range</dt><dd>'+(merged.peakFrequencyKHz ? luEsc(merged.peakFrequencyKHz.join('–'))+' kHz' : '—')+'</dd>');
-  }
-  const callSection = '<section class="lu-section"><h4>Call</h4>'+
-    (callRows.length ? '<dl>'+callRows.join('')+'</dl>' : '<p class="lu-note">No reference data for '+luEsc(s.family)+'.</p>')+
-    (merged && merged.foragingNote ? '<p class="lu-note">'+luEsc(merged.foragingNote)+'</p>' : '')+
-    (directCall ? '<p class="lu-src">'+luEsc(directCall.context)+'</p>' : merged ? '<p class="lu-src">'+(echo.override ? 'Genus guide' : 'Family guide')+'. Not verified per species.</p>' : '')+
-    '</section>';
 
   const links = LINKS.map(([label,url,icon])=>
     '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
@@ -2485,7 +2452,6 @@ function luDetailHTML(s, compact){
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></section>'+
-      callSection+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
