@@ -2169,6 +2169,7 @@ function cmOnMapClick(e){
   const entry = CM[key];
   if(!entry || (!entry.confirmed.length && !entry.maybe.length)) return;
   cmSelected = (cmSelected === key) ? null : key;
+  if(cmSelected) setCountryTreeMode('filter', false);
   cmRenderMap();
   applyCountryFilterToMainTree();
   if(cmSelected) cmZoomToCountry(cmSelected); else cmResetView(true);
@@ -2187,12 +2188,12 @@ function applyCountryFilterToMainTree(){
   ctxDrawTree(mainCtx);
 }
 
-function setCountryTreeMode(mode){
+function setCountryTreeMode(mode, redraw = true){
   if(countryTreeMode === mode) return;
   countryTreeMode = mode;
   document.getElementById('cm-mode-dim').setAttribute('aria-pressed', mode==='dim' ? 'true' : 'false');
   document.getElementById('cm-mode-filter').setAttribute('aria-pressed', mode==='filter' ? 'true' : 'false');
-  ctxDrawTree(mainCtx);
+  if(redraw) ctxDrawTree(mainCtx);
 }
 document.getElementById('cm-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
 document.getElementById('cm-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
@@ -2270,11 +2271,11 @@ function luCloseResults(){ luResults.hidden = true; luInput.setAttribute('aria-e
 
 luResults.addEventListener('click', e=>{
   const row = e.target.closest('.lu-row');
-  if(row) luSelectSpecies(row.dataset.id);
+  if(row) luSelectSpecies(row.dataset.id, true);
 });
 luResults.addEventListener('keydown', e=>{
   const row = e.target.closest('.lu-row');
-  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id); }
+  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id, true); }
 });
 luInput.addEventListener('input', luApplyFilter);
 luInput.addEventListener('focus', ()=>{ if(luInput.value.trim()) luApplyFilter(); });
