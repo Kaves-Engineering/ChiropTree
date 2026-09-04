@@ -5,48 +5,48 @@
  },
  "files": {
   "call-records.json": {
-   "bytes": 9955,
-   "sha256": "74dbbf222ce1f1c1ec7939fef2015ae590dd6a1258c1763d02531d368999c79a"
+   "bytes": 10322,
+   "sha256": "ae5ff4d7607696ce60c286e5c02b01a2025e375fe93d390e3bd7e2fea6c72bb3"
   },
   "chiroptera_taxonomy.json": {
-   "bytes": 1232196,
-   "sha256": "948d239f89b3ce2f6aa961c8b8b533dfa49769230c3ff6fa75807f3ed5c75c36"
+   "bytes": 1270081,
+   "sha256": "91189f547e21d3589fb9667c14c605c8124fc53502fa8d0af6d049c04db7bc6b"
   },
   "danish_call_measurements.json": {
-   "bytes": 2310,
-   "sha256": "e14fe93bf8cf85abc05921e4e397ad2aa58db45acb20e11f9e6168707c85391d"
+   "bytes": 2334,
+   "sha256": "86fef5acd28cf7aa38d9e2096b58487f0aabf8bf093233175f79130e90570dc4"
   },
   "danish_names.json": {
-   "bytes": 9470,
-   "sha256": "c104e95cea3854e7d93fdc58f6442064d6ff0cf28da194f0c2c4c7cfe0fc539d"
+   "bytes": 9819,
+   "sha256": "8abc1fabd5a8f736cb96a5ca92c109f1cc7ebe56972a9693b2736541c43a680f"
   },
   "gbif_country_supplement.json": {
-   "bytes": 35268,
-   "sha256": "63139ba9db39356cc2c590062467f6ecffc4a32d7fa8946cf2484e4285262cdf"
+   "bytes": 37691,
+   "sha256": "7c998bfbe35d39ff17aab403d2156737c14be9adc8e5d740305f9fa5c002e316"
   },
   "marine_mammal_danish_names.json": {
-   "bytes": 19569,
-   "sha256": "661bbe9fa7075c9357a1227e9baf05cf719f3084a5f0d1b22adca3773a812ac5"
+   "bytes": 20328,
+   "sha256": "76d239da4953c3c90c363db14c0ee58559da307bd0477e89aac9f0f4c11351fd"
   },
   "marine_mammal_gbif_country_supplement.json": {
-   "bytes": 14386,
-   "sha256": "1b745268ddbfce60136c85fa0de5effd05f8ee20900e06a5d8cefe39dc13c5dd"
+   "bytes": 15125,
+   "sha256": "89c4b9e7fb132b9be4b68aa1fa08bf2a34b91cff15fa23000d7159839557745f"
   },
   "marine_mammal_taxonomy.json": {
-   "bytes": 166797,
-   "sha256": "25dc380b60fd176139e3ef3090e6a4159bdf043962cd3c914fba5d716c368fa8"
+   "bytes": 170596,
+   "sha256": "fb69f9dda5ea45edf7c455e565d99b92fb3dc71ee1ef1e274827eb0224ca52ca"
   },
   "marine_world_map.json": {
-   "bytes": 353228,
-   "sha256": "fb527547ab5f9f17cd34a8ae09c7fd5d0434310bcafdf2634d128a7cc3a86c59"
+   "bytes": 355418,
+   "sha256": "0a1a8945a07694c70f5860cb4be905968b223532c3dd44b62b77f9e83288e190"
   },
   "media-manifest.json": {
-   "bytes": 768046,
-   "sha256": "b8fd10f1d5659735f71aab522d96a4dd8f07f4ce3b2e1471486aed99981126ea"
+   "bytes": 787583,
+   "sha256": "d260bd854a2d00c13b5185bb5bcf74a06fb85e844f9ef60fc9efd4e9009e8f48"
   },
   "world_map.json": {
-   "bytes": 337577,
-   "sha256": "decf7f19d86bf33a81950629b6852af1cce3716f9d47df981c1f7eff6b451f77"
+   "bytes": 339761,
+   "sha256": "4d613fdae72aa128db4c9c5247ce1c6eb80d11f31bf84ba99e5a7b9a7ea3356e"
   }
  },
  "releaseId": "mdd-v2.5-0d07a7e94097",
