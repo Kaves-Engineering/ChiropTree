@@ -70,6 +70,11 @@ def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[
     if not choice:
         return mdd_id, None
     photo = choice["photo"]
+    if (
+        existing.get("status") == "available"
+        and existing.get("providerAssetId") != choice["providerAssetId"]
+    ):
+        return mdd_id, None
     license_code = photo["license_code"].lower()
     preserve = license_code.endswith("-nd")
     content, source_hash, output_hash, width, height, suffix = prepare_image(photo, preserve)
