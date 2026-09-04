@@ -8,7 +8,10 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 MAX_IMAGE_BYTES = 60 * 1024 * 1024
-ALLOWED_LICENSES = {"CC0", "CC-BY", "CC-BY-SA"}
+ALLOWED_LICENSES = {
+    "CC0", "CC-BY", "CC-BY-SA", "CC-BY-NC", "CC-BY-NC-SA",
+    "CC-BY-ND", "CC-BY-NC-ND",
+}
 
 
 def load(name: str) -> dict:
@@ -76,6 +79,9 @@ def validate_media(all_ids: set[str]) -> None:
         if asset["status"] == "unavailable":
             continue
         assert asset.get("license") in ALLOWED_LICENSES, f"{mdd_id}: disallowed media licence"
+        if asset["license"].endswith("-ND"):
+            assert asset.get("modified") is False, f"{mdd_id}: ND media was modified"
+            assert asset.get("sourceHash") == asset.get("outputHash"), f"{mdd_id}: ND media hash changed"
         assert asset.get("attribution") and asset.get("sourceUrl"), f"{mdd_id}: missing media attribution"
         path = Path(asset["path"])
         assert not path.is_absolute() and path.parts[:1] == ("images",), f"{mdd_id}: unsafe media path"
