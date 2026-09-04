@@ -110,6 +110,8 @@ sub('aria-label="Keep all bats in the tree" title="Keep all bats in the tree"',
     'aria-label="Keep all marine mammals in the tree" title="Keep all marine mammals in the tree"')
 sub('aria-label="Show only bats from the selected country" title="Show only bats from the selected country"',
     'aria-label="Show only marine mammals from the selected country" title="Show only marine mammals from the selected country"')
+sub("const text = entry ? 'Show only bats from '+entry.name : 'Show only bats from the selected country';",
+    "const text = entry ? 'Show only marine mammals from '+entry.name : 'Show only marine mammals from the selected country';")
 sub('aria-label="Cladogram of the 21 living bat families"',
     'aria-label="Cladogram of the 18 living marine mammal families"')
 
@@ -140,10 +142,8 @@ sub("""  ["Xeno-canto calls", n => "https://xeno-canto.org/explore?query=" + enc
 # ------------------------------------------------------------------ data wiring
 sub("""Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
-  bundled('d-calls', 'data/call-records.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
-  bundled('d-danish-calls', 'data/danish_call_measurements.json'),
   bundled('d-media', 'data/media-manifest.json')""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
@@ -151,17 +151,11 @@ sub("""Promise.all([
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
   bundled('d-media', 'data/media-manifest.json')""")
 
-sub("]).then(([tax, calls, danish, countrySupp, danishCalls, media])=>{", "]).then(([tax, danish, countrySupp, media])=>{")
-
 # the supplement matters more here than on the bat page: MDD's country column
 # never names Svalbard, so without this the walrus, bowhead and ringed and
 # bearded seals have no Arctic presence on the map at all
 sub("""// it misses 4 of Denmark's 17 established bat species. Additive only -- it""",
     """// it misses Svalbard entirely -- no walrus, no bowhead. Additive only -- it""")
-sub("  luState.echo = calls;", "  luState.echo = null;  // see the ECHO note above")
-sub("  luState.directCalls = danishCalls.species || {};", "  luState.directCalls = {};")
-sub("  luState.directCallReferences = danishCalls.references || {};", "  luState.directCallReferences = {};")
-
 sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';""",
     """  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';""")
 
@@ -169,10 +163,6 @@ sub("bundled('d-worldmap', 'data/world_map.json')",
     "bundled('d-worldmap', 'data/marine_world_map.json')")
 
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
-
-# the Promise.all destructuring must lose `calls` along with the fetch
-if re.search(r"\.then\(\(\[tax, calls, danish", html):
-    sys.exit("d-calls was removed from the fetch list but the destructuring still names it")
 
 print("applied %d replacements" % len(hits))
 print("wrote %s (%d KB)" % (DST, os.path.getsize(DST) / 1024))

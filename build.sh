@@ -5,6 +5,8 @@
 # can parse the interface before loading the taxonomy and cache it separately.
 set -eu
 
+uv run data/build_marine_mammal_page.py
+
 rm -rf public
 mkdir -p public/data/images
 cp chiroptera-tree.html public/index.html
