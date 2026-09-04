@@ -79,7 +79,19 @@
    "status": "unavailable"
   },
   "1004374": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004374-f16c126b12c9.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40793",
+   "providerAssetId": "188708178",
+   "attribution": "(c) Soh Kam Yung, some rights reserved (CC BY-NC), uploaded by Soh Kam Yung",
+   "license": "CC-BY-NC",
+   "alt": "Cynopterus brachyotis",
+   "retrievedAt": "2026-09-04T08:47:51.805726+00:00",
+   "sourceHash": "7e05e87307552615742aac6b1bcaf36d9012a70dfa4cb929024297aa78c1e4de",
+   "outputHash": "f16c126b12c9d058dfb1017e2cdb5a817ee6c592a5f40fbed34836eac2c6a7fd",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004375": {
    "status": "unavailable"
@@ -124,7 +136,19 @@
    "status": "unavailable"
   },
   "1004389": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004389-406dd15ac49c.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40827",
+   "providerAssetId": "4486156",
+   "attribution": "(c) Klipdrifters Travel, some rights reserved (CC BY-NC), uploaded by Klipdrifters Travel",
+   "license": "CC-BY-NC",
+   "alt": "Eidolon helvum",
+   "retrievedAt": "2026-09-04T08:47:52.436393+00:00",
+   "sourceHash": "3bc775e28c27624ff10cb462ff8f8b20d1e0f8409b144168ce5f08ba0886c1af",
+   "outputHash": "406dd15ac49c6d42dac6a7956a34301e18afcd7e0c373e0e039c42161fd3b75c",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004390": {
    "status": "unavailable"
@@ -172,7 +196,19 @@
    "status": "unavailable"
   },
   "1004405": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004405-f633595f8d39.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40787",
+   "providerAssetId": "321285271",
+   "attribution": "(c) Desita Dyah D A Kusumaningrum, some rights reserved (CC BY-NC), uploaded by Desita Dyah D A Kusumaningrum",
+   "license": "CC-BY-NC",
+   "alt": "Harpyionycteris celebensis",
+   "retrievedAt": "2026-09-04T08:47:55.191594+00:00",
+   "sourceHash": "854d0931091fb245fcf31891e256c240f99ba5be00a9e333d71a404a4b416dff",
+   "outputHash": "f633595f8d395336eb582a1c357d2b1a74b990c70e8fb1d4ea018af92abe4b94",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004406": {
    "status": "unavailable"
@@ -223,7 +259,19 @@
    "status": "unavailable"
   },
   "1004422": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004422-ce91feeb20c9.jpeg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40859",
+   "providerAssetId": "4945458",
+   "attribution": "(c) Michael Pennay, some rights reserved (CC BY-NC-ND), uploaded by Michael Pennay",
+   "license": "CC-BY-NC-ND",
+   "alt": "Nyctimene malaitensis",
+   "retrievedAt": "2026-09-04T08:47:55.800534+00:00",
+   "sourceHash": "ce91feeb20c92f3857ab1c25d6816f2bf27da4ead2844b2baac65aa22605829a",
+   "outputHash": "ce91feeb20c92f3857ab1c25d6816f2bf27da4ead2844b2baac65aa22605829a",
+   "width": 180,
+   "height": 240,
+   "modified": false
   },
   "1004423": {
    "status": "unavailable"
@@ -312,7 +360,19 @@
    "status": "unavailable"
   },
   "1004448": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004448-6f888f0330d0.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40903",
+   "providerAssetId": "43752487",
+   "attribution": "(c) Isaac Rush, some rights reserved (CC BY-NC), uploaded by Isaac Rush",
+   "license": "CC-BY-NC",
+   "alt": "Pteropus admiralitatum",
+   "retrievedAt": "2026-09-04T08:47:57.250350+00:00",
+   "sourceHash": "02f99ed8228d41504a3bf44fcb627025d7c598a758e24538094db6fe079559df",
+   "outputHash": "6f888f0330d0f9c8e2183bd815e051995fa5f227102ee44ff8c2475390be413d",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004449": {
    "status": "unavailable"
@@ -441,7 +501,19 @@
    "status": "unavailable"
   },
   "1004491": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004491-0b2cdeb4d64d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40872",
+   "providerAssetId": "452660836",
+   "attribution": "no rights reserved, uploaded by Jun MATSUI",
+   "license": "CC0",
+   "alt": "Pteropus pselaphon",
+   "retrievedAt": "2026-09-04T08:47:59.213900+00:00",
+   "sourceHash": "1bb63749091522644f206357dc40b06cbf9dc798585bebab948c9db3a42444f9",
+   "outputHash": "0b2cdeb4d64d5ede84319e4d8a6b3aae695bc9cebb4d12e1a0673a0eb8e3d74e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004492": {
    "status": "unavailable"
@@ -588,7 +660,19 @@
    "status": "unavailable"
   },
   "1004540": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004540-bc1f85cc96e5.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40848",
+   "providerAssetId": "5882111",
+   "attribution": "(c) Susan Tsang, some rights reserved (CC BY-NC), uploaded by Susan Tsang",
+   "license": "CC-BY-NC",
+   "alt": "Rousettus amplexicaudatus",
+   "retrievedAt": "2026-09-04T08:47:53.746337+00:00",
+   "sourceHash": "5bdb6ea07e4d8614dd6438e8987e568f96a6876158ee76072efc5ee4904ebea7",
+   "outputHash": "bc1f85cc96e5cfe2a9bc4d610bdce1db2ef7213a83deebfaab782a6378fb9304",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004541": {
    "status": "unavailable"
@@ -651,7 +735,19 @@
    "status": "unavailable"
   },
   "1004561": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004561-d3776eb506ef.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40711",
+   "providerAssetId": "1889171",
+   "attribution": "(c) The Darwin Initiative Centre for Bat Research, 일부 권리 보유 (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Aselliscus stoliczkanus",
+   "retrievedAt": "2026-09-04T08:48:00.590314+00:00",
+   "sourceHash": "8cb194246de36b8c951d51ff81af3c3d181daadae24063fba8b1727b9e2371fb",
+   "outputHash": "d3776eb506ef8d5419084c6000ef2f10e52e63552b716b6b87c481dfa4f28674",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004562": {
    "status": "unavailable"
@@ -765,7 +861,19 @@
    "status": "unavailable"
   },
   "1004599": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004599-cbbcd4c23dd1.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40722",
+   "providerAssetId": "174085092",
+   "attribution": "(c) Hopeland, some rights reserved (CC BY), uploaded by Hopeland",
+   "license": "CC-BY",
+   "alt": "Hipposideros fulvus",
+   "retrievedAt": "2026-09-04T08:48:02.208125+00:00",
+   "sourceHash": "60e8c0185bbf991dab089c81042ba0e91ff1eb1724963cdf5b4ac0f5cf893628",
+   "outputHash": "cbbcd4c23dd15e60260b0f81b53899c259bf6a51c91b8da055c9993eff2aa148",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004600": {
    "status": "unavailable"
@@ -846,7 +954,19 @@
    "status": "unavailable"
   },
   "1004626": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004626-556e59b5e452.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74429",
+   "providerAssetId": "158731094",
+   "attribution": "(c) Alpian Maleso, some rights reserved (CC BY-NC), uploaded by Alpian Maleso",
+   "license": "CC-BY-NC",
+   "alt": "Hipposideros pelingensis",
+   "retrievedAt": "2026-09-04T08:48:03.526686+00:00",
+   "sourceHash": "5f24ce6a654915f48dfadbf11e83f35de9d3ce2c1de19690dc83a27e06059cd3",
+   "outputHash": "556e59b5e452c75aadc35a95659bef859bceba9efb19aa1e237b018d306f9c5d",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004627": {
    "status": "unavailable"
@@ -882,7 +1002,19 @@
    "status": "unavailable"
   },
   "1004638": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004638-babc9860e3a1.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/244896",
+   "providerAssetId": "5047608",
+   "attribution": "(c) Natalie Weber, some rights reserved (CC BY-NC), uploaded by Natalie Weber",
+   "license": "CC-BY-NC",
+   "alt": "Hipposideros tephrus",
+   "retrievedAt": "2026-09-04T08:48:04.104925+00:00",
+   "sourceHash": "5d7a08cafbc79ecdc643bd958fe637897b95bb2b8b297a1d138d4b0e46153e98",
+   "outputHash": "babc9860e3a1e8e9cc9ec661200713e70f72be4442c46b630d453581d863ed10",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004639": {
    "status": "unavailable"
@@ -918,7 +1050,19 @@
    "status": "unavailable"
   },
   "1004650": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004650-08426fe2d441.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41321",
+   "providerAssetId": "6392766",
+   "attribution": "(c) Dushyantha Large, some rights reserved (CC BY-NC), uploaded by Dushyantha Large",
+   "license": "CC-BY-NC",
+   "alt": "Megaderma spasma",
+   "retrievedAt": "2026-09-04T08:48:04.767374+00:00",
+   "sourceHash": "b758cb3efb2b95da3650a012f2c7b7d0c7e6bfbe8180f5ae8874bd0319f1cd7b",
+   "outputHash": "08426fe2d44128a7a2ce5d770480a3a65a94d1ae146ea818faca3824ef931154",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004651": {
    "status": "unavailable"
@@ -960,7 +1104,19 @@
    "status": "unavailable"
   },
   "1004664": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004664-2360a6c93de2.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40697",
+   "providerAssetId": "109567314",
+   "attribution": "(c) Manuel Ruedi, some rights reserved (CC BY-NC), uploaded by Manuel Ruedi",
+   "license": "CC-BY-NC",
+   "alt": "Rhinolophus canuti",
+   "retrievedAt": "2026-09-04T08:48:05.483263+00:00",
+   "sourceHash": "6127a730c26cb3e31b28461619605faf749522a626e2fbd7f5db6661108aa380",
+   "outputHash": "2360a6c93de2bdf24cbec5db5fe401dac9ec7864fea6edaaeca217f7bed8b480",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004665": {
    "status": "unavailable"
@@ -1035,7 +1191,19 @@
    "status": "unavailable"
   },
   "1004690": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004690-533e7cf8ce93.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/183175",
+   "providerAssetId": "735517",
+   "attribution": "(c) Paul_Webala, some rights reserved (CC BY-NC), uploaded by Paul_Webala",
+   "license": "CC-BY-NC",
+   "alt": "Rhinolophus hildebrandtii",
+   "retrievedAt": "2026-09-04T08:48:06.782659+00:00",
+   "sourceHash": "208f0a9b12431e2b6e3bd4b3b6983e4d97ad13f97459a266cf2dc919c40e8b73",
+   "outputHash": "533e7cf8ce93efc1d232ea6d9820c22e441d05344d225afca0daa1263287fc6e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004691": {
    "status": "unavailable"
@@ -1081,7 +1249,19 @@
    "status": "unavailable"
   },
   "1004703": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004703-58afc797a279.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40686",
+   "providerAssetId": "2544960",
+   "attribution": "(c) The Darwin Initiative Centre for Bat Research, 일부 권리 보유 (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Rhinolophus luctus",
+   "retrievedAt": "2026-09-04T08:48:07.392617+00:00",
+   "sourceHash": "78173a387d9c027d112472738636af8cd77e03e16c678a63a20b3487088c4543",
+   "outputHash": "58afc797a279fb3eeb728edfb903853656d7cbbd5eda1cb29bc7511587770a70",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004704": {
    "status": "unavailable"
@@ -1129,7 +1309,19 @@
    "status": "unavailable"
   },
   "1004719": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004719-481dcb7efaa8.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1431104",
+   "providerAssetId": "402839291",
+   "attribution": "(c) Paul Carter, some rights reserved (CC BY-NC), uploaded by Paul Carter",
+   "license": "CC-BY-NC",
+   "alt": "Rhinolophus morio",
+   "retrievedAt": "2026-09-04T08:48:08.350187+00:00",
+   "sourceHash": "a8102b5db881c651d65d1d72a51eaabcdbac6682feb5f48c99dfec35d41336a5",
+   "outputHash": "481dcb7efaa851b4879f143671ab61cd02423c6670fc29f5c9c675c0b1e3d05b",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004720": {
    "status": "unavailable"
@@ -1246,7 +1438,19 @@
    "status": "unavailable"
   },
   "1004760": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004760-26619b7cdce5.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/75024",
+   "providerAssetId": "275084",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Rhinolophus ziama",
+   "retrievedAt": "2026-09-04T08:48:10.108236+00:00",
+   "sourceHash": "f51c2158e9c5416dc9560abce0876f42b353cc3197367f156041173ad53d7720",
+   "outputHash": "26619b7cdce564568df1989b516c6a66954b864aec796923353487976aa26616",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004761": {
    "status": "unavailable"
@@ -1282,7 +1486,19 @@
    "status": "unavailable"
   },
   "1004772": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004772-6a2fb032bcd3.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/245993",
+   "providerAssetId": "5026280",
+   "attribution": "(c) gdevender, some rights reserved (CC BY-NC), uploaded by gdevender",
+   "license": "CC-BY-NC",
+   "alt": "Rhinopoma hardwickii",
+   "retrievedAt": "2026-09-04T08:48:10.723002+00:00",
+   "sourceHash": "c30f2fbe4beaa97d6a6bf7ee5c3d204c63a85ed90e4795dbcedac57ed846835a",
+   "outputHash": "6a2fb032bcd3512b594abbab30566cea70f3a9f667652f48343e3146cf2afcc3",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004774": {
    "status": "unavailable"
@@ -1391,13 +1607,37 @@
    "height": 75
   },
   "1004784": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004784-16d1dab7505e.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41366",
+   "providerAssetId": "644621",
+   "attribution": "(c) Cláudio Dias Timm, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Diclidurus ingens",
+   "retrievedAt": "2026-09-04T08:46:55.098734+00:00",
+   "sourceHash": "1c382ef8b891e1ba96d91a950facc08cc6e768c19a6988ea33ced0674fdaafaf",
+   "outputHash": "16d1dab7505e13dcf90ee1a8b1ac7d1fe8a8e74399e1c00fff9a9de1c99b4e21",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004785": {
    "status": "unavailable"
   },
   "1004786": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004786-5527496ba1a4.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41364",
+   "providerAssetId": "74984923",
+   "attribution": "(c) Hernani Fernandes, some rights reserved (CC BY-NC), uploaded by Hernani Fernandes",
+   "license": "CC-BY-NC",
+   "alt": "Diclidurus scutatus",
+   "retrievedAt": "2026-09-04T08:46:55.543631+00:00",
+   "sourceHash": "c9af91efc67d415726c1d997cbeba81f7bfc42018167520d49e524baadc9d4d9",
+   "outputHash": "5527496ba1a4c8893b4f99da93a3a9a8c86a1e03910cd702217a3760a47c15d4",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004787": {
    "status": "available",
@@ -1442,7 +1682,19 @@
    "height": 75
   },
   "1004790": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004790-e1a490f64d02.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/319501",
+   "providerAssetId": "397274",
+   "attribution": "(c) Monica Díaz, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Peropteryx pallidoptera",
+   "retrievedAt": "2026-09-04T08:46:56.675265+00:00",
+   "sourceHash": "b5095a14f76e322aa6fef1b5834c74a9a3c614d76a67b7ac0b390561a6684818",
+   "outputHash": "e1a490f64d024850f025b012cd2b717de78981708d71bb7ec801fbda1fcc4349",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004791": {
    "status": "available",
@@ -1504,7 +1756,19 @@
    "height": 75
   },
   "1004796": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004796-da654875fd75.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/256405694",
+   "providerAssetId": "459711285",
+   "attribution": "(c) Felipe Kenzo Aoyagui, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Saccopteryx gymnura",
+   "retrievedAt": "2026-09-04T08:46:58.339748+00:00",
+   "sourceHash": "c53d86b272ad66dfd10f6dad064f5502aa09886d4f89ee34ed83346fccf5e89a",
+   "outputHash": "da654875fd75ba254d37d1332b0f70c4a76776daddb57bfb2e915db1f157cccf",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004797": {
    "status": "available",
@@ -1521,7 +1785,19 @@
    "height": 75
   },
   "1004798": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004798-e0a592ce687c.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/183177",
+   "providerAssetId": "446670",
+   "attribution": "(c) Phil Shirk, some rights reserved (CC BY-NC), uploaded by Phil Shirk",
+   "license": "CC-BY-NC",
+   "alt": "Coleura afra",
+   "retrievedAt": "2026-09-04T08:46:57.801425+00:00",
+   "sourceHash": "e6976ce784c34d822b7ff26fb609df5ed08a52592793e1c2b3d97905c52f2851",
+   "outputHash": "e0a592ce687c267c424d2f37952582b7ae286cf6bbd0a2dbf2dfb80f56fc952f",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004799": {
    "status": "available",
@@ -1538,7 +1814,19 @@
    "height": 75
   },
   "1004800": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004800-9ce66198a85a.jpg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/183020",
+   "providerAssetId": "59503386",
+   "attribution": "(c) Olivier Testa, some rights reserved (CC BY-NC-ND), uploaded by Olivier Testa",
+   "license": "CC-BY-NC-ND",
+   "alt": "Coleura kibomalandy",
+   "retrievedAt": "2026-09-04T08:46:57.799513+00:00",
+   "sourceHash": "9ce66198a85af75fc4f3f7c673be646a9692bf393be60518502a1044faeaaaa6",
+   "outputHash": "9ce66198a85af75fc4f3f7c673be646a9692bf393be60518502a1044faeaaaa6",
+   "width": 196,
+   "height": 240,
+   "modified": false
   },
   "1004801": {
    "status": "available",
@@ -1591,7 +1879,19 @@
    "height": 75
   },
   "1004807": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004807-65e0f41dc6e1.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/314739190",
+   "providerAssetId": "568496107",
+   "attribution": "(c) Charley Hesse, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Emballonura raffrayana",
+   "retrievedAt": "2026-09-04T08:46:59.605428+00:00",
+   "sourceHash": "e72911131f641c2ddb279099b0b50bebc2a2710371c12bb2d37a55e612df91b6",
+   "outputHash": "65e0f41dc6e19099a47e9ac41367d1d7cab3aba1457f65ac18b65c7e160db414",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004808": {
    "status": "available",
@@ -1667,10 +1967,34 @@
    "height": 75
   },
   "1004814": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004814-2962b3e552e3.jpg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41341",
+   "providerAssetId": "2825048",
+   "attribution": "(c) Michael Pennay, some rights reserved (CC BY-NC-ND)",
+   "license": "CC-BY-NC-ND",
+   "alt": "Saccolaimus mixtus",
+   "retrievedAt": "2026-09-04T08:47:00.139149+00:00",
+   "sourceHash": "2962b3e552e3f7d3819e1886815a7dc5bc16fa9aa8d0d4898e4b5e076d081476",
+   "outputHash": "2962b3e552e3f7d3819e1886815a7dc5bc16fa9aa8d0d4898e4b5e076d081476",
+   "width": 240,
+   "height": 155,
+   "modified": false
   },
   "1004815": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004815-4f19d994a0a1.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41344",
+   "providerAssetId": "761732",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Saccolaimus peli",
+   "retrievedAt": "2026-09-04T08:47:00.377303+00:00",
+   "sourceHash": "fedd6ee10ccb649cfad3f88e6eb1e54cac07a96744da0a3060f5568ed5a1dcc8",
+   "outputHash": "4f19d994a0a1797df449178d52eec1c6a9bd8c2ef272e96c08aeec0efe226b9e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004816": {
    "status": "available",
@@ -1703,13 +2027,37 @@
    "height": 75
   },
   "1004819": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004819-eabfd5626484.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41382",
+   "providerAssetId": "55145462",
+   "attribution": "(c) hamster1067, some rights reserved (CC BY-NC), uploaded by hamster1067",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous georgianus",
+   "retrievedAt": "2026-09-04T08:47:00.514814+00:00",
+   "sourceHash": "a610c34491e266703bd7857d4b634eb32331339ab5850dafffddc192e814e7df",
+   "outputHash": "eabfd56264842ebdd8585792f76308ef623c23da0c853f903173b3016211c986",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004820": {
    "status": "unavailable"
   },
   "1004821": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004821-30e1f9d04e84.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41385",
+   "providerAssetId": "158616542",
+   "attribution": "(c) Zarek Cockar, some rights reserved (CC BY-NC), uploaded by Zarek Cockar",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous hildegardeae",
+   "retrievedAt": "2026-09-04T08:47:00.696260+00:00",
+   "sourceHash": "a33c993a09ee6840f6e57426f3112160b00c709b42377af873c6fb8aa0ca64e7",
+   "outputHash": "30e1f9d04e847c07e3ca47c989d9f2333737b984f0a3ea509f0d810927c01f5e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004822": {
    "status": "available",
@@ -1729,7 +2077,19 @@
    "status": "unavailable"
   },
   "1004824": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004824-236ea3c5d66b.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41378",
+   "providerAssetId": "87454983",
+   "attribution": "(c) Wich’yanan (Jay) Limparungpatthanakij, some rights reserved (CC BY-NC), uploaded by Wich’yanan (Jay) Limparungpatthanakij",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous longimanus",
+   "retrievedAt": "2026-09-04T08:47:01.090003+00:00",
+   "sourceHash": "8c9769f6779bc0e0dcb7024d153621534daf4e564fe593e518938a9d944cafac",
+   "outputHash": "236ea3c5d66b94abde9629730c459f9da0ecf11d80116f0be8582caecf51d490",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004825": {
    "status": "available",
@@ -1772,49 +2132,217 @@
    "height": 75
   },
   "1004828": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004828-19a75111ec2e.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41381",
+   "providerAssetId": "189336",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous perforatus",
+   "retrievedAt": "2026-09-04T08:47:01.756082+00:00",
+   "sourceHash": "6abd9a75c49ca144346d0ef76404943ca9efacef0f39e25bb7c85d4ff29dc7ce",
+   "outputHash": "19a75111ec2e5f6fcfae91812b329fc0c6092e2c7e3e4bb81483023b501fa401",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004829": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004829-dc0d7abc2a1e.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41375",
+   "providerAssetId": "49861236",
+   "attribution": "(c) li-yan-nan, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous theobaldi",
+   "retrievedAt": "2026-09-04T08:47:01.771625+00:00",
+   "sourceHash": "5f3b2f82bc39f4bb3214eed9c3d0e97adc0020d357a686282f53de8f3cef31c7",
+   "outputHash": "dc0d7abc2a1ec2d6486938b4c51a845da2ff8d33b02eed98f23990f82159cfc3",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004830": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004830-f87d8a99b82d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/75155",
+   "providerAssetId": "145310111",
+   "attribution": "(c) awmccutcheon, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Taphozous troughtoni",
+   "retrievedAt": "2026-09-04T08:47:01.743394+00:00",
+   "sourceHash": "c9d87647cad0fe011b7cf544bbcb71f3dc271563b3b05347047ddefe3430f80f",
+   "outputHash": "f87d8a99b82ddc44426ef7c3237cac0fbe12f565ba2d2ee72cc9c10f66278c74",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004831": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004831-cc751c22c0c2.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41210",
+   "providerAssetId": "183748597",
+   "attribution": "(c) Manuel Ruedi, some rights reserved (CC BY-NC), uploaded by Manuel Ruedi",
+   "license": "CC-BY-NC",
+   "alt": "Myzopoda aurita",
+   "retrievedAt": "2026-09-04T08:47:01.742139+00:00",
+   "sourceHash": "312d08d9e34a374819db6cb9a2fa0ca6e36cb498d88c081cb384b07ac5a9cb3c",
+   "outputHash": "cc751c22c0c2220f7d5091258fcda839021c0845eb3152c5c5a4adeaf793d52a",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004832": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004832-f7a5023141ff.jpg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74721",
+   "providerAssetId": "652179936",
+   "attribution": "(c) ombeline_sculfort, some rights reserved (CC BY-NC-ND), uploaded by ombeline_sculfort",
+   "license": "CC-BY-NC-ND",
+   "alt": "Myzopoda schliemanni",
+   "retrievedAt": "2026-09-04T08:47:01.838293+00:00",
+   "sourceHash": "f7a5023141ffd739c295e21011a37bd62dcc95142f43df8ee3bf36e8312ca6fa",
+   "outputHash": "f7a5023141ffd739c295e21011a37bd62dcc95142f43df8ee3bf36e8312ca6fa",
+   "width": 240,
+   "height": 159,
+   "modified": false
   },
   "1004833": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004833-6f38dd38420d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41185",
+   "providerAssetId": "189381",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris arge",
+   "retrievedAt": "2026-09-04T08:47:02.055663+00:00",
+   "sourceHash": "776376a7c5a4324b8be54980af48aa72e09c428998e43e99cfae9b1d1e8dda8a",
+   "outputHash": "6f38dd38420db5f7aa7918f73bd0298d3d0c07546047b58503c9e12797ddb487",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004834": {
    "status": "unavailable"
   },
   "1004835": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004835-959954c8feea.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41187",
+   "providerAssetId": "281065",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris gambiensis",
+   "retrievedAt": "2026-09-04T08:47:02.084431+00:00",
+   "sourceHash": "5f6f97a57aa1e5d11c74b7ffc24ac6317188f61361615cf290763a6de8d3ae05",
+   "outputHash": "959954c8feea71a1a5ee551d865b1c911b86d5faf1545f694f124880e384abdc",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004836": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004836-f03743ce47d0.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41186",
+   "providerAssetId": "189385",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris grandis",
+   "retrievedAt": "2026-09-04T08:47:02.115996+00:00",
+   "sourceHash": "7e10fbe61368c73571d1fb90a8062994885f5d0d3a39ddc2ffcf7ebcfd865382",
+   "outputHash": "f03743ce47d03afc219bd43adc8852de833b413567eee3b74eb39ddbd5fb7130",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004837": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004837-d553ee87e77d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41195",
+   "providerAssetId": "269728",
+   "attribution": "(c) cullen_geiselman, some rights reserved (CC BY-NC), uploaded by cullen_geiselman",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris hispida",
+   "retrievedAt": "2026-09-04T08:47:02.294746+00:00",
+   "sourceHash": "d318130fe0c664f6e7d4bcab876ff2a77d8a27004ec6b23976119e8e71ce432a",
+   "outputHash": "d553ee87e77d882e775ef86554dbd6f467d45479fb4ab49b254f56fec75f7b98",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004838": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004838-1f72eac2b1dd.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41194",
+   "providerAssetId": "189387",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris intermedia",
+   "retrievedAt": "2026-09-04T08:47:02.324765+00:00",
+   "sourceHash": "b136a1a1877d5b6958ae78c4388a00f4a744f2bfcd461abc5a474a62f95b8e77",
+   "outputHash": "1f72eac2b1dd91aea8f796de6a21a04865f6bdeba50bc35f877208b7c3906f4e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004839": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004839-3de93d54c6c7.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41188",
+   "providerAssetId": "333786141",
+   "attribution": "(c) A. Restu Dwikelana, some rights reserved (CC BY-NC), uploaded by A. Restu Dwikelana",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris javanica",
+   "retrievedAt": "2026-09-04T08:47:02.438966+00:00",
+   "sourceHash": "e3a7950741c1e719bcd97eb975fcfef0d49bab114e59754e7dcd144f1bc6eff5",
+   "outputHash": "3de93d54c6c706014e82a1adc7fd31719451a73dc1e0bb30c040fcc69460704f",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004840": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004840-d8f9721c0c34.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41189",
+   "providerAssetId": "189389",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris macrotis",
+   "retrievedAt": "2026-09-04T08:47:02.418310+00:00",
+   "sourceHash": "aff0c9ea724e9ef84642bde87da29f999be1935c0c0ea2ceb8ce40b682d261e8",
+   "outputHash": "d8f9721c0c34dbf41bd50d63359c0639b05b431c16d63d41c9f24219b8c2d21b",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004842": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004842-bd8afaa259fe.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41196",
+   "providerAssetId": "281074",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris major",
+   "retrievedAt": "2026-09-04T08:47:02.441987+00:00",
+   "sourceHash": "afb7ce667986af15b8030bcd2843e009970701006ca2cefd5f1d79e7aefde5fb",
+   "outputHash": "bd8afaa259fefe1c0ce3d6334f311c513e13925d48e71a456a6c548f35b91da2",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004843": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004843-a46d32c6c749.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41193",
+   "providerAssetId": "189390",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris nana",
+   "retrievedAt": "2026-09-04T08:47:02.641812+00:00",
+   "sourceHash": "bc11756d4d082b6cc5c3fc1a8270c6cc7b9dd5bb2e8f4fa00d5f467dd9236e52",
+   "outputHash": "a46d32c6c749025a67e37c2f21fa6c4b3af47c92c35d258b55c1a8fd5b4db636",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004844": {
    "status": "unavailable"
@@ -1833,22 +2361,94 @@
    "height": 75
   },
   "1004846": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004846-b688d9b51d48.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41191",
+   "providerAssetId": "102249807",
+   "attribution": "(c) Ellen McArthur, some rights reserved (CC BY-NC), uploaded by Ellen McArthur",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris tragata",
+   "retrievedAt": "2026-09-04T08:47:02.796203+00:00",
+   "sourceHash": "77a0279a934bc69fab33a82515373401d2cc73abe6d739ab2b13734cffaeb3f4",
+   "outputHash": "b688d9b51d480d2fea5c7e1a540164da2a9f7e50de94c095e836ab575cc907f1",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004847": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004847-9cf950d1fea4.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41190",
+   "providerAssetId": "13944585",
+   "attribution": "(c) zimgales, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Nycteris woodi",
+   "retrievedAt": "2026-09-04T08:47:02.792797+00:00",
+   "sourceHash": "a65542be280600d6bd8b784bfdfa9de2b170283c5385d4165572c8ccc51bf268",
+   "outputHash": "9cf950d1fea4845b76a9879456241a658666ae2fbb51a611eca9ae7e4a7c6fbe",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004848": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004848-e389cba2fb03.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41331",
+   "providerAssetId": "718309",
+   "attribution": "(c) Joaquín Ugarte, some rights reserved (CC BY-NC), uploaded by Joaquín Ugarte",
+   "license": "CC-BY-NC",
+   "alt": "Amorphochilus schnablii",
+   "retrievedAt": "2026-09-04T08:47:02.872939+00:00",
+   "sourceHash": "534fe878cda1b2ce4773aef1586ab696fb21ff2ddc296342c049da05f15bd7cf",
+   "outputHash": "e389cba2fb03c74ead7439e2556b457588ae71da017bc82d223091a210cdb7fe",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004849": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004849-03614e8556da.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41333",
+   "providerAssetId": "366077652",
+   "attribution": "(c) Vincent Rufray, some rights reserved (CC BY-NC), uploaded by Vincent Rufray",
+   "license": "CC-BY-NC",
+   "alt": "Furipterus horrens",
+   "retrievedAt": "2026-09-04T08:47:03.004146+00:00",
+   "sourceHash": "21d8fcccd6bf228d48f24c71cd260838f24bb93fe5cebe2988bfe9b928b41070",
+   "outputHash": "03614e8556da6fa17279600c5b260729ee18469a00c25d54eb00de9cb27305f3",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004850": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004850-f479c6afd78a.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74647",
+   "providerAssetId": "701839541",
+   "attribution": "(c) José G. Martínez-Fonseca, some rights reserved (CC BY-NC), uploaded by José G. Martínez-Fonseca",
+   "license": "CC-BY-NC",
+   "alt": "Mormoops blainvillei",
+   "retrievedAt": "2026-09-04T08:47:03.111188+00:00",
+   "sourceHash": "04e21cecb9cb344c69a5c28b406eee990a07774063f50adde29a2d17b458032f",
+   "outputHash": "f479c6afd78aa641171d23e22209bb18b1bbf796a654253d0a3d593dcb24b233",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004851": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004851-e38fee3cc3e2.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41224",
+   "providerAssetId": "147878",
+   "attribution": "(c) Alex Borisenko, Biodiversity Institute of Ontario, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Mormoops megalophylla",
+   "retrievedAt": "2026-09-04T08:47:03.134290+00:00",
+   "sourceHash": "8a47f2b881f1418392ecceb7e4dc2aaad2db92ae124db9eb47d078800c0ca8dd",
+   "outputHash": "e38fee3cc3e2489c35c5f2c8d0d9ac0fd75413104b168c592a587df449ae55ca",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004852": {
    "status": "unavailable"
@@ -1901,7 +2501,19 @@
    "status": "unavailable"
   },
   "1004862": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004862-af8e21ff94f7.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41220",
+   "providerAssetId": "4054222",
+   "attribution": "(c) Andrew Block, some rights reserved (CC BY-NC), uploaded by Andrew Block",
+   "license": "CC-BY-NC",
+   "alt": "Pteronotus personatus",
+   "retrievedAt": "2026-09-04T08:47:03.866367+00:00",
+   "sourceHash": "0b050e5d18e8e7b10d2dd31b82244c056ad913a755c8562cec4b8e05c37faa1f",
+   "outputHash": "af8e21ff94f7faec49ba66910420aa54590a41dc932fd9ae5801c81984ac11d9",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004863": {
    "status": "unavailable"
@@ -1938,7 +2550,19 @@
    "status": "unavailable"
   },
   "1004871": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004871-39639625a04d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41200",
+   "providerAssetId": "91561769",
+   "attribution": "(c) Roberto Leonan Morim Novaes, some rights reserved (CC BY-NC), uploaded by Roberto Leonan Morim Novaes",
+   "license": "CC-BY-NC",
+   "alt": "Noctilio leporinus",
+   "retrievedAt": "2026-09-04T08:47:04.446296+00:00",
+   "sourceHash": "a9a322b9de00fd4e38632a3b2269a00994da1ac62862d17bcff43ed37cb842bb",
+   "outputHash": "39639625a04d19bf6a0dbdbd24dbe44a66ee45b41dcce03b8ac29722e298073a",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004872": {
    "status": "unavailable"
@@ -2010,7 +2634,19 @@
    "status": "unavailable"
   },
   "1004892": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004892-bad5d77ced90.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41138",
+   "providerAssetId": "567756",
+   "attribution": "(c) Diego Torres Arboleda, some rights reserved (CC BY-NC), uploaded by Diego Torres Arboleda",
+   "license": "CC-BY-NC",
+   "alt": "Anoura cultrata",
+   "retrievedAt": "2026-09-04T08:47:05.466125+00:00",
+   "sourceHash": "f7482019b6a3ce27421bb48515a084134c555989a390540f03cdcd833cca40a1",
+   "outputHash": "bad5d77ced90041aed0e52392914cbcb062081c880cdf069ee59605d38380b07",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004893": {
    "status": "unavailable"
@@ -2058,7 +2694,19 @@
    "status": "unavailable"
   },
   "1004905": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004905-50b13d66cbee.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1114103",
+   "providerAssetId": "419047485",
+   "attribution": "(c) Roberto Leonan Morim Novaes, some rights reserved (CC BY-NC), uploaded by Roberto Leonan Morim Novaes",
+   "license": "CC-BY-NC",
+   "alt": "Lichonycteris degener",
+   "retrievedAt": "2026-09-04T08:47:06.082028+00:00",
+   "sourceHash": "07956c85a0c1f4b4f18207db9e71d0c584bc51c31a2faaefc0a5f2ffeb693339",
+   "outputHash": "50b13d66cbee60571696b5d04df824f17cb7b6099fbf4eacabfcd34cfdd7509b",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004906": {
    "status": "unavailable"
@@ -2130,7 +2778,19 @@
    "status": "unavailable"
   },
   "1004926": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004926-18db1bfccd8f.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/852472",
+   "providerAssetId": "91557780",
+   "attribution": "(c) Roberto Leonan Morim Novaes, some rights reserved (CC BY-NC), uploaded by Roberto Leonan Morim Novaes",
+   "license": "CC-BY-NC",
+   "alt": "Hsunycteris pattoni",
+   "retrievedAt": "2026-09-04T08:47:07.383046+00:00",
+   "sourceHash": "853f5c035bd69c9eba9662a101e0787e9a0f7aded8157ade8d8124fa0a7c9e9f",
+   "outputHash": "18db1bfccd8f5bb30257a81cd1e1421137caa1c62f82c7792908ccb35097ea5d",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004927": {
    "status": "unavailable"
@@ -2184,7 +2844,19 @@
    "status": "unavailable"
   },
   "1004941": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004941-8d05039728ee.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41098",
+   "providerAssetId": "18766663",
+   "attribution": "(c) Carlos E. Juárez-Peña, some rights reserved (CC BY-NC), uploaded by Carlos E. Juárez-Peña",
+   "license": "CC-BY-NC",
+   "alt": "Lonchophylla robusta",
+   "retrievedAt": "2026-09-04T08:47:08.041617+00:00",
+   "sourceHash": "6acb75b918ab9e375f35a7e2d207640a3b3a15df957b84c93c322d5991b3e1fa",
+   "outputHash": "8d05039728ee1b5dccae6656ad772028aad6fb5c3eb47116b1dbe55fbbde8cde",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004942": {
    "status": "unavailable"
@@ -2265,7 +2937,19 @@
    "status": "unavailable"
   },
   "1004969": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004969-e71b6c358d10.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/852272",
+   "providerAssetId": "524641433",
+   "attribution": "no rights reserved, uploaded by Paulo Mascaretti",
+   "license": "CC0",
+   "alt": "Gardnerycteris crenulata",
+   "retrievedAt": "2026-09-04T08:47:09.508592+00:00",
+   "sourceHash": "590f0bc13f32c8feb67e9a147e98542648658500b53d377e85447b0db57aed3b",
+   "outputHash": "e71b6c358d109f839265b3d6687c84f2d39048c7124d6e8f43af795c5c36d4e8",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004970": {
    "status": "unavailable"
@@ -2343,7 +3027,19 @@
    "status": "unavailable"
   },
   "1004996": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004996-93104af2ce8a.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41156",
+   "providerAssetId": "7937584",
+   "attribution": "(c) melissadonnelly, some rights reserved (CC BY-NC), uploaded by melissadonnelly",
+   "license": "CC-BY-NC",
+   "alt": "Ardops nichollsi",
+   "retrievedAt": "2026-09-04T08:47:11.974777+00:00",
+   "sourceHash": "6058516e5817301ebed22c4ff6b24150b426d7c2645106608711027b25734108",
+   "outputHash": "93104af2ce8ae4f131ea5c12aa4554423b5c8234fd78e74166e146e9d8c1df5d",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004997": {
    "status": "unavailable"
@@ -2505,7 +3201,19 @@
    "status": "unavailable"
   },
   "1005047": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005047-c36e9912d8fa.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74922",
+   "providerAssetId": "78362293",
+   "attribution": "(c) Edison Araguillin, some rights reserved (CC BY-NC), uploaded by Edison Araguillin",
+   "license": "CC-BY-NC",
+   "alt": "Platyrrhinus matapalensis",
+   "retrievedAt": "2026-09-04T08:47:13.219898+00:00",
+   "sourceHash": "01e5fc561159562447b07248f617222529db222f719c1c9ec4b327f0375ec46d",
+   "outputHash": "c36e9912d8fa233769871da957a9f8307c987e427cb3cabed72e0b203a9019e3",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005048": {
    "status": "unavailable"
@@ -2563,7 +3271,19 @@
    "status": "unavailable"
   },
   "1005064": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005064-9de5ff47fce0.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/75219",
+   "providerAssetId": "67985089",
+   "attribution": "(c) delmer jonathan, some rights reserved (CC BY-NC), uploaded by delmer jonathan",
+   "license": "CC-BY-NC",
+   "alt": "Vampyressa thyone",
+   "retrievedAt": "2026-09-04T08:47:13.898139+00:00",
+   "sourceHash": "806c5b7c27fcd0eea7213e9ce335aab5a30bfb913d3e2614aaaeca8874fe324e",
+   "outputHash": "9de5ff47fce0687c9457db2008641e49d038190f33b9725a56e7da0fe599a505",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005065": {
    "status": "unavailable"
@@ -2638,7 +3358,19 @@
    "status": "unavailable"
   },
   "1005089": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005089-e5adeac105b3.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1067750",
+   "providerAssetId": "4605298",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Sturnira parvidens",
+   "retrievedAt": "2026-09-04T08:47:15.135401+00:00",
+   "sourceHash": "e73fc45c277251fdd05ce0def94b34f0d40b7886f25155482ebb79fff7272927",
+   "outputHash": "e5adeac105b388fa38b6962835697a83bbd30ed8780789b37d260923eed671e8",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005090": {
    "status": "unavailable"
@@ -2731,7 +3463,19 @@
    "status": "unavailable"
   },
   "1005118": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005118-042917d7262d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/356115",
+   "providerAssetId": "986850",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Miniopterus maghrebensis",
+   "retrievedAt": "2026-09-04T08:47:16.404497+00:00",
+   "sourceHash": "0ed4aadffaafed8471ac4b1f4afb627cda5e31399e773cf5f0ede23adbc5630b",
+   "outputHash": "042917d7262dd77a46a03d490aed3eb51b5e9e177c6711d487ef69a12a7c84e0",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005119": {
    "status": "unavailable"
@@ -2767,7 +3511,19 @@
    "status": "unavailable"
   },
   "1005130": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005130-3e3a896d7bae.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1370841",
+   "providerAssetId": "714945274",
+   "attribution": "(c) stefanhaering, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Miniopterus pallidus",
+   "retrievedAt": "2026-09-04T08:47:17.017225+00:00",
+   "sourceHash": "36a6a8d80dd2325fec3db12fdc9d3f623cda3ec1ead0836c6b23f064dfef0466",
+   "outputHash": "3e3a896d7bae7b280aecd8eac1ed4e7547563ec9a2b9920f9972b0031d3094be",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005131": {
    "status": "unavailable"
@@ -2997,7 +3753,19 @@
    "status": "unavailable"
   },
   "1005203": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005203-92847bfd1448.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1431066",
+   "providerAssetId": "6400491",
+   "attribution": "(c) Juan Cruzado Cortés, some rights reserved (CC BY-SA), uploaded by Juan Cruzado Cortés",
+   "license": "CC-BY-SA",
+   "alt": "Molossus nigricans",
+   "retrievedAt": "2026-09-04T08:47:19.673337+00:00",
+   "sourceHash": "f4cc1174f4468159428b5de666b13d768fc0c8a1237793393014e025901d679d",
+   "outputHash": "92847bfd1448f717ac3ceb5b2c04608d7ac6c3ace447dc00f75ea0e8d95be227",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005204": {
    "status": "unavailable"
@@ -3018,7 +3786,19 @@
    "status": "unavailable"
   },
   "1005210": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005210-eff7d07feeff.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/765544",
+   "providerAssetId": "189367",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Mops condylurus",
+   "retrievedAt": "2026-09-04T08:47:20.279691+00:00",
+   "sourceHash": "d88feb072cc00e0dad7741eac60f7d2df89e9dda98489600c6cd0981b632f84c",
+   "outputHash": "eff7d07feeff01074c2afb39879d2badeb6662b8734f507b057cc219944bb638",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005211": {
    "status": "unavailable"
@@ -3156,7 +3936,19 @@
    "status": "unavailable"
   },
   "1005253": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005253-9255c4f40c5c.jpg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1370825",
+   "providerAssetId": "258867",
+   "attribution": "(c) Michael Pennay, some rights reserved (CC BY-NC-ND)",
+   "license": "CC-BY-NC-ND",
+   "alt": "Ozimops planiceps",
+   "retrievedAt": "2026-09-04T08:47:22.938469+00:00",
+   "sourceHash": "9255c4f40c5ccfc5844d8b39247d0fc3138362b6ba38d93ec11cbec097f4ac30",
+   "outputHash": "9255c4f40c5ccfc5844d8b39247d0fc3138362b6ba38d93ec11cbec097f4ac30",
+   "width": 240,
+   "height": 180,
+   "modified": false
   },
   "1005254": {
    "status": "unavailable"
@@ -3246,7 +4038,19 @@
    "status": "unavailable"
   },
   "1005284": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005284-9b041b329420.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40456",
+   "providerAssetId": "355906",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Kerivoula argentata",
+   "retrievedAt": "2026-09-04T08:47:24.331698+00:00",
+   "sourceHash": "06123533a143188359726fd20c00a7ce1c02104cd057a9d8dbda49b0b8d7db3d",
+   "outputHash": "9b041b329420c5a261c1d75f0a3cbb3b35e912e407ca034b93329055515ba4f9",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005285": {
    "status": "unavailable"
@@ -3336,7 +4140,19 @@
    "status": "unavailable"
   },
   "1005314": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005314-9ffb9617d5bc.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40627",
+   "providerAssetId": "608078238",
+   "attribution": "(c) Nithin Divakar, some rights reserved (CC BY-NC), uploaded by Nithin Divakar",
+   "license": "CC-BY-NC",
+   "alt": "Harpiocephalus harpia",
+   "retrievedAt": "2026-09-04T08:47:25.614134+00:00",
+   "sourceHash": "01d317a6cc4de2f27b45153cb70ef2c37244bb3dd2f66b11d6eef51300ba7d70",
+   "outputHash": "9ffb9617d5bcfa9c3dab168536c6129833f74f7ec62be7acc8fec98bef2fc6a5",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005315": {
    "status": "unavailable"
@@ -3402,7 +4218,19 @@
    "status": "unavailable"
   },
   "1005337": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005337-4513d3a617f7.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40598",
+   "providerAssetId": "452159506",
+   "attribution": "(c) Rohit Chakravarty, some rights reserved (CC BY-NC-SA), uploaded by Rohit Chakravarty",
+   "license": "CC-BY-NC-SA",
+   "alt": "Murina huttonii",
+   "retrievedAt": "2026-09-04T08:47:26.904789+00:00",
+   "sourceHash": "74e113fbb4e7d23fa2b2ffb770742f51c56f7e96339442d510e6d27d962ec548",
+   "outputHash": "4513d3a617f7537f33754aa85b223f17fca808a686d5418877b7531d312f5db0",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005338": {
    "status": "unavailable"
@@ -3432,7 +4260,19 @@
    "status": "unavailable"
   },
   "1005347": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005347-2860bfc8ef02.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/765464",
+   "providerAssetId": "108298717",
+   "attribution": "(c) Cheng-Tao Lin, some rights reserved (CC BY), uploaded by Cheng-Tao Lin",
+   "license": "CC-BY",
+   "alt": "Murina recondita",
+   "retrievedAt": "2026-09-04T08:47:27.513914+00:00",
+   "sourceHash": "c9b246072392f2b065090cea7cb70ee0b8450b21c35593c2d3684ec2d31f7818",
+   "outputHash": "2860bfc8ef027c4c3a3cdaacc3104e2ab01ce80a1a55e9ab2de2ef66b23c16ad",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005349": {
    "status": "unavailable"
@@ -3462,7 +4302,19 @@
    "status": "unavailable"
   },
   "1005358": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005358-c2337ab283c0.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40334",
+   "providerAssetId": "523366",
+   "attribution": "(c) The Darwin Initiative Centre for Bat Research, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Myotis adversus",
+   "retrievedAt": "2026-09-04T08:47:28.132094+00:00",
+   "sourceHash": "3d506d6fb41a7fdf9411c06268ec2dc7c88a3de38c5c75846db194db6c415a79",
+   "outputHash": "c2337ab283c06aa81a37cd7076049603a668f61099ee4e129af5713bf45c2339",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005359": {
    "status": "unavailable"
@@ -3528,7 +4380,19 @@
    "status": "unavailable"
   },
   "1005383": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005383-d029aa1d46f9.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40342",
+   "providerAssetId": "2400863",
+   "attribution": "(c) Frank Carey, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Myotis californicus",
+   "retrievedAt": "2026-09-04T08:47:29.408764+00:00",
+   "sourceHash": "c0e431906d979ec1f5b3ae7b0f996900184eac6ac7070d5bb6f8ad53e9d61374",
+   "outputHash": "d029aa1d46f94d5f69440e9a2ba2d2dd87d735d7bd5d7cad0e151d07a65674c5",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005384": {
    "status": "unavailable"
@@ -3633,7 +4497,19 @@
    "status": "unavailable"
   },
   "1005420": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005420-d051f3a57e14.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40276",
+   "providerAssetId": "158778404",
+   "attribution": "(c) Yuzefovich Alexander, some rights reserved (CC BY-NC), uploaded by Yuzefovich Alexander",
+   "license": "CC-BY-NC",
+   "alt": "Myotis ikonnikovi",
+   "retrievedAt": "2026-09-04T08:47:31.291802+00:00",
+   "sourceHash": "b502056f438c1183feae2fdfce52da9d118528667c70d6ab2493d22ccc7ea876",
+   "outputHash": "d051f3a57e14c52d8f9d0357fec0bc7cba45018344284e575a3b9e2c0cd5663c",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005421": {
    "status": "unavailable"
@@ -3669,7 +4545,19 @@
    "status": "unavailable"
   },
   "1005432": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005432-ca5b4d7876f6.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40346",
+   "providerAssetId": "11540852",
+   "attribution": "(c) Jason Headley, some rights reserved (CC BY-NC), uploaded by Jason Headley",
+   "license": "CC-BY-NC",
+   "alt": "Myotis lucifugus",
+   "retrievedAt": "2026-09-04T08:47:31.926361+00:00",
+   "sourceHash": "4dd61ad1def739d2c0c8bb09c8766f9362011da285cb72944f0abafd4d1ba77b",
+   "outputHash": "ca5b4d7876f6c37e925ad4b45275a7c5804690f3881fa62843899d5005357cb5",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005433": {
    "status": "unavailable"
@@ -3708,7 +4596,19 @@
    "status": "unavailable"
   },
   "1005446": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005446-49cfbcffba0e.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40288",
+   "providerAssetId": "408057",
+   "attribution": "(c) Sergio Solari, some rights reserved (CC BY-NC), uploaded by Sergio Solari",
+   "license": "CC-BY-NC",
+   "alt": "Myotis nesopolus",
+   "retrievedAt": "2026-09-04T08:47:32.588789+00:00",
+   "sourceHash": "e6c77749dea108d8dd48edfd0a4857a236eb8d8697d7089af7b1abe1fed67159",
+   "outputHash": "49cfbcffba0ed31fdf9f1ee5e3d403d7a3dd4449c4476e18ecedee5031ecab0e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005447": {
    "status": "unavailable"
@@ -3756,7 +4656,19 @@
    "status": "unavailable"
   },
   "1005463": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005463-868cf73f2bd5.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40299",
+   "providerAssetId": "458392022",
+   "attribution": "(c) Paul Carter, some rights reserved (CC BY-NC), uploaded by Paul Carter",
+   "license": "CC-BY-NC",
+   "alt": "Myotis rosseti",
+   "retrievedAt": "2026-09-04T08:47:33.958114+00:00",
+   "sourceHash": "8825bb858dc3bca0b1824e79fdcc7e67e51710d23858dc69f2fdde23ee98b781",
+   "outputHash": "868cf73f2bd519f93b03b5824fb728c4cfe5c8b74a7d01d132f1e5da5188554a",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005464": {
    "status": "unavailable"
@@ -3834,7 +4746,19 @@
    "status": "unavailable"
   },
   "1005489": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005489-ead92fcaffe3.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1371005",
+   "providerAssetId": "203549261",
+   "attribution": "(c) Rohit Chakravarty, some rights reserved (CC BY-NC-SA), uploaded by Rohit Chakravarty",
+   "license": "CC-BY-NC-SA",
+   "alt": "Submyotodon caliginosus",
+   "retrievedAt": "2026-09-04T08:47:35.591823+00:00",
+   "sourceHash": "0938a32a9357974d5bec4fe964b6ed64f5cfb178bd353469d9966a226f48d6c8",
+   "outputHash": "ead92fcaffe3355241eb3b43e0c6a046b5fd307f3e76b3e5e6c7dae5139cbc87",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005490": {
    "status": "unavailable"
@@ -3900,7 +4824,19 @@
    "status": "unavailable"
   },
   "1005511": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005511-c1dce6d46e4d.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1641886",
+   "providerAssetId": "93811015",
+   "attribution": "(c) Manuel Ruedi, bazı hakları saklıdır (CC BY-NC), yükleyen: Manuel Ruedi",
+   "license": "CC-BY-NC",
+   "alt": "Cnephaeus anatolicus",
+   "retrievedAt": "2026-09-04T08:47:38.341219+00:00",
+   "sourceHash": "b72e6be001b419b910ea6031135dc47383945e7b3ba956e4df0e1ebdd562c03f",
+   "outputHash": "c1dce6d46e4d114ce6f502cd551ead422ac73260e189ae452b5b5582503c4001",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005512": {
    "status": "unavailable"
@@ -4041,7 +4977,19 @@
    "status": "unavailable"
   },
   "1005559": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005559-19e1cade6d46.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40534",
+   "providerAssetId": "392949",
+   "attribution": "(c) ruben barquez, some rights reserved (CC BY-NC), uploaded by ruben barquez",
+   "license": "CC-BY-NC",
+   "alt": "Histiotus montanus",
+   "retrievedAt": "2026-09-04T08:47:40.419516+00:00",
+   "sourceHash": "5044c5d49108d2f6566bc307913430c75d5f2946b2a05731509d9b51ffa67a07",
+   "outputHash": "19e1cade6d460811f94548a481c957e91143828780fa0462ad17e88c793e24df",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005560": {
    "status": "unavailable"
@@ -4053,7 +5001,19 @@
    "status": "unavailable"
   },
   "1005563": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005563-754f2bc98372.jpg",
+   "sourceUrl": "https://www.inaturalist.org/taxa/75067",
+   "providerAssetId": "258863",
+   "attribution": "(c) Michael Pennay, some rights reserved (CC BY-NC-ND)",
+   "license": "CC-BY-NC-ND",
+   "alt": "Scoteanax rueppellii",
+   "retrievedAt": "2026-09-04T08:47:41.201266+00:00",
+   "sourceHash": "754f2bc98372dd2857bf0d5e5e61eeee77c54c8246109e0f40068be18ab94554",
+   "outputHash": "754f2bc98372dd2857bf0d5e5e61eeee77c54c8246109e0f40068be18ab94554",
+   "width": 240,
+   "height": 135,
+   "modified": false
   },
   "1005564": {
    "status": "unavailable"
@@ -4086,7 +5046,19 @@
    "status": "unavailable"
   },
   "1005574": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005574-8200b7bade7a.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1450550",
+   "providerAssetId": "557191",
+   "attribution": "(c) Geoffrey Gomes, some rights reserved (CC BY-NC), uploaded by Geoffrey Gomes",
+   "license": "CC-BY-NC",
+   "alt": "Lasiurus blossevillii",
+   "retrievedAt": "2026-09-04T08:47:36.869875+00:00",
+   "sourceHash": "e6067717a8bc262ad203c64f8da0a21c5a21a47f4f3e98b23328b52839ded78c",
+   "outputHash": "8200b7bade7a2b7712820fbbbc0772442f9766ee742223c5261b238ac91d47e7",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005575": {
    "status": "unavailable"
@@ -4167,7 +5139,19 @@
    "status": "unavailable"
   },
   "1005601": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005601-0fc4854a3473.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40575",
+   "providerAssetId": "365886",
+   "attribution": "(c) Mammals Planet, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Nyctalus aviator",
+   "retrievedAt": "2026-09-04T08:47:42.667080+00:00",
+   "sourceHash": "54dd9624406bd9903cf7a20ae9661e29f8607885c4f23e7f6e758c1108cf0ee8",
+   "outputHash": "0fc4854a3473c41fef29bfc55d12b78cec6e11e1a02cbe592d42cd1a9e1d9cb3",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005602": {
    "status": "unavailable"
@@ -4245,7 +5229,19 @@
    "status": "unavailable"
   },
   "1005627": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005627-d69f45d4bd50.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40395",
+   "providerAssetId": "189395",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Pipistrellus nanulus",
+   "retrievedAt": "2026-09-04T08:47:43.394850+00:00",
+   "sourceHash": "dbb064555b004505f5d8e5667bf498e41336c0fdb8470fb58e87658de97fa5bc",
+   "outputHash": "d69f45d4bd502cc7468c26864d38841562f16c8b8621ff1c919f674100974f94",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005628": {
    "status": "unavailable"
@@ -4320,7 +5316,19 @@
    "status": "unavailable"
   },
   "1005652": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005652-1863d291d58a.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/778480",
+   "providerAssetId": "145393700",
+   "attribution": "(c) Cheng-Tao Lin, some rights reserved (CC BY-NC), uploaded by Cheng-Tao Lin",
+   "license": "CC-BY-NC",
+   "alt": "Barbastella darjelingensis",
+   "retrievedAt": "2026-09-04T08:47:44.262197+00:00",
+   "sourceHash": "8367226ff25feb2616d1e6d9e81676d42fb707d48241b9c6ccc9cfaa8b1abd19",
+   "outputHash": "1863d291d58ad3a8bfc93fa96e2ba7a2c076361c77055e2133327870a790b7eb",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005653": {
    "status": "unavailable"
@@ -4365,7 +5373,19 @@
    "status": "unavailable"
   },
   "1005667": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005667-9c619d5a6041.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1113545",
+   "providerAssetId": "85493582",
+   "attribution": "(c) Rohit Chakravarty, some rights reserved (CC BY-NC-SA), uploaded by Rohit Chakravarty",
+   "license": "CC-BY-NC-SA",
+   "alt": "Plecotus homochrous",
+   "retrievedAt": "2026-09-04T08:47:44.935230+00:00",
+   "sourceHash": "d7ac9227657374e876abb49bd699126a28eac9d7f91fa300561cf67df43131be",
+   "outputHash": "9c619d5a604161758bd6875121516bcfd027b403394c82f14c0e8c0b3612f509",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005668": {
    "status": "unavailable"
@@ -4479,7 +5499,19 @@
    "status": "unavailable"
   },
   "1005706": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005706-92f820e77095.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74174",
+   "providerAssetId": "2842893",
+   "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+   "license": "CC-BY-NC",
+   "alt": "Chalinolobus neocaledonicus",
+   "retrievedAt": "2026-09-04T08:47:47.097215+00:00",
+   "sourceHash": "92f637d3a6f93c3f8d7c3a82a6b8e5333efa54f10ada1bd280ab3512d2e112d9",
+   "outputHash": "92f820e7709596e53dab1a9d847c9c59bca9f6f49103311c402ac7c879d8ad53",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005707": {
    "status": "unavailable"
@@ -4648,7 +5680,19 @@
    "status": "unavailable"
   },
   "1005756": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005756-35d4dee1f229.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1370829",
+   "providerAssetId": "458827676",
+   "attribution": "(c) Kim McLachlan, some rights reserved (CC BY-NC), uploaded by Kim McLachlan",
+   "license": "CC-BY-NC",
+   "alt": "Nyctophilus daedalus",
+   "retrievedAt": "2026-09-04T08:47:49.071552+00:00",
+   "sourceHash": "cf622ce6f07678ae0acfa44933b4826ff8e1e644f175e540563fa49cc8fd5df5",
+   "outputHash": "35d4dee1f229c92804bc27b75c965f5e82a50034a0b321bf2bd5fbf997c4659e",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005757": {
    "status": "available",
@@ -4789,7 +5833,19 @@
    "status": "unavailable"
   },
   "1005781": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005781-76eb10e8c003.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/40444",
+   "providerAssetId": "2544955",
+   "attribution": "(c) The Darwin Initiative Centre for Bat Research, some rights reserved (CC BY-NC-SA)",
+   "license": "CC-BY-NC-SA",
+   "alt": "Tylonycteris robustula",
+   "retrievedAt": "2026-09-04T08:47:50.495755+00:00",
+   "sourceHash": "0f2d4d0b5068f3fadc08b1a4071a27a0db0f85c915f67e5422f144db2280989c",
+   "outputHash": "76eb10e8c003ed70ce6f13c252a4cbcf47b1adcdec869d72e5c7ede0849633f2",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005782": {
    "status": "unavailable"
@@ -4843,7 +5899,19 @@
    "status": "unavailable"
   },
   "1005899": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005899-5b2d50259037.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41751",
+   "providerAssetId": "346638847",
+   "attribution": "(c) David Cook, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Arctocephalus gazella",
+   "retrievedAt": "2026-09-04T08:48:11.326055+00:00",
+   "sourceHash": "6428549823e52229ac6ce122fa73e9cbad095e64f18dceb6ff04f7378131a91b",
+   "outputHash": "5b2d50259037585666be128533e1e05a3f7ad4da637e0a5b582b1c831c90ef67",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005900": {
    "status": "unavailable"
@@ -4900,7 +5968,19 @@
    "status": "unavailable"
   },
   "1005918": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005918-7a1702f9e1eb.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41728",
+   "providerAssetId": "360606570",
+   "attribution": "(c) John Sullivan, some rights reserved (CC BY-NC), uploaded by John Sullivan",
+   "license": "CC-BY-NC",
+   "alt": "Mirounga angustirostris",
+   "retrievedAt": "2026-09-04T08:48:11.914825+00:00",
+   "sourceHash": "54a4a98546cacfacf4fe97a00a1c753427099e583c793b5d0c4c2b1fc1066084",
+   "outputHash": "7a1702f9e1ebd945085df554cb26a0ca2eeec19f4f723321f6cd333ea11dcb8b",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005919": {
    "status": "unavailable"
@@ -5023,7 +6103,19 @@
    "status": "unavailable"
   },
   "1006422": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1006422-0be0d53c81d1.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74813",
+   "providerAssetId": "568987557",
+   "attribution": "(c) Lee J, some rights reserved (CC BY-NC), uploaded by Lee J",
+   "license": "CC-BY-NC",
+   "alt": "Orcaella heinsohni",
+   "retrievedAt": "2026-09-04T08:48:14.414927+00:00",
+   "sourceHash": "22263aeb8532a02fc1d215c427ab3f7a0615b20f94981637a6b0b9a43e91969e",
+   "outputHash": "0be0d53c81d119e370cab36d78b27674e793b4080cacf21ddca6986815bb86de",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1006423": {
    "status": "unavailable"
@@ -5038,7 +6130,19 @@
    "status": "unavailable"
   },
   "1006427": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1006427-cd3236b840e2.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1672272",
+   "providerAssetId": "504953",
+   "attribution": "(c) Lomvi2, some rights reserved (CC BY-SA)",
+   "license": "CC-BY-SA",
+   "alt": "Cephalorhynchus cruciger",
+   "retrievedAt": "2026-09-04T08:48:15.057848+00:00",
+   "sourceHash": "a675b6c1560c0a160d300b8a479402cbff3675f98b93c02237822209f3dd9c7e",
+   "outputHash": "cd3236b840e21411e31a1a92f5f14e8bd30940db75402d9fb3e6406d49da3b0b",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1006428": {
    "status": "unavailable"
@@ -5160,7 +6264,19 @@
    "status": "unavailable"
   },
   "1006464": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1006464-6985093b166c.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41426",
+   "providerAssetId": "322952635",
+   "attribution": "(c) markc666, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Berardius bairdii",
+   "retrievedAt": "2026-09-04T08:48:16.295294+00:00",
+   "sourceHash": "9c6f0e838d184a51afe83fa16681f10fc51ec13518757e3bb878c2d1d4efb222",
+   "outputHash": "6985093b166c0b903c081f5ecff9b9d2b8f2e3178e7c7870a5e0efc59fd1f669",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1006465": {
    "status": "unavailable"
