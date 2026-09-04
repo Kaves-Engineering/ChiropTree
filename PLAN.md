@@ -11,8 +11,9 @@ records, and release manifest as reviewable text. Generate SQLite, browser
 JSON, image manifest, and site output from those inputs. Do not commit a
 binary SQLite database as the only reviewable record.
 
-Use CC0, CC-BY, and CC-BY-SA images only. GitHub Pages is the production
-deployment. Limit the optional image pack to 60 MiB.
+Use CC0 and Creative Commons BY, BY-SA, BY-NC, BY-NC-SA, BY-ND, and
+BY-NC-ND images. Preserve ND assets byte-for-byte. GitHub Pages is the
+production deployment. Limit the optional image pack to 60 MiB.
 
 ## 1. Lock down current behaviour
 
@@ -89,8 +90,8 @@ silently disappears after a successful prior match without being reported.
 3. Add a local placeholder for unavailable images. Remove runtime iNaturalist
    calls as a required dependency, while retaining source links and attribution
    in the card. When no local thumbnail exists and the browser is online,
-   optionally fetch an exact-taxon iNaturalist fallback. Accept CC0, CC-BY,
-   and CC-BY-SA only. Show its attribution immediately and cache both image and
+   optionally fetch an exact-taxon iNaturalist fallback. Accept the approved
+   Creative Commons set. Show its attribution immediately and cache both image and
    metadata for later offline use. Card content must not wait for this request.
 4. Retain a valid prior thumbnail if refresh fails. A new release may replace
    it only after validation. Test missing images, invalid licences, corrupt

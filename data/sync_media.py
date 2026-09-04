@@ -17,7 +17,10 @@ from PIL import Image
 
 HERE = Path(__file__).parent
 MANIFEST = HERE / "media-manifest.json"
-ALLOWED = {"cc0", "cc-by", "cc-by-sa"}
+ALLOWED = {
+    "cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa",
+    "cc-by-nd", "cc-by-nc-nd",
+}
 
 
 def get_json(url: str) -> dict:
@@ -41,16 +44,23 @@ def photo_for(name: str) -> dict | None:
     return None
 
 
-def prepare_image(photo: dict) -> tuple[bytes, str, str, int, int]:
-    url = photo.get("original_url") or photo["url"]
+def prepare_image(photo: dict, preserve: bool) -> tuple[bytes, str, str, int, int, str]:
+    url = photo["url"].replace("/square.", "/small.") if preserve else photo.get("original_url") or photo["url"]
     with urllib.request.urlopen(url, timeout=60) as response:
         source = response.read()
-    image = Image.open(io.BytesIO(source)).convert("RGB")
+    image = Image.open(io.BytesIO(source))
+    if preserve:
+        suffix = Path(urllib.parse.urlparse(url).path).suffix.lower()
+        if suffix not in {".jpg", ".jpeg", ".png", ".webp"}:
+            raise ValueError(f"unsupported no-derivatives image format: {suffix}")
+        digest = hashlib.sha256(source).hexdigest()
+        return source, digest, digest, image.width, image.height, suffix
+    image = image.convert("RGB")
     image.thumbnail((320, 320))
     output = io.BytesIO()
     image.save(output, "WEBP", quality=78, method=6)
     content = output.getvalue()
-    return content, hashlib.sha256(source).hexdigest(), hashlib.sha256(content).hexdigest(), image.width, image.height
+    return content, hashlib.sha256(source).hexdigest(), hashlib.sha256(content).hexdigest(), image.width, image.height, ".webp"
 
 
 def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[str, dict | None]:
@@ -60,10 +70,12 @@ def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[
     if not choice:
         return mdd_id, None
     photo = choice["photo"]
-    content, source_hash, output_hash, width, height = prepare_image(photo)
+    license_code = photo["license_code"].lower()
+    preserve = license_code.endswith("-nd")
+    content, source_hash, output_hash, width, height, suffix = prepare_image(photo, preserve)
     if existing.get("sourceHash") == source_hash and existing.get("license") == photo["license_code"].upper():
         return mdd_id, None
-    relative = f"images/{mdd_id}-{output_hash[:12]}.webp"
+    relative = f"images/{mdd_id}-{output_hash[:12]}{suffix}"
     path = HERE / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".webp.tmp")
@@ -75,6 +87,7 @@ def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[
         "license": photo["license_code"].upper(), "alt": record["sciName"].replace("_", " "),
         "retrievedAt": datetime.now(UTC).isoformat(), "sourceHash": source_hash,
         "outputHash": output_hash, "width": width, "height": height,
+        "modified": not preserve,
     }
 
 
