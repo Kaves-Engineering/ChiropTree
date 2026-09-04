@@ -6,7 +6,10 @@
 import hashlib
 import io
 import json
+import os
+import threading
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -21,12 +24,61 @@ ALLOWED = {
     "cc0", "cc-by", "cc-by-sa", "cc-by-nc", "cc-by-nc-sa",
     "cc-by-nd", "cc-by-nc-nd",
 }
+API_INTERVAL = float(os.environ.get("INAT_API_INTERVAL", "1.05"))
+API_RETRIES = int(os.environ.get("INAT_API_RETRIES", "6"))
+MAX_WORKERS = int(os.environ.get("MEDIA_WORKERS", "2"))
+_api_lock = threading.Lock()
+_next_api_request = 0.0
+
+
+def wait_for_api_slot() -> None:
+    """Reserve one globally spaced iNaturalist API request slot."""
+    global _next_api_request
+    with _api_lock:
+        now = time.monotonic()
+        delay = max(0.0, _next_api_request - now)
+        _next_api_request = max(now, _next_api_request) + API_INTERVAL
+    if delay:
+        time.sleep(delay)
+
+
+def retry_delay(error: urllib.error.HTTPError, attempt: int) -> float:
+    retry_after = error.headers.get("Retry-After")
+    if retry_after:
+        try:
+            return min(float(retry_after), 120.0)
+        except ValueError:
+            pass
+    return min(2**attempt, 60.0)
+
+
+def read_url(url: str, *, api: bool = False, timeout: int = 30) -> bytes:
+    request = urllib.request.Request(url, headers={"User-Agent": "chiroptree-data/1.0"})
+    for attempt in range(API_RETRIES + 1):
+        if api:
+            wait_for_api_slot()
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return response.read()
+        except urllib.error.HTTPError as error:
+            if error.code != 429 and error.code < 500:
+                raise
+            if attempt == API_RETRIES:
+                raise
+            delay = retry_delay(error, attempt)
+            print(f"HTTP {error.code}; retrying in {delay:g}s")
+            time.sleep(delay)
+        except (TimeoutError, urllib.error.URLError) as error:
+            if attempt == API_RETRIES:
+                raise
+            delay = min(2**attempt, 60)
+            print(f"HTTP {type(error).__name__}; retrying in {delay}s")
+            time.sleep(delay)
+    raise RuntimeError("unreachable")
 
 
 def get_json(url: str) -> dict:
-    request = urllib.request.Request(url, headers={"User-Agent": "chiroptree-data/1.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.loads(response.read().decode("utf-8"))
+    return json.loads(read_url(url, api=True).decode("utf-8"))
 
 
 def photo_for(name: str) -> dict | None:
@@ -46,8 +98,7 @@ def photo_for(name: str) -> dict | None:
 
 def prepare_image(photo: dict, preserve: bool) -> tuple[bytes, str, str, int, int, str]:
     url = photo["url"].replace("/square.", "/small.") if preserve else photo.get("original_url") or photo["url"]
-    with urllib.request.urlopen(url, timeout=60) as response:
-        source = response.read()
+    source = read_url(url, timeout=60)
     image = Image.open(io.BytesIO(source))
     if preserve:
         suffix = Path(urllib.parse.urlparse(url).path).suffix.lower()
@@ -83,7 +134,7 @@ def sync_one(mdd_id: str, record: dict, existing: dict, refresh: bool) -> tuple[
     relative = f"images/{mdd_id}-{output_hash[:12]}{suffix}"
     path = HERE / relative
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(".webp.tmp")
+    temporary = path.with_name(path.name + ".tmp")
     temporary.write_bytes(content)
     temporary.replace(path)
     return mdd_id, {
@@ -102,21 +153,32 @@ def main() -> None:
     for filename in ("chiroptera_taxonomy.json", "marine_mammal_taxonomy.json"):
         for record in json.loads((HERE / filename).read_text(encoding="utf-8"))["species"]:
             taxa[record["id"]] = record
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        futures = {pool.submit(sync_one, mdd_id, record, manifest["assets"][mdd_id], True): mdd_id for mdd_id, record in taxa.items()}
+    queue = sorted(
+        taxa.items(),
+        key=lambda item: (manifest["assets"][item[0]]["status"] == "available", item[0]),
+    )
+    saved = 0
+    failed = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = {
+            pool.submit(sync_one, mdd_id, record, manifest["assets"][mdd_id], True): mdd_id
+            for mdd_id, record in queue
+        }
         for future in as_completed(futures):
             mdd_id = futures[future]
             try:
                 _, asset = future.result()
                 if asset:
                     manifest["assets"][mdd_id] = asset
+                    saved += 1
                     print(f"{mdd_id}: saved")
             except Exception as error:  # noqa: BLE001
+                failed += 1
                 print(f"{mdd_id}: {error}")
-            time.sleep(0.05)
     temporary = MANIFEST.with_suffix(".json.tmp")
     temporary.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     temporary.replace(MANIFEST)
+    print(f"Media sync complete: {saved} saved, {failed} failed, {len(queue)} checked")
 
 
 if __name__ == "__main__":
