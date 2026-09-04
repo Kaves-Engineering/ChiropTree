@@ -18,6 +18,7 @@ permissions:
 jobs:
   propose:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
@@ -38,10 +39,10 @@ jobs:
           uv run data/build_call_records.py
           uv run data/build_media_manifest.py
       - name: Refresh media
-        if: ${{ inputs.refresh_media }}
+        if: ${{ github.event_name == 'schedule' || inputs.refresh_media }}
         run: uv run --with pillow data/sync_media.py
       - name: Validate proposal
-        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'schedule' || inputs.refresh_media }}
         run: |
           uv run data/build_marine_mammal_page.py
           uv run data/build_release_manifest.py
@@ -49,12 +50,12 @@ jobs:
           sh build.sh
           uv run data/smoke_test.py
       - name: Write change report
-        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'schedule' || inputs.refresh_media }}
         run: |
           git diff --stat > /tmp/data-update-report.txt
           git diff --numstat -- data/*.json >> /tmp/data-update-report.txt
       - name: Create review PR
-        if: ${{ steps.source.outputs.changed == 'true' || inputs.refresh_media }}
+        if: ${{ steps.source.outputs.changed == 'true' || github.event_name == 'schedule' || inputs.refresh_media }}
         uses: peter-evans/create-pull-request@v7
         with:
           branch: automation/data-update
