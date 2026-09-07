@@ -1,0 +1,554 @@
+{
+ "schema_version": 1,
+ "_meta": {
+  "purpose": "The single registry of every echolocation parameter the call dataset can store. Importers, validators and the page all read this file; none of them hardcode a parameter name. Adding a parameter is an edit to this file alone.",
+  "how_to_add_a_parameter": [
+   "1. Append an object to \"parameters\". Required keys: id, label, group, value_type, status, definition.",
+   "2. Numeric parameters also need: unit, sane_min, sane_max. Categorical ones need: values.",
+   "3. List every spelling you have seen in a source table under \"aliases\" (lowercased, punctuation-free). Importers match source columns through these, so an alias added here makes the next source import work without code changes.",
+   "4. If the literature disagrees about what the quantity means, say so in \"ambiguity\". That string is shown in the UI next to the value and is why a measurement can carry a quality_flag of 'definition_unstated'.",
+   "5. Set status to 'proposed' until at least one real source has been imported against it; 'core' is reserved for parameters the species card may display.",
+   "6. Run: uv run data/calls/parameter_registry.py --check",
+   "Never rename or delete an id that has been imported against. Deprecate instead: set status='deprecated' and add 'superseded_by'."
+  ],
+  "value_types": {
+   "numeric": "A measured quantity. Stored with statistic/unit/dispersion in the measurement record.",
+   "categorical": "A coded property of the call. Stored with the same provenance as a number; 'values' is the closed vocabulary.",
+   "boolean": "Present/absent claim. Recorded explicitly as false, never inferred from absence."
+  },
+  "status_values": ["core", "extended", "proposed", "deprecated"]
+ },
+
+ "unit_conversions": {
+  "Hz":  {"to": "kHz", "factor": 0.001},
+  "kHz": {"to": "kHz", "factor": 1},
+  "s":   {"to": "ms",  "factor": 1000},
+  "ms":  {"to": "ms",  "factor": 1},
+  "us":  {"to": "ms",  "factor": 0.001},
+  "kHz/ms": {"to": "kHz/ms", "factor": 1},
+  "kHz/s":  {"to": "kHz/ms", "factor": 0.001},
+  "percent": {"to": "percent", "factor": 1},
+  "count_per_s": {"to": "count_per_s", "factor": 1},
+  "dB_SPL": {"to": "dB_SPL", "factor": 1},
+  "degrees": {"to": "degrees", "factor": 1},
+  "m": {"to": "m", "factor": 1},
+  "cm": {"to": "m", "factor": 0.01},
+  "g": {"to": "g", "factor": 1},
+  "mm": {"to": "mm", "factor": 1}
+ },
+
+ "groups": {
+  "signal_structure": "What kind of signal it is — the categorical description of call design.",
+  "spectral": "Frequency-domain measurements.",
+  "temporal": "Time-domain measurements of pulses and pulse trains.",
+  "amplitude": "Emitted intensity.",
+  "beam": "Spatial properties of the emitted beam and its consequences.",
+  "auditory": "Properties of the receiver rather than the emitted call.",
+  "covariate": "Not call parameters, but routinely co-reported and needed to interpret them."
+ },
+
+ "parameters": [
+
+  {
+   "id": "signal_type",
+   "label": "Signal type",
+   "group": "signal_structure",
+   "value_type": "categorical",
+   "status": "core",
+   "definition": "Overall time-frequency design of the pulse.",
+   "values": {
+    "CF": "Constant frequency throughout; narrowband tone.",
+    "FM": "Frequency-modulated broadband sweep.",
+    "QCF": "Quasi-constant frequency; shallow, near-flat body.",
+    "CF-FM": "Long CF component followed by a terminal FM sweep.",
+    "FM-CF-FM": "CF component preceded and followed by FM sweeps.",
+    "FM-QCF": "Steep initial FM sweep flattening into a QCF tail.",
+    "broadband_click": "Non-laryngeal click, typically lingual.",
+    "none": "No echolocation. A positive, sourced claim - not missing data."
+   },
+   "aliases": ["call type", "calltype", "signal design", "pulse type", "echolocation type", "ech t", "echt"]
+  },
+
+  {
+   "id": "duty_cycle_class",
+   "label": "Duty cycle class",
+   "group": "signal_structure",
+   "value_type": "categorical",
+   "status": "core",
+   "definition": "Whether the species belongs to the high-duty-cycle (Doppler-compensating CF) or low-duty-cycle guild.",
+   "values": {
+    "low": "Pulse occupies a small fraction of the cycle; emission and echo separated in time.",
+    "high": "Pulse occupies a large fraction of the cycle; emission and echo overlap, separated in frequency."
+   },
+   "aliases": ["duty cycle class", "dutycycle", "hdc ldc", "guild"]
+  },
+
+  {
+   "id": "emission",
+   "label": "Emission route",
+   "group": "signal_structure",
+   "value_type": "categorical",
+   "status": "core",
+   "definition": "Anatomical route through which the pulse leaves the bat.",
+   "values": {
+    "oral": "Emitted through the open mouth.",
+    "nasal": "Emitted through the nostrils, usually beam-shaped by a noseleaf.",
+    "tongue_click": "Non-laryngeal click produced with the tongue."
+   },
+   "aliases": ["emitter", "emission type", "emission route", "mouth nose", "nasal oral", "sound emission"]
+  },
+
+  {
+   "id": "harmonic_emphasis",
+   "label": "Dominant harmonic",
+   "group": "signal_structure",
+   "value_type": "numeric",
+   "unit": "count",
+   "sane_min": 1,
+   "sane_max": 8,
+   "status": "extended",
+   "definition": "Which harmonic carries most energy. 1 = fundamental. Rhinolophids and hipposiderids typically emphasise the second.",
+   "ambiguity": "Sources differ on whether the fundamental is counted as harmonic 1 or harmonic 0. Records normalise to fundamental = 1.",
+   "aliases": ["dominant harmonic", "harmonic", "main harmonic", "emphasised harmonic"]
+  },
+
+  {
+   "id": "harmonic_count",
+   "label": "Harmonics present",
+   "group": "signal_structure",
+   "value_type": "numeric",
+   "unit": "count",
+   "sane_min": 1,
+   "sane_max": 12,
+   "status": "extended",
+   "definition": "Number of harmonics visible above the noise floor.",
+   "ambiguity": "Depends entirely on recording SNR and microphone bandwidth; comparable only within a study.",
+   "aliases": ["number of harmonics", "harmonics", "n harmonics"]
+  },
+
+  {
+   "id": "doppler_shift_compensation",
+   "label": "Doppler shift compensation",
+   "group": "signal_structure",
+   "value_type": "boolean",
+   "status": "extended",
+   "definition": "Whether the species lowers emitted frequency in flight to hold the echo at its acoustic fovea.",
+   "aliases": ["dsc", "doppler compensation", "doppler shift compensation"]
+  },
+
+  {
+   "id": "peak_frequency",
+   "label": "Peak frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 8,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Frequency of maximum energy in the call's power spectrum.",
+   "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+   "aliases": ["peak frequency", "pf", "fmaxe", "f maxe", "frequency of maximum energy", "frequency of most energy", "fpeak", "peak energy", "dominant frequency", "fmax energy"]
+  },
+
+  {
+   "id": "characteristic_frequency",
+   "label": "Characteristic frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 8,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Frequency at the point of lowest slope in the call body (Analook convention). Not interchangeable with peak frequency.",
+   "ambiguity": "Anabat/Analook-derived; zero-crossing analysis yields values not directly comparable with full-spectrum measurements.",
+   "aliases": ["characteristic frequency", "fc", "char freq", "fchar"]
+  },
+
+  {
+   "id": "start_frequency",
+   "label": "Start frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 8,
+   "sane_max": 300,
+   "status": "core",
+   "definition": "Frequency at the onset of the pulse.",
+   "ambiguity": "Threshold-dependent: where the sweep is judged to begin varies with the dB threshold used, which is often unstated. Sources that print 'highest frequency' or 'Fmax' usually mean this for a downward FM sweep, but those headings are registered to max_frequency because they are literal; map them by hand per source rather than by alias.",
+   "aliases": ["start frequency", "fstart", "f start", "initial frequency", "onset frequency"]
+  },
+
+  {
+   "id": "end_frequency",
+   "label": "End frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 5,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Frequency at the end of the pulse; the terminal frequency of an FM sweep.",
+   "ambiguity": "Same threshold dependence as start_frequency. Many sources print 'minimum frequency' or 'Fmin' for this quantity, which is only equivalent when the sweep descends monotonically; those headings are registered to min_frequency, so a source using them for the sweep terminus must be mapped explicitly in its importer.",
+   "aliases": ["end frequency", "fend", "f end", "terminal frequency", "final frequency"]
+  },
+
+  {
+   "id": "min_frequency",
+   "label": "Minimum frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 5,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Lowest frequency present in the pulse. Distinct from end_frequency for calls that do not sweep monotonically downward.",
+   "aliases": ["min frequency", "fmin", "low frequency", "lower bound"]
+  },
+
+  {
+   "id": "max_frequency",
+   "label": "Maximum frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 8,
+   "sane_max": 300,
+   "status": "core",
+   "definition": "Highest frequency present in the pulse.",
+   "aliases": ["max frequency", "fmax", "high frequency", "upper bound"]
+  },
+
+  {
+   "id": "bandwidth",
+   "label": "Bandwidth",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 0,
+   "sane_max": 200,
+   "status": "core",
+   "definition": "Frequency range spanned by the pulse, max_frequency minus min_frequency.",
+   "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+   "aliases": ["bandwidth", "band", "bw", "frequency range", "sweep range"]
+  },
+
+  {
+   "id": "bandwidth_3db",
+   "label": "-3 dB bandwidth",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 0,
+   "sane_max": 150,
+   "status": "extended",
+   "definition": "Width of the spectrum at half power below the peak.",
+   "aliases": ["3db bandwidth", "half power bandwidth", "-3 db bandwidth"]
+  },
+
+  {
+   "id": "bandwidth_10db",
+   "label": "-10 dB bandwidth",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 0,
+   "sane_max": 200,
+   "status": "extended",
+   "definition": "Width of the spectrum 10 dB below the peak.",
+   "aliases": ["10db bandwidth", "-10 db bandwidth"]
+  },
+
+  {
+   "id": "cf_frequency",
+   "label": "CF component frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 20,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Frequency of the constant-frequency component of a CF or CF-FM call.",
+   "ambiguity": "In flight this is Doppler-compensated and therefore lower than the resting frequency; hand-held and free-flight values are not comparable. Check recording_condition before using.",
+   "aliases": ["cf frequency", "cf", "constant frequency", "cf component"]
+  },
+
+  {
+   "id": "resting_frequency",
+   "label": "Resting frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 20,
+   "sane_max": 250,
+   "status": "extended",
+   "definition": "CF frequency emitted by a stationary bat; the reference against which Doppler compensation is measured. The value that varies geographically in Rhinolophus clines.",
+   "aliases": ["resting frequency", "rf", "rest frequency"]
+  },
+
+  {
+   "id": "knee_frequency",
+   "label": "Knee frequency",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 8,
+   "sane_max": 250,
+   "status": "extended",
+   "definition": "Frequency at which the steep initial FM sweep flattens into the call body.",
+   "aliases": ["knee frequency", "fk", "knee"]
+  },
+
+  {
+   "id": "sweep_rate",
+   "label": "FM sweep rate",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "kHz/ms",
+   "sane_min": 0,
+   "sane_max": 500,
+   "status": "extended",
+   "definition": "Rate of frequency change through the modulated portion of the pulse.",
+   "aliases": ["sweep rate", "fm rate", "modulation rate", "slope"]
+  },
+
+  {
+   "id": "q_factor",
+   "label": "Q factor",
+   "group": "spectral",
+   "value_type": "numeric",
+   "unit": "count",
+   "sane_min": 0.1,
+   "sane_max": 400,
+   "status": "extended",
+   "definition": "Spectral sharpness, peak frequency divided by -3 dB bandwidth. High for CF specialists.",
+   "ambiguity": "Some authors compute Q from -10 dB bandwidth instead, giving systematically lower values.",
+   "aliases": ["q factor", "q", "qvalue", "sharpness"]
+  },
+
+  {
+   "id": "duration",
+   "label": "Pulse duration",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "ms",
+   "sane_min": 0.1,
+   "sane_max": 150,
+   "status": "core",
+   "definition": "Length of a single pulse.",
+   "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+   "aliases": ["duration", "call duration", "calldur", "call dur", "pulse duration", "signal duration", "length"]
+  },
+
+  {
+   "id": "cf_duration",
+   "label": "CF component duration",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "ms",
+   "sane_min": 0.1,
+   "sane_max": 150,
+   "status": "extended",
+   "definition": "Length of the constant-frequency portion of a CF-FM pulse.",
+   "aliases": ["cf duration", "cf component duration"]
+  },
+
+  {
+   "id": "fm_duration",
+   "label": "FM component duration",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "ms",
+   "sane_min": 0.05,
+   "sane_max": 50,
+   "status": "extended",
+   "definition": "Length of the frequency-modulated portion of a pulse.",
+   "aliases": ["fm duration", "fm component duration", "terminal fm duration"]
+  },
+
+  {
+   "id": "inter_pulse_interval",
+   "label": "Inter-pulse interval",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "ms",
+   "sane_min": 1,
+   "sane_max": 2000,
+   "status": "core",
+   "definition": "Time between consecutive pulses.",
+   "ambiguity": "Measured start-to-start by some authors and end-to-start by others; the two differ by one pulse duration. Where the source states which, record it in the method; where it does not, flag the measurement 'definition_unstated'.",
+   "aliases": ["inter pulse interval", "interpulse interval", "ipi", "pulse interval", "interval"]
+  },
+
+  {
+   "id": "pulse_rate",
+   "label": "Pulse rate",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "count_per_s",
+   "sane_min": 0.5,
+   "sane_max": 250,
+   "status": "core",
+   "definition": "Pulses emitted per second. Rises sharply through the approach phase into the terminal buzz.",
+   "aliases": ["pulse rate", "repetition rate", "call rate", "pulses per second", "prr"]
+  },
+
+  {
+   "id": "duty_cycle",
+   "label": "Duty cycle",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "percent",
+   "sane_min": 0,
+   "sane_max": 100,
+   "status": "core",
+   "definition": "Percentage of time occupied by pulse emission.",
+   "aliases": ["duty cycle", "dc", "duty"]
+  },
+
+  {
+   "id": "buzz_duration",
+   "label": "Terminal buzz duration",
+   "group": "temporal",
+   "value_type": "numeric",
+   "unit": "ms",
+   "sane_min": 10,
+   "sane_max": 1000,
+   "status": "extended",
+   "definition": "Length of the terminal buzz preceding a capture attempt.",
+   "aliases": ["buzz duration", "terminal buzz duration", "feeding buzz duration"]
+  },
+
+  {
+   "id": "source_level",
+   "label": "Source level",
+   "group": "amplitude",
+   "value_type": "numeric",
+   "unit": "dB_SPL",
+   "sane_min": 60,
+   "sane_max": 145,
+   "status": "core",
+   "definition": "Emitted sound pressure level on the beam axis.",
+   "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is RMS or peak-to-peak. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+   "aliases": ["source level", "spl", "sound pressure level", "intensity", "amplitude", "emitted intensity"]
+  },
+
+  {
+   "id": "beam_half_angle",
+   "label": "Beam half angle",
+   "group": "beam",
+   "value_type": "numeric",
+   "unit": "degrees",
+   "sane_min": 3,
+   "sane_max": 90,
+   "status": "extended",
+   "definition": "Angle from the beam axis at which intensity has fallen by a stated amount, usually -3 dB or -6 dB.",
+   "ambiguity": "The dB criterion must be recorded; -3 dB and -6 dB half-angles are not comparable.",
+   "aliases": ["beam half angle", "beam width", "beamwidth", "half angle"]
+  },
+
+  {
+   "id": "directionality_index",
+   "label": "Directionality index",
+   "group": "beam",
+   "value_type": "numeric",
+   "unit": "dB_SPL",
+   "sane_min": 0,
+   "sane_max": 40,
+   "status": "proposed",
+   "definition": "On-axis intensity relative to the spatial average; higher values mean a narrower beam.",
+   "aliases": ["directionality index", "di", "directionality"]
+  },
+
+  {
+   "id": "detection_distance",
+   "label": "Detection distance",
+   "group": "beam",
+   "value_type": "numeric",
+   "unit": "m",
+   "sane_min": 0.1,
+   "sane_max": 100,
+   "status": "extended",
+   "definition": "Range at which the species is estimated to detect a target of stated size.",
+   "ambiguity": "Almost always modelled rather than measured, and strongly dependent on the assumed target strength and atmospheric attenuation. Treat as derived unless the source demonstrates otherwise.",
+   "aliases": ["detection distance", "detection range", "range"]
+  },
+
+  {
+   "id": "best_hearing_frequency",
+   "label": "Best hearing frequency",
+   "group": "auditory",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 1,
+   "sane_max": 250,
+   "status": "proposed",
+   "definition": "Frequency of greatest auditory sensitivity from a behavioural or evoked-potential audiogram.",
+   "aliases": ["best frequency", "best hearing frequency", "audiogram peak"]
+  },
+
+  {
+   "id": "acoustic_fovea_frequency",
+   "label": "Acoustic fovea frequency",
+   "group": "auditory",
+   "value_type": "numeric",
+   "unit": "kHz",
+   "sane_min": 20,
+   "sane_max": 250,
+   "status": "proposed",
+   "definition": "Narrow frequency band of expanded cochlear representation in high-duty-cycle species; normally just above the resting frequency.",
+   "aliases": ["acoustic fovea", "fovea frequency", "filter frequency"]
+  },
+
+  {
+   "id": "body_mass",
+   "label": "Body mass",
+   "group": "covariate",
+   "value_type": "numeric",
+   "unit": "g",
+   "sane_min": 1.5,
+   "sane_max": 1600,
+   "status": "core",
+   "definition": "Body mass of the measured individuals. Correlates strongly with peak frequency and is needed for any allometric use of the dataset.",
+   "aliases": ["body mass", "bm", "mass", "weight"]
+  },
+
+  {
+   "id": "forearm_length",
+   "label": "Forearm length",
+   "group": "covariate",
+   "value_type": "numeric",
+   "unit": "mm",
+   "sane_min": 20,
+   "sane_max": 230,
+   "status": "extended",
+   "definition": "Forearm length of the measured individuals; the standard size proxy in bat literature.",
+   "aliases": ["forearm", "forearm length", "fa"]
+  },
+
+  {
+   "id": "wing_aspect_ratio",
+   "label": "Wing aspect ratio",
+   "group": "covariate",
+   "value_type": "numeric",
+   "unit": "count",
+   "sane_min": 3,
+   "sane_max": 15,
+   "status": "proposed",
+   "definition": "Wingspan squared over wing area. Predicts foraging habitat and therefore expected call design.",
+   "aliases": ["aspect ratio", "ar", "wing aspect ratio"]
+  },
+
+  {
+   "id": "wing_loading",
+   "label": "Wing loading",
+   "group": "covariate",
+   "value_type": "numeric",
+   "unit": "count",
+   "sane_min": 2,
+   "sane_max": 60,
+   "status": "proposed",
+   "definition": "Body weight over wing area, in N/m2. Together with aspect ratio, places a species in the open/edge/clutter space.",
+   "aliases": ["wing loading", "wl"]
+  }
+ ]
+}
