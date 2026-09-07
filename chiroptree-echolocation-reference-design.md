@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: schema implemented; roadmap §10 Step 2 complete (321 species imported from Castro 2024). Next: §10.3 Step 1 (Pteropodidae) and migration of the 13 remaining legacy entries.
+Status: schema implemented; roadmap §10 Steps 2 and 2b complete (Castro 2024 and Obrist 2004 imported, 324 species). Next: §10.3 Step 1 (Pteropodidae).
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 
@@ -294,7 +294,7 @@ Also added while doing the work: the `approximate` statistic (Denzinger's "aroun
 
 ## 10. Roadmap to full coverage
 
-Baseline when this roadmap was written: **300 of 1,514 species (19.8%)**, 299 as unstructured prose. After Step 2: **323 of 1,514 (21.3%)** — 321 structured, 2 still legacy prose. Density: 1 `rich`, 322 `minimal`.
+Baseline when this roadmap was written: **300 of 1,514 species (19.8%)**, 299 as unstructured prose. After Steps 2 and 2b: **324 of 1,514 (21.4%)** — all structured. Density: 23 `rich`, 3 `detailed`, 298 `minimal`.
 
 ### 10.1 The gap is four problems, not one
 
@@ -340,6 +340,18 @@ Three things worth recording:
 
 Method note: Castro rows carry `quality_flag: ok` rather than `definition_unstated`. The unknown is a property of the whole source, not of individual values, so it lives in the method record (`castro-2024-unstated`, every field unstated) where §3.4 says it belongs, and surfaces through the density marker. Flagging all 1,605 rows individually would have been noise. The ranking still demotes them: a source with a stated recording condition and sample size outranks one without.
 
+**Step 2b — Obrist et al. 2004 migrated. ✅ Done.**
+104 rows for 26 Swiss species (24 exact, 2 via MSW3), replacing 9 of the 11 shadowed prose entries. Table 1 is a scan with no text layer, so it was transcribed by hand from the open-access copy in the authors' institutional repository; the PDF's sha256 is recorded in the reference so the transcription can be re-checked against the exact bytes read.
+
+Two context facts the prose summaries had lost entirely, both of which change interpretation:
+
+- **These are hand-release recordings**, not free flight. The authors say so, and add that such calls "differ from those recorded later in search flight" and leave "some insecurity regarding the population variance". `recording_condition: hand_release` now records it, and the ranking rule prefers free-flying sources where one exists. *Tadarida teniotis* is the stated exception.
+- **A fixed 26 ms analysis window truncates the longest calls.** Table 1 marks affected values in italics, which the scan cannot resolve; the methods name Rhinolophidae explicitly, so those rows are flagged `suspect`. The flag is applied to `duration` and `min_frequency` only — truncation removes the end of a call, which shortens measured duration and raises the measured lowest frequency, while peak and highest frequency sit in the CF portion present from onset. That narrowing is our inference from the stated mechanism, not the paper's marking, and is recorded as such.
+
+The truncation is visible in the data: for *Rhinolophus ferrumequinum*, Obrist gives 22.7 ms against Castro's 48.09 ms — a value sitting just under the 26 ms window, flagged `divergent`.
+
+Combining two sources also demonstrated the density marker working as a progress metric: **23 species rose from `minimal` to `rich`** purely by having a second source with phase, sample size, dispersion and method. Across the dataset there are now 31 corroborated and 20 divergent facts, none of which were visible when each species held one prose sentence.
+
 **Step 3 — survey Tier 2 sources (~1 week, no data written).**
 The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
 
@@ -363,7 +375,7 @@ Every species entry therefore carries a `density` block: a level (`minimal` / `b
 | `basic` | ≥3 parameters with phase + recording condition |
 | `minimal` | anything less — including every legacy prose entry, by construction |
 
-Current distribution: 1 `rich`, 322 `minimal`. The marker is also the progress metric for this roadmap — the goal is not only more covered species but fewer `minimal` ones.
+Current distribution: 23 `rich`, 3 `detailed`, 298 `minimal`. The marker is also the progress metric for this roadmap — the goal is not only more covered species but fewer `minimal` ones.
 
 ### 10.5 Two things that cap coverage below 100%
 

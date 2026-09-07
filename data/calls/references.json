@@ -6,6 +6,20 @@
  },
  "references": {
 
+  "obrist-2004": {
+   "type": "journal_article",
+   "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+   "doi": "10.1515/mamm.2004.030",
+   "url": "https://doi.org/10.1515/mamm.2004.030",
+   "accessed_at": "2026-09-07",
+   "licence": "all-rights-reserved",
+   "access_note": "Publisher copy is paywalled. Read from the open-access PDF in the authors' institutional repository (DORA WSL, https://www.dora.lib4ri.ch/wsl/item/wsl:9612). The page is a scan with no text layer, so Table 1 was transcribed by hand; source file sha256 b31f87ea309d8ae4f3f851470fd94c50370a3aeeb99a5a3b908f205d95eb6da8, 28403513 bytes, so the transcription can be re-checked against the exact bytes read.",
+   "republishes_reference_id": null,
+   "independence_group": "obrist-wsl",
+   "geographic_scope": "Switzerland",
+   "taxonomic_scope": "26 Swiss bat species"
+  },
+
   "denzinger-2001": {
    "type": "journal_article",
    "citation": "Denzinger A, Siemers BM, Schaub A, Schnitzler H-U (2001) Echolocation by the barbastelle bat, Barbastella barbastellus. Journal of Comparative Physiology A 187(7):521-528.",
@@ -78,6 +92,21 @@
  },
 
  "methods": {
+
+  "obrist-2004-canary": {
+   "reference_id": "obrist-2004",
+   "recorder_model": "Pettersson D980 bat detector into a voltage amplifier and a ComputerBoards PC-CARD-DAS16/330 acquisition card in an Apple Macintosh PowerBook",
+   "sample_rate_khz": 312.5,
+   "bit_depth": 12,
+   "analysis_software": "Canary (Cornell), high-resolution spectrograms at 0.6 kHz resolution with 87.5% window overlap",
+   "fft_window_ms": 26,
+   "frequency_definition": "frequency of main energy, manually extracted from the spectrogram",
+   "duration_threshold_db": "unstated",
+   "high_pass_filter_khz": 7.5,
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Signals were cut into a fixed 26 ms window (8192 samples), which truncates calls longer than that; the methods name Rhinolophidae as the family this affects, and Table 1 marks affected values in italics. Calls were delimited to the range of probable search calls, so take-off calls were excluded. Most recordings were made after hand release, which the authors say produces calls differing from later search flight and 'leaves some insecurity regarding the population variance'."
+  },
 
   "denzinger-2001-field": {
    "reference_id": "denzinger-2001",

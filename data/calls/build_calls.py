@@ -46,16 +46,32 @@ def short_label(reference_id: str, reference: dict) -> str:
     return reference_id
 
 
-def load_rows() -> list[dict]:
-    rows = []
+def load_rows(reference_ids: set[str]) -> tuple[list[dict], list[str]]:
+    """Load the measurement CSVs, which are the ones named after a reference.
+
+    Only a file whose stem is a known reference_id is a measurement source, so
+    other CSVs in this directory (family-level defaults, working notes) are
+    skipped and named rather than parsed as measurements and crashing the build.
+    """
+    rows, skipped = [], []
     for path in sorted(HERE.glob("*.csv")):
+        if path.stem not in reference_ids:
+            skipped.append(path.name)
+            continue
         with path.open(encoding="utf-8", newline="") as handle:
-            for line_no, row in enumerate(csv.DictReader(handle), start=2):
+            reader = csv.DictReader(handle)
+            missing = {"parameter", "reference_id", "mdd_id"} - set(reader.fieldnames or [])
+            if missing:
+                raise BuildError(
+                    f"{path.name} is named after a reference but is missing "
+                    f"required column(s): {', '.join(sorted(missing))}"
+                )
+            for line_no, row in enumerate(reader, start=2):
                 row = {k: (v.strip() if isinstance(v, str) else v) for k, v in row.items()}
                 row["_source_file"] = path.name
                 row["_line"] = line_no
                 rows.append(row)
-    return rows
+    return rows, skipped
 
 
 def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
@@ -100,10 +116,15 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
                 problems += [f"{where}: {p}" for p in
                              registry.validate(parameter, row["value"], row["unit"])]
                 if row["value"] and row["verbatim_value"]:
-                    # A2: the stored number must still be findable in what the source printed.
+                    # A2: the stored number must still be findable in what the
+                    # source printed. Compared numerically, not textually, so
+                    # that a source printing European decimal commas ("4,3")
+                    # still validates against a stored 4.3.
                     printed = row["verbatim_value"].replace("–", "-").replace("−", "-")
-                    if not re.search(rf"(?<![\d.]){re.escape(row['value'].rstrip('0').rstrip('.'))}",
-                                     printed.replace(",", "")):
+                    printed = re.sub(r"(?<=\d),(?=\d)", ".", printed)
+                    printed_numbers = [float(n) for n in
+                                       re.findall(r"\d+(?:\.\d+)?", printed)]
+                    if not any(abs(n - float(row["value"])) < 1e-9 for n in printed_numbers):
                         problems.append(
                             f"{where}: value {row['value']!r} does not appear in "
                             f"verbatim_value {row['verbatim_value']!r}"
@@ -420,7 +441,7 @@ def main() -> None:
     taxonomy = json.loads(TAXONOMY.read_text(encoding="utf-8"))
     taxonomy_ids = {s["id"] for s in taxonomy["species"]}
 
-    rows = load_rows()
+    rows, skipped = load_rows(set(refs))
     issues = validate(rows, registry, refs, methods, taxonomy_ids)
     if issues:
         for issue in issues:
@@ -480,6 +501,8 @@ def main() -> None:
           f"{total - len(species)} with no call data ({len(species) / total:.1%} coverage)")
     print("  density: " + ", ".join(f"{levels[k]} {k}" for k in
                                     ("rich", "detailed", "basic", "minimal") if levels[k]))
+    if skipped:
+        print(f"  not measurement sources, skipped: {', '.join(skipped)}")
     if shadowed:
         by_reference = Counter(reference for _, reference in shadowed)
         print(f"  {len(shadowed)} legacy entries kept alongside structured data, "

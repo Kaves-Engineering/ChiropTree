@@ -2,6 +2,10 @@
  "version": 2,
  "generated_on": "2026-09-07",
  "references": {
+  "obrist-2004": {
+   "label": "Obrist et al. 2004",
+   "url": "https://doi.org/10.1515/mamm.2004.030"
+  },
   "denzinger-2001": {
    "label": "Denzinger et al. 2001",
    "url": "https://doi.org/10.1007/s003590100223"
@@ -22,10 +26,6 @@
    "label": "Seibert et al. 2015",
    "url": "https://doi.org/10.1371/journal.pone.0135590"
   },
-  "obrist-2004": {
-   "url": "https://doi.org/10.1515/mamm.2004.030",
-   "label": "Obrist, Boesch & Flückiger 2004, table 1"
-  },
   "vaughan-1997": {
    "url": "https://doi.org/10.1080/09524622.1997.9753331",
    "label": "Vaughan, Jones & Harris 1997"
@@ -39,19 +39,19 @@
   "1005526": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 28.55,
-      "derived_from": null,
+      "low": 24.6,
+      "high": 48.2,
+      "peak": 29.8,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -75,40 +75,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "48.2 ± 8.8 kHz",
+       "value_num": 48.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "24.6 ± 1.1 kHz",
+       "value_num": 24.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "28.55 kHz",
-       "value_num": 28.55,
-       "statistic": "single",
+       "display": "29.8 ± 1.6 kHz",
+       "value_num": 29.8,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "28.55 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "11.72 ms",
-       "value_num": 11.72,
-       "statistic": "single",
+       "display": "10.7 ± 1.6 ms",
+       "value_num": 10.7,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "11.72 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -131,51 +185,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~30 kHz, 11 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005380": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 49.27,
-      "derived_from": null,
+      "low": 27.5,
+      "high": 103.6,
+      "peak": 45.7,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -199,40 +250,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "103.6 ± 12.8 kHz",
+       "value_num": 103.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "27.5 ± 3.1 kHz",
+       "value_num": 27.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "49.27 kHz",
-       "value_num": 49.27,
-       "statistic": "single",
+       "display": "45.7 ± 4.9 kHz",
+       "value_num": 45.7,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "49.27 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "2.89 ms",
-       "value_num": 2.89,
-       "statistic": "single",
+       "display": "4.6 ± 1.1 ms",
+       "value_num": 4.6,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "2.89 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -255,66 +360,168 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~46 kHz, 5 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005444": {
-   "format": "legacy",
-   "summary": "Search calls: peak energy ~47 kHz, 4 ms.",
-   "context": "Swiss reference calls.",
-   "reference": "obrist-2004",
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation search call.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Search call",
+     "signal_type": null,
+     "emission": null,
+     "direction": null,
+     "overview": {
+      "low": 27.9,
+      "high": 99.7,
+      "peak": 46.8,
+      "derived_from": "min/max frequency",
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "99.7 ± 12.6 kHz",
+       "value_num": 99.7,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "27.9 ± 3.5 kHz",
+       "value_num": 27.9,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "46.8 ± 5.6 kHz",
+       "value_num": 46.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "3.6 ± 0.5 ms",
+       "value_num": 3.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "obrist-2004"
+   ],
+   "reference_order": [
+    "obrist-2004"
+   ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": null,
-    "have": [],
+    "level": "detailed",
+    "rank": 3,
+    "parameters": 4,
+    "have": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method"
+    ],
     "missing": [
-     "structured measurements"
+     "independent corroboration"
     ]
    }
   },
   "1005395": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 46.98,
-      "derived_from": null,
+      "low": 27.3,
+      "high": 81.2,
+      "peak": 42.7,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -338,40 +545,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "81.2 ± 8 kHz",
+       "value_num": 81.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "27.3 ± 3 kHz",
+       "value_num": 27.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "46.98 kHz",
-       "value_num": 46.98,
-       "statistic": "single",
+       "display": "42.7 ± 3.5 kHz",
+       "value_num": 42.7,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "46.98 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.26 ms",
-       "value_num": 3.26,
-       "statistic": "single",
+       "display": "3.9 ± 0.9 ms",
+       "value_num": 3.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "3.26 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -394,51 +655,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~43 kHz, 4 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005445": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 46.95,
-      "derived_from": null,
+      "low": 14.0,
+      "high": 108.6,
+      "peak": 40.4,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -462,40 +720,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "108.6 ± 18.6 kHz",
+       "value_num": 108.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "14 ± 4 kHz",
+       "value_num": 14.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "46.95 kHz",
-       "value_num": 46.95,
-       "statistic": "single",
+       "display": "40.4 ± 8.8 kHz",
+       "value_num": 40.4,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "46.95 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.47 ms",
-       "value_num": 3.47,
-       "statistic": "single",
+       "display": "4.1 ± 1.1 ms",
+       "value_num": 4.1,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "3.47 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -518,51 +830,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~40 kHz, 4 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005632": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 47.61,
-      "derived_from": null,
+      "low": 42.6,
+      "high": 73.8,
+      "peak": 47.4,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -586,40 +895,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "73.8 ± 15.9 kHz",
+       "value_num": 73.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "42.6 ± 1.4 kHz",
+       "value_num": 42.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "47.61 kHz",
-       "value_num": 47.61,
-       "statistic": "single",
+       "display": "47.4 ± 2 kHz",
+       "value_num": 47.4,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "47.61 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "5.22 ms",
-       "value_num": 5.22,
-       "statistic": "single",
+       "display": "6.3 ± 0.9 ms",
+       "value_num": 6.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "5.22 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -642,66 +1005,168 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~47 kHz, 6 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005633": {
-   "format": "legacy",
-   "summary": "Search calls: peak energy ~56 kHz, 6 ms.",
-   "context": "Swiss reference calls.",
-   "reference": "obrist-2004",
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation search call.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Search call",
+     "signal_type": null,
+     "emission": null,
+     "direction": null,
+     "overview": {
+      "low": 51.5,
+      "high": 84.1,
+      "peak": 56.2,
+      "derived_from": "min/max frequency",
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "84.1 ± 16.5 kHz",
+       "value_num": 84.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "51.5 ± 1.8 kHz",
+       "value_num": 51.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "56.2 ± 2.4 kHz",
+       "value_num": 56.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "6 ± 0.9 ms",
+       "value_num": 6.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "obrist-2004"
+   ],
+   "reference_order": [
+    "obrist-2004"
+   ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": null,
-    "have": [],
+    "level": "detailed",
+    "rank": 3,
+    "parameters": 4,
+    "have": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method"
+    ],
     "missing": [
-     "structured measurements"
+     "independent corroboration"
     ]
    }
   },
   "1005607": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 22.86,
-      "derived_from": null,
+      "low": 17.7,
+      "high": 33.8,
+      "peak": 22.1,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -725,40 +1190,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "33.8 ± 11.6 kHz",
+       "value_num": 33.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "17.7 ± 2.8 kHz",
+       "value_num": 17.7,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "22.86 kHz",
-       "value_num": 22.86,
-       "statistic": "single",
+       "display": "22.1 ± 3.1 kHz",
+       "value_num": 22.1,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "22.86 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "13.13 ms",
-       "value_num": 13.13,
-       "statistic": "single",
+       "display": "14.4 ± 3.4 ms",
+       "value_num": 14.4,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "13.13 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -781,51 +1300,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~22 kHz, 14 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005605": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 30.67,
-      "derived_from": null,
+      "low": 22.1,
+      "high": 49.4,
+      "peak": 27.4,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -849,40 +1365,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "49.4 ± 14.9 kHz",
+       "value_num": 49.4,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "19",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "22.1 ± 2.1 kHz",
+       "value_num": 22.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "19",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "30.67 kHz",
-       "value_num": 30.67,
-       "statistic": "single",
+       "display": "27.4 ± 5.1 kHz",
+       "value_num": 27.4,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "19",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "30.67 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "7.97 ms",
-       "value_num": 7.97,
-       "statistic": "single",
+       "display": "9.3 ± 3.9 ms",
+       "value_num": 9.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "19",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "7.97 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -905,51 +1475,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~27 kHz, 9 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005792": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 24.35,
-      "derived_from": null,
+      "low": 20.2,
+      "high": 35.8,
+      "peak": 24.6,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -973,40 +1540,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "35.8 ± 10.5 kHz",
+       "value_num": 35.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "20.2 ± 1.4 kHz",
+       "value_num": 20.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "24.35 kHz",
-       "value_num": 24.35,
-       "statistic": "single",
+       "display": "24.6 ± 2.2 kHz",
+       "value_num": 24.6,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "24.35 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "14.07 ms",
-       "value_num": 14.07,
-       "statistic": "single",
+       "display": "15 ± 3.8 ms",
+       "value_num": 15.0,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "14.07 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -1029,51 +1650,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~25 kHz, 15 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005662": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 36.39,
-      "derived_from": null,
+      "low": 22.7,
+      "high": 55.7,
+      "peak": 37.7,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -1097,40 +1715,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "55.7 ± 5.6 kHz",
+       "value_num": 55.7,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "22.7 ± 1.7 kHz",
+       "value_num": 22.7,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "36.39 kHz",
-       "value_num": 36.39,
-       "statistic": "single",
+       "display": "37.7 ± 5.1 kHz",
+       "value_num": 37.7,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "36.39 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "2.51 ms",
-       "value_num": 2.51,
-       "statistic": "single",
+       "display": "2.9 ± 0.6 ms",
+       "value_num": 2.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "2.51 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -1153,33 +1825,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
-   },
-   "unmigrated": {
-    "summary": "Search calls: peak energy ~38 kHz, 3 ms.",
-    "context": "Swiss reference calls.",
-    "reference": "obrist-2004"
+    ],
+    "missing": []
    }
   },
   "1005649": {
@@ -1543,10 +2212,10 @@
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 35.33,
-      "derived_from": null,
+      "low": 25.7,
+      "high": 48.3,
+      "peak": 36.0,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -1570,40 +2239,94 @@
        "ref_index": 4
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "48.3 ± 3.9 kHz",
+       "value_num": 48.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 5
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "25.7 ± 2.2 kHz",
+       "value_num": 25.7,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 5
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "35.33 kHz",
-       "value_num": 35.33,
-       "statistic": "single",
+       "display": "36 ± 4.8 kHz",
+       "value_num": 36.0,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "35.33 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 4
+        }
+       ],
        "note": "",
-       "ref_index": 4
+       "ref_index": 5
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.52 ms",
-       "value_num": 3.52,
-       "statistic": "single",
+       "display": "4.3 ± 1 ms",
+       "value_num": 4.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "3.52 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 4
+        }
+       ],
        "note": "",
-       "ref_index": 4
+       "ref_index": 5
       },
       {
        "parameter": "body_mass",
@@ -1626,25 +2349,27 @@
      ]
     }
    ],
-   "n_observations": 6,
-   "n_sources": 4,
-   "n_independent_groups": 3,
+   "n_observations": 7,
+   "n_sources": 5,
+   "n_independent_groups": 4,
    "citations": [
     "castro-2024",
     "denzinger-2001",
     "goerlitz-2010",
+    "obrist-2004",
     "seibert-2015"
    ],
    "reference_order": [
     "seibert-2015",
     "denzinger-2001",
     "goerlitz-2010",
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
     "level": "rich",
     "rank": 4,
-    "parameters": 10,
+    "parameters": 12,
     "have": [
      "call phase",
      "recording condition",
@@ -1659,19 +2384,19 @@
   "1005531": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 31.17,
-      "derived_from": null,
+      "low": 22.4,
+      "high": 47.2,
+      "peak": 26.8,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -1695,40 +2420,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "47.2 ± 7.4 kHz",
+       "value_num": 47.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "22.4 ± 1.2 kHz",
+       "value_num": 22.4,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "31.17 kHz",
-       "value_num": 31.17,
-       "statistic": "single",
+       "display": "26.8 ± 1.8 kHz",
+       "value_num": 26.8,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "31.17 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "6.39 ms",
-       "value_num": 6.39,
-       "statistic": "single",
+       "display": "10.9 ± 2.4 ms",
+       "value_num": 10.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "6.39 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -1751,28 +2530,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    },
    "unmigrated": {
     "summary": "Search calls: peak energy ~34 kHz, 7 ms.",
@@ -1783,19 +2564,19 @@
   "1005663": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 29.66,
-      "derived_from": null,
+      "low": 18.0,
+      "high": 45.3,
+      "peak": 27.6,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -1819,40 +2600,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "45.3 ± 3.3 kHz",
+       "value_num": 45.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "18 ± 2.3 kHz",
+       "value_num": 18.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "29.66 kHz",
-       "value_num": 29.66,
-       "statistic": "single",
+       "display": "27.6 ± 2.5 kHz",
+       "value_num": 27.6,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "29.66 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "2.94 ms",
-       "value_num": 2.94,
-       "statistic": "single",
+       "display": "5.8 ± 1.4 ms",
+       "value_num": 5.8,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "2.94 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -1875,28 +2710,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    },
    "unmigrated": {
     "summary": "Search calls: peak energy ~48 kHz, 3 ms.",
@@ -8928,19 +9765,19 @@
   "1005135": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 53.41,
-      "derived_from": null,
+      "low": 47.4,
+      "high": 87.3,
+      "peak": 53.9,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -8964,40 +9801,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "87.3 ± 11 kHz",
+       "value_num": 87.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "47.4 ± 1.2 kHz",
+       "value_num": 47.4,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "53.41 kHz",
-       "value_num": 53.41,
-       "statistic": "single",
+       "display": "53.9 ± 3.8 kHz",
+       "value_num": 53.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "53.41 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "5.47 ms",
-       "value_num": 5.47,
-       "statistic": "single",
+       "display": "6.2 ± 0.8 ms",
+       "value_num": 6.2,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "5.47 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -9020,28 +9911,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005165": {
@@ -19638,19 +20531,19 @@
   "1004684": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "headline": "Echolocation search call, emitted through the nose.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "nasal",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 82.18,
-      "derived_from": null,
+      "low": 69.1,
+      "high": 84.1,
+      "peak": 79.7,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -19674,22 +20567,67 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "84.1 ± 0.9 kHz",
+       "value_num": 84.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "69.1 ± 8.1 kHz",
+       "value_num": 69.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "suspect",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Calls of this species exceed the paper's fixed 26 ms analysis window, so this value is measured on a truncated call. Table 1 marks affected values in italics, which are not recoverable from the scanned page; the flag here is applied from the methods statement that Rhinolophidae exceed the window. Applied to duration and minimum frequency only, since truncation removes the end of the call: that shortens the measured duration and raises the measured lowest frequency, while peak and highest frequency sit in the CF portion present from call onset. That last point is our inference from the stated mechanism, not the paper's own marking, and should be checked against a clean copy of the table.",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "82.18 kHz",
-       "value_num": 82.18,
-       "statistic": "single",
+       "display": "79.7 ± 4.7 kHz",
+       "value_num": 79.7,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "82.18 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
@@ -19704,8 +20642,17 @@
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "22.7 ± 4.9 ms",
+         "basis": "",
+         "citation": "obrist-2004",
+         "quality_flag": "suspect",
+         "note": "Calls of this species exceed the paper's fixed 26 ms analysis window, so this value is measured on a truncated call. Table 1 marks affected values in italics, which are not recoverable from the scanned page; the flag here is applied from the methods statement that Rhinolophidae exceed the window. Applied to duration and minimum frequency only, since truncation removes the end of the call: that shortens the measured duration and raises the measured lowest frequency, while peak and highest frequency sit in the CF portion present from call onset. That last point is our inference from the stated mechanism, not the paper's own marking, and should be checked against a clean copy of the table.",
+         "ref_index": 2
+        }
+       ],
        "note": "",
        "ref_index": 1
       },
@@ -19730,28 +20677,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1004687": {
@@ -19995,19 +20944,19 @@
   "1004693": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "headline": "Echolocation search call, emitted through the nose.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "nasal",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 109.32,
-      "derived_from": null,
+      "low": 89.8,
+      "high": 110.6,
+      "peak": 107.5,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -20031,22 +20980,67 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "110.6 ± 1.7 kHz",
+       "value_num": 110.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "89.8 ± 10.9 kHz",
+       "value_num": 89.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "suspect",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Calls of this species exceed the paper's fixed 26 ms analysis window, so this value is measured on a truncated call. Table 1 marks affected values in italics, which are not recoverable from the scanned page; the flag here is applied from the methods statement that Rhinolophidae exceed the window. Applied to duration and minimum frequency only, since truncation removes the end of the call: that shortens the measured duration and raises the measured lowest frequency, while peak and highest frequency sit in the CF portion present from call onset. That last point is our inference from the stated mechanism, not the paper's own marking, and should be checked against a clean copy of the table.",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "109.32 kHz",
-       "value_num": 109.32,
-       "statistic": "single",
+       "display": "107.5 ± 3.7 kHz",
+       "value_num": 107.5,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "109.32 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
@@ -20061,8 +21055,17 @@
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "21.6 ± 4.4 ms",
+         "basis": "",
+         "citation": "obrist-2004",
+         "quality_flag": "suspect",
+         "note": "Calls of this species exceed the paper's fixed 26 ms analysis window, so this value is measured on a truncated call. Table 1 marks affected values in italics, which are not recoverable from the scanned page; the flag here is applied from the methods statement that Rhinolophidae exceed the window. Applied to duration and minimum frequency only, since truncation removes the end of the call: that shortens the measured duration and raises the measured lowest frequency, while peak and highest frequency sit in the CF portion present from call onset. That last point is our inference from the stated mechanism, not the paper's own marking, and should be checked against a clean copy of the table.",
+         "ref_index": 2
+        }
+       ],
        "note": "",
        "ref_index": 1
       },
@@ -20087,28 +21090,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1004699": {
@@ -24755,19 +25760,19 @@
   "1005727": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 36.15,
-      "derived_from": null,
+      "low": 28.8,
+      "high": 48.3,
+      "peak": 34.9,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -24791,40 +25796,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "48.3 ± 7.2 kHz",
+       "value_num": 48.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "72",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "28.8 ± 0.8 kHz",
+       "value_num": 28.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "72",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "36.15 kHz",
-       "value_num": 36.15,
-       "statistic": "single",
+       "display": "34.9 ± 2 kHz",
+       "value_num": 34.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "72",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "36.15 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "7.08 ms",
-       "value_num": 7.08,
-       "statistic": "single",
+       "display": "7.3 ± 1 ms",
+       "value_num": 7.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "72",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "7.08 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -24847,28 +25906,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005659": {
@@ -27135,19 +28196,19 @@
   "1005375": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 46.11,
-      "derived_from": null,
+      "low": 26.5,
+      "high": 103.5,
+      "peak": 48.4,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -27171,40 +28232,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "103.5 ± 12.7 kHz",
+       "value_num": 103.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "65",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "26.5 ± 2.9 kHz",
+       "value_num": 26.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "65",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "46.11 kHz",
-       "value_num": 46.11,
-       "statistic": "single",
+       "display": "48.4 ± 6.6 kHz",
+       "value_num": 48.4,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "65",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "46.11 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.51 ms",
-       "value_num": 3.51,
-       "statistic": "single",
+       "display": "4.3 ± 0.8 ms",
+       "value_num": 4.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "65",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "3.51 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -27227,46 +28342,48 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005376": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 44.0,
-      "derived_from": null,
+      "low": 24.5,
+      "high": 106.2,
+      "peak": 53.2,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -27290,40 +28407,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "106.2 ± 14.1 kHz",
+       "value_num": 106.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "24.5 ± 4.4 kHz",
+       "value_num": 24.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "44 kHz",
-       "value_num": 44.0,
-       "statistic": "single",
+       "display": "53.2 ± 10.9 kHz",
+       "value_num": 53.2,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "44 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.54 ms",
-       "value_num": 3.54,
-       "statistic": "single",
+       "display": "3.3 ± 0.7 ms",
+       "value_num": 3.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "3.54 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -27346,28 +28517,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005377": {
@@ -27611,19 +28784,19 @@
   "1005384": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 52.27,
-      "derived_from": null,
+      "low": 32.0,
+      "high": 86.8,
+      "peak": 45.1,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -27647,40 +28820,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "86.8 ± 8.4 kHz",
+       "value_num": 86.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "32 ± 2.6 kHz",
+       "value_num": 32.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "52.27 kHz",
-       "value_num": 52.27,
-       "statistic": "single",
+       "display": "45.1 ± 4.3 kHz",
+       "value_num": 45.1,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "52.27 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "3.55 ms",
-       "value_num": 3.55,
-       "statistic": "single",
+       "display": "5.2 ± 1.1 ms",
+       "value_num": 5.2,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "3.55 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -27703,28 +28930,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005388": {
@@ -28206,19 +29435,19 @@
   "1005402": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 60.75,
-      "derived_from": null,
+      "low": 36.3,
+      "high": 113.1,
+      "peak": 54.5,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -28242,40 +29471,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "113.1 ± 12.5 kHz",
+       "value_num": 113.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "36.3 ± 2.8 kHz",
+       "value_num": 36.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "60.75 kHz",
-       "value_num": 60.75,
-       "statistic": "single",
+       "display": "54.5 ± 7.4 kHz",
+       "value_num": 54.5,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "60.75 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "2.15 ms",
-       "value_num": 2.15,
-       "statistic": "single",
+       "display": "3.6 ± 0.7 ms",
+       "value_num": 3.6,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "2.15 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -28298,28 +29581,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005404": {
@@ -29872,19 +31157,19 @@
   "1005443": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 35.45,
-      "derived_from": null,
+      "low": 22.2,
+      "high": 86.0,
+      "peak": 37.1,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -29908,40 +31193,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "86 ± 11.3 kHz",
+       "value_num": 86.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "22.2 ± 2.6 kHz",
+       "value_num": 22.2,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "35.45 kHz",
-       "value_num": 35.45,
-       "statistic": "single",
+       "display": "37.1 ± 4 kHz",
+       "value_num": 37.1,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "35.45 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "5.24 ms",
-       "value_num": 5.24,
-       "statistic": "single",
+       "display": "6 ± 1.7 ms",
+       "value_num": 6.0,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "5.24 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -29964,28 +31303,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005457": {
@@ -32490,19 +33831,19 @@
   "1005623": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 41.16,
-      "derived_from": null,
+      "low": 33.6,
+      "high": 63.6,
+      "peak": 39.5,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -32526,40 +33867,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "63.6 ± 12.8 kHz",
+       "value_num": 63.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "33.6 ± 1.3 kHz",
+       "value_num": 33.6,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "41.16 kHz",
-       "value_num": 41.16,
-       "statistic": "single",
+       "display": "39.5 ± 1.8 kHz",
+       "value_num": 39.5,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "41.16 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "5.18 ms",
-       "value_num": 5.18,
-       "statistic": "single",
+       "display": "6.3 ± 0.9 ms",
+       "value_num": 6.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "divergent",
+       "alternatives": [
+        {
+         "display": "5.18 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -32582,28 +33977,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005624": {
@@ -32728,19 +34125,19 @@
   "1005628": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "headline": "Echolocation search call, emitted through the mouth.",
    "variants": [
     {
      "id": "default",
-     "label": "Call, phase unspecified",
+     "label": "Search call",
      "signal_type": null,
      "emission": "oral",
      "direction": null,
      "overview": {
-      "low": null,
-      "high": null,
-      "peak": 41.4,
-      "derived_from": null,
+      "low": 36.1,
+      "high": 61.5,
+      "peak": 41.3,
+      "derived_from": "min/max frequency",
       "peak_label": "Peak frequency"
      },
      "is_named": false,
@@ -32764,40 +34161,94 @@
        "ref_index": 1
       },
       {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "61.5 ± 13.9 kHz",
+       "value_num": 61.5,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "36.1 ± 1.1 kHz",
+       "value_num": 36.1,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "100",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 2
+      },
+      {
        "parameter": "peak_frequency",
        "label": "Peak frequency",
        "group": "spectral",
        "status": "core",
-       "display": "41.4 kHz",
-       "value_num": 41.4,
-       "statistic": "single",
+       "display": "41.3 ± 2.2 kHz",
+       "value_num": 41.3,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "41.4 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "duration",
        "label": "Pulse duration",
        "group": "temporal",
        "status": "core",
-       "display": "6.66 ms",
-       "value_num": 6.66,
-       "statistic": "single",
+       "display": "6.9 ± 1.4 ms",
+       "value_num": 6.9,
+       "statistic": "mean",
        "basis": "",
-       "n_calls": null,
+       "n_calls": "100",
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
-       "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "citation": "obrist-2004",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "6.66 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "",
+         "ref_index": 1
+        }
+       ],
        "note": "",
-       "ref_index": 1
+       "ref_index": 2
       },
       {
        "parameter": "body_mass",
@@ -32820,28 +34271,30 @@
      ]
     }
    ],
-   "n_observations": 1,
-   "n_sources": 1,
-   "n_independent_groups": 1,
+   "n_observations": 2,
+   "n_sources": 2,
+   "n_independent_groups": 2,
    "citations": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "reference_order": [
-    "castro-2024"
+    "castro-2024",
+    "obrist-2004"
    ],
    "density": {
-    "level": "minimal",
-    "rank": 1,
-    "parameters": 5,
-    "have": [],
-    "missing": [
+    "level": "rich",
+    "rank": 4,
+    "parameters": 7,
+    "have": [
      "call phase",
      "recording condition",
      "sample size",
      "dispersion",
      "recording method",
      "independent corroboration"
-    ]
+    ],
+    "missing": []
    }
   },
   "1005648": {
@@ -38671,6 +40124,126 @@
      "sample size",
      "dispersion",
      "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1005267": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation search call.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Search call",
+     "signal_type": null,
+     "emission": null,
+     "direction": null,
+     "overview": {
+      "low": 8.0,
+      "high": 15.3,
+      "peak": 11.4,
+      "derived_from": "min/max frequency",
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "max_frequency",
+       "label": "Maximum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "15.3 ± 2.5 kHz",
+       "value_num": 15.3,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "42",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "min_frequency",
+       "label": "Minimum frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "8 ± 0.7 kHz",
+       "value_num": 8.0,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "42",
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "11.4 ± 0.8 kHz",
+       "value_num": 11.4,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "42",
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "16.8 ± 2.4 ms",
+       "value_num": 16.8,
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "42",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "obrist-2004",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "obrist-2004"
+   ],
+   "reference_order": [
+    "obrist-2004"
+   ],
+   "density": {
+    "level": "detailed",
+    "rank": 3,
+    "parameters": 4,
+    "have": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method"
+    ],
+    "missing": [
      "independent corroboration"
     ]
    }
