@@ -1636,53 +1636,7 @@ Antrozous:[1,[["koopmani","Cuban pallid bat"],["pallidus","pallid bat"]]],
 Bauerus:[1,[["dubiaquercus","Van Gelder’s bat"]]],
 };
 
-/* =========================================================
-   6. ECHOLOCATION — one profile per family
-   ========================================================= */
-const ECHO = {
-Pteropodidae:{em:"None from the larynx",des:"No echolocation",fq:"—",
- note:"The great exception. Flying foxes navigate by large forward-facing eyes and a keen nose, and are the only bat family without laryngeal echolocation. Rousettus works around this by clicking its tongue — broadband clicks around 10–60 kHz, crude but enough to find its way through a pitch-dark cave. That is an independent invention, not an inheritance."},
-Rhinopomatidae:{em:"Through the nostrils",des:"Short multi-harmonic FM",fq:"~30–35 kHz",
- note:"Open-air hunters over desert, so calls are relatively low and long-carrying."},
-Craseonycteridae:{em:"Through the nostrils",des:"Short CF–FM",fq:"~73 kHz",
- note:"Hovers at the edge of vegetation at dusk, picking insects off foliage and out of the air."},
-Megadermatidae:{em:"Through the nostrils",des:"Very short, very quiet FM",fq:"~25–60 kHz",
- note:"A whispering bat. Echolocation is almost secondary — these are ambush predators that hang from a perch and listen for the rustle of a mouse, the wingbeat of a beetle or the call of a frog, then drop on it. Huge ears, tiny voice."},
-Rhinolophidae:{em:"Through the nose-leaf",des:"Long constant frequency with brief FM sweeps",fq:"~20–110 kHz",
- note:"The most sophisticated sonar in the animal kingdom. A horseshoe bat holds one long pure tone, and because its own flight speed would Doppler-shift the returning echo, it lowers the pitch of its call to keep the echo landing exactly on a narrow, hypersensitive band of its cochlea — an auditory fovea. Against that steady tone, the wingbeats of a moth show up as a rhythmic flutter. It can hear a fluttering insect against a background of dense leaves, which broadband sonar cannot do."},
-Hipposideridae:{em:"Through the nose-leaf",des:"Shorter CF–FM",fq:"~65–160 kHz",
- note:"The same Doppler-compensating trick as horseshoe bats, but with shorter tones and dominated by a different harmonic. Higher frequencies mean finer resolution over shorter range — suited to hunting inside cluttered forest."},
-Rhinonycteridae:{em:"Through the nose-leaf",des:"Very high CF–FM",fq:"~90–212 kHz",
- note:"Holds the record. Cloeotis percivali calls at around 212 kHz, the highest frequency known in any bat — roughly ten times above the ceiling of human hearing. Such short wavelengths resolve tiny targets but travel almost no distance in air, so it must hunt close in."},
-Nycteridae:{em:"Through the facial groove",des:"Very short, very quiet FM",fq:"~50–110 kHz",
- note:"Another whisperer. The deep slit down the face channels the beam. Like false vampires, they mostly listen for the sounds prey makes rather than shouting at it."},
-Emballonuridae:{em:"Through the mouth",des:"Narrowband multi-harmonic, shallow QCF",fq:"~25–60 kHz",
- note:"Open-space foragers with calls that carry. Several species alternate between two frequencies on successive calls, which may help separate their own echoes from a neighbour’s. They are also unusually vocal socially, with song-like territorial displays."},
-Myzopodidae:{em:"Through the mouth",des:"Long, quiet, narrowband FM",fq:"~35–45 kHz",
- note:"Poorly studied — few recordings exist anywhere, which is true of most things about this family."},
-Mystacinidae:{em:"Through the mouth",des:"Broadband FM",fq:"~25–60 kHz",
- note:"Echolocates normally in flight, but much of its foraging happens on the forest floor, where it folds its wings away and hunts by smell and by listening rather than by sonar."},
-Thyropteridae:{em:"Through the mouth",des:"Short broadband FM, quiet",fq:"~50–100 kHz",
- note:"Cluttered-space specialists. They also use social calls to find each other: a bat inside a rolled leaf answers a flying group-mate, and the shape of the furled leaf amplifies the exchange like an ear trumpet."},
-Furipteridae:{em:"Through the mouth",des:"Short FM",fq:"above ~90 kHz",
- note:"Very high and very quiet, matching an exclusive diet of small moths."},
-Noctilionidae:{em:"Through the mouth",des:"CF and QCF blocks with FM sweeps",fq:"~50–70 kHz",
- note:"The greater bulldog bat cannot see a fish underwater, and sonar does not penetrate the surface. What it detects is the disturbance a fish makes — a fin breaking through, or the ripple rings spreading from below. It then rakes the water blind with its feet."},
-Mormoopidae:{em:"Through the mouth",des:"Long CF in Pteronotus parnellii; short FM in the rest",fq:"~55–90 kHz",
- note:"A striking case of convergent evolution. Pteronotus parnellii independently evolved the long constant-frequency call and Doppler compensation of Old World horseshoe bats, complete with its own auditory fovea, despite being separated from them by tens of millions of years and an ocean."},
-Phyllostomidae:{em:"Through the nose-leaf",des:"Short, broadband, multi-harmonic, very quiet FM",fq:"~40–100 kHz",
- note:"The quietest sonar of any family, and the most supplemented. Leaf-nosed bats lean heavily on smell, vision and passive hearing. Trachops locates frogs by eavesdropping on their mating calls and can tell a palatable species from a toxic one by the song alone. Some bat-pollinated flowers have evolved dish-shaped petals that act as acoustic beacons, echoing back a signal the bat cannot miss."},
-Natalidae:{em:"Through the mouth",des:"Quiet broadband FM",fq:"~65–120 kHz",
- note:"High, faint and short-range, for slow manoeuvring flight deep inside caves."},
-Molossidae:{em:"Through the mouth",des:"Long narrowband QCF",fq:"~11–40 kHz",
- note:"The opposite design to a leaf-nosed bat. Free-tailed bats fly fast and high in open air where there is nothing to bump into, so they use long, low, loud calls that carry a long way and detect targets far ahead. Otomops calls down around 11 kHz, low enough for people to hear. Several species switch call type depending on whether they are searching or closing in."},
-Miniopteridae:{em:"Through the mouth",des:"FM sweep flattening to QCF",fq:"~50–60 kHz",
- note:"A middle-ground design for hunting along forest edges and over open country."},
-Cistugidae:{em:"Through the mouth",des:"Broadband FM",fq:"~40–55 kHz",
- note:"Much like a small Myotis, which is part of why the genus sat inside the vesper bats for so long."},
-Vespertilionidae:{em:"Through the mouth (nasal in some long-eared bats)",des:"FM sweeps in clutter, flattening to QCF in the open",fq:"~12–120 kHz",
- note:"The most flexible sonar in the order, and the reason this family is everywhere. A single bat adjusts its call within a second: broad, steeply sweeping calls for resolving detail among branches, then long flat calls for scanning open air. The extremes are wide — the spotted bat calls near 12 kHz, low enough to hear unaided, while some Myotis exceed 100 kHz. The long-eared Plecotini go quiet altogether and glean by listening."}
-};
+
 
 /* --- reference links: search endpoints, so they always resolve --- */
 const LINKS = [

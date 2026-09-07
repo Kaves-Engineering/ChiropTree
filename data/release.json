@@ -4,17 +4,21 @@
   "marineMammals": 144
  },
  "files": {
-  "call-records.json": {
-   "bytes": 9955,
-   "sha256": "74dbbf222ce1f1c1ec7939fef2015ae590dd6a1258c1763d02531d368999c79a"
-  },
   "call_measurements.json": {
    "bytes": 63199,
    "sha256": "8cf964483d5a805fec3a2afe2076560764948f7a9c61c597fd73796384fbaa24"
   },
+  "calls/expected_ranges.csv": {
+   "bytes": 1927,
+   "sha256": "a7fd5683afc9edb91e04d04fcda43c976bd5adcfcd035d50d40be358551654b2"
+  },
   "calls/exports/calls.json": {
    "bytes": 1102875,
    "sha256": "a431ef3c4c5f004b1df913f45f8a54696779f1833691c6bfabf0520c6530b3ba"
+  },
+  "calls/family_call_defaults.csv": {
+   "bytes": 7535,
+   "sha256": "f92c17b8fb7d5cd4e3b3aa45a6d4982767d8cd23472d6d7a1378b2f7457c16df"
   },
   "chiroptera_taxonomy.json": {
    "bytes": 1232196,

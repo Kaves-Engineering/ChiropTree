@@ -15,7 +15,6 @@ def load(name: str) -> dict:
 def main() -> None:
     bats = load("chiroptera_taxonomy.json")
     marine = load("marine_mammal_taxonomy.json")
-    calls = load("call-records.json")
     direct = load("call_measurements.json")
     names = load("danish_names.json")
     supplement = load("gbif_country_supplement.json")
@@ -27,7 +26,6 @@ def main() -> None:
     assert "__RELEASE__" not in worker
     assert all(family in bat_html for family in bats["families"])
     assert all(family in marine_html for family in marine["families"])
-    assert set(calls["families"]) <= set(bats["families"])
     assert set(direct["species"]) <= {item["id"] for item in bats["species"]}
     assert set(names) <= {item["id"] for item in bats["species"]}
     assert supplement and all(value for value in supplement.values())

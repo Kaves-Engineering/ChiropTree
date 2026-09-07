@@ -12,6 +12,9 @@ mkdir -p public/data/images
 cp chiroptera-tree.html public/index.html
 cp marine-mammal-tree.html public/marine.html
 cp data/*.json public/data/
+# The call export lives in a subdirectory, so the glob above misses it.
+mkdir -p public/data/calls/exports
+cp data/calls/exports/calls.json public/data/calls/exports/
 cp manifest.webmanifest public/
 if [ -d data/images ]; then cp -R data/images/. public/data/images/; fi
 

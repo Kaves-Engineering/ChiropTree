@@ -122,12 +122,14 @@ swap_const("TREE", close="\n]};")
 
 # Echolocation stays empty on purpose. No marine equivalent of the bat page's
 # per-family reference was compiled, and inventing call figures would produce
-# numbers that look citable and are not. Every code path below is the master's
-# and simply renders nothing; the drawer already has an honest fallback.
-i = html.find("const ECHO = {")
-j = html.find("\n};", i)
-html = html[:i] + "const ECHO = {};" + html[j + len("\n};"):]
-hits.append("const ECHO -> {}")
+# numbers that look citable and are not. The master's const ECHO was retired
+# once it turned out nothing rendered it; the marine page simply loads no call
+# data, and the drawer already has an honest fallback for that.
+#
+# Nothing to do here now, but the master must not quietly grow another
+# unguarded family-level call block: catch it if it does.
+if "const ECHO" in html:
+    sys.exit("master reintroduced const ECHO; decide what the marine page should do with it")
 
 i = html.find("const ESP = {")
 j = html.find("\n};", i)

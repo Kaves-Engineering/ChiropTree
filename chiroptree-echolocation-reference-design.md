@@ -355,7 +355,31 @@ Combining two sources also demonstrated the density marker working as a progress
 **Step 3 — survey Tier 2 sources (~1 week, no data written).**
 The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
 
-**Step 4 — wire up family-guide inheritance (all remaining species).**
+**Step 3b — family expectations consolidated and wired in as a check. ✅ Done (partly).**
+
+The repo held *three* family-level call tables and displayed none of them: `echolocation_reference.json` (generated into `call-records.json`, read only by the manifest and the validators), a `const ECHO` object inline in the page that nothing referenced, and the newer `family_call_defaults.csv`. They disagreed with each other on ~15 of 21 families, including flat contradictions on duty cycle for Craseonycteridae and Mormoopidae — disagreements that never mattered because nothing rendered any of them.
+
+Consolidated onto `family_call_defaults.csv`, which is the best of the three: it is the only one carrying per-family confidence ratings, documentation status, structural notes and caveats such as "do not propagate Mormoopidae duty cycle to species". The other two are deleted. The 16 species-level `genusExamples` from the retired file were migrated to `expected_ranges.csv` rather than discarded, since a species-level expectation is far more discriminating than a family one.
+
+**These tables are validation input, not content.** They are inference from comparative reviews, unverified, and never enter the export or the card. `check_expectations.py` compares every measured peak frequency against them and reports what falls outside, with a 10% tolerance on range width and a proportional band for single-value "ranges" that are nominal centres rather than bounds.
+
+It earns its place immediately: 8 of 326 measured values are outside expectation, **all of them from `castro-2024`**, and none from the direct-measurement sources. Two look like genuine errors rather than boundary effects:
+
+- *Triaenops persicus* at 39.8 kHz in a family expected at 90–215 kHz — implausible for a high-duty-cycle CF bat.
+- *Nycteris grandis* at 20.0 kHz against 50–120 kHz, consistent with a fundamental being reported where other sources give the dominant harmonic, which is what `harmonic_ambiguous` exists for.
+
+*Noctilio leporinus* (35.3 kHz) is flagged independently by both the family table (50–75) and the species expectation (50–60), which is the strongest signal available from inference alone.
+
+A conflict never means the measurement is wrong. *Rhynchonycteris naso* at 89.7 kHz is flagged against an Emballonuridae range of 20–60 kHz, and here it is the expectation that is too narrow.
+
+**Step 4 — display family inheritance for species with no measurement (still to do).**
+The numbers should stay suppressed: family ranges are least informative exactly where the gap is largest (Vespertilionidae 428 uncovered species, 10–160 kHz, a 16× span; Molossidae 106, 4.5×; Rhinolophidae 84, 6.4×). Roughly 880 of the 1,190 uncovered species sit in families whose range spans 3× or more. Only three families are narrow enough to be worth showing.
+
+The *categorical* columns are a different quality tier and do not degrade with family breadth — emission route, duty cycle class, laryngeal-or-not, call structure. "Rhinolophidae are nasal, high-duty-cycle CF-FM" holds for essentially all 118 species. Those are what should be inherited, clearly labelled as a family expectation.
+
+Blocking this: `primary_references` in the CSV are author-year strings with no DOI or locator, which fails A1, and `verified_by`/`verified_date` are empty on every row.
+
+**Step 4b — wire up family-guide inheritance (all remaining species).**
 `call-records.json` already holds family-level guides. Displaying them through the `inheritance` table gives every one of the 1,514 cards something honest to say, clearly labelled as a family expectation rather than a measurement. This is the fastest route to a tree that is *filled out*, and it is orthogonal to how many species are ever measured.
 
 **Step 5 — import Tier 2 sources**, highest species-per-day first, re-running the coverage report after each.

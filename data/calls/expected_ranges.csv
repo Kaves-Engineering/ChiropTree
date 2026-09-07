@@ -1,0 +1,17 @@
+taxon,rank,peak_freq_kHz_low,peak_freq_kHz_high,evidence_class,confidence,source,verified_by,verified_date,notes
+Rhinolophus ferrumequinum,species,79,85,review_consensus,approximate,comparative-reviews,,,
+Rhinolophus hipposideros,species,107,115,review_consensus,approximate,comparative-reviews,,,
+Hipposideros armiger,species,60,70,review_consensus,approximate,comparative-reviews,,,
+Pteronotus parnellii,species,59,62,review_consensus,approximate,comparative-reviews,,,"The only oral-emitting high-duty-cycle lineage; see the Mormoopidae note in family_call_defaults.csv."
+Myotis lucifugus,species,40,80,review_consensus,approximate,comparative-reviews,,,
+Eptesicus fuscus,species,25,60,review_consensus,approximate,comparative-reviews,,,
+Pipistrellus pipistrellus,species,45,45,review_consensus,approximate,comparative-reviews,,,"Printed as a single value rather than a range; treat as a nominal centre, not bounds."
+Pipistrellus pygmaeus,species,55,55,review_consensus,approximate,comparative-reviews,,,"Printed as a single value rather than a range; treat as a nominal centre, not bounds."
+Nyctalus noctula,species,18,25,review_consensus,approximate,comparative-reviews,,,
+Plecotus auritus,species,20,60,review_consensus,approximate,comparative-reviews,,,
+Tadarida brasiliensis,species,23,28,review_consensus,approximate,comparative-reviews,,,
+Saccopteryx bilineata,species,38,45,review_consensus,approximate,comparative-reviews,,,
+Noctilio leporinus,species,50,60,review_consensus,approximate,comparative-reviews,,,
+Phyllostomus hastatus,species,60,90,review_consensus,approximate,comparative-reviews,,,
+Megaderma lyra,species,20,60,review_consensus,approximate,comparative-reviews,,,
+Rousettus aegyptiacus,species,10,70,review_consensus,poorly_constrained,comparative-reviews,,,"Non-laryngeal tongue clicks; broadband, so a peak-frequency range is a weak descriptor and is not comparable with laryngeal peak frequency."

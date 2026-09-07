@@ -46,11 +46,33 @@ def validate_names(filename: str, ids: set[str]) -> None:
         assert record.get("name") and record.get("source") and record.get("gbifKey"), f"{filename}: incomplete name {mdd_id}"
 
 
+def validate_expectations(families: set[str]) -> None:
+    """Check the inference tables used to sanity-check imports.
+
+    These are never displayed and never enter the export, so the bar is that
+    they are complete and parseable, not that they are sourced to a locator.
+    """
+    import csv
+
+    path = HERE / "calls" / "family_call_defaults.csv"
+    rows = list(csv.DictReader(path.open(encoding="utf-8")))
+    required = {"family", "peak_freq_kHz_low", "peak_freq_kHz_high",
+                "evidence_class", "freq_range_confidence"}
+    for row in rows:
+        missing = required - {k for k, v in row.items() if v}
+        assert not missing, f"family defaults: {row.get('family')} missing {missing}"
+        low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
+        assert 0 < low <= high, f"family defaults: {row['family']} has an invalid range"
+    listed = {row["family"] for row in rows}
+    assert families <= listed, f"family defaults: no row for {', '.join(sorted(families - listed))}"
+
+    ranges = list(csv.DictReader((HERE / "calls" / "expected_ranges.csv").open(encoding="utf-8")))
+    for row in ranges:
+        low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
+        assert 0 < low <= high, f"expected ranges: {row['taxon']} has an invalid range"
+
+
 def validate_calls(species_ids: set[str]) -> None:
-    calls = load("call-records.json")
-    for family, record in calls["families"].items():
-        assert record.get("evidenceScope") == "family-guide", f"{family}: invalid evidence scope"
-        assert record.get("referenceId") in calls["references"], f"{family}: missing reference"
     direct = load("call_measurements.json")
     for mdd_id, record in direct["species"].items():
         assert mdd_id in species_ids, f"direct calls: unknown MDD ID {mdd_id}"
@@ -143,6 +165,7 @@ def main() -> None:
     validate_names("marine_mammal_danish_names.json", marine_ids)
     validate_calls(bat_ids)
     validate_structured_calls(bat_ids)
+    validate_expectations(set(bats["families"]))
     validate_map(bats, "world_map.json")
     validate_map(marine, "marine_world_map.json")
     validate_media(bat_ids | marine_ids)
