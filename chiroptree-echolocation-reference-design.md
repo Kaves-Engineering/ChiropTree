@@ -367,7 +367,9 @@ The truncation is visible in the data: for *Rhinolophus ferrumequinum*, Obrist g
 
 Combining two sources also demonstrated the density marker working as a progress metric: **23 species rose from `minimal` to `rich`** purely by having a second source with phase, sample size, dispersion and method. Across the dataset there are now 31 corroborated and 20 divergent facts, none of which were visible when each species held one prose sentence.
 
-**Step 3 — survey Tier 2 sources (~1 week, no data written).**
+**Step 3 — source survey. ✅ Done. Findings in §10.7.**
+
+**Step 3 (original plan) — survey Tier 2 sources (~1 week, no data written).**
 The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
 
 **Step 3b — family expectations consolidated and wired in as a check. ✅ Done (partly).**
@@ -456,6 +458,43 @@ Current distribution: 23 `rich`, 3 `detailed`, 298 `minimal`. The marker is also
 **The literature does not exist for much of the order.** The gap concentrates in genera that are both speciose and poorly studied — *Murina* (48 uncovered), *Kerivoula* (21), *Mops* (32), *Alionoctula* (19, a recent split with essentially no acoustic literature under that name). Many species are known from a handful of specimens. A realistic ceiling is probably somewhere near half the order, but that is a guess and Step 3 should replace it with a measurement.
 
 **Taxonomic drift is the harder limit.** 33 of Castro's 329 names (10%) do not resolve against MDD v2.5, and that is a 2024 paper; older sources will be worse. More seriously, MDD splits mean a source's *Hipposideros commersoni* may now be three species and the recording often cannot be assigned to one. This needs a policy decision (§11): drop such records, or admit them at genus level with an explicit evidence scope. The `taxon_match_method` and `inheritance` fields already support either choice.
+
+## 10.7 Tier 2 source survey
+
+The step everything downstream depended on. Output is a costed list, not data.
+
+### The finding that matters: Collen 2012 is open, and is bigger than Castro
+
+Castro 2024 republishes Collen's data, and Castro is what we imported — but the thesis itself is openly available at UCL Discovery (eprint **1370574**; the id previously recorded here, 1354471, was wrong and has been corrected). Its **Appendix F, pp. 337–392**, is the full species × parameter table:
+
+| | Castro 2024 (imported) | Collen 2012 (available) |
+|---|---|---|
+| Species | 329 rows | **918 rows, 408 with measured peak frequency** |
+| Parameters | 5 | **10** |
+| | bandwidth, body mass, duration, peak frequency, emission | + characteristic frequency, minimum frequency, maximum frequency, dominant slope, total slope |
+
+Importing the primary source instead of the republication would roughly double the parameters per species and add the frequency bounds that make a card useful, on the same species we already have plus more.
+
+**Two cautions.** Only 408 of the 918 rows are measured for peak frequency; the rest are statistically **imputed and marked in italics**, exactly the same trap as Obrist's truncation markers, and italics are not recoverable from a rendered page without font-level parsing. An import must read the PDF with a library that exposes font style (PyMuPDF or pdfplumber) and drop or flag every italic cell — doing this by eye over 56 pages would be unreliable. Second, Collen shares the `collen-echobank` independence group with Castro, so it replaces rather than corroborates those values.
+
+It also explains a flagged outlier. Collen lists *Rhynchonycteris naso* with peak frequency 89.69 kHz **and** characteristic frequency 98.88 kHz. Castro carried only the peak, while the literature quotes the ~100 kHz characteristic — so the apparent discrepancy is a parameter-choice artefact, not an error, and importing Collen would resolve it by carrying both.
+
+Appendix B (pp. 283–291) is a bibliography of the literature sources behind the non-EchoBank values — a ready-made candidate list for later rounds.
+
+### Other candidates assessed
+
+| Source | Licence | Species-level parameters? | Verdict |
+|---|---|---|---|
+| **Collen 2012** (UCL Discovery) | thesis, open access | Yes — 10 parameters, 408 measured | **Do this next.** Needs font-aware PDF parsing to exclude imputed cells. |
+| **ChirosetEurope** (Zenodo) | CC-BY-4.0 | Harmonised metadata across 35 European species | Promising; check whether it holds measured parameters or only recordings + labels. |
+| **Cansiglio Forest acoustic dataset** (Zenodo) | CC-BY-4.0 | CSV with "main acoustic parameters extracted" | Detection records rather than a species reference; may yield per-species distributions. |
+| **Namuli *Rhinolophus* tables** (Zenodo) | not stated | Yes — peak frequency means and ranges | Small, and licence must be established before use. |
+| **BatDetect2 annotation sets** (Zenodo) | CC-BY-**NC**-SA | No — call annotations for model training | Not parameters, and the NC clause conflicts with redistribution. |
+| **ChiroVox** | recordings restricted; commercial use prohibited without contributor permission | Recordings, not published parameters | Not a parameter source. Useful for listening, not for import. |
+
+### What the survey changes
+
+The dataset currently rests on one broad compilation (Castro) and one regional study (Obrist). The single highest-value action is not to find new sources but to **replace the republication with its primary source**, which is open, richer, and already cited in our reference records. Everything else is smaller and needs licence work first.
 
 ## 10.6 Source audit — what has been read versus what has been imported
 

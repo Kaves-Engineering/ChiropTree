@@ -148,14 +148,14 @@
    "taxon": "Rhinonycteridae",
    "mode": "laryngeal",
    "show_range": true,
-   "low": 90.0,
+   "low": 80.0,
    "high": 215.0,
    "confidence": "approximate",
    "emission": "nasal",
    "duty_cycle": "high",
    "structure": "CF-FM",
    "documentation": "few_species_documented",
-   "reason": "Contains the highest CF frequency known in bats (Cloeotis percivali, ~212 kHz). Most species in the family have no published call description.",
+   "reason": "Contains the highest CF frequency known in bats (Cloeotis percivali, ~212 kHz). Most species in the family have no published call description. The lower bound is set by the larger Malagasy Triaenops, whose males call near 82 kHz.",
    "warnings": [],
    "verified": false,
    "citations": [
@@ -299,15 +299,15 @@
    "mode": "laryngeal",
    "show_range": true,
    "low": 20.0,
-   "high": 60.0,
+   "high": 105.0,
    "confidence": "approximate",
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "narrowband QCF or shallow FM with multiple harmonics; often multi-harmonic search calls",
    "documentation": "most_genera_documented",
-   "reason": "Neotropical taxa relatively well described; African and Asian taxa much less so.",
+   "reason": "Neotropical taxa relatively well described; African and Asian taxa much less so. The upper bound is set by small high-frequency taxa: Rhynchonycteris naso calls at about 100 kHz in search phase, well above the 60 kHz this row previously gave.",
    "warnings": [
-    "This family's range spans 3x, so it does not usefully constrain any individual species."
+    "This family's range spans 5x, so it does not usefully constrain any individual species."
    ],
    "verified": false,
    "citations": [
@@ -925,15 +925,15 @@
    "show_range": true,
    "low": 50.7,
    "high": 186.9,
-   "n_species": 22,
+   "n_species": 24,
    "confidence": "measured_congeners",
    "emission": "",
    "duty_cycle": "",
    "structure": "",
    "documentation": "",
-   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 22 species of Hipposideros already in this dataset.",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 24 species of Hipposideros already in this dataset.",
    "warnings": [
-    "Observed across the 22 measured species of Hipposideros in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
+    "Observed across the 24 measured species of Hipposideros in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
     "Even within Hipposideros the measured spread is 4x, so it constrains an individual species only loosely."
    ],
    "verified": false,
@@ -1327,15 +1327,15 @@
    "show_range": true,
    "low": 22.0,
    "high": 40.9,
-   "n_species": 3,
+   "n_species": 4,
    "confidence": "measured_congeners",
    "emission": "",
    "duty_cycle": "",
    "structure": "",
    "documentation": "",
-   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Laephotis already in this dataset.",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Laephotis already in this dataset.",
    "warnings": [
-    "Observed across the 3 measured species of Laephotis in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+    "Observed across the 4 measured species of Laephotis in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
    ],
    "verified": false,
    "citations": [
@@ -1624,7 +1624,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus nilssonii.",
        "ref_index": 1
       },
       {
@@ -1683,7 +1683,7 @@
          "basis": "",
          "citation": "castro-2024",
          "quality_flag": "ok",
-         "note": "",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus nilssonii.",
          "ref_index": 1
         }
        ],
@@ -1710,7 +1710,7 @@
          "basis": "",
          "citation": "castro-2024",
          "quality_flag": "ok",
-         "note": "",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus nilssonii.",
          "ref_index": 1
         }
        ],
@@ -1732,7 +1732,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus nilssonii.",
        "ref_index": 1
       }
      ]
@@ -4069,7 +4069,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus serotinus.",
        "ref_index": 1
       },
       {
@@ -4128,7 +4128,7 @@
          "basis": "",
          "citation": "castro-2024",
          "quality_flag": "ok",
-         "note": "",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus serotinus.",
          "ref_index": 1
         }
        ],
@@ -4155,7 +4155,7 @@
          "basis": "",
          "citation": "castro-2024",
          "quality_flag": "ok",
-         "note": "",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus serotinus.",
          "ref_index": 1
         }
        ],
@@ -4177,7 +4177,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus serotinus.",
        "ref_index": 1
       }
      ]
@@ -10154,12 +10154,12 @@
        "statistic": "single",
        "basis": "",
        "n_calls": null,
-       "quality_flag": "ok",
+       "quality_flag": "harmonic_ambiguous",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "39.8 kHz is roughly half the frequency expected for a high-duty-cycle trident bat: published Malagasy Triaenops call between about 82 and 113 kHz, and 39.8 x 2 = 79.6 falls in that band. This looks like the fundamental reported where the dominant second harmonic is the usual measure. Flagged rather than corrected, because the source prints 39.8 and we have no direct measurement of this species to replace it with.",
        "ref_index": 1
       },
       {
@@ -27324,8 +27324,17 @@
        "quality_flag": "ok",
        "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "consistent_within_group",
+       "alternatives": [
+        {
+         "display": "18.09 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Hypsugo ariel.",
+         "ref_index": 1
+        }
+       ],
        "note": "",
        "ref_index": 1
       },
@@ -27342,8 +27351,17 @@
        "quality_flag": "ok",
        "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "consistent_within_group",
+       "alternatives": [
+        {
+         "display": "46.91 kHz",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Hypsugo ariel.",
+         "ref_index": 1
+        }
+       ],
        "note": "",
        "ref_index": 1
       },
@@ -27360,8 +27378,17 @@
        "quality_flag": "ok",
        "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "3.97 ms",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Hypsugo ariel.",
+         "ref_index": 1
+        }
+       ],
        "note": "",
        "ref_index": 1
       },
@@ -27378,15 +27405,24 @@
        "quality_flag": "ok",
        "ambiguity": null,
        "citation": "castro-2024",
-       "agreement": "single_source",
-       "alternatives": [],
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "2.73 g",
+         "basis": "",
+         "citation": "castro-2024",
+         "quality_flag": "ok",
+         "note": "Printed in the source as a separate species; the current taxonomy treats it as Hypsugo ariel.",
+         "ref_index": 1
+        }
+       ],
        "note": "",
        "ref_index": 1
       }
      ]
     }
    ],
-   "n_observations": 1,
+   "n_observations": 2,
    "n_sources": 1,
    "n_independent_groups": 1,
    "citations": [
@@ -39044,6 +39080,244 @@
     ]
    }
   },
+  "1004572": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "nasal",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 103.0,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "5 kHz",
+       "value_num": 5.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros stenotis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "103 kHz",
+       "value_num": 103.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros stenotis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "20 ms",
+       "value_num": 20.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros stenotis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "12 g",
+       "value_num": 12.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros stenotis.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1004573": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "nasal",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 92.03,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "3.88 kHz",
+       "value_num": 3.88,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros wollastoni.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "92.03 kHz",
+       "value_num": 92.03,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros wollastoni.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "18.39 ms",
+       "value_num": 18.39,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros wollastoni.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "6.93 g",
+       "value_num": 6.93,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros wollastoni.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
   "1004637": {
    "format": "structured",
    "evidence_scope": "species_measurement",
@@ -39079,7 +39353,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros swinhoii.",
        "ref_index": 1
       },
       {
@@ -39097,7 +39371,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros swinhoii.",
        "ref_index": 1
       },
       {
@@ -39115,7 +39389,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros swinhoii.",
        "ref_index": 1
       },
       {
@@ -39133,7 +39407,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Hipposideros swinhoii.",
        "ref_index": 1
       }
      ]
@@ -39198,7 +39472,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Macronycteris commersonii.",
        "ref_index": 1
       },
       {
@@ -39216,7 +39490,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Macronycteris commersonii.",
        "ref_index": 1
       },
       {
@@ -39234,7 +39508,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Macronycteris commersonii.",
        "ref_index": 1
       },
       {
@@ -39252,7 +39526,245 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Macronycteris commersonii.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1004763": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "nasal",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 98.98,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "9.54 kHz",
+       "value_num": 9.54,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Paratriaenops furcula.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "98.98 kHz",
+       "value_num": 98.98,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Paratriaenops furcula.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "8.05 ms",
+       "value_num": 8.05,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Paratriaenops furcula.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "5.56 g",
+       "value_num": 5.56,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Paratriaenops furcula.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1004969": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the nose.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "nasal",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 69.66,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "20.22 kHz",
+       "value_num": 20.22,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Gardnerycteris crenulata.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "69.66 kHz",
+       "value_num": 69.66,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Gardnerycteris crenulata.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "1.06 ms",
+       "value_num": 1.06,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Gardnerycteris crenulata.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "13.91 g",
+       "value_num": 13.91,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Gardnerycteris crenulata.",
        "ref_index": 1
       }
      ]
@@ -39317,7 +39829,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura cinerea.",
        "ref_index": 1
       },
       {
@@ -39335,7 +39847,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura cinerea.",
        "ref_index": 1
       },
       {
@@ -39353,7 +39865,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura cinerea.",
        "ref_index": 1
       },
       {
@@ -39371,7 +39883,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura cinerea.",
        "ref_index": 1
       }
      ]
@@ -39436,7 +39948,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura gnomus.",
        "ref_index": 1
       },
       {
@@ -39454,7 +39966,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura gnomus.",
        "ref_index": 1
       },
       {
@@ -39472,7 +39984,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura gnomus.",
        "ref_index": 1
       },
       {
@@ -39490,7 +40002,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura gnomus.",
        "ref_index": 1
       }
      ]
@@ -39555,7 +40067,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura phaeotis.",
        "ref_index": 1
       },
       {
@@ -39573,7 +40085,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura phaeotis.",
        "ref_index": 1
       },
       {
@@ -39591,7 +40103,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura phaeotis.",
        "ref_index": 1
       },
       {
@@ -39609,7 +40121,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura phaeotis.",
        "ref_index": 1
       }
      ]
@@ -39674,7 +40186,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura tolteca.",
        "ref_index": 1
       },
       {
@@ -39692,7 +40204,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura tolteca.",
        "ref_index": 1
       },
       {
@@ -39710,7 +40222,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura tolteca.",
        "ref_index": 1
       },
       {
@@ -39728,7 +40240,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura tolteca.",
        "ref_index": 1
       }
      ]
@@ -39793,7 +40305,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura watsoni.",
        "ref_index": 1
       },
       {
@@ -39811,7 +40323,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura watsoni.",
        "ref_index": 1
       },
       {
@@ -39829,7 +40341,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura watsoni.",
        "ref_index": 1
       },
       {
@@ -39847,7 +40359,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Dermanura watsoni.",
        "ref_index": 1
       }
      ]
@@ -39912,7 +40424,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops ansorgei.",
        "ref_index": 1
       },
       {
@@ -39930,7 +40442,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops ansorgei.",
        "ref_index": 1
       },
       {
@@ -39948,7 +40460,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops ansorgei.",
        "ref_index": 1
       },
       {
@@ -39966,7 +40478,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops ansorgei.",
        "ref_index": 1
       }
      ]
@@ -40031,7 +40543,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops bivittatus.",
        "ref_index": 1
       },
       {
@@ -40049,7 +40561,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops bivittatus.",
        "ref_index": 1
       },
       {
@@ -40067,7 +40579,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops bivittatus.",
        "ref_index": 1
       },
       {
@@ -40085,7 +40597,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops bivittatus.",
        "ref_index": 1
       }
      ]
@@ -40150,7 +40662,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops chapini.",
        "ref_index": 1
       },
       {
@@ -40168,7 +40680,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops chapini.",
        "ref_index": 1
       },
       {
@@ -40186,7 +40698,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops chapini.",
        "ref_index": 1
       },
       {
@@ -40204,7 +40716,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops chapini.",
        "ref_index": 1
       }
      ]
@@ -40269,7 +40781,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops jobensis.",
        "ref_index": 1
       },
       {
@@ -40287,7 +40799,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops jobensis.",
        "ref_index": 1
       },
       {
@@ -40305,7 +40817,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops jobensis.",
        "ref_index": 1
       },
       {
@@ -40323,7 +40835,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops jobensis.",
        "ref_index": 1
       }
      ]
@@ -40388,7 +40900,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops johorensis.",
        "ref_index": 1
       },
       {
@@ -40406,7 +40918,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops johorensis.",
        "ref_index": 1
       },
       {
@@ -40424,7 +40936,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops johorensis.",
        "ref_index": 1
       },
       {
@@ -40442,7 +40954,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops johorensis.",
        "ref_index": 1
       }
      ]
@@ -40507,7 +41019,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops nigeriae.",
        "ref_index": 1
       },
       {
@@ -40525,7 +41037,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops nigeriae.",
        "ref_index": 1
       },
       {
@@ -40543,7 +41055,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops nigeriae.",
        "ref_index": 1
       },
       {
@@ -40561,7 +41073,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops nigeriae.",
        "ref_index": 1
       }
      ]
@@ -40626,7 +41138,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops pumilus.",
        "ref_index": 1
       },
       {
@@ -40644,7 +41156,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops pumilus.",
        "ref_index": 1
       },
       {
@@ -40662,7 +41174,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops pumilus.",
        "ref_index": 1
       },
       {
@@ -40680,7 +41192,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Mops pumilus.",
        "ref_index": 1
       }
      ]
@@ -40745,7 +41257,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Nyctinomus aegyptiacus.",
        "ref_index": 1
       },
       {
@@ -40763,7 +41275,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Nyctinomus aegyptiacus.",
        "ref_index": 1
       },
       {
@@ -40781,7 +41293,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Nyctinomus aegyptiacus.",
        "ref_index": 1
       },
       {
@@ -40799,7 +41311,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Nyctinomus aegyptiacus.",
        "ref_index": 1
       }
      ]
@@ -40864,7 +41376,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus bottae.",
        "ref_index": 1
       },
       {
@@ -40882,7 +41394,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus bottae.",
        "ref_index": 1
       },
       {
@@ -40900,7 +41412,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus bottae.",
        "ref_index": 1
       },
       {
@@ -40918,7 +41430,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus bottae.",
        "ref_index": 1
       }
      ]
@@ -40983,7 +41495,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus brasiliensis.",
        "ref_index": 1
       },
       {
@@ -41001,7 +41513,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus brasiliensis.",
        "ref_index": 1
       },
       {
@@ -41019,7 +41531,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus brasiliensis.",
        "ref_index": 1
       },
       {
@@ -41037,7 +41549,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus brasiliensis.",
        "ref_index": 1
       }
      ]
@@ -41102,7 +41614,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus furinalis.",
        "ref_index": 1
       },
       {
@@ -41120,7 +41632,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus furinalis.",
        "ref_index": 1
       },
       {
@@ -41138,7 +41650,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus furinalis.",
        "ref_index": 1
       },
       {
@@ -41156,7 +41668,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Neoeptesicus furinalis.",
        "ref_index": 1
       }
      ]
@@ -41221,7 +41733,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus hottentotus.",
        "ref_index": 1
       },
       {
@@ -41239,7 +41751,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus hottentotus.",
        "ref_index": 1
       },
       {
@@ -41257,7 +41769,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus hottentotus.",
        "ref_index": 1
       },
       {
@@ -41275,7 +41787,126 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Cnephaeus hottentotus.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1005584": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "oral",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 36.18,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "30.41 kHz",
+       "value_num": 30.41,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Lasiurus intermedius.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "36.18 kHz",
+       "value_num": 36.18,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Lasiurus intermedius.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "3.18 ms",
+       "value_num": 3.18,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Lasiurus intermedius.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "22.96 g",
+       "value_num": 22.96,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Lasiurus intermedius.",
        "ref_index": 1
       }
      ]
@@ -41340,7 +41971,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula abramus.",
        "ref_index": 1
       },
       {
@@ -41358,7 +41989,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula abramus.",
        "ref_index": 1
       },
       {
@@ -41376,7 +42007,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula abramus.",
        "ref_index": 1
       },
       {
@@ -41394,7 +42025,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula abramus.",
        "ref_index": 1
       }
      ]
@@ -41459,7 +42090,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula stenoptera.",
        "ref_index": 1
       },
       {
@@ -41477,7 +42108,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula stenoptera.",
        "ref_index": 1
       },
       {
@@ -41495,7 +42126,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula stenoptera.",
        "ref_index": 1
       },
       {
@@ -41513,7 +42144,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula stenoptera.",
        "ref_index": 1
       }
      ]
@@ -41578,7 +42209,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula tenuis.",
        "ref_index": 1
       },
       {
@@ -41596,7 +42227,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula tenuis.",
        "ref_index": 1
       },
       {
@@ -41614,7 +42245,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula tenuis.",
        "ref_index": 1
       },
       {
@@ -41632,7 +42263,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula tenuis.",
        "ref_index": 1
       }
      ]
@@ -41697,7 +42328,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula westralis.",
        "ref_index": 1
       },
       {
@@ -41715,7 +42346,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula westralis.",
        "ref_index": 1
       },
       {
@@ -41733,7 +42364,7 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula westralis.",
        "ref_index": 1
       },
       {
@@ -41751,7 +42382,245 @@
        "citation": "castro-2024",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "",
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Alionoctula westralis.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1005729": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "oral",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 33.0,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "22 kHz",
+       "value_num": 22.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Laephotis angolensis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "33 kHz",
+       "value_num": 33.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Laephotis angolensis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "5 ms",
+       "value_num": 5.0,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Laephotis angolensis.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "7.28 g",
+       "value_num": 7.28,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Laephotis angolensis.",
+       "ref_index": 1
+      }
+     ]
+    }
+   ],
+   "n_observations": 1,
+   "n_sources": 1,
+   "n_independent_groups": 1,
+   "citations": [
+    "castro-2024"
+   ],
+   "reference_order": [
+    "castro-2024"
+   ],
+   "density": {
+    "level": "minimal",
+    "rank": 1,
+    "parameters": 5,
+    "have": [],
+    "missing": [
+     "call phase",
+     "recording condition",
+     "sample size",
+     "dispersion",
+     "recording method",
+     "independent corroboration"
+    ]
+   }
+  },
+  "1006834": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Echolocation call, phase unspecified, emitted through the mouth.",
+   "variants": [
+    {
+     "id": "default",
+     "label": "Call, phase unspecified",
+     "signal_type": null,
+     "emission": "oral",
+     "direction": null,
+     "overview": {
+      "low": null,
+      "high": null,
+      "peak": 26.98,
+      "derived_from": null,
+      "peak_label": "Peak frequency"
+     },
+     "is_named": false,
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "13.82 kHz",
+       "value_num": 13.82,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Eptesicus dutertreus.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "26.98 kHz",
+       "value_num": 26.98,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Eptesicus dutertreus.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "6.73 ms",
+       "value_num": 6.73,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Eptesicus dutertreus.",
+       "ref_index": 1
+      },
+      {
+       "parameter": "body_mass",
+       "label": "Body mass",
+       "group": "covariate",
+       "status": "core",
+       "display": "18.99 g",
+       "value_num": 18.99,
+       "statistic": "single",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": null,
+       "citation": "castro-2024",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed in the source as a separate species; the current taxonomy treats it as Eptesicus dutertreus.",
        "ref_index": 1
       }
      ]

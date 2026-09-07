@@ -5,7 +5,6 @@
   "licence_note": "licence describes what we may redistribute. 'cc-by-4.0' permits committing extracted tables with attribution. 'all-rights-reserved' means we cite individual figures under fair quotation but do not commit bulk tables."
  },
  "references": {
-
   "obrist-2004": {
    "type": "journal_article",
    "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
@@ -19,7 +18,6 @@
    "geographic_scope": "Switzerland",
    "taxonomic_scope": "26 Swiss bat species"
   },
-
   "denzinger-2001": {
    "type": "journal_article",
    "citation": "Denzinger A, Siemers BM, Schaub A, Schnitzler H-U (2001) Echolocation by the barbastelle bat, Barbastella barbastellus. Journal of Comparative Physiology A 187(7):521-528.",
@@ -33,7 +31,6 @@
    "geographic_scope": "Germany",
    "taxonomic_scope": "Barbastella barbastellus"
   },
-
   "goerlitz-2010": {
    "type": "journal_article",
    "citation": "Goerlitz HR, ter Hofstede HM, Zeale MRK, Jones G, Holderied MW (2010) An aerial-hawking bat uses stealth echolocation to counter moth hearing. Current Biology 20(17):1568-1572.",
@@ -47,21 +44,19 @@
    "geographic_scope": "United Kingdom",
    "taxonomic_scope": "Barbastella barbastellus, Nyctalus leisleri"
   },
-
   "collen-2012": {
    "type": "thesis",
    "citation": "Collen A (2012) The evolution of echolocation in bats: a comparative approach. PhD thesis, University College London.",
    "doi": null,
-   "url": "https://discovery.ucl.ac.uk/id/eprint/1354471/",
+   "url": "https://discovery.ucl.ac.uk/id/eprint/1370574/",
    "accessed_at": "2026-09-07",
    "licence": "unknown",
-   "access_note": "Not read directly. Recorded because Castro et al. 2024 state their table 3 values were taken from measured data in this thesis (the EchoBank compilation). Present so the derivation chain is explicit and so any future source drawing on EchoBank can be placed in the same independence group.",
+   "access_note": "Open access at UCL Discovery (eprint 1370574; the earlier id recorded here, 1354471, was wrong). Appendix F, pp. 337-392, is a species x parameter table with 10 parameters: call type, bandwidth, body mass, call duration, characteristic frequency, dominant slope, maximum frequency, minimum frequency, peak frequency and total slope. Measured sample sizes are stated per parameter (408 species for peak and characteristic frequency); the remainder of the 918 rows are imputed and are marked in italics, so an import must distinguish them. Not yet imported.",
    "republishes_reference_id": null,
    "independence_group": "collen-echobank",
    "geographic_scope": "global",
    "taxonomic_scope": "Chiroptera"
   },
-
   "castro-2024": {
    "type": "journal_article",
    "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
@@ -75,7 +70,6 @@
    "geographic_scope": "global",
    "taxonomic_scope": "Chiroptera"
   },
-
   "seibert-2015": {
    "type": "journal_article",
    "citation": "Seibert A-M, Koblitz JC, Denzinger A, Schnitzler H-U (2015) Bidirectional echolocation in the bat Barbastella barbastellus: different signals of low source level are emitted upward through the nose and downward through the mouth. PLoS ONE 10(9):e0135590.",
@@ -90,9 +84,7 @@
    "taxonomic_scope": "Barbastella barbastellus"
   }
  },
-
  "methods": {
-
   "obrist-2004-canary": {
    "reference_id": "obrist-2004",
    "recorder_model": "Pettersson D980 bat detector into a voltage amplifier and a ComputerBoards PC-CARD-DAS16/330 acquisition card in an Apple Macintosh PowerBook",
@@ -107,7 +99,6 @@
    "source_level_type": null,
    "notes": "Signals were cut into a fixed 26 ms window (8192 samples), which truncates calls longer than that; the methods name Rhinolophidae as the family this affects, and Table 1 marks affected values in italics. Calls were delimited to the range of probable search calls, so take-off calls were excluded. Most recordings were made after hand release, which the authors say produces calls differing from later search flight and 'leaves some insecurity regarding the population variance'."
   },
-
   "denzinger-2001-field": {
    "reference_id": "denzinger-2001",
    "recorder_model": "unstated in abstract",
@@ -120,7 +111,6 @@
    "source_level_type": null,
    "notes": "Only the abstract was available. Every method field is therefore genuinely unknown rather than merely unrecorded, which is why the durations from this source carry quality_flag=definition_unstated."
   },
-
   "castro-2024-unstated": {
    "reference_id": "castro-2024",
    "recorder_model": "unstated",
@@ -133,7 +123,6 @@
    "source_level_type": null,
    "notes": "A comparative compilation, not a study with one method: the values are collated from many original sources via Collen 2012, so no single recording or analysis method applies. Every field is therefore genuinely unstated, which is what places these entries at density 'minimal'. Values from this source should lose to any direct measurement with a stated method."
   },
-
   "goerlitz-2010-array": {
    "reference_id": "goerlitz-2010",
    "recorder_model": "four-microphone arrays, 3D flight-path tracking",
@@ -146,7 +135,6 @@
    "source_level_type": "peak_equivalent",
    "notes": "Source levels are defined in the text as 'the call amplitude 10 cm away from the bat's mouth' and reported in dB peSPL. Both the 0.1 m reference distance and the peak-equivalent basis are essential: comparing these values directly with rms-at-1-m figures understates the difference by roughly 20 dB of spreading loss plus the peak-to-rms offset."
   },
-
   "seibert-2015-array": {
    "reference_id": "seibert-2015",
    "recorder_model": "16-channel Knowles microphone arrays (4x4 m square and 6 m vertical chain), custom amplifiers, National Instruments acquisition, 16-bit",

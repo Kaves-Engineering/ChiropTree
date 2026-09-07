@@ -58,8 +58,24 @@ class TaxonResolver:
             if legacy and legacy != "NA":
                 self.msw3[norm(legacy)].append(species)
         self.unresolved: list[tuple[str, str]] = []
+        self.manual: dict[str, dict] = {}
         self.matched_exact = 0
         self.matched_synonym = 0
+        self.matched_manual = 0
+
+    def add_manual(self, mapping: dict[str, str]) -> None:
+        """Register hand-checked name -> MDD id mappings for one source.
+
+        Only for cases a person has resolved against an authority and written
+        down the evidence. Safe for a lump (several old names now one species);
+        a split cannot be resolved this way, because the source's recording
+        cannot be assigned to one of the daughters.
+        """
+        by_id = {record["id"]: record for record in self.accepted.values()}
+        for name, mdd_id in mapping.items():
+            if mdd_id not in by_id:
+                raise KeyError(f"manual mapping for {name!r} points at unknown MDD id {mdd_id!r}")
+            self.manual[norm(name)] = by_id[mdd_id]
 
     def resolve(self, name: str) -> tuple[dict | None, str]:
         """Return (species record, match method). (None, reason) when unresolved."""
@@ -67,6 +83,9 @@ class TaxonResolver:
         if key in self.accepted:
             self.matched_exact += 1
             return self.accepted[key], "exact"
+        if key in self.manual:
+            self.matched_manual += 1
+            return self.manual[key], "manual"
 
         candidates = self.msw3.get(key, [])
         if len(candidates) == 1:
@@ -124,7 +143,8 @@ def write_review(reference_id: str, unresolved: list[tuple[str, str]]) -> Path |
 def report(reference_id: str, written: int, species: int, resolver: TaxonResolver) -> None:
     print(f"{reference_id}: wrote {written} measurement rows for {species} species")
     exact = "resolved by exact name"
-    print(f"  {resolver.matched_exact} {exact}, {resolver.matched_synonym} via MSW3 synonym")
+    print(f"  {resolver.matched_exact} {exact}, {resolver.matched_synonym} via MSW3 synonym"
+          + (f", {resolver.matched_manual} by hand-checked mapping" if resolver.matched_manual else ""))
     if resolver.unresolved:
         print(f"  {len(resolver.unresolved)} unresolved, parked for review:")
         for name, reason in sorted(resolver.unresolved):

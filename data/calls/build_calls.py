@@ -160,6 +160,22 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
         else:
             problems += [f"{where}: {p}" for p in registry.validate(parameter, row["value"])]
 
+    # One observation is one taxon in one context from one source, so it cannot
+    # hold the same parameter twice. A duplicate means two distinct observations
+    # were given the same id and would silently merge -- which is what happens
+    # when a source lists two names the current taxonomy has lumped.
+    seen = defaultdict(list)
+    for row in rows:
+        key = (row["observation_id"], row["parameter"],
+               row.get("call_variant", ""), row.get("unit", ""))
+        seen[key].append(f"{row['_source_file']}:{row['_line']}")
+    for (observation, parameter, *_), places in sorted(seen.items()):
+        if len(places) > 1:
+            problems.append(
+                f"{', '.join(places)}: observation {observation!r} has {len(places)} values "
+                f"for {parameter!r}; give the distinct observations distinct ids"
+            )
+
     return problems
 
 
