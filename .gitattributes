@@ -1,0 +1,7 @@
+# Force LF line endings in the repository regardless of contributor OS/git
+# config. Without this, a Windows checkout with core.autocrlf=true silently
+# rewrites the *.json data files to CRLF; scripts that hash local disk
+# content (e.g. data/build_release_manifest.py) then bake wrong byte
+# counts/hashes into the committed manifest, breaking release validation
+# in Linux CI where files check out as LF.
+* text=auto eol=lf
