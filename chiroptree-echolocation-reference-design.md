@@ -369,6 +369,25 @@ Combining two sources also demonstrated the density marker working as a progress
 
 **Step 3 — source survey. ✅ Done. Findings in §10.7.**
 
+**Step 3c — Collen 2012 Appendix F imported. ✅ Done.**
+3,131 rows for **404 species**, nine parameters each where measured. Coverage 21.9% → **26.8%**.
+
+Reading it correctly required three decisions:
+
+- **Typeface is the data.** The appendix marks measured, assumed and imputed values by font rather than in a column — roman measured, italic imputed, bold assumed. Only roman values are imported, which needs a font-aware parser (PyMuPDF, added as a dependency). The check that the rule is applied correctly is that the roman counts reproduce the per-parameter "Measured" sample sizes printed at the head of the appendix, and they do.
+- **Characteristic frequency is deliberately excluded.** Thesis Table 2.8 defines it as "the frequency measure with the lowest variance for each species out of maximum frequency, minimum frequency, and peak frequency" — a copy of a column already imported, chosen per species, not an independent measurement. For *Rhynchonycteris naso* it equals the maximum frequency exactly. Importing it would have manufactured a second identical value and false corroboration. It is also **not** the Analook characteristic frequency this registry defines, so it must not go in that parameter either. §10.7's earlier claim that Collen "adds characteristic frequency" was wrong on this point.
+- **Values are `species_summary`, not `mean`.** The thesis does not state whether a species value is a mean, a median or one exemplar, so a new statistic records exactly that rather than implying a population estimate.
+
+**It caught an error in the republication.** Castro gives *Triaenops persicus* 39.82 kHz. Collen lists *T. persicus* at **83.00 kHz** and gives 39.82 to a different species, *T. rufus* (now *T. menamena*) — so Castro carried the right number under the wrong name. 83 kHz is what published Malagasy *Triaenops* call at. The Castro row is flagged `suspect` rather than deleted, and the correctly attributed values now come from Collen. This is the clearest argument for preferring a primary source over its republication.
+
+The 39.82 value is still anomalous for *T. menamena* (published males ~82 kHz), so it keeps a `harmonic_ambiguous` flag on Collen's row — the halving hypothesis was right about the number and wrong about the species.
+
+**Republished duplicates are now collapsed.** Castro copies Collen, so ~300 species carried two identical values. Listing the copy as "also reported" was noise and counting it as agreement would be false corroboration. Identical values from the same independence group now collapse into one fact carrying both citations: **1,262 duplicates collapsed, 173 genuine alternatives left**.
+
+Licence: the UCL record is marked rights=open and the deposit is a redacted version, but no explicit reuse licence is attached. What is stored is factual measurement rather than expressive content, but this project's own rule is that a bulk table needs a licence that permits it, so the position is **recorded in the reference record rather than assumed away** and needs a decision.
+
+Still unresolved from this source: *Tonatia saurophila*, a genuine **split** (MDD and batnames both have *T. bakeri* and *T. maresi* instead), so the recording cannot be assigned to one daughter species. The first case where open question 8 actually bites.
+
 **Step 3 (original plan) — survey Tier 2 sources (~1 week, no data written).**
 The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
 

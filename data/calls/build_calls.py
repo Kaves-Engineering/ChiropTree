@@ -281,6 +281,28 @@ def build_species(rows, registry, refs, methods) -> dict:
                 else:
                     agreement = "corroborated" if len(groups) > 1 else "consistent_within_group"
 
+            # A republication carries the same number as its source. Listing it
+            # as "also reported" is noise, and counting it as agreement would be
+            # false corroboration, so identical values from the same
+            # independence group collapse into one fact with several citations.
+            def group_of(row):
+                return refs[row["reference_id"]].get("independence_group")
+
+            def same_value(a, b) -> bool:
+                if not (a["value"] and b["value"]):
+                    return False
+                if param["value_type"] != "numeric":
+                    return a["value"] == b["value"]
+                try:
+                    return abs(float(a["value"]) - float(b["value"])) < 1e-9
+                except ValueError:
+                    return False
+
+            republished, alternatives = [], []
+            for other in prows[1:]:
+                is_copy = group_of(other) == group_of(best) and same_value(other, best)
+                (republished if is_copy else alternatives).append(other)
+
             facts.append({
                 "parameter": parameter,
                 "label": param["label"],
@@ -295,13 +317,14 @@ def build_species(rows, registry, refs, methods) -> dict:
                 "ambiguity": param.get("ambiguity"),
                 "citation": best["reference_id"],
                 "agreement": agreement,
+                "republished_in": [r["reference_id"] for r in republished],
                 "alternatives": [{
                     "display": format_value(r, registry),
                     "basis": basis_text(comparability_key(r, registry, methods)),
                     "citation": r["reference_id"],
                     "quality_flag": r.get("quality_flag") or "ok",
                     "note": r.get("notes") or "",
-                } for r in prows[1:]],
+                } for r in alternatives],
                 "note": best.get("notes") or "",
             })
 
@@ -588,6 +611,9 @@ def index_references(variants) -> None:
     for variant in variants:
         for fact in variant["facts"]:
             fact["ref_index"] = index_of(fact["citation"])
+            # A republication of the same number is cited beside the primary,
+            # not listed as a competing value.
+            fact["republished_index"] = [index_of(r) for r in fact.get("republished_in", [])]
             for alternative in fact.get("alternatives", []):
                 alternative["ref_index"] = index_of(alternative["citation"])
     return order

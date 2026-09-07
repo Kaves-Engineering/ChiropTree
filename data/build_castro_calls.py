@@ -20,7 +20,8 @@ from pathlib import Path
 
 import docx
 
-from call_import_lib import TaxonResolver, norm as norm_name, report, write_review, write_rows
+from call_import_lib import (TaxonResolver, observation_suffix, report,
+                             write_review, write_rows)
 
 HERE = Path(__file__).parent
 SUPP_URL = (
@@ -75,52 +76,23 @@ def extract_table3(docx_bytes: bytes) -> list[dict]:
     raise RuntimeError("Table 3 (species-level echolocation database) not found in supplement")
 
 
-# Names that resolve to neither an accepted MDD binomial nor a 1:1 MSW3 bridge,
-# checked by hand against MDD v2.5's own nominalNames synonym list and
-# corroborated against batnames.org (Simmons & Cirranello, Bat Species of the
-# World). Every one is a lump -- an older name now included in a broader
-# species, or a spelling since corrected -- so the source's measurement can be
-# assigned to exactly one current species. A split would not be resolvable this
-# way and would stay in the review file.
-MANUAL_MATCHES = {
-    # Misspelling of Dasypterus, a subgenus of Lasiurus.
-    "Dasiypterus intermedius": "1005584",   # Lasiurus intermedius
-    # batnames.org recognises Doryrhina but places only camerunensis and cyclops
-    # in it; MDD keeps both of these in Hipposideros.
-    "Doryrhina stenotis": "1004572",        # Hipposideros stenotis
-    "Doryrhina wollastoni": "1004573",      # Hipposideros wollastoni
-    # MDD nominalNames: "guadeloupensis Genoways & R. J. Baker".
-    "Eptesicus guadeloupensis": "1006834",  # Eptesicus dutertreus
-    # Epithet corrected to agree with the feminine Gardnerycteris; batnames.org
-    # states the change explicitly.
-    "Gardnerycteris crenulatum": "1004969",  # Gardnerycteris crenulata
-    # MDD nominalNames: "bodenheimeri (D. L. Harrison)".
-    "Hypsugo bodenheimeri": "1005715",      # Hypsugo ariel
-    # MDD nominalNames: "botswanae Setzer"; batnames.org lists angolensis and
-    # has no botswanae.
-    "Laephotis botswanae": "1005729",       # Laephotis angolensis
-    # batnames.org gives furcula, not furculus.
-    "Paratriaenops furculus": "1004763",    # Paratriaenops furcula
-}
-
-
 # Values kept but flagged, because the table's own figure is doubtful. Keyed by
 # (verbatim name, parameter). The value stays: A4 says a source's number is not
 # deleted because we doubt it, only marked so it loses to a better measurement.
 QUALITY_OVERRIDES = {
     ("Triaenops persicus", "peak_frequency"): (
-        "harmonic_ambiguous",
-        "39.8 kHz is roughly half the frequency expected for a high-duty-cycle trident bat: "
-        "published Malagasy Triaenops call between about 82 and 113 kHz, and 39.8 x 2 = 79.6 "
-        "falls in that band. This looks like the fundamental reported where the dominant second "
-        "harmonic is the usual measure. Flagged rather than corrected, because the source prints "
-        "39.8 and we have no direct measurement of this species to replace it with."),
+        "suspect",
+        "Castro gives 39.82 kHz for Triaenops persicus, but the primary source it republishes "
+        "(Collen 2012, Appendix F) lists T. persicus at 83.00 kHz and gives 39.82 for a different "
+        "species, T. rufus (now Triaenops menamena). 83 kHz is what published Malagasy Triaenops "
+        "call at, so this row appears to carry the right number under the wrong name. The value is "
+        "kept and flagged rather than deleted; the correctly attributed measurements are imported "
+        "from Collen."),
 }
 
 
 def main() -> None:
     resolver = TaxonResolver()
-    resolver.add_manual(MANUAL_MATCHES)
     rows = extract_table3(fetch_supplement())
 
     out = []
@@ -141,8 +113,7 @@ def main() -> None:
         # collapse into one observation, so the id carries the printed epithet
         # whenever it differs from the accepted name.
         accepted = species["sciName"].replace("_", " ")
-        suffix = ("" if norm_name(record["species"]) == norm_name(accepted)
-                  else "-" + record["species"].split()[-1].lower())
+        suffix = observation_suffix(record["species"], species)
         context = {
             "observation_id": f"castro2024-{species['id']}{suffix}",
             "mdd_id": species["id"],

@@ -50,8 +50,8 @@
    "doi": null,
    "url": "https://discovery.ucl.ac.uk/id/eprint/1370574/",
    "accessed_at": "2026-09-07",
-   "licence": "unknown",
-   "access_note": "Open access at UCL Discovery (eprint 1370574; the earlier id recorded here, 1354471, was wrong). Appendix F, pp. 337-392, is a species x parameter table with 10 parameters: call type, bandwidth, body mass, call duration, characteristic frequency, dominant slope, maximum frequency, minimum frequency, peak frequency and total slope. Measured sample sizes are stated per parameter (408 species for peak and characteristic frequency); the remainder of the 918 rows are imputed and are marked in italics, so an import must distinguish them. Not yet imported.",
+   "licence": "open-access-terms-unstated",
+   "access_note": "Open access at UCL Discovery (eprint 1370574). The record is marked rights=open and the deposited file is a redacted version with copyright-restricted material removed, but no explicit reuse licence is attached, so redistribution terms are unstated. Appendix F (pp. 337-392) extracted by data/build_collen_calls.py; the cached PDF is under data/raw/, sha256 00e3613e5f9e8a9f7ef0ebad8bf27f0b (first 32 hex), 8465993 bytes. NOTE: this project's own rule is that a bulk table is only committed under a licence that permits it. What is stored here are factual measurements rather than expressive content, and the source is openly deposited, but the licence question is open and is recorded rather than assumed away.",
    "republishes_reference_id": null,
    "independence_group": "collen-echobank",
    "geographic_scope": "global",
@@ -146,6 +146,18 @@
    "source_level_reference_distance_m": 1.0,
    "source_level_type": "rms",
    "notes": "Reports both apparent source level (assuming the bat is on axis) and absolute source level (corrected for beam direction). Only the absolute value is stored as source_level; the apparent value is recorded in the row notes."
+  },
+  "collen-2012-sonobat": {
+   "reference_id": "collen-2012",
+   "recorder_model": "many; EchoBank aggregates recordings contributed by numerous researchers using different detectors and recorders (thesis Table 2.3)",
+   "sample_rate_khz": null,
+   "analysis_software": "SonoBat",
+   "fft_size": null,
+   "frequency_definition": "frequency with the maximum energy (amplitude) in the harmonic with the maximum energy (thesis Table 2.8)",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Parameters were taken by SonoBat from digitised recordings held in the EchoBank call consortium, so there is no single recording method: the compilation spans many contributors and devices. Bandwidth, call duration, maximum frequency and minimum frequency are all defined on the harmonic with the maximum energy, which makes them internally consistent but not necessarily comparable with studies that measure the fundamental. Appendix F distinguishes measured, assumed and imputed values by typeface; only measured (roman) values are imported here."
   }
  }
 }

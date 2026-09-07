@@ -41,9 +41,41 @@ COLUMNS = [
     "dispersion_type", "dispersion_value", "verbatim_value", "quality_flag", "notes",
 ]
 
+# Name decisions that hold for any source, because they are facts about the
+# taxonomy rather than about one paper. Each was checked against MDD v2.5's own
+# nominalNames synonym list and corroborated against batnames.org. Every entry
+# is a lump or a respelling, so the source's measurement belongs to exactly one
+# current species. A split is never listed here: where an old name now covers
+# several species the recording cannot be assigned, and it stays unresolved.
+SHARED_SYNONYMS = {
+    "Dasiypterus intermedius": "1005584",     # misspelt Dasypterus, a Lasiurus subgenus
+    "Doryrhina stenotis": "1004572",          # batnames keeps only camerunensis/cyclops in Doryrhina
+    "Doryrhina wollastoni": "1004573",
+    "Eptesicus guadeloupensis": "1006834",    # nominalNames: guadeloupensis Genoways & R. J. Baker
+    "Gardnerycteris crenulatum": "1004969",   # epithet corrected to feminine crenulata
+    "Hypsugo bodenheimeri": "1005715",        # nominalNames: bodenheimeri (D. L. Harrison)
+    "Laephotis botswanae": "1005729",         # nominalNames: botswanae Setzer
+    "Paratriaenops furculus": "1004763",      # batnames gives furcula
+    "Rhinolophus paradoxolophus": "1004732",  # nominalNames: paradoxolophus (Bourret)
+}
+
 
 def norm(name: str) -> str:
     return re.sub(r"\s+", " ", name.strip().lower())
+
+
+def observation_suffix(printed_name: str, species: dict) -> str:
+    """Disambiguator for an observation id, empty when the name is the accepted one.
+
+    A source can list two names that the current taxonomy has since lumped into
+    one species. Those are two separate measurements and must not share an
+    observation id, or their values silently merge. Appending the printed
+    epithet keeps them distinct and keeps the id readable.
+    """
+    accepted = species["sciName"].replace("_", " ")
+    if norm(printed_name) == norm(accepted):
+        return ""
+    return "-" + printed_name.split()[-1].lower()
 
 
 class TaxonResolver:
@@ -62,6 +94,7 @@ class TaxonResolver:
         self.matched_exact = 0
         self.matched_synonym = 0
         self.matched_manual = 0
+        self.add_manual(SHARED_SYNONYMS)
 
     def add_manual(self, mapping: dict[str, str]) -> None:
         """Register hand-checked name -> MDD id mappings for one source.

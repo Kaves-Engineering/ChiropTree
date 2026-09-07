@@ -2461,6 +2461,7 @@ function luCallFactHTML(f){
     '<dd>'+
       '<span class="lu-val">'+luEsc(f.display)+'</span>'+
       luRefMark(f.ref_index, f.citation)+
+      (f.republished_index||[]).map((i,k)=>luRefMark(i, (f.republished_in||[])[k])).join('')+
       (mark ? ' <span class="lu-agree lu-agree-'+luEsc(f.agreement)+'" title="'+luEsc(markTitle)+'">'+mark+'</span>' : '')+
       (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
       (flagged ? '<div class="lu-flag" title="'+luEsc(f.ambiguity||'')+'">'+luEsc(f.quality_flag.replace(/_/g,' '))+'</div>' : '')+
