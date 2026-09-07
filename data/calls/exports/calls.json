@@ -1,0 +1,2143 @@
+{
+ "version": 2,
+ "generated_on": "2026-09-07",
+ "references": {
+  "denzinger-2001": {
+   "label": "Denzinger et al. 2001",
+   "url": "https://doi.org/10.1007/s003590100223"
+  },
+  "goerlitz-2010": {
+   "label": "Goerlitz et al. 2010",
+   "url": "https://doi.org/10.1016/j.cub.2010.07.046"
+  },
+  "seibert-2015": {
+   "label": "Seibert et al. 2015",
+   "url": "https://doi.org/10.1371/journal.pone.0135590"
+  },
+  "obrist-2004": {
+   "url": "https://doi.org/10.1515/mamm.2004.030",
+   "label": "Obrist, Boesch & Flückiger 2004, table 1"
+  },
+  "vaughan-1997": {
+   "url": "https://doi.org/10.1080/09524622.1997.9753331",
+   "label": "Vaughan, Jones & Harris 1997"
+  },
+  "teixeira-2009": {
+   "url": "https://doi.org/10.3161/150811009X465802",
+   "label": "Teixeira & Jesus 2009"
+  },
+  "castro-2024": {
+   "url": "https://doi.org/10.1186/s12862-024-02231-4",
+   "label": "Castro, Amado & Olalla-Tarraga 2024, table 3 (data from Collen 2012)"
+  }
+ },
+ "species": {
+  "1005526": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~30 kHz, 11 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005380": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~46 kHz, 5 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005444": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~47 kHz, 4 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005395": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~43 kHz, 4 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005445": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~40 kHz, 4 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005632": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~47 kHz, 6 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005633": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~56 kHz, 6 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005607": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~22 kHz, 14 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005605": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~27 kHz, 9 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005792": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~25 kHz, 15 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005662": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~38 kHz, 3 ms.",
+   "context": "Swiss reference calls.",
+   "reference": "obrist-2004"
+  },
+  "1005649": {
+   "format": "structured",
+   "evidence_scope": "species_measurement",
+   "headline": "Alternates 2 search-call types — Type 1 (oral, downward) peaks at 33.6 ± 1.1 kHz over 1.7 ± 0.4 ms; Type 2 (nasal, upward) peaks at 40.1 ± 1.2 kHz over 2.5 ± 0.4 ms.",
+   "variants": [
+    {
+     "id": "type_1",
+     "label": "Type 1",
+     "signal_type": "FM",
+     "emission": "oral",
+     "direction": "downward",
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "4.7 ± 1.0 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "seibert-2015",
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "~8 kHz",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": "Band stated to sit just below the type 2 band, with no or small overlap. Absolute start and end frequencies not given for type 1."
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "end_frequency",
+       "label": "End frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "31.2 ± 0.8 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Same threshold dependence as start_frequency. Many sources print 'minimum frequency' or 'Fmin' for this quantity, which is only equivalent when the sweep descends monotonically; those headings are registered to min_frequency, so a source using them for the sweep terminus must be mapped explicitly in its importer.",
+       "citation": "seibert-2015",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Printed as 'terminal frequency'."
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "33.6 ± 1.1 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "seibert-2015",
+       "agreement": "corroborated",
+       "alternatives": [
+        {
+         "display": "median 33 kHz",
+         "basis": "",
+         "citation": "goerlitz-2010",
+         "quality_flag": "definition_unstated",
+         "note": "Used as the model input frequency for B. barbastellus."
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "start_frequency",
+       "label": "Start frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "35.9 ± 1.3 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent: where the sweep is judged to begin varies with the dB threshold used, which is often unstated. Sources that print 'highest frequency' or 'Fmax' usually mean this for a downward FM sweep, but those headings are registered to max_frequency because they are literal; map them by hand per source rather than by alias.",
+       "citation": "seibert-2015",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": ""
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "1.7 ± 0.4 ms",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "seibert-2015",
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "~2.5 ms",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": "Measurement threshold not stated; not safely comparable with Seibert 2015."
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "source_level",
+       "label": "Source level",
+       "group": "amplitude",
+       "status": "core",
+       "display": "median 94 dB",
+       "statistic": "median",
+       "basis": "peak-equivalent at 0.1 m",
+       "n_calls": "197",
+       "quality_flag": "ok",
+       "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is rms or peak-equivalent. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+       "citation": "goerlitz-2010",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "dB peSPL at 10 cm from the bat's mouth. Only type 1 calls were analysed, because 92% of moth detection distances were in response to this type. Compare Nyctalus leisleri at 127 dB peSPL under the same method."
+      },
+      {
+       "parameter": "source_level",
+       "label": "Source level",
+       "group": "amplitude",
+       "status": "core",
+       "display": "80.9 ± 7.5 dB",
+       "statistic": "mean",
+       "basis": "rms at 1.0 m",
+       "n_calls": "86",
+       "quality_flag": "ok",
+       "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is rms or peak-equivalent. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+       "citation": "seibert-2015",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 79.9 ± 5.1."
+      },
+      {
+       "parameter": "moth_detection_distance",
+       "label": "Moth detection distance",
+       "group": "beam",
+       "status": "extended",
+       "display": "median 3.5 m",
+       "statistic": "median",
+       "basis": "",
+       "n_calls": null,
+       "quality_flag": "ok",
+       "ambiguity": "Depends on the moth species, which auditory cell (A1 or A2) is used as the criterion, and the assumed hearing threshold. Record the criterion in notes; values using different criteria are not comparable.",
+       "citation": "goerlitz-2010",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Field-measured distance at which the A1 auditory cell of the moth Noctua pronuba responds to the approaching bat. Nyctalus leisleri under the same criterion: 33.2 m. value_min/value_max are quartiles, not a range. Modelled prediction was 4.3 m [3.4-6.1 m]."
+      }
+     ]
+    },
+    {
+     "id": "type_2",
+     "label": "Type 2",
+     "signal_type": "FM",
+     "emission": "nasal",
+     "direction": "upward",
+     "facts": [
+      {
+       "parameter": "bandwidth",
+       "label": "Bandwidth",
+       "group": "spectral",
+       "status": "core",
+       "display": "9.2 ± 1.9 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Some sources report a power-relative bandwidth (-3 dB or -10 dB) under the same word; those belong in bandwidth_3db / bandwidth_10db.",
+       "citation": "seibert-2015",
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "12–15 kHz",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": ""
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "end_frequency",
+       "label": "End frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "35.1 ± 1.9 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Same threshold dependence as start_frequency. Many sources print 'minimum frequency' or 'Fmin' for this quantity, which is only equivalent when the sweep descends monotonically; those headings are registered to min_frequency, so a source using them for the sweep terminus must be mapped explicitly in its importer.",
+       "citation": "seibert-2015",
+       "agreement": "consistent_within_group",
+       "alternatives": [
+        {
+         "display": "~32 kHz",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": ""
+        }
+       ],
+       "note": "Printed as 'terminal frequency'."
+      },
+      {
+       "parameter": "peak_frequency",
+       "label": "Peak frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "40.1 ± 1.2 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Measured over the whole call in some studies and over the call body in others; FFT window and size change the value. Record the method's frequency_definition wherever stated.",
+       "citation": "seibert-2015",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": ""
+      },
+      {
+       "parameter": "start_frequency",
+       "label": "Start frequency",
+       "group": "spectral",
+       "status": "core",
+       "display": "44.3 ± 0.9 kHz",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent: where the sweep is judged to begin varies with the dB threshold used, which is often unstated. Sources that print 'highest frequency' or 'Fmax' usually mean this for a downward FM sweep, but those headings are registered to max_frequency because they are literal; map them by hand per source rather than by alias.",
+       "citation": "seibert-2015",
+       "agreement": "consistent_within_group",
+       "alternatives": [
+        {
+         "display": "~45 kHz",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": ""
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "duration",
+       "label": "Pulse duration",
+       "group": "temporal",
+       "status": "core",
+       "display": "2.5 ± 0.4 ms",
+       "statistic": "mean",
+       "basis": "",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Threshold-dependent. Values measured from a spectrogram at an unstated dB threshold can differ by a factor of two from envelope-based measures.",
+       "citation": "seibert-2015",
+       "agreement": "divergent_within_group",
+       "alternatives": [
+        {
+         "display": "~6 ms",
+         "basis": "",
+         "citation": "denzinger-2001",
+         "quality_flag": "definition_unstated",
+         "note": "Differs substantially from Seibert 2015 (2.5 ms) for the same signal type."
+        }
+       ],
+       "note": ""
+      },
+      {
+       "parameter": "source_level",
+       "label": "Source level",
+       "group": "amplitude",
+       "status": "core",
+       "display": "82.0 ± 4.1 dB",
+       "statistic": "mean",
+       "basis": "rms at 1.0 m",
+       "n_calls": "110",
+       "quality_flag": "ok",
+       "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is rms or peak-equivalent. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+       "citation": "seibert-2015",
+       "agreement": "single_source",
+       "alternatives": [],
+       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 82.4 ± 3.6."
+      }
+     ]
+    }
+   ],
+   "n_observations": 5,
+   "n_sources": 3,
+   "n_independent_groups": 2,
+   "citations": [
+    "denzinger-2001",
+    "goerlitz-2010",
+    "seibert-2015"
+   ]
+  },
+  "1005531": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~34 kHz, 7 ms.",
+   "context": "British reference calls.",
+   "reference": "vaughan-1997"
+  },
+  "1005663": {
+   "format": "legacy",
+   "summary": "Search calls: peak energy ~48 kHz, 3 ms.",
+   "context": "Cluttered-habitat calls, Madeira.",
+   "reference": "teixeira-2009"
+  },
+  "1004554": {
+   "format": "legacy",
+   "summary": "Peak frequency ~78.17 kHz, bandwidth 6.64 kHz, duration 3.48 ms (oral emission).",
+   "context": "Comparative database entry; body mass 1.96 g.",
+   "reference": "castro-2024"
+  },
+  "1004776": {
+   "format": "legacy",
+   "summary": "Peak frequency ~56 kHz, bandwidth 6 kHz, duration 6.7 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.05 g.",
+   "reference": "castro-2024"
+  },
+  "1004777": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49 kHz, bandwidth 4 kHz, duration 7.8 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.97 g.",
+   "reference": "castro-2024"
+  },
+  "1004778": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.57 kHz, bandwidth 6.66 kHz, duration 4.93 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.57 g.",
+   "reference": "castro-2024"
+  },
+  "1004780": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.8 kHz, bandwidth 6.1 kHz, duration 5.29 ms (oral emission).",
+   "context": "Comparative database entry; body mass 23 g.",
+   "reference": "castro-2024"
+  },
+  "1004798": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.9 kHz, bandwidth 2.4 kHz, duration 7.7 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.68 g.",
+   "reference": "castro-2024"
+  },
+  "1004781": {
+   "format": "legacy",
+   "summary": "Peak frequency ~29.38 kHz, bandwidth 2.96 kHz, duration 10.8 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.26 g.",
+   "reference": "castro-2024"
+  },
+  "1004804": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.36 kHz, bandwidth 8.38 kHz, duration 3.13 ms (oral emission).",
+   "context": "Comparative database entry; body mass 13.21 g.",
+   "reference": "castro-2024"
+  },
+  "1004805": {
+   "format": "legacy",
+   "summary": "Peak frequency ~41.9 kHz, bandwidth 13.09 kHz, duration 3.08 ms (oral emission).",
+   "context": "Comparative database entry; body mass 15.94 g.",
+   "reference": "castro-2024"
+  },
+  "1004806": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.76 kHz, bandwidth 4.15 kHz, duration 5.68 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.35 g.",
+   "reference": "castro-2024"
+  },
+  "1004789": {
+   "format": "legacy",
+   "summary": "Peak frequency ~37.35 kHz, bandwidth 3.9 kHz, duration 5.63 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.68 g.",
+   "reference": "castro-2024"
+  },
+  "1004792": {
+   "format": "legacy",
+   "summary": "Peak frequency ~89.69 kHz, bandwidth 17.6 kHz, duration 4.25 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.14 g.",
+   "reference": "castro-2024"
+  },
+  "1004813": {
+   "format": "legacy",
+   "summary": "Peak frequency ~19 kHz, bandwidth 6 kHz, duration 19 ms (oral emission).",
+   "context": "Comparative database entry; body mass 45.25 g.",
+   "reference": "castro-2024"
+  },
+  "1004794": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.76 kHz, bandwidth 3.71 kHz, duration 8.27 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.08 g.",
+   "reference": "castro-2024"
+  },
+  "1004822": {
+   "format": "legacy",
+   "summary": "Peak frequency ~27.5 kHz, bandwidth 1 kHz, duration 10 ms (oral emission).",
+   "context": "Comparative database entry; body mass 21.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004823": {
+   "format": "legacy",
+   "summary": "Peak frequency ~24 kHz, bandwidth 1.5 kHz, duration 5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 26.45 g.",
+   "reference": "castro-2024"
+  },
+  "1004825": {
+   "format": "legacy",
+   "summary": "Peak frequency ~25.29 kHz, bandwidth 2.09 kHz, duration 13.27 ms (oral emission).",
+   "context": "Comparative database entry; body mass 27.97 g.",
+   "reference": "castro-2024"
+  },
+  "1004826": {
+   "format": "legacy",
+   "summary": "Peak frequency ~29.11 kHz, bandwidth 8.05 kHz, duration 4.06 ms (oral emission).",
+   "context": "Comparative database entry; body mass 25.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004828": {
+   "format": "legacy",
+   "summary": "Peak frequency ~31.38 kHz, bandwidth 7.09 kHz, duration 7.1 ms (oral emission).",
+   "context": "Comparative database entry; body mass 24.43 g.",
+   "reference": "castro-2024"
+  },
+  "1004830": {
+   "format": "legacy",
+   "summary": "Peak frequency ~22 kHz, bandwidth 2 kHz, duration 13 ms (oral emission).",
+   "context": "Comparative database entry; body mass 53.52 g.",
+   "reference": "castro-2024"
+  },
+  "1004849": {
+   "format": "legacy",
+   "summary": "Peak frequency ~162.68 kHz, bandwidth 54.39 kHz, duration 2.74 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.15 g.",
+   "reference": "castro-2024"
+  },
+  "1004559": {
+   "format": "legacy",
+   "summary": "Peak frequency ~114.22 kHz, bandwidth 21.46 kHz, duration 5.57 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 12.94 g.",
+   "reference": "castro-2024"
+  },
+  "1004561": {
+   "format": "legacy",
+   "summary": "Peak frequency ~127.19 kHz, bandwidth 13.34 kHz, duration 3.55 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.09 g.",
+   "reference": "castro-2024"
+  },
+  "1004562": {
+   "format": "legacy",
+   "summary": "Peak frequency ~112.82 kHz, bandwidth 12.81 kHz, duration 3.31 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 4.08 g.",
+   "reference": "castro-2024"
+  },
+  "1004761": {
+   "format": "legacy",
+   "summary": "Peak frequency ~209.31 kHz, bandwidth 20.74 kHz, duration 2.67 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 4.16 g.",
+   "reference": "castro-2024"
+  },
+  "1004577": {
+   "format": "legacy",
+   "summary": "Peak frequency ~67.07 kHz, bandwidth 8.24 kHz, duration 8.87 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 49.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004578": {
+   "format": "legacy",
+   "summary": "Peak frequency ~165.4 kHz, bandwidth 11.88 kHz, duration 4.72 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 5.86 g.",
+   "reference": "castro-2024"
+  },
+  "1004580": {
+   "format": "legacy",
+   "summary": "Peak frequency ~142.18 kHz, bandwidth 20.06 kHz, duration 5.51 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004583": {
+   "format": "legacy",
+   "summary": "Peak frequency ~139.32 kHz, bandwidth 18.94 kHz, duration 7.38 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.46 g.",
+   "reference": "castro-2024"
+  },
+  "1004584": {
+   "format": "legacy",
+   "summary": "Peak frequency ~112.71 kHz, bandwidth 25.26 kHz, duration 4.72 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 18.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004585": {
+   "format": "legacy",
+   "summary": "Peak frequency ~130.37 kHz, bandwidth 19.86 kHz, duration 4.48 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.51 g.",
+   "reference": "castro-2024"
+  },
+  "1004586": {
+   "format": "legacy",
+   "summary": "Peak frequency ~153.59 kHz, bandwidth 18.83 kHz, duration 4.85 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 3.84 g.",
+   "reference": "castro-2024"
+  },
+  "1004592": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.98 kHz, bandwidth 8.89 kHz, duration 11.12 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 46.9 g.",
+   "reference": "castro-2024"
+  },
+  "1004599": {
+   "format": "legacy",
+   "summary": "Peak frequency ~138.99 kHz, bandwidth 17.45 kHz, duration 5.98 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.83 g.",
+   "reference": "castro-2024"
+  },
+  "1004642": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.28 kHz, bandwidth 7.24 kHz, duration 20.9 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 115.4 g.",
+   "reference": "castro-2024"
+  },
+  "1004604": {
+   "format": "legacy",
+   "summary": "Peak frequency ~186.92 kHz, bandwidth 15.16 kHz, duration 6.6 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 4 g.",
+   "reference": "castro-2024"
+  },
+  "1004607": {
+   "format": "legacy",
+   "summary": "Peak frequency ~69.2 kHz, bandwidth 5 kHz, duration 12 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 25.9 g.",
+   "reference": "castro-2024"
+  },
+  "1004613": {
+   "format": "legacy",
+   "summary": "Peak frequency ~93.57 kHz, bandwidth 11.4 kHz, duration 5.87 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 19.95 g.",
+   "reference": "castro-2024"
+  },
+  "1004614": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.71 kHz, bandwidth 4.91 kHz, duration 9.6 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 31.08 g.",
+   "reference": "castro-2024"
+  },
+  "1004615": {
+   "format": "legacy",
+   "summary": "Peak frequency ~67.27 kHz, bandwidth 8.85 kHz, duration 9.65 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 40 g.",
+   "reference": "castro-2024"
+  },
+  "1004618": {
+   "format": "legacy",
+   "summary": "Peak frequency ~114.26 kHz, bandwidth 38.09 kHz, duration 5.37 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 16.1 g.",
+   "reference": "castro-2024"
+  },
+  "1004628": {
+   "format": "legacy",
+   "summary": "Peak frequency ~134.3 kHz, bandwidth 18.57 kHz, duration 5.27 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.2 g.",
+   "reference": "castro-2024"
+  },
+  "1004630": {
+   "format": "legacy",
+   "summary": "Peak frequency ~62.36 kHz, bandwidth 8.26 kHz, duration 7.06 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.59 g.",
+   "reference": "castro-2024"
+  },
+  "1004632": {
+   "format": "legacy",
+   "summary": "Peak frequency ~131.51 kHz, bandwidth 20.86 kHz, duration 7.22 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.61 g.",
+   "reference": "castro-2024"
+  },
+  "1004571": {
+   "format": "legacy",
+   "summary": "Peak frequency ~67.46 kHz, bandwidth 7.13 kHz, duration 51.43 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 14 g.",
+   "reference": "castro-2024"
+  },
+  "1004635": {
+   "format": "legacy",
+   "summary": "Peak frequency ~135.74 kHz, bandwidth 21.77 kHz, duration 6.29 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004639": {
+   "format": "legacy",
+   "summary": "Peak frequency ~72.07 kHz, bandwidth 7.8 kHz, duration 6.89 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 33.31 g.",
+   "reference": "castro-2024"
+  },
+  "1004765": {
+   "format": "legacy",
+   "summary": "Peak frequency ~114 kHz, bandwidth 15 kHz, duration 12 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004769": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39.82 kHz, bandwidth 7.48 kHz, duration 8.43 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.1 g.",
+   "reference": "castro-2024"
+  },
+  "1004647": {
+   "format": "legacy",
+   "summary": "Peak frequency ~37.5 kHz, bandwidth 24 kHz, duration 3.5 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 23.8 g.",
+   "reference": "castro-2024"
+  },
+  "1004649": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.07 kHz, bandwidth 18.61 kHz, duration 1.13 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 124.4 g.",
+   "reference": "castro-2024"
+  },
+  "1004648": {
+   "format": "legacy",
+   "summary": "Peak frequency ~68.25 kHz, bandwidth 23.29 kHz, duration 1.39 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 39.27 g.",
+   "reference": "castro-2024"
+  },
+  "1004650": {
+   "format": "legacy",
+   "summary": "Peak frequency ~20.1 kHz, bandwidth 8.88 kHz, duration 1.69 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 24.71 g.",
+   "reference": "castro-2024"
+  },
+  "1005105": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.07 kHz, bandwidth 48.01 kHz, duration 3.6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.4 g.",
+   "reference": "castro-2024"
+  },
+  "1005110": {
+   "format": "legacy",
+   "summary": "Peak frequency ~61.92 kHz, bandwidth 45.8 kHz, duration 3.16 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.38 g.",
+   "reference": "castro-2024"
+  },
+  "1005116": {
+   "format": "legacy",
+   "summary": "Peak frequency ~47.4 kHz, bandwidth 55 kHz, duration 2.5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 14.9 g.",
+   "reference": "castro-2024"
+  },
+  "1005122": {
+   "format": "legacy",
+   "summary": "Peak frequency ~54.97 kHz, bandwidth 44.49 kHz, duration 2.96 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.81 g.",
+   "reference": "castro-2024"
+  },
+  "1005126": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52.07 kHz, bandwidth 36.29 kHz, duration 3.48 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.43 g.",
+   "reference": "castro-2024"
+  },
+  "1005133": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.79 kHz, bandwidth 34.56 kHz, duration 3.38 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.95 g.",
+   "reference": "castro-2024"
+  },
+  "1005135": {
+   "format": "legacy",
+   "summary": "Peak frequency ~53.41 kHz, bandwidth 27.11 kHz, duration 5.47 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.46 g.",
+   "reference": "castro-2024"
+  },
+  "1005165": {
+   "format": "legacy",
+   "summary": "Peak frequency ~27.9 kHz, bandwidth 9 kHz, duration 14.14 ms (oral emission).",
+   "context": "Comparative database entry; body mass 169.4 g.",
+   "reference": "castro-2024"
+  },
+  "1005182": {
+   "format": "legacy",
+   "summary": "Peak frequency ~18 kHz, bandwidth 5 kHz, duration 14.2 ms (oral emission).",
+   "context": "Comparative database entry; body mass 36.2 g.",
+   "reference": "castro-2024"
+  },
+  "1005193": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.4 kHz, bandwidth 10.3 kHz, duration 7.8 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.86 g.",
+   "reference": "castro-2024"
+  },
+  "1005202": {
+   "format": "legacy",
+   "summary": "Peak frequency ~37.66 kHz, bandwidth 4.62 kHz, duration 9.29 ms (oral emission).",
+   "context": "Comparative database entry; body mass 13.7 g.",
+   "reference": "castro-2024"
+  },
+  "1005210": {
+   "format": "legacy",
+   "summary": "Peak frequency ~27.12 kHz, bandwidth 22.09 kHz, duration 5.57 ms (oral emission).",
+   "context": "Comparative database entry; body mass 26.59 g.",
+   "reference": "castro-2024"
+  },
+  "1005214": {
+   "format": "legacy",
+   "summary": "Peak frequency ~15 kHz, bandwidth 4.8 kHz, duration 16.5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 45.5 g.",
+   "reference": "castro-2024"
+  },
+  "1005215": {
+   "format": "legacy",
+   "summary": "Peak frequency ~17.8 kHz, bandwidth 0.73 kHz, duration 8.57 ms (oral emission).",
+   "context": "Comparative database entry; body mass 31.12 g.",
+   "reference": "castro-2024"
+  },
+  "1005218": {
+   "format": "legacy",
+   "summary": "Peak frequency ~22.11 kHz, bandwidth 20.78 kHz, duration 8.82 ms (oral emission).",
+   "context": "Comparative database entry; body mass 21.82 g.",
+   "reference": "castro-2024"
+  },
+  "1005227": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.04 kHz, bandwidth 28.42 kHz, duration 3.98 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.56 g.",
+   "reference": "castro-2024"
+  },
+  "1005250": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36 kHz, bandwidth 12 kHz, duration 6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7 g.",
+   "reference": "castro-2024"
+  },
+  "1005191": {
+   "format": "legacy",
+   "summary": "Peak frequency ~31 kHz, bandwidth 1.5 kHz, duration 8 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8 g.",
+   "reference": "castro-2024"
+  },
+  "1005237": {
+   "format": "legacy",
+   "summary": "Peak frequency ~17.5 kHz, bandwidth 5 kHz, duration 15.7 ms (oral emission).",
+   "context": "Comparative database entry; body mass 16.38 g.",
+   "reference": "castro-2024"
+  },
+  "1005242": {
+   "format": "legacy",
+   "summary": "Peak frequency ~10.8 kHz, bandwidth 6.4 kHz, duration 24 ms (oral emission).",
+   "context": "Comparative database entry; body mass 34.92 g.",
+   "reference": "castro-2024"
+  },
+  "1005259": {
+   "format": "legacy",
+   "summary": "Peak frequency ~27.99 kHz, bandwidth 25.87 kHz, duration 3.74 ms (oral emission).",
+   "context": "Comparative database entry; body mass 14.25 g.",
+   "reference": "castro-2024"
+  },
+  "1005141": {
+   "format": "legacy",
+   "summary": "Peak frequency ~12.77 kHz, bandwidth 7.36 kHz, duration 15.52 ms (oral emission).",
+   "context": "Comparative database entry; body mass 36.4 g.",
+   "reference": "castro-2024"
+  },
+  "1005262": {
+   "format": "legacy",
+   "summary": "Peak frequency ~26.72 kHz, bandwidth 3.16 kHz, duration 11.25 ms (oral emission).",
+   "context": "Comparative database entry; body mass 12.61 g.",
+   "reference": "castro-2024"
+  },
+  "1005263": {
+   "format": "legacy",
+   "summary": "Peak frequency ~17 kHz, bandwidth 13 kHz, duration 15 ms (oral emission).",
+   "context": "Comparative database entry; body mass 33.89 g.",
+   "reference": "castro-2024"
+  },
+  "1005268": {
+   "format": "legacy",
+   "summary": "Peak frequency ~19.3 kHz, bandwidth 4 kHz, duration 9 ms (oral emission).",
+   "context": "Comparative database entry; body mass 37.43 g.",
+   "reference": "castro-2024"
+  },
+  "1004850": {
+   "format": "legacy",
+   "summary": "Peak frequency ~57.5 kHz, bandwidth 16 kHz, duration 3.16 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.69 g.",
+   "reference": "castro-2024"
+  },
+  "1004853": {
+   "format": "legacy",
+   "summary": "Peak frequency ~66.22 kHz, bandwidth 13.03 kHz, duration 4.76 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.52 g.",
+   "reference": "castro-2024"
+  },
+  "1004857": {
+   "format": "legacy",
+   "summary": "Peak frequency ~69 kHz, bandwidth 12 kHz, duration 4.03 ms (oral emission).",
+   "context": "Comparative database entry; body mass 12.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004861": {
+   "format": "legacy",
+   "summary": "Peak frequency ~60.95 kHz, bandwidth 7.74 kHz, duration 25.81 ms (oral emission).",
+   "context": "Comparative database entry; body mass 19.59 g.",
+   "reference": "castro-2024"
+  },
+  "1004862": {
+   "format": "legacy",
+   "summary": "Peak frequency ~65.45 kHz, bandwidth 17.49 kHz, duration 4.75 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004866": {
+   "format": "legacy",
+   "summary": "Peak frequency ~81.5 kHz, bandwidth 15.5 kHz, duration 3.98 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.64 g.",
+   "reference": "castro-2024"
+  },
+  "1004869": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.38 kHz, bandwidth 19.97 kHz, duration 1.94 ms (oral emission).",
+   "context": "Comparative database entry; body mass 13.14 g.",
+   "reference": "castro-2024"
+  },
+  "1004831": {
+   "format": "legacy",
+   "summary": "Peak frequency ~33.4 kHz, bandwidth 6.72 kHz, duration 5.32 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.1 g.",
+   "reference": "castro-2024"
+  },
+  "1005279": {
+   "format": "legacy",
+   "summary": "Peak frequency ~116.48 kHz, bandwidth 49.56 kHz, duration 1.58 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.68 g.",
+   "reference": "castro-2024"
+  },
+  "1005281": {
+   "format": "legacy",
+   "summary": "Peak frequency ~83.4 kHz, bandwidth 42.7 kHz, duration 2.7 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.88 g.",
+   "reference": "castro-2024"
+  },
+  "1004871": {
+   "format": "legacy",
+   "summary": "Peak frequency ~35.27 kHz, bandwidth 19.47 kHz, duration 6.46 ms (oral emission).",
+   "context": "Comparative database entry; body mass 29.93 g.",
+   "reference": "castro-2024"
+  },
+  "1004836": {
+   "format": "legacy",
+   "summary": "Peak frequency ~20 kHz, bandwidth 24 kHz, duration 3.5 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 29.8 g.",
+   "reference": "castro-2024"
+  },
+  "1004840": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.97 kHz, bandwidth 21.55 kHz, duration 1.18 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 14.49 g.",
+   "reference": "castro-2024"
+  },
+  "1004845": {
+   "format": "legacy",
+   "summary": "Peak frequency ~71.32 kHz, bandwidth 20.43 kHz, duration 1.41 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.2 g.",
+   "reference": "castro-2024"
+  },
+  "1004995": {
+   "format": "legacy",
+   "summary": "Peak frequency ~74.59 kHz, bandwidth 38.94 kHz, duration 2.49 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.61 g.",
+   "reference": "castro-2024"
+  },
+  "1004894": {
+   "format": "legacy",
+   "summary": "Peak frequency ~81.69 kHz, bandwidth 40.28 kHz, duration 1.86 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.15 g.",
+   "reference": "castro-2024"
+  },
+  "1004996": {
+   "format": "legacy",
+   "summary": "Peak frequency ~72.59 kHz, bandwidth 59.79 kHz, duration 2.39 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 19.23 g.",
+   "reference": "castro-2024"
+  },
+  "1005004": {
+   "format": "legacy",
+   "summary": "Peak frequency ~37.21 kHz, bandwidth 14.73 kHz, duration 2.92 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 19.65 g.",
+   "reference": "castro-2024"
+  },
+  "1005011": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.25 kHz, bandwidth 25.98 kHz, duration 2.32 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 43.63 g.",
+   "reference": "castro-2024"
+  },
+  "1005012": {
+   "format": "legacy",
+   "summary": "Peak frequency ~62.06 kHz, bandwidth 24.89 kHz, duration 1.66 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 59.3 g.",
+   "reference": "castro-2024"
+  },
+  "1005013": {
+   "format": "legacy",
+   "summary": "Peak frequency ~68.88 kHz, bandwidth 32.27 kHz, duration 1.46 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 35.91 g.",
+   "reference": "castro-2024"
+  },
+  "1004883": {
+   "format": "legacy",
+   "summary": "Peak frequency ~23.3 kHz, bandwidth 14.35 kHz, duration 5.65 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 45.5 g.",
+   "reference": "castro-2024"
+  },
+  "1004884": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59 kHz, bandwidth 54 kHz, duration 2.38 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 37.25 g.",
+   "reference": "castro-2024"
+  },
+  "1004874": {
+   "format": "legacy",
+   "summary": "Peak frequency ~95.4 kHz, bandwidth 26.14 kHz, duration 0.81 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.1 g.",
+   "reference": "castro-2024"
+  },
+  "1004877": {
+   "format": "legacy",
+   "summary": "Peak frequency ~63.83 kHz, bandwidth 29.3 kHz, duration 2.08 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 19.23 g.",
+   "reference": "castro-2024"
+  },
+  "1005024": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.65 kHz, bandwidth 24.5 kHz, duration 3.67 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 35.39 g.",
+   "reference": "castro-2024"
+  },
+  "1005027": {
+   "format": "legacy",
+   "summary": "Peak frequency ~86.92 kHz, bandwidth 23.58 kHz, duration 3.68 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.91 g.",
+   "reference": "castro-2024"
+  },
+  "1005028": {
+   "format": "legacy",
+   "summary": "Peak frequency ~83.29 kHz, bandwidth 23.66 kHz, duration 0.95 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 23.81 g.",
+   "reference": "castro-2024"
+  },
+  "1004902": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.96 kHz, bandwidth 35.44 kHz, duration 2.36 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 17.26 g.",
+   "reference": "castro-2024"
+  },
+  "1004880": {
+   "format": "legacy",
+   "summary": "Peak frequency ~61.56 kHz, bandwidth 26.72 kHz, duration 1.92 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 33.16 g.",
+   "reference": "castro-2024"
+  },
+  "1004881": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.84 kHz, bandwidth 21.6 kHz, duration 2.22 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 36.71 g.",
+   "reference": "castro-2024"
+  },
+  "1005029": {
+   "format": "legacy",
+   "summary": "Peak frequency ~74.58 kHz, bandwidth 35.47 kHz, duration 1.27 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 5.55 g.",
+   "reference": "castro-2024"
+  },
+  "1004886": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.1 kHz, bandwidth 27 kHz, duration 2.3 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.87 g.",
+   "reference": "castro-2024"
+  },
+  "1004913": {
+   "format": "legacy",
+   "summary": "Peak frequency ~86.48 kHz, bandwidth 40.68 kHz, duration 2.28 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.97 g.",
+   "reference": "castro-2024"
+  },
+  "1004952": {
+   "format": "legacy",
+   "summary": "Peak frequency ~98.89 kHz, bandwidth 4.49 kHz, duration 0.11 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004914": {
+   "format": "legacy",
+   "summary": "Peak frequency ~73.5 kHz, bandwidth 58.31 kHz, duration 5.39 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 25.27 g.",
+   "reference": "castro-2024"
+  },
+  "1004928": {
+   "format": "legacy",
+   "summary": "Peak frequency ~111.54 kHz, bandwidth 43.12 kHz, duration 2.99 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.85 g.",
+   "reference": "castro-2024"
+  },
+  "1004927": {
+   "format": "legacy",
+   "summary": "Peak frequency ~97.35 kHz, bandwidth 32.36 kHz, duration 1.56 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.09 g.",
+   "reference": "castro-2024"
+  },
+  "1004978": {
+   "format": "legacy",
+   "summary": "Peak frequency ~66.75 kHz, bandwidth 23.92 kHz, duration 1.15 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 32.29 g.",
+   "reference": "castro-2024"
+  },
+  "1004966": {
+   "format": "legacy",
+   "summary": "Peak frequency ~55 kHz, bandwidth 20.5 kHz, duration 2 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.02 g.",
+   "reference": "castro-2024"
+  },
+  "1004951": {
+   "format": "legacy",
+   "summary": "Peak frequency ~69.2 kHz, bandwidth 28.5 kHz, duration 1.3 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 16.27 g.",
+   "reference": "castro-2024"
+  },
+  "1004956": {
+   "format": "legacy",
+   "summary": "Peak frequency ~80.8 kHz, bandwidth 28.8 kHz, duration 1.4 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 12.89 g.",
+   "reference": "castro-2024"
+  },
+  "1004958": {
+   "format": "legacy",
+   "summary": "Peak frequency ~98.1 kHz, bandwidth 34.8 kHz, duration 1.5 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.4 g.",
+   "reference": "castro-2024"
+  },
+  "1004960": {
+   "format": "legacy",
+   "summary": "Peak frequency ~82.26 kHz, bandwidth 41 kHz, duration 1.8 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.9 g.",
+   "reference": "castro-2024"
+  },
+  "1004917": {
+   "format": "legacy",
+   "summary": "Peak frequency ~96.62 kHz, bandwidth 47.43 kHz, duration 2.62 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.33 g.",
+   "reference": "castro-2024"
+  },
+  "1004888": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39 kHz, bandwidth 11 kHz, duration 4.69 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.59 g.",
+   "reference": "castro-2024"
+  },
+  "1005032": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.5 kHz, bandwidth 31 kHz, duration 5.57 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.82 g.",
+   "reference": "castro-2024"
+  },
+  "1004980": {
+   "format": "legacy",
+   "summary": "Peak frequency ~63.16 kHz, bandwidth 18.14 kHz, duration 2.25 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 36.7 g.",
+   "reference": "castro-2024"
+  },
+  "1004982": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.68 kHz, bandwidth 13.7 kHz, duration 1.47 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 91.44 g.",
+   "reference": "castro-2024"
+  },
+  "1005037": {
+   "format": "legacy",
+   "summary": "Peak frequency ~91.38 kHz, bandwidth 40.2 kHz, duration 4.5 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 14.26 g.",
+   "reference": "castro-2024"
+  },
+  "1005041": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.87 kHz, bandwidth 24.67 kHz, duration 2.83 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.44 g.",
+   "reference": "castro-2024"
+  },
+  "1005081": {
+   "format": "legacy",
+   "summary": "Peak frequency ~88.06 kHz, bandwidth 38.94 kHz, duration 1.93 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 20.19 g.",
+   "reference": "castro-2024"
+  },
+  "1005082": {
+   "format": "legacy",
+   "summary": "Peak frequency ~71.5 kHz, bandwidth 35.62 kHz, duration 1.01 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 21 g.",
+   "reference": "castro-2024"
+  },
+  "1005086": {
+   "format": "legacy",
+   "summary": "Peak frequency ~72.07 kHz, bandwidth 29.93 kHz, duration 1.65 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 11.79 g.",
+   "reference": "castro-2024"
+  },
+  "1005071": {
+   "format": "legacy",
+   "summary": "Peak frequency ~56.48 kHz, bandwidth 31.59 kHz, duration 5.46 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.46 g.",
+   "reference": "castro-2024"
+  },
+  "1005093": {
+   "format": "legacy",
+   "summary": "Peak frequency ~55.93 kHz, bandwidth 19.94 kHz, duration 0.96 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 24.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004985": {
+   "format": "legacy",
+   "summary": "Peak frequency ~78.18 kHz, bandwidth 19.79 kHz, duration 1.38 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 27.7 g.",
+   "reference": "castro-2024"
+  },
+  "1004967": {
+   "format": "legacy",
+   "summary": "Peak frequency ~64.87 kHz, bandwidth 24.11 kHz, duration 1.02 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 36.9 g.",
+   "reference": "castro-2024"
+  },
+  "1004923": {
+   "format": "legacy",
+   "summary": "Peak frequency ~82.96 kHz, bandwidth 25.09 kHz, duration 0.39 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.25 g.",
+   "reference": "castro-2024"
+  },
+  "1005056": {
+   "format": "legacy",
+   "summary": "Peak frequency ~92.35 kHz, bandwidth 28.57 kHz, duration 1.2 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 16.28 g.",
+   "reference": "castro-2024"
+  },
+  "1005068": {
+   "format": "legacy",
+   "summary": "Peak frequency ~71.74 kHz, bandwidth 20.86 kHz, duration 1.03 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 35.89 g.",
+   "reference": "castro-2024"
+  },
+  "1004652": {
+   "format": "legacy",
+   "summary": "Peak frequency ~89.56 kHz, bandwidth 8.63 kHz, duration 48.86 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 12.1 g.",
+   "reference": "castro-2024"
+  },
+  "1004654": {
+   "format": "legacy",
+   "summary": "Peak frequency ~80.55 kHz, bandwidth 15.78 kHz, duration 27.88 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.7 g.",
+   "reference": "castro-2024"
+  },
+  "1004661": {
+   "format": "legacy",
+   "summary": "Peak frequency ~60.5 kHz, bandwidth 4 kHz, duration 44.1 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.29 g.",
+   "reference": "castro-2024"
+  },
+  "1004665": {
+   "format": "legacy",
+   "summary": "Peak frequency ~84.36 kHz, bandwidth 12.5 kHz, duration 42.67 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 12.87 g.",
+   "reference": "castro-2024"
+  },
+  "1004670": {
+   "format": "legacy",
+   "summary": "Peak frequency ~78.46 kHz, bandwidth 12.5 kHz, duration 35.01 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.07 g.",
+   "reference": "castro-2024"
+  },
+  "1004674": {
+   "format": "legacy",
+   "summary": "Peak frequency ~105.97 kHz, bandwidth 13.35 kHz, duration 43.58 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.27 g.",
+   "reference": "castro-2024"
+  },
+  "1004677": {
+   "format": "legacy",
+   "summary": "Peak frequency ~86.01 kHz, bandwidth 13.04 kHz, duration 36.05 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.94 g.",
+   "reference": "castro-2024"
+  },
+  "1004679": {
+   "format": "legacy",
+   "summary": "Peak frequency ~110.6 kHz, bandwidth 19.98 kHz, duration 22.28 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.3 g.",
+   "reference": "castro-2024"
+  },
+  "1004682": {
+   "format": "legacy",
+   "summary": "Peak frequency ~105.67 kHz, bandwidth 15.58 kHz, duration 21.82 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.25 g.",
+   "reference": "castro-2024"
+  },
+  "1004683": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.99 kHz, bandwidth 7.1 kHz, duration 50.82 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 14.3 g.",
+   "reference": "castro-2024"
+  },
+  "1004684": {
+   "format": "legacy",
+   "summary": "Peak frequency ~82.18 kHz, bandwidth 12.55 kHz, duration 48.09 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 22.59 g.",
+   "reference": "castro-2024"
+  },
+  "1004687": {
+   "format": "legacy",
+   "summary": "Peak frequency ~53.24 kHz, bandwidth 6.64 kHz, duration 41.27 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.09 g.",
+   "reference": "castro-2024"
+  },
+  "1004690": {
+   "format": "legacy",
+   "summary": "Peak frequency ~34.27 kHz, bandwidth 5.79 kHz, duration 46.62 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 25.99 g.",
+   "reference": "castro-2024"
+  },
+  "1004693": {
+   "format": "legacy",
+   "summary": "Peak frequency ~109.32 kHz, bandwidth 14.83 kHz, duration 40.83 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 4.57 g.",
+   "reference": "castro-2024"
+  },
+  "1004699": {
+   "format": "legacy",
+   "summary": "Peak frequency ~105.41 kHz, bandwidth 19.2 kHz, duration 41.85 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.39 g.",
+   "reference": "castro-2024"
+  },
+  "1004700": {
+   "format": "legacy",
+   "summary": "Peak frequency ~103.2 kHz, bandwidth 18.37 kHz, duration 35.34 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 5.46 g.",
+   "reference": "castro-2024"
+  },
+  "1004703": {
+   "format": "legacy",
+   "summary": "Peak frequency ~31.07 kHz, bandwidth 1.49 kHz, duration 64.97 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 34.07 g.",
+   "reference": "castro-2024"
+  },
+  "1004706": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.95 kHz, bandwidth 6.44 kHz, duration 28.47 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.18 g.",
+   "reference": "castro-2024"
+  },
+  "1004709": {
+   "format": "legacy",
+   "summary": "Peak frequency ~85.55 kHz, bandwidth 13.95 kHz, duration 32.04 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 6.73 g.",
+   "reference": "castro-2024"
+  },
+  "1004712": {
+   "format": "legacy",
+   "summary": "Peak frequency ~68.8 kHz, bandwidth 7.56 kHz, duration 56.06 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.17 g.",
+   "reference": "castro-2024"
+  },
+  "1004713": {
+   "format": "legacy",
+   "summary": "Peak frequency ~110 kHz, bandwidth 5 kHz, duration 35.9 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 14.03 g.",
+   "reference": "castro-2024"
+  },
+  "1004716": {
+   "format": "legacy",
+   "summary": "Peak frequency ~106.45 kHz, bandwidth 16.27 kHz, duration 40.39 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.49 g.",
+   "reference": "castro-2024"
+  },
+  "1004724": {
+   "format": "legacy",
+   "summary": "Peak frequency ~56.68 kHz, bandwidth 5.33 kHz, duration 42.3 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 11.55 g.",
+   "reference": "castro-2024"
+  },
+  "1004727": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39.78 kHz, bandwidth 4.71 kHz, duration 81.84 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 10.91 g.",
+   "reference": "castro-2024"
+  },
+  "1004730": {
+   "format": "legacy",
+   "summary": "Peak frequency ~109.85 kHz, bandwidth 12.18 kHz, duration 36.08 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 5.15 g.",
+   "reference": "castro-2024"
+  },
+  "1004732": {
+   "format": "legacy",
+   "summary": "Peak frequency ~26.01 kHz, bandwidth 3.99 kHz, duration 43.52 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 32.62 g.",
+   "reference": "castro-2024"
+  },
+  "1004740": {
+   "format": "legacy",
+   "summary": "Peak frequency ~67.87 kHz, bandwidth 8.07 kHz, duration 30.5 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.74 g.",
+   "reference": "castro-2024"
+  },
+  "1004741": {
+   "format": "legacy",
+   "summary": "Peak frequency ~69.59 kHz, bandwidth 7.66 kHz, duration 34.87 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 9.61 g.",
+   "reference": "castro-2024"
+  },
+  "1004745": {
+   "format": "legacy",
+   "summary": "Peak frequency ~80.71 kHz, bandwidth 14.59 kHz, duration 29.37 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.13 g.",
+   "reference": "castro-2024"
+  },
+  "1004748": {
+   "format": "legacy",
+   "summary": "Peak frequency ~93.89 kHz, bandwidth 14.52 kHz, duration 26.53 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.92 g.",
+   "reference": "castro-2024"
+  },
+  "1004751": {
+   "format": "legacy",
+   "summary": "Peak frequency ~104.36 kHz, bandwidth 18.78 kHz, duration 22.3 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 7.07 g.",
+   "reference": "castro-2024"
+  },
+  "1004754": {
+   "format": "legacy",
+   "summary": "Peak frequency ~89.53 kHz, bandwidth 14.8 kHz, duration 33.89 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 8.26 g.",
+   "reference": "castro-2024"
+  },
+  "1004755": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52.41 kHz, bandwidth 8.21 kHz, duration 19.51 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 15.16 g.",
+   "reference": "castro-2024"
+  },
+  "1004759": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49.7 kHz, bandwidth 4.74 kHz, duration 49.34 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 19.33 g.",
+   "reference": "castro-2024"
+  },
+  "1004772": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.33 kHz, bandwidth 4.33 kHz, duration 9.42 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 13.1 g.",
+   "reference": "castro-2024"
+  },
+  "1004774": {
+   "format": "legacy",
+   "summary": "Peak frequency ~30.72 kHz, bandwidth 1.88 kHz, duration 9.88 ms (nasal emission).",
+   "context": "Comparative database entry; body mass 28.02 g.",
+   "reference": "castro-2024"
+  },
+  "1005097": {
+   "format": "legacy",
+   "summary": "Peak frequency ~54.39 kHz, bandwidth 24.13 kHz, duration 2.48 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.52 g.",
+   "reference": "castro-2024"
+  },
+  "1005492": {
+   "format": "legacy",
+   "summary": "Peak frequency ~44.76 kHz, bandwidth 34.36 kHz, duration 2.59 ms (oral emission).",
+   "context": "Comparative database entry; body mass 22.24 g.",
+   "reference": "castro-2024"
+  },
+  "1005653": {
+   "format": "legacy",
+   "summary": "Peak frequency ~34.49 kHz, bandwidth 11.33 kHz, duration 2.52 ms (oral emission).",
+   "context": "Comparative database entry; body mass 15.05 g.",
+   "reference": "castro-2024"
+  },
+  "1005703": {
+   "format": "legacy",
+   "summary": "Peak frequency ~24.44 kHz, bandwidth 15.35 kHz, duration 6.5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.74 g.",
+   "reference": "castro-2024"
+  },
+  "1005704": {
+   "format": "legacy",
+   "summary": "Peak frequency ~29.39 kHz, bandwidth 18.27 kHz, duration 9.19 ms (oral emission).",
+   "context": "Comparative database entry; body mass 14.24 g.",
+   "reference": "castro-2024"
+  },
+  "1005705": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52.92 kHz, bandwidth 23.69 kHz, duration 5.35 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.91 g.",
+   "reference": "castro-2024"
+  },
+  "1005708": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40 kHz, bandwidth 12 kHz, duration 6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.86 g.",
+   "reference": "castro-2024"
+  },
+  "1005709": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.47 kHz, bandwidth 22.9 kHz, duration 6.54 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.46 g.",
+   "reference": "castro-2024"
+  },
+  "1005099": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.5 kHz, bandwidth 45.8 kHz, duration 2.9 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.38 g.",
+   "reference": "castro-2024"
+  },
+  "1005100": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.92 kHz, bandwidth 45.15 kHz, duration 1.99 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.37 g.",
+   "reference": "castro-2024"
+  },
+  "1005657": {
+   "format": "legacy",
+   "summary": "Peak frequency ~34.73 kHz, bandwidth 20.33 kHz, duration 3.28 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.3 g.",
+   "reference": "castro-2024"
+  },
+  "1005519": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.55 kHz, bandwidth 31.56 kHz, duration 7.93 ms (oral emission).",
+   "context": "Comparative database entry; body mass 17.49 g.",
+   "reference": "castro-2024"
+  },
+  "1005710": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40 kHz, bandwidth 35 kHz, duration 5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 23 g.",
+   "reference": "castro-2024"
+  },
+  "1005711": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36 kHz, bandwidth 35 kHz, duration 6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 22.54 g.",
+   "reference": "castro-2024"
+  },
+  "1005547": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.63 kHz, bandwidth 34.16 kHz, duration 2.26 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.25 g.",
+   "reference": "castro-2024"
+  },
+  "1005600": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.16 kHz, bandwidth 28.31 kHz, duration 3.43 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.59 g.",
+   "reference": "castro-2024"
+  },
+  "1005715": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.47 kHz, bandwidth 16.14 kHz, duration 1.96 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.07 g.",
+   "reference": "castro-2024"
+  },
+  "1005727": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36.15 kHz, bandwidth 16.7 kHz, duration 7.08 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.3 g.",
+   "reference": "castro-2024"
+  },
+  "1005659": {
+   "format": "legacy",
+   "summary": "Peak frequency ~20.37 kHz, bandwidth 15.83 kHz, duration 2.92 ms (oral emission).",
+   "context": "Comparative database entry; body mass 12.13 g.",
+   "reference": "castro-2024"
+  },
+  "1005284": {
+   "format": "legacy",
+   "summary": "Peak frequency ~92 kHz, bandwidth 36 kHz, duration 2.3 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.11 g.",
+   "reference": "castro-2024"
+  },
+  "1005292": {
+   "format": "legacy",
+   "summary": "Peak frequency ~148.17 kHz, bandwidth 95.09 kHz, duration 1.99 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.55 g.",
+   "reference": "castro-2024"
+  },
+  "1005293": {
+   "format": "legacy",
+   "summary": "Peak frequency ~83.82 kHz, bandwidth 69.35 kHz, duration 2.74 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.68 g.",
+   "reference": "castro-2024"
+  },
+  "1005296": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.57 kHz, bandwidth 43.33 kHz, duration 2.13 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.66 g.",
+   "reference": "castro-2024"
+  },
+  "1005299": {
+   "format": "legacy",
+   "summary": "Peak frequency ~105.05 kHz, bandwidth 47.83 kHz, duration 1.16 ms (oral emission).",
+   "context": "Comparative database entry; body mass 2.03 g.",
+   "reference": "castro-2024"
+  },
+  "1005302": {
+   "format": "legacy",
+   "summary": "Peak frequency ~108.1 kHz, bandwidth 64.8 kHz, duration 1.62 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10.21 g.",
+   "reference": "castro-2024"
+  },
+  "1005303": {
+   "format": "legacy",
+   "summary": "Peak frequency ~147.27 kHz, bandwidth 59.03 kHz, duration 1.86 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.14 g.",
+   "reference": "castro-2024"
+  },
+  "1005735": {
+   "format": "legacy",
+   "summary": "Peak frequency ~22 kHz, bandwidth 13.5 kHz, duration 2.6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.72 g.",
+   "reference": "castro-2024"
+  },
+  "1005738": {
+   "format": "legacy",
+   "summary": "Peak frequency ~23.08 kHz, bandwidth 5.85 kHz, duration 10.95 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.1 g.",
+   "reference": "castro-2024"
+  },
+  "1005562": {
+   "format": "legacy",
+   "summary": "Peak frequency ~30.19 kHz, bandwidth 24.76 kHz, duration 9.21 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.02 g.",
+   "reference": "castro-2024"
+  },
+  "1005575": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.95 kHz, bandwidth 13.84 kHz, duration 8.5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 12.33 g.",
+   "reference": "castro-2024"
+  },
+  "1005329": {
+   "format": "legacy",
+   "summary": "Peak frequency ~60.51 kHz, bandwidth 44.82 kHz, duration 1.01 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.41 g.",
+   "reference": "castro-2024"
+  },
+  "1005341": {
+   "format": "legacy",
+   "summary": "Peak frequency ~70 kHz, bandwidth 70 kHz, duration 3 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.54 g.",
+   "reference": "castro-2024"
+  },
+  "1005346": {
+   "format": "legacy",
+   "summary": "Peak frequency ~65.99 kHz, bandwidth 70.19 kHz, duration 1.49 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.91 g.",
+   "reference": "castro-2024"
+  },
+  "1005352": {
+   "format": "legacy",
+   "summary": "Peak frequency ~124.14 kHz, bandwidth 92.5 kHz, duration 1.25 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4 g.",
+   "reference": "castro-2024"
+  },
+  "1005355": {
+   "format": "legacy",
+   "summary": "Peak frequency ~67.14 kHz, bandwidth 71.59 kHz, duration 1.84 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.69 g.",
+   "reference": "castro-2024"
+  },
+  "1005359": {
+   "format": "legacy",
+   "summary": "Peak frequency ~73.02 kHz, bandwidth 44.23 kHz, duration 1.49 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.69 g.",
+   "reference": "castro-2024"
+  },
+  "1005370": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49.6 kHz, bandwidth 59.76 kHz, duration 3.46 ms (oral emission).",
+   "context": "Comparative database entry; body mass 38.04 g.",
+   "reference": "castro-2024"
+  },
+  "1005375": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.11 kHz, bandwidth 48.09 kHz, duration 3.51 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.47 g.",
+   "reference": "castro-2024"
+  },
+  "1005376": {
+   "format": "legacy",
+   "summary": "Peak frequency ~44 kHz, bandwidth 53.72 kHz, duration 3.54 ms (oral emission).",
+   "context": "Comparative database entry; body mass 23.82 g.",
+   "reference": "castro-2024"
+  },
+  "1005377": {
+   "format": "legacy",
+   "summary": "Peak frequency ~41.26 kHz, bandwidth 36.58 kHz, duration 2.2 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.93 g.",
+   "reference": "castro-2024"
+  },
+  "1005383": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.44 kHz, bandwidth 48.61 kHz, duration 3.29 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.39 g.",
+   "reference": "castro-2024"
+  },
+  "1005384": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52.27 kHz, bandwidth 41.38 kHz, duration 3.55 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.15 g.",
+   "reference": "castro-2024"
+  },
+  "1005388": {
+   "format": "legacy",
+   "summary": "Peak frequency ~34.47 kHz, bandwidth 33.68 kHz, duration 4.56 ms (oral emission).",
+   "context": "Comparative database entry; body mass 41.99 g.",
+   "reference": "castro-2024"
+  },
+  "1005394": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39.43 kHz, bandwidth 32.9 kHz, duration 4.45 ms (oral emission).",
+   "context": "Comparative database entry; body mass 15.16 g.",
+   "reference": "castro-2024"
+  },
+  "1005400": {
+   "format": "legacy",
+   "summary": "Peak frequency ~50.78 kHz, bandwidth 33.08 kHz, duration 2.9 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.11 g.",
+   "reference": "castro-2024"
+  },
+  "1005401": {
+   "format": "legacy",
+   "summary": "Peak frequency ~66.28 kHz, bandwidth 45.92 kHz, duration 2.61 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.21 g.",
+   "reference": "castro-2024"
+  },
+  "1005402": {
+   "format": "legacy",
+   "summary": "Peak frequency ~60.75 kHz, bandwidth 54.29 kHz, duration 2.15 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.56 g.",
+   "reference": "castro-2024"
+  },
+  "1005404": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52 kHz, bandwidth 40 kHz, duration 2.72 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.91 g.",
+   "reference": "castro-2024"
+  },
+  "1005408": {
+   "format": "legacy",
+   "summary": "Peak frequency ~54.26 kHz, bandwidth 54.36 kHz, duration 2.35 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.07 g.",
+   "reference": "castro-2024"
+  },
+  "1005412": {
+   "format": "legacy",
+   "summary": "Peak frequency ~64.37 kHz, bandwidth 58.34 kHz, duration 3.01 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.56 g.",
+   "reference": "castro-2024"
+  },
+  "1005415": {
+   "format": "legacy",
+   "summary": "Peak frequency ~47.72 kHz, bandwidth 42.67 kHz, duration 5.63 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.7 g.",
+   "reference": "castro-2024"
+  },
+  "1005420": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.34 kHz, bandwidth 59.03 kHz, duration 2.18 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.86 g.",
+   "reference": "castro-2024"
+  },
+  "1005424": {
+   "format": "legacy",
+   "summary": "Peak frequency ~62.93 kHz, bandwidth 45.62 kHz, duration 2.92 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.45 g.",
+   "reference": "castro-2024"
+  },
+  "1005425": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.67 kHz, bandwidth 67.77 kHz, duration 1.14 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.51 g.",
+   "reference": "castro-2024"
+  },
+  "1005428": {
+   "format": "legacy",
+   "summary": "Peak frequency ~55.78 kHz, bandwidth 52.9 kHz, duration 3.77 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.22 g.",
+   "reference": "castro-2024"
+  },
+  "1005431": {
+   "format": "legacy",
+   "summary": "Peak frequency ~44.64 kHz, bandwidth 39.29 kHz, duration 5.33 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.2 g.",
+   "reference": "castro-2024"
+  },
+  "1005432": {
+   "format": "legacy",
+   "summary": "Peak frequency ~47.39 kHz, bandwidth 41.15 kHz, duration 2.52 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.8 g.",
+   "reference": "castro-2024"
+  },
+  "1005433": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.29 kHz, bandwidth 41.09 kHz, duration 4.68 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.48 g.",
+   "reference": "castro-2024"
+  },
+  "1005436": {
+   "format": "legacy",
+   "summary": "Peak frequency ~47.03 kHz, bandwidth 40.14 kHz, duration 2.14 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.49 g.",
+   "reference": "castro-2024"
+  },
+  "1005442": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.69 kHz, bandwidth 48.1 kHz, duration 5.07 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.8 g.",
+   "reference": "castro-2024"
+  },
+  "1005443": {
+   "format": "legacy",
+   "summary": "Peak frequency ~35.45 kHz, bandwidth 38.52 kHz, duration 5.24 ms (oral emission).",
+   "context": "Comparative database entry; body mass 25.59 g.",
+   "reference": "castro-2024"
+  },
+  "1005457": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.52 kHz, bandwidth 39.36 kHz, duration 3.65 ms (oral emission).",
+   "context": "Comparative database entry; body mass 26.19 g.",
+   "reference": "castro-2024"
+  },
+  "1005462": {
+   "format": "legacy",
+   "summary": "Peak frequency ~57.68 kHz, bandwidth 34.33 kHz, duration 3.19 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.57 g.",
+   "reference": "castro-2024"
+  },
+  "1005473": {
+   "format": "legacy",
+   "summary": "Peak frequency ~79.76 kHz, bandwidth 49.13 kHz, duration 4.45 ms (oral emission).",
+   "context": "Comparative database entry; body mass 2.93 g.",
+   "reference": "castro-2024"
+  },
+  "1005478": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36.52 kHz, bandwidth 66.97 kHz, duration 4.01 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.49 g.",
+   "reference": "castro-2024"
+  },
+  "1005479": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49.12 kHz, bandwidth 56.91 kHz, duration 2.16 ms (oral emission).",
+   "context": "Comparative database entry; body mass 13.67 g.",
+   "reference": "castro-2024"
+  },
+  "1005481": {
+   "format": "legacy",
+   "summary": "Peak frequency ~43.44 kHz, bandwidth 37.54 kHz, duration 2.48 ms (oral emission).",
+   "context": "Comparative database entry; body mass 9.82 g.",
+   "reference": "castro-2024"
+  },
+  "1005483": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.39 kHz, bandwidth 44.71 kHz, duration 3.71 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.71 g.",
+   "reference": "castro-2024"
+  },
+  "1005485": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.66 kHz, bandwidth 28.3 kHz, duration 2.47 ms (oral emission).",
+   "context": "Comparative database entry; body mass 15.88 g.",
+   "reference": "castro-2024"
+  },
+  "1005731": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.91 kHz, bandwidth 33.78 kHz, duration 3.81 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.96 g.",
+   "reference": "castro-2024"
+  },
+  "1005700": {
+   "format": "legacy",
+   "summary": "Peak frequency ~69.41 kHz, bandwidth 22.58 kHz, duration 4.63 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.88 g.",
+   "reference": "castro-2024"
+  },
+  "1005744": {
+   "format": "legacy",
+   "summary": "Peak frequency ~44.98 kHz, bandwidth 43.3 kHz, duration 2.15 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.53 g.",
+   "reference": "castro-2024"
+  },
+  "1005745": {
+   "format": "legacy",
+   "summary": "Peak frequency ~44.89 kHz, bandwidth 41.14 kHz, duration 3.06 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.14 g.",
+   "reference": "castro-2024"
+  },
+  "1005601": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.29 kHz, bandwidth 27.72 kHz, duration 1.89 ms (oral emission).",
+   "context": "Comparative database entry; body mass 31.87 g.",
+   "reference": "castro-2024"
+  },
+  "1005604": {
+   "format": "legacy",
+   "summary": "Peak frequency ~15.23 kHz, bandwidth 5.03 kHz, duration 22.03 ms (oral emission).",
+   "context": "Comparative database entry; body mass 45.98 g.",
+   "reference": "castro-2024"
+  },
+  "1005752": {
+   "format": "legacy",
+   "summary": "Peak frequency ~43.73 kHz, bandwidth 25.59 kHz, duration 2.82 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.05 g.",
+   "reference": "castro-2024"
+  },
+  "1005753": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51 kHz, bandwidth 35 kHz, duration 3 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.83 g.",
+   "reference": "castro-2024"
+  },
+  "1005757": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49.77 kHz, bandwidth 45.96 kHz, duration 4.44 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.2 g.",
+   "reference": "castro-2024"
+  },
+  "1005767": {
+   "format": "legacy",
+   "summary": "Peak frequency ~56 kHz, bandwidth 26 kHz, duration 5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.44 g.",
+   "reference": "castro-2024"
+  },
+  "1005660": {
+   "format": "legacy",
+   "summary": "Peak frequency ~37.46 kHz, bandwidth 28.94 kHz, duration 4.28 ms (oral emission).",
+   "context": "Comparative database entry; body mass 21.98 g.",
+   "reference": "castro-2024"
+  },
+  "1005313": {
+   "format": "legacy",
+   "summary": "Peak frequency ~80 kHz, bandwidth 95 kHz, duration 3 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.32 g.",
+   "reference": "castro-2024"
+  },
+  "1005595": {
+   "format": "legacy",
+   "summary": "Peak frequency ~43.04 kHz, bandwidth 33.51 kHz, duration 3.83 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.56 g.",
+   "reference": "castro-2024"
+  },
+  "1005623": {
+   "format": "legacy",
+   "summary": "Peak frequency ~41.16 kHz, bandwidth 22.15 kHz, duration 5.18 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.07 g.",
+   "reference": "castro-2024"
+  },
+  "1005624": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.44 kHz, bandwidth 15.35 kHz, duration 4.53 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.91 g.",
+   "reference": "castro-2024"
+  },
+  "1005628": {
+   "format": "legacy",
+   "summary": "Peak frequency ~41.4 kHz, bandwidth 12.71 kHz, duration 6.66 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.44 g.",
+   "reference": "castro-2024"
+  },
+  "1005648": {
+   "format": "legacy",
+   "summary": "Peak frequency ~56.01 kHz, bandwidth 43.09 kHz, duration 6.71 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.07 g.",
+   "reference": "castro-2024"
+  },
+  "1005635": {
+   "format": "legacy",
+   "summary": "Peak frequency ~55.19 kHz, bandwidth 31.34 kHz, duration 4.86 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.57 g.",
+   "reference": "castro-2024"
+  },
+  "1005596": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.95 kHz, bandwidth 28.51 kHz, duration 6.81 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.74 g.",
+   "reference": "castro-2024"
+  },
+  "1005506": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.65 kHz, bandwidth 34.9 kHz, duration 5.12 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.58 g.",
+   "reference": "castro-2024"
+  },
+  "1005563": {
+   "format": "legacy",
+   "summary": "Peak frequency ~35 kHz, bandwidth 40 kHz, duration 9 ms (oral emission).",
+   "context": "Comparative database entry; body mass 26.41 g.",
+   "reference": "castro-2024"
+  },
+  "1005643": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39.08 kHz, bandwidth 26.16 kHz, duration 2.68 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.5 g.",
+   "reference": "castro-2024"
+  },
+  "1005684": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36.38 kHz, bandwidth 28.7 kHz, duration 5.9 ms (oral emission).",
+   "context": "Comparative database entry; body mass 25.12 g.",
+   "reference": "castro-2024"
+  },
+  "1005688": {
+   "format": "legacy",
+   "summary": "Peak frequency ~46.27 kHz, bandwidth 47.83 kHz, duration 1.73 ms (oral emission).",
+   "context": "Comparative database entry; body mass 20.24 g.",
+   "reference": "castro-2024"
+  },
+  "1005691": {
+   "format": "legacy",
+   "summary": "Peak frequency ~32.85 kHz, bandwidth 31.21 kHz, duration 3.92 ms (oral emission).",
+   "context": "Comparative database entry; body mass 27.34 g.",
+   "reference": "castro-2024"
+  },
+  "1005695": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36.54 kHz, bandwidth 19.38 kHz, duration 4.24 ms (oral emission).",
+   "context": "Comparative database entry; body mass 60.1 g.",
+   "reference": "castro-2024"
+  },
+  "1005698": {
+   "format": "legacy",
+   "summary": "Peak frequency ~40.1 kHz, bandwidth 28.94 kHz, duration 3.67 ms (oral emission).",
+   "context": "Comparative database entry; body mass 19.81 g.",
+   "reference": "castro-2024"
+  },
+  "1005565": {
+   "format": "legacy",
+   "summary": "Peak frequency ~34 kHz, bandwidth 31 kHz, duration 8 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.92 g.",
+   "reference": "castro-2024"
+  },
+  "1005566": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36.08 kHz, bandwidth 10.12 kHz, duration 8.57 ms (oral emission).",
+   "context": "Comparative database entry; body mass 10 g.",
+   "reference": "castro-2024"
+  },
+  "1005567": {
+   "format": "legacy",
+   "summary": "Peak frequency ~36 kHz, bandwidth 26 kHz, duration 10 ms (oral emission).",
+   "context": "Comparative database entry; body mass 11.83 g.",
+   "reference": "castro-2024"
+  },
+  "1005568": {
+   "format": "legacy",
+   "summary": "Peak frequency ~39.3 kHz, bandwidth 17 kHz, duration 6.3 ms (oral emission).",
+   "context": "Comparative database entry; body mass 8.13 g.",
+   "reference": "castro-2024"
+  },
+  "1005779": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.95 kHz, bandwidth 43.73 kHz, duration 3.76 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.1 g.",
+   "reference": "castro-2024"
+  },
+  "1005781": {
+   "format": "legacy",
+   "summary": "Peak frequency ~55 kHz, bandwidth 61 kHz, duration 3.78 ms (oral emission).",
+   "context": "Comparative database entry; body mass 7.98 g.",
+   "reference": "castro-2024"
+  },
+  "1005783": {
+   "format": "legacy",
+   "summary": "Peak frequency ~47 kHz, bandwidth 18 kHz, duration 4 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.3 g.",
+   "reference": "castro-2024"
+  },
+  "1005784": {
+   "format": "legacy",
+   "summary": "Peak frequency ~59.6 kHz, bandwidth 23 kHz, duration 5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.1 g.",
+   "reference": "castro-2024"
+  },
+  "1005785": {
+   "format": "legacy",
+   "summary": "Peak frequency ~45.71 kHz, bandwidth 18.6 kHz, duration 5.02 ms (oral emission).",
+   "context": "Comparative database entry; body mass 6.06 g.",
+   "reference": "castro-2024"
+  },
+  "1005786": {
+   "format": "legacy",
+   "summary": "Peak frequency ~52.8 kHz, bandwidth 21 kHz, duration 6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.99 g.",
+   "reference": "castro-2024"
+  },
+  "1005787": {
+   "format": "legacy",
+   "summary": "Peak frequency ~35 kHz, bandwidth 34 kHz, duration 5 ms (oral emission).",
+   "context": "Comparative database entry; body mass 4.3 g.",
+   "reference": "castro-2024"
+  },
+  "1005789": {
+   "format": "legacy",
+   "summary": "Peak frequency ~48.62 kHz, bandwidth 19.45 kHz, duration 6.4 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.05 g.",
+   "reference": "castro-2024"
+  },
+  "1005790": {
+   "format": "legacy",
+   "summary": "Peak frequency ~49 kHz, bandwidth 18 kHz, duration 6 ms (oral emission).",
+   "context": "Comparative database entry; body mass 5.4 g.",
+   "reference": "castro-2024"
+  },
+  "1005791": {
+   "format": "legacy",
+   "summary": "Peak frequency ~51.38 kHz, bandwidth 31.28 kHz, duration 4.61 ms (oral emission).",
+   "context": "Comparative database entry; body mass 3.77 g.",
+   "reference": "castro-2024"
+  },
+  "1005793": {
+   "format": "legacy",
+   "summary": "Peak frequency ~25.71 kHz, bandwidth 27.17 kHz, duration 1.95 ms (oral emission).",
+   "context": "Comparative database entry; body mass 24.3 g.",
+   "reference": "castro-2024"
+  }
+ }
+}

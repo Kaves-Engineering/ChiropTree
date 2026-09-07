@@ -9,14 +9,27 @@ HERE = Path(__file__).parent
 OUT = HERE / "release.json"
 FILES = (
     "chiroptera_taxonomy.json", "marine_mammal_taxonomy.json", "call-records.json",
-    "danish_call_measurements.json", "danish_names.json", "marine_mammal_danish_names.json",
+    "call_measurements.json", "danish_names.json", "marine_mammal_danish_names.json",
     "gbif_country_supplement.json", "marine_mammal_gbif_country_supplement.json",
     "world_map.json", "marine_world_map.json", "media-manifest.json",
+    "calls/exports/calls.json",
 )
 
 
+def canonical_bytes(path: Path) -> bytes:
+    """File content as the repository stores it, with LF line endings.
+
+    .gitattributes pins the repo to LF, but a Windows checkout with
+    core.autocrlf=true still puts CRLF on disk. Hashing disk bytes directly
+    therefore baked CRLF sizes into the committed manifest and broke release
+    validation in Linux CI. Normalising here makes the manifest identical
+    whichever platform generates it.
+    """
+    return path.read_bytes().replace(b"\r\n", b"\n")
+
+
 def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(canonical_bytes(path)).hexdigest()
 
 
 def main() -> None:
@@ -24,7 +37,8 @@ def main() -> None:
     marine = json.loads((HERE / "marine_mammal_taxonomy.json").read_text(encoding="utf-8"))
     source_hash = bats["_meta"]["sourceChecksum"]
     assert source_hash == marine["_meta"]["sourceChecksum"]
-    files = {name: {"sha256": digest(HERE / name), "bytes": (HERE / name).stat().st_size} for name in FILES}
+    files = {name: {"sha256": digest(HERE / name), "bytes": len(canonical_bytes(HERE / name))}
+             for name in FILES}
     payload = {
         "releaseId": f"mdd-v{re.search(r'v([\d.]+)', bats['_meta']['source']).group(1)}-{source_hash[:12]}",
         "source": {"doi": bats["_meta"]["sourceDoi"], "sha256": source_hash},

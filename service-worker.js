@@ -2,6 +2,8 @@ const CACHE = 'chiroptree-core-__RELEASE__';
 const CORE = [
   './', './index.html', './marine.html', './manifest.webmanifest',
   './data/chiroptera_taxonomy.json',
+  './data/call_measurements.json',
+  './data/calls/exports/calls.json',
   './data/danish_names.json', './data/gbif_country_supplement.json',
   './data/world_map.json', './data/marine_mammal_taxonomy.json',
   './data/marine_mammal_danish_names.json',

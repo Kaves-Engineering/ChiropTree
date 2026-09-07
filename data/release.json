@@ -8,13 +8,17 @@
    "bytes": 9955,
    "sha256": "74dbbf222ce1f1c1ec7939fef2015ae590dd6a1258c1763d02531d368999c79a"
   },
+  "call_measurements.json": {
+   "bytes": 63199,
+   "sha256": "8cf964483d5a805fec3a2afe2076560764948f7a9c61c597fd73796384fbaa24"
+  },
+  "calls/exports/calls.json": {
+   "bytes": 82531,
+   "sha256": "179e57257e9b01879f777261b6cf0073b2a2f794d533b6093ad2a80e55c76ebc"
+  },
   "chiroptera_taxonomy.json": {
    "bytes": 1232196,
    "sha256": "948d239f89b3ce2f6aa961c8b8b533dfa49769230c3ff6fa75807f3ed5c75c36"
-  },
-  "danish_call_measurements.json": {
-   "bytes": 2310,
-   "sha256": "e14fe93bf8cf85abc05921e4e397ad2aa58db45acb20e11f9e6168707c85391d"
   },
   "danish_names.json": {
    "bytes": 9470,

@@ -417,7 +417,7 @@ footer a:hover{color:var(--ochre)}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
-.lu-facts{display:grid;grid-template-columns:1fr;gap:20px;margin-top:24px}
+.lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
 .lu-section{background:var(--prussian);border:1px solid rgba(var(--border-rgb),.25);border-radius:4px;padding:16px 18px}
 .lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);font-weight:500}
@@ -426,6 +426,27 @@ footer a:hover{color:var(--ochre)}
 .lu-section dd{margin:0;color:var(--text)}
 .lu-section .lu-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
 .lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
+
+/* structured call measurements */
+.lu-headline{margin:0 0 12px;font-size:13.5px;line-height:1.55;color:var(--text)}
+.lu-variant{margin:0 0 12px;padding:9px 11px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
+.lu-variant h5{margin:0 0 7px;font-size:12px;font-weight:600;color:var(--text);letter-spacing:.01em}
+.lu-tag{display:inline-block;margin-left:4px;padding:1px 5px;border:1px solid rgba(var(--border-rgb),.35);border-radius:2px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
+.lu-facts-list{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
+.lu-facts-list .lu-fact{display:contents}
+.lu-facts-list dt{color:var(--muted);white-space:nowrap}
+.lu-facts-list dd{margin:0;color:var(--text)}
+.lu-val{font-variant-numeric:tabular-nums}
+.lu-basis{font-family:var(--mono);font-size:9px;color:var(--line-dim);letter-spacing:.04em;white-space:nowrap}
+.lu-n{font-family:var(--mono);font-size:9px;color:var(--line-dim)}
+.lu-cite{font-family:var(--mono);font-size:9px;color:var(--line-dim);margin-left:2px}
+.lu-agree{font-weight:700;cursor:help}
+.lu-agree-corroborated{color:#7fb069}
+.lu-agree-consistent_within_group{color:var(--line-dim)}
+.lu-agree-divergent,.lu-agree-divergent_within_group{color:var(--ochre)}
+.lu-alt,.lu-flag{margin-top:2px;font-size:11px;line-height:1.45;color:var(--muted)}
+.lu-flag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);cursor:help}
+@media (max-width:700px){ .lu-facts-list{grid-template-columns:1fr;gap:1px} .lu-facts-list dt{margin-top:6px} }
 .lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;border:1px solid var(--line-dim)}
 .lu-status.lc{color:var(--st-good);border-color:var(--st-good-b)}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
@@ -1779,7 +1800,7 @@ const ESP = {
    2. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, danish: {}, media: {}, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, danish: {}, directCalls: {}, directCallReferences: {}, media: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -1886,11 +1907,14 @@ Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
+  bundled('d-calls', 'data/calls/exports/calls.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, media])=>{
+]).then(([tax, danish, countrySupp, calls, media])=>{
   luState.species = tax.species;
   luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
+  luState.directCalls = calls.species || {};
+  luState.directCallReferences = calls.references || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
   luState.meta = tax._meta;
@@ -2421,14 +2445,87 @@ async function installOfflineImages(){
 }
 document.getElementById('offline-pack').addEventListener('click',installOfflineImages);
 
+/* Renders the Call section. Two shapes are supported: the structured export
+   (measurements with provenance, one block per call variant) and the legacy
+   one-summary-per-species entries not yet migrated. */
+const LU_AGREEMENT = {
+  corroborated:            ['✓', 'Independent sources agree'],
+  consistent_within_group: ['✓', 'Sources agree, but they share an origin'],
+  divergent:               ['≠', 'Independent sources disagree'],
+  divergent_within_group:  ['≠', 'Sources disagree'],
+  single_source:           ['',  'One source']
+};
+
+function luCallFactHTML(f){
+  const [mark, markTitle] = LU_AGREEMENT[f.agreement] || LU_AGREEMENT.single_source;
+  const ref = luState.directCallReferences[f.citation];
+  const flagged = f.quality_flag && f.quality_flag !== 'ok';
+  const alts = (f.alternatives||[]).map(a=>{
+    const aref = luState.directCallReferences[a.citation];
+    return luEsc(a.display)+(a.basis ? ' <span class="lu-basis">'+luEsc(a.basis)+'</span>' : '')+
+      ' — '+luEsc(aref ? aref.label : a.citation);
+  });
+  return '<div class="lu-fact">'+
+    '<dt>'+luEsc(f.label)+
+      (f.basis ? ' <span class="lu-basis">'+luEsc(f.basis)+'</span>' : '')+
+    '</dt>'+
+    '<dd>'+
+      '<span class="lu-val">'+luEsc(f.display)+'</span>'+
+      (mark ? ' <span class="lu-agree lu-agree-'+luEsc(f.agreement)+'" title="'+luEsc(markTitle)+'">'+mark+'</span>' : '')+
+      (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
+      ' <span class="lu-cite">'+luEsc(ref ? ref.label : f.citation)+'</span>'+
+      (flagged ? '<div class="lu-flag" title="'+luEsc(f.ambiguity||'')+'">'+luEsc(f.quality_flag.replace(/_/g,' '))+'</div>' : '')+
+      (alts.length ? '<div class="lu-alt">also reported: '+alts.join('; ')+'</div>' : '')+
+    '</dd>'+
+  '</div>';
+}
+
+function luCallHTML(call, legacyReference){
+  if(!call) return '<p class="lu-note">No verified species-level call measurement yet.</p>';
+
+  if(call.format !== 'structured'){
+    return '<p>'+luEsc(call.summary)+'</p>'+
+      '<p class="lu-src">'+luEsc(call.context)+
+      (legacyReference ? ' — '+luEsc(legacyReference.label) : '')+'</p>';
+  }
+
+  const variants = (call.variants||[]).map(v=>
+    '<div class="lu-variant">'+
+      '<h5>'+luEsc(v.label)+
+        (v.signal_type ? ' <span class="lu-tag">'+luEsc(v.signal_type)+'</span>' : '')+
+        (v.emission ? ' <span class="lu-tag">'+luEsc(v.emission)+'</span>' : '')+
+        (v.direction ? ' <span class="lu-tag">'+luEsc(v.direction)+'</span>' : '')+
+      '</h5>'+
+      '<dl class="lu-facts-list">'+v.facts.map(luCallFactHTML).join('')+'</dl>'+
+    '</div>').join('');
+
+  const provenance = call.n_sources+' source'+(call.n_sources===1?'':'s')+
+    (call.n_independent_groups>1 ? ', '+call.n_independent_groups+' independent' : '')+
+    ' · '+call.n_observations+' observations';
+
+  return '<p class="lu-headline">'+luEsc(call.headline)+'</p>'+
+    variants+
+    '<p class="lu-src">Species measurement · '+luEsc(provenance)+'</p>';
+}
+
 function luDetailHTML(s, compact){
   const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
   const media = luState.media[s.id];
+  const directCall = luState.directCalls[s.id];
+  const callReference = directCall && directCall.reference
+    ? luState.directCallReferences[directCall.reference] : null;
   const sources = [
     '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
   if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
+  const callCitations = directCall
+    ? (directCall.citations || (directCall.reference ? [directCall.reference] : []))
+    : [];
+  callCitations.forEach(id=>{
+    const ref = luState.directCallReferences[id];
+    if(ref) sources.push('<a href="'+luEsc(ref.url)+'" target="_blank" rel="noopener">'+luEsc(ref.label)+'</a>');
+  });
 
   // the full rank ladder, shown as one breadcrumb above the name
   const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']
@@ -2453,6 +2550,7 @@ function luDetailHTML(s, compact){
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></section>'+
+      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference)+'</section>'+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }

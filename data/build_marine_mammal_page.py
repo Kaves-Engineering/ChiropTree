@@ -144,12 +144,25 @@ sub("""Promise.all([
   bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
   bundled('d-danish', 'data/danish_names.json'),
   bundled('d-countries', 'data/gbif_country_supplement.json'),
-  bundled('d-media', 'data/media-manifest.json')""",
+  bundled('d-calls', 'data/calls/exports/calls.json'),
+  bundled('d-media', 'data/media-manifest.json')
+]).then(([tax, danish, countrySupp, calls, media])=>{
+  luState.species = tax.species;
+  luBuildDisplayTaxonomy(luState.species);
+  luState.danish = danish;
+  luState.directCalls = calls.species || {};
+  luState.directCallReferences = calls.references || {};
+  luState.media = media.assets || {};""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
-  bundled('d-media', 'data/media-manifest.json')""")
+  bundled('d-media', 'data/media-manifest.json')
+]).then(([tax, danish, countrySupp, media])=>{
+  luState.species = tax.species;
+  luBuildDisplayTaxonomy(luState.species);
+  luState.danish = danish;
+  luState.media = media.assets || {};""")
 
 # the supplement matters more here than on the bat page: MDD's country column
 # never names Svalbard, so without this the walrus, bowhead and ringed and

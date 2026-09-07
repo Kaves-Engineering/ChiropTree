@@ -1,0 +1,93 @@
+{
+ "schema_version": 1,
+ "_meta": {
+  "purpose": "One record per source artefact. independence_group exists so that two sources drawing on the same underlying data are never counted as independent corroboration.",
+  "licence_note": "licence describes what we may redistribute. 'cc-by-4.0' permits committing extracted tables with attribution. 'all-rights-reserved' means we cite individual figures under fair quotation but do not commit bulk tables."
+ },
+ "references": {
+
+  "denzinger-2001": {
+   "type": "journal_article",
+   "citation": "Denzinger A, Siemers BM, Schaub A, Schnitzler H-U (2001) Echolocation by the barbastelle bat, Barbastella barbastellus. Journal of Comparative Physiology A 187(7):521-528.",
+   "doi": "10.1007/s003590100223",
+   "url": "https://doi.org/10.1007/s003590100223",
+   "accessed_at": "2026-09-07",
+   "licence": "all-rights-reserved",
+   "access_note": "Publisher full text is paywalled. Values entered here are taken from the abstract, which is openly available and states them explicitly; abstract text verified via Europe PMC. No table was extracted.",
+   "republishes_reference_id": null,
+   "independence_group": "denzinger-tuebingen",
+   "geographic_scope": "Germany",
+   "taxonomic_scope": "Barbastella barbastellus"
+  },
+
+  "goerlitz-2010": {
+   "type": "journal_article",
+   "citation": "Goerlitz HR, ter Hofstede HM, Zeale MRK, Jones G, Holderied MW (2010) An aerial-hawking bat uses stealth echolocation to counter moth hearing. Current Biology 20(17):1568-1572.",
+   "doi": "10.1016/j.cub.2010.07.046",
+   "url": "https://doi.org/10.1016/j.cub.2010.07.046",
+   "accessed_at": "2026-09-07",
+   "licence": "all-rights-reserved",
+   "access_note": "Values read from the published PDF. Individual figures cited under fair quotation; no bulk table exists in this paper to extract.",
+   "republishes_reference_id": null,
+   "independence_group": "bristol-holderied",
+   "geographic_scope": "United Kingdom",
+   "taxonomic_scope": "Barbastella barbastellus, Nyctalus leisleri"
+  },
+
+  "seibert-2015": {
+   "type": "journal_article",
+   "citation": "Seibert A-M, Koblitz JC, Denzinger A, Schnitzler H-U (2015) Bidirectional echolocation in the bat Barbastella barbastellus: different signals of low source level are emitted upward through the nose and downward through the mouth. PLoS ONE 10(9):e0135590.",
+   "doi": "10.1371/journal.pone.0135590",
+   "url": "https://doi.org/10.1371/journal.pone.0135590",
+   "accessed_at": "2026-09-07",
+   "licence": "cc-by-4.0",
+   "access_note": "Open access. Table 1 extracted in full with standard deviations.",
+   "republishes_reference_id": null,
+   "independence_group": "denzinger-tuebingen",
+   "geographic_scope": "France",
+   "taxonomic_scope": "Barbastella barbastellus"
+  }
+ },
+
+ "methods": {
+
+  "denzinger-2001-field": {
+   "reference_id": "denzinger-2001",
+   "recorder_model": "unstated in abstract",
+   "sample_rate_khz": null,
+   "analysis_software": "unstated in abstract",
+   "fft_size": null,
+   "frequency_definition": "unstated",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Only the abstract was available. Every method field is therefore genuinely unknown rather than merely unrecorded, which is why the durations from this source carry quality_flag=definition_unstated."
+  },
+
+  "goerlitz-2010-array": {
+   "reference_id": "goerlitz-2010",
+   "recorder_model": "four-microphone arrays, 3D flight-path tracking",
+   "sample_rate_khz": null,
+   "analysis_software": "unstated in main text",
+   "fft_size": null,
+   "frequency_definition": "unstated",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": 0.1,
+   "source_level_type": "peak_equivalent",
+   "notes": "Source levels are defined in the text as 'the call amplitude 10 cm away from the bat's mouth' and reported in dB peSPL. Both the 0.1 m reference distance and the peak-equivalent basis are essential: comparing these values directly with rms-at-1-m figures understates the difference by roughly 20 dB of spreading loss plus the peak-to-rms offset."
+  },
+
+  "seibert-2015-array": {
+   "reference_id": "seibert-2015",
+   "recorder_model": "16-channel Knowles microphone arrays (4x4 m square and 6 m vertical chain), custom amplifiers, National Instruments acquisition, 16-bit",
+   "sample_rate_khz": 500,
+   "analysis_software": "custom MATLAB scripts; Sonarbeam for beam reconstruction",
+   "fft_size": 512,
+   "frequency_definition": "unstated",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": 1.0,
+   "source_level_type": "rms",
+   "notes": "Reports both apparent source level (assuming the bat is on axis) and absolute source level (corrected for beam direction). Only the absolute value is stored as source_level; the apparent value is recorded in the row notes."
+  }
+ }
+}

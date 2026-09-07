@@ -19,6 +19,27 @@
   "status_values": ["core", "extended", "proposed", "deprecated"]
  },
 
+ "statistics": {
+  "mean": "Arithmetic mean, normally with an sd or se in the dispersion fields.",
+  "median": "Median, normally with quartiles in value_min/value_max.",
+  "min": "Reported minimum.",
+  "max": "Reported maximum.",
+  "mode": "Reported mode.",
+  "range": "A span; use value_min and value_max, leave value empty.",
+  "single": "One measurement from one call or one individual.",
+  "approximate": "The source states a rounded or hedged central value ('around 6 ms', '~45 kHz') without naming a statistic. Kept distinct from mean so that hedged values are never silently treated as estimates of a population parameter."
+ },
+
+ "quality_flags": {
+  "ok": "Nothing to declare.",
+  "unit_inferred": "The source did not state a unit; it was inferred from context.",
+  "harmonic_ambiguous": "Which harmonic the value describes is unclear.",
+  "definition_unstated": "The source does not say how the quantity was measured (threshold, reference distance, rms vs peak), so it is not safely comparable across studies.",
+  "digitised_from_figure": "Read off a plot rather than a printed value.",
+  "derived": "Modelled or calculated by the source rather than measured.",
+  "suspect": "Looks wrong; retained with the flag rather than dropped."
+ },
+
  "unit_conversions": {
   "Hz":  {"to": "kHz", "factor": 0.001},
   "kHz": {"to": "kHz", "factor": 1},
@@ -428,7 +449,8 @@
    "sane_max": 145,
    "status": "core",
    "definition": "Emitted sound pressure level on the beam axis.",
-   "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is RMS or peak-to-peak. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+   "ambiguity": "Meaningless without a reference distance (10 cm and 1 m are both in use - a 20 dB difference) and without stating whether the value is rms or peak-equivalent. Both belong in the method record; a source level lacking a stated reference distance must be flagged.",
+   "comparability_fields": ["source_level_reference_distance_m", "source_level_type"],
    "aliases": ["source level", "spl", "sound pressure level", "intensity", "amplitude", "emitted intensity"]
   },
 
@@ -471,6 +493,20 @@
    "definition": "Range at which the species is estimated to detect a target of stated size.",
    "ambiguity": "Almost always modelled rather than measured, and strongly dependent on the assumed target strength and atmospheric attenuation. Treat as derived unless the source demonstrates otherwise.",
    "aliases": ["detection distance", "detection range", "range"]
+  },
+
+  {
+   "id": "moth_detection_distance",
+   "label": "Moth detection distance",
+   "group": "beam",
+   "value_type": "numeric",
+   "unit": "m",
+   "sane_min": 0.1,
+   "sane_max": 100,
+   "status": "extended",
+   "definition": "Distance at which an eared moth detects the approaching bat. The inverse of detection_distance, which is the bat detecting a target - the two must never be merged.",
+   "ambiguity": "Depends on the moth species, which auditory cell (A1 or A2) is used as the criterion, and the assumed hearing threshold. Record the criterion in notes; values using different criteria are not comparable.",
+   "aliases": ["moth detection distance", "detection distance by moth", "prey detection of bat", "dd a1", "dd a2"]
   },
 
   {

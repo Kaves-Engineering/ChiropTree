@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: proposal for review. No code written yet.
+Status: schema agreed and implemented; one species (*Barbastella barbastellus*, §9) migrated end to end as a worked example. Bulk harvesting not started.
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 
@@ -81,6 +81,7 @@ The join level. Everything shared by a group of numbers lives here, so measureme
 | `taxon_match_method` | `exact` / `synonym_via_mdd` / `manual` / `unresolved` |
 | `reference_id`, `locator` | A1 — e.g. `table 3, row 44` |
 | `call_phase` | `search` / `approach` / `terminal_buzz` / `social` / `distress` / `unspecified` |
+| `call_variant`, `variant_label`, `signal_direction` | Named signal type within a phase, for species that alternate between distinct calls. Added after the barbastellus worked example (§9) showed that phase alone cannot separate them. |
 | `signal_type` | `CF` / `FM` / `QCF` / `CF-FM` / `FM-QCF` / `broadband_click` / `none` |
 | `duty_cycle_class` | `low` / `high` |
 | `emission` | `oral` / `nasal` / `tongue_click` |
@@ -102,13 +103,13 @@ Long format, not wide columns. New parameters then need no schema change.
 |---|---|
 | `observation_id` | |
 | `parameter` | controlled vocabulary, §3.5 |
-| `statistic` | `mean` / `median` / `min` / `max` / `mode` / `range` / `single` |
+| `statistic` | `mean` / `median` / `min` / `max` / `mode` / `range` / `single` / `approximate` — vocabulary lives in `parameters.json` |
 | `value`, `value_min`, `value_max` | `range` uses the min/max pair; point statistics use `value` |
 | `unit` | controlled: `kHz` / `ms` / `dB_SPL` / `percent` / `count_per_s` / `degrees` / `m` |
 | `dispersion_type`, `dispersion_value` | `sd` / `se` / `ci95_half_width` |
 | `harmonic` | which harmonic the value refers to — a genuine ambiguity in the CF-FM literature |
 | `verbatim_value` | `"56 ± 2.1"` exactly as printed (A2) |
-| `quality_flag` | `ok` / `unit_inferred` / `harmonic_ambiguous` / `digitised_from_figure` / `suspect` |
+| `quality_flag` | `ok` / `unit_inferred` / `harmonic_ambiguous` / `definition_unstated` / `digitised_from_figure` / `derived` / `suspect` — vocabulary lives in `parameters.json` |
 
 ### 3.4 `method` — how the number was produced
 
@@ -172,14 +173,26 @@ The card renders a computed **display view**, generated at build time, never han
 }
 ```
 
-Selection rule for `primary` — written down, applied mechanically, in order:
+Selection rule — written down, applied mechanically, in order:
 
-1. `call_phase = search` (the phase a field user identifies from) and `recording_condition = free_flying_wild`;
-2. highest `n_individuals`;
-3. source whose `geographic_scope` best matches the species range;
+1. `quality_flag` is `ok` (a flagged value never outranks a clean one);
+2. `recording_condition = free_flying_wild`;
+3. highest `n_calls`;
 4. most recent reference year.
 
-Disagreements are not resolved away. `agreement` is set to `divergent` when sources in different independence groups differ by more than a stated tolerance (proposal: >15% on peak frequency); the card says so and links to all of them. A dataset that shows its disagreements is more trustworthy than one that shows a single confident number.
+**Values only compete when the method makes them the same quantity.** A parameter may declare `comparability_fields` naming the method fields that must match; values with different keys are shown side by side as separate facts rather than ranked against each other. `source_level` declares `source_level_reference_distance_m` and `source_level_type`, which is what stops 94 dB peSPL at 10 cm and 80.9 dB rms at 1 m from being treated as a 13 dB disagreement (§9).
+
+Disagreements are not resolved away. `agreement` takes five values, because whether sources are independent changes what agreement means:
+
+| Value | Meaning |
+|---|---|
+| `corroborated` | Sources in different independence groups agree within tolerance. The strongest evidence available. |
+| `consistent_within_group` | Sources agree, but share an origin — not independent confirmation. |
+| `divergent` | Independent sources disagree by more than the tolerance. |
+| `divergent_within_group` | Sources sharing an origin still disagree — usually a method difference worth surfacing. |
+| `single_source` | Nothing to compare against. |
+
+Tolerance is 15% of the mean by default. The card shows the mark, the losing values, and their citations.
 
 ## 5. Ingest format
 
@@ -235,7 +248,30 @@ Licence is a hard gate. A source we may read but not redistribute can still back
 
 Step 5 is the safety line: the schema change ships with zero visible change, so any later difference on the page is attributable to new data rather than to the migration.
 
-## 9. Open questions
+## 9. Worked example — *Barbastella barbastellus*
+
+Done end to end before any bulk harvesting, to stress the schema on a species with genuinely awkward data. Sources: [Denzinger et al. 2001](https://doi.org/10.1007/s003590100223), [Goerlitz et al. 2010](https://doi.org/10.1016/j.cub.2010.07.046), [Seibert et al. 2015](https://doi.org/10.1371/journal.pone.0135590).
+
+**Before** — one prose string: *"Search calls: 31–44 kHz, 2 ms."*
+**After** — 27 measurement rows across 5 observations from 3 sources in 2 independence groups, split into the two alternating call types.
+
+Five things the exercise changed:
+
+1. **`call_variant` had to be added.** Barbastellus alternates two search calls that differ in frequency, duration, emission route and beam direction. Both are `call_phase: search`, so phase could not separate them — and the old single-slot record had flattened them into a range (`31–44 kHz`) that describes neither call. This is a schema gap that only appeared under real data.
+
+2. **`comparability_fields` had to be added**, and it is the most important finding. Goerlitz reports 94 dB peSPL at 10 cm; Seibert reports 80.9 dB SPL rms at 1 m. Naively these look like a 13 dB contradiction. They are not in conflict at all — they differ by ~20 dB of spreading loss plus the peak-to-rms offset, and are broadly consistent once reconciled. Any pipeline that ranked or averaged them would have produced a confident wrong number. The card now shows both, each labelled with its basis.
+
+3. **Independence groups earn their place.** Denzinger is an author on both the 2001 and 2015 papers, so those share the `denzinger-tuebingen` group; Goerlitz is independent. When Seibert's 33.6 ± 1.1 kHz peak frequency matches Goerlitz's median of 33 kHz, that is real corroboration across groups. When Seibert and Denzinger agree, it is not.
+
+4. **A real divergence surfaced rather than being hidden.** Denzinger gives type 2 duration as ~6 ms; Seibert gives 2.5 ± 0.4 ms for the same signal type. That is a factor of 2.4 and it is flagged `divergent_within_group`. The likely cause is a different duration threshold, which is exactly why `method.duration_threshold_db` exists — and both sources leave it unstated, so both rows carry `definition_unstated`. First-source-wins would have silently kept whichever importer ran first.
+
+5. **The registry absorbed a new parameter with no code change.** Goerlitz's headline result is the distance at which a moth hears the *bat* — the inverse of `detection_distance`, and merging them would be a category error. Adding `moth_detection_distance` was one JSON object; nothing else was edited.
+
+Also added while doing the work: the `approximate` statistic (Denzinger's "around 6 ms" is a hedged value, not a mean), and the `definition_unstated` and `derived` quality flags.
+
+**Deviation from the plan:** the canonical SQLite store in §3 is not built yet. The path is CSV → validate → JSON export, which is enough to prove the schema and keeps the diff reviewable. SQLite becomes worthwhile when volume or cross-species querying demands it; nothing here forecloses it.
+
+## 10. Open questions
 
 1. Full per-observation detail in the card, or a link out? Decides whether `calls-full.json` ships to the browser, and its size.
 2. Is 15% on peak frequency the right divergence tolerance, and what is the equivalent for duration?

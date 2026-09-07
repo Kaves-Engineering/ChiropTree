@@ -51,12 +51,40 @@ def validate_calls(species_ids: set[str]) -> None:
     for family, record in calls["families"].items():
         assert record.get("evidenceScope") == "family-guide", f"{family}: invalid evidence scope"
         assert record.get("referenceId") in calls["references"], f"{family}: missing reference"
-    direct = load("danish_call_measurements.json")
+    direct = load("call_measurements.json")
     for mdd_id, record in direct["species"].items():
         assert mdd_id in species_ids, f"direct calls: unknown MDD ID {mdd_id}"
         assert record.get("summary") and record.get("context"), f"{mdd_id}: incomplete call summary"
         reference = direct["references"].get(record.get("reference"))
         assert reference and reference.get("url", "").startswith("https://"), f"{mdd_id}: invalid citation"
+
+
+def validate_structured_calls(species_ids: set[str]) -> None:
+    """Gate the export the page actually loads.
+
+    The hard rule from the call design: nothing displayed as a species
+    measurement may exist without a resolvable citation behind it.
+    """
+    export = load("calls/exports/calls.json")
+    references = export["references"]
+    for mdd_id, record in export["species"].items():
+        assert mdd_id in species_ids, f"calls export: unknown MDD ID {mdd_id}"
+        if record.get("format") != "structured":
+            continue
+        assert record.get("variants"), f"{mdd_id}: structured entry with no variants"
+        assert record.get("headline"), f"{mdd_id}: structured entry with no headline"
+        for citation in record["citations"]:
+            reference = references.get(citation)
+            assert reference and reference.get("url", "").startswith("https://"), \
+                f"{mdd_id}: unresolvable citation {citation!r}"
+        for variant in record["variants"]:
+            for fact in variant["facts"]:
+                assert fact.get("display"), f"{mdd_id}/{variant['id']}: fact with no value"
+                assert fact["citation"] in references, \
+                    f"{mdd_id}/{variant['id']}: {fact['parameter']} has no reference"
+                for alternative in fact.get("alternatives", []):
+                    assert alternative["citation"] in references, \
+                        f"{mdd_id}/{variant['id']}: alternative value has no reference"
 
 
 def validate_map(taxonomy: dict, filename: str) -> None:
@@ -99,7 +127,9 @@ def validate_manifest() -> None:
     for name, expected in manifest["files"].items():
         path = HERE / name
         assert path.is_file(), f"release manifest: missing {name}"
-        content = path.read_bytes()
+        # Compare against LF-normalised content, matching how the manifest is
+        # generated, so a CRLF working tree does not fail validation.
+        content = path.read_bytes().replace(b"\r\n", b"\n")
         assert len(content) == expected["bytes"], f"release manifest: size mismatch for {name}"
         assert hashlib.sha256(content).hexdigest() == expected["sha256"], f"release manifest: hash mismatch for {name}"
 
@@ -112,6 +142,7 @@ def main() -> None:
     validate_names("danish_names.json", bat_ids)
     validate_names("marine_mammal_danish_names.json", marine_ids)
     validate_calls(bat_ids)
+    validate_structured_calls(bat_ids)
     validate_map(bats, "world_map.json")
     validate_map(marine, "marine_world_map.json")
     validate_media(bat_ids | marine_ids)

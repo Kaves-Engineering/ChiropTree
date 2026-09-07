@@ -16,7 +16,7 @@ def main() -> None:
     bats = load("chiroptera_taxonomy.json")
     marine = load("marine_mammal_taxonomy.json")
     calls = load("call-records.json")
-    direct = load("danish_call_measurements.json")
+    direct = load("call_measurements.json")
     names = load("danish_names.json")
     supplement = load("gbif_country_supplement.json")
     bat_html = (ROOT / "public/index.html").read_text(encoding="utf-8")
