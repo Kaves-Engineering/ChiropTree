@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "generated_on": "2026-09-07",
  "references": {
   "obrist-2004": {
@@ -15,7 +15,7 @@
    "url": "https://doi.org/10.1016/j.cub.2010.07.046"
   },
   "collen-2012": {
-   "label": "Collen et al. 2012",
+   "label": "Collen 2012",
    "url": "https://discovery.ucl.ac.uk/id/eprint/1354471/"
   },
   "castro-2024": {
@@ -33,6 +33,653 @@
   "teixeira-2009": {
    "url": "https://doi.org/10.3161/150811009X465802",
    "label": "Teixeira & Jesus 2009"
+  }
+ },
+ "familyInference": {
+  "Pteropodidae": {
+   "family": "Pteropodidae",
+   "show_range": false,
+   "low": 10.0,
+   "high": 60.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": false,
+   "emission": "oral_clicks",
+   "duty_cycle": "not_applicable",
+   "structure": "non-laryngeal broadband tongue clicks (Rousettus and possibly a few other genera only); no echolocation in most species",
+   "documentation": "absence_well_documented_presence_poorly_documented",
+   "reason": "Most of ~200 species do not echolocate at all. Species-level records should use evidence_class=not_applicable unless the genus is a known click-echolocator. Click frequency content is broadband and not comparable to laryngeal peak frequency.",
+   "warnings": [
+    "Most species in this family do not echolocate at all; the range applies only to the few that click.",
+    "This family's range spans 6x, so it does not usefully constrain any individual species.",
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "holland-2004",
+     "label": "Holland et al. 2004",
+     "citation": "Holland RA, Waters DA, Rayner JMV (2004) Echolocation signal structure in the megachiropteran bat Rousettus aegyptiacus Geoffroy 1810. Journal of Experimental Biology 207:4361-4369.",
+     "url": "https://doi.org/10.1242/jeb.01288",
+     "doi_verified": true
+    },
+    {
+     "id": "yovel-2011",
+     "label": "Yovel et al. 2011",
+     "citation": "Yovel Y, Geva-Sagiv M, Ulanovsky N (2011) Click-based echolocation in bats: not so primitive after all. Journal of Comparative Physiology A 197:515-530.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "boonman-2014",
+     "label": "Boonman et al. 2014",
+     "citation": "Boonman A, Bumrungsri S, Yovel Y (2014) Nonecholocating fruit bats produce biosonar clicks with their wings. Current Biology 24(24):2962-2967.",
+     "url": "https://doi.org/10.1016/j.cub.2014.10.077",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Rhinolophidae": {
+   "family": "Rhinolophidae",
+   "show_range": true,
+   "low": 25.0,
+   "high": 160.0,
+   "confidence": "well_constrained",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "high",
+   "structure": "CF-FM: long constant-frequency component with terminal (and usually initial) FM sweep; second harmonic dominant",
+   "documentation": "most_genera_documented",
+   "reason": "CF frequency is the diagnostic parameter and is unusually stable within populations; strong geographic and sexual variation in some species. Range low end from large SE Asian species; high end from small species such as R. hipposideros and relatives.",
+   "warnings": [
+    "This family's range spans 6x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "jones-teeling-2006",
+     "label": "Jones & Teeling 2006",
+     "citation": "Jones G, Teeling EC (2006) The evolution of echolocation in bats. Trends in Ecology & Evolution 21(3):149-156.",
+     "url": "https://doi.org/10.1016/j.tree.2006.01.001",
+     "doi_verified": true
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Hipposideridae": {
+   "family": "Hipposideridae",
+   "show_range": true,
+   "low": 55.0,
+   "high": 190.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "high",
+   "structure": "CF-FM: shorter CF component than Rhinolophidae with terminal FM; second harmonic dominant",
+   "documentation": "most_genera_documented",
+   "reason": "Doppler shift compensation reported as partial or absent in some taxa. Low end from large Macronycteris/Hipposideros; high end from small Hipposideros.",
+   "warnings": [
+    "This family's range spans 3x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "jones-teeling-2006",
+     "label": "Jones & Teeling 2006",
+     "citation": "Jones G, Teeling EC (2006) The evolution of echolocation in bats. Trends in Ecology & Evolution 21(3):149-156.",
+     "url": "https://doi.org/10.1016/j.tree.2006.01.001",
+     "doi_verified": true
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Rhinonycteridae": {
+   "family": "Rhinonycteridae",
+   "show_range": true,
+   "low": 90.0,
+   "high": 215.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "high",
+   "structure": "CF-FM",
+   "documentation": "few_species_documented",
+   "reason": "Contains the highest CF frequency known in bats (Cloeotis percivali, ~212 kHz). Most species in the family have no published call description. Split from Hipposideridae; check that your MDD version recognises this family.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "foley-2015",
+     "label": "Foley et al. 2015",
+     "citation": "Foley NM et al. (2015) How and why overcome the impediments to resolution: lessons from rhinolophid and hipposiderid bats. (Cited in the family table for Rhinonycteridae delimitation.)",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "fenton-bell-cloeotis",
+     "label": "Fenton & Bell, Cloeotis literature",
+     "citation": "Fenton MB & Bell GP, literature on Cloeotis percivali. (Cited as written in the family table; no single work identified.)",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Megadermatidae": {
+   "family": "Megadermatidae",
+   "show_range": true,
+   "low": 20.0,
+   "high": 100.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "short multiharmonic broadband FM emitted at low intensity",
+   "documentation": "most_genera_documented",
+   "reason": "Passive-listening gleaners; echolocation is often secondary to prey-generated sound, so peak frequency is a weak descriptor of foraging behaviour.",
+   "warnings": [
+    "This family's range spans 5x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Craseonycteridae": {
+   "family": "Craseonycteridae",
+   "show_range": true,
+   "low": 70.0,
+   "high": 80.0,
+   "confidence": "well_constrained",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "short steep FM with narrowband component",
+   "documentation": "single_species_documented",
+   "reason": "Monotypic family (Craseonycteris thonglongyai); the family row and the species row are the same datum.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "surlykke-1993",
+     "label": "Surlykke et al. 1993",
+     "citation": "Surlykke A, Miller LA, Mohl B, Andersen BB, Christensen-Dalsgaard J, Jorgensen MB (1993) Echolocation in two very small bats from Thailand: Craseonycteris thonglongyai and Myotis siligorensis. Behavioral Ecology and Sociobiology 33:1-12.",
+     "url": "https://doi.org/10.1007/BF00164341",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Rhinopomatidae": {
+   "family": "Rhinopomatidae",
+   "show_range": true,
+   "low": 25.0,
+   "high": 45.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "short multiharmonic FM/QCF",
+   "documentation": "most_genera_documented",
+   "reason": "",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "habersetzer-1981",
+     "label": "Habersetzer 1981",
+     "citation": "Habersetzer J (1981) Adaptive echolocation sounds in the bat Rhinopoma hardwickei.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Nycteridae": {
+   "family": "Nycteridae",
+   "show_range": true,
+   "low": 50.0,
+   "high": 120.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "low-intensity multiharmonic steep FM",
+   "documentation": "few_species_documented",
+   "reason": "Gleaners; low source levels mean the family is under-sampled by passive acoustic monitoring and the published range is likely incomplete.",
+   "warnings": [
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Emballonuridae": {
+   "family": "Emballonuridae",
+   "show_range": true,
+   "low": 20.0,
+   "high": 60.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "narrowband QCF or shallow FM with multiple harmonics; often multi-harmonic search calls",
+   "documentation": "most_genera_documented",
+   "reason": "Neotropical taxa relatively well described; African and Asian taxa much less so.",
+   "warnings": [
+    "This family's range spans 3x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "kalko-1995",
+     "label": "Kalko 1995",
+     "citation": "Kalko EKV (1995) Insect pursuit, prey capture and echolocation in pipistrelle bats (Microchiroptera). Animal Behaviour 50(4):861-880.",
+     "url": "https://doi.org/10.1016/0003-3472(95)80090-5",
+     "doi_verified": true
+    },
+    {
+     "id": "jung-2007",
+     "label": "Jung et al. 2007",
+     "citation": "Jung K, Kalko EKV, von Helversen O (2007) Echolocation calls in Central American emballonurid bats.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Noctilionidae": {
+   "family": "Noctilionidae",
+   "show_range": true,
+   "low": 50.0,
+   "high": 75.0,
+   "confidence": "well_constrained",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "mixed CF/QCF component followed by FM sweep (trawling)",
+   "documentation": "most_genera_documented",
+   "reason": "Only two species; both reasonably well described.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "kalko-1998",
+     "label": "Kalko et al. 1998",
+     "citation": "Kalko EKV, Schnitzler H-U, Kaipf I, Grinnell AD (1998) Echolocation and foraging behavior of the lesser bulldog bat, Noctilio albiventris.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Mormoopidae": {
+   "family": "Mormoopidae",
+   "show_range": true,
+   "low": 45.0,
+   "high": 95.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "mixed",
+   "structure": "mostly LDC FM/QCF; the Pteronotus parnellii complex is HDC CF-FM",
+   "documentation": "most_genera_documented",
+   "reason": "Do NOT propagate the family duty_cycle_class to species. The P. parnellii complex is the only oral-emitting HDC lineage known; all other mormoopids are LDC. Set duty_cycle at species level or leave unknown.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "kossl-1999",
+     "label": "Kossl et al. 1999",
+     "citation": "Kossl M et al. (1999) Auditory and echolocation specialisations in Pteronotus parnellii.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "clare-2013",
+     "label": "Clare et al. 2013",
+     "citation": "Clare EL et al. (2013) Cryptic diversity and acoustic variation in the Pteronotus parnellii complex.",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Phyllostomidae": {
+   "family": "Phyllostomidae",
+   "show_range": true,
+   "low": 40.0,
+   "high": 110.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "short low-intensity broadband multiharmonic FM",
+   "documentation": "most_genera_documented",
+   "reason": "Very low source levels; many species are effectively undetectable by standard passive monitoring, so published parameters come mostly from hand-released or flight-tent recordings. Frugivores and nectarivores are poorly represented.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "kalko-1995",
+     "label": "Kalko 1995",
+     "citation": "Kalko EKV (1995) Insect pursuit, prey capture and echolocation in pipistrelle bats (Microchiroptera). Animal Behaviour 50(4):861-880.",
+     "url": "https://doi.org/10.1016/0003-3472(95)80090-5",
+     "doi_verified": true
+    },
+    {
+     "id": "brinklov-2009",
+     "label": "Brinklov et al. 2009",
+     "citation": "Brinklov S, Kalko EKV, Surlykke A (2009) Intense echolocation calls from two phyllostomid bats.",
+     "url": null,
+     "doi_verified": false
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Furipteridae": {
+   "family": "Furipteridae",
+   "show_range": true,
+   "low": 90.0,
+   "high": 170.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "broadband FM, high frequency",
+   "documentation": "single_species_documented",
+   "reason": "Essentially undescribed. Treat any species-level value as provisional and flag prominently as a knowledge gap.",
+   "warnings": [
+    "No identifiable published source for this family's range.",
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": []
+  },
+  "Thyropteridae": {
+   "family": "Thyropteridae",
+   "show_range": true,
+   "low": 40.0,
+   "high": 110.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "short broadband FM",
+   "documentation": "few_species_documented",
+   "reason": "Very few published recordings.",
+   "warnings": [
+    "No identifiable published source for this family's range.",
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": []
+  },
+  "Myzopodidae": {
+   "family": "Myzopodidae",
+   "show_range": true,
+   "low": 30.0,
+   "high": 100.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "FM; poorly characterised",
+   "documentation": "single_species_documented",
+   "reason": "Two species, both Madagascar-endemic; almost no published acoustic data. A clear gap to display.",
+   "warnings": [
+    "This family's range spans 3x, so it does not usefully constrain any individual species.",
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "ralisata",
+     "label": "Ralisata et al. and Malagasy surveys",
+     "citation": "Ralisata M et al., and scattered Malagasy surveys of Myzopoda. (Cited as written; no single work identified.)",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Mystacinidae": {
+   "family": "Mystacinidae",
+   "show_range": true,
+   "low": 25.0,
+   "high": 60.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "low-frequency broadband FM/QCF with unusual harmonic structure",
+   "documentation": "single_species_documented",
+   "reason": "Ground-foraging; calls differ structurally from typical aerial hawkers.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "parsons-1997",
+     "label": "Parsons 1997",
+     "citation": "Parsons S (1997) Search-phase echolocation calls of New Zealand bats, including Mystacina tuberculata.",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Molossidae": {
+   "family": "Molossidae",
+   "show_range": true,
+   "low": 10.0,
+   "high": 45.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "long narrowband QCF search calls, often alternating between frequency bands",
+   "documentation": "most_genera_documented",
+   "reason": "Open-space aerial hawkers; long-range low-frequency calls. Alternating call types within a sequence make single peak-frequency values misleading; store as range where possible.",
+   "warnings": [
+    "This family's range spans 4x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "jung-2014",
+     "label": "Jung et al. 2014",
+     "citation": "Jung K et al. (2014) Echolocation calls of molossid bats in open space.",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Miniopteridae": {
+   "family": "Miniopteridae",
+   "show_range": true,
+   "low": 45.0,
+   "high": 65.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "FM-QCF",
+   "documentation": "few_species_documented",
+   "reason": "Taxonomically split into many cryptic species whose calls overlap heavily; species-level assignment from acoustics alone is often not defensible.",
+   "warnings": [],
+   "verified": false,
+   "citations": [
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Cistugidae": {
+   "family": "Cistugidae",
+   "show_range": true,
+   "low": 40.0,
+   "high": 70.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "broadband FM",
+   "documentation": "few_species_documented",
+   "reason": "Two species, southern Africa; minimal published acoustic data.",
+   "warnings": [
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "lack-2010",
+     "label": "Lack et al. 2010",
+     "citation": "Lack JB et al. (2010) Molecular phylogenetics of Myotis indicates familial-level divergence for the genus Cistugo. (Cited for family delimitation, not call parameters.)",
+     "url": null,
+     "doi_verified": false
+    }
+   ]
+  },
+  "Natalidae": {
+   "family": "Natalidae",
+   "show_range": true,
+   "low": 70.0,
+   "high": 165.0,
+   "confidence": "poorly_constrained",
+   "laryngeal": true,
+   "emission": "nasal",
+   "duty_cycle": "low",
+   "structure": "steep broadband FM, high frequency",
+   "documentation": "few_species_documented",
+   "reason": "",
+   "warnings": [
+    "No identifiable published source for this family's range.",
+    "The family range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": []
+  },
+  "Vespertilionidae": {
+   "family": "Vespertilionidae",
+   "show_range": true,
+   "low": 10.0,
+   "high": 160.0,
+   "confidence": "approximate",
+   "laryngeal": true,
+   "emission": "oral",
+   "duty_cycle": "low",
+   "structure": "highly variable: steep broadband FM (clutter foragers) through FM-QCF to narrowband QCF (open space)",
+   "documentation": "most_genera_documented",
+   "reason": "The family-level range is so wide that it carries almost no information for an individual species. Prefer genus-level inference where you can justify it, and say plainly on the page that the family default is uninformative here. Low end: Euderma maculatum ~10 kHz. High end: Kerivoula spp., whose start frequencies exceed 200 kHz.",
+   "warnings": [
+    "This family's range spans 16x, so it does not usefully constrain any individual species."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "schnitzler-kalko-2001",
+     "label": "Schnitzler & Kalko 2001",
+     "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+     "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+     "doi_verified": true
+    },
+    {
+     "id": "jones-teeling-2006",
+     "label": "Jones & Teeling 2006",
+     "citation": "Jones G, Teeling EC (2006) The evolution of echolocation in bats. Trends in Ecology & Evolution 21(3):149-156.",
+     "url": "https://doi.org/10.1016/j.tree.2006.01.001",
+     "doi_verified": true
+    },
+    {
+     "id": "denzinger-schnitzler-2013",
+     "label": "Denzinger & Schnitzler 2013",
+     "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+     "url": "https://doi.org/10.3389/fphys.2013.00164",
+     "doi_verified": true
+    }
+   ]
   }
  },
  "species": {

@@ -36,14 +36,42 @@ class BuildError(Exception):
 
 
 def short_label(reference_id: str, reference: dict) -> str:
-    """'Seibert A-M, Koblitz JC, ... (2015) ...' -> 'Seibert et al. 2015'."""
+    """Citation -> author-year label, using the convention readers expect.
+
+    One author 'Collen 2012'; two 'Schnitzler & Kalko 2001'; three or more
+    'Seibert et al. 2015'. Calling a two-author paper 'et al.' is simply wrong,
+    and these labels are what the card shows.
+    """
     if reference.get("label"):
         return reference["label"]
-    match = re.match(r"\s*([A-Z][A-Za-z'\-]+).*?\((\d{4})\)", reference.get("citation", ""))
-    if match:
-        surname, year = match.groups()
-        return f"{surname} et al. {year}"
-    return reference_id
+    citation = reference.get("citation", "")
+    match = re.match(r"\s*(.+?)\s*\((\d{4})\)", citation)
+    if not match:
+        return reference_id
+    authors_text, year = match.groups()
+
+    def is_surname(word: str) -> bool:
+        # Unicode-aware: "Flückiger" and "Mohl" are both surnames.
+        return (len(word) > 1 and word[:1].isupper()
+                and all(c.isalpha() or c in "'-" for c in word))
+
+    # "Schnitzler H-U, Kalko EKV" -> ["Schnitzler", "Kalko"]. A nobiliary
+    # particle ("von Helversen") still names an author, so scan the whole part
+    # rather than only its first word.
+    surnames = []
+    for part in authors_text.split(","):
+        words = part.strip().split()
+        surname = next((w for w in words if is_surname(w)), None)
+        if surname:
+            surnames.append(surname)
+    if not surnames:
+        return reference_id
+    # A citation already written "Foley NM et al." names more authors than it lists.
+    if "et al" in authors_text.lower() or len(surnames) > 2:
+        return f"{surnames[0]} et al. {year}"
+    if len(surnames) == 2:
+        return f"{surnames[0]} & {surnames[1]} {year}"
+    return f"{surnames[0]} {year}"
 
 
 def load_rows(reference_ids: set[str]) -> tuple[list[dict], list[str]]:
@@ -294,6 +322,71 @@ def build_species(rows, registry, refs, methods) -> dict:
     }
 
 
+FAMILY_DEFAULTS = HERE / "family_call_defaults.csv"
+FAMILY_REFERENCES = HERE / "family_references.json"
+
+# A family range this many times wider than its low bound tells a reader almost
+# nothing about an individual species, and the card says so outright.
+UNINFORMATIVE_SPAN = 3.0
+
+
+def build_family_inference() -> dict:
+    """Family-level expectations, for species with no measurement of their own.
+
+    This is inference from comparative reviews, not measurement, and it is
+    labelled as such everywhere it appears. Three things travel with every
+    entry so the reader can judge it: the stated reason the family is expected
+    to fall in that range, the sources behind it, and — where the range spans
+    more than UNINFORMATIVE_SPAN — an explicit statement that it does not
+    constrain an individual species.
+    """
+    if not FAMILY_DEFAULTS.exists():
+        return {}
+    references = json.loads(FAMILY_REFERENCES.read_text(encoding="utf-8"))["references"]
+    families = {}
+    for row in csv.DictReader(FAMILY_DEFAULTS.open(encoding="utf-8")):
+        low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
+        laryngeal = row.get("laryngeal_echolocation", "").strip().lower() == "yes"
+        cited = [r for r in (row.get("reference_ids") or "").split(";") if r and r != "none"]
+        warnings = []
+        if not laryngeal:
+            # Showing a frequency range for a family that mostly does not
+            # echolocate would be actively wrong, so the range is withheld.
+            warnings.append("Most species in this family do not echolocate at all; "
+                            "the range applies only to the few that click.")
+        if high / low >= UNINFORMATIVE_SPAN:
+            warnings.append(f"This family's range spans {high / low:.0f}x, so it does not "
+                            "usefully constrain any individual species.")
+        if not cited:
+            warnings.append("No identifiable published source for this family's range.")
+        if row.get("freq_range_confidence") == "poorly_constrained":
+            warnings.append("The family range itself is poorly constrained.")
+
+        families[row["family"]] = {
+            "family": row["family"],
+            "show_range": laryngeal,
+            "low": low,
+            "high": high,
+            "confidence": row.get("freq_range_confidence", ""),
+            "laryngeal": laryngeal,
+            "emission": row.get("emission_route", ""),
+            "duty_cycle": row.get("duty_cycle_class", ""),
+            "structure": row.get("call_structure", ""),
+            "documentation": row.get("family_documentation_status", ""),
+            "reason": row.get("notes", ""),
+            "warnings": warnings,
+            "verified": bool(row.get("verified_by")),
+            "citations": [{
+                "id": r,
+                "label": short_label(r, references.get(r, {})),
+                "citation": references.get(r, {}).get("citation", r),
+                "url": references.get(r, {}).get("url"),
+                "doi_verified": references.get(r, {}).get("doi_verified", False),
+            } for r in cited],
+        }
+    return families
+
+
 def is_stated(value) -> bool:
     """Method fields record ignorance explicitly, so 'unstated in abstract' and
     friends count as absent rather than as a recorded value."""
@@ -484,11 +577,18 @@ def main() -> None:
             shadowed.append((mdd_id, previous.get("reference")))
         species[mdd_id] = record
 
+    # Family inference is emitted once, keyed by family, and the page applies it
+    # to species with no measurement. Keeping it out of the per-species records
+    # keeps it structurally impossible to mistake for a measurement, and keeps
+    # the export from growing by 1,190 copies of the same paragraph.
+    inference = build_family_inference()
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
-        "version": 2,
+        "version": 3,
         "generated_on": date.today().isoformat(),
         "references": export_refs,
+        "familyInference": inference,
         "species": species,
     }, ensure_ascii=False, indent=1, sort_keys=False) + "\n", encoding="utf-8")
 
@@ -503,6 +603,9 @@ def main() -> None:
                                     ("rich", "detailed", "basic", "minimal") if levels[k]))
     if skipped:
         print(f"  not measurement sources, skipped: {', '.join(skipped)}")
+    unsourced = [f for f, i in inference.items() if not i["citations"]]
+    print(f"  family inference for {len(inference)} families"
+          + (f"; {len(unsourced)} cite no source ({', '.join(sorted(unsourced))})" if unsourced else ""))
     if shadowed:
         by_reference = Counter(reference for _, reference in shadowed)
         print(f"  {len(shadowed)} legacy entries kept alongside structured data, "

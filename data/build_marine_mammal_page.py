@@ -153,6 +153,7 @@ sub("""Promise.all([
   luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.directCalls = calls.species || {};
+  luState.familyInference = calls.familyInference || {};
   luState.directCallReferences = calls.references || {};
   luState.media = media.assets || {};""",
     """Promise.all([

@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: schema implemented; roadmap §10 Steps 2 and 2b complete (Castro 2024 and Obrist 2004 imported, 324 species). Next: §10.3 Step 1 (Pteropodidae).
+Status: schema implemented; roadmap §10 Steps 2, 2b, 3b and 4 complete. 324 species measured (21.4%); the remaining 1,190 cards show labelled family-level inference. Next: §10.3 Step 1 (Pteropodidae species records) and Step 3 (source survey).
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 
@@ -372,7 +372,22 @@ It earns its place immediately: 8 of 326 measured values are outside expectation
 
 A conflict never means the measurement is wrong. *Rhynchonycteris naso* at 89.7 kHz is flagged against an Emballonuridae range of 20–60 kHz, and here it is the expectation that is too narrow.
 
-**Step 4 — display family inheritance for species with no measurement (still to do).**
+**Step 4 — family inference displayed on the card. ✅ Done.**
+
+At the maintainer's direction the numeric range is shown, not only the categorical traits. Every species with no measurement of its own now gets its family's expectation, rendered so it cannot be mistaken for a measurement: a dashed border rather than the measurement block's solid one, an **Inferred** badge, and the opening line "No measurement for this species. Values below are expected from its family."
+
+Three things travel with every inferred card, so a reader can judge it rather than trust it:
+
+- **The stated reason.** The `notes` column from the family table, shown as "Why this range" — e.g. for Vespertilionidae, "Low end: *Euderma maculatum* ~10 kHz. High end: *Kerivoula* spp."
+- **Warnings, generated from the data rather than written by hand.** A range spanning ≥3× says so outright ("this family's range spans 16×, so it does not usefully constrain any individual species"); a `poorly_constrained` confidence says so; a family citing no identifiable publication says so.
+- **Sources.** `family_references.json` holds a record per work, and `reference_ids` in the family table points at them, so the A1 rule holds for inference too. Seven DOIs were resolved against Crossref during import; the rest are recorded as written and marked *identifier unverified* on the card. Three families — Furipteridae, Natalidae, Thyropteridae — cite no identifiable source at all and say so.
+
+Two safeguards worth noting. A family whose `laryngeal_echolocation` is `no` never shows a frequency range: Pteropodidae reads "No laryngeal echolocation", because printing "10–60 kHz" for a *Pteropus* would be actively wrong. And the inference is emitted once per family in `familyInference`, not copied into 1,190 species records — which keeps it structurally impossible to confuse with a measurement and keeps the export from bloating.
+
+This does not change coverage: 324 species measured, 21.4%. It changes what the other 1,190 cards say from nothing to a labelled, sourced, caveated expectation.
+
+**Step 4b — remaining work on the inference layer.**
+`verified_by`/`verified_date` are still empty on all 21 family rows, so nothing here has been signed off. 14 of the 21 reference records still lack a confirmed DOI. Genus-level inference would be far more informative than family-level for the big families and has no table yet.
 The numbers should stay suppressed: family ranges are least informative exactly where the gap is largest (Vespertilionidae 428 uncovered species, 10–160 kHz, a 16× span; Molossidae 106, 4.5×; Rhinolophidae 84, 6.4×). Roughly 880 of the 1,190 uncovered species sit in families whose range spans 3× or more. Only three families are narrow enough to be worth showing.
 
 The *categorical* columns are a different quality tier and do not degrade with family breadth — emission route, duty cycle class, laryngeal-or-not, call structure. "Rhinolophidae are nasal, high-duty-cycle CF-FM" holds for essentially all 118 species. Those are what should be inherited, clearly labelled as a family expectation.

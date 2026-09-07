@@ -1,0 +1,132 @@
+{
+ "schema_version": 1,
+ "_meta": {
+  "purpose": "Reference records for the works behind family_call_defaults.csv. Separate from references.json because these back an inference about a family, never a measurement of a species. A2/A1 still apply to the extent possible: each record says what the work is and whether its identifier was verified.",
+  "verified": "doi_verified=true means the DOI was resolved against Crossref during import. false means the citation is recorded as written but the identifier was not confirmed, and the card says so.",
+  "no_source": "The id 'none' is not a reference. It marks a family whose row in family_call_defaults.csv cites no identifiable publication (the author wrote 'scattered call libraries' or 'no family-level review'). Those families carry the strongest warning on the card."
+ },
+ "references": {
+  "schnitzler-kalko-2001": {
+   "citation": "Schnitzler H-U, Kalko EKV (2001) Echolocation by insect-eating bats. BioScience 51(7):557-569.",
+   "doi": "10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+   "url": "https://doi.org/10.1641/0006-3568(2001)051[0557:EBIEB]2.0.CO;2",
+   "doi_verified": true
+  },
+  "denzinger-schnitzler-2013": {
+   "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
+   "doi": "10.3389/fphys.2013.00164",
+   "url": "https://doi.org/10.3389/fphys.2013.00164",
+   "doi_verified": true
+  },
+  "jones-teeling-2006": {
+   "citation": "Jones G, Teeling EC (2006) The evolution of echolocation in bats. Trends in Ecology & Evolution 21(3):149-156.",
+   "doi": "10.1016/j.tree.2006.01.001",
+   "url": "https://doi.org/10.1016/j.tree.2006.01.001",
+   "doi_verified": true
+  },
+  "holland-2004": {
+   "citation": "Holland RA, Waters DA, Rayner JMV (2004) Echolocation signal structure in the megachiropteran bat Rousettus aegyptiacus Geoffroy 1810. Journal of Experimental Biology 207:4361-4369.",
+   "doi": "10.1242/jeb.01288",
+   "url": "https://doi.org/10.1242/jeb.01288",
+   "doi_verified": true
+  },
+  "boonman-2014": {
+   "citation": "Boonman A, Bumrungsri S, Yovel Y (2014) Nonecholocating fruit bats produce biosonar clicks with their wings. Current Biology 24(24):2962-2967.",
+   "doi": "10.1016/j.cub.2014.10.077",
+   "url": "https://doi.org/10.1016/j.cub.2014.10.077",
+   "doi_verified": true
+  },
+  "surlykke-1993": {
+   "citation": "Surlykke A, Miller LA, Mohl B, Andersen BB, Christensen-Dalsgaard J, Jorgensen MB (1993) Echolocation in two very small bats from Thailand: Craseonycteris thonglongyai and Myotis siligorensis. Behavioral Ecology and Sociobiology 33:1-12.",
+   "doi": "10.1007/BF00164341",
+   "url": "https://doi.org/10.1007/BF00164341",
+   "doi_verified": true
+  },
+  "kalko-1995": {
+   "citation": "Kalko EKV (1995) Insect pursuit, prey capture and echolocation in pipistrelle bats (Microchiroptera). Animal Behaviour 50(4):861-880.",
+   "doi": "10.1016/0003-3472(95)80090-5",
+   "url": "https://doi.org/10.1016/0003-3472(95)80090-5",
+   "doi_verified": true
+  },
+  "yovel-2011": {
+   "citation": "Yovel Y, Geva-Sagiv M, Ulanovsky N (2011) Click-based echolocation in bats: not so primitive after all. Journal of Comparative Physiology A 197:515-530.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "foley-2015": {
+   "citation": "Foley NM et al. (2015) How and why overcome the impediments to resolution: lessons from rhinolophid and hipposiderid bats. (Cited in the family table for Rhinonycteridae delimitation.)",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "fenton-bell-cloeotis": {
+   "citation": "Fenton MB & Bell GP, literature on Cloeotis percivali. (Cited as written in the family table; no single work identified.)",
+   "doi": null,
+   "url": null,
+   "doi_verified": false,
+   "label": "Fenton & Bell, Cloeotis literature"
+  },
+  "habersetzer-1981": {
+   "citation": "Habersetzer J (1981) Adaptive echolocation sounds in the bat Rhinopoma hardwickei.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "jung-2007": {
+   "citation": "Jung K, Kalko EKV, von Helversen O (2007) Echolocation calls in Central American emballonurid bats.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "kalko-1998": {
+   "citation": "Kalko EKV, Schnitzler H-U, Kaipf I, Grinnell AD (1998) Echolocation and foraging behavior of the lesser bulldog bat, Noctilio albiventris.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "kossl-1999": {
+   "citation": "Kossl M et al. (1999) Auditory and echolocation specialisations in Pteronotus parnellii.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "clare-2013": {
+   "citation": "Clare EL et al. (2013) Cryptic diversity and acoustic variation in the Pteronotus parnellii complex.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "brinklov-2009": {
+   "citation": "Brinklov S, Kalko EKV, Surlykke A (2009) Intense echolocation calls from two phyllostomid bats.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "ralisata": {
+   "citation": "Ralisata M et al., and scattered Malagasy surveys of Myzopoda. (Cited as written; no single work identified.)",
+   "doi": null,
+   "url": null,
+   "doi_verified": false,
+   "label": "Ralisata et al. and Malagasy surveys"
+  },
+  "parsons-1997": {
+   "citation": "Parsons S (1997) Search-phase echolocation calls of New Zealand bats, including Mystacina tuberculata.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "jung-2014": {
+   "citation": "Jung K et al. (2014) Echolocation calls of molossid bats in open space.",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  },
+  "lack-2010": {
+   "citation": "Lack JB et al. (2010) Molecular phylogenetics of Myotis indicates familial-level divergence for the genus Cistugo. (Cited for family delimitation, not call parameters.)",
+   "doi": null,
+   "url": null,
+   "doi_verified": false
+  }
+ }
+}

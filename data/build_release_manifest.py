@@ -13,9 +13,12 @@ FILES = (
     "gbif_country_supplement.json", "marine_mammal_gbif_country_supplement.json",
     "world_map.json", "marine_world_map.json", "media-manifest.json",
     "calls/exports/calls.json",
-    # Inference used to sanity-check imports. Never displayed and never part of
-    # the export, but pinned so a release records which expectations were applied.
+    # Family-level inference: sanity-checks imports, and fills the card for
+    # species with no measurement (labelled as inference, never as measurement).
+    # expected_ranges.csv is check-only. Pinned so a release records exactly
+    # which expectations were applied.
     "calls/family_call_defaults.csv", "calls/expected_ranges.csv",
+    "calls/family_references.json",
 )
 
 

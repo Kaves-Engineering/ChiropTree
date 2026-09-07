@@ -447,6 +447,16 @@ footer a:hover{color:var(--ochre)}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
 .lu-refnum{font-size:9px;flex:none}
 .lu-unmigrated{margin:6px 0 0;padding:5px 8px;border:1px dashed rgba(var(--border-rgb),.3);border-radius:3px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+/* family-level inference — deliberately unlike a measurement block */
+.lu-inferred{border:1px dashed var(--ochre);border-radius:3px;padding:9px 11px;background:rgba(var(--border-rgb),.05)}
+.lu-inferred-head{margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--muted)}
+.lu-inferred-badge{display:inline-block;padding:1px 6px;border-radius:2px;background:var(--ochre);color:var(--prussian);font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;vertical-align:1px}
+.lu-inferred-range{margin:0 0 8px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:14px}
+.lu-inferred-range .lu-val{font-variant-numeric:tabular-nums;color:var(--text)}
+.lu-inferred-why{margin:0 0 6px;font-size:11.5px;line-height:1.55;color:var(--muted)}
+.lu-inferred-why strong{color:var(--text);font-weight:600}
+.lu-inferred-warn{margin:0 0 6px;padding-left:16px;font-size:11.5px;line-height:1.55;color:var(--ochre)}
+.lu-inferred-warn li{margin:2px 0}
 .lu-density{display:inline-flex;align-items:center;gap:4px;cursor:help;white-space:nowrap}
 .lu-bars{display:inline-flex;gap:1px}
 .lu-bar{width:3px;height:7px;background:rgba(var(--border-rgb),.4);border-radius:1px}
@@ -1775,7 +1785,7 @@ const ESP = {
    2. SPECIES LOOKUP — search field top right, detail in a drawer
    (namespaced lu* to avoid collisions with the page code above)
    ========================================================= */
-const luState = { species: [], byName:{}, danish: {}, directCalls: {}, directCallReferences: {}, media: {}, filtered: [], active: null, ready:false };
+const luState = { species: [], byName:{}, danish: {}, directCalls: {}, directCallReferences: {}, familyInference: {}, media: {}, filtered: [], active: null, ready:false };
 const luInput   = document.getElementById('lu-search');
 const luResults = document.getElementById('lu-results');
 const luDrawer  = document.getElementById('lu-drawer');
@@ -1889,6 +1899,7 @@ Promise.all([
   luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.directCalls = calls.species || {};
+  luState.familyInference = calls.familyInference || {};
   luState.directCallReferences = calls.references || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
@@ -2484,8 +2495,52 @@ function luOverviewHTML(o){
   return bits.length ? '<span class="lu-quick">'+bits.join(' · ')+'</span>' : '';
 }
 
-function luCallHTML(call, legacyReference){
-  if(!call) return '<p class="lu-note">No verified species-level call measurement yet.</p>';
+/* Family-level expectation, shown only when a species has no measurement of
+   its own. This is inference from comparative reviews, never a measurement,
+   so it carries its warnings, its stated reason and its sources inline. */
+function luFamilyInferenceHTML(family){
+  const inf = luState.familyInference[family];
+  if(!inf) return '<p class="lu-note">No verified species-level call measurement yet.</p>';
+
+  const traits = [
+    inf.laryngeal ? null : 'no laryngeal echolocation',
+    inf.emission ? inf.emission.replace(/_/g,' ') : null,
+    inf.duty_cycle && inf.duty_cycle !== 'not_applicable' ? inf.duty_cycle+' duty cycle' : null
+  ].filter(Boolean).map(t=>'<span class="lu-tag">'+luEsc(t)+'</span>').join('');
+
+  const range = inf.show_range
+    ? '<span class="lu-val">'+luEsc(inf.low)+'–'+luEsc(inf.high)+' kHz</span>'+
+      '<span class="lu-basis">expected peak frequency</span>'
+    : '<span class="lu-val">No laryngeal echolocation</span>';
+
+  const warnings = (inf.warnings||[]).map(w=>'<li>'+luEsc(w)+'</li>').join('');
+  const cites = (inf.citations||[]).map(c=>{
+    const label = luEsc(c.label)+(c.doi_verified ? '' : '<span class="lu-basis" title="DOI not confirmed">?</span>');
+    return c.url
+      ? '<a href="'+luEsc(c.url)+'" target="_blank" rel="noopener" title="'+luEsc(c.citation)+'">'+label+'</a>'
+      : '<span title="'+luEsc(c.citation)+'">'+label+'</span>';
+  });
+
+  return '<div class="lu-inferred">'+
+    '<p class="lu-inferred-head">'+
+      '<span class="lu-inferred-badge">Inferred</span> '+
+      'No measurement for this species. Values below are expected from its family, '+
+      luEsc(family)+'.'+
+    '</p>'+
+    '<p class="lu-inferred-range">'+range+' '+traits+'</p>'+
+    (inf.structure ? '<p class="lu-inferred-why"><strong>Family call design:</strong> '+luEsc(inf.structure)+'</p>' : '')+
+    (inf.reason ? '<p class="lu-inferred-why"><strong>Why this range:</strong> '+luEsc(inf.reason)+'</p>' : '')+
+    (warnings ? '<ul class="lu-inferred-warn">'+warnings+'</ul>' : '')+
+    '<p class="lu-src">'+
+      (cites.length ? 'Inferred from: '+cites.join(' · ')
+                    : 'No identifiable published source.')+
+      ' · Family consensus, not verified against a species measurement.'+
+    '</p>'+
+  '</div>';
+}
+
+function luCallHTML(call, legacyReference, family){
+  if(!call) return luFamilyInferenceHTML(family);
 
   if(call.format !== 'structured'){
     return '<p>'+luEsc(call.summary)+'</p>'+
@@ -2579,7 +2634,7 @@ function luDetailHTML(s, compact){
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></section>'+
-      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference)+'</section>'+
+      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family)+'</section>'+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }

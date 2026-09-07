@@ -66,6 +66,17 @@ def validate_expectations(families: set[str]) -> None:
     listed = {row["family"] for row in rows}
     assert families <= listed, f"family defaults: no row for {', '.join(sorted(families - listed))}"
 
+    # Displayed inference must resolve to a reference record, same as a
+    # measurement must. 'none' is the explicit "no identifiable source" marker.
+    known = set(json.loads(
+        (HERE / "calls" / "family_references.json").read_text(encoding="utf-8"))["references"])
+    for row in rows:
+        for reference_id in (row.get("reference_ids") or "").split(";"):
+            reference_id = reference_id.strip()
+            if reference_id and reference_id != "none":
+                assert reference_id in known, \
+                    f"family defaults: {row['family']} cites unknown reference {reference_id!r}"
+
     ranges = list(csv.DictReader((HERE / "calls" / "expected_ranges.csv").open(encoding="utf-8")))
     for row in ranges:
         low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
