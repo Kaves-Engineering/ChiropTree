@@ -429,8 +429,24 @@ footer a:hover{color:var(--ochre)}
 
 /* structured call measurements */
 .lu-headline{margin:0 0 12px;font-size:13.5px;line-height:1.55;color:var(--text)}
-.lu-variant{margin:0 0 12px;padding:9px 11px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
-.lu-variant h5{margin:0 0 7px;font-size:12px;font-weight:600;color:var(--text);letter-spacing:.01em}
+.lu-variant{margin:0 0 6px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
+.lu-variant>summary{padding:7px 10px;cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;font-size:12px}
+.lu-variant>summary::-webkit-details-marker{display:none}
+.lu-variant>summary::before{content:'▸';color:var(--ochre);font-size:9px;transition:transform .12s ease}
+.lu-variant[open]>summary::before{transform:rotate(90deg)}
+.lu-variant>summary:hover{background:rgba(var(--border-rgb),.06)}
+.lu-variant>summary:focus-visible{outline:1px solid var(--ochre);outline-offset:-1px}
+.lu-vname{font-weight:600;color:var(--text)}
+.lu-quick{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.lu-quick-range{color:var(--text)}
+.lu-variant>.lu-facts-list{padding:2px 10px 9px}
+.lu-refs{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:2px}
+.lu-refs li{display:flex;gap:6px;align-items:baseline;font-size:11px;line-height:1.45;color:var(--muted)}
+.lu-refs a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.lu-refs a:hover{color:var(--text)}
+.lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
+.lu-refnum{font-size:9px;flex:none}
+.lu-refmark{font-size:8.5px;margin-left:2px;cursor:help}
 .lu-tag{display:inline-block;margin-left:4px;padding:1px 5px;border:1px solid rgba(var(--border-rgb),.35);border-radius:2px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
 .lu-facts-list{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
 .lu-facts-list .lu-fact{display:contents}
@@ -2456,28 +2472,42 @@ const LU_AGREEMENT = {
   single_source:           ['',  'One source']
 };
 
+function luRefMark(index, citation){
+  const ref = luState.directCallReferences[citation];
+  return '<sup class="lu-refmark" title="'+luEsc(ref ? ref.label : citation)+'">'+luEsc(index)+'</sup>';
+}
+
 function luCallFactHTML(f){
   const [mark, markTitle] = LU_AGREEMENT[f.agreement] || LU_AGREEMENT.single_source;
-  const ref = luState.directCallReferences[f.citation];
   const flagged = f.quality_flag && f.quality_flag !== 'ok';
-  const alts = (f.alternatives||[]).map(a=>{
-    const aref = luState.directCallReferences[a.citation];
-    return luEsc(a.display)+(a.basis ? ' <span class="lu-basis">'+luEsc(a.basis)+'</span>' : '')+
-      ' — '+luEsc(aref ? aref.label : a.citation);
-  });
+  const alts = (f.alternatives||[]).map(a=>
+    luEsc(a.display)+(a.basis ? ' <span class="lu-basis">'+luEsc(a.basis)+'</span>' : '')+
+      luRefMark(a.ref_index, a.citation));
   return '<div class="lu-fact">'+
     '<dt>'+luEsc(f.label)+
       (f.basis ? ' <span class="lu-basis">'+luEsc(f.basis)+'</span>' : '')+
     '</dt>'+
     '<dd>'+
       '<span class="lu-val">'+luEsc(f.display)+'</span>'+
+      luRefMark(f.ref_index, f.citation)+
       (mark ? ' <span class="lu-agree lu-agree-'+luEsc(f.agreement)+'" title="'+luEsc(markTitle)+'">'+mark+'</span>' : '')+
       (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
-      ' <span class="lu-cite">'+luEsc(ref ? ref.label : f.citation)+'</span>'+
       (flagged ? '<div class="lu-flag" title="'+luEsc(f.ambiguity||'')+'">'+luEsc(f.quality_flag.replace(/_/g,' '))+'</div>' : '')+
       (alts.length ? '<div class="lu-alt">also reported: '+alts.join('; ')+'</div>' : '')+
     '</dd>'+
   '</div>';
+}
+
+/* One-line collapsed summary: frequency span and peak. */
+function luOverviewHTML(o){
+  if(!o) return '';
+  const bits = [];
+  if(o.low != null && o.high != null){
+    bits.push('<span class="lu-quick-range" title="From '+luEsc(o.derived_from)+'">'+
+      luEsc(o.low)+'–'+luEsc(o.high)+' kHz</span>');
+  }
+  if(o.peak != null) bits.push('peak '+luEsc(o.peak)+' kHz');
+  return bits.length ? '<span class="lu-quick">'+bits.join(' · ')+'</span>' : '';
 }
 
 function luCallHTML(call, legacyReference){
@@ -2490,21 +2520,33 @@ function luCallHTML(call, legacyReference){
   }
 
   const variants = (call.variants||[]).map(v=>
-    '<div class="lu-variant">'+
-      '<h5>'+luEsc(v.label)+
+    '<details class="lu-variant">'+
+      '<summary>'+
+        '<span class="lu-vname">'+luEsc(v.label)+'</span>'+
         (v.signal_type ? ' <span class="lu-tag">'+luEsc(v.signal_type)+'</span>' : '')+
         (v.emission ? ' <span class="lu-tag">'+luEsc(v.emission)+'</span>' : '')+
         (v.direction ? ' <span class="lu-tag">'+luEsc(v.direction)+'</span>' : '')+
-      '</h5>'+
+        luOverviewHTML(v.overview)+
+      '</summary>'+
       '<dl class="lu-facts-list">'+v.facts.map(luCallFactHTML).join('')+'</dl>'+
-    '</div>').join('');
+    '</details>').join('');
 
   const provenance = call.n_sources+' source'+(call.n_sources===1?'':'s')+
     (call.n_independent_groups>1 ? ', '+call.n_independent_groups+' independent' : '')+
     ' · '+call.n_observations+' observations';
 
+  const refs = (call.reference_order||[]).map((id,i)=>{
+    const ref = luState.directCallReferences[id];
+    const label = luEsc(ref ? ref.label : id);
+    return '<li><span class="lu-refnum">'+(i+1)+'</span>'+
+      (ref && ref.url
+        ? '<a href="'+luEsc(ref.url)+'" target="_blank" rel="noopener">'+label+'</a>'
+        : label)+'</li>';
+  }).join('');
+
   return '<p class="lu-headline">'+luEsc(call.headline)+'</p>'+
     variants+
+    (refs ? '<ol class="lu-refs">'+refs+'</ol>' : '')+
     '<p class="lu-src">Species measurement · '+luEsc(provenance)+'</p>';
 }
 
@@ -2519,13 +2561,9 @@ function luDetailHTML(s, compact){
     '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
   if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
-  const callCitations = directCall
-    ? (directCall.citations || (directCall.reference ? [directCall.reference] : []))
-    : [];
-  callCitations.forEach(id=>{
-    const ref = luState.directCallReferences[id];
-    if(ref) sources.push('<a href="'+luEsc(ref.url)+'" target="_blank" rel="noopener">'+luEsc(ref.label)+'</a>');
-  });
+  // Structured entries carry their own numbered reference list under the call
+  // card, so only legacy single-reference entries are added to Sources here.
+  if(callReference) sources.push('<a href="'+luEsc(callReference.url)+'" target="_blank" rel="noopener">'+luEsc(callReference.label)+'</a>');
 
   // the full rank ladder, shown as one breadcrumb above the name
   const lineage = ['order','suborder','infraorder','superfamily','family','subfamily','tribe','genus']

@@ -101,7 +101,7 @@
   "1005649": {
    "format": "structured",
    "evidence_scope": "species_measurement",
-   "headline": "Alternates 2 search-call types — Type 1 (oral, downward) peaks at 33.6 ± 1.1 kHz over 1.7 ± 0.4 ms; Type 2 (nasal, upward) peaks at 40.1 ± 1.2 kHz over 2.5 ± 0.4 ms.",
+   "headline": "Alternates 2 search-call types, emitted through different routes and aimed in different directions.",
    "variants": [
     {
      "id": "type_1",
@@ -109,6 +109,13 @@
      "signal_type": "FM",
      "emission": "oral",
      "direction": "downward",
+     "overview": {
+      "low": 31.2,
+      "high": 35.9,
+      "peak": 33.6,
+      "derived_from": "sweep start and end frequency",
+      "peak_label": "Peak frequency"
+     },
      "facts": [
       {
        "parameter": "bandwidth",
@@ -116,6 +123,7 @@
        "group": "spectral",
        "status": "core",
        "display": "4.7 ± 1.0 kHz",
+       "value_num": 4.7,
        "statistic": "mean",
        "basis": "",
        "n_calls": "86",
@@ -129,10 +137,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": "Band stated to sit just below the type 2 band, with no or small overlap. Absolute start and end frequencies not given for type 1."
+         "note": "Band stated to sit just below the type 2 band, with no or small overlap. Absolute start and end frequencies not given for type 1.",
+         "ref_index": 2
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "end_frequency",
@@ -140,6 +150,7 @@
        "group": "spectral",
        "status": "core",
        "display": "31.2 ± 0.8 kHz",
+       "value_num": 31.2,
        "statistic": "mean",
        "basis": "",
        "n_calls": "86",
@@ -148,7 +159,8 @@
        "citation": "seibert-2015",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "Printed as 'terminal frequency'."
+       "note": "Printed as 'terminal frequency'.",
+       "ref_index": 1
       },
       {
        "parameter": "peak_frequency",
@@ -156,6 +168,7 @@
        "group": "spectral",
        "status": "core",
        "display": "33.6 ± 1.1 kHz",
+       "value_num": 33.6,
        "statistic": "mean",
        "basis": "",
        "n_calls": "86",
@@ -169,10 +182,12 @@
          "basis": "",
          "citation": "goerlitz-2010",
          "quality_flag": "definition_unstated",
-         "note": "Used as the model input frequency for B. barbastellus."
+         "note": "Used as the model input frequency for B. barbastellus.",
+         "ref_index": 3
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "start_frequency",
@@ -180,6 +195,7 @@
        "group": "spectral",
        "status": "core",
        "display": "35.9 ± 1.3 kHz",
+       "value_num": 35.9,
        "statistic": "mean",
        "basis": "",
        "n_calls": "86",
@@ -188,7 +204,8 @@
        "citation": "seibert-2015",
        "agreement": "single_source",
        "alternatives": [],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "duration",
@@ -196,6 +213,7 @@
        "group": "temporal",
        "status": "core",
        "display": "1.7 ± 0.4 ms",
+       "value_num": 1.7,
        "statistic": "mean",
        "basis": "",
        "n_calls": "86",
@@ -209,10 +227,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": "Measurement threshold not stated; not safely comparable with Seibert 2015."
+         "note": "Measurement threshold not stated; not safely comparable with Seibert 2015.",
+         "ref_index": 2
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "source_level",
@@ -220,6 +240,7 @@
        "group": "amplitude",
        "status": "core",
        "display": "median 94 dB",
+       "value_num": 94.0,
        "statistic": "median",
        "basis": "peak-equivalent at 0.1 m",
        "n_calls": "197",
@@ -228,7 +249,8 @@
        "citation": "goerlitz-2010",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "dB peSPL at 10 cm from the bat's mouth. Only type 1 calls were analysed, because 92% of moth detection distances were in response to this type. Compare Nyctalus leisleri at 127 dB peSPL under the same method."
+       "note": "dB peSPL at 10 cm from the bat's mouth. Only type 1 calls were analysed, because 92% of moth detection distances were in response to this type. Compare Nyctalus leisleri at 127 dB peSPL under the same method.",
+       "ref_index": 3
       },
       {
        "parameter": "source_level",
@@ -236,6 +258,7 @@
        "group": "amplitude",
        "status": "core",
        "display": "80.9 ± 7.5 dB",
+       "value_num": 80.9,
        "statistic": "mean",
        "basis": "rms at 1.0 m",
        "n_calls": "86",
@@ -244,7 +267,8 @@
        "citation": "seibert-2015",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 79.9 ± 5.1."
+       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 79.9 ± 5.1.",
+       "ref_index": 1
       },
       {
        "parameter": "moth_detection_distance",
@@ -252,6 +276,7 @@
        "group": "beam",
        "status": "extended",
        "display": "median 3.5 m",
+       "value_num": 3.5,
        "statistic": "median",
        "basis": "",
        "n_calls": null,
@@ -260,7 +285,8 @@
        "citation": "goerlitz-2010",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "Field-measured distance at which the A1 auditory cell of the moth Noctua pronuba responds to the approaching bat. Nyctalus leisleri under the same criterion: 33.2 m. value_min/value_max are quartiles, not a range. Modelled prediction was 4.3 m [3.4-6.1 m]."
+       "note": "Field-measured distance at which the A1 auditory cell of the moth Noctua pronuba responds to the approaching bat. Nyctalus leisleri under the same criterion: 33.2 m. value_min/value_max are quartiles, not a range. Modelled prediction was 4.3 m [3.4-6.1 m].",
+       "ref_index": 3
       }
      ]
     },
@@ -270,6 +296,13 @@
      "signal_type": "FM",
      "emission": "nasal",
      "direction": "upward",
+     "overview": {
+      "low": 35.1,
+      "high": 44.3,
+      "peak": 40.1,
+      "derived_from": "sweep start and end frequency",
+      "peak_label": "Peak frequency"
+     },
      "facts": [
       {
        "parameter": "bandwidth",
@@ -277,6 +310,7 @@
        "group": "spectral",
        "status": "core",
        "display": "9.2 ± 1.9 kHz",
+       "value_num": 9.2,
        "statistic": "mean",
        "basis": "",
        "n_calls": "110",
@@ -290,10 +324,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": ""
+         "note": "",
+         "ref_index": 2
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "end_frequency",
@@ -301,6 +337,7 @@
        "group": "spectral",
        "status": "core",
        "display": "35.1 ± 1.9 kHz",
+       "value_num": 35.1,
        "statistic": "mean",
        "basis": "",
        "n_calls": "110",
@@ -314,10 +351,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": ""
+         "note": "",
+         "ref_index": 2
         }
        ],
-       "note": "Printed as 'terminal frequency'."
+       "note": "Printed as 'terminal frequency'.",
+       "ref_index": 1
       },
       {
        "parameter": "peak_frequency",
@@ -325,6 +364,7 @@
        "group": "spectral",
        "status": "core",
        "display": "40.1 ± 1.2 kHz",
+       "value_num": 40.1,
        "statistic": "mean",
        "basis": "",
        "n_calls": "110",
@@ -333,7 +373,8 @@
        "citation": "seibert-2015",
        "agreement": "single_source",
        "alternatives": [],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "start_frequency",
@@ -341,6 +382,7 @@
        "group": "spectral",
        "status": "core",
        "display": "44.3 ± 0.9 kHz",
+       "value_num": 44.3,
        "statistic": "mean",
        "basis": "",
        "n_calls": "110",
@@ -354,10 +396,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": ""
+         "note": "",
+         "ref_index": 2
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "duration",
@@ -365,6 +409,7 @@
        "group": "temporal",
        "status": "core",
        "display": "2.5 ± 0.4 ms",
+       "value_num": 2.5,
        "statistic": "mean",
        "basis": "",
        "n_calls": "110",
@@ -378,10 +423,12 @@
          "basis": "",
          "citation": "denzinger-2001",
          "quality_flag": "definition_unstated",
-         "note": "Differs substantially from Seibert 2015 (2.5 ms) for the same signal type."
+         "note": "Differs substantially from Seibert 2015 (2.5 ms) for the same signal type.",
+         "ref_index": 2
         }
        ],
-       "note": ""
+       "note": "",
+       "ref_index": 1
       },
       {
        "parameter": "source_level",
@@ -389,6 +436,7 @@
        "group": "amplitude",
        "status": "core",
        "display": "82.0 ± 4.1 dB",
+       "value_num": 82.0,
        "statistic": "mean",
        "basis": "rms at 1.0 m",
        "n_calls": "110",
@@ -397,7 +445,8 @@
        "citation": "seibert-2015",
        "agreement": "single_source",
        "alternatives": [],
-       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 82.4 ± 3.6."
+       "note": "Absolute source level, dB SPL rms re 20 uPa at 1 m. Apparent source level reported separately as 82.4 ± 3.6.",
+       "ref_index": 1
       }
      ]
     }
@@ -409,6 +458,11 @@
     "denzinger-2001",
     "goerlitz-2010",
     "seibert-2015"
+   ],
+   "reference_order": [
+    "seibert-2015",
+    "denzinger-2001",
+    "goerlitz-2010"
    ]
   },
   "1005531": {

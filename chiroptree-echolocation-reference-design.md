@@ -156,20 +156,41 @@ A separate table, so a family guide can never be mistaken for a species measurem
 
 ## 4. What the page shows
 
-The card renders a computed **display view**, generated at build time, never hand-edited:
+The card renders a computed **display view**, generated at build time, never hand-edited. It is **progressive**: a species with real data can easily carry twenty measurements, which is reference material, not a card. So each call variant collapses to one line and expands on demand.
+
+**Collapsed** — the orienting layer. One headline sentence, then one row per call variant showing only the frequency span and the peak:
+
+```text
+Alternates 2 search-call types, emitted through different routes and aimed in different directions.
+  ▸ Type 1   FM  oral  downward    31.2–35.9 kHz · peak 33.6 kHz
+  ▸ Type 2   FM  nasal upward      35.1–44.3 kHz · peak 40.1 kHz
+  1 Seibert et al. 2015   2 Denzinger et al. 2001   3 Goerlitz et al. 2010
+  Species measurement · 3 sources, 2 independent · 5 observations
+```
+
+**Expanded** — every measurement with its statistic, dispersion, n, basis, agreement mark, quality flag and competing values.
+
+Three rules keep it uncluttered without losing accountability:
+
+- **The headline carries no numbers.** The variant rows already show span and peak; a headline repeating them is duplication. It states instead what the rows cannot — the contrast between variants.
+- **Citations are numbered, not named, at the point of use.** A superscript keyed to one reference list below the card, rather than "Seibert et al. 2015" repeated against eight values. Every value still resolves to a source; it just costs one character instead of twenty.
+- **The frequency span is labelled by provenance.** Where a source reports only sweep endpoints rather than explicit min/max, `overview.derived_from` says so, so the row never implies a measurement that was not made.
 
 ```json
-"1004776": {
+"1005649": {
   "evidence_scope": "species_measurement",
-  "headline": "Search-phase FM sweep, peak 56 kHz, 6.7 ms, oral.",
-  "primary": {
-    "peak_frequency": {"value": 56, "unit": "kHz", "statistic": "mean", "n_calls": 30}
-  },
-  "n_observations": 3,
-  "n_independent_sources": 2,
-  "agreement": "consistent",
-  "citations": ["castro-2024", "obrist-2004"],
-  "detail_url": "#call/1004776"
+  "headline": "Alternates 2 search-call types, emitted through different routes…",
+  "variants": [{
+    "id": "type_1", "label": "Type 1 (oral, directed downward)",
+    "signal_type": "FM", "emission": "oral", "direction": "downward",
+    "overview": {"low": 31.2, "high": 35.9, "peak": 33.6,
+                 "derived_from": "sweep start and end frequency"},
+    "facts": [{"parameter": "peak_frequency", "display": "33.6 ± 1.1 kHz",
+               "agreement": "corroborated", "ref_index": 1, "n_calls": "86",
+               "alternatives": [{"display": "median 33 kHz", "ref_index": 3}]}]
+  }],
+  "reference_order": ["seibert-2015", "denzinger-2001", "goerlitz-2010"],
+  "n_observations": 5, "n_sources": 3, "n_independent_groups": 2
 }
 ```
 

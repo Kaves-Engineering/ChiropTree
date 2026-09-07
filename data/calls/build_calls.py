@@ -208,6 +208,7 @@ def build_species(rows, registry, refs, methods) -> dict:
                 "group": param["group"],
                 "status": param["status"],
                 "display": format_value(best, registry),
+                "value_num": numeric[0] if numeric else None,
                 "statistic": best["statistic"],
                 "basis": basis_text(ckey),
                 "n_calls": best.get("n_calls") or None,
@@ -236,8 +237,11 @@ def build_species(rows, registry, refs, methods) -> dict:
             "signal_type": lookup.get("signal_type", {}).get("display"),
             "emission": lookup.get("emission", {}).get("display"),
             "direction": next((r["signal_direction"] for r in vrows if r.get("signal_direction")), None),
+            "overview": overview(lookup),
             "facts": [f for f in facts if f["parameter"] not in {"signal_type", "emission"}],
         })
+
+    reference_order = index_references(variant_views)
 
     citations = sorted({r["reference_id"] for r in rows})
     groups = {refs[c].get("independence_group") for c in citations}
@@ -250,28 +254,80 @@ def build_species(rows, registry, refs, methods) -> dict:
         "n_sources": len(citations),
         "n_independent_groups": len(groups),
         "citations": citations,
+        "reference_order": reference_order,
     }
 
 
-def headline(variants) -> str:
-    """Generated from stored measurements only - never hand-written (A6)."""
-    parts = []
+def overview(lookup: dict) -> dict:
+    """The collapsed one-line summary: frequency span and peak.
+
+    Span prefers explicit min/max frequency; where a source only reports the
+    endpoints of a sweep those are used instead, and derived_from says so, so
+    the card never implies a measurement that was not made.
+    """
+    explicit = [p for p in ("min_frequency", "max_frequency") if p in lookup]
+    endpoints = [p for p in ("end_frequency", "start_frequency") if p in lookup]
+    used = explicit if len(explicit) == 2 else (endpoints if len(endpoints) == 2 else explicit + endpoints)
+    values = [lookup[p]["value_num"] for p in used if lookup[p].get("value_num") is not None]
+
+    result = {"low": None, "high": None, "peak": None, "derived_from": None}
+    if len(values) >= 2:
+        result["low"], result["high"] = min(values), max(values)
+        result["derived_from"] = ("min/max frequency" if used == explicit
+                                  else "sweep start and end frequency")
+    peak = lookup.get("peak_frequency") or lookup.get("characteristic_frequency")
+    if peak and peak.get("value_num") is not None:
+        result["peak"] = peak["value_num"]
+        result["peak_label"] = peak["label"]
+    return result
+
+
+def index_references(variants) -> None:
+    """Number the citations in order of first appearance, so the card can carry
+    a superscript marker per value and one reference list underneath."""
+    order: list[str] = []
+
+    def index_of(citation: str) -> int:
+        if citation not in order:
+            order.append(citation)
+        return order.index(citation) + 1
+
     for variant in variants:
-        lookup = {f["parameter"]: f["display"] for f in variant["facts"]}
-        bits = []
-        if "peak_frequency" in lookup:
-            bits.append(f"peaks at {lookup['peak_frequency']}")
-        if "duration" in lookup:
-            bits.append(f"over {lookup['duration']}")
-        route = variant.get("emission")
-        label = variant["label"].split(" (")[0]
-        descriptor = f"{label}"
-        if route:
-            descriptor += f" ({route}{', ' + variant['direction'] if variant.get('direction') else ''})"
-        parts.append(f"{descriptor} {' '.join(bits)}".strip())
-    if len(parts) > 1:
-        return f"Alternates {len(parts)} search-call types — " + "; ".join(parts) + "."
-    return (parts[0] + ".") if parts else ""
+        for fact in variant["facts"]:
+            fact["ref_index"] = index_of(fact["citation"])
+            for alternative in fact.get("alternatives", []):
+                alternative["ref_index"] = index_of(alternative["citation"])
+    return order
+
+
+def headline(variants) -> str:
+    """One orienting sentence, generated from stored values only (A6).
+
+    Deliberately carries no numbers: the collapsed variant rows already show
+    frequency span and peak, so repeating them here is duplication rather than
+    orientation.
+    """
+    if not variants:
+        return ""
+    if len(variants) > 1:
+        # Each variant row shows its own route and direction; what the rows
+        # cannot show is the contrast between them, so that is the headline.
+        routes = {v.get("emission") for v in variants if v.get("emission")}
+        directions = {v.get("direction") for v in variants if v.get("direction")}
+        contrasts = []
+        if len(routes) > 1:
+            contrasts.append("different routes")
+        if len(directions) > 1:
+            contrasts.append("different directions")
+        tail = f", emitted through {' and aimed in '.join(contrasts)}" if contrasts else ""
+        return f"Alternates {len(variants)} search-call types{tail}."
+    routes = {"oral": "emitted through the mouth",
+              "nasal": "emitted through the nose",
+              "tongue_click": "produced with the tongue"}
+    only = variants[0]
+    signal = only.get("signal_type") or "Echolocation"
+    route = routes.get(only.get("emission"))
+    return f"{signal} search call{f', {route}' if route else ''}."
 
 
 def main() -> None:
