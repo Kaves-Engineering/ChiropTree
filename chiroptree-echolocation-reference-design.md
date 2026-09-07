@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: schema agreed and implemented; one species (*Barbastella barbastellus*, §9) migrated end to end as a worked example. Bulk harvesting not started.
+Status: schema agreed and implemented; one species (*Barbastella barbastellus*, §9) migrated end to end as a worked example. Bulk harvesting not started — see the roadmap in §10.
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 
@@ -292,7 +292,78 @@ Also added while doing the work: the `approximate` statistic (Denzinger's "aroun
 
 **Deviation from the plan:** the canonical SQLite store in §3 is not built yet. The path is CSV → validate → JSON export, which is enough to prove the schema and keeps the diff reviewable. SQLite becomes worthwhile when volume or cross-species querying demands it; nothing here forecloses it.
 
-## 10. Open questions
+## 10. Roadmap to full coverage
+
+Baseline at time of writing: **300 of 1,514 species (19.8%)** carry any call data — 299 as unstructured prose, 1 (*Barbastella barbastellus*) structured. 286 of the 299 come from a single source.
+
+### 10.1 The gap is four problems, not one
+
+| Tier | Species | What it is | Cost per species |
+|---|---|---|---|
+| 0 | ~203 | Not a gap. Pteropodidae do not echolocate laryngeally — a sourced positive claim, not missing data | minutes (family-level) |
+| 1 | 296 | Castro/Collen comparative table, importer already written, needs re-import as structured rows | seconds (mechanical) |
+| 2 | unknown | Bulk sources not yet touched: regional call libraries, atlases, repository datasets | ~1 day per source, tens–hundreds of species each |
+| 3 | the tail | Per-paper extraction, the barbastellus treatment | ~1 species per session |
+
+### 10.2 Coverage by family
+
+Sorted by absolute gap. The concentration matters more than the percentage: five families hold 84% of the missing species.
+
+| Family | Total | Covered | Gap | % |
+|---|---:|---:|---:|---:|
+| Vespertilionidae | 558 | 122 | 436 | 22% |
+| Pteropodidae | 203 | 0 | 203 | 0% |
+| Phyllostomidae | 231 | 47 | 184 | 20% |
+| Molossidae | 133 | 18 | 115 | 14% |
+| Rhinolophidae | 118 | 34 | 84 | 29% |
+| Hipposideridae | 94 | 25 | 69 | 27% |
+| Emballonuridae | 55 | 19 | 36 | 35% |
+| Miniopteridae | 41 | 7 | 34 | 17% |
+| *remaining 13 families* | 81 | 28 | 53 | 35% |
+| **Total** | **1514** | **300** | **1214** | **20%** |
+
+Worst genera by gap: *Myotis* 105, *Rhinolophus* 84, *Pteropus* 65, *Hipposideros* 55, *Murina* 48, *Miniopterus* 34, *Mops* 32. 202 of 238 genera have at least one uncovered species.
+
+### 10.3 Sequence
+
+**Step 1 — Pteropodidae as a positive claim (~203 species, hours).**
+The single best return in the project. 196 species get `signal_type: none`; the 7 *Rousettus* get `broadband_click` / `tongue_click`. Needs one or two solid references and the `inheritance` table from §3.6 for the family-level assertion, with *Rousettus* as species-level records. **Takes headline coverage from 20% to 33% without a single new measurement**, because it converts "no data" into "answered".
+
+**Step 2 — Castro re-import as structured rows (296 species, ~half a day).**
+`build_castro_calls.py` already parses the table; re-point it at the CSV pipeline. Yields ~6 parameters per species and no context, so every one of these lands at density `minimal` — which is the honest result and exactly why §10.4 exists. Also resolve the 33 names (10%) that no longer match MDD v2.5.
+
+**Step 3 — survey Tier 2 sources (~1 week, no data written).**
+The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
+
+**Step 4 — wire up family-guide inheritance (all remaining species).**
+`call-records.json` already holds family-level guides. Displaying them through the `inheritance` table gives every one of the 1,514 cards something honest to say, clearly labelled as a family expectation rather than a measurement. This is the fastest route to a tree that is *filled out*, and it is orthogonal to how many species are ever measured.
+
+**Step 5 — import Tier 2 sources**, highest species-per-day first, re-running the coverage report after each.
+
+**Step 6 — the tail, selectively.** Reserve per-paper extraction for species that are charismatic, ecologically important, or acoustically unusual. It does not scale and should not be attempted as a sweep.
+
+### 10.4 Data density marker
+
+Steps 2 and 5 will put thin entries next to rich ones. A Castro row is six bare numbers; barbastellus is 27 rows with dispersion, sample sizes and method. Both are legitimately "species measurements", and without a marker the thin card reads as though the rich card is broken.
+
+Every species entry therefore carries a `density` block: a level (`minimal` / `basic` / `detailed` / `rich`), the parameter count, and named lists of what is present and absent. The card shows four bars and the level word, with the components as a tooltip — so it states exactly what is missing rather than showing an unexplained score.
+
+| Level | Requires |
+|---|---|
+| `rich` | ≥6 parameters, dispersion, sample size, phase + recording condition, and either method or independent corroboration |
+| `detailed` | ≥4 parameters, phase + recording condition, and dispersion or sample size |
+| `basic` | ≥3 parameters with phase + recording condition |
+| `minimal` | anything less — including every legacy prose entry, by construction |
+
+Current distribution: 1 `rich`, 299 `minimal`. The marker is also the progress metric for this roadmap — the goal is not only more covered species but fewer `minimal` ones.
+
+### 10.5 Two things that cap coverage below 100%
+
+**The literature does not exist for much of the order.** The gap concentrates in genera that are both speciose and poorly studied — *Murina* (48 uncovered), *Kerivoula* (21), *Mops* (32), *Alionoctula* (19, a recent split with essentially no acoustic literature under that name). Many species are known from a handful of specimens. A realistic ceiling is probably somewhere near half the order, but that is a guess and Step 3 should replace it with a measurement.
+
+**Taxonomic drift is the harder limit.** 33 of Castro's 329 names (10%) do not resolve against MDD v2.5, and that is a 2024 paper; older sources will be worse. More seriously, MDD splits mean a source's *Hipposideros commersoni* may now be three species and the recording often cannot be assigned to one. This needs a policy decision (§11): drop such records, or admit them at genus level with an explicit evidence scope. The `taxon_match_method` and `inheritance` fields already support either choice.
+
+## 11. Open questions
 
 1. Full per-observation detail in the card, or a link out? Decides whether `calls-full.json` ships to the browser, and its size.
 2. Is 15% on peak frequency the right divergence tolerance, and what is the equivalent for duration?
@@ -301,3 +372,5 @@ Also added while doing the work: the `approximate` statistic (Denzinger's "aroun
 5. Who is the second pass for `verified_by`, given a single maintainer?
 6. Which of the 5 `proposed` parameters are worth chasing sources for, and should any `extended` one be promoted to `core` and shown on the card?
 7. `detection_distance` is nearly always modelled rather than measured. Keep it in the same table with a flag, or split derived quantities out entirely?
+8. **Taxonomic drift policy (blocks Step 2).** When a source's name has since been split into several MDD species and the recording cannot be assigned, do we drop the record or admit it at genus level with an explicit evidence scope?
+9. Should `minimal`-density entries appear on the card at all, or only once a species reaches `basic`?

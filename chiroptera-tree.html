@@ -446,6 +446,10 @@ footer a:hover{color:var(--ochre)}
 .lu-refs a:hover{color:var(--text)}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
 .lu-refnum{font-size:9px;flex:none}
+.lu-density{display:inline-flex;align-items:center;gap:4px;cursor:help;white-space:nowrap}
+.lu-bars{display:inline-flex;gap:1px}
+.lu-bar{width:3px;height:7px;background:rgba(var(--border-rgb),.4);border-radius:1px}
+.lu-bar.on{background:var(--ochre)}
 .lu-refmark{font-size:8.5px;margin-left:2px;cursor:help}
 .lu-tag{display:inline-block;margin-left:4px;padding:1px 5px;border:1px solid rgba(var(--border-rgb),.35);border-radius:2px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
 .lu-facts-list{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
@@ -2498,6 +2502,21 @@ function luCallFactHTML(f){
   '</div>';
 }
 
+/* How much evidence stands behind the card, so a five-number comparative
+   entry cannot be mistaken for a fully worked-up species. */
+function luDensityHTML(d){
+  if(!d) return '';
+  const bars = [1,2,3,4].map(i=>
+    '<span class="lu-bar'+(i<=d.rank ? ' on' : '')+'"></span>').join('');
+  const detail = [
+    d.parameters ? d.parameters+' parameters' : null,
+    d.have && d.have.length ? 'has '+d.have.join(', ') : null,
+    d.missing && d.missing.length ? 'no '+d.missing.join(', ') : null
+  ].filter(Boolean).join(' · ');
+  return '<span class="lu-density" title="'+luEsc(detail)+'">'+
+    '<span class="lu-bars">'+bars+'</span>'+luEsc(d.level)+'</span>';
+}
+
 /* One-line collapsed summary: frequency span and peak. */
 function luOverviewHTML(o){
   if(!o) return '';
@@ -2516,7 +2535,8 @@ function luCallHTML(call, legacyReference){
   if(call.format !== 'structured'){
     return '<p>'+luEsc(call.summary)+'</p>'+
       '<p class="lu-src">'+luEsc(call.context)+
-      (legacyReference ? ' — '+luEsc(legacyReference.label) : '')+'</p>';
+      (legacyReference ? ' — '+luEsc(legacyReference.label) : '')+
+      ' · '+luDensityHTML(call.density)+'</p>';
   }
 
   const variants = (call.variants||[]).map(v=>
@@ -2547,7 +2567,8 @@ function luCallHTML(call, legacyReference){
   return '<p class="lu-headline">'+luEsc(call.headline)+'</p>'+
     variants+
     (refs ? '<ol class="lu-refs">'+refs+'</ol>' : '')+
-    '<p class="lu-src">Species measurement · '+luEsc(provenance)+'</p>';
+    '<p class="lu-src">Species measurement · '+luEsc(provenance)+
+      ' · '+luDensityHTML(call.density)+'</p>';
 }
 
 function luDetailHTML(s, compact){

@@ -255,6 +255,65 @@ def build_species(rows, registry, refs, methods) -> dict:
         "n_independent_groups": len(groups),
         "citations": citations,
         "reference_order": reference_order,
+        "density": density(rows, methods, len(groups)),
+    }
+
+
+def is_stated(value) -> bool:
+    """Method fields record ignorance explicitly, so 'unstated in abstract' and
+    friends count as absent rather than as a recorded value."""
+    if value in (None, "", "NA"):
+        return False
+    return "unstated" not in str(value).lower()
+
+
+def density(rows, methods, n_groups: int) -> dict:
+    """How much evidence stands behind a card.
+
+    A Castro-style comparative row and the barbastellus workup are both
+    'species measurements', but one is five bare numbers and the other is
+    27 rows with dispersion, sample sizes and method. Without a marker the
+    thin card looks like the rich card is broken. The level is derived from
+    named components, and the components travel with it, so the card can say
+    exactly what is missing rather than showing a mystery score.
+    """
+    parameters = {r["parameter"] for r in rows}
+    has_phase = any(r.get("call_phase") and r["call_phase"] != "unspecified" for r in rows)
+    has_condition = any(r.get("recording_condition") for r in rows)
+    has_sample_size = any(r.get("n_calls") or r.get("n_individuals") for r in rows)
+    has_dispersion = any(r.get("dispersion_value") for r in rows)
+
+    method_ids = {r.get("method_id") for r in rows if r.get("method_id")}
+    stated = sum(1 for mid in method_ids
+                 for key, value in methods.get(mid, {}).items()
+                 if key not in ("reference_id", "notes") and is_stated(value))
+    has_method = stated > 0
+
+    context = has_phase and has_condition
+    if len(parameters) >= 6 and has_dispersion and has_sample_size and context \
+            and (has_method or n_groups > 1):
+        level = "rich"
+    elif len(parameters) >= 4 and (has_dispersion or has_sample_size) and context:
+        level = "detailed"
+    elif len(parameters) >= 3 and context:
+        level = "basic"
+    else:
+        level = "minimal"
+
+    have, missing = [], []
+    (have if has_phase else missing).append("call phase")
+    (have if has_condition else missing).append("recording condition")
+    (have if has_sample_size else missing).append("sample size")
+    (have if has_dispersion else missing).append("dispersion")
+    (have if has_method else missing).append("recording method")
+    (have if n_groups > 1 else missing).append("independent corroboration")
+
+    return {
+        "level": level,
+        "rank": ["minimal", "basic", "detailed", "rich"].index(level) + 1,
+        "parameters": len(parameters),
+        "have": have,
+        "missing": missing,
     }
 
 
@@ -360,7 +419,12 @@ def main() -> None:
 
     species = {}
     for mdd_id, entry in legacy["species"].items():
-        species[mdd_id] = {"format": "legacy", **entry}
+        # A prose summary carries no phase, sample size, dispersion or method,
+        # so it is minimal by construction until it is migrated.
+        species[mdd_id] = {"format": "legacy", **entry, "density": {
+            "level": "minimal", "rank": 1, "parameters": None,
+            "have": [], "missing": ["structured measurements"],
+        }}
     for mdd_id, srows in by_species.items():
         species[mdd_id] = build_species(srows, registry, refs, methods)
 
