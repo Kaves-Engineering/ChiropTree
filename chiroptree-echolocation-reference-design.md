@@ -326,7 +326,22 @@ Worst genera by gap: *Myotis* 105, *Rhinolophus* 84, *Pteropus* 65, *Hipposidero
 
 ### 10.3 Sequence
 
-**Step 1 — Pteropodidae as a positive claim (~203 species, hours).**
+**Step 1 — Pteropodidae answered, via a genus tier. ✅ Done.**
+
+The framing in the original plan was wrong in a way worth recording. "No laryngeal echolocation" is true of *all* 203 Pteropodidae **including** *Rousettus*, whose clicks are lingual rather than laryngeal — so that sentence does not distinguish them. The real gap was that a *Pteropus* card and a *Rousettus* card said exactly the same thing, when one genus does not echolocate at all and the other independently reinvented it.
+
+Fixed with a genus tier (`genus_call_defaults.csv`) that overrides the family where a row exists, and an `echolocation_mode` column (`laryngeal` / `none` / `non_laryngeal_clicks`):
+
+- *Pteropus* and the other 45 non-*Rousettus* genera: **"Does not echolocate"**, with no emission route, no duty cycle and no frequency range, because none apply. Showing the family's `oral_clicks` route on a *Pteropus* card was a real bug this exposed.
+- *Rousettus* (7 species): **"Echolocates with tongue clicks, not with the larynx"**, 10–60 kHz labelled *click energy, broadband* rather than peak frequency, sourced to Holland et al. 2004 and Yovel et al. 2011.
+
+No species-level numbers were added. Holland et al. 2004 is the one detailed study of *R. aegyptiacus*, and its open abstract gives only signal energy (~4×10⁻⁸ J m⁻²), which is not a registered parameter — so there was nothing to import without inventing it. The genus record notes that only *R. aegyptiacus* has been studied and that the other six are assumed to click on genus-level grounds, and it deliberately does not assert the wing-generated clicks reported for a few other pteropodid genera by Boonman et al. 2014.
+
+**Coverage is deliberately unchanged at 324 measured species (21.4%).** The earlier plan claimed this step would take coverage to 33% by writing 203 species records. That would have inflated the measured count with assertions that are not measurements, which is exactly what §2 A5 forbids. The 203 cards now answer the question; the coverage number still counts only measurements.
+
+The genus tier is general, not a Pteropodidae special case: it is the mechanism §10.4 called for to make Vespertilionidae's uninformative 16× family range tractable.
+
+**Step 1 (original framing) — Pteropodidae as a positive claim (~203 species, hours).**
 The single best return in the project. 196 species get `signal_type: none`; the 7 *Rousettus* get `broadband_click` / `tongue_click`. Needs one or two solid references and the `inheritance` table from §3.6 for the family-level assertion, with *Rousettus* as species-level records. **Takes headline coverage from 20% to 33% without a single new measurement**, because it converts "no data" into "answered".
 
 **Step 2 — Castro re-import as structured rows. ✅ Done.**

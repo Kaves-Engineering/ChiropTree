@@ -13,16 +13,20 @@
    "sha256": "a7fd5683afc9edb91e04d04fcda43c976bd5adcfcd035d50d40be358551654b2"
   },
   "calls/exports/calls.json": {
-   "bytes": 1127446,
-   "sha256": "7724df8d5107c2f6821fb11787b1895be72ce862c3b409a090d173f6531062c7"
+   "bytes": 1128937,
+   "sha256": "7944db7a34ca815287018663bfd8d77104341f067ed3e994b08e1cdf49d2fd57"
   },
   "calls/family_call_defaults.csv": {
-   "bytes": 8150,
-   "sha256": "39260f5193b79c67b3b96ea24f3f50f3cd3bc1ef604b0223037615fc8c19830c"
+   "bytes": 8538,
+   "sha256": "f5452711bd6686bb2620827adb5418cfb14a2ca888244f4be3592d3cc9a365f9"
   },
   "calls/family_references.json": {
    "bytes": 6015,
    "sha256": "80d84099bc19a0bf217fe6e44eb3ad1fd8d0e64673d8b386a0e3372930f8b138"
+  },
+  "calls/genus_call_defaults.csv": {
+   "bytes": 1027,
+   "sha256": "6235104b7d2545dcbdf82927c16d1db56106bd02f080801432ead4c31da5455e"
   },
   "chiroptera_taxonomy.json": {
    "bytes": 1232196,

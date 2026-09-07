@@ -330,61 +330,91 @@ FAMILY_REFERENCES = HERE / "family_references.json"
 UNINFORMATIVE_SPAN = 3.0
 
 
-def build_family_inference() -> dict:
-    """Family-level expectations, for species with no measurement of their own.
+GENUS_DEFAULTS = HERE / "genus_call_defaults.csv"
 
-    This is inference from comparative reviews, not measurement, and it is
-    labelled as such everywhere it appears. Three things travel with every
-    entry so the reader can judge it: the stated reason the family is expected
-    to fall in that range, the sources behind it, and — where the range spans
-    more than UNINFORMATIVE_SPAN — an explicit statement that it does not
-    constrain an individual species.
+
+def inference_row(row: dict, scope: str, references: dict) -> dict:
+    """Shape one family or genus row into the record the card renders."""
+    low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
+    mode = row.get("echolocation_mode") or (
+        "laryngeal" if row.get("laryngeal_echolocation", "").lower() == "yes" else "none")
+    cited = [r for r in (row.get("reference_ids") or "").split(";") if r and r != "none"]
+
+    warnings = []
+    if mode == "none":
+        warnings.append("This taxon is not known to echolocate at all, so no call "
+                        "parameters apply to it.")
+    elif mode == "non_laryngeal_clicks":
+        warnings.append("Clicks are broadband, so a peak-frequency range describes "
+                        "them poorly and is not comparable with a laryngeal call.")
+    if mode != "none":
+        if high / low >= UNINFORMATIVE_SPAN:
+            warnings.append(f"This {scope}'s range spans {high / low:.0f}x, so it does not "
+                            "usefully constrain any individual species.")
+        if not cited:
+            warnings.append(f"No identifiable published source for this {scope}'s range.")
+        if row.get("freq_range_confidence") == "poorly_constrained":
+            warnings.append(f"The {scope} range itself is poorly constrained.")
+
+    return {
+        "scope": scope,
+        "taxon": row.get("family") if scope == "family" else row.get("genus"),
+        "mode": mode,
+        "show_range": mode != "none",
+        "low": low,
+        "high": high,
+        "confidence": row.get("freq_range_confidence", ""),
+        # A taxon that does not echolocate has no emission route and no duty
+        # cycle. The family row carries Rousettus's values, which must not be
+        # shown on a Pteropus card.
+        "emission": row.get("emission_route", "") if mode != "none" else "",
+        "duty_cycle": (row.get("duty_cycle_class", "")
+                       if mode != "none"
+                       and row.get("propagate_duty_cycle", "yes") == "yes"
+                       and row.get("duty_cycle_class") != "not_applicable" else ""),
+        "structure": row.get("call_structure", ""),
+        "documentation": row.get("family_documentation_status", ""),
+        "reason": row.get("notes", ""),
+        "warnings": warnings,
+        "verified": bool(row.get("verified_by")),
+        "citations": [{
+            "id": r,
+            "label": short_label(r, references.get(r, {})),
+            "citation": references.get(r, {}).get("citation", r),
+            "url": references.get(r, {}).get("url"),
+            "doi_verified": references.get(r, {}).get("doi_verified", False),
+        } for r in cited],
+    }
+
+
+def build_genus_inference() -> dict:
+    """Genus-level expectations, which override the family where they exist.
+
+    A family default is often too broad to say anything (Vespertilionidae spans
+    16x). A genus default can be far tighter, and in Pteropodidae it carries a
+    qualitative distinction the family cannot: Rousettus echolocates with tongue
+    clicks while the other 45 genera do not echolocate at all.
+    """
+    if not GENUS_DEFAULTS.exists():
+        return {}
+    references = json.loads(FAMILY_REFERENCES.read_text(encoding="utf-8"))["references"]
+    return {row["genus"]: inference_row(row, "genus", references)
+            for row in csv.DictReader(GENUS_DEFAULTS.open(encoding="utf-8"))}
+
+
+def build_family_inference() -> dict:
+    """Family-level expectations, used where no genus-level row exists.
+
+    Inference from comparative reviews, not measurement, and labelled as such
+    everywhere it appears. Every entry carries the stated reason the taxon is
+    expected to fall in that range, the sources behind it, and warnings
+    generated from the data rather than written by hand.
     """
     if not FAMILY_DEFAULTS.exists():
         return {}
     references = json.loads(FAMILY_REFERENCES.read_text(encoding="utf-8"))["references"]
-    families = {}
-    for row in csv.DictReader(FAMILY_DEFAULTS.open(encoding="utf-8")):
-        low, high = float(row["peak_freq_kHz_low"]), float(row["peak_freq_kHz_high"])
-        laryngeal = row.get("laryngeal_echolocation", "").strip().lower() == "yes"
-        cited = [r for r in (row.get("reference_ids") or "").split(";") if r and r != "none"]
-        warnings = []
-        if not laryngeal:
-            # Showing a frequency range for a family that mostly does not
-            # echolocate would be actively wrong, so the range is withheld.
-            warnings.append("Most species in this family do not echolocate at all; "
-                            "the range applies only to the few that click.")
-        if high / low >= UNINFORMATIVE_SPAN:
-            warnings.append(f"This family's range spans {high / low:.0f}x, so it does not "
-                            "usefully constrain any individual species.")
-        if not cited:
-            warnings.append("No identifiable published source for this family's range.")
-        if row.get("freq_range_confidence") == "poorly_constrained":
-            warnings.append("The family range itself is poorly constrained.")
-
-        families[row["family"]] = {
-            "family": row["family"],
-            "show_range": laryngeal,
-            "low": low,
-            "high": high,
-            "confidence": row.get("freq_range_confidence", ""),
-            "laryngeal": laryngeal,
-            "emission": row.get("emission_route", ""),
-            "duty_cycle": row.get("duty_cycle_class", ""),
-            "structure": row.get("call_structure", ""),
-            "documentation": row.get("family_documentation_status", ""),
-            "reason": row.get("notes", ""),
-            "warnings": warnings,
-            "verified": bool(row.get("verified_by")),
-            "citations": [{
-                "id": r,
-                "label": short_label(r, references.get(r, {})),
-                "citation": references.get(r, {}).get("citation", r),
-                "url": references.get(r, {}).get("url"),
-                "doi_verified": references.get(r, {}).get("doi_verified", False),
-            } for r in cited],
-        }
-    return families
+    return {row["family"]: inference_row(row, "family", references)
+            for row in csv.DictReader(FAMILY_DEFAULTS.open(encoding="utf-8"))}
 
 
 def is_stated(value) -> bool:
@@ -582,6 +612,7 @@ def main() -> None:
     # keeps it structurally impossible to mistake for a measurement, and keeps
     # the export from growing by 1,190 copies of the same paragraph.
     inference = build_family_inference()
+    genus_inference = build_genus_inference()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
@@ -589,6 +620,7 @@ def main() -> None:
         "generated_on": date.today().isoformat(),
         "references": export_refs,
         "familyInference": inference,
+        "genusInference": genus_inference,
         "species": species,
     }, ensure_ascii=False, indent=1, sort_keys=False) + "\n", encoding="utf-8")
 
@@ -604,6 +636,8 @@ def main() -> None:
     if skipped:
         print(f"  not measurement sources, skipped: {', '.join(skipped)}")
     unsourced = [f for f, i in inference.items() if not i["citations"]]
+    if genus_inference:
+        print(f"  genus inference overrides family for: {', '.join(sorted(genus_inference))}")
     print(f"  family inference for {len(inference)} families"
           + (f"; {len(unsourced)} cite no source ({', '.join(sorted(unsourced))})" if unsourced else ""))
     if shadowed:

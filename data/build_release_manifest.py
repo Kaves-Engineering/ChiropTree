@@ -17,7 +17,8 @@ FILES = (
     # species with no measurement (labelled as inference, never as measurement).
     # expected_ranges.csv is check-only. Pinned so a release records exactly
     # which expectations were applied.
-    "calls/family_call_defaults.csv", "calls/expected_ranges.csv",
+    "calls/family_call_defaults.csv", "calls/genus_call_defaults.csv",
+    "calls/expected_ranges.csv",
     "calls/family_references.json",
 )
 

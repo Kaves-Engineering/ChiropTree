@@ -154,6 +154,7 @@ sub("""Promise.all([
   luState.danish = danish;
   luState.directCalls = calls.species || {};
   luState.familyInference = calls.familyInference || {};
+  luState.genusInference = calls.genusInference || {};
   luState.directCallReferences = calls.references || {};
   luState.media = media.assets || {};""",
     """Promise.all([

@@ -37,21 +37,20 @@
  },
  "familyInference": {
   "Pteropodidae": {
-   "family": "Pteropodidae",
+   "scope": "family",
+   "taxon": "Pteropodidae",
+   "mode": "none",
    "show_range": false,
    "low": 10.0,
    "high": 60.0,
    "confidence": "poorly_constrained",
-   "laryngeal": false,
-   "emission": "oral_clicks",
-   "duty_cycle": "not_applicable",
+   "emission": "",
+   "duty_cycle": "",
    "structure": "non-laryngeal broadband tongue clicks (Rousettus and possibly a few other genera only); no echolocation in most species",
    "documentation": "absence_well_documented_presence_poorly_documented",
-   "reason": "Most of ~200 species do not echolocate at all. Species-level records should use evidence_class=not_applicable unless the genus is a known click-echolocator. Click frequency content is broadband and not comparable to laryngeal peak frequency.",
+   "reason": "Most of ~200 species do not echolocate at all. Click frequency content is broadband and not comparable to laryngeal peak frequency.",
    "warnings": [
-    "Most species in this family do not echolocate at all; the range applies only to the few that click.",
-    "This family's range spans 6x, so it does not usefully constrain any individual species.",
-    "The family range itself is poorly constrained."
+    "This taxon is not known to echolocate at all, so no call parameters apply to it."
    ],
    "verified": false,
    "citations": [
@@ -79,12 +78,13 @@
    ]
   },
   "Rhinolophidae": {
-   "family": "Rhinolophidae",
+   "scope": "family",
+   "taxon": "Rhinolophidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 25.0,
    "high": 160.0,
    "confidence": "well_constrained",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "high",
    "structure": "CF-FM: long constant-frequency component with terminal (and usually initial) FM sweep; second harmonic dominant",
@@ -119,12 +119,13 @@
    ]
   },
   "Hipposideridae": {
-   "family": "Hipposideridae",
+   "scope": "family",
+   "taxon": "Hipposideridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 55.0,
    "high": 190.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "high",
    "structure": "CF-FM: shorter CF component than Rhinolophidae with terminal FM; second harmonic dominant",
@@ -159,17 +160,18 @@
    ]
   },
   "Rhinonycteridae": {
-   "family": "Rhinonycteridae",
+   "scope": "family",
+   "taxon": "Rhinonycteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 90.0,
    "high": 215.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "high",
    "structure": "CF-FM",
    "documentation": "few_species_documented",
-   "reason": "Contains the highest CF frequency known in bats (Cloeotis percivali, ~212 kHz). Most species in the family have no published call description. Split from Hipposideridae; check that your MDD version recognises this family.",
+   "reason": "Contains the highest CF frequency known in bats (Cloeotis percivali, ~212 kHz). Most species in the family have no published call description.",
    "warnings": [],
    "verified": false,
    "citations": [
@@ -190,12 +192,13 @@
    ]
   },
   "Megadermatidae": {
-   "family": "Megadermatidae",
+   "scope": "family",
+   "taxon": "Megadermatidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 20.0,
    "high": 100.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "short multiharmonic broadband FM emitted at low intensity",
@@ -223,12 +226,13 @@
    ]
   },
   "Craseonycteridae": {
-   "family": "Craseonycteridae",
+   "scope": "family",
+   "taxon": "Craseonycteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 70.0,
    "high": 80.0,
    "confidence": "well_constrained",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "short steep FM with narrowband component",
@@ -247,12 +251,13 @@
    ]
   },
   "Rhinopomatidae": {
-   "family": "Rhinopomatidae",
+   "scope": "family",
+   "taxon": "Rhinopomatidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 25.0,
    "high": 45.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "short multiharmonic FM/QCF",
@@ -278,12 +283,13 @@
    ]
   },
   "Nycteridae": {
-   "family": "Nycteridae",
+   "scope": "family",
+   "taxon": "Nycteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 50.0,
    "high": 120.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "low-intensity multiharmonic steep FM",
@@ -304,12 +310,13 @@
    ]
   },
   "Emballonuridae": {
-   "family": "Emballonuridae",
+   "scope": "family",
+   "taxon": "Emballonuridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 20.0,
    "high": 60.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "narrowband QCF or shallow FM with multiple harmonics; often multi-harmonic search calls",
@@ -344,12 +351,13 @@
    ]
   },
   "Noctilionidae": {
-   "family": "Noctilionidae",
+   "scope": "family",
+   "taxon": "Noctilionidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 50.0,
    "high": 75.0,
    "confidence": "well_constrained",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "mixed CF/QCF component followed by FM sweep (trawling)",
@@ -375,17 +383,18 @@
    ]
   },
   "Mormoopidae": {
-   "family": "Mormoopidae",
+   "scope": "family",
+   "taxon": "Mormoopidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 45.0,
    "high": 95.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
-   "duty_cycle": "mixed",
+   "duty_cycle": "",
    "structure": "mostly LDC FM/QCF; the Pteronotus parnellii complex is HDC CF-FM",
    "documentation": "most_genera_documented",
-   "reason": "Do NOT propagate the family duty_cycle_class to species. The P. parnellii complex is the only oral-emitting HDC lineage known; all other mormoopids are LDC. Set duty_cycle at species level or leave unknown.",
+   "reason": "The Pteronotus parnellii complex is the only oral-emitting high-duty-cycle lineage known; all other mormoopids are low duty cycle.",
    "warnings": [],
    "verified": false,
    "citations": [
@@ -413,12 +422,13 @@
    ]
   },
   "Phyllostomidae": {
-   "family": "Phyllostomidae",
+   "scope": "family",
+   "taxon": "Phyllostomidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 40.0,
    "high": 110.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "short low-intensity broadband multiharmonic FM",
@@ -451,17 +461,18 @@
    ]
   },
   "Furipteridae": {
-   "family": "Furipteridae",
+   "scope": "family",
+   "taxon": "Furipteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 90.0,
    "high": 170.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "broadband FM, high frequency",
    "documentation": "single_species_documented",
-   "reason": "Essentially undescribed. Treat any species-level value as provisional and flag prominently as a knowledge gap.",
+   "reason": "Essentially undescribed.",
    "warnings": [
     "No identifiable published source for this family's range.",
     "The family range itself is poorly constrained."
@@ -470,12 +481,13 @@
    "citations": []
   },
   "Thyropteridae": {
-   "family": "Thyropteridae",
+   "scope": "family",
+   "taxon": "Thyropteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 40.0,
    "high": 110.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "short broadband FM",
@@ -489,12 +501,13 @@
    "citations": []
   },
   "Myzopodidae": {
-   "family": "Myzopodidae",
+   "scope": "family",
+   "taxon": "Myzopodidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 30.0,
    "high": 100.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "FM; poorly characterised",
@@ -516,12 +529,13 @@
    ]
   },
   "Mystacinidae": {
-   "family": "Mystacinidae",
+   "scope": "family",
+   "taxon": "Mystacinidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 25.0,
    "high": 60.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "low-frequency broadband FM/QCF with unusual harmonic structure",
@@ -540,17 +554,18 @@
    ]
   },
   "Molossidae": {
-   "family": "Molossidae",
+   "scope": "family",
+   "taxon": "Molossidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 10.0,
    "high": 45.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "long narrowband QCF search calls, often alternating between frequency bands",
    "documentation": "most_genera_documented",
-   "reason": "Open-space aerial hawkers; long-range low-frequency calls. Alternating call types within a sequence make single peak-frequency values misleading; store as range where possible.",
+   "reason": "Open-space aerial hawkers; long-range low-frequency calls. Alternating call types within a sequence make single peak-frequency values misleading.",
    "warnings": [
     "This family's range spans 4x, so it does not usefully constrain any individual species."
    ],
@@ -573,12 +588,13 @@
    ]
   },
   "Miniopteridae": {
-   "family": "Miniopteridae",
+   "scope": "family",
+   "taxon": "Miniopteridae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 45.0,
    "high": 65.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "FM-QCF",
@@ -597,12 +613,13 @@
    ]
   },
   "Cistugidae": {
-   "family": "Cistugidae",
+   "scope": "family",
+   "taxon": "Cistugidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 40.0,
    "high": 70.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "broadband FM",
@@ -623,12 +640,13 @@
    ]
   },
   "Natalidae": {
-   "family": "Natalidae",
+   "scope": "family",
+   "taxon": "Natalidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 70.0,
    "high": 165.0,
    "confidence": "poorly_constrained",
-   "laryngeal": true,
    "emission": "nasal",
    "duty_cycle": "low",
    "structure": "steep broadband FM, high frequency",
@@ -642,17 +660,18 @@
    "citations": []
   },
   "Vespertilionidae": {
-   "family": "Vespertilionidae",
+   "scope": "family",
+   "taxon": "Vespertilionidae",
+   "mode": "laryngeal",
    "show_range": true,
    "low": 10.0,
    "high": 160.0,
    "confidence": "approximate",
-   "laryngeal": true,
    "emission": "oral",
    "duty_cycle": "low",
    "structure": "highly variable: steep broadband FM (clutter foragers) through FM-QCF to narrowband QCF (open space)",
    "documentation": "most_genera_documented",
-   "reason": "The family-level range is so wide that it carries almost no information for an individual species. Prefer genus-level inference where you can justify it, and say plainly on the page that the family default is uninformative here. Low end: Euderma maculatum ~10 kHz. High end: Kerivoula spp., whose start frequencies exceed 200 kHz.",
+   "reason": "The family-level range is so wide that it carries almost no information for an individual species. Low end: Euderma maculatum ~10 kHz. High end: Kerivoula spp., whose start frequencies exceed 200 kHz.",
    "warnings": [
     "This family's range spans 16x, so it does not usefully constrain any individual species."
    ],
@@ -678,6 +697,44 @@
      "citation": "Denzinger A, Schnitzler H-U (2013) Bat guilds, a concept to classify the highly diverse foraging and echolocation behaviors of microchiropteran bats. Frontiers in Physiology 4:164.",
      "url": "https://doi.org/10.3389/fphys.2013.00164",
      "doi_verified": true
+    }
+   ]
+  }
+ },
+ "genusInference": {
+  "Rousettus": {
+   "scope": "genus",
+   "taxon": "Rousettus",
+   "mode": "non_laryngeal_clicks",
+   "show_range": true,
+   "low": 10.0,
+   "high": 60.0,
+   "confidence": "poorly_constrained",
+   "emission": "tongue_click",
+   "duty_cycle": "",
+   "structure": "paired broadband tongue clicks, a few hundred microseconds long",
+   "documentation": "",
+   "reason": "The one pteropodid genus known to echolocate. The clicks are made with the tongue, not the larynx, so this is an independent origin of echolocation rather than an inheritance from the other bats. Because the signal is a broadband click, a peak-frequency range describes it poorly and is not comparable with the peak frequency of a laryngeal call.",
+   "warnings": [
+    "Clicks are broadband, so a peak-frequency range describes them poorly and is not comparable with a laryngeal call.",
+    "This genus's range spans 6x, so it does not usefully constrain any individual species.",
+    "The genus range itself is poorly constrained."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "holland-2004",
+     "label": "Holland et al. 2004",
+     "citation": "Holland RA, Waters DA, Rayner JMV (2004) Echolocation signal structure in the megachiropteran bat Rousettus aegyptiacus Geoffroy 1810. Journal of Experimental Biology 207:4361-4369.",
+     "url": "https://doi.org/10.1242/jeb.01288",
+     "doi_verified": true
+    },
+    {
+     "id": "yovel-2011",
+     "label": "Yovel et al. 2011",
+     "citation": "Yovel Y, Geva-Sagiv M, Ulanovsky N (2011) Click-based echolocation in bats: not so primitive after all. Journal of Comparative Physiology A 197:515-530.",
+     "url": null,
+     "doi_verified": false
     }
    ]
   }
