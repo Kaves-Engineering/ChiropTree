@@ -1,67 +1,131 @@
 """Shared helpers for build_<source>_calls.py importers.
 
-Each importer fetches one source's own raw table, shapes it into
-(mdd_id, entry) pairs, and calls merge_species() to write them into
-call_measurements.json. Keeping the matching/merge/report logic in one
-place means every source obeys the same policy:
+Each importer fetches one source's own raw table, resolves its taxon names
+against the current MDD taxonomy, and writes one CSV of measurement rows to
+data/calls/<reference_id>.csv. data/calls/build_calls.py then validates every
+row against the parameter registry and builds the browser export.
 
-- species-level only: caller must resolve to an exact MDD ID, never a
-  genus/family fallback;
-- first source wins: an MDD ID already present in the store is left
-  untouched and reported as skipped, so import order is the (implicit)
-  priority order between sources -- run more specific/direct-measurement
-  sources before broader comparative databases;
-- unmatched names are reported, never guessed.
+Policy this enforces for every source:
+
+- species-level only: a row is written only when the name resolves to exactly
+  one MDD species, never to a genus or family fallback;
+- names are resolved, never guessed. Two routes count as resolution: an exact
+  match on the accepted binomial, and a 1:1 match on MDD's own recorded MSW3
+  name (taxon_match_method='synonym_via_mdd'). An MSW3 name that maps to
+  several MDD species is a split, not a synonym, and is left unresolved;
+- nothing is dropped silently. Unresolved names are written to a review file
+  for a human decision;
+- no first-wins skipping. Every source writes its own CSV and conflicts are
+  surfaced by the builder, not resolved by import order.
 """
+import csv
 import json
 import re
+from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).parent
 TAXONOMY = HERE / "chiroptera_taxonomy.json"
-CALLS = HERE / "call_measurements.json"
+CALLS_DIR = HERE / "calls"
+REVIEW_DIR = CALLS_DIR / "unresolved"
+
+# Column order every source CSV uses. build_calls.py reads by name, so the
+# order is for human review only -- context first, then the measurement.
+COLUMNS = [
+    "observation_id", "mdd_id", "verbatim_taxon_name", "taxon_match_method",
+    "reference_id", "locator", "method_id",
+    "call_phase", "call_variant", "variant_label", "signal_direction",
+    "recording_condition", "habitat_class", "country", "locality", "date_or_season",
+    "n_individuals", "n_calls",
+    "parameter", "statistic", "value", "value_min", "value_max", "unit",
+    "dispersion_type", "dispersion_value", "verbatim_value", "quality_flag", "notes",
+]
 
 
 def norm(name: str) -> str:
     return re.sub(r"\s+", " ", name.strip().lower())
 
 
-def load_species_by_name() -> dict[str, dict]:
-    """MDD taxon records keyed by normalized 'genus species' binomial."""
-    taxonomy = json.loads(TAXONOMY.read_text(encoding="utf-8"))
-    return {norm(s["sciName"].replace("_", " ")): s for s in taxonomy["species"]}
+class TaxonResolver:
+    """Resolves source taxon names to MDD species, or reports why it cannot."""
+
+    def __init__(self) -> None:
+        taxonomy = json.loads(TAXONOMY.read_text(encoding="utf-8"))
+        self.accepted = {norm(s["sciName"].replace("_", " ")): s for s in taxonomy["species"]}
+        self.msw3 = defaultdict(list)
+        for species in taxonomy["species"]:
+            legacy = (species.get("MSW3_sciName") or "").replace("_", " ").strip()
+            if legacy and legacy != "NA":
+                self.msw3[norm(legacy)].append(species)
+        self.unresolved: list[tuple[str, str]] = []
+        self.matched_exact = 0
+        self.matched_synonym = 0
+
+    def resolve(self, name: str) -> tuple[dict | None, str]:
+        """Return (species record, match method). (None, reason) when unresolved."""
+        key = norm(name)
+        if key in self.accepted:
+            self.matched_exact += 1
+            return self.accepted[key], "exact"
+
+        candidates = self.msw3.get(key, [])
+        if len(candidates) == 1:
+            self.matched_synonym += 1
+            return candidates[0], "synonym_via_mdd"
+        if len(candidates) > 1:
+            names = ", ".join(c["sciName"].replace("_", " ") for c in candidates)
+            reason = f"MSW3 name split into several MDD species: {names}"
+        else:
+            reason = "no accepted name and no MSW3 bridge in MDD v2.5"
+        self.unresolved.append((name, reason))
+        return None, reason
 
 
-def load_store() -> dict:
-    return json.loads(CALLS.read_text(encoding="utf-8"))
+def write_rows(reference_id: str, rows: list[dict]) -> Path:
+    """Write one source's measurement rows, sorted for a stable diff."""
+    CALLS_DIR.mkdir(parents=True, exist_ok=True)
+    path = CALLS_DIR / f"{reference_id}.csv"
+    rows = sorted(rows, key=lambda r: (r["observation_id"], r["parameter"]))
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=COLUMNS, extrasaction="raise")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({column: row.get(column, "") for column in COLUMNS})
+    return path
 
 
-def save_store(store: dict) -> None:
-    CALLS.write_text(json.dumps(store, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+def write_review(reference_id: str, unresolved: list[tuple[str, str]]) -> Path | None:
+    """Park unresolved names where a human can act on them.
 
-
-def merge_species(store: dict, reference_id: str, reference: dict, rows: list[tuple[str, dict]]) -> dict:
-    """Merge (mdd_id, entry) pairs into store, skipping IDs already present.
-
-    rows: list of (mdd_id, {"summary": ..., "context": ...}) -- reference is
-    filled in here. Returns a small report dict for the caller to print.
+    These are not failures of the importer; they are taxonomic decisions that
+    only a person should make. Keeping them in the repo means they cannot be
+    quietly forgotten.
     """
-    store["references"].setdefault(reference_id, reference)
-    added = 0
-    skipped_existing = 0
-    for mdd_id, entry in rows:
-        if mdd_id in store["species"]:
-            skipped_existing += 1
-            continue
-        store["species"][mdd_id] = {**entry, "reference": reference_id}
-        added += 1
-    return {"added": added, "skipped_existing": skipped_existing}
+    if not unresolved:
+        return None
+    REVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    path = REVIEW_DIR / f"{reference_id}.md"
+    lines = [
+        f"# Unresolved taxon names — {reference_id}",
+        "",
+        f"{len(unresolved)} name(s) in this source do not resolve to exactly one",
+        "species in the current MDD taxonomy, so no rows were imported for them.",
+        "Resolve by hand and add the mapping to the importer, or record the",
+        "decision to exclude them.",
+        "",
+        "| Name as printed in source | Why unresolved |",
+        "|---|---|",
+    ]
+    lines += [f"| {name} | {reason} |" for name, reason in sorted(unresolved)]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return path
 
 
-def report(summary: dict, unmatched: list[str]) -> None:
-    print(f"Added {summary['added']} species, skipped {summary['skipped_existing']} "
-          f"already-curated, {len(unmatched)} unmatched to current MDD taxonomy")
-    if unmatched:
-        print("Unmatched species names (likely MDD synonym/taxonomy drift):")
-        for name in sorted(unmatched):
-            print(f"  - {name}")
+def report(reference_id: str, written: int, species: int, resolver: TaxonResolver) -> None:
+    print(f"{reference_id}: wrote {written} measurement rows for {species} species")
+    exact = "resolved by exact name"
+    print(f"  {resolver.matched_exact} {exact}, {resolver.matched_synonym} via MSW3 synonym")
+    if resolver.unresolved:
+        print(f"  {len(resolver.unresolved)} unresolved, parked for review:")
+        for name, reason in sorted(resolver.unresolved):
+            print(f"    - {name}: {reason}")

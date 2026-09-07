@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: schema agreed and implemented; one species (*Barbastella barbastellus*, §9) migrated end to end as a worked example. Bulk harvesting not started — see the roadmap in §10.
+Status: schema implemented; roadmap §10 Step 2 complete (321 species imported from Castro 2024). Next: §10.3 Step 1 (Pteropodidae) and migration of the 13 remaining legacy entries.
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 
@@ -294,7 +294,7 @@ Also added while doing the work: the `approximate` statistic (Denzinger's "aroun
 
 ## 10. Roadmap to full coverage
 
-Baseline at time of writing: **300 of 1,514 species (19.8%)** carry any call data — 299 as unstructured prose, 1 (*Barbastella barbastellus*) structured. 286 of the 299 come from a single source.
+Baseline when this roadmap was written: **300 of 1,514 species (19.8%)**, 299 as unstructured prose. After Step 2: **323 of 1,514 (21.3%)** — 321 structured, 2 still legacy prose. Density: 1 `rich`, 322 `minimal`.
 
 ### 10.1 The gap is four problems, not one
 
@@ -329,8 +329,16 @@ Worst genera by gap: *Myotis* 105, *Rhinolophus* 84, *Pteropus* 65, *Hipposidero
 **Step 1 — Pteropodidae as a positive claim (~203 species, hours).**
 The single best return in the project. 196 species get `signal_type: none`; the 7 *Rousettus* get `broadband_click` / `tongue_click`. Needs one or two solid references and the `inheritance` table from §3.6 for the family-level assertion, with *Rousettus* as species-level records. **Takes headline coverage from 20% to 33% without a single new measurement**, because it converts "no data" into "answered".
 
-**Step 2 — Castro re-import as structured rows (296 species, ~half a day).**
-`build_castro_calls.py` already parses the table; re-point it at the CSV pipeline. Yields ~6 parameters per species and no context, so every one of these lands at density `minimal` — which is the honest result and exactly why §10.4 exists. Also resolve the 33 names (10%) that no longer match MDD v2.5.
+**Step 2 — Castro re-import as structured rows. ✅ Done.**
+1,605 rows for **321 species**, up from the 296 estimated. 5 parameters each (peak frequency, bandwidth, duration, body mass, emission), no phase, no method — every one lands at density `minimal`, which is the honest result and exactly why §10.4 exists. Coverage 19.8% → 21.3%.
+
+Three things worth recording:
+
+- **The taxonomy problem was smaller than feared.** 25 of the 33 unmatched names resolve 1:1 through `MSW3_sciName`, MDD's own record of the prior name — pure genus reassignments (*Chaerephon*→*Mops*, *Artibeus*→*Dermanura*, *Eptesicus*→*Cnephaeus*/*Neoeptesicus*, *Pipistrellus*→*Alionoctula*), not splits. **Zero ambiguous cases**, so open question 8 did not block this step after all. It will still bite on older sources. The remaining 8 are parked in `data/calls/unresolved/castro-2024.md` for a human decision, not guessed at.
+- **A broad source silently shadowed narrower ones.** On first run, 11 species lost their Obrist/Vaughan/Teixeira values because the structured Castro record replaced the legacy entry wholesale — first-source-wins reappearing at the legacy/structured boundary. The builder now carries any shadowed legacy entry through as `unmigrated`, displays it on the card, and reports the count at every build. Migrating those 13 entries properly (§8 step 3) is the next small job.
+- **A comparative table is not a call type.** Castro's rows have no `call_variant`, so for barbastellus they initially rendered as a *third* alternating signal type. Unattributed rows are now labelled "Not attributed to a call type" and sorted last, and the headline counts only named variants.
+
+Method note: Castro rows carry `quality_flag: ok` rather than `definition_unstated`. The unknown is a property of the whole source, not of individual values, so it lives in the method record (`castro-2024-unstated`, every field unstated) where §3.4 says it belongs, and surfaces through the density marker. Flagging all 1,605 rows individually would have been noise. The ranking still demotes them: a source with a stated recording condition and sample size outranks one without.
 
 **Step 3 — survey Tier 2 sources (~1 week, no data written).**
 The step that determines everything after it, and the one that cannot be estimated until it is done. For each candidate in §6: does it exist, does it publish species-level values, what licence, how many species, is there a machine-readable table. Output is a costed list, not data. **Do not start bulk importing before this.**
@@ -355,7 +363,7 @@ Every species entry therefore carries a `density` block: a level (`minimal` / `b
 | `basic` | ≥3 parameters with phase + recording condition |
 | `minimal` | anything less — including every legacy prose entry, by construction |
 
-Current distribution: 1 `rich`, 299 `minimal`. The marker is also the progress metric for this roadmap — the goal is not only more covered species but fewer `minimal` ones.
+Current distribution: 1 `rich`, 322 `minimal`. The marker is also the progress metric for this roadmap — the goal is not only more covered species but fewer `minimal` ones.
 
 ### 10.5 Two things that cap coverage below 100%
 

@@ -446,6 +446,7 @@ footer a:hover{color:var(--ochre)}
 .lu-refs a:hover{color:var(--text)}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
 .lu-refnum{font-size:9px;flex:none}
+.lu-unmigrated{margin:6px 0 0;padding:5px 8px;border:1px dashed rgba(var(--border-rgb),.3);border-radius:3px;font-size:11.5px;line-height:1.5;color:var(--muted)}
 .lu-density{display:inline-flex;align-items:center;gap:4px;cursor:help;white-space:nowrap}
 .lu-bars{display:inline-flex;gap:1px}
 .lu-bar{width:3px;height:7px;background:rgba(var(--border-rgb),.4);border-radius:1px}
@@ -2539,13 +2540,17 @@ function luCallHTML(call, legacyReference){
       ' · '+luDensityHTML(call.density)+'</p>';
   }
 
+  // With a single unnamed variant the headline already states signal type and
+  // emission route, so repeating them as chips on the one row is noise.
+  const soleUnnamed = (call.variants||[]).length === 1 && !call.variants[0].is_named;
   const variants = (call.variants||[]).map(v=>
     '<details class="lu-variant">'+
       '<summary>'+
-        '<span class="lu-vname">'+luEsc(v.label)+'</span>'+
-        (v.signal_type ? ' <span class="lu-tag">'+luEsc(v.signal_type)+'</span>' : '')+
-        (v.emission ? ' <span class="lu-tag">'+luEsc(v.emission)+'</span>' : '')+
-        (v.direction ? ' <span class="lu-tag">'+luEsc(v.direction)+'</span>' : '')+
+        '<span class="lu-vname">'+luEsc(soleUnnamed ? 'Measurements' : v.label)+'</span>'+
+        (soleUnnamed ? '' :
+          (v.signal_type ? ' <span class="lu-tag">'+luEsc(v.signal_type)+'</span>' : '')+
+          (v.emission ? ' <span class="lu-tag">'+luEsc(v.emission)+'</span>' : '')+
+          (v.direction ? ' <span class="lu-tag">'+luEsc(v.direction)+'</span>' : ''))+
         luOverviewHTML(v.overview)+
       '</summary>'+
       '<dl class="lu-facts-list">'+v.facts.map(luCallFactHTML).join('')+'</dl>'+
@@ -2553,7 +2558,7 @@ function luCallHTML(call, legacyReference){
 
   const provenance = call.n_sources+' source'+(call.n_sources===1?'':'s')+
     (call.n_independent_groups>1 ? ', '+call.n_independent_groups+' independent' : '')+
-    ' · '+call.n_observations+' observations';
+    ' · '+call.n_observations+' observation'+(call.n_observations===1?'':'s');
 
   const refs = (call.reference_order||[]).map((id,i)=>{
     const ref = luState.directCallReferences[id];
@@ -2564,8 +2569,19 @@ function luCallHTML(call, legacyReference){
         : label)+'</li>';
   }).join('');
 
+  // An older prose entry citing a source the structured rows do not yet cover.
+  // Shown rather than dropped, and marked as not yet migrated.
+  const unmigrated = call.unmigrated
+    ? '<p class="lu-unmigrated">Also on file, not yet migrated: '+
+        luEsc(call.unmigrated.summary)+
+        (luState.directCallReferences[call.unmigrated.reference]
+          ? ' — '+luEsc(luState.directCallReferences[call.unmigrated.reference].label) : '')+
+      '</p>'
+    : '';
+
   return '<p class="lu-headline">'+luEsc(call.headline)+'</p>'+
     variants+
+    unmigrated+
     (refs ? '<ol class="lu-refs">'+refs+'</ol>' : '')+
     '<p class="lu-src">Species measurement · '+luEsc(provenance)+
       ' · '+luDensityHTML(call.density)+'</p>';

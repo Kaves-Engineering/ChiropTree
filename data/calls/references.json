@@ -34,6 +34,34 @@
    "taxonomic_scope": "Barbastella barbastellus, Nyctalus leisleri"
   },
 
+  "collen-2012": {
+   "type": "thesis",
+   "citation": "Collen A (2012) The evolution of echolocation in bats: a comparative approach. PhD thesis, University College London.",
+   "doi": null,
+   "url": "https://discovery.ucl.ac.uk/id/eprint/1354471/",
+   "accessed_at": "2026-09-07",
+   "licence": "unknown",
+   "access_note": "Not read directly. Recorded because Castro et al. 2024 state their table 3 values were taken from measured data in this thesis (the EchoBank compilation). Present so the derivation chain is explicit and so any future source drawing on EchoBank can be placed in the same independence group.",
+   "republishes_reference_id": null,
+   "independence_group": "collen-echobank",
+   "geographic_scope": "global",
+   "taxonomic_scope": "Chiroptera"
+  },
+
+  "castro-2024": {
+   "type": "journal_article",
+   "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+   "doi": "10.1186/s12862-024-02231-4",
+   "url": "https://doi.org/10.1186/s12862-024-02231-4",
+   "accessed_at": "2026-09-07",
+   "licence": "cc-by-4.0",
+   "access_note": "Open access. Table 3 of the supplementary docx extracted in full by data/build_castro_calls.py; the docx is cached under data/raw/.",
+   "republishes_reference_id": "collen-2012",
+   "independence_group": "collen-echobank",
+   "geographic_scope": "global",
+   "taxonomic_scope": "Chiroptera"
+  },
+
   "seibert-2015": {
    "type": "journal_article",
    "citation": "Seibert A-M, Koblitz JC, Denzinger A, Schnitzler H-U (2015) Bidirectional echolocation in the bat Barbastella barbastellus: different signals of low source level are emitted upward through the nose and downward through the mouth. PLoS ONE 10(9):e0135590.",
@@ -62,6 +90,19 @@
    "source_level_reference_distance_m": null,
    "source_level_type": null,
    "notes": "Only the abstract was available. Every method field is therefore genuinely unknown rather than merely unrecorded, which is why the durations from this source carry quality_flag=definition_unstated."
+  },
+
+  "castro-2024-unstated": {
+   "reference_id": "castro-2024",
+   "recorder_model": "unstated",
+   "sample_rate_khz": null,
+   "analysis_software": "unstated",
+   "fft_size": null,
+   "frequency_definition": "unstated",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "A comparative compilation, not a study with one method: the values are collated from many original sources via Collen 2012, so no single recording or analysis method applies. Every field is therefore genuinely unstated, which is what places these entries at density 'minimal'. Values from this source should lose to any direct measurement with a stated method."
   },
 
   "goerlitz-2010-array": {

@@ -13,7 +13,7 @@ Run:  uv run data/calls/build_calls.py
 import csv
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
@@ -171,10 +171,23 @@ def build_species(rows, registry, refs, methods) -> dict:
     variants = defaultdict(list)
     for obs_rows in observations.values():
         variants[obs_rows[0].get("call_variant") or "default"].extend(obs_rows)
+    has_named = any(key != "default" for key in variants)
 
     variant_views = []
-    for variant_id, vrows in sorted(variants.items()):
-        labelled = next((r["variant_label"] for r in vrows if r.get("variant_label")), variant_id)
+    # Named call types first; anything unattributed to one comes last.
+    for variant_id, vrows in sorted(variants.items(), key=lambda kv: (kv[0] == "default", kv[0])):
+        labelled = next((r["variant_label"] for r in vrows if r.get("variant_label")), None)
+        if not labelled:
+            phases = {r.get("call_phase") for r in vrows} - {"", "unspecified", None}
+            if variant_id == "default" and has_named:
+                # A whole-species aggregate is not a third call type: a
+                # comparative table that never distinguished the alternating
+                # signals must not be displayed as though it had.
+                labelled = "Not attributed to a call type"
+            elif phases:
+                labelled = f"{sorted(phases)[0].replace('_', ' ').capitalize()} call"
+            else:
+                labelled = "Call, phase unspecified"
         by_param = defaultdict(list)
         for row in vrows:
             by_param[(row["parameter"], comparability_key(row, registry, methods))].append(row)
@@ -238,6 +251,7 @@ def build_species(rows, registry, refs, methods) -> dict:
             "emission": lookup.get("emission", {}).get("display"),
             "direction": next((r["signal_direction"] for r in vrows if r.get("signal_direction")), None),
             "overview": overview(lookup),
+            "is_named": variant_id != "default",
             "facts": [f for f in facts if f["parameter"] not in {"signal_type", "emission"}],
         })
 
@@ -368,25 +382,31 @@ def headline(variants) -> str:
     """
     if not variants:
         return ""
-    if len(variants) > 1:
+    # Only distinguished call types count towards alternation; a species-level
+    # aggregate row is not one of them.
+    named = [v for v in variants if v.get("is_named")]
+    if len(named) > 1:
         # Each variant row shows its own route and direction; what the rows
         # cannot show is the contrast between them, so that is the headline.
-        routes = {v.get("emission") for v in variants if v.get("emission")}
-        directions = {v.get("direction") for v in variants if v.get("direction")}
+        routes = {v.get("emission") for v in named if v.get("emission")}
+        directions = {v.get("direction") for v in named if v.get("direction")}
         contrasts = []
         if len(routes) > 1:
             contrasts.append("different routes")
         if len(directions) > 1:
             contrasts.append("different directions")
         tail = f", emitted through {' and aimed in '.join(contrasts)}" if contrasts else ""
-        return f"Alternates {len(variants)} search-call types{tail}."
+        return f"Alternates {len(named)} search-call types{tail}."
     routes = {"oral": "emitted through the mouth",
               "nasal": "emitted through the nose",
               "tongue_click": "produced with the tongue"}
     only = variants[0]
     signal = only.get("signal_type") or "Echolocation"
     route = routes.get(only.get("emission"))
-    return f"{signal} search call{f', {route}' if route else ''}."
+    # The label already carries the phase, or says it is unspecified; do not
+    # assert "search call" for a source that never said so.
+    subject = only["label"][0].lower() + only["label"][1:]
+    return f"{signal} {subject}{f', {route}' if route else ''}."
 
 
 def main() -> None:
@@ -425,8 +445,23 @@ def main() -> None:
             "level": "minimal", "rank": 1, "parameters": None,
             "have": [], "missing": ["structured measurements"],
         }}
+
+    shadowed = []
     for mdd_id, srows in by_species.items():
-        species[mdd_id] = build_species(srows, registry, refs, methods)
+        record = build_species(srows, registry, refs, methods)
+        # A4: importing a broad source must not silently delete a narrower one.
+        # Where a legacy entry cites a reference the structured rows do not, it
+        # is carried through visibly and listed for migration rather than lost.
+        previous = species.get(mdd_id)
+        if previous and previous["format"] == "legacy" \
+                and previous.get("reference") not in record["citations"]:
+            record["unmigrated"] = {
+                "summary": previous.get("summary"),
+                "context": previous.get("context"),
+                "reference": previous.get("reference"),
+            }
+            shadowed.append((mdd_id, previous.get("reference")))
+        species[mdd_id] = record
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
@@ -438,10 +473,18 @@ def main() -> None:
 
     structured = sum(1 for s in species.values() if s["format"] == "structured")
     total = len(taxonomy["species"])
+    levels = Counter(s["density"]["level"] for s in species.values())
     print(f"Validated {len(rows)} measurement rows from {len({r['_source_file'] for r in rows})} source file(s)")
     print(f"Wrote {OUT.relative_to(DATA.parent)}")
     print(f"  {structured} species structured, {len(species) - structured} legacy, "
           f"{total - len(species)} with no call data ({len(species) / total:.1%} coverage)")
+    print("  density: " + ", ".join(f"{levels[k]} {k}" for k in
+                                    ("rich", "detailed", "basic", "minimal") if levels[k]))
+    if shadowed:
+        by_reference = Counter(reference for _, reference in shadowed)
+        print(f"  {len(shadowed)} legacy entries kept alongside structured data, "
+              f"awaiting migration: "
+              + ", ".join(f"{n}x {ref}" for ref, n in sorted(by_reference.items())))
 
 
 if __name__ == "__main__":
