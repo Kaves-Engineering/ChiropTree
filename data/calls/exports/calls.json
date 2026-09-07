@@ -46,12 +46,10 @@
    "confidence": "poorly_constrained",
    "emission": "",
    "duty_cycle": "",
-   "structure": "non-laryngeal broadband tongue clicks (Rousettus and possibly a few other genera only); no echolocation in most species",
+   "structure": "",
    "documentation": "absence_well_documented_presence_poorly_documented",
-   "reason": "Most of ~200 species do not echolocate at all. Click frequency content is broadband and not comparable to laryngeal peak frequency.",
-   "warnings": [
-    "This taxon is not known to echolocate at all, so no call parameters apply to it."
-   ],
+   "reason": "Old World fruit bats orient by sight and smell rather than sonar, with large forward-facing eyes and no laryngeal echolocation. Rousettus is the one genus known to echolocate and has its own entry.",
+   "warnings": [],
    "verified": false,
    "citations": [
     {
@@ -59,20 +57,6 @@
      "label": "Holland et al. 2004",
      "citation": "Holland RA, Waters DA, Rayner JMV (2004) Echolocation signal structure in the megachiropteran bat Rousettus aegyptiacus Geoffroy 1810. Journal of Experimental Biology 207:4361-4369.",
      "url": "https://doi.org/10.1242/jeb.01288",
-     "doi_verified": true
-    },
-    {
-     "id": "yovel-2011",
-     "label": "Yovel et al. 2011",
-     "citation": "Yovel Y, Geva-Sagiv M, Ulanovsky N (2011) Click-based echolocation in bats: not so primitive after all. Journal of Comparative Physiology A 197:515-530.",
-     "url": null,
-     "doi_verified": false
-    },
-    {
-     "id": "boonman-2014",
-     "label": "Boonman et al. 2014",
-     "citation": "Boonman A, Bumrungsri S, Yovel Y (2014) Nonecholocating fruit bats produce biosonar clicks with their wings. Current Biology 24(24):2962-2967.",
-     "url": "https://doi.org/10.1016/j.cub.2014.10.077",
      "doi_verified": true
     }
    ]
@@ -702,6 +686,871 @@
   }
  },
  "genusInference": {
+  "Cnephaeus": {
+   "scope": "genus",
+   "taxon": "Cnephaeus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 26.8,
+   "high": 33.6,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Cnephaeus already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Cnephaeus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Myotis": {
+   "scope": "genus",
+   "taxon": "Myotis",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 32.7,
+   "high": 79.8,
+   "n_species": 38,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 38 species of Myotis already in this dataset.",
+   "warnings": [
+    "Observed across the 38 measured species of Myotis in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Pipistrellus": {
+   "scope": "genus",
+   "taxon": "Pipistrellus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 39.5,
+   "high": 56.2,
+   "n_species": 6,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 6 species of Pipistrellus already in this dataset.",
+   "warnings": [
+    "Observed across the 6 measured species of Pipistrellus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Nyctalus": {
+   "scope": "genus",
+   "taxon": "Nyctalus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 15.2,
+   "high": 40.3,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Nyctalus already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Nyctalus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Balantiopteryx": {
+   "scope": "genus",
+   "taxon": "Balantiopteryx",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 40.6,
+   "high": 56.0,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Balantiopteryx already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Balantiopteryx in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Emballonura": {
+   "scope": "genus",
+   "taxon": "Emballonura",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 32.4,
+   "high": 50.8,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Emballonura already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Emballonura in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Taphozous": {
+   "scope": "genus",
+   "taxon": "Taphozous",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 22.0,
+   "high": 31.4,
+   "n_species": 6,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 6 species of Taphozous already in this dataset.",
+   "warnings": [
+    "Observed across the 6 measured species of Taphozous in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Hipposideros": {
+   "scope": "genus",
+   "taxon": "Hipposideros",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 50.7,
+   "high": 186.9,
+   "n_species": 22,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 22 species of Hipposideros already in this dataset.",
+   "warnings": [
+    "Observed across the 22 measured species of Hipposideros in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
+    "Even within Hipposideros the measured spread is 4x, so it constrains an individual species only loosely."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Miniopterus": {
+   "scope": "genus",
+   "taxon": "Miniopterus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 47.4,
+   "high": 61.9,
+   "n_species": 7,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 7 species of Miniopterus already in this dataset.",
+   "warnings": [
+    "Observed across the 7 measured species of Miniopterus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Mops": {
+   "scope": "genus",
+   "taxon": "Mops",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 15.0,
+   "high": 27.1,
+   "n_species": 11,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 11 species of Mops already in this dataset.",
+   "warnings": [
+    "Observed across the 11 measured species of Mops in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Tadarida": {
+   "scope": "genus",
+   "taxon": "Tadarida",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 11.4,
+   "high": 26.7,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Tadarida already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Tadarida in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Pteronotus": {
+   "scope": "genus",
+   "taxon": "Pteronotus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 61.0,
+   "high": 81.5,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Pteronotus already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Pteronotus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Nycteris": {
+   "scope": "genus",
+   "taxon": "Nycteris",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 20.0,
+   "high": 71.3,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Nycteris already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Nycteris in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
+    "Even within Nycteris the measured spread is 4x, so it constrains an individual species only loosely."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Artibeus": {
+   "scope": "genus",
+   "taxon": "Artibeus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 37.2,
+   "high": 68.9,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Artibeus already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Artibeus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Chiroderma": {
+   "scope": "genus",
+   "taxon": "Chiroderma",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 59.6,
+   "high": 86.9,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Chiroderma already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Chiroderma in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Micronycteris": {
+   "scope": "genus",
+   "taxon": "Micronycteris",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 80.8,
+   "high": 98.1,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Micronycteris already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Micronycteris in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Sturnira": {
+   "scope": "genus",
+   "taxon": "Sturnira",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 55.9,
+   "high": 88.1,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Sturnira already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Sturnira in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Rhinolophus": {
+   "scope": "genus",
+   "taxon": "Rhinolophus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 26.0,
+   "high": 110.6,
+   "n_species": 34,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 34 species of Rhinolophus already in this dataset.",
+   "warnings": [
+    "Observed across the 34 measured species of Rhinolophus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
+    "Even within Rhinolophus the measured spread is 4x, so it constrains an individual species only loosely."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    },
+    {
+     "id": "obrist-2004",
+     "label": "Obrist et al. 2004",
+     "citation": "Obrist MK, Boesch R, Flückiger PF (2004) Variability in echolocation call design of 26 Swiss bat species: consequences, limits and options for automated field identification with a synergetic pattern recognition approach. Mammalia 68(4):307-322.",
+     "url": "https://doi.org/10.1515/mamm.2004.030",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Chalinolobus": {
+   "scope": "genus",
+   "taxon": "Chalinolobus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 24.4,
+   "high": 52.9,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Chalinolobus already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Chalinolobus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Kerivoula": {
+   "scope": "genus",
+   "taxon": "Kerivoula",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 45.6,
+   "high": 148.2,
+   "n_species": 7,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 7 species of Kerivoula already in this dataset.",
+   "warnings": [
+    "Observed across the 7 measured species of Kerivoula in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it.",
+    "Even within Kerivoula the measured spread is 3x, so it constrains an individual species only loosely."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Laephotis": {
+   "scope": "genus",
+   "taxon": "Laephotis",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 22.0,
+   "high": 40.9,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Laephotis already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Laephotis in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Murina": {
+   "scope": "genus",
+   "taxon": "Murina",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 60.5,
+   "high": 124.1,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Murina already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Murina in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Nyctophilus": {
+   "scope": "genus",
+   "taxon": "Nyctophilus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 49.8,
+   "high": 56.0,
+   "n_species": 3,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 3 species of Nyctophilus already in this dataset.",
+   "warnings": [
+    "Observed across the 3 measured species of Nyctophilus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Scotophilus": {
+   "scope": "genus",
+   "taxon": "Scotophilus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 32.9,
+   "high": 46.3,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Scotophilus already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Scotophilus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Scotorepens": {
+   "scope": "genus",
+   "taxon": "Scotorepens",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 34.0,
+   "high": 39.3,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Scotorepens already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Scotorepens in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Vespadelus": {
+   "scope": "genus",
+   "taxon": "Vespadelus",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 35.0,
+   "high": 59.6,
+   "n_species": 8,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 8 species of Vespadelus already in this dataset.",
+   "warnings": [
+    "Observed across the 8 measured species of Vespadelus in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Dermanura": {
+   "scope": "genus",
+   "taxon": "Dermanura",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 60.5,
+   "high": 89.4,
+   "n_species": 5,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 5 species of Dermanura already in this dataset.",
+   "warnings": [
+    "Observed across the 5 measured species of Dermanura in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
+  "Alionoctula": {
+   "scope": "genus",
+   "taxon": "Alionoctula",
+   "mode": "laryngeal",
+   "derived": true,
+   "show_range": true,
+   "low": 38.8,
+   "high": 48.0,
+   "n_species": 4,
+   "confidence": "measured_congeners",
+   "emission": "",
+   "duty_cycle": "",
+   "structure": "",
+   "documentation": "",
+   "reason": "No published genus-level range was used. These bounds are the lowest and highest peak frequencies measured across 4 species of Alionoctula already in this dataset.",
+   "warnings": [
+    "Observed across the 4 measured species of Alionoctula in this dataset. It is the spread of what has been measured, not a prediction: an unmeasured species can fall outside it."
+   ],
+   "verified": false,
+   "citations": [
+    {
+     "id": "castro-2024",
+     "label": "Castro et al. 2024",
+     "citation": "Castro I, Amado TF, Olalla-Tarraga MA (2024) Correlated evolution between body size and echolocation in bats (order Chiroptera). BMC Ecology and Evolution 24:37.",
+     "url": "https://doi.org/10.1186/s12862-024-02231-4",
+     "doi_verified": true
+    }
+   ]
+  },
   "Rousettus": {
    "scope": "genus",
    "taxon": "Rousettus",

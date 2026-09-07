@@ -341,10 +341,9 @@ def inference_row(row: dict, scope: str, references: dict) -> dict:
     cited = [r for r in (row.get("reference_ids") or "").split(";") if r and r != "none"]
 
     warnings = []
-    if mode == "none":
-        warnings.append("This taxon is not known to echolocate at all, so no call "
-                        "parameters apply to it.")
-    elif mode == "non_laryngeal_clicks":
+    # The "does not echolocate" case is stated in the card's opening sentence,
+    # so repeating it as a warning is noise.
+    if mode == "non_laryngeal_clicks":
         warnings.append("Clicks are broadband, so a peak-frequency range describes "
                         "them poorly and is not comparable with a laryngeal call.")
     if mode != "none":
@@ -385,6 +384,66 @@ def inference_row(row: dict, scope: str, references: dict) -> dict:
             "doi_verified": references.get(r, {}).get("doi_verified", False),
         } for r in cited],
     }
+
+
+MIN_CONGENERS = 3
+
+
+def derive_genus_expectations(species: dict, taxonomy: list) -> dict:
+    """Genus expectations computed from the congeners we have actually measured.
+
+    A family default is often useless for an individual species: Vespertilionidae
+    spans 16x, and a Kerivoula sits at the top of it. The species we have already
+    measured are a much tighter and — unlike a review consensus — a fully sourced
+    guide, because every contributing value carries its own citation.
+
+    This is an observed spread, not a prediction interval: an unmeasured species
+    can fall outside it, and the card says so.
+    """
+    genus_of = {s["id"]: s.get("genus") for s in taxonomy}
+    observed = defaultdict(list)
+    for mdd_id, record in species.items():
+        genus = genus_of.get(mdd_id)
+        if not genus or record.get("format") != "structured":
+            continue
+        for variant in record.get("variants", []):
+            for fact in variant["facts"]:
+                if fact["parameter"] == "peak_frequency" and fact.get("value_num") is not None:
+                    observed[genus].append((fact["value_num"], fact["citation"]))
+                    break
+            else:
+                continue
+            break
+
+    derived = {}
+    for genus, entries in observed.items():
+        if len(entries) < MIN_CONGENERS:
+            continue
+        values = [v for v, _ in entries]
+        sources = sorted({c for _, c in entries})
+        low, high = min(values), max(values)
+        warnings = [
+            f"Observed across the {len(values)} measured species of {genus} in this "
+            "dataset. It is the spread of what has been measured, not a prediction: "
+            "an unmeasured species can fall outside it."
+        ]
+        if high / low >= UNINFORMATIVE_SPAN:
+            warnings.append(f"Even within {genus} the measured spread is {high / low:.0f}x, "
+                            "so it constrains an individual species only loosely.")
+        derived[genus] = {
+            "scope": "genus", "taxon": genus, "mode": "laryngeal", "derived": True,
+            "show_range": True, "low": round(low, 1), "high": round(high, 1),
+            "n_species": len(values),
+            "confidence": "measured_congeners", "emission": "", "duty_cycle": "",
+            "structure": "", "documentation": "",
+            "reason": (f"No published genus-level range was used. These bounds are the lowest "
+                       f"and highest peak frequencies measured across {len(values)} species of "
+                       f"{genus} already in this dataset."),
+            "warnings": warnings, "verified": False,
+            "citations": [{"id": s, "label": s, "citation": s, "url": None,
+                           "doi_verified": True} for s in sources],
+        }
+    return derived
 
 
 def build_genus_inference() -> dict:
@@ -612,7 +671,18 @@ def main() -> None:
     # keeps it structurally impossible to mistake for a measurement, and keeps
     # the export from growing by 1,190 copies of the same paragraph.
     inference = build_family_inference()
-    genus_inference = build_genus_inference()
+    # Hand-written genus rows win over derived ones: they carry qualitative
+    # facts (Rousettus clicks) that measured congeners cannot supply.
+    genus_inference = derive_genus_expectations(species, taxonomy["species"])
+    for entry in genus_inference.values():
+        # Derived entries cite the measurement sources by id; give them the same
+        # author-year labels the measurement cards use.
+        for citation in entry["citations"]:
+            reference = refs.get(citation["id"]) or legacy["references"].get(citation["id"], {})
+            citation["label"] = short_label(citation["id"], reference)
+            citation["citation"] = reference.get("citation", citation["id"])
+            citation["url"] = reference.get("url")
+    genus_inference.update(build_genus_inference())
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
@@ -637,7 +707,10 @@ def main() -> None:
         print(f"  not measurement sources, skipped: {', '.join(skipped)}")
     unsourced = [f for f, i in inference.items() if not i["citations"]]
     if genus_inference:
-        print(f"  genus inference overrides family for: {', '.join(sorted(genus_inference))}")
+        derived = sorted(g for g, i in genus_inference.items() if i.get("derived"))
+        curated = sorted(g for g, i in genus_inference.items() if not i.get("derived"))
+        print(f"  genus inference: {len(derived)} derived from measured congeners"
+              + (f", curated for {', '.join(curated)}" if curated else ""))
     print(f"  family inference for {len(inference)} families"
           + (f"; {len(unsourced)} cite no source ({', '.join(sorted(unsourced))})" if unsourced else ""))
     if shadowed:

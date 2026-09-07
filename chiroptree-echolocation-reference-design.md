@@ -401,6 +401,26 @@ Two safeguards worth noting. A family whose `laryngeal_echolocation` is `no` nev
 
 This does not change coverage: 324 species measured, 21.4%. It changes what the other 1,190 cards say from nothing to a labelled, sourced, caveated expectation.
 
+**Step 4c — inference made species-specific. ✅ Done.**
+
+The first version of the inferred card was too generic to be useful. A *Pteropus* card carried the whole family paragraph, so it described *Rousettus*'s tongue clicks, cited three papers about clicking bats to support the claim that it does *not* echolocate, and headed the text "Why this range" when no range was shown. Three changes:
+
+1. **The family row now describes only what it covers.** With *Rousettus* holding its own genus row, the Pteropodidae family row was rewritten for the ~196 species that do not echolocate, and cites Holland et al. 2004 — which is the source for the absence, since it states *Rousettus* is the sole vocally echolocating megachiropteran genus.
+2. **The card names the species and drops what does not apply.** "No echolocation is expected for *Pteropus vampyrus*" rather than "this species"; no call design where there is no call; "Basis" rather than "Why this range" where no range is shown.
+3. **Genus expectations are derived from measured congeners.** Where a genus has at least three measured species in this dataset, the card shows the observed spread across them instead of the family range. This is not inference: every bound traces to a measurement with its own citation, and the sources are listed.
+
+The effect on the 1,190 unmeasured species:
+
+| Tier | Species | Median span |
+|---|---:|---:|
+| Genus, from measured congeners | 544 | **2.4×** |
+| Family fallback | 646 | 4.5× |
+| *of which* stated as non-echolocating | 196 | — |
+
+*Kerivoula picta* previously showed Vespertilionidae's 10–160 kHz; it now shows 45.6–148.2 kHz measured across seven congeners. The card states plainly that this is the spread of what has been measured and not a prediction, so an unmeasured species can fall outside it.
+
+Derived expectations improve automatically as more species are imported, and they are recomputed at every build.
+
 **Step 4b — remaining work on the inference layer.**
 `verified_by`/`verified_date` are still empty on all 21 family rows, so nothing here has been signed off. 14 of the 21 reference records still lack a confirmed DOI. Genus-level inference would be far more informative than family-level for the big families and has no table yet.
 The numbers should stay suppressed: family ranges are least informative exactly where the gap is largest (Vespertilionidae 428 uncovered species, 10–160 kHz, a 16× span; Molossidae 106, 4.5×; Rhinolophidae 84, 6.4×). Roughly 880 of the 1,190 uncovered species sit in families whose range spans 3× or more. Only three families are narrow enough to be worth showing.

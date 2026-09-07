@@ -2097,7 +2097,7 @@ const LU_MODE_HEADLINE = {
   non_laryngeal_clicks: 'Echolocates with tongue clicks, not with the larynx'
 };
 
-function luFamilyInferenceHTML(family, genus){
+function luFamilyInferenceHTML(family, genus, binomial){
   // A genus expectation is the tighter claim, so it wins where one exists.
   const inf = luState.genusInference[genus] || luState.familyInference[family];
   if(!inf) return '<p class="lu-note">No verified species-level call measurement yet.</p>';
@@ -2110,8 +2110,8 @@ function luFamilyInferenceHTML(family, genus){
 
   const range = inf.show_range
     ? '<span class="lu-val">'+luEsc(inf.low)+'–'+luEsc(inf.high)+' kHz</span>'+
-      '<span class="lu-basis">'+(inf.mode === 'non_laryngeal_clicks'
-        ? 'click energy, broadband' : 'expected peak frequency')+'</span>'
+      '<span class="lu-basis">'+(inf.mode === 'non_laryngeal_clicks' ? 'click energy, broadband'
+        : inf.derived ? 'peak frequency measured in congeners' : 'expected peak frequency')+'</span>'
     : '<span class="lu-val">'+luEsc(LU_MODE_HEADLINE.none)+'</span>';
 
   const warnings = (inf.warnings||[]).map(w=>'<li>'+luEsc(w)+'</li>').join('');
@@ -2122,26 +2122,44 @@ function luFamilyInferenceHTML(family, genus){
       : '<span title="'+luEsc(c.citation)+'">'+label+'</span>';
   });
 
+  // Name the species rather than saying "this species", and drop anything that
+  // does not apply: a taxon that makes no call has no call design, and "why
+  // this range" is meaningless when no range is shown.
+  const subject = binomial ? '<em>'+luEsc(binomial)+'</em>' : 'this species';
+  const silent = inf.mode === 'none';
+  const opening = silent
+    ? 'No echolocation is expected for '+subject+'. '+
+      luEsc(inf.taxon)+' are not known to echolocate, so there are no call parameters to report.'
+    : inf.derived
+      ? 'No measurement for '+subject+'. The range below is what has been measured '+
+        'across '+luEsc(inf.n_species)+' other species of <em>'+luEsc(inf.taxon)+'</em>.'
+      : 'No measurement for '+subject+'. Values below are expected from its '+
+        luEsc(inf.scope)+', '+luEsc(inf.taxon)+'.';
+
   return '<div class="lu-inferred">'+
     '<p class="lu-inferred-head">'+
-      '<span class="lu-inferred-badge">Inferred</span> '+
-      'No measurement for this species. Values below are expected from its '+
-      luEsc(inf.scope)+', '+luEsc(inf.taxon)+'.'+
+      '<span class="lu-inferred-badge">Inferred</span> '+opening+
     '</p>'+
     '<p class="lu-inferred-range">'+range+' '+traits+'</p>'+
-    (inf.structure ? '<p class="lu-inferred-why"><strong>Call design:</strong> '+luEsc(inf.structure)+'</p>' : '')+
-    (inf.reason ? '<p class="lu-inferred-why"><strong>Why this range:</strong> '+luEsc(inf.reason)+'</p>' : '')+
+    (inf.structure && !silent
+      ? '<p class="lu-inferred-why"><strong>Call design:</strong> '+luEsc(inf.structure)+'</p>' : '')+
+    (inf.reason
+      ? '<p class="lu-inferred-why"><strong>'+(silent ? 'Basis' : 'Why this range')+':</strong> '+
+        luEsc(inf.reason)+'</p>' : '')+
     (warnings ? '<ul class="lu-inferred-warn">'+warnings+'</ul>' : '')+
     '<p class="lu-src">'+
-      (cites.length ? 'Inferred from: '+cites.join(' · ')
+      (cites.length ? (inf.derived ? 'Measured congeners from: ' : 'Inferred from: ')+cites.join(' · ')
                     : 'No identifiable published source.')+
-      ' · '+luEsc(inf.scope[0].toUpperCase()+inf.scope.slice(1))+' consensus, not verified against a species measurement.'+
+      ' · '+(inf.derived
+        ? 'Derived from measurements in this dataset, not from a published range.'
+        : luEsc(inf.scope[0].toUpperCase()+inf.scope.slice(1))+
+          ' consensus, not verified against a species measurement.')+
     '</p>'+
   '</div>';
 }
 
-function luCallHTML(call, legacyReference, family, genus){
-  if(!call) return luFamilyInferenceHTML(family, genus);
+function luCallHTML(call, legacyReference, family, genus, binomial){
+  if(!call) return luFamilyInferenceHTML(family, genus, binomial);
 
   if(call.format !== 'structured'){
     return '<p>'+luEsc(call.summary)+'</p>'+
@@ -2235,7 +2253,7 @@ function luDetailHTML(s, compact){
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
       '</dl></section>'+
-      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus)+'</section>'+
+      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
