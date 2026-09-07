@@ -190,7 +190,8 @@ def format_value(row, registry) -> str:
     param = registry.get(row["parameter"])
     if param["value_type"] != "numeric":
         return row["value"]
-    unit = param["unit"].replace("count_per_s", "/s").replace("dB_SPL", "dB")
+    unit = (param["unit"].replace("count_per_s", "/s").replace("m_per_s", "m/s")
+            .replace("dB_SPL", "dB").replace("degrees", "°"))
     if row["statistic"] == "range":
         return f"{row['value_min']}–{row['value_max']} {unit}"
     text = f"{row['value']} {unit}"

@@ -54,6 +54,7 @@
   "degrees": {"to": "degrees", "factor": 1},
   "m": {"to": "m", "factor": 1},
   "cm": {"to": "m", "factor": 0.01},
+  "m_per_s": {"to": "m_per_s", "factor": 1},
   "g": {"to": "g", "factor": 1},
   "mm": {"to": "mm", "factor": 1}
  },
@@ -469,6 +470,20 @@
   },
 
   {
+   "id": "beam_separation_angle",
+   "label": "Angle between beams",
+   "group": "beam",
+   "value_type": "numeric",
+   "unit": "degrees",
+   "sane_min": 0,
+   "sane_max": 180,
+   "status": "extended",
+   "definition": "Angle between the beam axes of two alternating call types emitted by the same bat. Only meaningful for species that alternate distinct signals.",
+   "ambiguity": "A property of a pair of call types, not of one call, so it is recorded against the second of the pair and its note names the other.",
+   "aliases": ["beam separation angle", "angle between beams", "inter beam angle"]
+  },
+
+  {
    "id": "directionality_index",
    "label": "Directionality index",
    "group": "beam",
@@ -559,6 +574,19 @@
    "status": "extended",
    "definition": "Forearm length of the measured individuals; the standard size proxy in bat literature.",
    "aliases": ["forearm", "forearm length", "fa"]
+  },
+
+  {
+   "id": "flight_speed",
+   "label": "Flight speed",
+   "group": "covariate",
+   "value_type": "numeric",
+   "unit": "m_per_s",
+   "sane_min": 0.5,
+   "sane_max": 30,
+   "status": "extended",
+   "definition": "Speed of the bat in the flight during which calls were recorded. Sets how much time a call buys before contact, and is needed to interpret detection distances.",
+   "aliases": ["flight speed", "speed", "airspeed"]
   },
 
   {

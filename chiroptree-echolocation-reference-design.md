@@ -457,6 +457,23 @@ Current distribution: 23 `rich`, 3 `detailed`, 298 `minimal`. The marker is also
 
 **Taxonomic drift is the harder limit.** 33 of Castro's 329 names (10%) do not resolve against MDD v2.5, and that is a 2024 paper; older sources will be worse. More seriously, MDD splits mean a source's *Hipposideros commersoni* may now be three species and the recording often cannot be assigned to one. This needs a policy decision (§11): drop such records, or admit them at genus level with an explicit evidence scope. The `taxon_match_method` and `inheritance` fields already support either choice.
 
+## 10.6 Source audit — what has been read versus what has been imported
+
+Checked after the first import round, because a source can be fetched, read, and then only partly mined.
+
+| Source | Imported | Left in the source, and why |
+|---|---|---|
+| Castro 2024 | Table 3 in full — 1,605 rows, 321 species | Tables 1–2 are AICc model-selection results, not call parameters. Nothing else to take. |
+| Obrist 2004 | Table 1 in full — 104 rows, 26 species | Tables 2–3 are discriminant-analysis and classification results. Nothing else to take. |
+| Seibert 2015 | Table 1 in full, both call types, plus the beam separation angle — 17 rows | Flight-path geometry and array method are recorded in the method record rather than as measurements. |
+| Goerlitz 2010 | 8 rows, **2 species** | Diet composition (Table 1) and the moth audiogram are not bat call parameters. |
+| Denzinger 2001 | 8 rows from the abstract | Full text is paywalled; the tables were never readable. |
+| Holland 2004 | Cited only, no rows | Open abstract gives signal energy (~4×10⁻⁸ J m⁻²), which is not a registered parameter. |
+
+**The audit found one real gap.** Goerlitz 2010 measures *Nyctalus leisleri* throughout as the loud comparison against which barbastellus is quiet, and none of it had been imported — the paper had been mined for one species out of two. Added: source level 127 dB peSPL at 10 cm (n=515), peak frequency 28 kHz, moth detection distance 33.2 m, flight speed 10.3 ± 1.7 m/s. The stealth result is now visible as data rather than only as a sentence in a row note: 94 dB against 127 dB, and a moth hearing the two bats at 3.5 m against 33.2 m.
+
+Two parameters were registered to hold values that had been read but had nowhere to go: `flight_speed`, and `beam_separation_angle` for Seibert's ~70° between the two alternating beams — the paper's title finding, which had been sitting in a note rather than in a field.
+
 ## 11. Open questions
 
 1. Full per-observation detail in the card, or a link out? Decides whether `calls-full.json` ships to the browser, and its size.
