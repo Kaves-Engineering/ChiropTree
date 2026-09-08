@@ -442,7 +442,7 @@ footer a:hover{color:var(--ochre)}
 .lu-links a:hover{color:var(--ochre)}
 .lu-links a:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .lu-links svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.lu-links .wiki-mark{font:18px/1 Georgia,serif;transform:translateY(-1px)}
+.lu-links .letter-mark{font:18px/1 Georgia,serif;transform:translateY(-1px)}
 .lu-prov{margin-top:26px;font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid rgba(var(--border-rgb),.18);padding-top:14px}
 
 .wm-pending{
@@ -1323,7 +1323,10 @@ const ECHO = {};
 
 /* --- reference links: search endpoints, so they always resolve --- */
 const LINKS = [
-  ["Wikipedia", n => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n), '<span class="wiki-mark" aria-hidden="true">W</span>'],
+  ["Wikipedia", (n, s) => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n), '<span class="letter-mark" aria-hidden="true">W</span>'],
+  // The MDD id already keys every record we hold, so this resolves to the exact
+  // taxon page rather than a search -- and to nothing at all if an id is missing.
+  ["Mammal Diversity Database", (n, s) => s && s.id ? "https://www.mammaldiversity.org/taxon/" + encodeURIComponent(s.id) + "/" : "", '<span class="letter-mark" aria-hidden="true">M</span>'],
   ["GBIF records", n => "https://www.gbif.org/species/search?q=" + encodeURIComponent(n), '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2.2-5 3.2 10 3.1-13 3 16 2.2-8H21"/></svg>']
 ];
 
@@ -1990,8 +1993,9 @@ function luDetailHTML(s, compact){
     .filter(k=>s[k] && s[k]!=='NA')
     .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
-  const links = LINKS.map(([label,url,icon])=>
-    '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
+  const links = LINKS.map(([label,url,icon])=>[label,url(bin,s),icon]).filter(([,href])=>href)
+    .map(([label,href,icon])=>
+      '<a href="'+luEsc(href)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
 
   return '<figure class="inat-photo" aria-busy="true"></figure>'+
     '<p class="card-lineage">'+lineage+'</p>'+
