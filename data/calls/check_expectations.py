@@ -54,6 +54,25 @@ def load_expectations() -> tuple[dict, dict]:
 NOMINAL_BAND = 0.15
 
 
+def harmonic_explains(value: float, harmonic, low: float, high: float) -> str:
+    """Return the harmonic that would put this value in range, if one would.
+
+    A family's expected peak-frequency band is drawn from whichever harmonic the
+    comparative literature usually reports -- for most families the dominant one.
+    A value this project stores against the fundamental is then out of band by
+    construction, not by error. If rescaling to another harmonic lands inside the
+    band, the mismatch is arithmetic rather than suspect, and saying so is more
+    useful than a warning the reader has to re-derive every time.
+    """
+    if not harmonic:
+        return ""
+    stated = int(harmonic)
+    for other in (1, 2, 3, 4):
+        if other != stated and not outside(value * other / stated, low, high):
+            return f"h{other}"
+    return ""
+
+
 def outside(value: float, low: float, high: float) -> bool:
     if high == low:
         slack = low * NOMINAL_BAND
@@ -85,17 +104,32 @@ def main() -> None:
                         continue
                     low, high, confidence = expectation
                     if outside(value, low, high):
+                        harmonic = fact.get("harmonic")
                         findings.append({
                             "name": name, "family": family, "value": value,
                             "low": low, "high": high, "scope": scope,
                             "confidence": confidence, "citation": fact["citation"],
+                            "harmonic": harmonic,
+                            "explained_by": harmonic_explains(value, harmonic, low, high),
                         })
                         break  # species expectation is the tighter claim; report once
 
     findings.sort(key=lambda f: -abs(f["value"] - (f["low"] + f["high"]) / 2))
+    explained = [f for f in findings if f["explained_by"]]
+    findings = [f for f in findings if not f["explained_by"]]
+
+    def harmonic_note(f) -> str:
+        return f" [on h{f['harmonic']}]" if f.get("harmonic") else ""
 
     print(f"Checked {checked} peak-frequency values against "
           f"{len(families)} family and {len(species)} species expectations")
+    if explained:
+        print(f"  {len(explained)} value(s) outside expectation only because of the "
+              f"harmonic they were measured on:")
+        for f in explained:
+            print(f"    {f['name']:30} {f['value']:7.1f} kHz on h{f['harmonic']} "
+                  f"vs {f['scope']} {f['low']:.0f}-{f['high']:.0f}; "
+                  f"in range as {f['explained_by']}  ({f['citation']})")
     if not findings:
         print("  nothing outside expectation")
         if REPORT.exists():
@@ -104,7 +138,7 @@ def main() -> None:
 
     print(f"  {len(findings)} value(s) outside expectation:")
     for f in findings:
-        print(f"    {f['name']:30} {f['value']:7.1f} kHz  vs {f['scope']} "
+        print(f"    {f['name']:30} {f['value']:7.1f} kHz{harmonic_note(f)}  vs {f['scope']} "
               f"{f['low']:.0f}-{f['high']:.0f} [{f['confidence']}]  ({f['citation']})")
 
     REPORT.parent.mkdir(parents=True, exist_ok=True)
@@ -118,14 +152,32 @@ def main() -> None:
         f"{len(findings)} of {checked} peak-frequency values are outside their",
         f"expected range by more than {TOLERANCE:.0%} of the range width.",
         "",
-        "| Species | Family | Measured | Expected | Scope | Confidence | Source |",
-        "|---|---|---:|---|---|---|---|",
+        "| Species | Family | Measured | Harmonic | Expected | Scope | Confidence | Source |",
+        "|---|---|---:|---|---|---|---|---|",
     ]
     lines += [
         f"| {f['name']} | {f['family']} | {f['value']:.1f} kHz | "
+        f"{('h' + f['harmonic']) if f.get('harmonic') else 'unstated'} | "
         f"{f['low']:.0f}–{f['high']:.0f} kHz | {f['scope']} | {f['confidence']} | {f['citation']} |"
         for f in findings
     ]
+    if explained:
+        lines += [
+            "",
+            "## Explained by the harmonic measured",
+            "",
+            "These sit outside the expected band only because the value is stored against",
+            "a harmonic other than the one the band describes. Rescaling puts each back in",
+            "range, so they are arithmetic, not anomalies.",
+            "",
+            "| Species | Family | Measured | Harmonic | Expected | In range as | Source |",
+            "|---|---|---:|---|---|---|---|",
+        ]
+        lines += [
+            f"| {f['name']} | {f['family']} | {f['value']:.1f} kHz | h{f['harmonic']} | "
+            f"{f['low']:.0f}–{f['high']:.0f} kHz | {f['explained_by']} | {f['citation']} |"
+            for f in explained
+        ]
     REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"  -> {REPORT.relative_to(DATA.parent)}")
 

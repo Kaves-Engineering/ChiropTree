@@ -16,7 +16,7 @@ which is gitignored:
 The build prints any country name in the taxonomy it cannot place; that count
 should stay at zero.
 
-Everything is projected (Robinson), simplified and rounded here, so the page
+Everything is projected (Equal Earth), simplified and rounded here, so the page
 ships flat SVG path strings and does no geometry work at runtime.
 
 Natural Earth draws Crimea as part of Russia's polygon (their documented
@@ -81,35 +81,39 @@ MARINE_LAT_MIN = -90.0
 SKIP_ANTARCTICA = True
 TAXONOMY = os.path.join(HERE, "chiroptera_taxonomy.json")
 
-# Robinson interpolation table, latitude 0..90 in 5 degree steps
-RX = [1.0000, 0.9986, 0.9954, 0.9900, 0.9822, 0.9730, 0.9600, 0.9427, 0.9216,
-      0.8962, 0.8679, 0.8350, 0.7986, 0.7597, 0.7186, 0.6732, 0.6213, 0.5722, 0.5322]
-RY = [0.0000, 0.0620, 0.1240, 0.1860, 0.2480, 0.3100, 0.3720, 0.4340, 0.4958,
-      0.5571, 0.6176, 0.6769, 0.7346, 0.7903, 0.8435, 0.8936, 0.9394, 0.9761, 1.0000]
+# Equal Earth is an equal-area, pseudocylindrical projection, so country areas
+# remain comparable on this global range map. Its polynomial is defined by
+# Číbík, Šavrič and Patterson (2018), in radians.
+EE_A1 = 1.340264
+EE_A2 = -0.081106
+EE_A3 = 0.000893
+EE_A4 = 0.003796
 
 
-def robinson(lon, lat):
-    """Return unscaled Robinson coordinates; y grows northwards."""
+def equal_earth(lon, lat):
+    """Return unscaled Equal Earth coordinates; y grows northwards."""
     lat = max(-90.0, min(90.0, lat))
-    a = abs(lat) / 5.0
-    i = min(int(a), 17)
-    t = a - i
-    x = (RX[i] + (RX[i + 1] - RX[i]) * t) * 0.8487 * math.radians(lon)
-    y = (RY[i] + (RY[i + 1] - RY[i]) * t) * 1.3523
-    return x, (y if lat >= 0 else -y)
+    theta = math.asin(math.sqrt(3.0) * math.sin(math.radians(lat)) / 2.0)
+    theta2 = theta * theta
+    denominator = 3.0 * (EE_A1 + theta2 * (3.0 * EE_A2 + theta2 * theta2 *
+                                              (7.0 * EE_A3 + 9.0 * EE_A4 * theta2)))
+    x = 2.0 * math.sqrt(3.0) * math.radians(lon) * math.cos(theta) / denominator
+    y = theta * (EE_A1 + theta2 * (EE_A2 + theta2 * theta2 *
+                                   (EE_A3 + EE_A4 * theta2)))
+    return x, y
 
 
 # world extent, so the projection can be scaled into the viewBox
-_X0, _ = robinson(-180, 0)
-_X1, _ = robinson(180, 0)
-_, _Y1 = robinson(0, 90)
-_, _Y0 = robinson(0, LAT_MIN)
+_X0, _ = equal_earth(-180, 0)
+_X1, _ = equal_earth(180, 0)
+_, _Y1 = equal_earth(0, 90)
+_, _Y0 = equal_earth(0, LAT_MIN)
 SCALE = W / (_X1 - _X0)
 H = round((_Y1 - _Y0) * SCALE, 1)
 
 
 def project(lon, lat):
-    x, y = robinson(lon, lat)
+    x, y = equal_earth(lon, lat)
     return ((x - _X0) * SCALE, (_Y1 - y) * SCALE)
 
 
@@ -122,7 +126,7 @@ def configure_marine():
     """
     global LAT_MIN, _Y0, H, OUT, SKIP_ANTARCTICA, TAXONOMY
     LAT_MIN = MARINE_LAT_MIN
-    _, _Y0 = robinson(0, LAT_MIN)
+    _, _Y0 = equal_earth(0, LAT_MIN)
     H = round((_Y1 - _Y0) * SCALE, 1)
     OUT = OUT_MARINE
     SKIP_ANTARCTICA = False
@@ -431,7 +435,7 @@ def main():
             "source": ("Natural Earth " + ("50m" if "50m" in COUNTRIES else "110m")
                        + " admin-0 countries (outlines) and 50m map subunits (island dots)"),
             "sourceUrl": "https://www.naturalearthdata.com",
-            "projection": "Robinson, cropped at %g degrees south" % LAT_MIN,
+            "projection": "Equal Earth, cropped at %g degrees south" % LAT_MIN,
             "license": "public domain",
         },
         "w": round(W, 1),

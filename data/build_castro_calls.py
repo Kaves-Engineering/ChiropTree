@@ -98,55 +98,59 @@ def main() -> None:
     out = []
     species_seen = set()
     for record in rows:
-        species, method = resolver.resolve(record["species"])
-        if species is None:
+        matches, method, split_note = resolver.resolve_many(record["species"])
+        if not matches:
             continue
-        species_seen.add(species["id"])
+        for species in matches:
+            species_seen.add(species["id"])
 
-        # Context shared by every value from this row. Castro's table states no
-        # call phase, no recording condition and no method, and those absences
-        # are recorded rather than assumed: they are what puts these entries at
-        # density 'minimal'.
-        # A source can list two names that the current taxonomy has since lumped
-        # into one species (Castro has both Hypsugo ariel and H. bodenheimeri).
-        # Those are two separate measurements of two populations and must not
-        # collapse into one observation, so the id carries the printed epithet
-        # whenever it differs from the accepted name.
-        accepted = species["sciName"].replace("_", " ")
-        suffix = observation_suffix(record["species"], species)
-        context = {
-            "observation_id": f"castro2024-{species['id']}{suffix}",
-            "mdd_id": species["id"],
-            "verbatim_taxon_name": record["species"],
-            "taxon_match_method": method,
-            "notes": ("Printed in the source as a separate species; the current "
-                      f"taxonomy treats it as {accepted}." if suffix else ""),
-            "reference_id": REFERENCE_ID,
-            "locator": f"Table 3, row {record['_row']}",
-            "method_id": METHOD_ID,
-            "call_phase": "unspecified",
-            "quality_flag": "ok",
-        }
+            # Context shared by every value from this row. Castro's table states no
+            # call phase, no recording condition and no method, and those absences
+            # are recorded rather than assumed: they are what puts these entries at
+            # density 'minimal'.
+            # A source can list two names that the current taxonomy has since lumped
+            # into one species (Castro has both Hypsugo ariel and H. bodenheimeri).
+            # Those are two separate measurements of two populations and must not
+            # collapse into one observation, so the id carries the printed epithet
+            # whenever it differs from the accepted name.
+            accepted = species["sciName"].replace("_", " ")
+            suffix = observation_suffix(record["species"], species)
+            context = {
+                "observation_id": f"castro2024-{species['id']}{suffix}",
+                "mdd_id": species["id"],
+                "verbatim_taxon_name": record["species"],
+                "taxon_match_method": method,
+                "notes": " ".join(filter(None, [
+                    split_note,
+                    ("Printed in the source as a separate species; the current "
+                     f"taxonomy treats it as {accepted}." if suffix else ""),
+                ])),
+                "reference_id": REFERENCE_ID,
+                "locator": f"Table 3, row {record['_row']}",
+                "method_id": METHOD_ID,
+                "call_phase": "unspecified",
+                "quality_flag": "taxon_uncertain" if split_note else "ok",
+            }
 
-        emission = record["emission_type"].strip().lower()
-        if emission not in ("oral", "nasal"):
-            resolver.unresolved.append(
-                (record["species"], f"unexpected emission value {record['emission_type']!r}"))
-            continue
-        out.append({**context, "parameter": "emission", "statistic": "single",
-                    "value": emission, "verbatim_value": record["emission_type"]})
-
-        for column, parameter, unit in PARAMETERS:
-            printed = record[column].strip()
-            if not printed:
+            emission = record["emission_type"].strip().lower()
+            if emission not in ("oral", "nasal"):
+                resolver.unresolved.append(
+                    (record["species"], f"unexpected emission value {record['emission_type']!r}"))
                 continue
-            flag, note = QUALITY_OVERRIDES.get((record["species"], parameter), (None, None))
-            row = {**context, "parameter": parameter, "statistic": "single",
-                   "value": printed, "unit": unit, "verbatim_value": printed}
-            if flag:
-                row["quality_flag"] = flag
-                row["notes"] = note
-            out.append(row)
+            out.append({**context, "parameter": "emission", "statistic": "single",
+                        "value": emission, "verbatim_value": record["emission_type"]})
+
+            for column, parameter, unit in PARAMETERS:
+                printed = record[column].strip()
+                if not printed:
+                    continue
+                flag, note = QUALITY_OVERRIDES.get((record["species"], parameter), (None, None))
+                row = {**context, "parameter": parameter, "statistic": "single",
+                       "value": printed, "unit": unit, "verbatim_value": printed}
+                if flag:
+                    row["quality_flag"] = flag
+                    row["notes"] = note
+                out.append(row)
 
     path = write_rows(REFERENCE_ID, out)
     review = write_review(REFERENCE_ID, resolver.unresolved)

@@ -428,6 +428,8 @@ footer a:hover{color:var(--ochre)}
 .lu-section dt{color:var(--muted);white-space:nowrap}
 .lu-section dd{margin:0;color:var(--text)}
 .lu-section .lu-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.lu-country-gbif{border-bottom:1px dotted var(--line-dim)}
+.lu-country-gbif sup{font-size:.7em;color:var(--ochre);margin-left:1px}
 .lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
 
 /* structured call measurements */
@@ -1370,10 +1372,17 @@ Pusa:[1,[["caspica","Caspian Seal"], ["hispida","Ringed Seal"], ["saimensis","Sa
 
 
 
-/* --- reference links: search endpoints, so they always resolve --- */
+/* --- reference links: search endpoints, so they always resolve. The MDD one is
+       the exception -- every species carries its MDD id, which addresses the
+       record page directly; it falls back to the site search if an id is ever
+       missing. Each entry is called with (binomial, species record). --- */
 const LINKS = [
   ["Wikipedia", n => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n), '<span class="wiki-mark" aria-hidden="true">W</span>'],
-  ["GBIF records", n => "https://www.gbif.org/species/search?q=" + encodeURIComponent(n), '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2.2-5 3.2 10 3.1-13 3 16 2.2-8H21"/></svg>']
+  ["GBIF records", n => "https://www.gbif.org/species/search?q=" + encodeURIComponent(n), '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2.2-5 3.2 10 3.1-13 3 16 2.2-8H21"/></svg>'],
+  ["Mammal Diversity Database record", (n, s) => s && s.id
+      ? "https://www.mammaldiversity.org/taxon/" + encodeURIComponent(s.id)
+      : "https://www.mammaldiversity.org/search?q=" + encodeURIComponent(n),
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 21 7l-9 3.8L3 7l9-3.8Z"/><path d="M3 12l9 3.8L21 12"/><path d="M3 16.8l9 3.8 9-3.8"/></svg>']
 ];
 
 /* --- species-level echolocation, where it has been measured --- */
@@ -1483,6 +1492,9 @@ function luMergeCountrySupplement(species, supplement){
     s.countryDistribution = (s.countryDistribution && s.countryDistribution!=='NA')
       ? s.countryDistribution + '|' + add.join('|')
       : add.join('|');
+    // remember which names came from GBIF rather than MDD, so the detail card
+    // can say so instead of presenting one blended list
+    s.gbifCountries = new Set(add.map(c=>c.toLowerCase()));
   });
 }
 
@@ -2054,6 +2066,7 @@ function luCallFactHTML(f){
     '<dd>'+
       '<span class="lu-val">'+luEsc(f.display)+'</span>'+
       luRefMark(f.ref_index, f.citation)+
+      (f.republished_index||[]).map((i,k)=>luRefMark(i, (f.republished_in||[])[k])).join('')+
       (mark ? ' <span class="lu-agree lu-agree-'+luEsc(f.agreement)+'" title="'+luEsc(markTitle)+'">'+mark+'</span>' : '')+
       (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
       (flagged ? '<div class="lu-flag" title="'+luEsc(f.ambiguity||'')+'">'+luEsc(f.quality_flag.replace(/_/g,' '))+'</div>' : '')+
@@ -2215,6 +2228,27 @@ function luCallHTML(call, legacyReference, family, genus, binomial){
       ' · '+luDensityHTML(call.density)+'</p>';
 }
 
+// MDD's checklist and the GBIF supplement are merged into one
+// countryDistribution string for the map, but the card keeps them apart: a
+// country only GBIF asserts is marked, so a reader can tell a curated range
+// from occurrence-record evidence.
+function luCountriesHTML(s){
+  const raw = (s.countryDistribution||'').split('|').map(x=>x.trim()).filter(x=>x && x!=='NA');
+  if(!raw.length) return '—';
+  const gbif = s.gbifCountries;
+  return raw.map(name=>{
+    const bare = name.replace(/\?$/,'').trim().toLowerCase();
+    return (gbif && gbif.has(bare))
+      ? '<span class="lu-country-gbif" title="From GBIF observation records; not in MDD’s country list">'+luEsc(name)+'<sup>G</sup></span>'
+      : luEsc(name);
+  }).join(', ');
+}
+
+function luCountriesFootnote(s){
+  if(!s.gbifCountries || !s.gbifCountries.size) return '';
+  return '<p class="lu-src">Unmarked: '+luEsc(luState.meta.source)+' · <sup>G</sup> GBIF observation records only</p>';
+}
+
 function luDetailHTML(s, compact){
   const dk = luState.danish[s.id];
   const bin = luNiceName(s.sciName);
@@ -2236,7 +2270,7 @@ function luDetailHTML(s, compact){
     .map(k=>luEsc(s[k])).join(' &rsaquo; ');
 
   const links = LINKS.map(([label,url,icon])=>
-    '<a href="'+url(bin)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
+    '<a href="'+url(bin, s)+'" target="_blank" rel="noopener noreferrer" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'">'+icon+'</a>').join('');
 
   return '<figure class="inat-photo" aria-busy="true"></figure>'+
     '<p class="card-lineage">'+lineage+'</p>'+
@@ -2251,8 +2285,8 @@ function luDetailHTML(s, compact){
         '<dt>Extinct</dt><dd>'+(s.extinct==='1' ? 'Yes' : 'No')+'</dd>'+
         '<dt>Realm</dt><dd>'+luEsc(s.biogeographicRealm||'—')+'</dd>'+
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
-        '<dt>Countries</dt><dd>'+luEsc((s.countryDistribution||'—').replace(/\|/g,', '))+'</dd>'+
-      '</dl></section>'+
+        '<dt>Countries</dt><dd>'+luCountriesHTML(s)+'</dd>'+
+      '</dl>'+luCountriesFootnote(s)+'</section>'+
       '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
@@ -2333,7 +2367,10 @@ treeToggle.addEventListener('click', ()=>{
 </script>
 
 <script>
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+// Skip the service worker on the local dev server: its cache-first fetch handler
+// would serve stale pages after every edit.
+const swLocal = ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname);
+if ('serviceWorker' in navigator && !swLocal) navigator.serviceWorker.register('service-worker.js');
 </script>
 </body>
 </html>

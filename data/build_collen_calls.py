@@ -152,41 +152,45 @@ def main() -> None:
     out = []
     species_seen = set()
     for record in table:
-        species, method = resolver.resolve(record["species"])
-        if species is None:
+        matches, method, split_note = resolver.resolve_many(record["species"])
+        if not matches:
             continue
-        species_seen.add(species["id"])
-        suffix = observation_suffix(record["species"], species)
-        context = {
-            "observation_id": f"collen2012-{species['id']}{suffix}",
-            "mdd_id": species["id"],
-            "verbatim_taxon_name": record["species"],
-            "taxon_match_method": method,
-            "reference_id": REFERENCE_ID,
-            "locator": "Appendix F, pp. 337-392",
-            "method_id": METHOD_ID,
-            "call_phase": "unspecified",
-            "quality_flag": "ok",
-            "notes": ("Printed in the source as a separate species; the current taxonomy "
-                      f"treats it as {species['sciName'].replace('_', ' ')}." if suffix else ""),
-        }
-        for parameter, (printed, unit) in sorted(record["values"].items()):
-            if parameter == "call_shape_class":
-                code = printed.split(".")[0]
-                out.append({**context, "parameter": "call_shape_class",
-                            "statistic": "single", "value": code, "verbatim_value": printed})
-                if code in SIGNAL_TYPE_FROM_CLASS:
-                    out.append({**context, "parameter": "signal_type", "statistic": "single",
-                                "value": SIGNAL_TYPE_FROM_CLASS[code], "verbatim_value": printed,
-                                "notes": "Read from Collen's call-shape class, whose definition "
-                                         "states this directly."})
-                continue
-            flag, note = QUALITY_OVERRIDES.get((record["species"], parameter), (None, None))
-            row = {**context, "parameter": parameter, "statistic": "species_summary",
-                   "value": printed, "unit": unit, "verbatim_value": printed}
-            if flag:
-                row["quality_flag"], row["notes"] = flag, note
-            out.append(row)
+        for species in matches:
+            species_seen.add(species["id"])
+            suffix = observation_suffix(record["species"], species)
+            context = {
+                "observation_id": f"collen2012-{species['id']}{suffix}",
+                "mdd_id": species["id"],
+                "verbatim_taxon_name": record["species"],
+                "taxon_match_method": method,
+                "reference_id": REFERENCE_ID,
+                "locator": "Appendix F, pp. 337-392",
+                "method_id": METHOD_ID,
+                "call_phase": "unspecified",
+                "quality_flag": "taxon_uncertain" if split_note else "ok",
+                "notes": " ".join(filter(None, [
+                    split_note,
+                    ("Printed in the source as a separate species; the current taxonomy "
+                     f"treats it as {species['sciName'].replace('_', ' ')}." if suffix else ""),
+                ])),
+            }
+            for parameter, (printed, unit) in sorted(record["values"].items()):
+                if parameter == "call_shape_class":
+                    code = printed.split(".")[0]
+                    out.append({**context, "parameter": "call_shape_class",
+                                "statistic": "single", "value": code, "verbatim_value": printed})
+                    if code in SIGNAL_TYPE_FROM_CLASS:
+                        out.append({**context, "parameter": "signal_type", "statistic": "single",
+                                    "value": SIGNAL_TYPE_FROM_CLASS[code], "verbatim_value": printed,
+                                    "notes": "Read from Collen's call-shape class, whose definition "
+                                             "states this directly."})
+                    continue
+                flag, note = QUALITY_OVERRIDES.get((record["species"], parameter), (None, None))
+                row = {**context, "parameter": parameter, "statistic": "species_summary",
+                       "value": printed, "unit": unit, "verbatim_value": printed}
+                if flag:
+                    row["quality_flag"], row["notes"] = flag, note
+                out.append(row)
 
     path = write_rows(REFERENCE_ID, out)
     review = write_review(REFERENCE_ID, resolver.unresolved)

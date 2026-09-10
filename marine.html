@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- Local-dev shim. The published site names this page marine.html (build.sh
+     copies marine-mammal-tree.html to public/marine.html), but the local server
+     serves the repo root, where the source file keeps its long name. This makes
+     the cross-links in both trees resolve locally too. Not copied into public/. -->
+<meta charset="utf-8">
+<title>Redirecting to the marine mammal tree</title>
+<meta http-equiv="refresh" content="0; url=marine-mammal-tree.html">
+<link rel="canonical" href="marine-mammal-tree.html">
+<script>location.replace('marine-mammal-tree.html' + location.search + location.hash);</script>
+<p><a href="marine-mammal-tree.html">Marine mammal tree</a></p>

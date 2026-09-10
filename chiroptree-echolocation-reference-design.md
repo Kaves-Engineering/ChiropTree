@@ -1,6 +1,6 @@
 # Echolocation reference dataset — design sketch
 
-Status: schema implemented; roadmap §10 Steps 2, 2b, 3b and 4 complete. 324 species measured (21.4%); the remaining 1,190 cards show labelled family-level inference. Next: §10.3 Step 1 (Pteropodidae species records) and Step 3 (source survey).
+Status: schema implemented; roadmap §10 Steps 2, 2b, 3b and 4 complete. 604 species measured (39.9%); the remaining 910 cards show labelled family-level inference. The `harmonic` field of §3.3 is now implemented and carried through to the card. Next: §10.3 Step 1 (Pteropodidae species records) and Step 3 (source survey).
 Scope: the reference data layer behind the **Call** section of `chiroptera-tree.html`.
 Relates to: Phase 3 of [chiroptree-implementation-plan.md](chiroptree-implementation-plan.md).
 

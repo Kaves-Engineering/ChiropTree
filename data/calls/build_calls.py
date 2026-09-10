@@ -128,6 +128,11 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
             problems.append(f"{where}: unknown statistic {row['statistic']!r}")
         if row.get("quality_flag") and row["quality_flag"] not in quality_flags:
             problems.append(f"{where}: unknown quality_flag {row['quality_flag']!r}")
+        if row.get("harmonic") and not (row["harmonic"].isdigit() and int(row["harmonic"]) >= 1):
+            problems.append(
+                f"{where}: harmonic {row['harmonic']!r} must be a positive integer "
+                f"counting the fundamental as 1"
+            )
 
         if param["value_type"] == "numeric":
             if row["statistic"] == "range":
@@ -150,8 +155,10 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
                     # still validates against a stored 4.3.
                     printed = row["verbatim_value"].replace("–", "-").replace("−", "-")
                     printed = re.sub(r"(?<=\d),(?=\d)", ".", printed)
+                    # Accept an optional sign: sources conventionally print
+                    # descending FM slopes as negative kHz/ms values.
                     printed_numbers = [float(n) for n in
-                                       re.findall(r"\d+(?:\.\d+)?", printed)]
+                                       re.findall(r"[-+]?\d+(?:\.\d+)?", printed)]
                     if not any(abs(n - float(row["value"])) < 1e-9 for n in printed_numbers):
                         problems.append(
                             f"{where}: value {row['value']!r} does not appear in "
@@ -167,7 +174,8 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
     seen = defaultdict(list)
     for row in rows:
         key = (row["observation_id"], row["parameter"],
-               row.get("call_variant", ""), row.get("unit", ""))
+               row.get("call_variant", ""), row.get("unit", ""),
+               row.get("harmonic", ""))
         seen[key].append(f"{row['_source_file']}:{row['_line']}")
     for (observation, parameter, *_), places in sorted(seen.items()):
         if len(places) > 1:
@@ -179,14 +187,27 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
     return problems
 
 
+# Kept short: this renders in a 9px non-wrapping label beside the value.
+ORDINAL_HARMONIC = {"1": "fundamental", "2": "2nd harmonic",
+                    "3": "3rd harmonic", "4": "4th harmonic"}
+
+
 def comparability_key(row, registry, methods) -> str:
     """Values only compete when the method makes them the same quantity."""
     param = registry.get(row["parameter"])
+    parts = []
     fields = param.get("comparability_fields")
-    if not fields:
-        return ""
-    method = methods.get(row.get("method_id"), {})
-    return "; ".join(f"{f}={method.get(f)}" for f in fields)
+    if fields:
+        method = methods.get(row.get("method_id"), {})
+        parts += [f"{f}={method.get(f)}" for f in fields]
+    # A frequency or duration read off the second harmonic is not a competing
+    # estimate of the fundamental's -- it is a different quantity. Grouping them
+    # together would either hide one behind the other or flag the pair as
+    # divergent, both of which would be wrong. Sources that state the harmonic
+    # therefore get one fact per harmonic; sources that do not are unaffected.
+    if row.get("harmonic"):
+        parts.append(f"harmonic={row['harmonic']}")
+    return "; ".join(parts)
 
 
 def basis_text(key: str) -> str:
@@ -195,11 +216,17 @@ def basis_text(key: str) -> str:
     if not key:
         return ""
     parts = dict(p.split("=", 1) for p in key.split("; "))
+    harmonic = parts.get("harmonic")
+    measured_on = ""
+    if harmonic:
+        measured_on = ORDINAL_HARMONIC.get(harmonic, f"harmonic {harmonic}")
     distance = parts.get("source_level_reference_distance_m")
     kind = parts.get("source_level_type", "").replace("_", "-")
     if distance in (None, "None"):
-        return f"{kind}, reference distance unstated" if kind else ""
-    return f"{kind} at {distance} m".strip()
+        level = f"{kind}, reference distance unstated" if kind else ""
+    else:
+        level = f"{kind} at {distance} m".strip()
+    return "; ".join(text for text in (measured_on, level) if text)
 
 
 def format_value(row, registry) -> str:
@@ -208,9 +235,12 @@ def format_value(row, registry) -> str:
         return row["value"]
     unit = (param["unit"].replace("count_per_s", "/s").replace("m_per_s", "m/s")
             .replace("dB_SPL", "dB").replace("degrees", "°"))
+    # A plain count has no unit to print: "harmonic 2", not "2 count".
+    if unit == "count":
+        unit = ""
     if row["statistic"] == "range":
-        return f"{row['value_min']}–{row['value_max']} {unit}"
-    text = f"{row['value']} {unit}"
+        return f"{row['value_min']}–{row['value_max']} {unit}".strip()
+    text = f"{row['value']} {unit}".strip()
     if row.get("dispersion_value"):
         text = f"{row['value']} ± {row['dispersion_value']} {unit}"
     if row["statistic"] in {"median", "approximate"}:
@@ -311,6 +341,7 @@ def build_species(rows, registry, refs, methods) -> dict:
                 "display": format_value(best, registry),
                 "value_num": numeric[0] if numeric else None,
                 "statistic": best["statistic"],
+                "harmonic": best.get("harmonic") or None,
                 "basis": basis_text(ckey),
                 "n_calls": best.get("n_calls") or None,
                 "quality_flag": best.get("quality_flag") or "ok",
@@ -448,7 +479,12 @@ def derive_genus_expectations(species: dict, taxonomy: list) -> dict:
             continue
         for variant in record.get("variants", []):
             for fact in variant["facts"]:
-                if fact["parameter"] == "peak_frequency" and fact.get("value_num") is not None:
+                # A value spread across the daughters of a split is one datum
+                # wearing several names. Counting it once per daughter would
+                # make a single recording look like several congeners.
+                if (fact["parameter"] == "peak_frequency"
+                        and fact.get("value_num") is not None
+                        and fact.get("quality_flag") != "taxon_uncertain"):
                     observed[genus].append((fact["value_num"], fact["citation"]))
                     break
             else:

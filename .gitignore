@@ -11,6 +11,11 @@ wheels/
 
 # Raw MDD source download (large; re-fetch with data/build_taxonomy.py)
 data/raw/
+
+# Cached source PDFs, archives and GBIF downloads (7 MB; every one is
+# re-fetchable, and each importer pins the SHA-256 it expects). The reports and
+# checklists alongside them in data/Fetch/ are tracked.
+data/Fetch/raw/
 public/
 
 # Local Claude Code tooling (session-local, not project content)

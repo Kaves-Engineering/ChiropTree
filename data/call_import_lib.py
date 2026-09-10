@@ -38,7 +38,8 @@ COLUMNS = [
     "recording_condition", "habitat_class", "country", "locality", "date_or_season",
     "n_individuals", "n_calls",
     "parameter", "statistic", "value", "value_min", "value_max", "unit",
-    "dispersion_type", "dispersion_value", "verbatim_value", "quality_flag", "notes",
+    "dispersion_type", "dispersion_value", "harmonic", "verbatim_value",
+    "quality_flag", "notes",
 ]
 
 # Name decisions that hold for any source, because they are facts about the
@@ -57,11 +58,57 @@ SHARED_SYNONYMS = {
     "Laephotis botswanae": "1005729",         # nominalNames: botswanae Setzer
     "Paratriaenops furculus": "1004763",      # batnames gives furcula
     "Rhinolophus paradoxolophus": "1004732",  # nominalNames: paradoxolophus (Bourret)
+    "Afronycteris nana": "1005700",           # feminine form of the epithet; MDD has nanus
+    "Neoromicia nana": "1005700",             # same species, pre-Afronycteris combination
+    "Anoura caudifera": "1004891",            # MDD gives the masculine caudifer
+    "Eptesicus anatolicus": "1005511",        # one-to-one recombination into Cnephaeus
+    "Eptesicus isabellinus": "1005524",       # one-to-one recombination into Cnephaeus
+    "Kerivoula papuensis": "1005313",         # one-to-one recombination into Phoniscus
+}
+
+# Names left unresolved on purpose, with the reason, so that a later pass does
+# not "fix" them by guessing. Each is a split or an unsettled synonymy where the
+# source's recording cannot be assigned to exactly one current species.
+DECLINED_SYNONYMS = {
+    "Tonatia saurophila": "split; saurophila sensu stricto is Jamaican and the mainland "
+                          "populations are now Tonatia bakeri, so the source's bats cannot be placed",
+    "Molossus barnesi": "treated as a synonym of both M. coibensis and M. molossus in "
+                        "different treatments; not a settled one-to-one mapping",
+    "Cynomops paranus": "synonymised with C. planirostris in older work but treated as "
+                        "valid in recent revisions; not a settled one-to-one mapping",
 }
 
 
 def norm(name: str) -> str:
     return re.sub(r"\s+", " ", name.strip().lower())
+
+# Measurements published under a name that has since been split. Policy: the
+# value is assigned to every daughter species, each carrying a note saying where
+# it came from and flagged taxon_uncertain, rather than dropped or pinned to one
+# daughter we cannot justify. One datum becomes several records, so they are
+# excluded from anything that treats records as independent.
+#
+# Two shapes of split are covered:
+#   - the old name is gone (Tonatia saurophila), which the resolver would fail on;
+#   - the old name survives but its concept narrowed (Pteronotus parnellii), which
+#     the resolver would silently match exactly and over-assign. That second case
+#     is the dangerous one, because nothing looks wrong.
+SPLIT_ASSIGNMENTS = {
+    "Tonatia saurophila": {
+        "daughters": ["1004984", "1004986"],  # T. bakeri, T. maresi
+        "note": ("Published as Tonatia saurophila, a name the current taxonomy no longer "
+                 "recognises; it was split into T. bakeri and T. maresi. The measurement is "
+                 "shown for each daughter because the recording cannot be assigned to one."),
+    },
+    "Pteronotus parnellii": {
+        "daughters": ["1004852", "1004855", "1004858", "1004859", "1004860",
+                      "1004861", "1004863", "1004865", "1004867"],
+        "note": ("Published as Pteronotus parnellii before that name was restricted to one "
+                 "member of a nine-species cryptic complex. Pre-split recordings could belong "
+                 "to any of them, so the measurement is shown for each. All nine are "
+                 "high-duty-cycle CF bats with similar calls, but the assignment is unresolved."),
+    },
+}
 
 
 def observation_suffix(printed_name: str, species: dict) -> str:
@@ -94,6 +141,7 @@ class TaxonResolver:
         self.matched_exact = 0
         self.matched_synonym = 0
         self.matched_manual = 0
+        self.matched_split = 0
         self.add_manual(SHARED_SYNONYMS)
 
     def add_manual(self, mapping: dict[str, str]) -> None:
@@ -109,6 +157,20 @@ class TaxonResolver:
             if mdd_id not in by_id:
                 raise KeyError(f"manual mapping for {name!r} points at unknown MDD id {mdd_id!r}")
             self.manual[norm(name)] = by_id[mdd_id]
+
+    def resolve_many(self, name: str) -> tuple[list[dict], str, str]:
+        """Resolve to every species a name may refer to.
+
+        Normally one species. For a name covered by SPLIT_ASSIGNMENTS it is
+        every daughter of the split, with the reason to record on each row.
+        """
+        split = SPLIT_ASSIGNMENTS.get(name)
+        if split:
+            by_id = {r["id"]: r for r in self.accepted.values()}
+            self.matched_split += 1
+            return [by_id[i] for i in split["daughters"]], "split_assigned", split["note"]
+        species, method = self.resolve(name)
+        return ([species] if species else []), method, ""
 
     def resolve(self, name: str) -> tuple[dict | None, str]:
         """Return (species record, match method). (None, reason) when unresolved."""
@@ -177,7 +239,8 @@ def report(reference_id: str, written: int, species: int, resolver: TaxonResolve
     print(f"{reference_id}: wrote {written} measurement rows for {species} species")
     exact = "resolved by exact name"
     print(f"  {resolver.matched_exact} {exact}, {resolver.matched_synonym} via MSW3 synonym"
-          + (f", {resolver.matched_manual} by hand-checked mapping" if resolver.matched_manual else ""))
+          + (f", {resolver.matched_manual} by hand-checked mapping" if resolver.matched_manual else "")
+          + (f", {resolver.matched_split} spread across split daughters" if resolver.matched_split else ""))
     if resolver.unresolved:
         print(f"  {len(resolver.unresolved)} unresolved, parked for review:")
         for name, reason in sorted(resolver.unresolved):

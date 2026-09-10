@@ -41,7 +41,8 @@
   "definition_unstated": "The source does not say how the quantity was measured (threshold, reference distance, rms vs peak), so it is not safely comparable across studies.",
   "digitised_from_figure": "Read off a plot rather than a printed value.",
   "derived": "Modelled or calculated by the source rather than measured.",
-  "suspect": "Looks wrong; retained with the flag rather than dropped."
+  "suspect": "Looks wrong; retained with the flag rather than dropped.",
+  "taxon_uncertain": "The source published this under a name that has since been split, so the measurement is shown for every daughter species and belongs to only one of them."
  },
  "unit_conversions": {
   "Hz": {
@@ -98,6 +99,10 @@
   },
   "m_per_s": {
    "to": "m_per_s",
+   "factor": 1
+  },
+  "count": {
+   "to": "count",
    "factor": 1
   },
   "g": {
@@ -385,7 +390,7 @@
    "group": "spectral",
    "value_type": "numeric",
    "unit": "kHz",
-   "sane_min": 0,
+   "sane_min": -500,
    "sane_max": 200,
    "status": "core",
    "definition": "Frequency range spanned by the pulse, max_frequency minus min_frequency.",
@@ -485,10 +490,10 @@
    "group": "spectral",
    "value_type": "numeric",
    "unit": "kHz/ms",
-   "sane_min": 0,
+   "sane_min": -500,
    "sane_max": 500,
    "status": "extended",
-   "definition": "Rate of frequency change through the modulated portion of the pulse.",
+   "definition": "Rate of frequency change through the modulated portion of the pulse. A downward sweep is negative when the source reports a signed slope.",
    "aliases": [
     "sweep rate",
     "fm rate",

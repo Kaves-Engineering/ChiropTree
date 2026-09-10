@@ -30,7 +30,7 @@ Published with GitHub Pages.
   recorded name are simply absent from this file rather than given an
   invented one.
 - **`data/world_map.json`** — country outlines for the range map drawn in
-  every species record: Robinson-projected, simplified SVG path strings plus
+  every species record: Equal Earth-projected, simplified SVG path strings plus
   centre points for the small islands the 110m outlines are too coarse to
   show, and a name index that resolves all 224 country spellings the MDD
   export uses. Built from [Natural Earth](https://www.naturalearthdata.com)
