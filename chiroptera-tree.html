@@ -140,7 +140,7 @@ try {
 /* ===== /PALETTE ==================================================== */
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
 .fbtn,.gen,.switch button,.tree-tools button,.jump,#fclear,.lu-close,g.tip,g.trow,button.gen{
   touch-action:manipulation;-webkit-tap-highlight-color:rgba(var(--ochre-rgb),.25);
 }
@@ -506,7 +506,7 @@ footer a:hover{color:var(--ochre)}
 /* ---------- country browse map ---------- */
 .cm-map-wrap{margin-top:0}
 .cm-map{position:relative}
-.cm-map svg{display:block;width:100%;height:auto;background:var(--map-water);border:1px solid rgba(var(--border-rgb),.22);border-radius:3px;cursor:grab;touch-action:none}
+.cm-map svg{display:block;width:100%;height:auto;background:var(--map-water);border:1px solid rgba(var(--border-rgb),.22);border-radius:3px;cursor:grab;touch-action:pan-y pinch-zoom}
 .cm-map svg.dragging{cursor:grabbing}
 .cm-zoom-g{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .cm-zoom-g.no-anim{transition:none}
@@ -554,16 +554,42 @@ footer a:hover{color:var(--ochre)}
 .cm-mode .mode-country{fill:currentColor;stroke:none}
 
 @media (max-width:620px){
-  /* three rows: title, then the switch (it names what's on screen, so it
-     stays with the title rather than sliding down to the search's row),
-     then search plus the icon cluster, which fit together at any phone
-     width once the switch is out of their way */
-  .topbar-in{flex-wrap:wrap;gap:10px 14px}
-  .tb-brand{font-size:15px;flex-basis:100%}
-  .pageswitch{flex-basis:100%}
-  .tb-search{width:auto;margin-left:0;flex:1 1 150px}
-  .ps-opt{padding:6px 10px;letter-spacing:.08em}
+  /* The phone header is a compact field-guide masthead: orientation and
+     utilities share the first row; search gets an unambiguous row of its own. */
+  .topbar-in{flex-wrap:wrap;gap:7px;padding:8px max(var(--pad),env(safe-area-inset-right)) 8px max(var(--pad),env(safe-area-inset-left));min-height:0}
+  .tb-brand{font-size:0;flex:none;width:36px}
+  .tb-brand::before{content:"Bats";font-family:var(--display);font-size:16px;font-weight:500;color:var(--bone)}
+  .pageswitch{flex:1;justify-content:center}
+  .ps-opt{padding:6px 8px;font-size:9px;letter-spacing:.07em}
+  .tb-search{order:2;flex:1 0 100%;width:100%;margin:0}
+  .tb-search input{min-height:44px;font-size:16px;padding-top:9px;padding-bottom:9px}
+  .tb-nav{display:none}
+  .random-bat,.theme-toggle{width:44px;height:44px}
+  .mobile-workspace{display:flex;gap:7px;padding:9px var(--pad) 0}
+  .mobile-workspace button{min-height:42px;flex:1;border:1px solid rgba(var(--border-rgb),.3);background:rgba(var(--card-rgb),.48);color:var(--muted);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+  .mobile-workspace button[aria-current="true"]{border-color:var(--ochre-dim);color:var(--ochre);background:rgba(var(--ochre-rgb),.1)}
+  .mobile-workspace button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+  .treebox{overflow-x:auto;overscroll-behavior-x:contain}
+  svg#tree{width:700px;max-width:none}
+  .tree-mobile-hint{display:block;margin:8px 2px 0;color:var(--muted);font:10px/1.45 var(--mono);letter-spacing:.05em}
+  .cm-zoom-ctrl{top:12px;right:12px;gap:6px}
+  .cm-zoom-ctrl button,.tree-tools button,.cm-mode button{width:44px;height:44px}
+  .tree-tools{top:6px;right:6px;gap:4px}
+  .lu-drawer{width:100vw;border-left:0;padding:max(22px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
+  .lu-close{top:max(14px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));min-height:44px}
+  .lu-row{padding:12px 14px;min-height:56px}
 }
+
+@media (max-width:380px){ .random-bat{display:none} }
+
+@media (pointer:coarse){
+  .tb-nav a,.lu-links a{width:44px;height:44px}
+  .cm-zoom-ctrl button,.tree-tools button,.cm-mode button{min-width:44px;min-height:44px}
+}
+
+@media (max-width:620px){ body.drawer-open{overflow:hidden;overscroll-behavior:contain} }
+
+.mobile-workspace,.tree-mobile-hint{display:none}
 
 /* ---------- expandable tree ---------- */
 .tree-tools{position:absolute;z-index:3;top:8px;right:8px;display:flex;gap:2px;align-items:center;margin:0}
@@ -641,9 +667,14 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
   </div>
 </div>
 
+<nav class="mobile-workspace" aria-label="Browse the bat guide">
+  <button type="button" data-workspace-target="tree-section" aria-current="true">Tree</button>
+  <button type="button" data-workspace-target="country-map" aria-current="false">Map</button>
+</nav>
+
 <div class="wrap" id="top">
 
-<div class="top-grid">
+<div class="top-grid" id="top-grid">
 
 <!-- ================= TREE ================= -->
 <section id="tree-section">
@@ -663,6 +694,7 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
     </div>
     <svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg>
   </div>
+  <p class="tree-mobile-hint">Swipe sideways to explore the full tree. Tap a branch to open it.</p>
 </section>
 
 <!-- ================= COUNTRY MAP ================= -->
@@ -718,6 +750,16 @@ applyTheme(document.documentElement.dataset.theme || 'dark');
 themeToggle.addEventListener('click', () => {
   applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
 });
+
+// On phones the tree and map are separate destinations in one field guide.
+// The buttons are shortcuts rather than tabs, so neither view is discarded.
+const workspaceButtons = [...document.querySelectorAll('[data-workspace-target]')];
+workspaceButtons.forEach(button=>button.addEventListener('click', ()=>{
+  const target = document.getElementById(button.dataset.workspaceTarget);
+  if(!target) return;
+  workspaceButtons.forEach(item=>item.setAttribute('aria-current', String(item===button)));
+  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+}));
 
 /* =========================================================
    1. FAMILY DATA
@@ -2331,6 +2373,7 @@ function luDrawerTrap(e){
 function luOpenDrawer(){
   luDrawerReturnFocus = document.activeElement;
   luDrawer.classList.add('open'); luScrim.classList.add('open');
+  document.body.classList.add('drawer-open');
   luDrawer.setAttribute('aria-hidden','false');
   luDrawer.scrollTop = 0;
   document.getElementById('lu-close').focus();
@@ -2338,6 +2381,7 @@ function luOpenDrawer(){
 }
 function luCloseDrawer(){
   luDrawer.classList.remove('open'); luScrim.classList.remove('open');
+  document.body.classList.remove('drawer-open');
   luDrawer.setAttribute('aria-hidden','true');
   luDrawer.removeEventListener('keydown', luDrawerTrap);
   if(luDrawerReturnFocus && document.contains(luDrawerReturnFocus)) luDrawerReturnFocus.focus();
