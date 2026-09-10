@@ -1955,6 +1955,60 @@ function luSpeciesHTML(binomial, compact){
 const LIVE_MEDIA_CACHE = 'chiroptree-live-media-v1';
 const LIVE_MEDIA_LICENSES = new Set(['cc0','cc-by','cc-by-sa','cc-by-nc','cc-by-nc-sa','cc-by-nd','cc-by-nc-nd']);
 const livePhotoRequests = new Map();
+const highResolutionPhotoRequests = new Map();
+
+// Keep the shipped preview for offline and constrained connections. On a fast
+// connection, detail cards may replace it with iNaturalist's larger rendition.
+function canLoadHighResolutionPhoto(){
+  if(!navigator.onLine) return false;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  return !connection || (!connection.saveData && (!connection.effectiveType || connection.effectiveType === '4g'));
+}
+
+async function highResolutionPhotoUrls(asset){
+  if(!asset || !asset.providerAssetId) return [];
+  const key = String(asset.providerAssetId);
+  if(highResolutionPhotoRequests.has(key)) return highResolutionPhotoRequests.get(key);
+  const request = highResolutionPhotoUrlsForAsset(asset);
+  highResolutionPhotoRequests.set(key, request);
+  return request;
+}
+
+async function highResolutionPhotoUrlsForAsset(asset){
+  const base = 'https://inaturalist-open-data.s3.amazonaws.com/photos/'+encodeURIComponent(asset.providerAssetId)+'/large.';
+  const source = String(asset.sourceUrl||'').match(/inaturalist\.org\/(observations|taxa)\/(\d+)/);
+  if(!source) return [base+'jpeg',base+'jpg',base+'png'];
+  try {
+    const payload = await fetch('https://api.inaturalist.org/v1/'+source[1]+'/'+source[2]).then(response=>response.ok ? response.json() : Promise.reject(response.status));
+    const record = (payload.results||[])[0];
+    const photos = source[1] === 'observations' ? (record&&record.photos)||[] : [record&&record.default_photo];
+    const photo = photos.find(item=>item && String(item.id) === String(asset.providerAssetId));
+    const url = photo && String(photo.url||'').replace(/\/(square|small|medium|large)\./,'/large.');
+    if(url) return [url];
+  } catch (_) {}
+  // Fallback for older records whose API representation has disappeared.
+  return [base+'jpeg',base+'jpg',base+'png'];
+}
+
+function upgradePhotoWhenAffordable(asset, image){
+  if(!canLoadHighResolutionPhoto()) return;
+  highResolutionPhotoUrls(asset).then(urls=>upgradePhotoFromUrls(urls, image)).catch(()=>{});
+}
+
+function upgradePhotoFromUrls(urls, image){
+  if(!image.isConnected || !urls.length) return;
+  const candidate = new Image();
+  candidate.decoding = 'async';
+  candidate.onload = ()=>{
+    if(image.isConnected && candidate.naturalWidth > image.naturalWidth) image.src = candidate.src;
+  };
+  let attempt = 0;
+  candidate.onerror = ()=>{
+    attempt += 1;
+    if(attempt < urls.length) candidate.src = urls[attempt];
+  };
+  candidate.src = urls[attempt];
+}
 
 function renderPhoto(asset, host){
   if(!host || !asset) return;
@@ -1966,7 +2020,9 @@ function renderPhoto(asset, host){
   const changed = asset.modified===true || (asset.path && asset.modified!==false && asset.sourceHash!==asset.outputHash);
   host.innerHTML = sourceOpen+'<img src="'+luEsc(asset.path?'data/'+asset.path:asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+sourceClose+
     '<figcaption>'+sourceOpen+luEsc(asset.attribution)+sourceClose+' · <a href="'+licenseUrl+'" target="_blank" rel="noopener noreferrer">'+luEsc(asset.license)+'</a> · iNaturalist'+(changed?' · resized':'')+'</figcaption>';
-  host.querySelector('img').addEventListener('error', ()=>host.remove(), {once:true});
+  const image = host.querySelector('img');
+  image.addEventListener('error', ()=>host.remove(), {once:true});
+  if(asset.path) upgradePhotoWhenAffordable(asset, image);
 }
 
 async function livePhotoFor(species){
@@ -1988,7 +2044,8 @@ async function livePhotoFor(species){
     sourceUrl = observation && 'https://www.inaturalist.org/observations/'+observation.id;
   }
   if(!photo) return null;
-  const asset = {url:String(photo.url||'').replace(/\/(square|medium)\./,'/small.'),sourceUrl,attribution:photo.attribution||'iNaturalist contributor',license:String(photo.license_code).toUpperCase(),alt:binomial};
+  const size = canLoadHighResolutionPhoto() ? 'large' : 'small';
+  const asset = {url:String(photo.url||'').replace(/\/(square|small|medium)\./,'/'+size+'.'),sourceUrl,attribution:photo.attribution||'iNaturalist contributor',license:String(photo.license_code).toUpperCase(),alt:binomial};
   localStorage.setItem(key, JSON.stringify(asset));
   if('caches' in window) fetch(asset.url).then(response=>response.ok?caches.open(LIVE_MEDIA_CACHE).then(cache=>cache.put(asset.url,response)):null).catch(()=>{});
   return asset;
