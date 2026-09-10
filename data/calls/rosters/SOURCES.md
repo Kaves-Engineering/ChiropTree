@@ -16,7 +16,9 @@ denominator we invented.
 ### Added 2026-09-10, from GBIF
 
 The Asian Bat Call Database datasets (Hungarian NHM + SEABCRU, GBIF-BIFA project
-BIFA04-24) are **occurrence records, not measurements** — see the fetch report. What they do
+BIFA04-24) are **occurrence records, not measurements**: they carry ChiroVox media ids and
+no call parameters, and the one MeasurementOrFact extension among them holds call counts
+rather than call parameters. What they do
 give is a named species list for regions that had none, so they are used only as rosters.
 Each is a recording cohort, never a national checklist, and the roster_scope string says so.
 
@@ -26,7 +28,8 @@ Each is a recording cohort, never a national checklist, and the roster_scope str
 | `malaysia_bats.csv` | Penang Island (`10.15468/tn7zxw`), Langkawi (`c76e7c47`), HNHM Asian Bat Database (`10.15468/zkfx5b`) | 45 |
 | `taiwan_bats.csv` | Reference call of insectivorous bats in Taiwan (`7d4b8ea4`) | 17 |
 
-Archives are cached under `data/Fetch/raw/gbif/`. Names are reduced to the binomial: author
+Archives are cached locally and are not tracked; each is re-fetchable from the GBIF API by
+the dataset key above. Names are reduced to the binomial: author
 strings and subspecies epithets are dropped, and a record whose rank is not species is skipped.
 
 Two country rosters were **deliberately not created**. The same datasets yield only 6 named

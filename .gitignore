@@ -23,3 +23,21 @@ public/
 .agents/
 skills-lock.json
 
+# Planning and working documents. None of this builds the page or regenerates
+# its data; it is the process around the project rather than the project. All of
+# it stays on disk, and earlier revisions remain in git history.
+PLAN.md
+chiroptree-implementation-plan.md
+chiroptree-echolocation-reference-design.md
+data/Fetch/
+
+# Session notes and source audits
+data/calls/*-audit-*.md
+data/calls/source_audit_*.md
+
+# Generated reports and review files, rewritten on every run by
+# check_expectations.py, report_regional_call_gaps.py and the importers
+data/calls/checks/
+data/calls/unresolved/
+data/calls/regional_coverage_summary.csv
+data/calls/regional_missing_species.csv

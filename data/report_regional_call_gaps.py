@@ -7,8 +7,9 @@ Mexico's list is explicitly a Sonozotz library cohort, not a Mexican national
 fauna.
 
 Rosters come from two places: the supplied upload archive, and `calls/rosters/`
-for lists derived from published checklists fetched separately (see
-`data/Fetch/FETCH_RESULTS_2026-09-09.md`).
+for lists derived from published checklists fetched separately. Each of those
+carries its citation, retrieval date and source hash in
+`data/calls/rosters/SOURCES.md`.
 
 Run: uv run data/report_regional_call_gaps.py
 """
