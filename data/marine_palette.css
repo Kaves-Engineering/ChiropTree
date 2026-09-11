@@ -19,8 +19,9 @@
   --panel:#0d2431;          /* drawer, search results */
   --canvas:#102b3a;         /* the tree's own field */
   --line:#93c4d8;           /* structure: rules, branches, labels */
-  --line-dim:#47788f;
-  --rule:#8d5730;           /* the hairline under a lineage heading */
+  --line-dim:#47788f;       /* hairlines ONLY -- too dim to carry text */
+  --line-text:#7ea9bf;      /* the same quiet register, but legible as ink */
+  --rule:#b2743f;           /* the hairline under a lineage heading */
   --bone:#eef5f8;           /* brightest ink */
   --text:#d2e2ea;
   --muted:#9db4c0;
@@ -38,6 +39,7 @@
   --map-water:#0a1f2b;      /* the range map, unpainted */
   --map-land:#24455a;
   --map-has:#2f6a86;        /* a country this taxon is recorded in */
+  --map-has-edge:#7cc0dc;   /* ...and its outline, so fill isn't the only cue */
   --map-has-hover:#3f86a6;
   --map-dot:#5aa0bf;        /* islands too small to draw as shapes */
   --map-dot-hover:#7cc0dc;
@@ -69,6 +71,7 @@
   --canvas:#e6eef3;
   --line:#235c78;
   --line-dim:#7fa0b2;
+  --line-text:#3d5f70;
   --rule:#a3673a;
   --bone:#0e2029;
   --text:#1d3540;
@@ -87,6 +90,7 @@
   --map-water:#dbe8ef;
   --map-land:#b6c9d5;
   --map-has:#86aec6;
+  --map-has-edge:#35657f;
   --map-has-hover:#6795b2;
   --map-dot:#6f9db6;
   --map-dot-hover:#4d7f9c;

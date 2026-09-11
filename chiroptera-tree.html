@@ -21,7 +21,7 @@ try {
 <title>Chiroptera — bat tree and range map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Lexend:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Lexend:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --display:"Fraunces",Georgia,serif;
@@ -49,8 +49,9 @@ try {
   --panel:#101d16;          /* drawer, search results */
   --canvas:#16281a;         /* the tree's own field */
   --line:#a9c98c;           /* structure: rules, branches, labels */
-  --line-dim:#5b7a49;
-  --rule:#8a6427;           /* the hairline under a suborder heading */
+  --line-dim:#5b7a49;       /* hairlines ONLY -- too dim to carry text */
+  --line-text:#8fae74;      /* the same quiet register, but legible as ink */
+  --rule:#a97c33;           /* the hairline under a suborder heading */
   --bone:#f4f1e6;           /* brightest ink */
   --text:#dfe4d6;
   --muted:#b7bfa9;
@@ -68,6 +69,7 @@ try {
   --map-water:#122015;      /* the range map, unpainted */
   --map-land:#274a2e;
   --map-has:#345f3a;        /* a country this taxon is recorded in */
+  --map-has-edge:#8fc27a;   /* ...and its outline, so fill isn't the only cue */
   --map-has-hover:#4a7a49;
   --map-dot:#5c8759;        /* islands too small to draw as shapes */
   --map-dot-hover:#7fae6e;
@@ -99,7 +101,8 @@ try {
   --canvas:#e8ecdf;
   --line:#315f3a;
   --line-dim:#7d9272;
-  --rule:#6f896b;
+  --line-text:#4a6344;
+  --rule:#55704f;
   --bone:#17251a;
   --text:#26352a;
   --muted:#5d6d5d;
@@ -117,6 +120,7 @@ try {
   --map-water:#dfe7d8;
   --map-land:#b8c9af;
   --map-has:#8fab84;
+  --map-has-edge:#3f5c3c;
   --map-has-hover:#70966d;
   --map-dot:#71936d;
   --map-dot-hover:#527a54;
@@ -140,6 +144,22 @@ try {
 /* ===== /PALETTE ==================================================== */
 
 *{box-sizing:border-box}
+
+/* Visible to a screen reader, absent from the layout. Used for the headings
+   and the running commentary that the graphics carry visually instead. */
+.sr-only{
+  position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+}
+.skip-link{
+  position:absolute;left:8px;top:-60px;z-index:200;
+  background:var(--panel);color:var(--ochre);border:1px solid var(--ochre);
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:10px 14px;border-radius:2px;text-decoration:none;transition:top .15s;
+}
+.skip-link:focus{top:8px}
+main:focus{outline:none}
+.tb-title{margin:0;font-size:inherit;font-weight:inherit;line-height:inherit}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
 .fbtn,.gen,.switch button,.tree-tools button,.jump,#fclear,.lu-close,g.tip,g.trow,button.gen{
   touch-action:manipulation;-webkit-tap-highlight-color:rgba(var(--ochre-rgb),.25);
@@ -150,7 +170,7 @@ body{
   color:var(--text);
   font-family:var(--body);
   font-weight:400;
-  font-size:16.5px;
+  font-size:1.03125rem;
   line-height:1.62;
   overflow-x:hidden;
 }
@@ -182,10 +202,21 @@ body::after{
 @media (min-width:1300px){
   .top-grid{
     grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    /* the tree spans both rows, and without this its height is shared out
+       between them -- which opens a hole above the card */
+    grid-template-rows:auto 1fr;
     column-gap:56px;
   }
-  #tree-section{grid-column:1;min-width:0}
-  #country-map{grid-column:2;min-width:0}
+  #tree-section{grid-column:1;grid-row:1/3;min-width:0}
+  #country-map{grid-column:2;grid-row:1;min-width:0}
+  /* The tree spans both rows, so this row is as tall as the tree -- which is
+     the room the card needs to stay stuck to the top of the viewport while
+     you scroll. Without that span there is nothing for it to slide against. */
+  .card{
+    grid-column:2;grid-row:2;align-self:start;min-width:0;
+    position:sticky;top:84px;
+    max-height:calc(100vh - 104px);overflow-y:auto;overscroll-behavior:contain;
+  }
 }
 
 section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(var(--border-rgb),.2);scroll-margin-top:70px}
@@ -219,22 +250,22 @@ g.tip:hover .branch-tip,g.tip.active .branch-tip{stroke:var(--ochre);stroke-widt
 g.tip.active .tip-name{fill:var(--ochre)}
 g.tip:focus-visible{outline:none}
 .focus-ring{fill:none;stroke:none}
-g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3}
+g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:2}
 
 /* ---------- detail card (dense) ---------- */
 .card.empty{display:none}
-.card .lu-d-sci{font-size:19px;padding-right:0}
-.card .lu-d-common{font-size:12.5px;margin:3px 0 0}
-.card .lu-d-authority{font-size:10px;margin-top:2px}
+.card .lu-d-sci{font-size:1.1875rem;padding-right:0}
+.card .lu-d-common{font-size:0.78125rem;margin:3px 0 0}
+.card .lu-d-authority{font-size:0.6875rem;margin-top:2px}
 .card .lu-links{margin-top:10px;gap:6px 10px}
 .card .lu-links a{width:28px;height:28px}
 .card .lu-facts{gap:12px;margin-top:12px;padding-top:0}
 .card .lu-section{padding:11px 14px}
-.card .lu-section h4{margin-bottom:7px;font-size:9.5px}
-.card .lu-section dl{gap:3px 10px;font-size:12.5px}
-.card .lu-section .lu-note{margin-top:8px;font-size:12.5px}
+.card .lu-section h4{margin-bottom:7px;font-size:0.6875rem}
+.card .lu-section dl{gap:3px 10px;font-size:0.78125rem}
+.card .lu-section .lu-note{margin-top:8px;font-size:0.78125rem}
 .card .lu-status{padding:1px 7px}
-.card .lu-prov{margin-top:12px;font-size:11px;padding-top:10px}
+.card .lu-prov{margin-top:12px;font-size:0.6875rem;padding-top:10px}
 .card .lu-facts,.card .lu-prov{clear:both}
 .inat-photo{
   float:right;width:min(34%,220px);min-height:120px;aspect-ratio:4/3;margin:0 0 14px 18px;
@@ -246,7 +277,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .inat-photo>a{display:block;color:var(--muted);text-decoration:none}
 .inat-photo figcaption a{display:inline;color:inherit;text-decoration:none}
 .inat-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:transparent}
-.inat-photo figcaption{margin-top:6px;font:9px/1.45 var(--mono);letter-spacing:.03em;color:var(--muted);overflow-wrap:anywhere}
+.inat-photo figcaption{margin-top:6px;font:0.6875rem/1.45 var(--mono);letter-spacing:.03em;color:var(--muted);overflow-wrap:anywhere}
 .inat-photo figcaption a:hover{color:var(--ochre)}
 @keyframes photo-loading{to{background-position:-220% 0}}
 @media (max-width:600px){
@@ -260,22 +291,33 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
   margin:0 0 20px;scroll-margin-top:72px;
 }
 
-.card-lineage{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;line-height:1.55}
+.card{position:relative}
+.card-close{
+  position:absolute;top:10px;right:12px;
+  background:transparent;border:1px solid var(--line-dim);color:var(--muted);
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 9px;border-radius:2px;cursor:pointer;
+}
+.card-close:hover{border-color:var(--ochre);color:var(--ochre)}
+.card-close:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+#card-body:focus{outline:none}
+#card-body>:first-child{padding-right:74px}
+.card-lineage{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;line-height:1.55}
 .card .name-row{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 7px}
-.card h3{font-family:var(--display);font-weight:500;font-size:19px;margin:0;line-height:1.05}
-.card .common{font-size:12.5px;color:var(--ochre);margin:0}
-.card p.desc{margin:0 0 10px;max-width:64ch;color:var(--text);font-size:13px;line-height:1.48}
+.card h3{font-family:var(--display);font-weight:500;font-size:1.1875rem;margin:0;line-height:1.05}
+.card .common{font-size:0.78125rem;color:var(--ochre);margin:0}
+.card p.desc{margin:0 0 10px;max-width:64ch;color:var(--text);font-size:0.8125rem;line-height:1.48}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 9px}
 .chip{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--bone);
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.03em;color:var(--bone);
   background:rgba(var(--border2-rgb),.1);border:1px solid rgba(var(--border2-rgb),.22);border-radius:20px;
   padding:4px 11px;
 }
 .chip b{color:var(--ochre);font-weight:500;font-family:var(--mono)}
-.range-line{font-size:12.5px;color:var(--muted);margin:0 0 9px}
+.range-line{font-size:0.78125rem;color:var(--muted);margin:0 0 9px}
 .range-line b{color:var(--text);font-weight:400}
 .jump{
-  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;
   background:none;border:none;padding:0;color:var(--ochre);cursor:pointer;
   text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ochre-dim);
   transition:.18s;
@@ -283,7 +325,7 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:1;stroke-dashar
 .jump:hover{color:var(--bone);background:none}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:24px 0 32px;color:var(--footer-ink);font:10.5px/1.6 var(--mono);letter-spacing:.04em}
+footer{border-top:1px solid rgba(var(--border2-rgb),.2);padding:24px 0 32px;color:var(--footer-ink);font:0.6875rem/1.6 var(--mono);letter-spacing:.04em}
 footer a{color:var(--line);text-underline-offset:3px}
 footer a:hover{color:var(--ochre)}
 .offline-pack{margin-left:8px;padding:5px 9px;border:1px solid var(--line-dim);border-radius:2px;background:transparent;color:var(--line);font:inherit;cursor:pointer}
@@ -303,7 +345,7 @@ footer a:hover{color:var(--ochre)}
   max-width:1640px;margin:0 auto;padding:10px var(--pad);
   display:flex;align-items:center;gap:20px;min-height:58px;
 }
-.tb-brand{font-family:var(--display);font-size:17px;font-weight:500;color:var(--bone);text-decoration:none;white-space:nowrap}
+.tb-brand{font-family:var(--display);font-size:1.0625rem;font-weight:500;color:var(--bone);text-decoration:none;white-space:nowrap}
 .tb-brand em{font-style:italic;color:var(--line)}
 
 /* The two trees are sister pages, so the way across is a switch rather than
@@ -315,7 +357,7 @@ footer a:hover{color:var(--ochre)}
   background:rgba(var(--card-rgb),.5);
 }
 .ps-opt{
-  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;
   color:var(--muted);text-decoration:none;white-space:nowrap;
   padding:6px 13px;border-radius:999px;transition:color .15s,background .15s;
 }
@@ -357,13 +399,14 @@ footer a:hover{color:var(--ochre)}
 .tb-search{margin-left:auto;position:relative;width:min(330px,58vw)}
 .tb-search input{
   width:100%;background:rgba(var(--input-rgb),var(--input-a));border:1px solid var(--line-dim);color:var(--text);
-  font-family:var(--body);font-size:13.5px;padding:8px 44px 8px 32px;border-radius:999px;
+  font-family:var(--body);font-size:0.84375rem;padding:8px 44px 8px 32px;border-radius:999px;
 }
 .tb-search input::placeholder{color:var(--placeholder)}
 .tb-search input:focus{outline:none;border-color:var(--ochre);background:var(--prussian)}
-.tb-ico,.tb-kbd{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--line-dim)}
-.tb-ico{left:11px;font-size:12px}
-.tb-kbd{right:11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;transition:opacity .15s}
+.tb-ico,.tb-kbd{position:absolute;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--line-text)}
+.tb-ico{left:11px;display:flex;align-items:center}
+.tb-ico svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.tb-kbd{right:11px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.04em;transition:opacity .15s}
 .tb-search input:focus + .tb-kbd{opacity:0}
 
 .tb-results{
@@ -373,13 +416,13 @@ footer a:hover{color:var(--ochre)}
   box-shadow:var(--shadow);
 }
 .tb-results .lu-foot{
-  padding:9px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--line-dim);
+  padding:9px 14px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.05em;color:var(--line-text);
   border-top:1px solid rgba(var(--border-rgb),.16);
 }
-.lu-none{padding:18px 14px;font-size:13px;color:var(--muted);font-style:italic}
+.lu-none{padding:18px 14px;font-size:0.8125rem;color:var(--muted);font-style:italic}
 .lu-count{
-  padding:8px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--line-dim);border-bottom:1px solid rgba(var(--border-rgb),.16);
+  padding:8px 14px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--line-text);border-bottom:1px solid rgba(var(--border-rgb),.16);
 }
 
 /* ---------- species drawer ---------- */
@@ -395,7 +438,7 @@ footer a:hover{color:var(--ochre)}
 .lu-close{
   position:absolute;top:14px;right:16px;z-index:2;
   background:transparent;border:1px solid var(--line-dim);color:var(--muted);
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 12px;border-radius:2px;cursor:pointer;
 }
 .lu-close:hover{border-color:var(--ochre);color:var(--ochre)}
@@ -405,82 +448,100 @@ footer a:hover{color:var(--ochre)}
 .lu-row.has-thumb{display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:center}
 .lu-row-thumb{display:block;width:42px;height:42px;object-fit:cover;border:1px solid rgba(var(--border-rgb),.2);border-radius:2px;background:var(--canvas)}
 .lu-row-copy{display:block;min-width:0}
-.lu-row:hover,.lu-row:focus-visible{background:var(--prussian);outline:none}
+.lu-row:hover,.lu-row.cur{background:var(--prussian)}
+.lu-row.cur{outline:2px solid var(--ochre);outline-offset:-2px}
 .lu-row.active{background:var(--prussian-2);border-left:3px solid var(--ochre);padding-left:11px}
-.lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:14.5px;color:var(--bone)}
-.lu-row .lu-common{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+.lu-row .lu-sci{font-style:italic;font-family:var(--display);font-size:0.90625rem;color:var(--bone)}
+.lu-row .lu-common{display:block;font-size:0.78125rem;color:var(--muted);margin-top:1px}
 .lu-row .lu-common.lu-dk{color:var(--ochre)}
-.lu-row .lu-fam{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--line-dim);margin-top:2px;text-transform:uppercase}
+.lu-row .lu-fam{display:block;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;color:var(--line-text);margin-top:2px;text-transform:uppercase}
 .lu-empty{color:var(--muted);font-style:italic;padding-top:8vh;text-align:center}
-.lu-d-sci{font-family:var(--display);font-style:italic;font-size:clamp(24px,3.4vw,34px);margin:0;color:var(--bone);padding-right:90px}
-.lu-d-common{font-size:15px;color:var(--line);margin:5px 0 0}
+.lu-d-sci{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.125rem);margin:0;color:var(--bone);padding-right:90px}
+.lu-d-common{font-size:0.9375rem;color:var(--line);margin:5px 0 0}
 .lu-d-common.lu-dk{color:var(--ochre)}
-.lu-d-common .lu-dk-src{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
-.lu-d-authority{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+.lu-d-common .lu-dk-src{font-family:var(--mono);font-size:0.6875rem;color:var(--muted)}
+.lu-d-authority{font-family:var(--mono);font-size:0.6875rem;color:var(--muted);margin-top:4px}
 .lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
 .lu-section{background:var(--prussian);border:1px solid rgba(var(--border-rgb),.25);border-radius:4px;padding:16px 18px}
-.lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ochre);font-weight:500}
-.lu-section dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:14px}
+.lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);font-weight:500}
+.lu-section dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:0.875rem}
 .lu-section dt{color:var(--muted);white-space:nowrap}
 .lu-section dd{margin:0;color:var(--text)}
-.lu-section .lu-note{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.lu-section .lu-note{margin:10px 0 0;font-size:0.84375rem;color:var(--muted);line-height:1.5}
 .lu-country-gbif{border-bottom:1px dotted var(--line-dim)}
 .lu-country-gbif sup{font-size:.7em;color:var(--ochre);margin-left:1px}
-.lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:9.5px;color:var(--line-dim)}
+.lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:0.6875rem;color:var(--line-text)}
 
 /* structured call measurements */
-.lu-headline{margin:0 0 12px;font-size:13.5px;line-height:1.55;color:var(--text)}
+.lu-headline{margin:0 0 12px;font-size:0.84375rem;line-height:1.55;color:var(--text)}
 .lu-variant{margin:0 0 6px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
-.lu-variant>summary{padding:7px 10px;cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;font-size:12px}
+.lu-variant>summary{padding:7px 10px;cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;font-size:0.75rem}
 .lu-variant>summary::-webkit-details-marker{display:none}
-.lu-variant>summary::before{content:'▸';color:var(--ochre);font-size:9px;transition:transform .12s ease}
+.lu-variant>summary::before{content:'▸';color:var(--ochre);font-size:0.6875rem;transition:transform .12s ease}
 .lu-variant[open]>summary::before{transform:rotate(90deg)}
 .lu-variant>summary:hover{background:rgba(var(--border-rgb),.06)}
 .lu-variant>summary:focus-visible{outline:1px solid var(--ochre);outline-offset:-1px}
 .lu-vname{font-weight:600;color:var(--text)}
-.lu-quick{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.lu-quick{margin-left:auto;font-family:var(--mono);font-size:0.6875rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .lu-quick-range{color:var(--text)}
 .lu-variant>.lu-facts-list{padding:2px 10px 9px}
 .lu-refs{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:2px}
-.lu-refs li{display:flex;gap:6px;align-items:baseline;font-size:11px;line-height:1.45;color:var(--muted)}
+.lu-refs li{display:flex;gap:6px;align-items:baseline;font-size:0.6875rem;line-height:1.45;color:var(--muted)}
 .lu-refs a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 .lu-refs a:hover{color:var(--text)}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
-.lu-refnum{font-size:9px;flex:none}
-.lu-unmigrated{margin:6px 0 0;padding:5px 8px;border:1px dashed rgba(var(--border-rgb),.3);border-radius:3px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+.lu-refnum{font-size:0.6875rem;flex:none}
+.lu-unmigrated{margin:6px 0 0;padding:5px 8px;border:1px dashed rgba(var(--border-rgb),.3);border-radius:3px;font-size:0.71875rem;line-height:1.5;color:var(--muted)}
 /* family-level inference — deliberately unlike a measurement block */
 .lu-inferred{border:1px dashed var(--ochre);border-radius:3px;padding:9px 11px;background:rgba(var(--border-rgb),.05)}
-.lu-inferred-head{margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--muted)}
-.lu-inferred-badge{display:inline-block;padding:1px 6px;border-radius:2px;background:var(--ochre);color:var(--prussian);font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;vertical-align:1px}
-.lu-inferred-range{margin:0 0 8px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:14px}
+.lu-inferred-head{margin:0 0 8px;font-size:0.75rem;line-height:1.5;color:var(--muted)}
+.lu-inferred-badge{display:inline-block;padding:1px 6px;border-radius:2px;background:var(--ochre);color:var(--prussian);font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;vertical-align:1px}
+.lu-inferred-range{margin:0 0 8px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:0.875rem}
 .lu-inferred-range .lu-val{font-variant-numeric:tabular-nums;color:var(--text)}
-.lu-inferred-why{margin:0 0 6px;font-size:11.5px;line-height:1.55;color:var(--muted)}
+.lu-inferred-why{margin:0 0 6px;font-size:0.71875rem;line-height:1.55;color:var(--muted)}
 .lu-inferred-why strong{color:var(--text);font-weight:600}
-.lu-inferred-warn{margin:0 0 6px;padding-left:16px;font-size:11.5px;line-height:1.55;color:var(--ochre)}
+.lu-inferred-warn{margin:0 0 6px;padding-left:16px;font-size:0.71875rem;line-height:1.55;color:var(--ochre)}
 .lu-inferred-warn li{margin:2px 0}
-.lu-density{display:inline-flex;align-items:center;gap:4px;cursor:help;white-space:nowrap}
+/* These used to be title= tooltips on a cursor:help span -- invisible to
+   touch and to the keyboard. Each is now a button that toggles its own note. */
+.lu-tip{
+  position:relative;display:inline-flex;align-items:center;gap:4px;
+  font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;
+  background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:left;
+  border-bottom:1px dotted currentColor;
+}
+.lu-tip:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.lu-tip-pop{
+  position:absolute;bottom:calc(100% + 7px);left:0;z-index:5;width:max-content;max-width:min(260px,70vw);
+  background:var(--panel);border:1px solid var(--line-dim);border-radius:3px;box-shadow:var(--shadow);
+  padding:7px 10px;font-family:var(--body);font-size:.6875rem;line-height:1.5;
+  letter-spacing:normal;text-transform:none;color:var(--text);white-space:normal;
+}
+.lu-tip[aria-expanded="false"] .lu-tip-pop{display:none}
+.lu-tip:hover .lu-tip-pop,.lu-tip:focus-visible .lu-tip-pop{display:block}
+.lu-density{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .lu-bars{display:inline-flex;gap:1px}
 .lu-bar{width:3px;height:7px;background:rgba(var(--border-rgb),.4);border-radius:1px}
 .lu-bar.on{background:var(--ochre)}
-.lu-refmark{font-size:8.5px;margin-left:2px;cursor:help}
-.lu-tag{display:inline-block;margin-left:4px;padding:1px 5px;border:1px solid rgba(var(--border-rgb),.35);border-radius:2px;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
-.lu-facts-list{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
+.lu-refmark{font-size:0.6875rem;margin-left:2px;vertical-align:super;line-height:1}
+.lu-tag{display:inline-block;margin-left:4px;padding:1px 5px;border:1px solid rgba(var(--border-rgb),.35);border-radius:2px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);vertical-align:1px}
+.lu-facts-list{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:0.8125rem}
 .lu-facts-list .lu-fact{display:contents}
 .lu-facts-list dt{color:var(--muted);white-space:nowrap}
 .lu-facts-list dd{margin:0;color:var(--text)}
 .lu-val{font-variant-numeric:tabular-nums}
-.lu-basis{font-family:var(--mono);font-size:9px;color:var(--line-dim);letter-spacing:.04em;white-space:nowrap}
-.lu-n{font-family:var(--mono);font-size:9px;color:var(--line-dim)}
-.lu-cite{font-family:var(--mono);font-size:9px;color:var(--line-dim);margin-left:2px}
-.lu-agree{font-weight:700;cursor:help}
+.lu-basis{font-family:var(--mono);font-size:0.6875rem;color:var(--line-text);letter-spacing:.04em;white-space:nowrap}
+.lu-n{font-family:var(--mono);font-size:0.6875rem;color:var(--line-text)}
+.lu-cite{font-family:var(--mono);font-size:0.6875rem;color:var(--line-text);margin-left:2px}
+.lu-agree{font-weight:700}
 .lu-agree-corroborated{color:#7fb069}
-.lu-agree-consistent_within_group{color:var(--line-dim)}
+.lu-agree-consistent_within_group{color:var(--line-text)}
 .lu-agree-divergent,.lu-agree-divergent_within_group{color:var(--ochre)}
-.lu-alt,.lu-flag{margin-top:2px;font-size:11px;line-height:1.45;color:var(--muted)}
-.lu-flag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);cursor:help}
+.lu-alt,.lu-flag{margin-top:2px;font-size:0.6875rem;line-height:1.45;color:var(--muted)}
+.lu-flag{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);display:flex}
 @media (max-width:700px){ .lu-facts-list{grid-template-columns:1fr;gap:1px} .lu-facts-list dt{margin-top:6px} }
-.lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;border:1px solid var(--line-dim)}
+.lu-status{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.05em;border:1px solid var(--line-dim)}
 .lu-status.lc{color:var(--st-good);border-color:var(--st-good-b)}
 .lu-status.nt,.lu-status.vu{color:var(--ochre);border-color:var(--ochre-dim)}
 .lu-status.en,.lu-status.cr{color:var(--st-bad);border-color:var(--st-bad-b)}
@@ -493,12 +554,12 @@ footer a:hover{color:var(--ochre)}
 .lu-links a:hover{color:var(--ochre)}
 .lu-links a:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .lu-links svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.lu-links .letter-mark{font:18px/1 Georgia,serif;transform:translateY(-1px)}
-.lu-prov{margin-top:26px;font-size:13px;color:var(--muted);line-height:1.55;border-top:1px solid rgba(var(--border-rgb),.18);padding-top:14px}
+.lu-links .letter-mark{font:1.125rem/1 Georgia,serif;transform:translateY(-1px)}
+.lu-prov{margin-top:26px;font-size:0.8125rem;color:var(--muted);line-height:1.55;border-top:1px solid rgba(var(--border-rgb),.18);padding-top:14px}
 
 .wm-pending{
-  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--line-dim);padding:22px 0;text-align:center;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--line-text);padding:22px 0;text-align:center;
 }
 
 .lu-prov a{color:var(--line)}
@@ -512,25 +573,52 @@ footer a:hover{color:var(--ochre)}
 .cm-zoom-g.no-anim{transition:none}
 .cm-label{
   position:absolute;top:10px;left:10px;z-index:2;pointer-events:none;max-width:calc(100% - 76px);
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ochre);background:rgba(var(--abyss-rgb),.85);border:1px solid var(--ochre-dim);
   padding:6px 12px;border-radius:2px;opacity:0;transform:translateY(-4px);
   transition:opacity .2s,transform .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .cm-label.show{opacity:1;transform:none}
+.cm-wheel-hint{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bone);background:rgba(var(--scrim-rgb),.55);
+  opacity:0;transition:opacity .18s;border-radius:3px;
+}
+.cm-wheel-hint.show{opacity:1}
+
+/* the keyboard's way into the map: the same selection the shapes make */
+.cm-pick{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.cm-pick label{
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.cm-pick select{
+  flex:1;min-width:0;max-width:340px;min-height:34px;
+  background:rgba(var(--input-rgb),var(--input-a));border:1px solid var(--line-dim);
+  color:var(--text);font-family:var(--body);font-size:.8125rem;padding:6px 10px;border-radius:2px;
+}
+.cm-pick select:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cm-pick select:disabled{opacity:.55}
 .cm-zoom-ctrl{position:absolute;top:10px;right:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
 .cm-zoom-ctrl button{
   width:26px;height:26px;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:14px;line-height:1;
+  font-family:var(--mono);font-size:0.875rem;line-height:1;
   background:rgba(var(--abyss-rgb),.85);border:1px solid var(--line-dim);color:var(--text);
   border-radius:2px;cursor:pointer;transition:.15s;
 }
+.cm-zoom-ctrl button svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5}
 .cm-zoom-ctrl button:hover{border-color:var(--ochre);color:var(--ochre)}
 .cm-zoom-ctrl button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .cm-land{fill:var(--map-land);stroke:none;pointer-events:none}
 .cm-c{fill:var(--map-land);stroke:var(--map-water);stroke-width:.4;vector-effect:non-scaling-stroke;transition:fill .12s}
-.cm-c.has{fill:var(--map-has);cursor:pointer}
+.cm-c.has{fill:url(#cm-hatch);stroke:var(--map-has-edge);stroke-width:.75;cursor:pointer}
 .cm-c.has:hover{fill:var(--map-has-hover)}
+/* the hatch carries the same fact as the fill for a deuteranope, for whom the
+   green-on-green land/range distinction largely vanishes. It lives in user
+   space inside the zoom group, so cmApplyView scales it back down as you zoom. */
+.cm-hatch-bg{fill:var(--map-has)}
+.cm-hatch-line{stroke:var(--map-has-edge);stroke-width:.6;opacity:.42}
 .cm-c.range{fill:var(--ochre-dim)}
 .cm-c.range:hover{fill:var(--range-hover)}
 .cm-c.sel{fill:var(--ochre)}
@@ -543,9 +631,10 @@ footer a:hover{color:var(--ochre)}
 .cm-ring{fill:none;stroke:var(--ochre);stroke-width:1.4;pointer-events:none}
 .cm-mode{display:flex;gap:2px;margin:0}
 .cm-mode button{
-  width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;
-  background:transparent;border:0;color:var(--muted);padding:5px;border-radius:0;cursor:pointer;transition:.15s;
+  min-width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  background:transparent;border:0;color:var(--muted);padding:5px 7px;border-radius:0;cursor:pointer;transition:.15s;
 }
+.mode-text{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;text-transform:uppercase}
 .cm-mode button:hover{color:var(--ochre)}
 .cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
 .cm-mode button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
@@ -558,22 +647,23 @@ footer a:hover{color:var(--ochre)}
      utilities share the first row; search gets an unambiguous row of its own. */
   .topbar-in{flex-wrap:wrap;gap:7px;padding:8px max(var(--pad),env(safe-area-inset-right)) 8px max(var(--pad),env(safe-area-inset-left));min-height:0}
   .tb-brand{font-size:0;flex:none;width:36px}
-  .tb-brand::before{content:"Bats";font-family:var(--display);font-size:16px;font-weight:500;color:var(--bone)}
+  .tb-brand::before{content:"Bats";font-family:var(--display);font-size:1rem;font-weight:500;color:var(--bone)}
   .pageswitch{flex:1;justify-content:center}
-  .ps-opt{padding:6px 8px;font-size:9px;letter-spacing:.07em}
+  .ps-opt{padding:6px 8px;font-size:0.6875rem;letter-spacing:.07em}
   .tb-search{order:2;flex:1 0 100%;width:100%;margin:0}
-  .tb-search input{min-height:44px;font-size:16px;padding-top:9px;padding-bottom:9px}
+  .tb-search input{min-height:44px;font-size:1rem;padding-top:9px;padding-bottom:9px}
   .tb-nav{display:none}
   .random-bat,.theme-toggle{width:44px;height:44px}
   .mobile-workspace{display:flex;gap:7px;padding:9px var(--pad) 0}
-  .mobile-workspace button{min-height:42px;flex:1;border:1px solid rgba(var(--border-rgb),.3);background:rgba(var(--card-rgb),.48);color:var(--muted);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+  .mobile-workspace button{min-height:42px;flex:1;border:1px solid rgba(var(--border-rgb),.3);background:rgba(var(--card-rgb),.48);color:var(--muted);font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
   .mobile-workspace button[aria-current="true"]{border-color:var(--ochre-dim);color:var(--ochre);background:rgba(var(--ochre-rgb),.1)}
   .mobile-workspace button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
   .treebox{overflow-x:auto;overscroll-behavior-x:contain}
   svg#tree{width:700px;max-width:none}
-  .tree-mobile-hint{display:block;margin:8px 2px 0;color:var(--muted);font:10px/1.45 var(--mono);letter-spacing:.05em}
+  .tree-mobile-hint{display:block;margin:8px 2px 0;color:var(--muted);font:0.6875rem/1.45 var(--mono);letter-spacing:.05em}
   .cm-zoom-ctrl{top:12px;right:12px;gap:6px}
-  .cm-zoom-ctrl button,.tree-tools button,.cm-mode button{width:44px;height:44px}
+  .cm-zoom-ctrl button,.tree-tools button{width:44px;height:44px}
+  .cm-mode button{min-width:44px;height:44px;padding:5px 9px}
   .tree-tools{top:6px;right:6px;gap:4px}
   .lu-drawer{width:100vw;border-left:0;padding:max(22px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
   .lu-close{top:max(14px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));min-height:44px}
@@ -585,6 +675,7 @@ footer a:hover{color:var(--ochre)}
 @media (pointer:coarse){
   .tb-nav a,.lu-links a{width:44px;height:44px}
   .cm-zoom-ctrl button,.tree-tools button,.cm-mode button{min-width:44px;min-height:44px}
+  .cm-mode button{width:auto}
 }
 
 @media (max-width:620px){ body.drawer-open{overflow:hidden;overscroll-behavior:contain} }
@@ -600,6 +691,7 @@ footer a:hover{color:var(--ochre)}
 .tree-tools button:hover{color:var(--ochre)}
 .tree-tools button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .tree-tools .cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
+.tree-tools .cm-mode button{width:auto;min-width:28px}
 .tree-tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 g.trow{cursor:pointer;transition:opacity .25s}
 g.trow.dim{opacity:.22}
@@ -608,6 +700,7 @@ g.trow .trow-hit{fill:transparent}
 g.trow:hover .trow-hit{fill:rgba(var(--hover-rgb),.07)}
 g.trow:focus-visible{outline:none}
 g.trow:focus-visible .trow-hit{fill:rgba(var(--ochre-rgb),.15)}
+g.trow:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:2}
 .t-subfam{font-family:var(--display);font-size:17px;font-weight:500;fill:var(--bone);dominant-baseline:middle}
 .t-tribe{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;fill:var(--ochre);dominant-baseline:middle}
 .t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:var(--ink-strong);dominant-baseline:middle}
@@ -634,15 +727,19 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 </head>
 <body>
 
+<a class="skip-link" href="#top">Skip to the tree</a>
+
 <div class="topbar">
   <div class="topbar-in">
-    <a class="tb-brand" href="#top">The branching of <em>bats</em></a>
+    <h1 class="tb-title"><a class="tb-brand" href="#top">The branching of <em>bats</em></a></h1>
     <nav class="pageswitch" aria-label="Choose a group">
       <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
       <a class="ps-opt" href="marine.html">Marine mammals</a>
     </nav>
     <div class="tb-search">
-      <span class="tb-ico" aria-hidden="true">⌕</span>
+      <span class="tb-ico" aria-hidden="true">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
+      </span>
       <input type="search" id="lu-search" placeholder="Search any bat…" autocomplete="off"
              role="combobox" aria-expanded="false" aria-controls="lu-results" aria-label="Search species, genus, family or common name">
       <span class="tb-kbd" aria-hidden="true">/</span>
@@ -672,49 +769,73 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
   <button type="button" data-workspace-target="country-map" aria-current="false">Map</button>
 </nav>
 
-<div class="wrap" id="top">
+<main class="wrap" id="top" tabindex="-1">
 
 <div class="top-grid" id="top-grid">
 
 <!-- ================= TREE ================= -->
-<section id="tree-section">
+<section id="tree-section" aria-labelledby="tree-h">
+  <h2 class="sr-only" id="tree-h">Family tree</h2>
   <div class="treebox">
     <div class="tree-tools">
       <div class="switch cm-mode" role="group" aria-label="Country filter">
         <button type="button" id="cm-mode-dim" aria-label="Keep all bats in the tree" title="Keep all bats in the tree" aria-pressed="true">
           <svg class="mode-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.4 3 14.6 0 18M12 3c-3 3.4-3 14.6 0 18"/></svg>
+          <span class="mode-text" aria-hidden="true">All</span>
         </button>
         <button type="button" id="cm-mode-filter" aria-label="Show only bats from the selected country" title="Show only bats from the selected country" aria-pressed="false">
           <svg class="mode-country" id="cm-country-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 4.5A2.5 2.5 0 1 1 12 11a2.5 2.5 0 0 1 0-4.5Z"/></svg>
+          <span class="mode-text" aria-hidden="true">Country</span>
         </button>
       </div>
       <button type="button" id="t-toggle" aria-label="Expand all branches" title="Expand all branches" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6-6 6 6M6 15l6 6 6-6"/></svg>
       </button>
     </div>
-    <svg id="tree" role="img" aria-label="Cladogram of the 21 living bat families"></svg>
+    <svg id="tree" role="tree" aria-label="Cladogram of the 21 living bat families"
+         aria-describedby="tree-keys"></svg>
+    <p class="sr-only" id="tree-keys">Use the up and down arrow keys to move between rows,
+      right arrow to open a branch, left arrow to close it or jump to its parent,
+      and Home or End for the first and last row.</p>
   </div>
   <p class="tree-mobile-hint">Swipe sideways to explore the full tree. Tap a branch to open it.</p>
 </section>
 
 <!-- ================= COUNTRY MAP ================= -->
-<section id="country-map">
+<section id="country-map" aria-labelledby="map-h">
+  <h2 class="sr-only" id="map-h">Range map</h2>
+  <div class="cm-pick">
+    <label for="cm-country">Country</label>
+    <select id="cm-country" disabled>
+      <option value="">All countries</option>
+    </select>
+  </div>
   <div class="cm-map-wrap">
     <div class="cm-map" id="cm-map">
       <div class="cm-map-svg" id="cm-map-svg"><div class="wm-pending">Loading the map…</div></div>
       <div class="cm-label" id="cm-label" aria-hidden="true"></div>
+      <div class="cm-wheel-hint" id="cm-wheel-hint" aria-hidden="true">Ctrl + scroll to zoom the map</div>
       <div class="cm-zoom-ctrl">
         <button type="button" id="cm-zoom-in" aria-label="Zoom in">+</button>
         <button type="button" id="cm-zoom-out" aria-label="Zoom out">&minus;</button>
-        <button type="button" id="cm-zoom-reset" aria-label="Reset zoom">&#9678;</button>
+        <button type="button" id="cm-zoom-reset" aria-label="Reset zoom">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/></svg>
+        </button>
       </div>
     </div>
   </div>
-  <div class="card" id="card" aria-live="polite"></div>
 </section>
+
+<div class="card empty" id="card">
+  <button type="button" class="card-close" id="card-close" aria-label="Close this record" hidden>Close</button>
+  <div id="card-body" tabindex="-1"></div>
+</div>
 
 </div><!-- /top-grid -->
 
+</main>
+
+<div class="wrap">
 <footer>
   Source: <a id="mdd-source" href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener noreferrer">Mammal Diversity Database v2.5</a>
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
@@ -723,6 +844,8 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 </footer>
 
 </div>
+
+<div class="sr-only" id="a11y-status" role="status" aria-live="polite"></div>
 
 <div class="lu-scrim" id="lu-scrim"></div>
 <aside class="lu-drawer" id="lu-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Species record">
@@ -921,10 +1044,22 @@ function countSpecies(list){
    needs (its own svg, card, open/selection state and data) so the exact
    same drawing/interaction code can drive several independent trees ---- */
 function makeTreeCtx(o){
-  return Object.assign({
-    open: new Set(), famG: {}, selected: null, selectedSp: null,
-    onDrawn: null
+  const ctx = Object.assign({
+    open: new Set(), famG: {}, rowOrder: [], focusKey: null,
+    selected: null, selectedSp: null, onDrawn: null
   }, o);
+  ctx.svg.addEventListener('keydown', e=>ctxTreeKeydown(ctx, e));
+  return ctx;
+}
+
+/* The page's single polite channel. One short sentence -- never a whole
+   record, which is what an aria-live card re-reads on every selection. */
+function announce(message){
+  const region = document.getElementById('a11y-status');
+  if(!region) return;
+  region.textContent = '';
+  // the same string twice running is otherwise dropped as "no change"
+  setTimeout(()=>{ region.textContent = message; }, 30);
 }
 
 let mainCtx = null; // set once the main tree is built, at the bottom of this script
@@ -995,8 +1130,14 @@ function knot(x, y, state){
 
 function ctxDrawTree(ctx){
   const svg = ctx.svg;
+  // Every redraw destroys every row, so a keyboard user who expands a branch
+  // would otherwise be dropped back to <body> at the top of the tab order.
+  // Note where focus was, and put it back on the same row once it is rebuilt.
+  const hadFocus = !!(document.activeElement && svg.contains(document.activeElement));
+  const prevIndex = ctx.rowOrder ? ctx.rowOrder.findIndex(r=>r.key===ctx.focusKey) : -1;
   while(svg.firstChild) svg.removeChild(svg.firstChild);
   ctx.famG = {};
+  ctx.rowOrder = [];
 
   // "show only" mode: prune every branch down to what's actually live in the
   // selected country, instead of drawing the full tree and dimming the rest
@@ -1006,18 +1147,18 @@ function ctxDrawTree(ctx){
   let posY = TOP;
   const rows = [], links = [], famY = {}, headings = [];
 
-  function walk(list, level, parentY){
+  function walk(list, level, parentY, parentKey){
     const l = filtering ? list.filter(n=>countryLive.live.has(n.key)) : list;
     const bx = PX(level-1), cx = PX(level);
-    l.forEach(n=>{
+    l.forEach((n,i)=>{
       const h = RH[n.kind];
       const y = posY + h/2;
-      rows.push({kind:n.kind, node:n, y, level});
+      rows.push({kind:n.kind, node:n, y, level, parentKey, posinset:i+1, setsize:l.length});
       links.push('M '+bx+' '+parentY+' L '+bx+' '+y+' L '+cx+' '+y);
       posY += h;
       if(ctx.open.has(n.key)){
         const kids = ctx.nodeChildren(n);
-        if(kids && kids.length) walk(kids, level+1, y);
+        if(kids && kids.length) walk(kids, level+1, y, n.key);
       }
     });
   }
@@ -1037,15 +1178,20 @@ function ctxDrawTree(ctx){
     members.forEach(fam=>{
       const y = posY + RH.fam/2;
       famY[fam] = y;
-      rows.push({kind:'fam', name:fam, y, level:0});
+      rows.push({kind:'fam', name:fam, y, level:0, sf:b.sf});
       posY += RH.fam;
       if(ctx.open.has('f:'+fam)){
         posY += 2;
-        walk(ctx.famChildren(fam), 1, y);
+        walk(ctx.famChildren(fam), 1, y, 'f:'+fam);
         posY += 8;
       }
     });
   });
+
+  // families sit at one ARIA level however many headings divide them visually,
+  // so their position and set size are counted across the whole tree
+  const famRows = rows.filter(r=>r.kind==='fam');
+  famRows.forEach((r,i)=>{ r.posinset = i+1; r.setsize = famRows.length; });
 
   // in "show only" mode the backbone (order > suborder > superfamily > family)
   // needs pruning down to just the live families too, or it'll try to draw
@@ -1069,7 +1215,7 @@ function ctxDrawTree(ctx){
 
   const H = posY + 22;
   svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
-  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg'}));
+  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg','aria-hidden':'true'}));
 
   /* ---------- 2. backbone, then the branches that continue below a family ---------- */
   const STEP = (TIPX - LEFT) / maxDepth;
@@ -1078,27 +1224,29 @@ function ctxDrawTree(ctx){
     if(node.leaf) return;
     const px = xOf(node);
     node.children.forEach(c=>{
-      svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch'}));
+      svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch','aria-hidden':'true'}));
       draw(c);
     });
   })(backboneTree);
-  links.forEach(d=> svg.appendChild(el('path',{d, class:'branch sub-branch'})));
+  links.forEach(d=> svg.appendChild(el('path',{d, class:'branch sub-branch','aria-hidden':'true'})));
 
   function heading(text, x, y, cls, fs){
     const w = text.length * fs * 0.78 + 16;
-    svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9}));
-    svg.appendChild(el('text',{x:x, y:y, class:cls}, text));
+    svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9, 'aria-hidden':'true'}));
+    // the heading is drawn for the eye; the same grouping reaches a screen
+    // reader through each family row's own label
+    svg.appendChild(el('text',{x:x, y:y, class:cls, 'aria-hidden':'true'}, text));
   }
   headings.forEach(({b,y0})=>{
     if(b.sub){
       heading(b.sub.toUpperCase(), LEFT, y0 - 75, 'sub-label', 16.5);
-      svg.appendChild(el('line',{x1:LEFT,y1:y0-64,x2:COUNTX,y2:y0-64,class:'tree-rule','stroke-width':'.8'}));
+      svg.appendChild(el('line',{x1:LEFT,y1:y0-64,x2:COUNTX,y2:y0-64,class:'tree-rule','stroke-width':'.8','aria-hidden':'true'}));
     }
     const n = b.members.reduce((s,f)=>s+(filtering ? (countryLive.famCount[f]||0) : ctx.famInfo[f].species),0);
     heading(b.sf.toUpperCase(), LEFT+18, y0 - 32, 'sf-label', 13.5);
     const cx = LEFT+18 + b.sf.length*13.5*0.78 + 20;
-    svg.appendChild(el('rect',{class:'knock',x:cx-6,y:y0-47,width:150,height:23}));
-    svg.appendChild(el('text',{x:cx, y:y0-32, class:'sf-count'},
+    svg.appendChild(el('rect',{class:'knock',x:cx-6,y:y0-47,width:150,height:23,'aria-hidden':'true'}));
+    svg.appendChild(el('text',{x:cx, y:y0-32, class:'sf-count','aria-hidden':'true'},
       b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
   });
 
@@ -1109,8 +1257,10 @@ function ctxDrawTree(ctx){
       const famSpecies = filtering ? (countryLive.famCount[r.name]||0) : d.species;
       const g = el('g',{
         class:'tip'+(isOpen?' fam-open':'')+(r.name===ctx.selected?' active':''),
-        tabindex:'0', role:'button', 'aria-expanded':isOpen?'true':'false',
-        'aria-label':r.name+' — '+d.common+', '+famSpecies+' species'
+        tabindex:'-1', role:'treeitem', 'data-key':'f:'+r.name,
+        'aria-expanded':isOpen?'true':'false',
+        'aria-level':'1', 'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize),
+        'aria-label':r.name+' — '+d.common+', '+famSpecies+' species, superfamily '+r.sf
       });
       g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42,rx:2}));
       g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42}));
@@ -1123,6 +1273,7 @@ function ctxDrawTree(ctx){
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();hit();} });
       svg.appendChild(g);
       ctx.famG[r.name] = g;
+      ctx.rowOrder.push({key:'f:'+r.name, el:g, expandable:true, open:isOpen, parentKey:null});
       return;
     }
 
@@ -1130,11 +1281,16 @@ function ctxDrawTree(ctx){
     const rawKids = ctx.nodeChildren(n) || [];
     const expandable = filtering ? rawKids.some(k=>countryLive.live.has(k.key)) : !!rawKids.length;
     const open = ctx.open.has(n.key);
-    const g = el('g',{class:'trow'+(open?' open':'')+(expandable?'':' static'), tabindex:'0', role:'button', 'data-key':n.key});
+    const g = el('g',{
+      class:'trow'+(open?' open':'')+(expandable?'':' static'),
+      tabindex:'-1', role:'treeitem', 'data-key':n.key,
+      'aria-level':String(r.level+1),
+      'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize)
+    });
+    g.appendChild(el('rect',{class:'focus-ring', x:x-5, y:r.y-12, width:COUNTX-x+13, height:24, rx:2}));
     g.appendChild(el('rect',{class:'trow-hit', x:x-5, y:r.y-12, width:COUNTX-x+13, height:24}));
     g.appendChild(knot(x, r.y, expandable ? (open?'open':'shut') : 'leaf'));
     if(expandable) g.setAttribute('aria-expanded', open?'true':'false');
-    else { g.removeAttribute('tabindex'); g.removeAttribute('role'); }
 
     if(r.kind === 'subfam' || r.kind === 'tribe'){
       const kids = n.children;
@@ -1153,20 +1309,93 @@ function ctxDrawTree(ctx){
       if(expandable) ctxBindToggle(ctx, g, n);
     } else {
       g.setAttribute('class','trow species'+(n.name===ctx.selectedSp?' active':''));
-      g.setAttribute('tabindex','0'); g.setAttribute('role','button');
       g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:''));
       const t = el('text',{x:lx,y:r.y,'dominant-baseline':'middle'});
       t.appendChild(el('tspan',{class:'t-species'}, n.name));
       if(n.note) t.appendChild(el('tspan',{class:'t-note',dx:'11'}, n.note));
       g.appendChild(t);
-      const pick = ()=>ctxShowSpecies(ctx, n.name);
+      const pick = ()=>{ ctx.focusKey = n.key; ctxShowSpecies(ctx, n.name); };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
     }
     svg.appendChild(g);
+    ctx.rowOrder.push({key:n.key, el:g, expandable, open, parentKey:r.parentKey});
   });
 
+  ctxSyncRoving(ctx, hadFocus, prevIndex);
   if(ctx.onDrawn) ctx.onDrawn();
+}
+
+/* One tab stop for the whole tree, as the treeview pattern wants: the current
+   row holds tabindex 0 and every other row holds -1, so Tab crosses the tree
+   in one step and the arrow keys do the moving inside it. With every family
+   open that is one stop instead of something over a thousand. */
+function ctxSyncRoving(ctx, restoreFocus, prevIndex){
+  const rows = ctx.rowOrder;
+  if(!rows.length){ ctx.focusKey = null; return; }
+  let i = rows.findIndex(r=>r.key===ctx.focusKey);
+  // the row that held focus can be gone entirely -- country filtering prunes
+  // whole branches -- so fall back to whatever now sits at the same position
+  if(i < 0) i = prevIndex >= 0 ? Math.min(prevIndex, rows.length-1) : 0;
+  ctxFocusRow(ctx, i, restoreFocus);
+}
+
+function ctxFocusRow(ctx, i, focus){
+  const rows = ctx.rowOrder, target = rows[i];
+  if(!target) return;
+  ctx.focusKey = target.key;
+  rows.forEach((r,n)=>r.el.setAttribute('tabindex', n===i ? '0' : '-1'));
+  if(focus) target.el.focus();
+}
+
+/* Expanding a branch changes the page without moving the eye, so say so. */
+function ctxAnnounceRow(ctx, key, expanded){
+  const row = ctx.rowOrder.find(r=>r.key===key);
+  if(!row) return;
+  const count = row.el.querySelector('.t-count');
+  announce((row.el.getAttribute('aria-label')||'') + (expanded ? ', expanded' : ', collapsed') +
+           (count ? ', ' + count.textContent : ''));
+}
+
+function ctxSetOpen(ctx, key, open){
+  if(key.indexOf('f:') === 0){ ctxToggleFamily(ctx, key.slice(2)); return; }
+  ctx.focusKey = key;
+  open ? ctx.open.add(key) : ctx.open.delete(key);
+  ctxDrawTree(ctx);
+  ctxAnnounceRow(ctx, key, open);
+}
+
+function ctxTreeKeydown(ctx, e){
+  if(e.altKey || e.ctrlKey || e.metaKey) return;
+  const node = e.target.closest && e.target.closest('g[role="treeitem"]');
+  if(!node) return;
+  const rows = ctx.rowOrder;
+  const i = rows.findIndex(r=>r.el === node);
+  if(i < 0) return;
+  const r = rows[i];
+  const go = k => ctxFocusRow(ctx, Math.max(0, Math.min(k, rows.length-1)), true);
+  switch(e.key){
+    case 'ArrowDown': e.preventDefault(); go(i+1); break;
+    case 'ArrowUp':   e.preventDefault(); go(i-1); break;
+    case 'Home':      e.preventDefault(); go(0); break;
+    case 'End':       e.preventDefault(); go(rows.length-1); break;
+    case 'ArrowRight':
+      e.preventDefault();
+      if(!r.expandable) break;
+      // open a shut branch; on one already open, step into it
+      if(!r.open) ctxSetOpen(ctx, r.key, true);
+      else if(rows[i+1] && rows[i+1].parentKey === r.key) go(i+1);
+      break;
+    case 'ArrowLeft':
+      e.preventDefault();
+      if(r.expandable && r.open) ctxSetOpen(ctx, r.key, false);
+      else if(r.parentKey){
+        const p = rows.findIndex(x=>x.key === r.parentKey);
+        if(p >= 0) go(p);
+      }
+      break;
+    default: return;
+  }
 }
 
 function ctxBindToggle(ctx, g, n){
@@ -1175,15 +1404,16 @@ function ctxBindToggle(ctx, g, n){
   g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();t();} });
 }
 function ctxToggle(ctx, key){
-  ctx.open.has(key) ? ctx.open.delete(key) : ctx.open.add(key);
-  ctxDrawTree(ctx);
+  ctxSetOpen(ctx, key, !ctx.open.has(key));
 }
 function ctxToggleFamily(ctx, name){
   const key = 'f:'+name, wasOpen = ctx.open.has(key);
   wasOpen ? ctx.open.delete(key) : ctx.open.add(key);
   ctx.selected = name; ctx.selectedSp = null;
+  ctx.focusKey = key;
   ctxDrawTree(ctx);
   ctxSelect(ctx, name);
+  ctxAnnounceRow(ctx, key, !wasOpen);
   if(!wasOpen) ctxScrollFamIntoView(ctx, name);
 }
 function ctxScrollFamIntoView(ctx, name){
@@ -1196,20 +1426,46 @@ function ctxScrollFamIntoView(ctx, name){
 function ctxCardReset(ctx){
   ctx.selected = null; ctx.selectedSp = null;
   ctx.card.classList.add('empty');
-  ctx.card.innerHTML = ctx.emptyHTML;
+  ctx.cardBody.innerHTML = ctx.emptyHTML;
+  if(ctx.closeBtn) ctx.closeBtn.hidden = true;
   if(ctx === mainCtx) cmShowSpeciesRange(null);
+}
+
+/* Two detail surfaces for one record is two mental models and two dismissal
+   gestures. The card is the honest surface where the tree it belongs to is
+   visible; on a phone, where an inline card under a sideways-scrolling tree
+   is genuinely cramped, the drawer is. One surface per breakpoint. */
+function luDrawerBreakpoint(){ return matchMedia('(max-width:620px)').matches; }
+
+/* Focus follows the answer, so a search user is not left stranded in the
+   input with the record somewhere below them. */
+function ctxFocusCard(ctx){
+  ctx.cardBody.focus({preventScroll:true});
+  ctxScrollCardIntoView(ctx);
+}
+
+/* On a wide screen the card is usually already in view and the scroll is pure
+   disruption -- it can drag the tree row you just clicked off the screen. */
+function ctxScrollCardIntoView(ctx){
+  const box = ctx.card.getBoundingClientRect();
+  if(box.top >= 0 && box.bottom <= innerHeight) return;
+  ctx.card.scrollIntoView({
+    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    block:'start'
+  });
 }
 
 function ctxSelect(ctx, name){
   ctx.selected = name; ctx.selectedSp = null;
   if(ctx === mainCtx) cmShowSpeciesRange(null);
   ctx.card.classList.remove('empty');
+  if(ctx.closeBtn) ctx.closeBtn.hidden = false;
   Object.keys(ctx.famG).forEach(n=>ctx.famG[n].classList.toggle('active', n===name));
   ctx.svg.querySelectorAll('g.trow.species.active').forEach(g=>g.classList.remove('active'));
   const d = F[name];
   const stats = ctx.famInfo[name];
   const isOpen = ctx.open.has('f:'+name);
-  ctx.card.innerHTML =
+  ctx.cardBody.innerHTML =
     '<p class="card-lineage">'+LINEAGE[name].join(' &rsaquo; ')+' &rsaquo; '+name+'</p>'+
     '<div class="name-row"><h3>'+name+'</h3><span class="common">'+d.common+'</span></div>'+
     '<p class="desc">'+d.desc+'</p>'+
@@ -1253,31 +1509,43 @@ function openTreeToSpecies(family, genus, binomial, focusCard = false){
   if(path.hasSub) mainCtx.open.add('s:'+family+'|'+path.si);
   if(path.hasTribe) mainCtx.open.add('t:'+family+'|'+path.si+'|'+path.ti);
   mainCtx.open.add('g:'+genus);
+  mainCtx.focusKey = 'x:'+binomial;
   ctxDrawTree(mainCtx);
-  ctxShowSpecies(mainCtx, binomial);
-  if(focusCard){
-    mainCtx.card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
-  } else {
-    scrollRowIntoView(document.querySelector('g.trow.species.active'));
-  }
+  ctxShowSpecies(mainCtx, binomial, focusCard);
+  if(!focusCard) scrollRowIntoView(document.querySelector('g.trow.species.active'));
   return true;
 }
 
 /* a species picked in any cladogram fills that instance's own panel */
-function ctxShowSpecies(ctx, binomial){
+function ctxShowSpecies(ctx, binomial, focusDetail){
   ctx.selectedSp = binomial; ctx.selected = null;
   ctx.card.classList.remove('empty');
+  if(ctx.closeBtn) ctx.closeBtn.hidden = false;
   Object.keys(ctx.famG).forEach(n=>ctx.famG[n].classList.remove('active'));
   ctx.svg.querySelectorAll('g.trow.species').forEach(g=>{
     g.classList.toggle('active', g.getAttribute('aria-label').indexOf(binomial) === 0);
   });
-  ctx.card.innerHTML = luSpeciesHTML(binomial, true);
+  ctx.cardBody.innerHTML = luSpeciesHTML(binomial, true);
   const species = luState.byName[binomial.toLowerCase()];
-  loadSpeciesPhoto(species, ctx.card.querySelector('.inat-photo'));
+  loadSpeciesPhoto(species, ctx.cardBody.querySelector('.inat-photo'));
   if(ctx === mainCtx) cmShowSpeciesRange(binomial);
-  if(ctx.card.getBoundingClientRect().top < 0 || ctx.card.getBoundingClientRect().top > innerHeight-120){
-    ctx.card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+  luAnnounceRecord(binomial, species);
+
+  // a phone gets the drawer with the same record; everything wider gets the
+  // card, and never both
+  if(ctx === mainCtx && luDrawerBreakpoint()){
+    luDetail.innerHTML = luSpeciesHTML(binomial, false);
+    loadSpeciesPhoto(species, luDetail.querySelector('.inat-photo'));
+    luOpenDrawer();
+    return;
   }
+  if(focusDetail) ctxFocusCard(ctx);
+  else ctxScrollCardIntoView(ctx);
+}
+
+function luAnnounceRecord(binomial, species){
+  announce([binomial, species && species.family, species && species.iucnStatus]
+    .filter(Boolean).join(', '));
 }
 
 /* =========================================================
@@ -2042,6 +2310,12 @@ function cmShowSpeciesRange(binomial){
 function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
   if(!mapEl) return;
+  // One pattern for the whole map rather than an overlay path per country:
+  // the fill says "recorded here" a second time, in a form that survives
+  // deuteranopia, where the green-on-green land/range difference does not.
+  const defs = '<defs><pattern id="cm-hatch" patternUnits="userSpaceOnUse" width="7" height="7">'+
+    '<rect class="cm-hatch-bg" width="7" height="7"/>'+
+    '<path class="cm-hatch-line" d="M-1 1 L1 -1 M0 7 L7 0 M6 8 L8 6"/></pattern></defs>';
   let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" class="cm-bg"/>';
   // dissolved land mass, under the countries: fills the sub-pixel slivers that
   // independent per-country simplification leaves along shared borders
@@ -2068,8 +2342,9 @@ function cmRenderMap(){
     const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
     body += '<circle class="'+cls+'" data-key="'+luEsc(k)+'" cx="'+c[0]+'" cy="'+c[1]+'" r="3">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</circle>';
   });
-  mapEl.innerHTML = '<svg viewBox="0 0 '+WMAP.w+' '+WMAP.h+'" role="img" aria-label="World map, click a country to filter the tree">'+
-    '<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
+  mapEl.innerHTML = '<svg viewBox="0 0 '+WMAP.w+' '+WMAP.h+'" role="img" '+
+    'aria-label="World map. Hatched countries have records; use the country list above the map to choose one.">'+
+    defs+'<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
   cmApplyView(true);
   cmUpdateLabel();
 }
@@ -2094,6 +2369,10 @@ function cmApplyView(noAnim){
   if(!g) return;
   g.classList.toggle('no-anim', !!noAnim);
   g.setAttribute('transform', 'translate('+cmView.x+' '+cmView.y+') scale('+cmView.scale+')');
+  // the hatch is measured in the group's own user space, so without this it
+  // would grow with the zoom until the stripes are wider than a country
+  const hatch = document.getElementById('cm-hatch');
+  if(hatch) hatch.setAttribute('patternTransform', 'scale('+(1/cmView.scale)+')');
 }
 
 function cmSetView(v, animate){
@@ -2164,7 +2443,20 @@ function cmUpdateCountryIcon(){
 function cmWireZoomControls(){
   const mapEl = document.getElementById('cm-map');
   if(!mapEl) return;
+  // On a wide screen the map is half the viewport, and swallowing every wheel
+  // event turned "scroll down the page" into "zoom" with no way to tell why.
+  // Zoom is now deliberate; a plain wheel scrolls the page and says so once.
+  let hintTimer = null;
   mapEl.addEventListener('wheel', e=>{
+    if(!(e.ctrlKey || e.metaKey)){
+      const hint = document.getElementById('cm-wheel-hint');
+      if(hint){
+        hint.classList.add('show');
+        clearTimeout(hintTimer);
+        hintTimer = setTimeout(()=>hint.classList.remove('show'), 1100);
+      }
+      return;
+    }
     e.preventDefault();
     const p = cmClientToViewBox(e.clientX, e.clientY);
     if(!p) return;
@@ -2232,11 +2524,44 @@ function cmOnMapClick(e){
   const key = el.getAttribute('data-key');
   const entry = CM[key];
   if(!entry || (!entry.confirmed.length && !entry.maybe.length)) return;
-  cmSelected = (cmSelected === key) ? null : key;
+  cmSetCountry(cmSelected === key ? null : key);
+}
+
+/* The map shapes and the country list are two ways to say the same thing, so
+   they run through one function and each reflects what the other did. */
+function cmSetCountry(key){
+  cmSelected = key || null;
   if(cmSelected) setCountryTreeMode('filter', false);
   cmRenderMap();
   applyCountryFilterToMainTree();
   if(cmSelected) cmZoomToCountry(cmSelected); else cmResetView(true);
+  const select = document.getElementById('cm-country');
+  if(select && select.value !== (cmSelected||'')) select.value = cmSelected || '';
+  const entry = cmSelected && CM[cmSelected];
+  announce(entry
+    ? entry.name+', '+entry.confirmed.length+' species recorded — tree filtered'
+    : 'Country filter cleared');
+}
+
+/* 224 focusable country shapes would be unusable even if they were reachable.
+   The list is the keyboard and touch route to the same selection, and it
+   carries the counts the <title> tooltips only ever showed a mouse. */
+function cmFillCountrySelect(){
+  const select = document.getElementById('cm-country');
+  if(!select) return;
+  const items = Object.keys(CM)
+    .filter(k=>CM[k].confirmed.length || CM[k].maybe.length)
+    .map(k=>[k, CM[k].name])
+    .sort((a,b)=>a[1].localeCompare(b[1]));
+  select.innerHTML = '<option value="">All countries</option>' +
+    items.map(([k,name])=>{
+      const e = CM[k];
+      return '<option value="'+luEsc(k)+'">'+luEsc(name)+' — '+e.confirmed.length+
+        ' species'+(e.maybe.length ? ', '+e.maybe.length+' uncertain' : '')+'</option>';
+    }).join('');
+  select.disabled = false;
+  select.value = cmSelected || '';
+  select.addEventListener('change', ()=>cmSetCountry(select.value || null));
 }
 
 function applyCountryFilterToMainTree(){
@@ -2273,6 +2598,7 @@ function cmMaybeInit(){
     return;
   }
   cmBuildIndex();
+  cmFillCountrySelect();
   cmRenderMap();
   mapEl.addEventListener('click', cmOnMapClick);
   cmWireZoomControls();
@@ -2313,13 +2639,14 @@ function luRenderResults(){
   const shown = list.slice(0, LU_MAX);
   let html = '<div class="lu-count">'+list.length+' match'+(list.length===1?'':'es')+
              (list.length>LU_MAX ? ' — first '+LU_MAX+' shown' : '')+'</div>';
-  html += shown.map(s=>{
+  html += shown.map((s,i)=>{
     const dk = luState.danish[s.id];
     const media = luState.media[s.id];
     const thumbnail = media && media.status==='available'
       ? '<img class="lu-row-thumb" src="data/'+luEsc(media.path)+'" alt="" loading="lazy" decoding="async">'
       : '';
-    return '<div class="lu-row'+(thumbnail?' has-thumb':'')+'" role="option" tabindex="0" data-id="'+luEsc(s.id)+'">'+thumbnail+'<span class="lu-row-copy">'+
+    return '<div class="lu-row'+(thumbnail?' has-thumb':'')+'" role="option" aria-selected="false" '+
+      'id="lu-opt-'+i+'" data-id="'+luEsc(s.id)+'">'+thumbnail+'<span class="lu-row-copy">'+
       '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
       (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
       (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
@@ -2328,33 +2655,67 @@ function luRenderResults(){
   if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
     luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' families</div>';
   luResults.innerHTML = html;
+  luCursor = -1;
+  luInput.removeAttribute('aria-activedescendant');
+  // the count renders visually; nothing told a screen reader the list changed
+  announce(list.length + (list.length===1 ? ' match' : ' matches'));
+}
+
+/* aria-activedescendant, not focus: an option in a listbox is not a tab stop,
+   and moving real focus into the list is what stopped the arrow keys working
+   once you were in it. */
+let luCursor = -1;
+function luRows(){ return [...luResults.querySelectorAll('.lu-row')]; }
+function luSetCursor(i){
+  const rows = luRows();
+  if(!rows.length) return;
+  luCursor = Math.max(0, Math.min(i, rows.length-1));
+  rows.forEach((row,n)=>{
+    const on = n === luCursor;
+    row.classList.toggle('cur', on);
+    row.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  luInput.setAttribute('aria-activedescendant', rows[luCursor].id);
+  rows[luCursor].scrollIntoView({block:'nearest'});
 }
 
 function luOpenResults(){ luResults.hidden = false; luInput.setAttribute('aria-expanded','true'); }
-function luCloseResults(){ luResults.hidden = true; luInput.setAttribute('aria-expanded','false'); }
+function luCloseResults(){
+  luResults.hidden = true;
+  luInput.setAttribute('aria-expanded','false');
+  luInput.removeAttribute('aria-activedescendant');
+  luCursor = -1;
+}
 
 luResults.addEventListener('click', e=>{
   const row = e.target.closest('.lu-row');
   if(row) luSelectSpecies(row.dataset.id, true);
 });
-luResults.addEventListener('keydown', e=>{
-  const row = e.target.closest('.lu-row');
-  if(row && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); luSelectSpecies(row.dataset.id, true); }
-});
 luInput.addEventListener('input', luApplyFilter);
 luInput.addEventListener('focus', ()=>{ if(luInput.value.trim()) luApplyFilter(); });
 luInput.addEventListener('keydown', e=>{
-  if(e.key==='Escape'){ luCloseResults(); luInput.blur(); }
-  if(e.key==='ArrowDown'){
-    const first = luResults.querySelector('.lu-row');
-    if(first){ e.preventDefault(); first.focus(); }
+  if(e.key==='Escape'){ luCloseResults(); luInput.blur(); return; }
+  if(luResults.hidden) return;
+  const rows = luRows();
+  if(!rows.length) return;
+  switch(e.key){
+    case 'ArrowDown': e.preventDefault(); luSetCursor(luCursor+1); break;
+    case 'ArrowUp':   e.preventDefault(); luSetCursor(luCursor<=0 ? rows.length-1 : luCursor-1); break;
+    case 'Home':      e.preventDefault(); luSetCursor(0); break;
+    case 'End':       e.preventDefault(); luSetCursor(rows.length-1); break;
+    case 'Enter':
+      if(luCursor >= 0){ e.preventDefault(); luSelectSpecies(rows[luCursor].dataset.id, true); }
+      break;
   }
 });
 document.addEventListener('click', e=>{
   if(!e.target.closest('.tb-search')) luCloseResults();
 });
 document.addEventListener('keydown', e=>{
-  if(e.key==='Escape'){ luCloseDrawer(); luCloseResults(); return; }
+  if(e.key==='Escape'){
+    document.querySelectorAll('.lu-tip[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+    luCloseDrawer(); luCloseResults(); return;
+  }
   const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
   if(!typing && (e.key==='/' || ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k'))){
     e.preventDefault(); luInput.focus(); luInput.select();
@@ -2555,9 +2916,17 @@ const LU_AGREEMENT = {
   single_source:           ['',  'One source']
 };
 
+/* A note you can only reach by hovering a mouse is a note half the readers
+   never see. Each of these is a button that toggles its own note instead. */
+function luTipHTML(cls, innerHTML, note){
+  if(!note) return '<span class="'+cls+'">'+innerHTML+'</span>';
+  return '<button type="button" class="lu-tip '+cls+'" aria-expanded="false">'+innerHTML+
+    '<span class="lu-tip-pop" role="tooltip">'+luEsc(note)+'</span></button>';
+}
+
 function luRefMark(index, citation){
   const ref = luState.directCallReferences[citation];
-  return '<sup class="lu-refmark" title="'+luEsc(ref ? ref.label : citation)+'">'+luEsc(index)+'</sup>';
+  return luTipHTML('lu-refmark', luEsc(index), ref ? ref.label : citation);
 }
 
 function luCallFactHTML(f){
@@ -2574,9 +2943,9 @@ function luCallFactHTML(f){
       '<span class="lu-val">'+luEsc(f.display)+'</span>'+
       luRefMark(f.ref_index, f.citation)+
       (f.republished_index||[]).map((i,k)=>luRefMark(i, (f.republished_in||[])[k])).join('')+
-      (mark ? ' <span class="lu-agree lu-agree-'+luEsc(f.agreement)+'" title="'+luEsc(markTitle)+'">'+mark+'</span>' : '')+
+      (mark ? ' '+luTipHTML('lu-agree lu-agree-'+luEsc(f.agreement), mark, markTitle) : '')+
       (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
-      (flagged ? '<div class="lu-flag" title="'+luEsc(f.ambiguity||'')+'">'+luEsc(f.quality_flag.replace(/_/g,' '))+'</div>' : '')+
+      (flagged ? luTipHTML('lu-flag', luEsc(f.quality_flag.replace(/_/g,' ')), f.ambiguity||'') : '')+
       (alts.length ? '<div class="lu-alt">also reported: '+alts.join('; ')+'</div>' : '')+
     '</dd>'+
   '</div>';
@@ -2593,8 +2962,7 @@ function luDensityHTML(d){
     d.have && d.have.length ? 'has '+d.have.join(', ') : null,
     d.missing && d.missing.length ? 'no '+d.missing.join(', ') : null
   ].filter(Boolean).join(' · ');
-  return '<span class="lu-density" title="'+luEsc(detail)+'">'+
-    '<span class="lu-bars">'+bars+'</span>'+luEsc(d.level)+'</span>';
+  return luTipHTML('lu-density', '<span class="lu-bars">'+bars+'</span>'+luEsc(d.level), detail);
 }
 
 /* One-line collapsed summary: frequency span and peak. */
@@ -2845,7 +3213,10 @@ function updateTreeToggle(){
 }
 
 mainCtx = makeTreeCtx({
-  svg, card: document.getElementById('card'),
+  svg,
+  card: document.getElementById('card'),
+  cardBody: document.getElementById('card-body'),
+  closeBtn: document.getElementById('card-close'),
   tree: TREE, blocks: BLOCKS, famInfo: F,
   famChildren, nodeChildren: n => n.kind==='genus' ? genusChildren(n.name) : (n.children||null),
   emptyHTML: '',
@@ -2863,6 +3234,31 @@ mainCtx.card.addEventListener('click', e=>{
   if(btn){ ctxToggleFamily(mainCtx, btn.dataset.fam); return; }
 });
 
+// the card is now a surface you can dismiss, like the drawer it replaces
+mainCtx.closeBtn.addEventListener('click', ()=>{
+  const row = mainCtx.rowOrder.find(r=>r.key === mainCtx.focusKey);
+  ctxCardReset(mainCtx);
+  ctxDrawTree(mainCtx);
+  announce('Record closed');
+  if(row) ctxFocusRow(mainCtx, mainCtx.rowOrder.findIndex(r=>r.key === mainCtx.focusKey), true);
+});
+
+/* the toggle changes over a thousand rows without moving the viewport */
+function announceTreeToggle(expanded){
+  announce(expanded ? 'All branches collapsed' : 'All branches expanded');
+}
+
+// one popover open at a time, closed by a click anywhere else
+document.addEventListener('click', e=>{
+  const btn = e.target.closest('.lu-tip');
+  document.querySelectorAll('.lu-tip[aria-expanded="true"]').forEach(open=>{
+    if(open !== btn) open.setAttribute('aria-expanded','false');
+  });
+  if(!btn) return;
+  e.preventDefault();
+  btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded')==='true' ? 'false' : 'true');
+});
+
 treeToggle.addEventListener('click', ()=>{
   const expanded = allFamiliesOpen();
   BLOCKS.forEach(b=>b.members.forEach(f=>{
@@ -2870,6 +3266,7 @@ treeToggle.addEventListener('click', ()=>{
   }));
   if(expanded) ctxCardReset(mainCtx);
   ctxDrawTree(mainCtx);
+  announceTreeToggle(expanded);
   if(expanded) document.querySelector('.treebox').scrollIntoView({block:'nearest'});
 });
 </script>
