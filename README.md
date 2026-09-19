@@ -272,6 +272,13 @@ page switch gains a **Dinosaurs** option on all four pages ("Dino" on phones).
 - **`data/dinosaur_palette.css`** — the badlands: basalt ground, sandstone and
   bone for structure, iron-red strata for rules, and the first cool accent,
   vivianite blue.
+- **Time scale.** Group and species cards have a collapsible time scale set
+  against the whole Mesozoic (Triassic, Jurassic, Cretaceous, 252–66 Ma). A
+  group's card has one bar per genus, oldest first. A species card has its
+  own bar. Bars run from first to last appearance in the rocks (PBDB's
+  ages), which is not the same as how long the lineage lived. Open or closed
+  is remembered per viewer. Phones show no group cards, so there the scale
+  appears on species records only.
 - No Danish names (dinosaurs have none beyond their Latin ones) and no call
   section.
 

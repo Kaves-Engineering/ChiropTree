@@ -155,7 +155,7 @@ sub("""b.members.length + (b.members.length===1?' family':' families')""",
     """b.members.length + (b.members.length===1?' group':' groups')""")
 # a group's range line is when and where, both from the fossil record
 sub("""'<p class="range-line">Range: <b>'+d.range+'</b></p>'""",
-    """'<p class="range-line">When and where: <b>'+d.range+'</b></p>'""")
+    """'<p class="range-line">When and where: <b>'+d.range+'</b></p>'+dinoGroupTimescale(name)""")
 
 # no calls: ESP is species-level bat echolocation prose and must not leak across
 if "const ECHO" in html:
@@ -187,13 +187,122 @@ sub("""        '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s
         '<dt>Found in</dt><dd>'+luCountriesHTML(s)+'</dd>'+
         '<dt>Formations</dt><dd>'+luEsc((s.formations||'—').replace(/\\|/g,', '))+'</dd>'+
         '<dt>Named in</dt><dd>'+luEsc(s.reference||'—')+'</dd>'+
-      '</dl>'+(s.occurrences ? '<p class="lu-src">'+s.occurrences+' PBDB occurrence record'+(s.occurrences===1?'':'s')+'; countries are where fossils identified to this species were dug up, on today’s map</p>' : '')+'</section>'+""")
+      '</dl>'+(s.occurrences ? '<p class="lu-src">'+s.occurrences+' PBDB occurrence record'+(s.occurrences===1?'':'s')+'; countries are where fossils identified to this species were dug up, on today’s map</p>' : '')+
+      dinoSpeciesTimescale(s)+'</section>'+""")
 sub("""    '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];""",
     """    '<a href="https://paleobiodb.org/classic/basicTaxonInfo?taxon_no='+luEsc(s.pbdb)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
   const image = (luState.images||{})[s.genus];
   if(image) sources.push('<a href="'+luEsc(image.article)+'" target="_blank" rel="noopener">Wikipedia</a> (image)');""")
+
+# ------------------------------------------------------------------ time scale
+# A collapsible Mesozoic time axis on both cards: on a group's card one bar per
+# genus, from its oldest species' first appearance to its youngest's last, oldest
+# first; on a species card the species' own span. The spans are PBDB's
+# first/last appearance ages, so a bar is the age of the rocks the fossils are
+# from, not a measured lifespan of the lineage. Open or closed is remembered
+# (per viewer, in localStorage) so it stays the way the reader left it.
+TS_START, TS_END = 252.0, 66.0
+PERIODS = [("Triassic", 252.0, 201.4), ("Jurassic", 201.4, 143.1), ("Cretaceous", 143.1, 66.0)]
+def pct(ma):
+    return round((TS_START - ma) / (TS_START - TS_END) * 100, 2)
+jurassic = (pct(201.4), pct(143.1))
+
+sub("</style>", """
+/* ---- time scale: bars against the Mesozoic, on group and species cards ---- */
+.ts{margin:6px 0 12px;border-top:1px solid var(--line-dim);padding-top:6px}
+.ts summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;min-height:32px;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre)}
+.ts summary::-webkit-details-marker{display:none}
+.ts summary::before{content:"";flex:none;width:6px;height:6px;margin:0 2px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .15s}
+.ts[open] summary::before{transform:rotate(45deg)}
+.ts summary:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.ts-count{color:var(--muted);letter-spacing:.03em;text-transform:none}
+.ts-grid{display:grid;grid-template-columns:minmax(6.5em,32%%) 1fr;column-gap:10px;row-gap:2px;margin:6px 0 2px}
+.ts-name{font-size:.75rem;font-style:italic;color:var(--ink-mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:16px}
+.ts-axis{grid-column:2;position:relative;height:16px}
+.ts-period{position:absolute;top:0;height:16px;overflow:hidden;white-space:nowrap;text-align:center;
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;color:var(--line-text)}
+.ts-tick{position:absolute;top:1px;font-family:var(--mono);font-size:.625rem;color:var(--ink-faint);white-space:nowrap}
+.ts-track{position:relative;height:16px;background:linear-gradient(90deg,
+  transparent 0 %(j0)s%%,rgba(var(--hover-rgb),.08) %(j0)s%% %(j1)s%%,transparent %(j1)s%% 100%%)}
+.ts-bar{position:absolute;top:4px;bottom:4px;min-width:3px;border-radius:1px;background:var(--rule)}
+.ts-bar.hl{background:var(--ochre)}
+.ts-note{margin:6px 0 0;font-size:.6875rem;color:var(--muted)}
+/* a species card has one bar and already names the species: full width */
+.ts-solo{grid-template-columns:1fr}
+.ts-solo .ts-axis{grid-column:1}
+.ts-short{display:none}
+@media (max-width:520px){.ts-long{display:none}.ts-short{display:inline}}
+@media (prefers-reduced-motion:reduce){.ts summary::before{transition:none}}
+</style>""" % {"j0": jurassic[0], "j1": jurassic[1]})
+
+sub("function luDetailHTML(s, compact){", """const TS_START = %(start)s, TS_END = %(end)s;
+const TS_PERIODS = %(periods)s;
+let tsOpen = false;
+try { tsOpen = localStorage.getItem('dino-timescale-open') === '1'; } catch (_) {}
+// 'toggle' does not bubble, so listen in the capture phase for every card's scale
+document.addEventListener('toggle', e=>{
+  if(!e.target.classList || !e.target.classList.contains('ts')) return;
+  tsOpen = e.target.open;
+  try { localStorage.setItem('dino-timescale-open', tsOpen ? '1' : '0'); } catch (_) {}
+}, true);
+
+function tsPos(ma){ return Math.max(0, Math.min(100, (TS_START-ma)/(TS_START-TS_END)*100)); }
+function tsSpan(max, min){ return max===min ? max+' Ma' : max+'–'+min+' Ma'; }
+
+// rows: [[label, maxMa, minMa]], oldest first
+function dinoTimescaleHTML(rows, summary, highlight, note){
+  if(!rows.length) return '';
+  const solo = rows.length===1 && highlight;
+  const spacer = solo ? '' : '<div aria-hidden="true"></div>';
+  const axis = TS_PERIODS.map(([n,a,b])=>
+    '<span class="ts-period" style="left:'+tsPos(a)+'%%;width:'+(tsPos(b)-tsPos(a))+'%%">'+
+    '<span class="ts-long">'+n+'</span><span class="ts-short">'+n.slice(0, n==='Cretaceous' ? 4 : 3)+'</span></span>').join('');
+  const ticks = [TS_START, 201.4, 143.1, TS_END].map((ma,i,all)=>
+    '<span class="ts-tick" style="left:'+tsPos(ma)+'%%;transform:translateX('+(i===0 ? '0' : i===all.length-1 ? '-100%%' : '-50%%')+')">'+
+    Math.round(ma)+(i===all.length-1 ? ' Ma' : '')+'</span>').join('');
+  const body = rows.map(([label,max,min])=>{
+    const left = tsPos(max), width = Math.max(tsPos(min)-left, 0.8);
+    return (solo ? '' : '<div class="ts-name" title="'+luEsc(label)+'">'+luEsc(label)+'</div>')+
+      '<div class="ts-track" role="img" aria-label="'+luEsc(label)+', '+tsSpan(max,min)+'">'+
+      '<span class="ts-bar'+(highlight?' hl':'')+'" style="left:'+left+'%%;width:'+width+'%%"></span></div>';
+  }).join('');
+  return '<details class="ts"'+(tsOpen?' open':'')+'><summary>Time scale <span class="ts-count">'+luEsc(summary)+'</span></summary>'+
+    '<div class="ts-grid'+(solo?' ts-solo':'')+'">'+spacer+'<div class="ts-axis" aria-hidden="true">'+axis+'</div>'+body+
+    spacer+'<div class="ts-axis" aria-hidden="true">'+ticks+'</div></div>'+
+    (note ? '<p class="ts-note">'+luEsc(note)+'</p>' : '')+'</details>';
+}
+
+function dinoGroupTimescale(family){
+  if(!luState.ready) return '';
+  const spans = new Map(), genera = new Set();
+  luState.species.forEach(s=>{
+    if(s.family!==family) return;
+    genera.add(s.genus);
+    if(s.maxMa==null) return;
+    const min = s.minMa==null ? s.maxMa : s.minMa, g = spans.get(s.genus);
+    spans.set(s.genus, g ? [Math.max(g[0],s.maxMa), Math.min(g[1],min)] : [s.maxMa, min]);
+  });
+  const rows = [...spans].map(([g,[a,b]])=>[g,a,b]).sort((x,y)=>y[1]-x[1] || y[2]-x[2]);
+  if(!rows.length) return '';
+  const oldest = Math.max(...rows.map(r=>r[1])), youngest = Math.min(...rows.map(r=>r[2]));
+  const undated = genera.size - rows.length;
+  return dinoTimescaleHTML(rows, rows.length+' genera · '+tsSpan(oldest, youngest), false,
+    (undated ? undated+(undated===1?' genus has':' genera have')+' no age in PBDB. ' : '')+
+    'Bars run from first to last appearance in the rocks.');
+}
+
+function dinoSpeciesTimescale(s){
+  if(s.maxMa==null) return '';
+  const min = s.minMa==null ? s.maxMa : s.minMa;
+  return dinoTimescaleHTML([[luNiceName(s.sciName), s.maxMa, min]], tsSpan(s.maxMa, min), true, '');
+}
+
+function luDetailHTML(s, compact){""" % {"start": TS_START, "end": TS_END,
+                                        "periods": [[n, a, b] for n, a, b in PERIODS]})
 
 # ------------------------------------------------------------------ the picture
 # No iNaturalist for the extinct: the genus's Wikipedia lead image, resolved
