@@ -77,7 +77,7 @@ here changes what the bat pages show.
   `data/build_marine_mammal_page.py`, which copies the skeleton verbatim —
   CSS, markup and every line of interaction code — and swaps only content:
   the data blocks, the data-file paths, and the strings that name the animals.
-  The two pages link to each other from the top nav. Change the bat page,
+  The pages link to each other from the top nav. Change the bat page,
   re-run the script, and the marine page inherits the change; every swap is
   anchored on an exact string and the build exits loudly if one stops
   matching, so the two cannot silently drift apart. Deployed as
@@ -159,6 +159,74 @@ uv run python data/build_marine_mammal_danish_names.py
 uv run python data/build_marine_mammal_country_distribution.py
 ```
 
+## The bird pages
+
+A third tree, for birds, built the same way as the marine page: it is stamped
+out of the bat page, and none of it changes what the bat page shows. The page
+switch in the top bar has a **Birds** option on all three pages; on phones,
+"Marine mammals" shortens to "Marine" so the three options fit.
+
+- **`bird-tree.html`** — **generated, do not edit by hand.** Stamped out of
+  `chiroptera-tree.html` by `data/build_bird_page.py`: the same guard rails as
+  the marine build (every swap anchored on an exact string, loud failure on a
+  miss, palette token check). Deployed as `/birds.html`.
+- **`data/bird_taxonomy.json`** — 11,131 species, 2,376 genera, 252 families,
+  46 orders, from [AviList](https://www.avilist.org) v2025b
+  ([doi:10.2173/avilist.v2025b](https://doi.org/10.2173/avilist.v2025b),
+  CC BY 4.0), the 2025 global checklist that unified Clements/eBird and
+  BirdLife/HBW. Built by **`data/build_bird_taxonomy.py`**, which keeps MDD's
+  record shape so the master's lookup, card and map code read it unchanged.
+  AviList adds a range description (the species row's, or its subspecies'
+  joined), an eBird species code (also the record id) and an Avibase ID; the
+  card's MDD link becomes eBird and Avibase links, and Xeno-canto stays.
+- **`data/bird_gbif_countries.json`** — AviList has no country column, so every
+  bird country comes from GBIF occurrence records, built by
+  **`data/build_bird_country_distribution.py`** and merged into the taxonomy.
+  eBird dominates bird records and logs every twitched rarity hundreds of
+  times, so the mammal scripts' flat 3-record floor would paint half of Europe
+  for any vagrant. A country is kept only with at least 5 records *and* either
+  a meaningful share of all bird records in that country or 5% of the
+  species' own records (the docstring explains the thresholds and the species
+  they were checked against). The card labels these countries as GBIF
+  evidence, not a checklist: established introductions appear too. Not
+  published — the page reads the merged taxonomy.
+- **`data/bird_danish_names.json`** — Danish names for 99.6% of species, from
+  DOF's *Navne på alverdens fugle* (Navnegruppen; IOC 12.1 base), built by
+  **`data/build_bird_danish_names.py`**. The list follows IOC 12.1 and the
+  page follows AviList, so each name records how it was matched: exact
+  binomial, a DOF subspecies AviList has raised to species, or an identical
+  English name (genus moves).
+- **`data/build_bird_data_blocks.py`** — the tree the page draws. Counts,
+  genera and family English names come from AviList; the clade headings
+  (Palaeognathae, Galloanserae, Columbaves, Strisores, Afroaves, Australaves,
+  and suborders and superfamilies within Passeriformes) and each family's
+  range line and description are hand-authored. The Hoatzin sits under
+  "Neoaves incertae sedis" because the phylogenomic studies still disagree
+  about where it goes.
+- **`data/bird_palette.css`** — the sky before dawn: dusk violet and heather
+  for ground and structure, with the accent the first warm light.
+- The range map is `marine_world_map.json`, the one that draws Antarctica
+  (penguins, skuas, sheathbills).
+- **No call data yet.** The page loads no call export, and the card's Call
+  section shows the master's "no measurement yet" line: an empty slot to
+  fill later. Species photos come live from iNaturalist; the offline image
+  snapshot covers mammals only.
+
+Building the bird data (downloads land in the gitignored `data/raw/`):
+
+```
+uv run data/build_bird_taxonomy.py
+uv run data/build_bird_country_distribution.py   # ~2 h first time; cached
+uv run data/build_bird_taxonomy.py               # merges the countries in
+uv run data/build_bird_danish_names.py
+uv run python data/build_bird_page.py
+```
+
+The weekly data-sync workflow follows MDD releases only. AviList publishes
+about once a year, and picking up a new version means updating
+`SOURCE_URL`/`SOURCE_VERSION` in `build_bird_taxonomy.py` and re-running the
+steps above.
+
 ## Updating the taxonomy data
 
 MDD publishes new releases periodically. To pick up a new one:
@@ -222,3 +290,9 @@ correct an entry, add a key there (either a full species binomial like
 Taxonomy data is © the Mammal Diversity Database contributors (ASM
 Biodiversity Committee), used under their stated terms for downstream reuse —
 retain attribution to MDD and its DOI when sharing derived data.
+
+Bird taxonomy is from AviList (AviList Core Team. 2025. *AviList: The Global
+Avian Checklist*, v2025b. https://doi.org/10.2173/avilist.v2025b), licensed
+CC BY 4.0. Danish bird names are from Dansk Ornitologisk Forening's
+Navnegruppen, *Navne på alverdens fugle*. Country presence for birds is derived
+from GBIF-mediated occurrence data.

@@ -99,9 +99,15 @@ sub('<link rel="preload" href="data/world_map.json" as="fetch" type="application
 
 # the switch keeps both destinations; only which one is held down changes
 sub("""      <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
-      <a class="ps-opt" href="marine.html">Marine mammals</a>""",
+      <a class="ps-opt" href="marine.html">Marine<span class="ps-long"> mammals</span></a>""",
     """      <a class="ps-opt" href="index.html">Bats</a>
-      <a class="ps-opt" href="marine.html" aria-current="page">Marine mammals</a>""")
+      <a class="ps-opt" href="marine.html" aria-current="page">Marine<span class="ps-long"> mammals</span></a>""")
+
+# on a phone the long title collapses to one word drawn from CSS
+sub(""".tb-brand{font-size:0;flex:none;width:36px}
+  .tb-brand::before{content:"Bats";""",
+    """.tb-brand{font-size:0;flex:none;width:auto}
+  .tb-brand::before{content:"Marine";""")
 
 sub('placeholder="Search any bat…"', 'placeholder="Search any marine mammal…"')
 sub('aria-label="Show a random bat" title="Random bat"',

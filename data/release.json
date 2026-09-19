@@ -1,9 +1,22 @@
 {
+ "birdSource": {
+  "doi": "10.2173/avilist.v2025b",
+  "sha256": "2e1fd3374e23af732b04115b033dd9d97fc53ba275c312d02ef5d12cfb85c988"
+ },
  "counts": {
   "bats": 1514,
+  "birds": 11131,
   "marineMammals": 144
  },
  "files": {
+  "bird_danish_names.json": {
+   "bytes": 2342489,
+   "sha256": "948e1bcdcb29647de11c44ba6451f057dd7ba99d5dd1a68f7bc846ddfd04cdfb"
+  },
+  "bird_taxonomy.json": {
+   "bytes": 6723519,
+   "sha256": "827f0d781644e37e04f89502c3d99eab47a8771eae344662ea49b79b4864ce49"
+  },
   "call_measurements.json": {
    "bytes": 63199,
    "sha256": "8cf964483d5a805fec3a2afe2076560764948f7a9c61c597fd73796384fbaa24"

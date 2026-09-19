@@ -46,6 +46,13 @@ def validate_names(filename: str, ids: set[str]) -> None:
         assert record.get("name") and record.get("source") and record.get("gbifKey"), f"{filename}: incomplete name {mdd_id}"
 
 
+def validate_bird_names(ids: set[str]) -> None:
+    """DOF names carry no GBIF key -- they come straight from DOF's list."""
+    for bird_id, record in load("bird_danish_names.json").items():
+        assert bird_id in ids, f"bird_danish_names.json: unknown species id {bird_id}"
+        assert record.get("name") and record.get("source") and record.get("matchMethod"),             f"bird_danish_names.json: incomplete name {bird_id}"
+
+
 def validate_expectations(families: set[str]) -> None:
     """Check the inference tables used to sanity-check imports.
 
@@ -174,11 +181,15 @@ def main() -> None:
     marine_ids, _ = validate_taxonomy(marine, "marine mammals")
     validate_names("danish_names.json", bat_ids)
     validate_names("marine_mammal_danish_names.json", marine_ids)
+    birds = load("bird_taxonomy.json")
+    bird_ids, _ = validate_taxonomy(birds, "birds")
+    validate_bird_names(bird_ids)
     validate_calls(bat_ids)
     validate_structured_calls(bat_ids)
     validate_expectations(set(bats["families"]))
     validate_map(bats, "world_map.json")
     validate_map(marine, "marine_world_map.json")
+    validate_map(birds, "marine_world_map.json")
     validate_media(bat_ids | marine_ids)
     validate_manifest()
     print("Release validation passed")

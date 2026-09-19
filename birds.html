@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- Local-dev shim. The published site names this page birds.html (build.sh
+     copies bird-tree.html to public/birds.html), but the local server serves
+     the repo root, where the source file keeps its long name. This makes the
+     cross-links in all three trees resolve locally too. Not copied into public/. -->
+<meta charset="utf-8">
+<title>Redirecting to the bird tree</title>
+<meta http-equiv="refresh" content="0; url=bird-tree.html">
+<link rel="canonical" href="bird-tree.html">
+<script>location.replace('bird-tree.html' + location.search + location.hash);</script>
+<p><a href="bird-tree.html">Bird tree</a></p>

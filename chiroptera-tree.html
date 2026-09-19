@@ -348,8 +348,8 @@ footer a:hover{color:var(--ochre)}
 .tb-brand{font-family:var(--display);font-size:1.0625rem;font-weight:500;color:var(--bone);text-decoration:none;white-space:nowrap}
 .tb-brand em{font-style:italic;color:var(--line)}
 
-/* The two trees are sister pages, so the way across is a switch rather than
-   a link: both destinations always visible, the current one held down. It
+/* The trees are sister pages, so the way across is a switch rather than
+   a link: every destination always visible, the current one held down. It
    sits with the title because it names what you are looking at. */
 .pageswitch{
   display:flex;flex:none;gap:2px;padding:2px;
@@ -650,6 +650,8 @@ footer a:hover{color:var(--ochre)}
   .tb-brand::before{content:"Bats";font-family:var(--display);font-size:1rem;font-weight:500;color:var(--bone)}
   .pageswitch{flex:1;justify-content:center}
   .ps-opt{padding:6px 8px;font-size:0.6875rem;letter-spacing:.07em}
+  /* three destinations have to fit beside the title on a phone */
+  .ps-long{display:none}
   .tb-search{order:2;flex:1 0 100%;width:100%;margin:0}
   .tb-search input{min-height:44px;font-size:1rem;padding-top:9px;padding-bottom:9px}
   .tb-nav{display:none}
@@ -734,7 +736,8 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
     <h1 class="tb-title"><a class="tb-brand" href="#top">The branching of <em>bats</em></a></h1>
     <nav class="pageswitch" aria-label="Choose a group">
       <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
-      <a class="ps-opt" href="marine.html">Marine mammals</a>
+      <a class="ps-opt" href="marine.html">Marine<span class="ps-long"> mammals</span></a>
+      <a class="ps-opt" href="birds.html">Birds</a>
     </nav>
     <div class="tb-search">
       <span class="tb-ico" aria-hidden="true">
