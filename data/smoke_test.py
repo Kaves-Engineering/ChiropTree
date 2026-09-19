@@ -22,14 +22,18 @@ def main() -> None:
     marine_html = (ROOT / "public/marine.html").read_text(encoding="utf-8")
     birds = load("bird_taxonomy.json")
     bird_html = (ROOT / "public/birds.html").read_text(encoding="utf-8")
+    dinosaurs = load("dinosaur_taxonomy.json")
+    dino_html = (ROOT / "public/dinosaurs.html").read_text(encoding="utf-8")
     worker = (ROOT / "public/service-worker.js").read_text(encoding="utf-8")
 
-    assert "INLINE data/" not in bat_html + marine_html + bird_html
+    pages = (bat_html, marine_html, bird_html, dino_html)
+    assert "INLINE data/" not in "".join(pages)
     assert "__RELEASE__" not in worker
     assert all(family in bat_html for family in bats["families"])
     assert all(family in marine_html for family in marine["families"])
     assert all(family in bird_html for family in birds["families"])
-    assert all('href="birds.html"' in page for page in (bat_html, marine_html, bird_html))
+    assert all(family in dino_html for family in dinosaurs["families"])
+    assert all('href="birds.html"' in page and 'href="dinosaurs.html"' in page for page in pages)
     assert set(direct["species"]) <= {item["id"] for item in bats["species"]}
     assert set(names) <= {item["id"] for item in bats["species"]}
     assert supplement and all(value for value in supplement.values())

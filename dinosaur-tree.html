@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0d140f">
+<meta name="theme-color" content="#15110e">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="preload" href="data/world_map.json" as="fetch" type="application/json">
+<link rel="preload" href="data/marine_world_map.json" as="fetch" type="application/json">
 <script>
 try {
   const savedTheme = localStorage.getItem('chiroptera-theme');
@@ -13,12 +13,12 @@ try {
     ? savedTheme
     : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   document.documentElement.dataset.theme = theme;
-  document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f3f0e5' : '#0d140f';
+  document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f5efe4' : '#15110e';
 } catch (_) {
   document.documentElement.dataset.theme = 'dark';
 }
 </script>
-<title>Chiroptera — bat tree and range map</title>
+<title>Dinosaurs — tree and fossil map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Lexend:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,114 +32,116 @@ try {
 }
 
 /* ===== PALETTE =====================================================
-   Every colour in the sheet resolves through these two blocks, so the
-   whole palette is one swappable unit: data/build_marine_mammal_page.py
-   lifts the region between these markers out and drops the marine one in.
-   Nothing below this region names a colour directly -- if you find
-   yourself adding a hex further down, add a token here instead.
+   The dinosaur palette. build_dinosaur_page.py swaps this in for the
+   region between the PALETTE markers in chiroptera-tree.html; the build
+   fails if a token the master defines is missing here.
 
-   Chiroptera reads as a cave at night: dark leaf-litter ground, lichen
-   green for structure, and one warm lamplit accent to touch.
+   The bat page is a cave at night, the marine page cold water, the bird
+   page the sky before dawn. Dinosaurs get the badlands where they are
+   dug up: dark basalt ground, sandstone and bone for structure, the
+   iron-red of the strata for rules. The one accent turns cool for the
+   first time -- vivianite blue, the mineral that stains fossil bone
+   blue where it grows in it. Same system, same roles, a fourth place.
    =================================================================== */
 :root{
   color-scheme:dark;
-  --abyss:#0d140f;          /* page ground */
-  --prussian:#1a2f1c;       /* raised surface */
-  --prussian-2:#22422a;
-  --panel:#101d16;          /* drawer, search results */
-  --canvas:#16281a;         /* the tree's own field */
-  --line:#a9c98c;           /* structure: rules, branches, labels */
-  --line-dim:#5b7a49;       /* hairlines ONLY -- too dim to carry text */
-  --line-text:#8fae74;      /* the same quiet register, but legible as ink */
-  --rule:#a97c33;           /* the hairline under a suborder heading */
-  --bone:#f4f1e6;           /* brightest ink */
-  --text:#dfe4d6;
-  --muted:#b7bfa9;
-  --ochre:#e8ab4c;          /* the one accent: selection, focus, active */
-  --ochre-dim:#8a6427;
+  --abyss:#15110e;          /* page ground: basalt */
+  --prussian:#2a211a;       /* raised surface */
+  --prussian-2:#342920;
+  --panel:#1c1612;          /* drawer, search results */
+  --canvas:#1f1813;         /* the tree's own field */
+  --line:#dcc7a4;           /* structure: rules, branches, labels -- sandstone */
+  --line-dim:#7a6650;       /* hairlines ONLY -- too dim to carry text */
+  --line-text:#bba58a;      /* the same quiet register, but legible as ink */
+  --rule:#b0643c;           /* the hairline under a clade heading: iron-red strata */
+  --bone:#f8f1e6;           /* brightest ink */
+  --text:#e8dfd2;
+  --muted:#c0b3a2;
+  --ochre:#6cc4c0;          /* the one accent: selection, focus, active -- vivianite */
+  --ochre-dim:#3e7a77;
 
-  --ink-strong:#eef0e2;     /* tree rows, genus down to species */
-  --ink-mid:#c3cdb8;
-  --ink-soft:#adb9a0;
-  --ink-faint:#8f9c85;
-  --knot-leaf:#567f52;
-  --footer-ink:#b8c2ac;
-  --placeholder:#899783;
+  --ink-strong:#f2eadf;     /* tree rows, genus down to species */
+  --ink-mid:#d3c6b4;
+  --ink-soft:#bdb09f;
+  --ink-faint:#a19482;
+  --knot-leaf:#8a7358;
+  --footer-ink:#c2b5a4;
+  --placeholder:#978a79;
 
-  --map-water:#122015;      /* the range map, unpainted */
-  --map-land:#274a2e;
-  --map-has:#345f3a;        /* a country this taxon is recorded in */
-  --map-has-edge:#8fc27a;   /* ...and its outline, so fill isn't the only cue */
-  --map-has-hover:#4a7a49;
-  --map-dot:#5c8759;        /* islands too small to draw as shapes */
-  --map-dot-hover:#7fae6e;
-  --range-hover:#a9822f;
+  --map-water:#16110d;      /* the fossil map, unpainted */
+  --map-land:#3a2f25;
+  --map-has:#8a5a3a;        /* a country this taxon's fossils come from */
+  --map-has-edge:#dcc7a4;   /* ...and its outline, so fill isn't the only cue */
+  --map-has-hover:#a86c46;
+  --map-dot:#b07a52;        /* islands too small to draw as shapes */
+  --map-dot-hover:#dcc7a4;
+  --range-hover:#5fb3ae;
 
-  /* IUCN status is data, not decoration: these stay put across palettes */
+  /* status colours are data, not decoration: unchanged from the bat page */
   --st-good:#8fd19e;  --st-good-b:#3a6b45;
   --st-bad:#e88a8a;   --st-bad-b:#8a3a3a;
 
   /* triplets, for the places that need an alpha */
-  --border-rgb:150,190,120;
-  --border2-rgb:178,210,150;
-  --hover-rgb:178,210,150;
-  --ochre-rgb:232,171,76;
-  --abyss-rgb:13,20,15;
-  --card-rgb:14,26,19;
-  --scrim-rgb:9,14,10;
-  --input-rgb:26,47,28;
-  --glow-rgb:45,80,48;
+  --border-rgb:190,165,130;
+  --border2-rgb:220,199,164;
+  --hover-rgb:220,199,164;
+  --ochre-rgb:108,196,192;
+  --abyss-rgb:21,17,14;
+  --card-rgb:42,33,26;
+  --scrim-rgb:10,8,6;
+  --input-rgb:42,33,26;
+  --glow-rgb:130,90,55;
   --card-a:.75; --bar-a:.88; --input-a:.85; --scrim-a:.62;
   --shadow:0 26px 64px rgba(0,0,0,.55);
 }
 :root[data-theme="light"]{
   color-scheme:light;
-  --abyss:#f3f0e5;
-  --prussian:#e4eadc;
-  --prussian-2:#d4dfca;
-  --panel:#eef0e5;
-  --canvas:#e8ecdf;
-  --line:#315f3a;
-  --line-dim:#7d9272;
-  --line-text:#4a6344;
-  --rule:#55704f;
-  --bone:#17251a;
-  --text:#26352a;
-  --muted:#5d6d5d;
-  --ochre:#9b5c13;
-  --ochre-dim:#b98a4d;
+  --abyss:#f5efe4;
+  --prussian:#ebe2d3;
+  --prussian-2:#dfd2bd;
+  --panel:#fbf8f2;
+  --canvas:#efe7da;
+  --line:#5a4230;
+  --line-dim:#a8957c;
+  --line-text:#6a5440;
+  --rule:#9c4f2a;
+  --bone:#21170f;
+  --text:#2f241a;
+  --muted:#6a5c4c;
+  --ochre:#1f6f6b;
+  --ochre-dim:#7fb0ac;
 
-  --ink-strong:#1d2c20;
-  --ink-mid:#394b3b;
-  --ink-soft:#60705d;
-  --ink-faint:#60705d;
-  --knot-leaf:#64835f;
-  --footer-ink:#526552;
-  --placeholder:#677766;
+  --ink-strong:#2a1f15;
+  --ink-mid:#4a3b2c;
+  --ink-faint:#726250;
+  --ink-soft:#726250;
+  --knot-leaf:#8a7458;
+  --footer-ink:#665747;
+  --placeholder:#85766a;
 
-  --map-water:#dfe7d8;
-  --map-land:#b8c9af;
-  --map-has:#8fab84;
-  --map-has-edge:#3f5c3c;
-  --map-has-hover:#70966d;
-  --map-dot:#71936d;
-  --map-dot-hover:#527a54;
-  --range-hover:#b37222;
+  --map-water:#ebe4d8;
+  --map-land:#d6c9b4;
+  --map-has:#c08a64;
+  --map-has-edge:#5a4230;
+  --map-has-hover:#a9704a;
+  --map-dot:#a97652;
+  --map-dot-hover:#6e4a30;
+  --range-hover:#2a8a85;
 
   --st-good:#266438;  --st-good-b:#579664;
   --st-bad:#9b3232;   --st-bad-b:#bd6b6b;
 
-  --border-rgb:150,190,120;
-  --border2-rgb:150,190,120;
-  --hover-rgb:49,95,58;
-  --ochre-rgb:155,92,19;
-  --abyss-rgb:243,240,229;
-  --card-rgb:228,234,220;
-  --scrim-rgb:33,45,35;
-  --input-rgb:228,234,220;
-  --glow-rgb:113,145,104;
+  --border-rgb:168,149,124;
+  --border2-rgb:168,149,124;
+  --hover-rgb:90,66,48;
+  --ochre-rgb:31,111,107;
+  --abyss-rgb:245,239,228;
+  --card-rgb:235,226,211;
+  --scrim-rgb:40,28,18;
+  --input-rgb:235,226,211;
+  --glow-rgb:190,150,110;
   --card-a:.78; --bar-a:.9;  --input-a:.92; --scrim-a:.42;
-  --shadow:0 22px 52px rgba(40,52,38,.18);
+  --shadow:0 22px 52px rgba(60,40,20,.18);
 }
 /* ===== /PALETTE ==================================================== */
 
@@ -646,8 +648,8 @@ footer a:hover{color:var(--ochre)}
   /* The phone header is a compact field-guide masthead: orientation and
      utilities share the first row; search gets an unambiguous row of its own. */
   .topbar-in{flex-wrap:wrap;gap:7px;padding:8px max(var(--pad),env(safe-area-inset-right)) 8px max(var(--pad),env(safe-area-inset-left));min-height:0}
-  .tb-brand{font-size:0;flex:none;width:36px}
-  .tb-brand::before{content:"Bats";font-family:var(--display);font-size:1rem;font-weight:500;color:var(--bone)}
+  .tb-brand{font-size:0;flex:none;width:auto}
+  .tb-brand::before{content:"Dinos";font-family:var(--display);font-size:1rem;font-weight:500;color:var(--bone)}
   .pageswitch{flex:1;justify-content:center}
   .ps-opt{padding:6px 8px;font-size:0.6875rem;letter-spacing:.07em}
   /* four destinations have to fit beside the title on a phone */
@@ -733,23 +735,23 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 
 <div class="topbar">
   <div class="topbar-in">
-    <h1 class="tb-title"><a class="tb-brand" href="#top">The branching of <em>bats</em></a></h1>
+    <h1 class="tb-title"><a class="tb-brand" href="#top">The branching of <em>dinosaurs</em></a></h1>
     <nav class="pageswitch" aria-label="Choose a group">
-      <a class="ps-opt" href="index.html" aria-current="page">Bats</a>
+      <a class="ps-opt" href="index.html">Bats</a>
       <a class="ps-opt" href="marine.html">Marine<span class="ps-long"> mammals</span></a>
       <a class="ps-opt" href="birds.html">Birds</a>
-      <a class="ps-opt" href="dinosaurs.html">Dino<span class="ps-long">saurs</span></a>
+      <a class="ps-opt" href="dinosaurs.html" aria-current="page">Dino<span class="ps-long">saurs</span></a>
     </nav>
     <div class="tb-search">
       <span class="tb-ico" aria-hidden="true">
         <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14"/></svg>
       </span>
-      <input type="search" id="lu-search" placeholder="Search any bat…" autocomplete="off"
+      <input type="search" id="lu-search" placeholder="Search any dinosaur…" autocomplete="off"
              role="combobox" aria-expanded="false" aria-controls="lu-results" aria-label="Search species, genus, family or common name">
       <span class="tb-kbd" aria-hidden="true">/</span>
       <div class="tb-results" id="lu-results" role="listbox" hidden></div>
     </div>
-    <button class="random-bat" id="random-bat" type="button" aria-label="Show a random bat" title="Random bat" disabled>
+    <button class="random-bat" id="random-bat" type="button" aria-label="Show a random dinosaur" title="Random dinosaur" disabled>
       <svg viewBox="0 0 16 16" aria-hidden="true">
         <path d="M2 4h2.2c2.6 0 4 8 6.6 8H14M11.5 9.5 14 12l-2.5 2.5M2 12h2.2c1.2 0 2.1-1.7 3-3.5M10.8 4H14m-2.5-2.5L14 4l-2.5 2.5"/>
       </svg>
@@ -768,7 +770,7 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
   </div>
 </div>
 
-<nav class="mobile-workspace" aria-label="Browse the bat guide">
+<nav class="mobile-workspace" aria-label="Browse the dinosaur guide">
   <button type="button" data-workspace-target="tree-section" aria-current="true">Tree</button>
   <button type="button" data-workspace-target="country-map" aria-current="false">Map</button>
 </nav>
@@ -783,11 +785,11 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
   <div class="treebox">
     <div class="tree-tools">
       <div class="switch cm-mode" role="group" aria-label="Country filter">
-        <button type="button" id="cm-mode-dim" aria-label="Keep all bats in the tree" title="Keep all bats in the tree" aria-pressed="true">
+        <button type="button" id="cm-mode-dim" aria-label="Keep all dinosaurs in the tree" title="Keep all dinosaurs in the tree" aria-pressed="true">
           <svg class="mode-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.4 3 14.6 0 18M12 3c-3 3.4-3 14.6 0 18"/></svg>
           <span class="mode-text" aria-hidden="true">All</span>
         </button>
-        <button type="button" id="cm-mode-filter" aria-label="Show only bats from the selected country" title="Show only bats from the selected country" aria-pressed="false">
+        <button type="button" id="cm-mode-filter" aria-label="Show only dinosaurs found in the selected country" title="Show only dinosaurs found in the selected country" aria-pressed="false">
           <svg class="mode-country" id="cm-country-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 4.5A2.5 2.5 0 1 1 12 11a2.5 2.5 0 0 1 0-4.5Z"/></svg>
           <span class="mode-text" aria-hidden="true">Country</span>
         </button>
@@ -796,7 +798,7 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6-6 6 6M6 15l6 6 6-6"/></svg>
       </button>
     </div>
-    <svg id="tree" role="tree" aria-label="Cladogram of the 21 living bat families"
+    <svg id="tree" role="tree" aria-label="Cladogram of 71 dinosaur groups"
          aria-describedby="tree-keys"></svg>
     <p class="sr-only" id="tree-keys">Use the up and down arrow keys to move between rows,
       right arrow to open a branch, left arrow to close it or jump to its parent,
@@ -807,7 +809,7 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 
 <!-- ================= COUNTRY MAP ================= -->
 <section id="country-map" aria-labelledby="map-h">
-  <h2 class="sr-only" id="map-h">Range map</h2>
+  <h2 class="sr-only" id="map-h">Where the fossils were found</h2>
   <div class="cm-pick">
     <label for="cm-country">Country</label>
     <select id="cm-country" disabled>
@@ -841,7 +843,8 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 
 <div class="wrap">
 <footer>
-  Source: <a id="mdd-source" href="https://doi.org/10.5281/zenodo.21654811" target="_blank" rel="noopener noreferrer">Mammal Diversity Database v2.5</a>
+  Source: <a id="mdd-source" href="https://paleobiodb.org" target="_blank" rel="noopener noreferrer">Paleobiology Database</a>
+  · Images: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, via Wikipedia
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
   · <span id="release-status">Loading release…</span>
   <button class="offline-pack" id="offline-pack" type="button">Save images offline</button>
@@ -863,7 +866,7 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function applyTheme(theme, persist = false){
   document.documentElement.dataset.theme = theme;
-  themeMeta.content = theme === 'light' ? '#f3f0e5' : '#0d140f';
+  themeMeta.content = theme === 'light' ? '#f5efe4' : '#15110e';
   const label = `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`;
   themeToggle.setAttribute('aria-label', label);
   themeToggle.title = label;
@@ -892,49 +895,148 @@ workspaceButtons.forEach(button=>button.addEventListener('click', ()=>{
    1. FAMILY DATA
    ========================================================= */
 const F = {
-  Pteropodidae:{common:"Old World fruit bats, flying foxes",genera:46,species:197,range:"Africa, South & SE Asia, Australasia, Pacific islands",
-    desc:"The giants. Big forward-facing eyes, a long snout, claws on the second finger, and — almost uniquely among bats — no laryngeal echolocation; they navigate by sight and smell. Only the cave-roosting Rousettus works around this, clicking with its tongue. They are the great pollinators and seed-dispersers of the Old World tropics."},
-  Rhinopomatidae:{common:"Mouse-tailed bats",genera:1,species:6,range:"North Africa through the Middle East to India",
-    desc:"Named for a long, thin tail left almost entirely free of the membrane, unusual among bats. Desert and dry-country specialists that lay down heavy fat reserves and can go dormant when insects vanish."},
-  Craseonycteridae:{common:"Kitti’s hog-nosed bat, bumblebee bat",genera:1,species:1,range:"Limestone caves in western Thailand and southern Myanmar",
-    desc:"A family of one. Craseonycteris thonglongyai weighs about two grams, roughly the same as a large bumblebee, which makes it a joint contender for smallest mammal in the world. It has a pig-like snout, no tail, and a very small and fragile range."},
-  Megadermatidae:{common:"False vampire bats",genera:6,species:7,range:"Sub-Saharan Africa, South & SE Asia, northern Australia",
-    desc:"Big-eared carnivores with a tall nose-leaf and huge ears joined at the base. The name is a libel — they take no blood, but they do take frogs, lizards, birds, rodents and other bats, dropping onto prey from a perch and carrying it off to a feeding roost."},
-  Rhinolophidae:{common:"Horseshoe bats",genera:1,species:118,range:"Europe, Africa, Asia, Australasia",
-    desc:"Instantly known by the horseshoe-shaped flap of skin around the nostrils, which shapes the beam of sound they emit through the nose. They are the great specialists of echolocation: they hold one long constant frequency and correct for the Doppler shift of their own flight, so that a fluttering insect wing stands out as a rhythm against a steady tone."},
-  Hipposideridae:{common:"Old World leaf-nosed bats",genera:7,species:94,range:"Africa, southern Asia to Australia",
-    desc:"The horseshoe bats' sister group, with a simpler leaf that lacks the pointed upper lance. Mostly cave-dwellers, often in enormous colonies, and mostly hunters of beetles and moths in cluttered forest."},
-  Rhinonycteridae:{common:"Trident bats",genera:4,species:9,range:"Africa, Arabia, Australia",
-    desc:"Split off from the leaf-nosed bats in 2014 on genetic evidence. Named for the three-pronged upper part of the nose-leaf. Includes the orange leaf-nosed bat of Australia, which lives so close to its heat and water limits that it is confined to a handful of deep caves."},
-
-  Emballonuridae:{common:"Sheath-tailed and sac-winged bats",genera:14,species:55,range:"Tropics worldwide",
-    desc:"The tail pierces the membrane and slides in and out of a sheath as the legs move. Many roost in the open — on tree trunks, in rock crevices, under bridges — rather than deep in caves. Males of several species have a wing pouch that they fill with a fermented perfume and fan at females while singing."},
-  Nycteridae:{common:"Slit-faced bats",genera:1,species:14,range:"Africa, Arabia, Malay Peninsula and Java",
-    desc:"A deep groove runs down the middle of the face from nose to forehead, hiding a complex nose-leaf inside it. The tail ends in a T-shaped tip of cartilage, found nowhere else in mammals. They glean prey off leaves and the ground rather than catching it in flight."},
-  Myzopodidae:{common:"Old World sucker-footed bats",genera:1,species:2,range:"Madagascar only",
-    desc:"Two species on one island, with no close living relatives anywhere — an ancient lineage that once ranged across Africa. Pads on the wrists and ankles stick to smooth surfaces, letting them roost head-up inside the still-furled leaf of a traveller’s palm. Where exactly they attach to the rest of the tree is still argued over."},
-  Mystacinidae:{common:"New Zealand short-tailed bats",genera:1,species:2,range:"New Zealand",
-    desc:"One of only two land mammals native to New Zealand. They fold their wings into leathery sheaths and scramble about on the forest floor and up tree trunks, hunting insects in the leaf litter and drinking nectar from a parasitic ground flower that has come to depend on them. A second species has not been recorded since the 1960s."},
-  Thyropteridae:{common:"Disk-winged bats",genera:1,species:5,range:"Southern Mexico to south-eastern Brazil",
-    desc:"Suction cups on the thumbs and ankles, strong enough to hold the whole animal on one disk. They roost head-up in the young furled leaf of a Heliconia, which unrolls within a day, so the group moves house constantly and calls to keep itself together."},
-  Furipteridae:{common:"Smoky bats",genera:2,species:2,range:"Costa Rica to Peru, Brazil and Trinidad",
-    desc:"Tiny, grey and rarely seen. The thumb is almost entirely swallowed by the wing membrane and the face is oddly pug-nosed. They appear to eat moths almost exclusively."},
-  Noctilionidae:{common:"Bulldog or fishing bats",genera:1,species:2,range:"Mexico and the Caribbean to northern Argentina",
-    desc:"Loose-jowled faces and enormous feet. The greater bulldog bat trawls calm water with hooked claws, detecting the ripples a fish makes when it breaks the surface, then gaffs it and stores it in cheek pouches while it keeps flying."},
-  Mormoopidae:{common:"Mustached and ghost-faced bats",genera:2,species:18,range:"Southern USA to Brazil, and the Caribbean",
-    desc:"Stiff bristles fringe the lips in a moustache; in ghost-faced bats the ears wrap round to meet across the forehead, hiding the eyes. They form colonies of hundreds of thousands in hot, humid caves and are pure insect hunters."},
-  Phyllostomidae:{common:"New World leaf-nosed bats",genera:61,species:231,range:"South-western USA to northern Argentina",
-    desc:"The most ecologically varied family of mammals on Earth, split into eleven subfamilies. Within one family you find insect gleaners, fruit eaters, long-tongued nectar feeders that pollinate cacti and agave, carnivores that hunt frogs by their mating calls, and the three vampires. The spear-shaped nose-leaf is the shared badge."},
-  Natalidae:{common:"Funnel-eared bats",genera:3,species:11,range:"Northern Mexico and the Caribbean to Brazil",
-    desc:"Delicate, long-legged and long-tailed, with funnel-shaped ears and a curious gland on the muzzle of adult males. They fly slowly and with great manoeuvrability deep inside hot caves."},
-  Molossidae:{common:"Free-tailed bats",genera:22,species:133,range:"Warm regions worldwide",
-    desc:"Built for speed: long narrow wings, a thick tail projecting well past the membrane, leathery wrinkled faces. Mexican free-tailed bats climb to three kilometres and have been clocked faster in level flight than any other bird or bat, and they gather in the largest warm-blooded aggregations known — millions in a single cave."},
-  Miniopteridae:{common:"Bent-winged bats",genera:1,species:41,range:"Southern Europe, Africa, Asia, Australia, Pacific",
-    desc:"The last joint of the third finger is more than twice the length of the one before it, so the wingtip folds back on itself at rest. Long-distance travellers between summer nursery caves and winter hibernacula. Only recognised as a family of their own in the 2000s."},
-  Cistugidae:{common:"Wing-gland bats",genera:1,species:2,range:"South Africa and Namibia",
-    desc:"Two small species split from the vesper bats in 2010 after genetics showed they had been separate for tens of millions of years. Named for glands scattered along the wing membrane whose purpose is still unknown. Confined to fynbos and Karoo scrub."},
-  Vespertilionidae:{common:"Vesper bats, evening bats",genera:61,species:556,range:"Every continent except Antarctica",
-    desc:"A third of all bat species, and the family most people in temperate countries mean when they say 'bat'. Plain-faced, no nose-leaf, insect-eating almost throughout. It includes Myotis, the second-largest genus of mammals, the pipistrelles, the serotines, and the tree-roosting migratory hoary and red bats."}
+  Dinosauria:{common:"Dinosaurs of uncertain place",genera:1,species:2,range:"Middle Triassic · Tanzania",
+    desc:"Nyasasaurus, from the Middle Triassic of Tanzania, may be the oldest dinosaur known or only a close relative. It is known from an upper arm bone and a few vertebrae, too little to place it on either side of the first split."},
+  Herrerasauridae:{common:"Herrerasaurids",genera:4,species:4,range:"Late Triassic · Brazil, Argentina",
+    desc:"Some of the oldest well-known dinosaurs, from rocks about 230 million years old in Argentina and Brazil. Herrerasaurus was a two-legged predator up to about 6 m long. Whether herrerasaurids are early theropods or sit just outside Saurischia is still argued."},
+  Saurischia:{common:"Early saurischians",genera:8,species:8,range:"Late Triassic · United States, India, Argentina and 2 more",
+    desc:"Late Triassic dinosaurs that PBDB places in Saurischia without a closer home: small, lightly built animals such as Eodromaeus and Tawa. They sit near the split between the theropod and sauropodomorph lines, and their exact placement often changes with new analyses."},
+  Silesauridae:{common:"Silesaurids",genera:12,species:12,range:"Middle Triassic to Late Triassic · United States, Brazil, Tanzania and 4 more",
+    desc:"Slender, four-legged Triassic animals with a beak-like tip to the lower jaw. They were long treated as the closest relatives of dinosaurs. Some recent studies place them at the base of Ornithischia instead, which is where PBDB puts them; that would make them the earliest ornithischians."},
+  Ornithischia:{common:"Early ornithischians",genera:8,species:9,range:"Late Triassic to Late Jurassic · China, Chile, South Africa and 3 more",
+    desc:"Early members of the 'bird-hipped' line that PBDB places in no smaller group. They include Pisanosaurus and Eocursor from the Triassic and the puzzling Chilesaurus, a plant-eater that some studies place as a theropod."},
+  Heterodontosauridae:{common:"Heterodontosaurids",genera:8,species:9,range:"Early Jurassic to Early Cretaceous · South Africa, Lesotho, United Kingdom and 3 more",
+    desc:"Small early ornithischians with three kinds of teeth, including canine-like tusks. Tianyulong from China had long filaments along its back, which suggests that some kind of body covering reached back to the base of the ornithischian tree."},
+  Thyreophora:{common:"Early armoured dinosaurs",genera:7,species:7,range:"Early Jurassic to Early Cretaceous · Germany, Argentina, Venezuela and 5 more",
+    desc:"The first armoured ornithischians, carrying rows of bony plates in the skin before the split into stegosaurs and ankylosaurs. Scelidosaurus, from the Early Jurassic of England, is the best-known, with complete skeletons preserving its armour."},
+  Stegosauria:{common:"Stegosaurs",genera:21,species:28,range:"Middle Jurassic to Early Cretaceous · China, United States, Morocco and 8 more",
+    desc:"Four-legged plant-eaters with two rows of plates or spikes along the back and a spiked tail, the thagomizer. The plates were probably for display. Stegosaurus had a small skull but not the tiny brain of legend, and there was never a 'second brain' in its hips."},
+  Ankylosauria:{common:"Early ankylosaurs",genera:9,species:9,range:"Middle Jurassic to Late Cretaceous · United Kingdom, Antarctica, Portugal and 5 more",
+    desc:"Armoured dinosaurs that PBDB does not place in either of the two main families. They include the early Spicomellus, with spikes fused directly to its ribs, and Stegouros from Chile, whose flattened, bladed tail looks like a Mesoamerican war club."},
+  Nodosauridae:{common:"Nodosaurs",genera:30,species:35,range:"Late Jurassic to Late Cretaceous · United States, United Kingdom, Canada and 8 more",
+    desc:"Ankylosaurs without a tail club, some with large spikes on the shoulders. Borealopelta, from Alberta, is preserved in three dimensions with its armour and skin in place; pigments in it show the animal was reddish-brown and countershaded."},
+  Ankylosauridae:{common:"Ankylosaurids",genera:30,species:36,range:"Early Cretaceous to Late Cretaceous · Mongolia, China, United States and 2 more",
+    desc:"Heavily armoured, low-slung plant-eaters, most with a bony club at the end of the tail, driven by stiffened tail vertebrae. Healed injuries on other ankylosaurs suggest they used the club on each other. Most come from the Late Cretaceous of Asia and western North America."},
+  Neornithischia:{common:"Early neornithischians",genera:10,species:10,range:"Early Jurassic to Early Cretaceous · China, United States, Russia and 1 more",
+    desc:"Small, two-legged plant-eaters near the base of the group that later produced the ornithopods, pachycephalosaurs and ceratopsians. Kulindadromeus, from Siberia, preserves scales on the tail and filaments over much of the body."},
+  Thescelosauridae:{common:"Thescelosaurids",genera:14,species:17,range:"Early Cretaceous to Late Cretaceous · United States, Canada, China and 2 more",
+    desc:"Small to medium two-legged plant-eaters of the Cretaceous. Oryctodromeus was found in a burrow with two juveniles, the first good evidence of burrowing and parental care in dinosaurs. Thescelosaurus lived until the end of the Cretaceous."},
+  Ornithopoda:{common:"Early ornithopods",genera:5,species:5,range:"Middle Jurassic to Late Cretaceous · United Kingdom, Czech Republic, Russia and 1 more",
+    desc:"Ornithopods that PBDB places no deeper. They include Hypsilophodon, a small, fast plant-eater from the Isle of Wight that was long wrongly shown living in trees."},
+  Elasmaria:{common:"Elasmarians",genera:21,species:21,range:"Early Cretaceous to Late Cretaceous · Argentina, Australia, Antarctica and 2 more",
+    desc:"Small, fast ornithopods from the southern continents, especially Argentina, Australia and Antarctica. Leaellynasaura lived within the Antarctic Circle, where it had to cope with long months of polar dark. PBDB also includes the much larger Muttaburrasaurus here."},
+  Rhabdodontomorpha:{common:"Rhabdodontids and Tenontosaurus",genera:13,species:16,range:"Early Cretaceous to Late Cretaceous · United States, France, Romania and 4 more",
+    desc:"Mid-sized ornithopods. The rhabdodontids lived on the islands of Late Cretaceous Europe, and some, such as Zalmoxes in Romania, were dwarfed there. Tenontosaurus, from North America, is often found with teeth of Deinonychus."},
+  Dryosauridae:{common:"Dryosaurids",genera:5,species:6,range:"Late Jurassic to Early Cretaceous · United States, Tanzania, Niger and 2 more",
+    desc:"Lightly built, fast-running ornithopods of the Late Jurassic and Early Cretaceous. Dysalotosaurus, from Tanzania, is known from bonebeds containing hundreds of individuals of all ages."},
+  Iguanodontia:{common:"Iguanodonts",genera:21,species:24,range:"Middle Jurassic to Late Cretaceous · United Kingdom, United States, Spain and 9 more",
+    desc:"Large plant-eaters that could walk on two legs or four, many with a conical thumb spike. Iguanodon was one of the first dinosaurs named, in 1825, and the Bernissart mine in Belgium produced dozens of complete skeletons. Ouranosaurus had a tall sail or hump on its back."},
+  Styracosterna:{common:"Advanced iguanodonts",genera:16,species:16,range:"Late Jurassic to Late Cretaceous · United Kingdom, Spain, United States and 3 more",
+    desc:"Iguanodonts that PBDB places close to the hadrosaur line but in no named family: mostly Early Cretaceous plant-eaters from Europe, North America and Asia."},
+  Hadrosauroidea:{common:"Early hadrosauroids",genera:40,species:41,range:"Early Cretaceous to Late Cretaceous · China, United States, Spain and 11 more",
+    desc:"The forerunners of the duck-billed dinosaurs. These plant-eaters already had batteries of stacked teeth, but most lacked the broad bill and head crests of the later hadrosaurids. Most come from the Cretaceous of Asia."},
+  Hadrosauridae:{common:"Duck-billed dinosaurs",genera:35,species:41,range:"Late Cretaceous · United States, Canada, Argentina and 5 more",
+    desc:"Hadrosaurids without hollow crests: Edmontosaurus, Maiasaura, Saurolophus and their relatives. Their dental batteries held hundreds of teeth for grinding plants. Maiasaura ('good mother lizard') nested in colonies and cared for its young."},
+  Lambeosaurinae:{common:"Crested duck-bills",genera:27,species:33,range:"Late Cretaceous · Canada, United States, Spain and 6 more",
+    desc:"Hadrosaurids with hollow head crests containing the nasal passages. Parasaurolophus has a long backswept tube, Corythosaurus a helmet. The crests probably worked as resonators for low calls and as visual signals."},
+  Pachycephalosauria:{common:"Dome-headed dinosaurs",genera:17,species:22,range:"Early Cretaceous to Late Cretaceous · Canada, United States, Mongolia and 1 more",
+    desc:"Two-legged plant-eaters with thick skull domes, often ringed with knobs and spikes. Whether they butted heads or bodies is debated, and a few 'species' may be growth stages of others. Pachycephalosaurus had a dome up to 25 cm thick."},
+  Ceratopsia:{common:"Early ceratopsians",genera:12,species:20,range:"Late Jurassic to Late Cretaceous · China, Mongolia, Hungary and 6 more",
+    desc:"The first horned-dinosaur line, before real horns: small plant-eaters with a parrot-like beak and a new bone at the tip of the upper jaw. Psittacosaurus, from Asia, is known from hundreds of specimens, one with a pigmented, countershaded body and bristles on the tail."},
+  Neoceratopsia:{common:"Early neoceratopsians",genera:12,species:13,range:"Early Cretaceous to Late Cretaceous · China, Mongolia, United States and 2 more",
+    desc:"Ceratopsians with the beginnings of a neck frill, in no named family. Most are small plant-eaters from the Early Cretaceous of Asia; Zuniceratops, from New Mexico, already had brow horns."},
+  Leptoceratopsidae:{common:"Leptoceratopsids",genera:13,species:13,range:"Early Cretaceous to Late Cretaceous · Canada, United States, China and 2 more",
+    desc:"Small, stocky horned dinosaurs with a short frill and no real horns, living alongside their giant relatives until the end of the Cretaceous. Their strong jaws had a shearing bite."},
+  Protoceratopsidae:{common:"Protoceratopsids",genera:3,species:4,range:"Late Cretaceous · Mongolia, China",
+    desc:"Sheep-sized ceratopsians of the Mongolian deserts. A Protoceratops was found locked in combat with a Velociraptor, both apparently buried alive by a collapsing dune. Protoceratops skulls may have inspired the griffin legends."},
+  Centrosaurinae:{common:"Centrosaurines",genera:24,species:26,range:"Late Cretaceous · United States, Canada, China and 1 more",
+    desc:"Horned dinosaurs usually with a large nose horn, short brow horns and elaborate spikes on the frill: Centrosaurus, Styracosaurus, Pachyrhinosaurus. Several are known from bonebeds with hundreds of animals, apparently herds killed together. PBDB's few ceratopsids it places in no subfamily are listed here too."},
+  Chasmosaurinae:{common:"Chasmosaurines",genera:20,species:26,range:"Late Cretaceous · United States, Canada, Mexico",
+    desc:"Horned dinosaurs usually with long brow horns and a long frill: Triceratops, Torosaurus, Chasmosaurus, Kosmoceratops with fifteen horns. Triceratops lived to the very end of the Cretaceous and is one of the most common dinosaurs in the Hell Creek Formation."},
+  Sauropodomorpha:{common:"Early sauropodomorphs",genera:22,species:23,range:"Late Triassic to Early Jurassic · Brazil, United Kingdom, Argentina and 7 more",
+    desc:"The first members of the long-necked line, from the Late Triassic. They were small, two-legged, and some, like Buriolestes and Eoraptor, still had teeth suited to eating animals as well as plants."},
+  Plateosauridae:{common:"Plateosaurids",genera:9,species:15,range:"Late Triassic to Early Jurassic · Germany, France, China and 4 more",
+    desc:"Plateosaurus, from the Late Triassic of central Europe, is one of the best-known dinosaurs, from more than a hundred skeletons, many from the mud-traps of Trossingen in Germany. It walked on two legs and grew up to about 10 m."},
+  Massospondylidae:{common:"Massospondylids",genera:10,species:14,range:"Late Triassic to Middle Jurassic · Argentina, China, South Africa and 5 more",
+    desc:"Early Jurassic sauropodomorphs. Nests of Massospondylus in South Africa hold some of the oldest known dinosaur embryos, about 190 million years old. Glacialisaurus is from Antarctica."},
+  Massopoda:{common:"Sauropodiform grade",genera:25,species:29,range:"Late Triassic to Early Jurassic · China, South Africa, Argentina and 6 more",
+    desc:"Sauropodomorphs close to the origin of sauropods, from the Late Triassic and Early Jurassic, placed here where PBDB gives no family. Some, such as Ledumahadi from South Africa, already weighed around 12 tonnes and walked on four legs."},
+  Sauropoda:{common:"Early sauropods",genera:41,species:42,range:"Late Triassic to Early Cretaceous · China, Argentina, United Kingdom and 14 more",
+    desc:"Sauropods outside the major families: the Late Triassic and Jurassic animals in which the four-legged, long-necked giant body plan was established, such as Shunosaurus, with a tail club, and Cetiosaurus, the first sauropod named."},
+  Mamenchisauridae:{common:"Mamenchisaurids",genera:22,species:36,range:"Early Jurassic to Early Cretaceous · China, Thailand, Russia and 1 more",
+    desc:"Jurassic sauropods from East Asia with some of the longest necks relative to body size of any animal, made of up to 19 vertebrae. The neck of Mamenchisaurus sinocanadorum may have reached 15 m."},
+  Turiasauria:{common:"Turiasaurs",genera:8,species:8,range:"Middle Jurassic to Early Cretaceous · Portugal, Spain, United States and 3 more",
+    desc:"A group of sauropods from the Jurassic and Early Cretaceous of Europe, North America and Africa, with heart-shaped teeth. Turiasaurus, from Spain, was one of the largest European dinosaurs."},
+  Diplodocoidea:{common:"Early diplodocoids",genera:4,species:6,range:"Middle Jurassic to Late Jurassic · United States, United Kingdom, China",
+    desc:"Diplodocoids PBDB places in no named family. Lingwulong, from China, showed that the group had reached Asia by the Middle Jurassic, earlier than was thought."},
+  Rebbachisauridae:{common:"Rebbachisaurids",genera:22,species:22,range:"Late Jurassic to Late Cretaceous · Argentina, Brazil, Spain and 6 more",
+    desc:"Diplodocoids mostly of the Cretaceous southern continents. Nigersaurus had a broad, shovel-like muzzle with more than 500 teeth replaced about every two weeks, and grazed close to the ground."},
+  Dicraeosauridae:{common:"Dicraeosaurids",genera:11,species:12,range:"Late Jurassic to Early Cretaceous · Argentina, United States, Tanzania",
+    desc:"Short-necked diplodocoids. Amargasaurus and Bajadasaurus had two rows of tall spines along the neck, possibly supporting sails or horny sheaths."},
+  Diplodocidae:{common:"Diplodocids",genera:10,species:16,range:"Late Jurassic to Early Cretaceous · United States, Portugal, Argentina and 1 more",
+    desc:"Long, whip-tailed sauropods of the Late Jurassic: Diplodocus, Apatosaurus, Brontosaurus, Barosaurus. Brontosaurus was sunk into Apatosaurus in 1903 and reinstated in 2015. Casts of the Carnegie Diplodocus stand in museums around the world."},
+  Macronaria:{common:"Early macronarians",genera:18,species:23,range:"Early Jurassic to Early Cretaceous · China, United States, Portugal and 8 more",
+    desc:"Sauropods with large nasal openings, in no named family, including Camarasaurus, the most common sauropod of the North American Morrison Formation, and Europasaurus, a dwarf sauropod from a Jurassic island in Germany."},
+  Brachiosauridae:{common:"Brachiosaurids",genera:10,species:11,range:"Late Jurassic to Late Cretaceous · United States, Spain, Tanzania and 2 more",
+    desc:"Sauropods with forelimbs longer than hind limbs, holding the neck high. Giraffatitan, from Tanzania, stands mounted in Berlin at about 13 m tall. Brachiosaurus itself is known from far less material."},
+  Somphospondyli:{common:"Somphospondylans",genera:29,species:29,range:"Late Jurassic to Late Cretaceous · China, Australia, United States and 9 more",
+    desc:"Advanced macronarian sauropods close to the titanosaurs, placed here where PBDB gives no family, among them Sauroposeidon and the Australian Diamantinasaurus and Savannasaurus."},
+  Euhelopodidae:{common:"Euhelopodids",genera:15,species:15,range:"Early Cretaceous to Late Cretaceous · China, Thailand, Mongolia and 2 more",
+    desc:"Cretaceous sauropods from East Asia, close relatives of the titanosaurs, several with very long necks. Euhelopus was the first sauropod described from China."},
+  Titanosauria:{common:"Titanosaurs",genera:49,species:49,range:"Early Cretaceous to Late Cretaceous · Argentina, Pakistan, China and 11 more",
+    desc:"The last sauropods, found on every continent including Antarctica, and among the largest land animals ever: Argentinosaurus may have weighed 70 tonnes. Many laid eggs in huge nesting grounds, such as Auca Mahuevo in Argentina. Also here are titanosaurs PBDB places in no smaller group, including several genera from Pakistan named from fragmentary material."},
+  Colossosauria:{common:"Colossosaurs",genera:23,species:23,range:"Early Cretaceous to Late Cretaceous · Argentina, Brazil, Morocco and 1 more",
+    desc:"Titanosaurs including some of the largest animals ever to walk on land, such as Futalognkosaurus, Puertasaurus and Notocolossus, most from Argentina and Brazil."},
+  Lithostrotia:{common:"Lithostrotians",genera:23,species:24,range:"Early Cretaceous to Late Cretaceous · Argentina, Brazil, Uruguay and 8 more",
+    desc:"Titanosaurs, many of them with bony armour plates (osteoderms) in the skin, a rare feature among sauropods."},
+  Saltasauroidea:{common:"Saltasaurids",genera:19,species:19,range:"Early Cretaceous to Late Cretaceous · Argentina, Brazil, Spain and 10 more",
+    desc:"Small to mid-sized titanosaurs of the Late Cretaceous. Saltasaurus, from Argentina, was the first sauropod found with armour. Alamosaurus was the last sauropod in North America."},
+  Theropoda:{common:"Early theropods",genera:15,species:15,range:"Late Triassic to Late Cretaceous · Argentina, United States, Mongolia and 7 more",
+    desc:"Theropods placed no deeper than the major clades, including Dilophosaurus from the Early Jurassic of Arizona. It had two thin crests on its head, but not the neck frill or the venom shown in films. Protoavis, a disputed 'Triassic bird', is also here."},
+  Coelophysoidea:{common:"Coelophysoids",genera:15,species:16,range:"Late Triassic to Early Jurassic · United States, United Kingdom, Argentina and 5 more",
+    desc:"Slender, early predators of the Late Triassic and Early Jurassic. At Ghost Ranch in New Mexico, a single bonebed holds hundreds of Coelophysis skeletons. It was the second dinosaur taken into space, as a skull on the Space Shuttle in 1998."},
+  Ceratosauria:{common:"Ceratosaurs",genera:7,species:7,range:"Early Jurassic to Late Cretaceous · Morocco, United States, Portugal and 3 more",
+    desc:"Predators outside the abelisaurid and noasaurid families. Ceratosaurus, from the Morrison Formation, had a blade-like horn on its snout and a row of small bony plates down its back."},
+  Noasauridae:{common:"Noasaurids",genera:13,species:13,range:"Late Jurassic to Late Cretaceous · Argentina, Brazil, Egypt and 6 more",
+    desc:"Small, slender ceratosaurs. Limusaurus lost its teeth as it grew, from a toothed juvenile to a beaked, probably plant-eating adult. Masiakasaurus, from Madagascar, had forward-pointing front teeth."},
+  Abelisauridae:{common:"Abelisaurids",genera:36,species:36,range:"Early Jurassic to Late Cretaceous · Argentina, India, France and 4 more",
+    desc:"The top predators of the southern continents in the Late Cretaceous: short, deep skulls, and forelimbs even more reduced than a tyrannosaur's. Carnotaurus had bull-like horns; Majungasaurus, from Madagascar, left tooth marks on bones of its own kind."},
+  Tetanurae:{common:"Early tetanurans",genera:12,species:12,range:"Early Jurassic to Late Cretaceous · China, United Kingdom, Egypt and 4 more",
+    desc:"Tetanurans PBDB places in no smaller group, including Cryolophosaurus, the first carnivorous dinosaur named from Antarctica, which had a crest across its head like a comb."},
+  Megalosauroidea:{common:"Megalosauroids",genera:16,species:19,range:"Early Jurassic to Early Cretaceous · United Kingdom, China, France and 5 more",
+    desc:"Large Jurassic predators. Megalosaurus, from Oxfordshire, was the first dinosaur to be scientifically named, in 1824. Torvosaurus was among the largest Jurassic predators, and piatnitzkysaurids are here too."},
+  Spinosauridae:{common:"Spinosaurids",genera:14,species:15,range:"Early Cretaceous to Late Cretaceous · Spain, Brazil, United Kingdom and 7 more",
+    desc:"Theropods with long, crocodile-like snouts and conical teeth for catching fish. Spinosaurus had a sail on its back, and whether it hunted in open water or waded in the shallows like a heron is still debated. Baryonyx was found with fish scales in its stomach."},
+  Allosauroidea:{common:"Allosauroids",genera:12,species:21,range:"Early Jurassic to Late Cretaceous · China, United States, Portugal and 6 more",
+    desc:"Large Jurassic predators: Allosaurus, the commonest predator of the Morrison Formation, and the metriacanthosaurids of Asia, such as Sinraptor and Yangchuanosaurus. Carcharodontosaurians are drawn as their own group."},
+  Carcharodontosauria:{common:"Carcharodontosaurs",genera:22,species:24,range:"Late Jurassic to Late Cretaceous · Argentina, China, Niger and 12 more",
+    desc:"The shark-toothed predators: Giganotosaurus, Carcharodontosaurus and Mapusaurus rivalled Tyrannosaurus in size. Acrocanthosaurus had tall spines along its back. The neovenatorids are included here as PBDB has them."},
+  Megaraptora:{common:"Megaraptorans",genera:12,species:12,range:"Early Cretaceous to Late Cretaceous · Argentina, Thailand, Australia and 1 more",
+    desc:"Mid-to-large predators from South America, Australia and Asia with long arms and a huge sickle-shaped claw on the first finger. Whether they are allosauroids or early relatives of tyrannosaurs is one of the open questions in theropod evolution."},
+  Coelurosauria:{common:"Early coelurosaurs",genera:23,species:24,range:"Middle Jurassic to Late Cretaceous · China, United States, Brazil and 7 more",
+    desc:"Small coelurosaurs PBDB places in no deeper group, including Compsognathus, long the smallest known dinosaur, and Sinosauropteryx, the first non-bird dinosaur found with feathers, which also shows a striped tail."},
+  Tyrannosauroidea:{common:"Early tyrannosauroids",genera:24,species:25,range:"Middle Jurassic to Late Cretaceous · China, United States, United Kingdom and 5 more",
+    desc:"Tyrannosaur relatives outside Tyrannosauridae. Most were small or mid-sized, like the crested Guanlong, but Yutyrannus was about 9 m long and covered in long filaments. The proceratosaurids are included here. Recent work treats Nanotyrannus as a small tyrannosauroid of its own rather than a young Tyrannosaurus, and PBDB places it here."},
+  Tyrannosauridae:{common:"Tyrannosaurids",genera:17,species:22,range:"Late Cretaceous · United States, Canada, China and 4 more",
+    desc:"The giant predators of the last 20 million years of the Cretaceous in Asia and North America: Tyrannosaurus, Tarbosaurus, Albertosaurus, Gorgosaurus, Daspletosaurus. Tyrannosaurus had the strongest bite estimated for any land animal, strong enough to crush bone."},
+  Ornithomimosauria:{common:"Ostrich-mimic dinosaurs",genera:28,species:31,range:"Middle Jurassic to Late Cretaceous · Mongolia, China, United States and 11 more",
+    desc:"Long-legged, toothless (in most) theropods built for running. Deinocheirus was known for 50 years only from its 2.4 m arms, until complete skeletons showed a humpbacked, duck-billed animal about 11 m long. PBDB includes the ornithomimids and deinocheirids."},
+  Alvarezsauria:{common:"Alvarezsaurs",genera:27,species:27,range:"Middle Jurassic to Late Cretaceous · Mongolia, China, Argentina and 4 more",
+    desc:"Small, long-legged theropods whose arms were reduced to a single large claw, probably for breaking into insect nests. Their earliest known members, such as Haplocheirus, still had three-fingered hands."},
+  Therizinosauria:{common:"Therizinosaurs",genera:20,species:22,range:"Early Jurassic to Late Cretaceous · China, Mongolia, United States and 1 more",
+    desc:"Pot-bellied, long-necked theropods that turned to eating plants. Therizinosaurus had hand claws up to about 50 cm long, the longest of any animal known. Beipiaosaurus preserves a coat of feathers."},
+  Oviraptorosauria:{common:"Early oviraptorosaurs",genera:8,species:10,range:"Early Cretaceous to Late Cretaceous · China, Mongolia",
+    desc:"Early members of the oviraptorosaur line, placed here where PBDB gives no family. Caudipteryx had true pennaceous feathers on its arms and tail but could not fly."},
+  Caenagnathidae:{common:"Caenagnathids",genera:15,species:17,range:"Early Cretaceous to Late Cretaceous · United States, Canada, China and 2 more",
+    desc:"Beaked, toothless oviraptorosaurs of North America and Asia. Anzu wyliei, nicknamed 'the chicken from hell', had a tall crest. Gigantoraptor, from Inner Mongolia, weighed about two tonnes."},
+  Oviraptoridae:{common:"Oviraptorids",genera:21,species:22,range:"Early Cretaceous to Late Cretaceous · China, Mongolia",
+    desc:"Short-skulled, beaked oviraptorosaurs of the Late Cretaceous of Asia. Oviraptor, 'egg thief', was named for being found on eggs, but the eggs turned out to be its own. Citipati skeletons have been found sitting on their nests in a brooding posture."},
+  Paraves:{common:"Early paravians",genera:18,species:18,range:"Middle Jurassic to Late Cretaceous · China, Argentina, Uzbekistan and 1 more",
+    desc:"Paravians outside the dromaeosaurid and troodontid families. They include the scansoriopterygids Yi and Ambopteryx, which had membranous, bat-like wings held out by a long rod-like bone at the wrist, and Caihong, which had iridescent feathers."},
+  Troodontidae:{common:"Troodontids",genera:35,species:37,range:"Middle Jurassic to Late Cretaceous · China, Mongolia, United States and 6 more",
+    desc:"Small, big-brained, large-eyed theropods, among the closest relatives of birds. Mei long was found in a sleeping posture like a bird's, head tucked under its arm. Anchiornis, placed here by PBDB, is the first dinosaur whose whole plumage colour was reconstructed from fossil pigment."},
+  Dromaeosauridae:{common:"Raptors",genera:53,species:61,range:"Late Jurassic to Late Cretaceous · China, United States, Mongolia and 14 more",
+    desc:"Feathered predators with an enlarged, sickle-shaped claw on the second toe: Velociraptor, Deinonychus, Utahraptor. Velociraptor was about the size of a turkey, much smaller than in films. Microraptor had long feathers on all four limbs and could glide or fly."},
 };
 
 /* =========================================================
@@ -943,30 +1045,32 @@ const F = {
 const leaf = n => ({name:n, leaf:true});
 const clade = (...c) => ({children:c});
 
-const TREE = {name:"Chiroptera", rank:"Order", children:[
-  {name:"Yinpterochiroptera", rank:"Suborder", children:[
-    {name:"Pteropodoidea", rank:"Superfamily", children:[ leaf("Pteropodidae") ]},
-    {name:"Rhinolophoidea", rank:"Superfamily", children:[
-      clade( leaf("Megadermatidae"), clade( leaf("Rhinopomatidae"), leaf("Craseonycteridae") ) ),
-      clade( leaf("Rhinolophidae"), clade( leaf("Hipposideridae"), leaf("Rhinonycteridae") ) )
-    ]}
+const TREE = {name:"Dinosauria", rank:"Clade", children:[
+  {name:"Early dinosaurs", rank:"Unplaced", children:[
+    {name:"Dinosauriformes", rank:"Clade", children:[ leaf("Dinosauria") ]},
+    {name:"Herrerasaurs and early saurischians", rank:"Grade", children:[ leaf("Herrerasauridae"), leaf("Saurischia") ]},
   ]},
-  {name:"Yangochiroptera", rank:"Suborder", children:[
-    {name:"Emballonuroidea", rank:"Superfamily", children:[ leaf("Nycteridae"), leaf("Emballonuridae"), leaf("Myzopodidae") ]},
-    {name:"Noctilionoidea", rank:"Superfamily", children:[
-      clade( leaf("Mystacinidae"),
-        clade( leaf("Thyropteridae"),
-          clade( leaf("Furipteridae"),
-            clade( leaf("Noctilionidae"),
-              clade( leaf("Mormoopidae"), leaf("Phyllostomidae") )))))
-    ]},
-    {name:"Vespertilionoidea", rank:"Superfamily", children:[
-      leaf("Natalidae"),
-      clade( leaf("Molossidae"),
-        clade( leaf("Miniopteridae"),
-          clade( leaf("Cistugidae"), leaf("Vespertilionidae") )))
-    ]}
-  ]}
+  {name:"Ornithischia", rank:"Order", children:[
+    {name:"Early ornithischians", rank:"Grade", children:[ leaf("Silesauridae"), leaf("Ornithischia"), leaf("Heterodontosauridae") ]},
+    {name:"Thyreophora", rank:"Clade", children:[ leaf("Thyreophora"), leaf("Stegosauria"), leaf("Ankylosauria"), leaf("Nodosauridae"), leaf("Ankylosauridae") ]},
+    {name:"Neornithischia", rank:"Clade", children:[ leaf("Neornithischia"), leaf("Thescelosauridae") ]},
+    {name:"Ornithopoda", rank:"Suborder", children:[ leaf("Ornithopoda"), leaf("Elasmaria"), leaf("Rhabdodontomorpha"), leaf("Dryosauridae"), leaf("Iguanodontia"), leaf("Styracosterna"), leaf("Hadrosauroidea"), leaf("Hadrosauridae"), leaf("Lambeosaurinae") ]},
+    {name:"Marginocephalia", rank:"Clade", children:[ leaf("Pachycephalosauria"), leaf("Ceratopsia"), leaf("Neoceratopsia"), leaf("Leptoceratopsidae"), leaf("Protoceratopsidae"), leaf("Centrosaurinae"), leaf("Chasmosaurinae") ]},
+  ]},
+  {name:"Sauropodomorpha", rank:"Clade", children:[
+    {name:"Early sauropodomorphs", rank:"Grade", children:[ leaf("Sauropodomorpha"), leaf("Plateosauridae"), leaf("Massospondylidae"), leaf("Massopoda") ]},
+    {name:"Early sauropods", rank:"Grade", children:[ leaf("Sauropoda"), leaf("Mamenchisauridae"), leaf("Turiasauria") ]},
+    {name:"Diplodocoids", rank:"Superfamily", children:[ leaf("Diplodocoidea"), leaf("Rebbachisauridae"), leaf("Dicraeosauridae"), leaf("Diplodocidae") ]},
+    {name:"Macronaria", rank:"Clade", children:[ leaf("Macronaria"), leaf("Brachiosauridae"), leaf("Somphospondyli"), leaf("Euhelopodidae") ]},
+    {name:"Titanosaurs", rank:"Clade", children:[ leaf("Titanosauria"), leaf("Colossosauria"), leaf("Lithostrotia"), leaf("Saltasauroidea") ]},
+  ]},
+  {name:"Theropoda", rank:"Clade", children:[
+    {name:"Early theropods", rank:"Grade", children:[ leaf("Theropoda"), leaf("Coelophysoidea") ]},
+    {name:"Ceratosauria", rank:"Clade", children:[ leaf("Ceratosauria"), leaf("Noasauridae"), leaf("Abelisauridae") ]},
+    {name:"Early tetanurans", rank:"Grade", children:[ leaf("Tetanurae"), leaf("Megalosauroidea"), leaf("Spinosauridae"), leaf("Allosauroidea"), leaf("Carcharodontosauria"), leaf("Megaraptora") ]},
+    {name:"Early coelurosaurs", rank:"Grade", children:[ leaf("Coelurosauria"), leaf("Tyrannosauroidea"), leaf("Tyrannosauridae"), leaf("Ornithomimosauria") ]},
+    {name:"Maniraptora", rank:"Clade", children:[ leaf("Alvarezsauria"), leaf("Therizinosauria"), leaf("Oviraptorosauria"), leaf("Caenagnathidae"), leaf("Oviraptoridae"), leaf("Paraves"), leaf("Troodontidae"), leaf("Dromaeosauridae") ]},
+  ]},
 ]};
 
 const SVGNS = "http://www.w3.org/2000/svg";
@@ -1251,7 +1355,7 @@ function ctxDrawTree(ctx){
     const cx = LEFT+18 + b.sf.length*13.5*0.78 + 20;
     svg.appendChild(el('rect',{class:'knock',x:cx-6,y:y0-47,width:150,height:23,'aria-hidden':'true'}));
     svg.appendChild(el('text',{x:cx, y:y0-32, class:'sf-count','aria-hidden':'true'},
-      b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
+      b.members.length + (b.members.length===1?' group':' groups') + ' · ~' + n + ' spp.'));
   });
 
   /* ---------- 4. rows ---------- */
@@ -1264,7 +1368,7 @@ function ctxDrawTree(ctx){
         tabindex:'-1', role:'treeitem', 'data-key':'f:'+r.name,
         'aria-expanded':isOpen?'true':'false',
         'aria-level':'1', 'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize),
-        'aria-label':r.name+' — '+d.common+', '+famSpecies+' species, superfamily '+r.sf
+        'aria-label':r.name+' — '+d.common+', '+famSpecies+' species, '+r.sf
       });
       g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42,rx:2}));
       g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42}));
@@ -1477,7 +1581,7 @@ function ctxSelect(ctx, name){
       '<span class="chip"><b>'+stats.genera+'</b> '+(stats.genera===1?'genus':'genera')+'</span>'+
       '<span class="chip"><b>'+(stats.species===1?'1':'~'+stats.species)+'</b> '+(stats.species===1?'species':'spp.')+'</span>'+
     '</div>'+
-    '<p class="range-line">Range: <b>'+d.range+'</b></p>'+
+    '<p class="range-line">When and where: <b>'+d.range+'</b></p>'+
     '<button type="button" class="jump" data-fam="'+name+'">'+
       (isOpen ? 'Close this branch' : 'Open '+name+' in the tree')+' &rarr;</button>';
 }
@@ -1563,148 +1667,77 @@ const G = g => [T(null,g)];              // no tribes used
 const P = g => [S(null,null,G(g))];      // no subfamilies used
 
 let ATLAS = {
-Pteropodidae:[
-  S("Eidolinae","Africa’s great migrants. Up to ten million gather in one Zambian swamp forest each November — the largest mammal migration known.",
-    G([["Eidolon",2]])),
-  S("Epomophorinae","African and Asian fruit and nectar bats, including the only pteropodids that echolocate.",[
-    T("Rousettini",[["Rousettus",7]]),
-    T("Stenonycterini",[["Stenonycteris",1]]),
-    T("Eonycterini",[["Eonycteris",3]]),
-    T("Myonycterini",[["Myonycteris",5],["Megaloglossus",2]]),
-    T("Plerotini",[["Plerotes",1]]),
-    T("Scotonycterini",[["Scotonycteris",3],["Casinycteris",3]]),
-    T("Epomophorini",[["Epomophorus",11],["Epomops",2],["Hypsignathus",1],["Nanonycteris",1]]),
-    T(null,[["Pilonycteris",1]])
-  ]),
-  S("Harpyionycterinae","Bare-backed fruit bats, whose wings meet along the spine so the back looks naked.",[
-    T("Dobsoniini",[["Dobsonia",14],["Aproteles",1]]),
-    T("Harpyionycterini",[["Harpyionycteris",2],["Boneia",1]])
-  ]),
-  S("Cynopterinae","Small short-faced fruit bats of South and South-East Asia. Several bite leaf ribs until the leaf folds into a tent to roost under.",[
-    T("Cynopterini",[["Cynopterus",7],["Megaerops",4],["Ptenochirus",3]]),
-    T("Balionycterini",[["Dyacopterus",3],["Thoopterus",2],["Balionycteris",2],["Aethalops",2],["Penthetor",1],["Chironax",2],["Sphaerias",1],["Alionycteris",1],["Haplonycteris",1],["Otopteropus",1],["Latidens",1]])
-  ]),
-  S("Macroglossusinae","Blossom bats — tiny, with a long brush-tipped tongue for nectar.",
-    G([["Syconycteris",3],["Macroglossus",2]])),
-  S("Notopterisinae","Long-tailed fruit bats of Fiji, Vanuatu and New Caledonia. The only pteropodids with a real tail.",
-    G([["Notopteris",2]])),
-  S("Nyctimeninae","Tube-nosed fruit bats: nostrils on separate stalks, wings spotted yellow-green like lichen.",
-    G([["Nyctimene",16],["Paranyctimene",2]])),
-  S("Pteropodinae","The flying foxes and their island relatives — the largest bats that have ever lived.",[
-    T("Pteropodini",[["Pteropus",65],["Acerodon",5],["Styloctenium",2],["Neopteryx",1]]),
-    T("Pteralopini",[["Pteralopex",5],["Desmalopex",2],["Mirimiri",1]]),
-    T("Melonycterini",[["Melonycteris",1],["Nesonycteris",4]])
-  ])
-],
-Rhinopomatidae:[S(null,"No subfamilies. A single ancient genus, little changed for tens of millions of years.",
-  G([["Rhinopoma",6]]))],
-Craseonycteridae:[S(null,"One genus, one species, one small range in limestone caves along the Thai–Myanmar border.",
-  G([["Craseonycteris",1]]))],
-Megadermatidae:[S(null,"Six genera, six species — an unusual ratio, and a sign of an old lineage thinned by extinction. Eudiscoderma was described only in 2015.",
-  G([["Macroderma",1],["Lyroderma",2],["Megaderma",1],["Cardioderma",1],["Lavia",1],["Eudiscoderma",1]]))],
-Rhinolophidae:[S(null,"One enormous genus, no subfamilies. Specialists instead sort it into species groups by nose-leaf shape and call frequency — the ferrumequinum, philippinensis, trifoliatus, megaphyllus and landeri groups among them. Cryptic species keep appearing: bats identical in the hand turn out to echolocate at different frequencies and not to interbreed.",
-  G([["Rhinolophus",118]]))],
-Hipposideridae:[S(null,"Macronycteris and Doryrhina were cut out of a bloated Hipposideros in the 2010s once genetics showed it was several lineages, not one.",
-  G([["Hipposideros",76],["Macronycteris",5],["Asellia",4],["Aselliscus",3],["Coelops",3],["Doryrhina",2],["Anthops",1]]))],
-Rhinonycteridae:[S(null,"Split from Hipposideridae in 2014. Paratriaenops is confined to Madagascar and the Seychelles, Rhinonicteris to a handful of hot Australian caves.",
-  G([["Triaenops",4],["Paratriaenops",3],["Rhinonicteris",1],["Cloeotis",1]]))],
-
-Nycteridae:[S(null,"One genus. The face is split by a deep furrow that hides the nose-leaf, and the tail ends in a T-shaped tip of cartilage found in no other mammal.",
-  G([["Nycteris",14]]))],
-Emballonuridae:[
-  S("Emballonurinae","Split into an Old World and a New World tribe that parted around 30 million years ago.",[
-    T("Emballonurini · Old World",[["Emballonura",8],["Coleura",4],["Paremballonura",2],["Mosia",1]]),
-    T("Diclidurini · New World",[["Peropteryx",5],["Saccopteryx",5],["Diclidurus",4],["Balantiopteryx",3],["Centronycteris",2],["Rhynchonycteris",1],["Cormura",1],["Cyttarops",1]])
-  ]),
-  S("Taphozoinae","Tomb bats — fast, high-flying, often roosting in ruins and rock clefts.",
-    G([["Taphozous",14],["Saccolaimus",4]]))
-],
-Myzopodidae:[S(null,"Two species on Madagascar and nothing else alive anywhere. Fossils show the lineage once ranged across mainland Africa.",
-  G([["Myzopoda",2]]))],
-Mystacinidae:[S(null,"One genus. M. tuberculata still survives in New Zealand’s old forests; M. robusta has not been seen since 1967 and is probably gone.",
-  G([["Mystacina",2]]))],
-Thyropteridae:[S(null,"Suction disks on thumbs and ankles. One disk can hold the whole bat.",
-  G([["Thyroptera",5]]))],
-Furipteridae:[S(null,"Two genera, one species each, both moth specialists and both rarely caught.",
-  G([["Furipterus",1],["Amorphochilus",1]]))],
-Noctilionidae:[S(null,"One genus. N. leporinus trawls water for fish; N. albiventris mostly takes insects but will fish too.",
-  G([["Noctilio",2]]))],
-Mormoopidae:[S(null,"Pteronotus has been split hard in recent years as acoustic and genetic work separated look-alike species.",
-  G([["Pteronotus",16],["Mormoops",2]]))],
-Phyllostomidae:[
-  S("Macrotinae","The earliest branch of the family, and the only phyllostomids that hunt largely by sight in dim light.",
-    G([["Macrotus",2]])),
-  S("Micronycterinae","Little big-eared bats that pluck insects off leaves rather than catching them in the air.",
-    G([["Micronycteris",13],["Lampronycteris",1]])),
-  S("Desmodontinae","The vampires. Three species, each specialising on different prey: Desmodus on mammals, Diaemus and Diphylla mostly on birds.",[
-    T("Desmodontini",[["Desmodus",1],["Diaemus",1]]),
-    T("Diphyllini",[["Diphylla",1]])
-  ]),
-  S("Lonchorhininae","Sword-nosed bats, with a nose-leaf as long as the ears.",
-    G([["Lonchorhina",6]])),
-  S("Phyllostominae","The big-bodied hunters — the family’s carnivores and omnivores.",[
-    T("Phyllostomini",[["Lophostoma",8],["Phyllostomus",4],["Gardnerycteris",3],["Tonatia",3],["Phylloderma",2]]),
-    T("Vampyrini",[["Vampyrum",1],["Chrotopterus",1],["Mimon",2]]),
-    T("Macrophyllini",[["Macrophyllum",1],["Trachops",3]])
-  ]),
-  S("Glossophaginae","Long-tongued nectar feeders. Their tongues carry hair-like papillae that erect with blood pressure, mopping up nectar.",[
-    T("Glossophagini",[["Glossophaga",9],["Leptonycteris",3],["Monophyllus",2]]),
-    T("Choeronycterini",[["Anoura",10],["Choeroniscus",3],["Hylonycteris",1],["Choeronycteris",1],["Musonycteris",1],["Lichonycteris",2],["Scleronycteris",1],["Dryadonycteris",1]]),
-    T("Brachyphyllini",[["Phyllonycteris",2],["Erophylla",2],["Brachyphylla",2]])
-  ]),
-  S("Lonchophyllinae","A second, entirely separate invention of nectar feeding, with a grooved tongue that pumps nectar rather than lapping it.",[
-    T("Lonchophyllini",[["Lonchophylla",13],["Xeronycteris",1],["Platalina",1],["Lionycteris",1]]),
-    T("Hsunycterini",[["Hsunycteris",4]])
-  ]),
-  S("Glyphonycterinae","Small understorey insect-eaters, separated from Phyllostominae only in 2016.",
-    G([["Glyphonycteris",3],["Trinycteris",1],["Neonycteris",1]])),
-  S("Carolliinae","Short-tailed fruit bats — the main dispersers of pioneer shrubs like Piper, and among the commonest mammals in Neotropical forest.",
-    G([["Carollia",8]])),
-  S("Rhinophyllinae","Little fruit bats that cut leaves into tents.",
-    G([["Rhinophylla",3]])),
-  S("Stenodermatinae","The fig and canopy-fruit specialists — short broad faces, powerful jaws, and the family’s greatest species richness.",[
-    T("Sturnirini",[["Sturnira",25]]),
-    T("Stenodermatini · Vampyressina",[["Platyrrhinus",19],["Chiroderma",7],["Uroderma",5],["Vampyriscus",3],["Vampyressa",6],["Vampyrodes",2],["Mesophylla",1]]),
-    T("Stenodermatini · Ectophyllina",[["Ectophylla",1]]),
-    T("Stenodermatini · Enchisthenina",[["Enchisthenes",1]]),
-    T("Stenodermatini · Artibeina",[["Artibeus",13],["Dermanura",11]]),
-    T("Stenodermatini · Stenodermatina",[["Centurio",1],["Sphaeronycteris",1],["Ametrida",1],["Pygoderma",1],["Phyllops",1],["Ardops",1],["Ariteus",1],["Stenoderma",1]])
-  ])
-],
-Natalidae:[S(null,"One subfamily, three genera. Nyctiellus lepidus of Cuba and the Bahamas is among the smallest bats in the Americas.",
-  G([["Natalus",7],["Chilonatalus",3],["Nyctiellus",1]]))],
-Molossidae:[
-  S("Tomopeatinae","A single species from dry Peruvian valleys, so unlike other molossids that it was long filed with the vesper bats.",
-    G([["Tomopeas",1]])),
-  S("Molossinae","Everything else. Simmons and Cirranello folded Chaerephon into Mops in 2022, which is why Mops is suddenly the family’s largest genus.",[
-    T("Tadaridini",[["Mops",36],["Otomops",8],["Tadarida",7],["Nyctinomops",4],["Austronomus",2],["Myopterus",2],["Nyctinomus",1],["Platymops",1],["Sauromys",1]]),
-    T("Molossini",[["Eumops",17],["Molossus",16],["Cynomops",9],["Promops",3],["Molossops",3],["Neoplatymops",1],["Cabreramops",1]]),
-    T("Mormopterini",[["Ozimops",9],["Mormopterus",7],["Micronomus",1],["Setirostris",1]]),
-    T("Cheiromelini",[["Cheiromeles",2]])
-  ])
-],
-Miniopteridae:[S(null,"One genus, and a taxonomic headache: many populations look identical but are genetically deeply separate, so the species count keeps climbing.",
-  G([["Miniopterus",41]]))],
-Cistugidae:[S(null,"Two species. Their split from the vesper bats is roughly as old as the split between horses and rhinos.",
-  G([["Cistugo",2]]))],
-Vespertilionidae:[
-  S("Myotinae","Myotis is the second-largest genus of mammals on Earth and reached every continent but Antarctica, repeatedly evolving the same fishing, gleaning and aerial-hawking habits in different regions.",
-    G([["Myotis",143],["Submyotodon",3],["Eudiscopus",1]])),
-  S("Kerivoulinae","Woolly bats — delicate, funnel-eared forest bats. One Bornean species roosts inside pitcher plants, and the plant lives off its droppings.",
-    G([["Kerivoula",28],["Phoniscus",4]])),
-  S("Murininae","Tube-nosed bats, many of them furry orange and gold, most of them described in the last thirty years.",
-    G([["Murina",53],["Harpiola",2],["Harpiocephalus",1]])),
-  S("Vespertilioninae","The bulk of the family, and the most heavily reshuffled group in bat taxonomy — several tribes below were rearranged in the last decade.",[
-    T("Pipistrellini",[["Alionoctula",19],["Pipistrellus",16],["Nyctalus",8],["Glischropus",5],["Scotoecus",5],["Scotozous",1],["Vansonia",1]]),
-    T("Vespertilionini",[["Hypsugo",16],["Nyctophilus",17],["Laephotis",9],["Vespadelus",9],["Pseudoromicia",9],["Chalinolobus",8],["Tylonycteris",6],["Neoromicia",6],["Afropipistrellus",7],["Falsistrellus",2],["Afronycteris",3],["Nycticeinops",1],["Mimetillus",1],["Vespertilio",2],["Cassistrellus",2],["Philetor",1],["Pharotis",1],["Mirostrellus",1]]),
-    T("Nycticeiini",[["Cnephaeus",15],["Glauconycteris",15],["Histiotus",11],["Neoeptesicus",10],["Scotorepens",4],["Arielulus",6],["Hesperoptenus",5],["Eptesicus",2],["Nycticeius",3],["Scoteanax",1],["Scotomanes",1],["Lasionycteris",1],["Ia",1]]),
-    T("Scotophilini",[["Scotophilus",20]]),
-    T("Plecotini",[["Plecotus",18],["Barbastella",6],["Corynorhinus",4],["Otonycteris",2],["Euderma",1],["Idionycteris",1]]),
-    T("Lasiurini",[["Lasiurus",20]]),
-    T("Antrozoini",[["Rhogeessa",12],["Antrozous",2],["Baeodon",2],["Bauerus",1]]),
-    T(null,[["Perimyotis",1],["Parastrellus",1],["Rhyneptesicus",1]])
-  ])
-]
+Dinosauria:P([["Nyasasaurus",2]]),
+Herrerasauridae:P([["Gnathovorax",1],["Herrerasaurus",1],["Sanjuansaurus",1],["Staurikosaurus",1]]),
+Saurischia:P([["Alwalkeria",1],["Chindesaurus",1],["Daemonosaurus",1],["Eodromaeus",1],["Nhandumirim",1],["Ptychotherates",1],["Saltopus",1],["Tawa",1]]),
+Silesauridae:P([["Amanasaurus",1],["Asilisaurus",1],["Diodorus",1],["Eucoelophysis",1],["Gamatavus",1],["Kwanasaurus",1],["Lewisuchus",1],["Lutungutali",1],["Sacisaurus",1],["Silesaurus",1],["Soumyasaurus",1],["Technosaurus",1]]),
+Ornithischia:P([["Archaeocursor",1],["Chilesaurus",1],["Eocursor",1],["Ferganocephale",1],["Gongbusaurus",2],["Krzyzanowskisaurus",1],["Pisanosaurus",1],["Xiaosaurus",1]]),
+Heterodontosauridae:P([["Abrictosaurus",1],["Echinodon",1],["Fruitadens",1],["Heterodontosaurus",1],["Lycorhinus",2],["Manidens",1],["Pegomastax",1],["Tianyulong",1]]),
+Thyreophora:P([["Emausaurus",1],["Jakapil",1],["Laquintasaura",1],["Lesothosaurus",1],["Scelidosaurus",1],["Scutellosaurus",1],["Yuxisaurus",1]]),
+Stegosauria:P([["Adratiklit",1],["Baiyinosaurus",1],["Bashanosaurus",1],["Changdusaurus",1],["Chungkingosaurus",1],["Dacentrurus",2],["Gigantspinosaurus",1],["Hesperosaurus",1],["Huayangosaurus",1],["Isaberrysaura",1],["Jiangjunosaurus",1],["Kentrosaurus",1],["Loricatosaurus",1],["Mongolostegus",1],["Paranthodon",1],["Stegosaurus",7],["Thyreosaurus",1],["Tuojiangosaurus",1],["Wuerhosaurus",1],["Yanbeilong",1],["Yingshanosaurus",1]]),
+Ankylosauria:P([["Antarctopelta",1],["Dracopelta",1],["Kunbarrasaurus",1],["Mymoorapelta",1],["Sarcolestes",1],["Sinankylosaurus",1],["Spicomellus",1],["Stegouros",1],["Vectipelta",1]]),
+Nodosauridae:P([["Acantholipan",1],["Animantarx",1],["Anoplosaurus",1],["Borealopelta",1],["Dongyangopelta",1],["Edmontonia",1],["Europelta",1],["Gargoyleosaurus",1],["Gastonia",2],["Glyptodontopelta",1],["Hoplitosaurus",1],["Hungarosaurus",1],["Hylaeosaurus",1],["Invictarx",1],["Niobrarasaurus",1],["Nodosaurus",1],["Panoplosaurus",2],["Patagopelta",1],["Pawpawsaurus",1],["Peloroplites",1],["Polacanthus",2],["Propanoplosaurus",1],["Sauropelta",1],["Sauroplites",1],["Silvisaurus",1],["Stegopelta",1],["Struthiosaurus",3],["Taohelong",1],["Tatankacephalus",1],["Texasetes",1]]),
+Ankylosauridae:P([["Ahshislepelta",1],["Akainacephalus",1],["Aletopelta",1],["Ankylosaurus",1],["Anodontosaurus",2],["Bissektipelta",1],["Cedarpelta",1],["Chuanqilong",1],["Crichtonpelta",1],["Datai",1],["Dyoplosaurus",1],["Eopinacosaurus",1],["Euoplocephalus",1],["Gobisaurus",1],["Huaxiazhoulong",1],["Jinyunpelta",1],["Liaoningosaurus",1],["Nodocephalosaurus",1],["Oohkotokia",1],["Pinacosaurus",3],["Platypelta",1],["Saichania",1],["Scolosaurus",2],["Shamosaurus",1],["Talarurus",1],["Tarchia",3],["Tsagantegia",1],["Zaraapelta",1],["Ziapelta",1],["Zuul",1]]),
+Neornithischia:P([["Agilisaurus",1],["Enigmacursor",1],["Hexinlusaurus",1],["Kulindadromeus",1],["Kulindapteryx",1],["Minimocursor",1],["Nanosaurus",1],["Pulaosaurus",1],["Sanxiasaurus",1],["Yandusaurus",1]]),
+Thescelosauridae:P([["Albertadromeus",1],["Changmiania",1],["Doolysaurus",1],["Fona",1],["Haya",1],["Jeholosaurus",1],["Koreanosaurus",1],["Nevadadromeus",1],["Orodromeus",1],["Oryctodromeus",1],["Parksosaurus",1],["Thescelosaurus",4],["Yueosaurus",1],["Zephyrosaurus",1]]),
+Ornithopoda:P([["Burianosaurus",1],["Daurosaurus",1],["Gideonmantellia",1],["Hypsilophodon",1],["Vectidromeus",1]]),
+Elasmaria:P([["Anabisetia",1],["Atlascopcosaurus",1],["Chakisaurus",1],["Diluvicursor",1],["Fostoria",1],["Galleonosaurus",1],["Gasparinisaura",1],["Isasicursor",1],["Kangnasaurus",1],["Leaellynasaura",1],["Macrogryphosaurus",1],["Mahuidacursor",1],["Morrosaurus",1],["Muttaburrasaurus",1],["Notohypsilophodon",1],["Qantassaurus",1],["Sektensaurus",1],["Talenkauen",1],["Tietasaura",1],["Trinisaura",1],["Weewarrasaurus",1]]),
+Rhabdodontomorpha:P([["Ampelognathus",1],["Convolosaurus",1],["Emiliasaura",1],["Foskeia",1],["Iani",1],["Matheronodon",1],["Mochlodon",3],["Obelignathus",1],["Pareisactus",1],["Rhabdodon",1],["Tenontosaurus",2],["Transylvanosaurus",1],["Zalmoxes",1]]),
+Dryosauridae:P([["Dryosaurus",2],["Dysalotosaurus",1],["Elrhazosaurus",1],["Eousdryosaurus",1],["Valdosaurus",1]]),
+Iguanodontia:P([["Altirhinus",1],["Barilium",1],["Bayannurosaurus",1],["Bolong",1],["Callovosaurus",1],["Camptosaurus",2],["Choyrodon",1],["Craspedodon",1],["Draconyx",1],["Hesperonyx",1],["Hypselospinus",1],["Iguanodon",3],["Iyuku",1],["Lophorhothon",1],["Lurdusaurus",1],["Mantellisaurus",1],["Oblitosaurus",1],["Osmakasaurus",1],["Ouranosaurus",1],["Owenodon",1],["Planicoxa",1]]),
+Styracosterna:P([["Brighstoneus",1],["Calvarius",1],["Comptonatus",1],["Cumnoria",1],["Dakotadon",1],["Delapparentia",1],["Hippodraco",1],["Iguanacolossus",1],["Istiorachis",1],["Lanzhousaurus",1],["Magnamanus",1],["Napaisaurus",1],["Proa",1],["Riabininohadros",1],["Siamodon",1],["Theiophytalia",1]]),
+Hadrosauroidea:P([["Bactrosaurus",1],["Batyrosaurus",1],["Cariocecus",1],["Cedrorestes",1],["Claosaurus",1],["Datonglong",1],["Eolambia",1],["Equijubus",1],["Fukuisaurus",1],["Fylax",1],["Gilmoreosaurus",1],["Gobihadros",1],["Gongpoquansaurus",1],["Gonkoken",1],["Haolong",1],["Huehuecanauhtlus",1],["Jeyawati",1],["Jintasaurus",1],["Koshisaurus",1],["Kryptohadros",1],["Levnesovia",1],["Morelladon",1],["Nanningosaurus",1],["Nanyangosaurus",1],["Penelopognathus",1],["Plesiohadros",1],["Portellsaurus",1],["Probactrosaurus",1],["Protohadros",1],["Qianjiangsaurus",1],["Ratchasimasaurus",1],["Shuangmiaosaurus",1],["Sirindhorna",1],["Tanius",2],["Telmatosaurus",1],["Tethyshadros",1],["Xuwulong",1],["Yunganglong",1],["Zhanghenglong",1],["Zuoyunlong",1]]),
+Hadrosauridae:P([["Acristavus",1],["Ahshislesaurus",1],["Anasazisaurus",1],["Aquilarhinus",1],["Augustynolophus",1],["Barsboldia",1],["Bonapartesaurus",1],["Brachylophosaurus",1],["Coahuilasaurus",1],["Edmontosaurus",2],["Eotrachodon",1],["Gongshuilong",1],["Gryposaurus",4],["Hadrosaurus",1],["Huallasaurus",1],["Kamuysaurus",1],["Kelumapusaura",1],["Kerberosaurus",1],["Kritosaurus",2],["Laiyangosaurus",1],["Lapampasaurus",1],["Maiasaura",1],["Malefica",1],["Mandschurosaurus",1],["Naashoibitosaurus",1],["Ornatops",1],["Probrachylophosaurus",1],["Prosaurolophus",1],["Rhinorex",1],["Saurolophus",2],["Secernosaurus",1],["Shantungosaurus",1],["Ugrunaaluk",1],["Wulagasaurus",1],["Yamatosaurus",1]]),
+Lambeosaurinae:P([["Adelolophus",1],["Adynomosaurus",1],["Ajnabia",1],["Amurosaurus",1],["Angulomastacator",1],["Aralosaurus",1],["Arenysaurus",1],["Blasisaurus",1],["Canardia",1],["Charonosaurus",1],["Corythosaurus",2],["Hypacrosaurus",2],["Jaxartosaurus",1],["Kazaklambia",1],["Lambeosaurus",3],["Latirhinus",1],["Magnapaulia",1],["Minqaria",1],["Nipponosaurus",1],["Olorotitan",1],["Pararhabdodon",1],["Parasaurolophus",3],["Plesiolophus",1],["Taleta",1],["Tlatolophus",1],["Tsintaosaurus",1],["Velafrons",1]]),
+Pachycephalosauria:P([["Acrotholus",1],["Alaskacephale",1],["Amtocephale",1],["Brontotholus",1],["Colepiocephale",1],["Foraminacephale",1],["Goyocephale",1],["Homalocephale",1],["Pachycephalosaurus",1],["Platytholus",1],["Prenocephale",1],["Sinocephale",1],["Sphaerotholus",5],["Stegoceras",2],["Tylocephale",1],["Wannanosaurus",1],["Zavacephale",1]]),
+Ceratopsia:P([["Ajkaceratops",1],["Albalophosaurus",1],["Chaoyangsaurus",1],["Ferenceratops",1],["Hualianceratops",1],["Micropachycephalosaurus",1],["Notoceratops",1],["Psittacosaurus",9],["Serendipaceratops",1],["Stenopelix",1],["Xuanhuaceratops",1],["Yinlong",1]]),
+Neoceratopsia:P([["Aquilops",1],["Archaeoceratops",2],["Asiaceratops",1],["Auroraceratops",1],["Beg",1],["Graciliceratops",1],["Liaoceratops",1],["Mosaiceratops",1],["Sasayamagnomus",1],["Turanoceratops",1],["Yamaceratops",1],["Zuniceratops",1]]),
+Leptoceratopsidae:P([["Cerasinops",1],["Ferrisaurus",1],["Gremlin",1],["Gryphoceratops",1],["Helioceratops",1],["Ischioceratops",1],["Koreaceratops",1],["Leptoceratops",1],["Montanoceratops",1],["Prenoceratops",1],["Udanoceratops",1],["Unescoceratops",1],["Zhuchengceratops",1]]),
+Protoceratopsidae:P([["Bagaceratops",1],["Breviceratops",1],["Protoceratops",2]]),
+Centrosaurinae:P([["Achelousaurus",1],["Albertaceratops",1],["Avaceratops",1],["Centrosaurus",1],["Coronosaurus",1],["Crittendenceratops",1],["Diabloceratops",1],["Einiosaurus",1],["Furcatoceratops",1],["Lokiceratops",1],["Machairoceratops",1],["Medusaceratops",1],["Menefeeceratops",1],["Monoclonius",1],["Nasutoceratops",1],["Pachyrhinosaurus",3],["Rubeosaurus",1],["Sinoceratops",1],["Spinops",1],["Stellasaurus",1],["Styracosaurus",1],["Wendiceratops",1],["Xenoceratops",1],["Yehuecauhceratops",1]]),
+Chasmosaurinae:P([["Agujaceratops",2],["Anchiceratops",1],["Arrhinoceratops",1],["Bisticeratops",1],["Bravoceratops",1],["Chasmosaurus",2],["Coahuilaceratops",1],["Eotriceratops",1],["Judiceratops",1],["Kosmoceratops",1],["Navajoceratops",1],["Pentaceratops",1],["Regaliceratops",1],["Sierraceratops",1],["Spiclypeus",1],["Terminocavus",1],["Torosaurus",2],["Triceratops",4],["Utahceratops",1],["Vagaceratops",1]]),
+Sauropodomorpha:P([["Agnosphitys",1],["Ahvaytum",1],["Arcusaurus",1],["Asylosaurus",1],["Bagualosaurus",1],["Buriolestes",1],["Chromogisaurus",1],["Efraasia",1],["Eoraptor",1],["Guaibasaurus",1],["Huayracursor",1],["Jaklapallisaurus",1],["Kholumolumo",1],["Macrocollum",1],["Mbiresaurus",1],["Nambalia",1],["Pampadromaeus",1],["Panphagia",1],["Pantydraco",1],["Qianlong",1],["Saturnalia",1],["Thecodontosaurus",2]]),
+Plateosauridae:P([["Actiosaurus",1],["Gyposaurus",1],["Issi",1],["Plateosauravus",1],["Plateosaurus",7],["Ruehleia",1],["Unaysaurus",1],["Xixiposaurus",1],["Yimenosaurus",1]]),
+Massospondylidae:P([["Adeopapposaurus",1],["Coloradisaurus",1],["Glacialisaurus",1],["Ignavusaurus",1],["Leyesaurus",1],["Lufengosaurus",3],["Massospondylus",3],["Ngwevu",1],["Pradhania",1],["Sarahsaurus",1]]),
+Massopoda:P([["Aardonyx",1],["Anchisaurus",1],["Blikanasaurus",1],["Camelotia",1],["Eucnemesaurus",2],["Gongxianosaurus",1],["Irisosaurus",1],["Jingshanosaurus",1],["Ledumahadi",1],["Leonerasaurus",1],["Lishulong",1],["Melanorosaurus",1],["Meroktenos",1],["Musankwa",1],["Mussaurus",1],["Riojasaurus",1],["Schleitheimia",1],["Sefapanosaurus",1],["Seitaad",1],["Tuebingosaurus",1],["Wudingloong",1],["Xiangyunloong",1],["Xingxiulong",2],["Yizhousaurus",1],["Yunnanosaurus",3]]),
+Sauropoda:P([["Amygdalodon",1],["Antetonitrus",1],["Archaeodontosaurus",1],["Bagualia",1],["Barapasaurus",1],["Cardiodon",1],["Cetiosaurus",2],["Chebsaurus",1],["Chinshakiangosaurus",1],["Dachongosaurus",1],["Damalasaurus",1],["Datousaurus",1],["Dystrophaeus",1],["Ferganasaurus",1],["Haestasaurus",1],["Huashanosaurus",1],["Ingentia",1],["Isanosaurus",1],["Janenschia",1],["Jinchuanloong",1],["Jobaria",1],["Kotasaurus",1],["Lamplughsaura",1],["Lapparentosaurus",1],["Lessemsaurus",1],["Microdontosaurus",1],["Nebulasaurus",1],["Ohmdenosaurus",1],["Oplosaurus",1],["Oshanosaurus",1],["Patagosaurus",1],["Perijasaurus",1],["Protognathosaurus",1],["Pulanesaura",1],["Rhoetosaurus",1],["Sanpasaurus",1],["Shunosaurus",1],["Spinophorosaurus",1],["Tazoudasaurus",1],["Volkheimeria",1],["Vulcanodon",1]]),
+Mamenchisauridae:P([["Abrosaurus",1],["Analong",1],["Anhuilong",1],["Bellusaurus",1],["Chuanjiesaurus",1],["Daanosaurus",1],["Eomamenchisaurus",1],["Huangshanlong",1],["Hudiesaurus",1],["Jingiella",1],["Klamelisaurus",1],["Mamenchisaurus",8],["Omeisaurus",8],["Qijianglong",1],["Rhomaleopakhus",1],["Tonganosaurus",1],["Tongnanlong",1],["Uragasaurus",1],["Volgatitan",1],["Wamweracaudia",1],["Xinjiangtitan",1],["Yuanmousaurus",1]]),
+Turiasauria:P([["Amanzia",1],["Losillasaurus",1],["Mierasaurus",1],["Moabosaurus",1],["Narindasaurus",1],["Tendaguria",1],["Turiasaurus",1],["Zby",1]]),
+Diplodocoidea:P([["Amphicoelias",2],["Cetiosauriscus",1],["Haplocanthosaurus",2],["Lingwulong",1]]),
+Rebbachisauridae:P([["Agustinia",1],["Amazonsaurus",1],["Astigmasaura",1],["Campananeyen",1],["Cathartesaura",1],["Cienciargentina",1],["Comahuesaurus",1],["Demandasaurus",1],["Histriasaurus",1],["Itapeuasaurus",1],["Katepensaurus",1],["Lavocatisaurus",1],["Limaysaurus",1],["Maraapunisaurus",1],["Nigersaurus",1],["Nopcsaspondylus",1],["Rayososaurus",1],["Rebbachisaurus",1],["Sidersaura",1],["Tataouinea",1],["Xenoposeidon",1],["Zapalasaurus",1]]),
+Dicraeosauridae:P([["Amargasaurus",1],["Amargatitanis",1],["Athenar",1],["Bajadasaurus",1],["Brachytrachelopan",1],["Dicraeosaurus",2],["Dyslocosaurus",1],["Kaatedocus",1],["Pilmatueia",1],["Smitanosaurus",1],["Suuwassea",1]]),
+Diplodocidae:P([["Apatosaurus",2],["Ardetosaurus",1],["Barosaurus",1],["Brontosaurus",3],["Dinheirosaurus",1],["Diplodocus",3],["Galeamopus",2],["Leinkupal",1],["Supersaurus",1],["Tornieria",1]]),
+Macronaria:P([["Aragosaurus",1],["Atlasaurus",1],["Bicharracosaurus",1],["Camarasaurus",5],["Ceratocaudia",1],["Dashanpusaurus",1],["Duriatitan",1],["Europasaurus",1],["Fukuititan",1],["Fushanosaurus",1],["Fusuisaurus",1],["Liaoningotitan",1],["Lourinhasaurus",1],["Oceanotitan",1],["Ornithopsis",1],["Pelorosaurus",2],["Tehuelchesaurus",1],["Yuzhoulong",1]]),
+Brachiosauridae:P([["Abydosaurus",1],["Brachiosaurus",1],["Cedarosaurus",1],["Galvesaurus",1],["Giraffatitan",2],["Lusotitan",1],["Sonorasaurus",1],["Soriatitan",1],["Venenosaurus",1],["Vouivria",1]]),
+Somphospondyli:P([["Angolatitan",1],["Astrophocaudia",1],["Australodocus",1],["Austrosaurus",1],["Brontomerus",1],["Chubutisaurus",1],["Dasosaurus",1],["Diamantinasaurus",1],["Dongbeititan",1],["Dzharatitanis",1],["Europatitan",1],["Gannansaurus",1],["Garumbatitan",1],["Huanghetitan",1],["Jiangshanosaurus",1],["Jiangxititan",1],["Ligabuesaurus",1],["Liubangosaurus",1],["Mansourasaurus",1],["Padillasaurus",1],["Sarmientosaurus",1],["Sauroposeidon",1],["Savannasaurus",1],["Sibirotitan",1],["Sonidosaurus",1],["Tastavinsaurus",1],["Triunfosaurus",1],["Wintonotitan",1],["Yunmenglong",1]]),
+Euhelopodidae:P([["Daxiatitan",1],["Erketu",1],["Euhelopus",1],["Gobititan",1],["Huabeisaurus",1],["Nagatitan",1],["Phuwiangosaurus",1],["Qiaowanlong",1],["Ruixinia",1],["Ruyangosaurus",1],["Silutitan",1],["Tambatitanis",1],["Tangvayosaurus",1],["Xianshanosaurus",1],["Yongjinglong",1]]),
+Titanosauria:P([["Abdarainurus",1],["Aegyptosaurus",1],["Ampelosaurus",1],["Andesaurus",1],["Argentinosaurus",1],["Argyrosaurus",1],["Atsinganosaurus",1],["Baalsaurus",1],["Balochisaurus",1],["Baotianmansaurus",1],["Barrosasaurus",1],["Bonitasaura",1],["Borealosaurus",1],["Choconsaurus",1],["Dongyangosaurus",1],["Dreadnoughtus",1],["Gandititan",1],["Garrigatitan",1],["Gspsaurus",1],["Hamititan",1],["Ikqaumishan",1],["Imrankhanhero",1],["Inawentu",1],["Karongasaurus",1],["Khanazeem",1],["Khetranisaurus",1],["Laplatasaurus",1],["Lirainosaurus",1],["Lohuecotitan",1],["Magyarosaurus",1],["Malarguesaurus",1],["Marisaurus",1],["Menucocelsior",1],["Mnyamawamtuka",1],["Mongolosaurus",1],["Narambuenatitan",1],["Ninjatitan",1],["Normanniasaurus",1],["Pakisaurus",1],["Paludititan",1],["Patagotitan",1],["Petrobrasaurus",1],["Petrustitan",1],["Qaikshaheen",1],["Saraikimasoom",1],["Sulaimanisaurus",1],["Tengrisaurus",1],["Tiamat",1],["Yeneen",1]]),
+Colossosauria:P([["Adamantisaurus",1],["Arrudatitan",1],["Austroposeidon",1],["Brasilotitan",1],["Bravasaurus",1],["Chadititan",1],["Chucarosaurus",1],["Drusilasaura",1],["Futalognkosaurus",1],["Maxakalisaurus",1],["Mendozasaurus",1],["Muyelensaurus",1],["Notocolossus",1],["Overosaurus",1],["Phosphatotitan",1],["Pitekunsaurus",1],["Puertasaurus",1],["Punatitan",1],["Quetecsaurus",1],["Rinconsaurus",1],["Rukwatitan",1],["Traukutitan",1],["Uberabatitan",1]]),
+Lithostrotia:P([["Aeolosaurus",2],["Antarctosaurus",1],["Arackar",1],["Atacamatitan",1],["Baurutitan",1],["Bustingorrytitan",1],["Caieiria",1],["Elaltitan",1],["Epachthosaurus",1],["Gondwanatitan",1],["Jainosaurus",1],["Kaijutitan",1],["Malawisaurus",1],["Mesetasaurus",1],["Nemegtosaurus",1],["Nullotitan",1],["Panamericansaurus",1],["Paralititan",1],["Pellegrinisaurus",1],["Quaesitosaurus",1],["Shingopana",1],["Uriash",1],["Vahiny",1]]),
+Saltasauroidea:P([["Abditosaurus",1],["Alamosaurus",1],["Bonatitan",1],["Ibirania",1],["Igai",1],["Isisaurus",1],["Neuquensaurus",1],["Nicksaurus",1],["Opisthocoelicaudia",1],["Qingxiusaurus",1],["Qunkasaura",1],["Rapetosaurus",1],["Rocasaurus",1],["Saltasaurus",1],["Tapuiasaurus",1],["Titanomachya",1],["Udelartitan",1],["Yamanasaurus",1],["Zhuchengtitan",1]]),
+Theropoda:P([["Anteavis",1],["Dilophosaurus",1],["Dracovenator",1],["Erythrovenator",1],["Fenestrosaurus",1],["Kank",1],["Liliensternus",1],["Notatesseraeraptor",1],["Ovoraptor",1],["Protoavis",1],["Shuangbaisaurus",1],["Sinosaurus",1],["Velocipes",1],["Yaverlandia",1],["Zupaysaurus",1]]),
+Coelophysoidea:P([["Camposaurus",1],["Coelophysis",2],["Dracoraptor",1],["Gojirasaurus",1],["Lepidus",1],["Lophostropheus",1],["Lucianovenator",1],["Megapnosaurus",1],["Panguraptor",1],["Pendraig",1],["Powellvenator",1],["Procompsognathus",1],["Sarcosaurus",1],["Segisaurus",1],["Syntarsus",1]]),
+Ceratosauria:P([["Berberosaurus",1],["Ceratosaurus",1],["Chenanisaurus",1],["Fosterovenator",1],["Genyodectes",1],["Saltriovenator",1],["Spinostropheus",1]]),
+Noasauridae:P([["Austrocheirus",1],["Berthasaura",1],["Deltadromeus",1],["Elaphrosaurus",1],["Huinculsaurus",1],["Kiyacursor",1],["Laevisuchus",1],["Ligabueino",1],["Limusaurus",1],["Masiakasaurus",1],["Noasaurus",1],["Velocisaurus",1],["Vespersaurus",1]]),
+Abelisauridae:P([["Abelisaurus",1],["Arcovenator",1],["Aucasaurus",1],["Caletodraco",1],["Carnotaurus",1],["Dahalokely",1],["Ekrixinatosaurus",1],["Elemgasem",1],["Eoabelisaurus",1],["Genusaurus",1],["Guemesia",1],["Ilokelesia",1],["Indosaurus",1],["Indosuchus",1],["Koleken",1],["Kryptops",1],["Kurupi",1],["Lametasaurus",1],["Llukalkan",1],["Majungasaurus",1],["Niebla",1],["Pycnonemosaurus",1],["Quilmesaurus",1],["Rahiolisaurus",1],["Rajasaurus",1],["Rugops",1],["Skorpiovenator",1],["Spectrovenator",1],["Tarascosaurus",1],["Thanos",1],["Tralkasaurus",1],["Viavenator",1],["Vitakridrinda",1],["Vitakrisaurus",1],["Vitosaura",1],["Xenotarsosaurus",1]]),
+Tetanurae:P([["Bahariasaurus",1],["Becklespinax",1],["Chuandongocoelurus",1],["Cruxicheiros",1],["Cryolophosaurus",1],["Gasosaurus",1],["Kaijiangosaurus",1],["Kayentavenator",1],["Pandoravenator",1],["Shanyangosaurus",1],["Vectaerovenator",1],["Yunyangosaurus",1]]),
+Megalosauroidea:P([["Afrovenator",1],["Condorraptor",1],["Dubreuillosaurus",1],["Duriavenator",1],["Eustreptospondylus",1],["Leshansaurus",1],["Magnosaurus",1],["Marshosaurus",1],["Megalosaurus",3],["Piatnitzkysaurus",1],["Piveteausaurus",1],["Sciurumimus",1],["Streptospondylus",1],["Torvosaurus",2],["Wiehenvenator",1],["Xuanhanosaurus",1]]),
+Spinosauridae:P([["Angaturama",1],["Baryonyx",1],["Camarillasaurus",1],["Ceratosuchops",1],["Iberospinus",1],["Ichthyovenator",1],["Irritator",1],["Oxalaia",1],["Protathlitis",1],["Riojavenatrix",1],["Riparovenator",1],["Spinosaurus",2],["Suchomimus",1],["Vallibonavenatrix",1]]),
+Allosauroidea:P([["Allosaurus",7],["Alpkarakush",1],["Asfaltovenator",1],["Erectopus",2],["Metriacanthosaurus",1],["Monolophosaurus",1],["Saurophaganax",1],["Shidaisaurus",1],["Siamotyrannus",1],["Sinraptor",2],["Yangchuanosaurus",2],["Yuanmouraptor",1]]),
+Carcharodontosauria:P([["Acrocanthosaurus",1],["Carcharodontosaurus",2],["Chilantaisaurus",2],["Concavenator",1],["Datanglong",1],["Eocarcharia",1],["Fukuiraptor",1],["Giganotosaurus",1],["Kelmayisaurus",1],["Lajasvenator",1],["Lusovenator",1],["Mapusaurus",1],["Meraxes",1],["Neovenator",1],["Shaochilong",1],["Siamraptor",1],["Tameryraptor",1],["Taurovenator",1],["Tyrannotitan",1],["Ulughbegsaurus",1],["Unquillosaurus",1],["Veterupristisaurus",1]]),
+Megaraptora:P([["Aerosteon",1],["Aoniraptor",1],["Australovenator",1],["Joaquinraptor",1],["Maip",1],["Megaraptor",1],["Murusraptor",1],["Orkoraptor",1],["Phuwiangvenator",1],["Siats",1],["Tratayenia",1],["Vayuraptor",1]]),
+Coelurosauria:P([["Aniksosaurus",1],["Aratasaurus",1],["Aristosuchus",1],["Bicentenaria",1],["Coelurus",1],["Compsognathus",1],["Huadanosaurus",1],["Huaxiagnathus",1],["Juravenator",1],["Kol",1],["Lourinhanosaurus",1],["Mirischia",1],["Nedcolbertia",1],["Ngexisaurus",1],["Ornitholestes",1],["Santanaraptor",1],["Scipionyx",1],["Sinocalliopteryx",1],["Sinosauropteryx",2],["Tanycolagreus",1],["Xinjiangovenator",1],["Xunmenglong",1],["Zuolong",1]]),
+Tyrannosauroidea:P([["Alectrosaurus",1],["Appalachiosaurus",1],["Calamosaurus",1],["Dilong",1],["Dryptosaurus",1],["Eotyrannus",1],["Gualicho",1],["Guanlong",1],["Jinbeisaurus",1],["Juratyrant",1],["Khankhuuluu",1],["Kileskus",1],["Moros",1],["Nanotyrannus",2],["Proceratosaurus",1],["Raptorex",1],["Sinotyrannus",1],["Stokesosaurus",1],["Suskityrannus",1],["Teihivenator",1],["Timimus",1],["Timurlengia",1],["Xiongguanlong",1],["Yutyrannus",1]]),
+Tyrannosauridae:P([["Albertosaurus",1],["Alioramus",2],["Asiatyrannus",1],["Bagaraatan",1],["Bistahieversor",1],["Daspletosaurus",3],["Dynamoterror",1],["Gorgosaurus",1],["Labocania",2],["Lythronax",1],["Nanuqsaurus",1],["Tarbosaurus",1],["Teratophoneus",1],["Thanatotheristes",1],["Tyrannosaurus",2],["Yezosaurus",1],["Zhuchengtyrannus",1]]),
+Ornithomimosauria:P([["Aepyornithomimus",1],["Afromimus",1],["Anserimimus",1],["Archaeornithomimus",1],["Arkansaurus",1],["Aviatyrannis",1],["Beishanlong",1],["Deinocheirus",1],["Dromiceiomimus",1],["Dzharacursor",1],["Gallimimus",1],["Garudimimus",1],["Harpymimus",1],["Hexing",1],["Kinnareemimus",1],["Lepidocheirosaurus",1],["Mexidracon",1],["Nqwebasaurus",1],["Ornithomimus",4],["Paraxenisaurus",1],["Pelecanimimus",1],["Qiupalong",1],["Rativates",1],["Shenzhousaurus",1],["Sinornithomimus",1],["Struthiomimus",1],["Tototlmimus",1],["Tyrannomimus",1]]),
+Alvarezsauria:P([["Achillesaurus",1],["Albertonykus",1],["Albinykus",1],["Alnashetri",1],["Alvarezsaurus",1],["Aorun",1],["Bannykus",1],["Bonapartenykus",1],["Ceratonykus",1],["Dzharaonyx",1],["Elopteryx",1],["Haplocheirus",1],["Jaculinykus",1],["Khulsanurus",1],["Linhenykus",1],["Mononykus",1],["Nemegtonykus",1],["Ondogurvel",1],["Parvicursor",1],["Patagonykus",1],["Qiupanykus",1],["Shishugounykus",1],["Shuvuuia",1],["Trierarchuncus",1],["Tugulusaurus",1],["Xixianykus",1],["Xiyunykus",1]]),
+Therizinosauria:P([["Alxasaurus",1],["Beipiaosaurus",1],["Duonychus",1],["Enigmosaurus",1],["Erliansaurus",1],["Erlikosaurus",1],["Eshanosaurus",1],["Falcarius",1],["Fukuivenator",1],["Jianchangosaurus",1],["Lingyuanosaurus",1],["Martharaptor",1],["Nanshiungosaurus",2],["Neimongosaurus",1],["Nothronychus",2],["Paralitherizinosaurus",1],["Segnosaurus",1],["Suzhousaurus",1],["Therizinosaurus",1],["Tiantaisaurus",1]]),
+Oviraptorosauria:P([["Avimimus",2],["Caudipteryx",2],["Incisivosaurus",1],["Ningyuansaurus",1],["Protarchaeopteryx",1],["Similicaudipteryx",1],["Xingtianosaurus",1],["Yuanyanglong",1]]),
+Caenagnathidae:P([["Anomalipes",1],["Anzu",1],["Apatoraptor",1],["Beibeilong",1],["Caenagnathasia",1],["Caenagnathus",1],["Chirostenotes",1],["Citipes",1],["Elmisaurus",1],["Eoneophron",1],["Epichirostenotes",1],["Gigantoraptor",1],["Hagryphus",1],["Leptorhynchos",2],["Microvenator",2]]),
+Oviraptoridae:P([["Banji",1],["Citipati",1],["Conchoraptor",1],["Corythoraptor",1],["Ganzhousaurus",1],["Gobiraptor",1],["Heyuannia",2],["Huanansaurus",1],["Jiangxisaurus",1],["Khaan",1],["Luoyanggia",1],["Machairasaurus",1],["Nankangia",1],["Nemegtomaia",1],["Oksoko",1],["Oviraptor",1],["Rinchenia",1],["Shixinggia",1],["Tongtianlong",1],["Wulatelong",1],["Yulong",1]]),
+Paraves:P([["Ambopteryx",1],["Caihong",1],["Changzhousaurus",1],["Eosinopteryx",1],["Epidendrosaurus",1],["Epidexipteryx",1],["Migmanychion",1],["Ostromia",1],["Overoraptor",1],["Pamparaptor",1],["Paronychodon",1],["Pedopenna",1],["Pneumatoraptor",1],["Scansoriopteryx",1],["Serikornis",1],["Yi",1],["Yixianosaurus",1],["Zhongornis",1]]),
+Troodontidae:P([["Albertavenator",1],["Almas",1],["Anchiornis",1],["Archaeornithoides",1],["Borogovia",1],["Byronosaurus",1],["Daliansaurus",1],["Geminiraptor",1],["Gobivenator",1],["Harenadraco",1],["Hesperornithoides",1],["Hypnovenator",1],["Jianianhualong",1],["Jinfengopteryx",1],["Latenivenatrix",1],["Liaoningvenator",1],["Linhevenator",1],["Mei",1],["Papiliovenator",1],["Pectinodon",1],["Philovenator",1],["Saurornithoides",1],["Sinornithoides",1],["Sinovenator",1],["Sinusonasus",1],["Stenonychosaurus",1],["Talos",1],["Tamarro",1],["Tochisaurus",1],["Troodon",1],["Urbacodon",2],["Xenovenator",2],["Xiaotingia",1],["Xixiasaurus",1],["Zanabazar",1]]),
+Dromaeosauridae:P([["Acheroraptor",1],["Achillobator",1],["Adasaurus",1],["Atrociraptor",1],["Austroraptor",1],["Balaur",1],["Bambiraptor",1],["Boreonykus",1],["Buitreraptor",1],["Changyuraptor",1],["Dakotaraptor",1],["Daurlong",1],["Deinonychus",1],["Dineobellator",1],["Diuqin",1],["Dromaeosauroides",1],["Dromaeosaurus",2],["Graciliraptor",1],["Halszkaraptor",1],["Hesperonychus",1],["Hulsanpes",1],["Imperobator",1],["Itemirus",1],["Jian",1],["Kansaignathus",1],["Kuru",1],["Linheraptor",1],["Luanchuanraptor",1],["Mahakala",1],["Microraptor",3],["Natovenator",1],["Neuquenraptor",1],["Nuthetes",1],["Pyroraptor",1],["Rahonavis",1],["Richardoestesia",3],["Saurornitholestes",2],["Shanag",1],["Shri",1],["Sinornithosaurus",1],["Tianyuraptor",1],["Tsaagan",1],["Unenlagia",2],["Utahraptor",1],["Variraptor",1],["Vectiraptor",1],["Velociraptor",2],["Wulong",1],["Ypupiara",1],["Yurgovuchia",1],["Zapsalis",1],["Zhenyuanlong",1],["Zhongjianosaurus",1]]),
 };
 
 /* =========================================================
@@ -1715,251 +1748,6 @@ Vespertilionidae:[
    Genera absent from this list have no species shown.
    ========================================================= */
 let SP = {
-// --- Pteropodidae
-Eidolon:[1,[["dupreanum","Madagascan flying fox"],["helvum","straw-coloured fruit bat"]]],
-Rousettus:[1,[["aegyptiacus","Egyptian fruit bat"],["amplexicaudatus","Geoffroy’s rousette"],["leschenaultii","Leschenault’s rousette"],["linduensis","Linduan rousette"],["madagascariensis","Madagascan rousette"],["obliviosus","Comoro rousette"],["spinalatus","bare-backed rousette"]]],
-Pilonycteris:[1,[["celebensis","Sulawesi rousette"]]],
-Stenonycteris:[1,[["lanosa","long-haired fruit bat"]]],
-Eonycteris:[1,[["major","greater dawn bat"],["robusta","Philippine dawn bat"],["spelaea","cave nectar bat"]]],
-Myonycteris:[1,[["angolensis","Angolan rousette"],["brachycephala","Sao Tome collared fruit bat"],["leptodon","western collared fruit bat"],["relicta","East African little collared fruit bat"],["torquata","little collared fruit bat"]]],
-Megaloglossus:[1,[["azagnyi","western woolly bat"],["woermanni","Woermann’s long-tongued fruit bat"]]],
-Plerotes:[1,[["anchietae","Anchieta’s pygmy fruit bat"]]],
-Scotonycteris:[1,[["bergmansi","Bergmans’s fruit bat"],["occidentalis","western tear-drop fruit bat"],["zenkeri","Zenker’s fruit bat"]]],
-Casinycteris:[1,[["argynnis","short-palated fruit bat"],["campomaanensis","Campo Ma'an fruit bat"],["ophiodon","pouched fruit bat"]]],
-Epomophorus:[1,[["angolensis","Angolan epauletted fruit bat"],["anselli","Ansell’s epauletted fruit bat"],["crypturus","Peters’s epauletted fruit bat"],["dobsonii","Dobson’s epauletted fruit bat"],["gambianus","Gambian epauletted fruit bat"],["grandis","Sanborn’s epauletted fruit bat"],["intermedius","Hayman’s epauletted fruit bat"],["labiatus","Ethiopian epauletted fruit bat"],["minor","minor epauletted fruit bat"],["pusillus","Peters’s dwarf epauletted fruit bat"],["wahlbergi","Wahlberg’s epauletted fruit bat"]]],
-Epomops:[1,[["buettikoferi","Buettikofer’s epauletted bat"],["franqueti","Franquet’s epauletted bat"]]],
-Hypsignathus:[1,[["monstrosus","hammer-headed bat"]]],
-
-Nanonycteris:[1,[["veldkampii","Veldkamp’s dwarf epauletted fruit bat"]]],
-Dobsonia:[1,[["anderseni","Andersen’s naked-backed fruit bat"],["beauforti","Beaufort’s naked-backed fruit bat"],["chapmani","Philippine naked-backed fruit bat"],["crenulata","Halmahera naked-backed fruit bat"],["emersa","Biak naked-backed fruit bat"],["exoleta","Sulawesi naked-backed fruit bat"],["inermis","Solomons naked-backed fruit bat"],["magna","great naked-backed fruit bat"],["minor","lesser naked-backed fruit bat"],["moluccensis","Moluccan naked-backed fruit bat"],["pannietensis","Panniet naked-backed fruit bat"],["peronii","western naked-backed fruit bat"],["praedatrix","New Britain naked-backed fruit bat"],["viridis","greenish naked-backed fruit bat"]]],
-Harpyionycteris:[1,[["celebensis","Sulawesi harpy fruit bat"],["whiteheadi","Philippine harpy fruit bat"]]],
-Aproteles:[1,[["bulmerae","Bulmer’s fruit bat"]]],
-Boneia:[1,[["bidens","Manado fruit bat"]]],
-Cynopterus:[1,[["brachyotis","lesser short-nosed fruit bat"],["horsfieldii","Horsfield’s fruit bat"],["luzoniensis","Peters’s short-nosed fruit bat"],["minutus","minute fruit bat"],["nusatenggara","Nusatenggara short-nosed fruit bat"],["sphinx","greater short-nosed fruit bat"],["titthaecheilus","Indonesian short-nosed fruit bat"]]],
-Megaerops:[1,[["albicollis","white-collared fruit bat"],["ecaudatus","tailless fruit bat"],["kusnotoi","Javan tailless fruit bat"],["niphanae","Ratanaworabhan’s fruit bat"]]],
-Ptenochirus:[1,[["jagorii","greater musky fruit bat"],["minor","lesser musky fruit bat"],["wetmorei","Mindanao musky fruit bat"]]],
-Dyacopterus:[1,[["brooksi","Brooks’s dyak fruit bat"],["rickarti","Rickart’s dyak fruit bat"],["spadiceus","Dayak fruit bat"]]],
-Thoopterus:[1,[["nigrescens","swift fruit bat"],["suhaniahae","Sulawesi swift fruit bat"]]],
-Balionycteris:[1,[["maculata","spotted-winged fruit bat"],["seimundi","Seimund’s fruit bat"]]],
-Aethalops:[1,[["aequalis","Borneo fruit bat"],["alecto","grey fruit bat"]]],
-Penthetor:[1,[["lucasii","Lucas’s short-nosed fruit bat"]]],
-Chironax:[1,[["melanocephalus","black-capped fruit bat"],["tumulus","Sulawesi black-capped fruit bat"]]],
-Sphaerias:[1,[["blanfordi","Blanford’s fruit bat"]]],
-Alionycteris:[1,[["paucidentata","Mindanao pygmy fruit bat"]]],
-Haplonycteris:[1,[["fischeri","Fischer’s pygmy fruit bat"]]],
-Otopteropus:[1,[["cartilagonodus","Luzon fruit bat"]]],
-Latidens:[1,[["salimalii","Salim Ali’s fruit bat"]]],
-Syconycteris:[1,[["australis","common blossom bat"],["carolinae","Halmahera blossom bat"],["hobbit","moss-forest blossom bat"]]],
-Macroglossus:[1,[["minimus","long-tongued nectar bat"],["sobrinus","hill long-tongued fruit bat"]]],
-Notopteris:[1,[["macdonaldii","Fijian long-tailed fruit bat"],["neocaledonicus","New Caledonia long-tailed fruit bat"]]],
-Nyctimene:[1,[["aello","broad-striped tube-nosed fruit bat"],["albiventris","common tube-nosed fruit bat"],["cephalotes","Pallas’s tube-nosed fruit bat"],["certans","mountain tube-nosed fruit bat"],["cyclotis","round-eared tube-nosed fruit bat"],["draconilla","dragon tube-nosed fruit bat"],["keasti","Keast’s tube-nosed fruit bat"],["major","island tube-nosed fruit bat"],["malaitensis","Malaita tube-nosed fruit bat"],["masalai","Demonic tube-nosed fruit bat"],["rabori","Philippine tube-nosed fruit bat"],["robinsoni","eastern tube-nosed bat"],["sanctacrucis","Nendö tube-nosed fruit bat"],["varia","lesser tube-nosed fruit bat"],["vizcaccia","Umboi tube-nosed fruit bat"],["wrightae","Happy tube-nosed fruit bat"]]],
-Paranyctimene:[1,[["raptor","unstriped tube-nosed bat"],["tenax","Steadfast tube-nosed bat"]]],
-Pteropus:[1,[["admiralitatum","Admiralty flying fox"],["aldabrensis","Aldabra flying fox"],["alecto","black flying fox"],["allenorum","small Samoan flying fox"],["anetianus","Vanuatu flying fox"],["aruensis","Aru flying fox"],["brunneus","Percy island flying fox"],["caniceps","North Moluccan flying fox"],["capistratus","New Britain masked flying fox"],["chrysoproctus","South Moluccan flying fox"],["cognatus","Makira flying fox"],["comorensis","Comoros flying fox"],["conspicillatus","spectacled flying fox"],["coxi","large Samoan flying fox"],["dasymallus","Ryukyu flying fox"],["ennisae","New Ireland masked flying fox"],["faunulus","Nicobar flying fox"],["fundatus","Banks flying fox"],["gilliardi","Gilliards' flying fox"],["griseus","Wallacean gray flying fox"],["howensis","Ontong Java flying fox"],["hypomelanus","island flying fox"],["intermedius","Andersen’s flying fox"],["keyensis","Kai flying fox"],["livingstonii","Livingstone’s flying fox"],["lombocensis","Lombok flying fox"],["lylei","Lyle’s flying fox"],["macrotis","big-eared flying fox"],["mahaganus","Sanborn’s flying fox"],["mariannus","Mariana fruit bat"],["medius","Indian flying fox"],["melanopogon","black-bearded flying fox"],["melanotus","black-eared flying fox"],["molossinus","Pohnpei flying fox"],["neohibernicus","great flying fox"],["niger","Mauritian flying fox"],["nitendiensis","Temotu flying fox"],["ocularis","Seram flying fox"],["ornatus","ornate flying fox"],["pelagicus","Chuuk flying fox"],["pelewensis","Palau flying fox"],["personatus","Moluccan masked flying fox"],["pilosus","large Palau flying fox"],["pohlei","Geelvink Bay flying fox"],["poliocephalus","grey-headed flying fox"],["pselaphon","Bonin flying fox"],["pumilus","little golden-mantled flying fox"],["rayneri","Solomons flying fox"],["rennelli","Rennell flying fox"],["rodricensis","Rodrigues flying fox"],["rufus","Malagasy flying fox"],["samoensis","common Samoan flying fox"],["scapulatus","little red flying fox"],["seychellensis","Seychelles flying fox"],["speciosus","Philippine gray flying fox"],["subniger","lesser Mascarene flying fox"],["temminckii","Temminck’s flying fox"],["tokudae","Guam flying fox"],["tonganus","Pacific flying fox"],["tuberculatus","Vanikoro flying fox"],["ualanus","Kosrae flying fox"],["vampyrus","large flying fox"],["vetulus","New Caledonia flying fox"],["voeltzkowi","Pemba flying fox"],["woodfordi","dwarf flying fox"]]],
-Acerodon:[1,[["celebensis","Sulawesi flying fox"],["humilis","Talaud flying fox"],["jubatus","giant golden-crowned flying fox"],["leucotis","Palawan fruit bat"],["macklotii","Sunda flying fox"]]],
-Pteralopex:[1,[["anceps",""],["atrata","Bougainville monkey-faced bat"],["flanneryi","greater monkey-faced bat"],["pulchra","montane monkey-faced bat"],["taki","Guadalcanal monkey-faced bat"]]],
-Styloctenium:[1,[["mindorense","Mindoro stripe-faced fruit bat"],["wallacei","Sulawesi stripe-faced fruit bat"]]],
-Desmalopex:[1,[["leucoptera","white-winged flying fox"],["microleucoptera","Mindoro pallid flying fox"]]],
-Mirimiri:[1,[["acrodonta","Fijian monkey-faced bat"]]],
-Neopteryx:[1,[["frosti","small-toothed fruit bat"]]],
-Melonycteris:[1,[["melanops","black-bellied fruit bat"]]],
-Nesonycteris:[1,[["fardoulisi","Fardoulis’s blossom bat"],["maccoyi","Malaita blossom bat"],["mengermani","New Georgia blossom bat"],["woodfordi","Woodford’s fruit bat"]]],
-// --- Rhinolophoidea
-Rhinopoma:[1,[["cystops","Egyptian mouse-tailed bat"],["funaiolii","Somali mouse-tailed bat"],["hadramauticum","Hadramout mouse-tailed bat"],["hardwickii","lesser mouse-tailed bat"],["microphyllum","greater mouse-tailed bat"],["muscatellum","small mouse-tailed bat"]]],
-Craseonycteris:[1,[["thonglongyai","Kitti’s hog-nosed bat"]]],
-Macroderma:[1,[["gigas","ghost bat"]]],
-Lyroderma:[1,[["lyra","greater false vampire bat"],["sinense","Chinese false vampire bat"]]],
-Megaderma:[1,[["spasma","lesser false vampire bat"]]],
-Cardioderma:[1,[["cor","heart-nosed bat"]]],
-Lavia:[1,[["frons","yellow-winged bat"]]],
-Eudiscoderma:[1,[["thongareeae","Thongaree’s disc-nosed bat"]]],
-Rhinolophus:[1,[["achilles","Queensland horseshoe bat"],["acrotis","Heuglin’s horseshoe bat"],["acuminatus","acuminate horseshoe bat"],["adami","Adam’s horseshoe bat"],["affinis","intermediate horseshoe bat"],["alcyone","Halcyon horseshoe bat"],["alticolus","Cameroon horseshoe bat"],["andamanensis","Homfray’s horseshoe bat"],["arcuatus","arcuate horseshoe bat"],["axillaris","Aba horseshoe bat"],["beddomei","Beddome’s woolly horseshoe bat"],["belligerator","Poso horseshoe bat"],["blasii","Blasius’s horseshoe bat"],["bocharicus","Bokhara horseshoe bat"],["borneensis","Bornean horseshoe bat"],["canuti","Knud’s horseshoe bat"],["capensis","Cape horseshoe bat"],["celebensis","Sulawesi horseshoe bat"],["cervenyi","Červený's horseshoe bat"],["chaseni","Indochinese horseshoe bat"],["chiewkweeae","Chiew Kwee’s horseshoe bat"],["chutamasae","Chutamas’s horseshoe bat"],["clivosus","Geoffroy’s horseshoe bat"],["coelophyllus","Croslet horseshoe bat"],["cognatus","Andaman horseshoe bat"],["cohenae","Cohen’s horseshoe bat"],["convexus","convex horseshoe bat"],["cornutus","little Japanese horseshoe bat"],["creaghi","Creagh’s horseshoe bat"],["damarensis","Damara horseshoe bat"],["darlingi","Darling’s horseshoe bat"],["deckenii","Decken’s horseshoe bat"],["denti","Dent’s horseshoe bat"],["dobsoni","Sudanese horseshoe bat"],["eloquens","eloquent horseshoe bat"],["episcopus","Allen’s horseshoe bat"],["euryale","Mediterranean horseshoe bat"],["euryotis","New Guinea broad-eared horseshoe bat"],["ferrumequinum","greater horseshoe bat"],["foetidus","Andersen’s woolly horseshoe bat"],["formosae","Formosan woolly horseshoe bat"],["francisi","Francis’s woolly horseshoe bat"],["fumigatus","Rüppell’s horseshoe bat"],["guineensis","Guinean horseshoe bat"],["hildebrandtii","Hildebrandt’s horseshoe bat"],["hilli","Hill’s horseshoe bat"],["hillorum","upland horseshoe bat"],["hipposideros","lesser horseshoe bat"],["hirsutus","Philippine horseshoe bat"],["horaceki","Horacek’s horseshoe bat"],["imaizumii","Imaizumi’s horseshoe bat"],["inops","Philippine forest horseshoe bat"],["keyensis","insular horseshoe bat"],["kirghisorum","Kyrgyzstan horseshoe bat"],["landeri","Lander’s horseshoe bat"],["lepidus","Blyth’s horseshoe bat"],["lobatus","Peters’s horseshoe bat"],["luctoides","Selangor woolly horseshoe bat"],["luctus","woolly horseshoe bat"],["mabuensis","mount Mabu horseshoe bat"],["maclaudi","Maclaud’s horseshoe bat"],["macrotis","big-eared horseshoe bat"],["madurensis","Madura horseshoe bat"],["maendeleo","Maendeleo horseshoe bat"],["malayanus","Malayan horseshoe bat"],["marshalli","Marshall’s horseshoe bat"],["mcintyrei","McIntyre’s horseshoe bat"],["megaphyllus","eastern horseshoe bat"],["mehelyi","Mehely’s horseshoe bat"],["microglobosus","Vietnamese brown horseshoe bat"],["midas","Gulf of Oman horseshoe bat"],["mitratus","mitred horseshoe bat"],["monoceros","Formosan horseshoe bat"],["montanus","Timorese horseshoe bat"],["morio","Malaysian woolly horseshoe bat"],["mossambicus","Mozambican horseshoe bat"],["namuli","Namuli horseshoe bat"],["nereis","Anamban horseshoe bat"],["nippon","greater Japanese horseshoe bat"],["osgoodi","Osgood’s horseshoe bat"],["pearsonii","Pearson’s horseshoe bat"],["perditus","Yaeyama horseshoe bat"],["perniger","northern woolly horseshoe bat"],["philippinensis","large-eared horseshoe bat"],["proconsulis","Bornean woolly horseshoe bat"],["pumilus","Okinawa horseshoe bat"],["pusillus","least horseshoe bat"],["refulgens","glossy horseshoe bat"],["rex","King horseshoe bat"],["robinsoni","Robinson’s horseshoe bat"],["rouxii","Indian rufous horseshoe bat"],["rufus","large rufous horseshoe bat"],["ruwenzorii","Ruwenzori horseshoe bat"],["sakejiensis","Sakeji horseshoe bat"],["sedulus","lesser woolly horseshoe bat"],["septentrionalis","Yunnan rufous horseshoe bat"],["shameli","Shamel’s horseshoe bat"],["shortridgei","Shortridge’s horseshoe bat"],["siamensis","Thai horseshoe bat"],["silvestris","African forest horseshoe bat"],["simulator","bushveld horseshoe bat"],["sinicus","Chinese rufous horseshoe bat"],["smithersi","Smithers’s horseshoe bat"],["stheno","lesser brown horseshoe bat"],["subbadius","little Nepalese horseshoe bat"],["subrufus","small rufous horseshoe bat"],["swinnyi","Swinny’s horseshoe bat"],["tatar","Sulawesi broad-eared horseshoe bat"],["thailandensis","Thailand horseshoe bat"],["thomasi","Thomas’s horseshoe bat"],["trifoliatus","trefoil horseshoe bat"],["virgo","yellow-faced horseshoe bat"],["webalai","Webala’s horseshoe bat"],["willardi","Willard’s horseshoe bat"],["xinanzhongguoensis","Chinese horseshoe bat"],["yonghoiseni","Yong Hoi Sen’s woolly horseshoe bat"],["yunanensis","Dobson’s horseshoe bat"],["ziama","Ziama horseshoe bat"]]],
-Hipposideros:[1,[["abae","Aba roundleaf bat"],["alongensis","Ha long roundleaf bat"],["antricola","Philippine dusky roundleaf bat"],["armiger","great roundleaf bat"],["ater","dusky roundleaf bat"],["beatus","Benito roundleaf bat"],["bicolor","bicolored roundleaf bat"],["boeadii","Boeadi’s roundleaf bat"],["brachyotus","Dobson’s roundleaf bat"],["breviceps","short-headed roundleaf bat"],["caffer","Sundevall’s roundleaf bat"],["calcaratus","spurred roundleaf bat"],["cervinus","fawn roundleaf bat"],["cineraceus","least roundleaf bat"],["coronatus","large Mindanao roundleaf bat"],["corynophyllus","Telefomin roundleaf bat"],["coxi","Cox’s roundleaf bat"],["crumeniferus","Timor roundleaf bat"],["curtus","short-tailed roundleaf bat"],["demissus","Makira roundleaf bat"],["diadema","diadem leaf-nosed bat"],["dinops","fierce roundleaf bat"],["doriae","Bornean roundleaf bat"],["durgadasi","Durga Das’s roundleaf bat"],["dyacorum","Dayak roundleaf bat"],["edwardshilli","Hill’s roundleaf bat"],["einnaythu","house-dwelling roundleaf bat"],["fuliginosus","sooty roundleaf bat"],["fulvus","Fulvus roundleaf bat"],["galeritus","Cantor’s roundleaf bat"],["gentilis","Andersen’s roundleaf bat"],["grandis","Grand roundleaf bat"],["griffini","Griffin’s roundleaf bat"],["halophyllus","Thailand roundleaf bat"],["hypophyllus","Kolar roundleaf bat"],["inexpectatus","crested roundleaf bat"],["inornatus","Arnhem roundleaf bat"],["jonesi","Jones’s roundleaf bat"],["khaokhouayensis","Phou Khao Khouay roundleaf bat"],["kingstonae","Kingston’s roundleaf bat"],["kunzi","Kunz’s roundleaf bat"],["lamottei","Lamotte’s roundleaf bat"],["lankadiva","Indian roundleaf bat"],["larvatus","intermediate roundleaf bat"],["lekaguli","large Asian roundleaf bat"],["lylei","shield-faced roundleaf bat"],["macrobullatus","big-eared roundleaf bat"],["madurae","Maduran roundleaf bat"],["maggietaylorae","Maggie Taylor’s roundleaf bat"],["marisae","Aellen’s roundleaf bat"],["megalotis","large-eared roundleaf bat"],["muscinus","Fly river roundleaf bat"],["nequam","Malayan roundleaf bat"],["nicobarulae","Nicobar roundleaf bat"],["obscurus","Philippine forest roundleaf bat"],["orbiculus","Orbiculus roundleaf bat"],["papua","Biak roundleaf bat"],["pelingensis","Peleng roundleaf bat"],["pendleburyi","Pendlebury’s roundleaf bat"],["pomona","Pomona roundleaf bat"],["poutensis","Allen’s roundleaf bat"],["pygmaeus","Philippine pygmy roundleaf bat"],["ridleyi","Ridley’s roundleaf bat"],["rotalis","Laotian roundleaf bat"],["ruber","Noack’s roundleaf bat"],["scutinares","shield-nosed roundleaf bat"],["semoni","Semon’s roundleaf bat"],["sorenseni","Sorensen’s roundleaf bat"],["speoris","Schneider’s roundleaf bat"],["srilankaensis","Sri Lankan roundleaf bat"],["stenotis","northern roundleaf bat"],["sumbae","Sumban roundleaf bat"],["swinhoii","Swinhoe’s roundleaf bat"],["tephrus","Maghreb roundleaf bat"],["turpis","lesser roundleaf bat"],["wollastoni","Wollaston’s roundleaf bat"]]],
-Macronycteris:[1,[["commersonii","Commerson’s roundleaf bat"],["cryptovalorona","Madagascar cryptic roundleaf bat"],["gigas","giant leaf-nosed bat"],["thomensis","São Tomé leaf-nosed bat"],["vittata","striped roundleaf bat"]]],
-Asellia:[1,[["arabica","Arabian trident bat"],["italosomalica","Somali trident bat"],["patrizii","Patrizi’s trident leaf-nosed bat"],["tridens","trident leaf-nosed bat"]]],
-Aselliscus:[1,[["dongbacanus","Dong Bac trident roundleaf bat"],["stoliczkanus","Stoliczka’s trident bat"],["tricuspidatus","Temminck’s trident bat"]]],
-Coelops:[1,[["frithii","East Asian tailless leaf-nosed bat"],["hirsutus","Philippine tailless leaf-nosed bat"],["robinsoni","Malayan tailless leaf-nosed bat"]]],
-Doryrhina:[1,[["camerunensis","Cameroon roundleaf bat"],["cyclops","cyclops roundleaf bat"]]],
-Anthops:[1,[["ornatus","flower-faced bat"]]],
-Triaenops:[1,[["afer","African trident bat"],["menamena","Rufous trident bat"],["parvus","Dhofar trident bat"],["persicus","Persian trident bat"]]],
-Paratriaenops:[1,[["auritus","Grandidier’s trident bat"],["furcula","Trouessart’s trident bat"],["pauliani","Paulian’s trident bat"]]],
-Rhinonicteris:[1,[["aurantia","orange leaf-nosed bat"]]],
-Cloeotis:[1,[["percivali","Percival’s short-eared trident bat"]]],
-// --- Emballonuroidea
-Nycteris:[1,[["arge","Bate’s slit-faced bat"],["aurita","Andersen’s slit-faced bat"],["gambiensis","Gambian slit-faced bat"],["grandis","large slit-faced bat"],["hispida","hairy slit-faced bat"],["intermedia","intermediate slit-faced bat"],["javanica","Javan slit-faced bat"],["macrotis","large-eared slit-faced bat"],["major","Dja slit-faced bat"],["nana","dwarf slit-faced bat"],["parisii","Parisi’s slit-faced bat"],["thebaica","Egyptian slit-faced bat"],["tragata","Malayan slit-faced bat"],["woodi","Wood’s slit-faced bat"]]],
-Emballonura:[1,[["alecto","small Asian sheath-tailed bat"],["beccarii","Beccari’s sheath-tailed bat"],["dianae","large-eared sheath-tailed bat"],["furax","New Guinea sheath-tailed bat"],["monticola","lesser sheath-tailed bat"],["raffrayana","Raffray’s sheath-tailed bat"],["semicaudata","Pacific sheath-tailed bat"],["serii","Seri’s sheath-tailed bat"]]],
-Coleura:[1,[["afra","African sheath-tailed bat"],["gallarum","Arabian sheath-tailed bat"],["kibomalandy","Malagasy sheath-tailed bat"],["seychellensis","Seychelles sheath-tailed bat"]]],
-Paremballonura:[1,[["atrata","Peters’s sheath-tailed bat"],["tiavato","western sheath-tailed bat"]]],
-Mosia:[1,[["nigrescens","dark sheath-tailed bat"]]],
-Peropteryx:[1,[["kappleri","greater dog-like bat"],["leucoptera","white-winged dog-like bat"],["macrotis","lesser dog-like bat"],["pallidoptera","pale-winged dog-like bat"],["trinitatis","Trinidad dog-like bat"]]],
-Saccopteryx:[1,[["antioquensis","Antioquian sac-winged bat"],["bilineata","greater sac-winged bat"],["canescens","frosted sac-winged bat"],["gymnura","Amazonian sac-winged bat"],["leptura","lesser sac-winged bat"]]],
-Diclidurus:[1,[["albus","northern ghost bat"],["ingens","greater ghost bat"],["isabella","Isabelle’s ghost bat"],["scutatus","lesser ghost bat"]]],
-Balantiopteryx:[1,[["infusca","Ecuadorian sac-winged bat"],["io","Thomas’s sac-winged bat"],["plicata","grey sac-winged bat"]]],
-Centronycteris:[1,[["centralis","Thomas’s shaggy bat"],["maximiliani","shaggy bat"]]],
-Rhynchonycteris:[1,[["naso","proboscis bat"]]],
-Cormura:[1,[["brevirostris","chestnut sac-winged bat"]]],
-Cyttarops:[1,[["alecto","short-eared bat"]]],
-Taphozous:[1,[["achates","Indonesian tomb bat"],["australis","coastal sheath-tailed bat"],["georgianus","common sheath-tailed bat"],["hamiltoni","Hamilton’s tomb bat"],["hildegardeae","Hildegarde’s tomb bat"],["hilli","Hill’s sheath-tailed bat"],["kapalgensis","Arnhem sheath-tailed bat"],["longimanus","long-winged sheath-tailed bat"],["mauritianus","Mauritian tomb bat"],["melanopogon","black-bearded tomb bat"],["nudiventris","naked-rumped tomb bat"],["perforatus","Egyptian tomb bat"],["theobaldi","Theobald’s tomb bat"],["troughtoni","Troughton’s sheath-tailed bat"]]],
-Saccolaimus:[1,[["flaviventris","yellow-bellied sheath-tailed bat"],["mixtus","Papuan sheath-tailed bat"],["peli","Pel’s pouched bat"],["saccolaimus","naked-rumped pouched bat"]]],
-// --- Noctilionoidea
-Myzopoda:[1,[["aurita","eastern sucker-footed bat"],["schliemanni","western sucker-footed bat"]]],
-Mystacina:[1,[["robusta","greater short-tailed bat — probably extinct"],["tuberculata","lesser short-tailed bat"]]],
-Thyroptera:[1,[["devivoi","Devivo’s disk-winged bat"],["discifera","Peters’s disk-winged bat"],["lavali","LaVal’s disk-winged bat"],["tricolor","Spix’s disk-winged bat"],["wynneae","Wynne’s disk-winged bat"]]],
-Furipterus:[1,[["horrens","thumbless bat"]]],
-Amorphochilus:[1,[["schnablii","smoky bat"]]],
-Noctilio:[1,[["albiventris","lesser bulldog bat"],["leporinus","greater bulldog bat"]]],
-Pteronotus:[1,[["alitonus","Amazonian common mustached bat"],["davyi","Davy’s naked-backed bat"],["fulvus","Thomas’s naked-backed bat"],["fuscus","Allen’s common mustached bat"],["gymnonotus","big naked-backed bat"],["macleayii","Macleay’s mustached bat"],["mesoamericanus","Mesoamerican common mustached bat"],["mexicanus","Mexican common mustached bat"],["paraguanensis","Paraguana common mustached bat"],["parnellii","Parnell’s mustached bat"],["personatus","Wagner’s mustached bat"],["portoricensis","Puerto Rican common mustached bat"],["psilotis","Dobson’s lesser mustached bat"],["pusillus","Hispaniolan common mustached bat"],["quadridens","sooty mustached bat"],["rubiginosus","Wagner’s common mustached bat"]]],
-Mormoops:[1,[["blainvillei","Antillean ghost-faced bat"],["megalophylla","ghost-faced bat"]]],
-Macrotus:[1,[["californicus","California leaf-nosed bat"],["waterhousii","Waterhouse’s leaf-nosed bat"]]],
-Micronycteris:[1,[["brosseti","Brosset’s big-eared bat"],["buriri","Saint Vincent big-eared bat"],["giovanniae","Giovanni’s big-eared bat"],["hirsuta","hairy big-eared bat"],["matses","Matses big-eared bat"],["megalotis","little big-eared bat"],["microtis","common big-eared bat"],["minuta","white-bellied big-eared bat"],["sanborni","Sanborn’s big-eared bat"],["schmidtorum","Schmidt’s big-eared bat"],["simmonsae","Simmons’s big-eared bat"],["tresamici","northern big-eared bat"],["yatesi","Yates’s big-eared bat"]]],
-Lampronycteris:[1,[["brachyotis","yellow-throated big-eared bat"]]],
-Desmodus:[1,[["rotundus","common vampire bat"]]],
-Diaemus:[1,[["youngii","white-winged vampire bat"]]],
-Diphylla:[1,[["ecaudata","hairy-legged vampire bat"]]],
-Lonchorhina:[1,[["aurita","Tomes’s sword-nosed bat"],["fernandezi","Fernandez’s sword-nosed bat"],["inusitata","uncommon sword-nosed bat"],["mankomara","Sierra Nevada sword-nosed bat"],["marinkellei","Marinkelle’s sword-nosed bat"],["orinocensis","Orinoco sword-nosed bat"]]],
-Lophostoma:[1,[["brasiliense","pygmy round-eared bat"],["carrikeri","Carriker’s round-eared bat"],["evote","Davis’s round-eared bat"],["kalkoae","Kalko’s round-eared bat"],["nicaraguae","Mesoamerican round-eared bat"],["occidentale","western round-eared bat"],["schulzi","Schulz’s round-eared bat"],["silvicola","white-throated round-eared bat"]]],
-Phyllostomus:[1,[["discolor","pale spear-nosed bat"],["elongatus","lesser spear-nosed bat"],["hastatus","greater spear-nosed bat"],["latifolius","Guianan spear-nosed bat"]]],
-Gardnerycteris:[1,[["crenulata","striped hairy-nosed bat"],["keenani","Keenan’s hairy-nosed bat"],["koepckeae","Koepcke’s hairy-nosed bat"]]],
-Tonatia:[1,[["bakeri","northern stripe-headed round-eared bat"],["bidens","greater round-eared bat"],["maresi","southern stripe-headed round-eared bat"]]],
-Phylloderma:[1,[["septentrionale","northern pale-faced bat"],["stenops","pale-faced bat"]]],
-Mimon:[1,[["bennettii","golden bat"],["cozumelae","Cozumel golden bat"]]],
-Vampyrum:[1,[["spectrum","spectral bat"]]],
-Chrotopterus:[1,[["auritus","big-eared woolly bat"]]],
-Trachops:[1,[["cirrhosus","fringe-lipped bat"],["coffini","Central American fringe-lipped bat"],["ehrhardti","Atlantic forest fringe-lipped bat"]]],
-Macrophyllum:[1,[["macrophyllum","long-legged bat"]]],
-Glossophaga:[1,[["antillarum","Jamaican long-tongued bat"],["bakeri","Baker’s long-tongued bat"],["commissarisi","Commissaris’s long-tongued bat"],["leachii","grey long-tongued bat"],["longirostris","Miller’s long-tongued bat"],["morenoi","western long-tongued bat"],["mutica","Merriam’s long-tongued bat"],["soricina","Pallas’s long-tongued bat"],["valens","Ecuadorian long-tongued bat"]]],
-Leptonycteris:[1,[["curasoae","southern long-nosed bat"],["nivalis","greater long-nosed bat"],["yerbabuenae","lesser long-nosed bat"]]],
-Monophyllus:[1,[["plethodon","insular single leaf bat"],["redmani","Leach’s single leaf bat"]]],
-Anoura:[1,[["aequatoris","Ecuadorean tailless bat"],["cadenai","Cadena’s tailless bat"],["caudifer","tailed tailless bat"],["cultrata","handley’s tailless bat"],["fistulata","tube-lipped nectar bat"],["geoffroyi","Geoffroy’s tailless bat"],["javieri","Peruvian tailless bat"],["latidens","broad-toothed tailless bat"],["luismanueli","Luis Manuel’s tailless bat"],["peruana","Tschudi’s tailless bat"]]],
-Choeroniscus:[1,[["godmani","Godman’s long-tongued bat"],["minor","lesser long-tongued bat"],["periosus","greater long-tongued bat"]]],
-Hylonycteris:[1,[["underwoodi","Underwood’s long-tongued bat"]]],
-Choeronycteris:[1,[["mexicana","Mexican long-tongued bat"]]],
-Musonycteris:[1,[["harrisoni","banana bat"]]],
-Lichonycteris:[1,[["degener","brown long-nosed bat"],["obscura","dark long-tongued bat"]]],
-Scleronycteris:[1,[["ega","Ega long-tongued bat"]]],
-Dryadonycteris:[1,[["capixaba","dwarf little fruit bat"]]],
-Phyllonycteris:[1,[["aphylla","Jamaican flower bat"],["poeyi","Cuban flower bat"]]],
-Erophylla:[1,[["bombifrons","brown flower bat"],["sezekorni","buffy flower bat"]]],
-Brachyphylla:[1,[["cavernarum","Antillean fruit-eating bat"],["nana","Cuban fruit-eating bat"]]],
-Lonchophylla:[1,[["bokermanni","Bokermann’s nectar bat"],["chocoana","Chocoan nectar bat"],["concava","Goldman’s nectar bat"],["dekeyseri","Dekeyser’s nectar bat"],["fornicata","Pacific forest long-tongued bat"],["handleyi","Handley’s nectar bat"],["hesperia","western nectar bat"],["inexpectata","pale-bellied nectar bat"],["mordax","Goldman’s nectar bat"],["orcesi","Orces’s long-tongued bat"],["orienticollina","eastern Cordilleran nectar bat"],["peracchii","Peracchi’s nectar bat"],["robusta","orange nectar bat"]]],
-Hsunycteris:[1,[["cadenai","Cadena’s nectar bat"],["dashe","Dashe’s nectar bat"],["pattoni","Patton’s nectar bat"],["thomasi","Thomas’s nectar bat"]]],
-Xeronycteris:[1,[["vieirai","Vieira’s long-tongued bat"]]],
-Platalina:[1,[["genovensium","long-snouted bat"]]],
-Lionycteris:[1,[["spurrelli","chestnut long-tongued bat"]]],
-Glyphonycteris:[1,[["behnii","Behn’s big-eared bat"],["daviesi","Davies’s big-eared bat"],["sylvestris","tricolored big-eared bat"]]],
-Trinycteris:[1,[["nicefori","Niceforo’s big-eared bat"]]],
-Neonycteris:[1,[["pusilla","least big-eared bat"]]],
-Carollia:[1,[["benkeithi","Ben Keith’s short-tailed bat"],["brevicauda","silky short-tailed bat"],["castanea","chestnut short-tailed bat"],["manu","Manu short-tailed bat"],["monohernandezi","Hernandez’s short-tailed bat"],["perspicillata","Seba’s short-tailed bat"],["sowelli","Sowell’s short-tailed bat"],["subrufa","gray short-tailed bat"]]],
-Rhinophylla:[1,[["alethina","hairy little fruit bat"],["fischerae","Fischer’s little fruit bat"],["pumilio","dwarf little fruit bat"]]],
-Sturnira:[1,[["adrianae","Adriana’s yellow-shouldered bat"],["angeli","Dominica yellow-shouldered bat"],["aratathomasi","Arata-Thomas yellow-shouldered bat"],["bakeri","Baker’s yellow-shouldered bat"],["bidens","bidentate yellow-shouldered bat"],["boadai","Boada’s yellow-shouldered bat"],["bogotensis","Bogotá yellow-shouldered bat"],["burtonlimi","Burton’s yellow-shouldered bat"],["erythromos","hairy yellow-shouldered bat"],["giannae","Gianna’s yellow-shouldered bat"],["hondurensis","Honduran yellow-shouldered bat"],["koopmanhilli","Choco yellow-shouldered bat"],["lilium","little yellow-shouldered bat"],["ludovici","highland yellow-shouldered bat"],["luisi","Luis’s yellow-shouldered bat"],["magna","greater yellow-shouldered bat"],["mistratensis","Mistratoan yellow-shouldered bat"],["mordax","Talamancan yellow-shouldered bat"],["nana","lesser yellow-shouldered bat"],["oporaphilum","Tschudi’s yellow-shouldered bat"],["parvidens","northern yellow-shouldered bat"],["paulsoni","Paulson’s yellow-shouldered bat"],["perla","Perla yellow-shouldered bat"],["sorianoi","Soriano’s yellow-shouldered bat"],["tildae","Tilda’s yellow-shouldered bat"]]],
-Platyrrhinus:[1,[["albericoi","Alberico’s broad-nosed bat"],["angustirostris","slender broad-nosed bat"],["aquilus","Darién broad-nosed bat"],["aurarius","Eldorado broad-nosed bat"],["brachycephalus","short-headed broad-nosed bat"],["dorsalis","Thomas’s broad-nosed bat"],["fusciventris","brown-bellied broad-nosed bat"],["guianensis","Guianan broad-nosed bat"],["helleri","Heller’s broad-nosed bat"],["incarum","Incan broad-nosed bat"],["infuscus","buffy broad-nosed bat"],["ismaeli","Ismael’s broad-nosed bat"],["lineatus","white-lined broad-nosed bat"],["masu","Quechuan broad-nosed bat"],["matapalensis","Matapalo broad-nosed bat"],["nitelinea","western broad-nosed bat"],["recifinus","Recife broad-nosed bat"],["umbratus","shadowy broad-nosed bat"],["vittatus","greater broad-nosed bat"]]],
-Chiroderma:[1,[["doriae","Brazilian big-eyed bat"],["gorgasi","Handley’s big-eyed bat"],["improvisum","Guadeloupean big-eyed bat"],["salvini","Salvin’s big-eyed bat"],["scopaeum","Mexican big-eyed bat"],["trinitatum","little big-eyed bat"],["villosum","hairy big-eyed bat"]]],
-Uroderma:[1,[["bakeri","Baker’s tent-making bat"],["bilobatum","tent-making bat"],["convexum","Davis’s tent-making bat"],["davisi","Davis’s tent-making bat"],["magnirostrum","brown tent-making bat"]]],
-Vampyriscus:[1,[["bidens","bidentate yellow-eared bat"],["brocki","Brock’s yellow-eared bat"],["nymphaeus","striped yellow-eared bat"]]],
-Vampyressa:[1,[["elisabethae","Kalko’s yellow-eared bat"],["melissa","Melissa’s yellow-eared bat"],["pusilla","little yellow-eared bat"],["thyone","northern little yellow-eared bat"],["villai","Villa’s little yellow-eared bat"],["voragine","Voragine’s yellow-eared bat"]]],
-Vampyrodes:[1,[["caraccioli","great stripe-faced bat"],["major","northern stripe-faced bat"]]],
-Mesophylla:[1,[["macconnelli","MacConnell’s bat"]]],
-Ectophylla:[1,[["alba","Honduran white bat"]]],
-Enchisthenes:[1,[["hartii","velvety fruit-eating bat"]]],
-Artibeus:[1,[["aequatorialis","Ecuadorian fruit-eating bat"],["amplus","large fruit-eating bat"],["concolor","brown fruit-eating bat"],["fimbriatus","fringed fruit-eating bat"],["fraterculus","fraternal fruit-eating bat"],["hirsutus","hairy fruit-eating bat"],["inopinatus","Honduran fruit-eating bat"],["intermedius","intermediate fruit-eating bat"],["jamaicensis","Jamaican fruit bat"],["lituratus","great fruit-eating bat"],["obscurus","dark fruit-eating bat"],["planirostris","flat-faced fruit-eating bat"],["schwartzi","Schwartz’s fruit-eating bat"]]],
-Dermanura:[1,[["anderseni","Andersen’s fruit-eating bat"],["azteca","Aztec fruit-eating bat"],["bogotensis","Bogotá fruit-eating bat"],["cinerea","gervais’s fruit-eating bat"],["glauca","silvery fruit-eating bat"],["gnomus","dwarf fruit-eating bat"],["phaeotis","pygmy fruit-eating bat"],["rava","little fruit-eating bat"],["rosenbergi","Rosenberg’s fruit-eating bat"],["tolteca","Toltec fruit-eating bat"],["watsoni","Thomas’s fruit-eating bat"]]],
-Centurio:[1,[["senex","wrinkle-faced bat"]]],
-Sphaeronycteris:[1,[["toxophyllum","visored bat"]]],
-Ametrida:[1,[["centurio","little white-shouldered bat"]]],
-Pygoderma:[1,[["bilabiatum","Ipanema bat"]]],
-Phyllops:[1,[["falcatus","Cuban fig-eating bat"]]],
-Ardops:[1,[["nichollsi","Antillean fig-eating bat"]]],
-Ariteus:[1,[["flavescens","Jamaican fig-eating bat"]]],
-Stenoderma:[1,[["rufum","red fruit bat"]]],
-// --- Vespertilionoidea
-Natalus:[1,[["jamaicensis","Jamaican greater funnel-eared bat"],["macrourus","Brazilian funnel-eared bat"],["major","Hispaniolan greater funnel-eared bat"],["mexicanus","Mexican funnel-eared bat"],["primus","Cuban greater funnel-eared bat"],["stramineus","Mexican greater funnel-eared bat"],["tumidirostris","Trinidadian funnel-eared bat"]]],
-Chilonatalus:[1,[["macer",""],["micropus","Cuban lesser funnel-eared bat"],["tumidifrons","Bahaman lesser funnel-eared bat"]]],
-Nyctiellus:[1,[["lepidus","Gervais’s funnel-eared bat"]]],
-Tomopeas:[1,[["ravum","blunt-eared bat"]]],
-Mops:[1,[["aloysiisabaudiae","Duke of Abruzzi’s free-tailed bat"],["ansorgei","Ansorge’s free-tailed bat"],["atsinanana","Madagascar free-tailed bat"],["bakarii","Bakari’s free-tailed bat"],["bemmeleni","gland-tailed free-tailed bat"],["bivittatus","spotted free-tailed bat"],["brachypterus","short-winged free-tailed bat"],["bregullae","Fijian free-tailed bat"],["chapini","long-crested free-tailed bat"],["condylurus","Angolan free-tailed bat"],["congicus","Congo free-tailed bat"],["demonstrator","Mongalla free-tailed bat"],["gallagheri","Gallagher’s free-tailed bat"],["jobensis","northern free-tailed bat"],["jobimena","black-and-red free-tailed bat"],["johorensis","lesser northern free-tailed bat"],["leucogaster","Grandidier’s free-tailed bat"],["leucostigma","Malagasy white-bellied free-tailed bat"],["major","lappet-eared free-tailed bat"],["midas","Midas free-tailed bat"],["mops","Malayan free-tailed bat"],["nanulus","dwarf free-tailed bat"],["niangarae","Niangara free-tailed bat"],["nigeriae","Nigerian free-tailed bat"],["niveiventer","white-bellied free-tailed bat"],["petersoni","Peterson’s free-tailed bat"],["plicatus","wrinkle-lipped free-tailed bat"],["pumilus","little free-tailed bat"],["pusillus","Seychelles free-tailed bat"],["russatus","russet free-tailed bat"],["sarasinorum","Sulawesian free-tailed bat"],["solomonis","Solomons free-tailed bat"],["spurrelli","Spurrell’s free-tailed bat"],["thersites","Railer free-tailed bat"],["tomensis","Sao Tome free-tailed bat"],["trevori","Trevor’s free-tailed bat"]]],
-Otomops:[1,[["formosus","Johore free-tailed bat"],["harrisoni","Harrison’s giant mastiff bat"],["johnstonei","Johnstone’s giant mastiff bat"],["madagascariensis","Madagascan free-tailed bat"],["martiensseni","large-eared free-tailed bat"],["papuensis","Papuan giant mastiff bat"],["secundus","mantled giant mastiff bat"],["wroughtoni","Wroughton’s free-tailed bat"]]],
-Tadarida:[1,[["brasiliensis","Mexican free-tailed bat"],["fulminans","Madagascan large free-tailed bat"],["insignis","east Asian free-tailed bat"],["latouchei","La Touche’s free-tailed bat"],["lobata","Kenyan big-eared free-tailed bat"],["teniotis","European free-tailed bat"],["ventralis","African giant free-tailed bat"]]],
-Nyctinomus:[1,[["aegyptiacus","Egyptian free-tailed bat"]]],
-Austronomus:[1,[["australis","white-striped free-tailed bat"],["kuboriensis","New Guinea free-tailed bat"]]],
-Nyctinomops:[1,[["aurispinosus","Peale’s free-tailed bat"],["femorosaccus","pocketed free-tailed bat"],["laticaudatus","broad-eared bat"],["macrotis","big free-tailed bat"]]],
-Myopterus:[1,[["daubentonii","Daubenton’s free-tailed bat"],["whitleyi","bini free-tailed bat"]]],
-Platymops:[1,[["setiger","Peters’s flat-headed bat"]]],
-Sauromys:[1,[["petrophilus","Roberts’s flat-headed bat"]]],
-Eumops:[1,[["auripendulus","black bonneted bat"],["bonariensis","common dwarf bonneted bat"],["chimaera","Chimera’s bonneted bat"],["chiribaya","Chiribaya’s bonneted bat"],["dabbenei","big bonneted bat"],["delticus","Delta bonneted bat"],["ferox","fierce bonneted bat"],["floridanus","Florida bonneted bat"],["glaucinus","Wagner’s bonneted bat"],["hansae","Sanborn’s bonneted bat"],["maurus","Guianan bonneted bat"],["nanus","northern dwarf bonneted bat"],["patagonicus","Patagonian dwarf bonneted bat"],["perotis","western mastiff bat"],["trumbulli","Trumbull’s bonneted bat"],["underwoodi","Underwood’s bonneted bat"],["wilsoni","Wilson’s bonneted bat"]]],
-Molossus:[1,[["alvarezi","Alvarez’s mastiff bat"],["aztecus","Aztec mastiff bat"],["bondae","Bonda mastiff bat"],["coibensis","Coiban mastiff bat"],["currentium","Thomas’s mastiff bat"],["fentoni","Fenton’s mastiff bat"],["fluminensis","southern black mastiff bat"],["melini","Melin’s mastiff bat"],["molossus","Pallas’s mastiff bat"],["nigricans","northern black mastiff bat"],["paranaensis","Paraná river mastiff bat"],["pretiosus","Miller’s mastiff bat"],["rufus","black mastiff bat"],["sinaloae","Sinaloan mastiff bat"],["tropidorhynchus","Pug-nosed mastiff bat"],["verrilli","Hispaniolan mastiff bat"]]],
-Cynomops:[1,[["abrasus","cinnamon dog-faced bat"],["freemani","Freeman’s dog-faced bat"],["greenhalli","Greenhall’s dog-faced bat"],["kuizha","Awa dog-faced bat"],["mastivus","Thomas’s dog-faced bat"],["mexicanus","Mexican dog-faced bat"],["milleri","Miller’s dog-faced bat"],["planirostris","southern dog-faced bat"],["tonkigui","Waorani dog-faced bat"]]],
-Promops:[1,[["centralis","big crested mastiff bat"],["davisoni","Davison’s mastiff bat"],["nasutus","brown mastiff bat"]]],
-Molossops:[1,[["griseiventer","Colombian dog-faced bat"],["neglectus","rufous dog-faced bat"],["temminckii","dwarf dog-faced bat"]]],
-Neoplatymops:[1,[["mattogrossensis","Mato Grosso dog-faced bat"]]],
-Cabreramops:[1,[["aequatorianus","Ecuadorian dog-faced bat"]]],
-Ozimops:[1,[["beccarii","Beccari’s free-tailed bat"],["cobourgianus","northern coastal free-tailed bat"],["halli","Cape York free-tailed bat"],["kitcheneri","southwestern free-tailed bat"],["loriae","Loria’s free-tailed bat"],["lumsdenae","northern free-tailed bat"],["petersi","inland free-tailed bat"],["planiceps","southern free-tailed bat"],["ridei","eastern free-tailed bat"]]],
-Mormopterus:[1,[["acetabulosus","Natal free-tailed bat"],["doriae","Sumatran little mastiff bat"],["francoismoutoui","Reunion free-tailed bat"],["jugularis","Peters’s goblin bat"],["kalinowskii","Kalinowski’s little mastiff bat"],["minutus","least little mastiff bat"],["phrudus","Incan little mastiff bat"]]],
-Micronomus:[1,[["norfolkensis","east-coast free-tailed bat"]]],
-Setirostris:[1,[["eleryi","bristle-faced free-tailed bat"]]],
-Cheiromeles:[1,[["parvidens","lesser naked bat"],["torquatus","naked bulldog bat"]]],
-Miniopterus:[1,[["aelleni","Aellen’s long-fingered bat"],["africanus","African long-fingered bat"],["ambohitrensis","Montagne d'Ambre long-fingered bat"],["arenarius","sandy long-fingered bat"],["australis","little bent-wing bat"],["brachytragos","Madagascar long-fingered bat"],["egeri","Eger’s long-fingered bat"],["eschscholtzii","Eschscholtz’s long-fingered bat"],["fraterculus","lesser long-fingered bat"],["fuliginosus","eastern bent-wing bat"],["fuscus","Ryukyu long-fingered bat"],["gleni","Glen’s long-fingered bat"],["griffithsi","Griffiths’s long-fingered bat"],["griveaudi","Griveaud’s long-fingered bat"],["inflatus","greater long-fingered bat"],["macrocneme","small Melanesian long-fingered bat"],["maghrebensis","Maghrebian long-fingered bat"],["magnater","large long-fingered bat"],["mahafaliensis","Mahafaly long-fingered bat"],["majori","Major’s long-fingered bat"],["manavi","Manavil long-fingered bat"],["medius","intermediate long-fingered bat"],["minor","least long-fingered bat"],["mossambicus","Mozambican long-fingered bat"],["natalensis","Natal long-fingered bat"],["newtoni","Newton’s long-fingered bat"],["nimbae","Nimba long-fingered bat"],["orianae","Australian long-fingered bat"],["pallidus","pallid long-fingered bat"],["paululus","Philippine long-fingered bat"],["petersoni","Peterson’s long-fingered bat"],["phillipsi","Phillips’s long-fingered bat"],["pusillus","small long-fingered bat"],["robustior","Loyalty long-fingered bat"],["schreibersii","common bent-wing bat"],["shortridgei","Shortridge’s long-fingered bat"],["sororculus","Sororcula long-fingered bat"],["srinii","Srini’s long-fingered bat"],["tristis","great long-fingered bat"],["villiersi","Villiers’s long-fingered bat"],["wilsoni","Wilson’s long-fingered bat"]]],
-Cistugo:[1,[["lesueuri","Lesueur’s wing-gland bat"],["seabrae","Angolan wing-gland bat"]]],
-Myotis:[1,[["adversus","gray large-footed bat"],["albescens","silver-tipped bat"],["alcathoe","Alcathoe bat"],["altarium","Sichuan bat"],["alticraniatus","Indochinese whiskered bat"],["ancricola","valley bat"],["anjouanensis","Anjouan bat"],["annatessae","Anna Tess’s bat"],["annectans","hairy-faced bat"],["arescens","Valparaíso bat"],["armiensis","Armién’s bat"],["atacamensis","Atacama bat"],["ater","Peters’s bat"],["attenboroughi","Sir David Attenborough’s bat"],["auriculus","southwestern bat"],["australis","Australian bat"],["austroriparius","southeastern bat"],["badius","chestnut bat"],["bakeri","Baker’s bat"],["barquezi","Barquez’s bat"],["bartelsii","Bartels’s bat"],["bechsteinii","Bechstein’s bat"],["blythii","lesser bat"],["bocagii","Bocage’s bat"],["bombinus","Far eastern bat"],["borneoensis","Bornean whiskered bat"],["brandtii","Brandt’s bat"],["bucharensis","Bokhara bat"],["californicus","California bat"],["capaccinii","long-fingered bat"],["carteri","Carter’s bat"],["caucensis","Colombian black bat"],["chiloensis","Chilean bat"],["chinensis","large bat"],["ciliolabrum","western small-footed bat"],["clydejonesi","Clyde Jones’s bat"],["cobanensis","Guatemalan bat"],["crypticus","cryptic bat"],["dasycneme","pond bat"],["daubentonii","Daubenton’s bat"],["davidii","David’s bat"],["dieteri","Kock’s bat"],["diminutus","diminutive bat"],["dominicensis","Dominican bat"],["elegans","elegant bat"],["emarginatus","Geoffroy’s bat"],["escalerai","Escalera’s bat"],["evotis","long-eared bat"],["extremus","Mexican black bat"],["federatus","Malaysian whiskered bat"],["fimbriatus","fringed long-footed bat"],["findleyi","Findley’s bat"],["formosus","black-and-orange bat"],["fortidens","cinnamon bat"],["frater","fraternal bat"],["gomantongensis","Gomantong bat"],["goudotii","Malagasy bat"],["grisescens","gray bat"],["guarani","Guaraní bat"],["handleyi","Handley’s bat"],["hasseltii","lesser large-footed bat"],["hayesi","Hayes’s thick-thumbed bat"],["hermani","Herman’s bat"],["himalaicus","Himalayan long-tailed bat"],["horsfieldii","Horsfield’s bat"],["hoveli","Hovel’s bat"],["huariorum","Huari bat"],["hyrcanicus","Hyrcanian bat"],["ikonnikovi","Ikonnikov’s bat"],["indochinensis","Indochinese bat"],["insularum","insular bat"],["izecksohni","Izecksohn’s bat"],["kalkoae","Kalko’s bat"],["keaysi","southern hairy-legged bat"],["keenii","Keen’s bat"],["laniger","Chinese water bat"],["larensis","Lara bat"],["lavali","LaVal’s bat"],["leibii","eastern small-footed bat"],["levis","yellowish bat"],["longicaudatus","long-tailed bat"],["longipes","Kashmir cave bat"],["lucifugus","little brown bat"],["macrodactylus","big-footed bat"],["macropus","southern bat"],["macrotarsus","pallid large-footed bat"],["martiniquensis","Schwartz’s bat"],["midastactus","golden bat"],["moluccarum","Maluku bat"],["montivagus","Burmese whiskered bat"],["moratellii","Moratelli’s bat"],["morrisi","Morris’s bat"],["muricola","Nepalese whiskered bat"],["myotis","greater mouse-eared bat"],["mystacinus","whiskered bat"],["nattereri","Natterer’s bat"],["nesopolus","Curaçao bat"],["nigricans","common black bat"],["nimbaensis","Nimba bat"],["nipalensis","Nepal bat"],["nustrale","Corsican bat"],["nyctor","Barbados bat"],["occultus","Arizona bat"],["oxyotus","montane bat"],["pampa","Pampas bat"],["pequinius","Peking bat"],["petax","Russian bat"],["peytoni","Peyton’s bat"],["phanluongi","Phan Luong’s bat"],["pilosatibialis","northern hairy-legged bat"],["pilosus","Rickett’s big-footed bat"],["planiceps","flat-headed bat"],["pruinosus","frosted bat"],["punicus","Maghreb bat"],["ridleyi","Ridley’s bat"],["riparius","riparian bat"],["rosseti","thick-thumbed bat"],["ruber","red bat"],["rufoniger","reddish-black bat"],["rufopictus","orange-fingered bat"],["schaubi","Schaub’s bat"],["scotti","Scott’s bat"],["secundus","long-toed bat"],["septentrionalis","northern long-eared bat"],["sibiricus","Siberian whiskered bat"],["sicarius","Mandelli’s bat"],["siligorensis","Himalayan whiskered bat"],["simus","velvety bat"],["sodalis","Indiana bat"],["soror","reddish bat"],["sowerbyi","Sowerby’s whiskered bat"],["stalkeri","Stalker’s bat"],["thysanodes","fringed bat"],["tricolor","Temminck’s bat"],["tschuliensis","Tschuli bat"],["velifer","cave bat"],["vivesi","fish-eating bat"],["volans","long-legged bat"],["weberi","Weber’s bat"],["welwitschii","Welwitsch’s bat"],["yanbarensis","Yanbaru whiskered bat"],["yumanensis","Yuma bat"],["zenatius","Zenati bat"]]],
-Submyotodon:[1,[["caliginosus","dark broad-muzzled bat"],["latirostris","Taiwan broad-muzzled bat"],["moupinensis","Moupin broad-muzzled bat"]]],
-Eudiscopus:[1,[["denticulus","disc-footed bat"]]],
-Kerivoula:[1,[["africana","Tanzanian woolly bat"],["agnella","Saint Aignan’s woolly bat"],["argentata","Damara woolly bat"],["crypta","cryptic woolly bat"],["cuprosa","coppery woolly bat"],["depressa","flat-skulled woolly bat"],["dongduongana","Indochinese woolly bat"],["eriophora","Ethiopian woolly bat"],["flora","Flores woolly bat"],["furva","dark woolly bat"],["hardwickii","Hardwicke’s woolly bat"],["intermedia","small woolly bat"],["kachinensis","Kachin woolly bat"],["krauensis","Krau woolly bat"],["lanosa","lesser woolly bat"],["lenis","Sri Lankan woolly bat"],["malpasi","Sri Lankan woolly bat"],["minuta","least woolly bat"],["muscina","Fly river woolly bat"],["myrella","Bismarck woolly bat"],["papillosa","papillose woolly bat"],["pellucida","clear-winged woolly bat"],["phalaena","Spurrell’s woolly bat"],["picta","painted woolly bat"],["pusilla","Bornean woolly bat"],["smithii","Smith’s woolly bat"],["titania","Titania’s woolly bat"],["whiteheadi","Whitehead’s woolly bat"]]],
-Phoniscus:[1,[["aerosus","dusky trumpet-eared bat"],["atrox","groove-toothed bat"],["jagorii","Peters’s trumpet-eared bat"],["papuensis","golden-tipped bat"]]],
-Murina:[1,[["aenea","bronze tube-nosed bat"],["alvarezi","Alvarez’s tube-nosed bat"],["annamitica","Annamite tube-nosed bat"],["aurata","little tube-nosed bat"],["balaensis","Bala tube-nosed bat"],["baletei","Balete’s tube-nosed bat"],["beelzebub","Beelzebub tube-nosed bat"],["beibengensis","Beibeng tube-nosed bat"],["bicolor","bicolored tube-nosed bat"],["chayuensis","Chayu tube-nosed bat"],["chrysochaetes","golden-haired tube-nosed bat"],["cyclotis","round-eared tube-nosed bat"],["eleryi","Elery’s tube-nosed bat"],["feae","Fea’s tube-nosed bat"],["fionae","Fiona’s tube-nosed bat"],["florium","Flores tube-nosed bat"],["fusca","dusky tube-nosed bat"],["gracilis","gracile tube-nosed bat"],["guilleni","Guillen’s tube-nosed bat"],["harpioloides","Vietnamese tube-nosed bat"],["harrisoni","Harrison’s tube-nosed bat"],["hilgendorfi","Hilgendorf’s tube-nosed bat"],["hilonghilong","Hilong-hilong tube-nosed bat"],["hkakaboraziensis","Hkakabo Razi tube-nosed bat"],["huanglianensis","Huanglianshan tube-nosed bat"],["huttonii","Hutton’s tube-nosed bat"],["jaintiana","Jaintia tube-nosed bat"],["jinchui","Jinchu’s tube-nosed bat"],["kontumensis","Kon Tum tube-nosed bat"],["leucogaster","greater tube-nosed bat"],["liboensis","Libo tube-nosed bat"],["lorelieae","Lorelie’s tube-nosed bat"],["luzonensis","Luzon tube-nosed bat"],["medogensis","Medog tube-nosed bat"],["milinensis","Milin tube-nosed bat"],["mindorensis","Mindoro tube-nosed bat"],["peninsularis","Peninsular tube-nosed bat"],["philippinensis","Philippine tube-nosed bat"],["pluvialis","Rainforest tube-nosed bat"],["puta","Taiwan tube-nosed bat"],["recondita","hidden tube-nosed bat"],["rozendaali","gilded tube-nosed bat"],["rubella","Fujian tube-nosed bat"],["ryukyuana","Ryukyu tube-nosed bat"],["shuipuensis","Shuipu tube-nosed bat"],["suilla","brown tube-nosed bat"],["tenebrosa","gloomy tube-nosed bat"],["tubinaris","Scully’s tube-nosed bat"],["ussuriensis","Ussuri tube-nosed bat"],["walstoni","Walston’s tube-nosed bat"],["yadongensis","Yadong tube-nosed bat"],["yuanyang","Yuanyang tube-nosed bat"],["yushuensis","Yushu tube-nosed bat"]]],
-Harpiola:[1,[["grisea","Peters’s tube-nosed bat"],["isodon","Taiwan tube-nosed bat"]]],
-Harpiocephalus:[1,[["harpia","hairy-winged bat"]]],
-Pipistrellus:[1,[["aero","mount Gargues pipistrelle"],["creticus","Crete pipistrelle"],["etula","Bioko pipistrelle"],["hanaki","Hanak’s pipistrelle"],["hesperidus","dusky pipistrelle"],["inexspectatus","Aellen’s pipistrelle"],["kuhlii","Kuhl’s pipistrelle"],["maderensis","Madeira pipistrelle"],["nanulus","tiny pipistrelle"],["nathusii","Nathusius’s pipistrelle"],["permixtus","Dar-es-Salaam pipistrelle"],["pipistrellus","common pipistrelle"],["pygmaeus","soprano pipistrelle"],["raceyi","Racey’s pipistrelle"],["rusticus","rusty pipistrelle"],["simandouensis","Simandou pipistrelle"]]],
-Alionoctula:[1,[["abramus","Japanese pipistrelle"],["adamsi","forest pipistrelle"],["angulata","New Guinea pipistrelle"],["babu","Babu’s pipistrelle"],["ceylonica","Kelaart’s pipistrelle"],["collina","greater Papuan pipistrelle"],["coromandra","Indian pipistrelle"],["dhofarensis","Dhofar pipistrelle"],["endoi","Endo’s pipistrelle"],["javanica","Javan pipistrelle"],["minahassae","Minahassa pipistrelle"],["murrayi","Christmas island pipistrelle"],["papuana","lesser Papuan pipistrelle"],["paterculus","mount Popa pipistrelle"],["stenoptera","narrow-winged pipistrelle"],["sturdeei","Sturdee’s pipistrelle"],["tenuis","least pipistrelle"],["wattsi","Watts’s pipistrelle"],["westralis","northern pipistrelle"]]],
-Afropipistrellus:[1,[["bellieri","Bellier’s serotine"],["crassulus","broad-headed pipistrelle"],["eisentrauti","Eisentraut’s serotine"],["grandidieri","Grandidier’s pipistrelle"],["happoldorum","Happolds' serotine"],["macrocephalus","large-headed serotine"],["musciculus","mouse-like pipistrelle"]]],
-Nyctalus:[1,[["aviator","birdlike noctule"],["azoreum","Azores noctule"],["furvus","Japanese noctule"],["lasiopterus","greater noctule"],["leisleri","Leisler’s bat"],["montanus","mountain noctule"],["noctula","common noctule"],["plancyi","Chinese noctule"]]],
-Glischropus:[1,[["aquilus","dark thick-thumbed bat"],["bucephalus","Indochinese thick-thumbed bat"],["javanus","Javan thick-thumbed bat"],["meghalayanus","Meghalaya thick-thumbed bat"],["tylopus","common thick-thumbed bat"]]],
-Perimyotis:[1,[["subflavus","tricolored bat"]]],
-Parastrellus:[1,[["hesperus","canyon bat"]]],
-Scotozous:[1,[["dormeri","Dormer’s bat"]]],
-Hypsugo:[1,[["affinis","chocolate pipistrelle"],["alashanicus","Alashanian pipistrelle"],["arabicus","Arabian pipistrelle"],["ariel","fairy pipistrelle"],["cadornae","Cadorna’s pipistrelle"],["dolichodon","long-toothed pipistrelle"],["imbricatus","brown pipistrelle"],["kitcheneri","red-brown pipistrelle"],["lanzai","Lanza’s pipistrelle"],["lophurus","Burmese pipistrelle"],["macrotis","big-eared pipistrelle"],["mordax","pungent pipistrelle"],["petersi","Peters’s pipistrelle"],["pulveratus","Chinese pipistrelle"],["savii","Savi’s pipistrelle"],["vordermanni","Vordermann’s pipistrelle"]]],
-Glauconycteris:[1,[["alboguttata","striped butterfly bat"],["argentata","silvered butterfly bat"],["atra","blackish butterfly bat"],["baka","Baka butterfly bat"],["beatrix","Beatrix’s butterfly bat"],["curryae","Curry’s butterfly bat"],["egeria","Bibundi butterfly bat"],["gleni","Glen’s butterfly bat"],["humeralis","spotted butterfly bat"],["kenyacola","Kenyan butterfly bat"],["lobeke","Lobéké butterfly bat"],["machadoi","Machado’s butterfly bat"],["poensis","Abo butterfly bat"],["superba","pied butterfly bat"],["variegata","variegated butterfly bat"]]],
-Laephotis:[1,[["angolensis","Angolan long-eared serotine"],["capensis","Cape serotine"],["kirinyaga","East African serotine"],["malagasyensis","Isalo serotine"],["matroka","Malagasy serotine"],["namibensis","Namib long-eared bat"],["robertsi","Roberts’s serotine"],["stanleyi","Stanley’s serotine"],["wintoni","De Winton’s long-eared bat"]]],
-Vespadelus:[1,[["baverstocki","inland forest bat"],["caurinus","northern cave bat"],["darlingtoni","large forest bat"],["douglasorum","yellow-lipped cave bat"],["finlaysoni","Finlayson’s cave bat"],["pumilus","eastern forest bat"],["regulus","southern forest bat"],["troughtoni","eastern cave bat"],["vulturnus","little forest bat"]]],
-Neoromicia:[1,[["anchietae","Anchieta’s serotine"],["bemainty","Kirindy serotine"],["guineensis","tiny serotine"],["hlandzeni","Lowveld serotine"],["somalica","Somali serotine"],["zuluensis","Zulu serotine"]]],
-Pseudoromicia:[1,[["brunnea","dark-brown serotine"],["isabella","Isabelline serotine"],["kityoi","Kityo’s serotine"],["mbamminkom","Mbam Minkom serotine"],["nyanza","Nyanza serotine"],["principis","Principe serotine"],["rendalli","Rendall’s serotine"],["roseveari","Rosevear’s serotine"],["tenuipinnis","white-winged serotine"]]],
-Chalinolobus:[1,[["dwyeri","large-eared pied bat"],["gouldii","Gould’s wattled bat"],["morio","chocolate wattled bat"],["neocaledonicus","New Caledonian wattled bat"],["nigrogriseus","hoary wattled bat"],["orarius","coastal wattled bat"],["picatus","little pied bat"],["tuberculatus","New Zealand long-tailed bat"]]],
-Tylonycteris:[1,[["fulvida","lesser club-footed bat"],["malayana","Malayan bamboo bat"],["pachypus","lesser bamboo bat"],["pygmaea","pygmy bamboo bat"],["robustula","greater bamboo bat"],["tonkinensis","Tonkin greater bamboo bat"]]],
-Scotoecus:[1,[["albigula","white-throated lesser house bat"],["albofuscus","light-winged lesser house bat"],["hindei","Hinde’s lesser house bat"],["hirundo","dark-winged lesser house bat"],["pallidus","desert yellow lesser house bat"]]],
-Falsistrellus:[1,[["mackenziei","western false pipistrelle"],["tasmaniensis","eastern false pipistrelle"]]],
-Scotorepens:[1,[["balstoni","inland broad-nosed bat"],["greyii","little broad-nosed bat"],["orion","eastern broad-nosed bat"],["sanborni","northern broad-nosed bat"]]],
-Afronycteris:[1,[["helios","Heller’s pipistrelle"],["nanus","banana serotine"],["rautenbachi","Kruger serotine"]]],
-Nycticeinops:[1,[["schlieffenii","Schlieffen’s serotine"]]],
-Mimetillus:[1,[["moloneyi","Moloney’s flat-headed bat"]]],
-Vespertilio:[1,[["murinus","parti-coloured bat"],["sinensis","Asian parti-coloured bat"]]],
-
-Cassistrellus:[1,[["dimissus","surat serotine"],["yokdonensis","Yok Don serotine"]]],
-Philetor:[1,[["brachypterus","rohu’s bat"]]],
-Scoteanax:[1,[["rueppellii","greater broad-nosed bat"]]],
-Scotomanes:[1,[["ornatus","harlequin bat"]]],
-Lasionycteris:[1,[["noctivagans","silver-haired bat"]]],
-Vansonia:[1,[["rueppellii","Rüppell’s pipistrelle"]]],
-Mirostrellus:[1,[["joffrei","Joffre’s pipistrelle"]]],
-Eptesicus:[1,[["dutertreus","Cuban brown bat"],["fuscus","big brown bat"]]],
-Cnephaeus:[1,[["anatolicus","Anatolian serotine"],["bottae","Botta’s serotine"],["floweri","horn-skinned serotine"],["gobiensis","Gobi serotine"],["hottentotus","long-tailed house bat"],["isabellinus","Isabelline serotine"],["japonensis","Japanese serotine"],["kobayashii","Kobayashi’s serotine"],["nilssonii","northern bat"],["ognevi","Ognev’s serotine"],["pachyomus","Oriental serotine"],["pachyotis","thick-eared serotine"],["platyops","Lagos serotine"],["serotinus","serotine"],["tatei","sombre serotine"]]],
-Neoeptesicus:[1,[["andinus","little black serotine"],["brasiliensis","Brazilian brown bat"],["chiriquinus","Chiriquinan serotine"],["diminutus","diminutive serotine"],["furinalis","Argentine brown bat"],["innoxius","harmless serotine"],["langeri","Langer’s serotine"],["orinocensis","Orinoco serotine"],["taddeii","Taddei’s serotine"],["ulapesensis","Ulapes serotine"]]],
-Histiotus:[1,[["alienus","strange big-eared brown bat"],["cadenai","Cadena-García’s big-eared brown bat"],["colombiae","Colombian big-eared brown bat"],["diaphanopterus","transparent-winged big-eared brown bat"],["humboldti","Humboldt’s big-eared brown bat"],["laephotis","Thomas’s big-eared brown bat"],["macrotus","big-eared brown bat"],["magellanicus","southern big-eared brown bat"],["mochica","Moche big-eared brown bat"],["montanus","small big-eared brown bat"],["velatus","tropical big-eared brown bat"]]],
-Hesperoptenus:[1,[["blanfordi","Blanford’s bat"],["doriae","Doria’s false serotine"],["gaskelli","Gaskell’s false serotine"],["tickelli","Tickell’s bat"],["tomesi","large false serotine"]]],
-Arielulus:[1,[["aureocollaris","collared sprite"],["circumdatus","bronze sprite"],["cuprosus","coppery sprite"],["drungicus","northern coppery sprite"],["societatis","social sprite"],["torquatus","necklace sprite"]]],
-Ia:[1,[["io","great evening bat"]]],
-Rhyneptesicus:[1,[["nasutus","Sind bat"]]],
-Scotophilus:[1,[["altilis","East African yellow bat"],["andrewreborii","Andrew Rebori’s yellow bat"],["borbonicus","Réunion yellow bat"],["colias","Eritrean yellow bat"],["collinus","Sody’s yellow bat"],["dinganii","African yellow bat"],["ejetai","Ejeta’s yellow bat"],["heathii","greater Asiatic yellow bat"],["kuhlii","lesser Asiatic yellow bat"],["leucogaster","white-bellied yellow bat"],["livingstonii","Livingstone’s yellow bat"],["marovaza","Marovaza yellow bat"],["nigrita","giant house bat"],["nigritellus","western greenish yellow bat"],["nucella","Robbins’s yellow bat"],["nux","nut-colored yellow bat"],["robustus","robust yellow bat"],["tandrefana","Malagasy yellow bat"],["trujilloi","Trujillo’s yellow bat"],["viridis","green house bat"]]],
-Plecotus:[1,[["auritus","brown long-eared bat"],["austriacus","grey long-eared bat"],["balensis","Ethiopian long-eared bat"],["christii","Christie’s long-eared bat"],["gaisleri","Gaisler’s long-eared bat"],["gobiensis","Gobi long-eared bat"],["homochrous","Himalayan long-eared bat"],["kolombatovici","Balkan long-eared bat"],["kozlovi","Kozlov’s long-eared bat"],["macrobullaris","alpine long-eared bat"],["ognevi","Ognev’s long-eared bat"],["sacrimontis","Japanese long-eared bat"],["sardus","Sardinian long-eared bat"],["strelkovi","Strelkov’s long-eared bat"],["taivanus","Taiwan long-eared bat"],["teneriffae","Canary long-eared bat"],["turkmenicus","Turkmen long-eared bat"],["wardi","Ward’s long-eared bat"]]],
-Barbastella:[1,[["barbastellus","western barbastelle"],["beijingensis","Beijing barbastelle"],["caspica","Caspian barbastelle"],["darjelingensis","eastern barbastelle"],["leucomelas","Asian barbastelle"],["pacifica","Japanese barbastelle"]]],
-Corynorhinus:[1,[["leonpaniaguae","Paniagua’s big-eared bat"],["mexicanus","Mexican big-eared bat"],["rafinesquii","Rafinesque’s big-eared bat"],["townsendii","Townsend’s big-eared bat"]]],
-Otonycteris:[1,[["hemprichii","desert long-eared bat"],["leucophaea","Turkestani long-eared bat"]]],
-Euderma:[1,[["maculatum","spotted bat"]]],
-Idionycteris:[1,[["phyllotis","Allen’s big-eared bat"]]],
-Rhogeessa:[1,[["aenea","Yucatán yellow bat"],["bickhami","Bickham’s yellow bat"],["genowaysi","Genoways’s yellow bat"],["hussoni","Husson’s yellow bat"],["io","Thomas’s yellow bat"],["menchuae","Menchu’s yellow bat"],["minutilla","tiny yellow bat"],["mira","least yellow bat"],["parvula","little yellow bat"],["permutandis","Nicaraguan little yellow bat"],["tumida","black-winged little yellow bat"],["velilla","Ecuadorian little yellow bat"]]],
-Nycticeius:[1,[["aenobarbus","Temminck’s mysterious bat"],["cubanus","Cuban evening bat"],["humeralis","evening bat"]]],
-Baeodon:[1,[["alleni","Allen’s yellow bat"],["gracilis","slender yellow bat"]]],
-Lasiurus:[1,[["arequipae","Arequipa red bat"],["atratus","greater red bat"],["blossevillii","western red bat"],["borealis","eastern red bat"],["castaneus","Tacarcunan bat"],["cinereus","hoary bat"],["degelidus","Jamaican red bat"],["ebenus","hairy-tailed bat"],["ega","southern yellow bat"],["egregius","big red bat"],["frantzii","desert red bat"],["insularis","Cuban yellow bat"],["intermedius","northern yellow bat"],["minor","minor red bat"],["pfeifferi","Pfeiffer’s red bat"],["seminolus","Seminole bat"],["semotus","Hawaiian hoary bat"],["varius","cinnamon red bat"],["villosissimus","hairy-tailed bat"],["xanthinus","western yellow bat"]]],
-Nyctophilus:[1,[["arnhemensis","Arnhem long-eared bat"],["bifax","northern long-eared bat"],["corbeni","south-eastern long-eared bat"],["daedalus","pallid long-eared bat"],["geoffroyi","lesser long-eared bat"],["gouldi","Gould’s long-eared bat"],["heran","Sunda long-eared bat"],["holtorum","Holts' long-eared bat"],["howensis","Lord Howe long-eared bat"],["major","western long-eared bat"],["microdon","small-toothed long-eared bat"],["microtis","Papuan long-eared bat"],["nebulosus","New Caledonian long-eared bat"],["sherrini","Tasmanian long-eared bat"],["shirleyae","mount Missim long-eared bat"],["timoriensis","Timor long-eared bat"],["walkeri","pygmy long-eared bat"]]],
-Pharotis:[1,[["imogene","New Guinea big-eared bat"]]],
-Antrozous:[1,[["koopmani","Cuban pallid bat"],["pallidus","pallid bat"]]],
-Bauerus:[1,[["dubiaquercus","Van Gelder’s bat"]]],
 };
 
 
@@ -1972,136 +1760,11 @@ const LINKS = [
   ["Wikipedia", (n, s) => "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(n), '<span class="letter-mark" aria-hidden="true">W</span>'],
   // The MDD id already keys every record we hold, so this resolves to the exact
   // taxon page rather than a search -- and to nothing at all if an id is missing.
-  ["Mammal Diversity Database", (n, s) => s && s.id ? "https://www.mammaldiversity.org/taxon/" + encodeURIComponent(s.id) + "/" : "", '<span class="letter-mark" aria-hidden="true">M</span>'],
-  ["Xeno-canto calls", n => "https://xeno-canto.org/explore?query=" + encodeURIComponent(n), '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2.2-5 3.2 10 3.1-13 3 16 2.2-8H21"/></svg>']
+  ["Paleobiology Database", (n, s) => s && s.pbdb ? "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=" + encodeURIComponent(s.pbdb) : "", '<span class="letter-mark" aria-hidden="true">P</span>']
 ];
 
 /* --- species-level echolocation, where it has been measured --- */
-const ESP = {
-"Rhinolophus ferrumequinum":"CF near 81 kHz — low for a horseshoe bat, and held for up to 60 ms.",
-"Rhinolophus hipposideros":"CF near 110 kHz, among the highest in the genus; very short range.",
-"Rhinolophus euryale":"CF near 104 kHz.",
-"Rhinolophus blasii":"CF near 93 kHz.",
-"Rhinolophus affinis":"CF near 74 kHz, varying by island population.",
-"Rhinolophus sinicus":"CF near 80 kHz; populations differ enough to suggest cryptic species.",
-"Rhinolophus luctus":"CF near 40 kHz — the lowest horseshoe-bat call, matching its large size.",
-"Rhinolophus megaphyllus":"CF near 71 kHz.",
-"Hipposideros armiger":"CF near 68 kHz, dominated by the second harmonic.",
-"Hipposideros diadema":"CF near 55 kHz.",
-"Hipposideros caffer":"CF near 130 kHz.",
-"Hipposideros ater":"CF near 155 kHz.",
-"Cloeotis percivali":"CF near 212 kHz — the highest call frequency recorded in any bat, and extremely faint.",
-"Rhinonicteris aurantia":"CF near 115 kHz.",
-"Triaenops persicus":"CF near 100 kHz.",
-"Asellia tridens":"CF near 120 kHz.",
-"Craseonycteris thonglongyai":"Short CF–FM near 73 kHz, emitted through the nose while hovering.",
-"Rhinopoma hardwickii":"Multi-harmonic FM near 32 kHz; audible as a faint tick to some people.",
-"Rhinopoma microphyllum":"FM near 30 kHz.",
-"Macroderma gigas":"Very faint FM, 20–50 kHz. Hunts mostly by listening for prey on the ground.",
-"Lyroderma lyra":"Faint multi-harmonic FM near 60 kHz; locates prey largely by ear.",
-"Megaderma spasma":"Faint FM, 65–100 kHz.",
-"Cardioderma cor":"Almost silent in approach; hangs and listens for beetles walking.",
-"Lavia frons":"Faint FM near 55 kHz, from a day-active perch-hunter.",
-"Nycteris thebaica":"Very quiet multi-harmonic FM, 60–100 kHz; a gleaner that listens more than it calls.",
-"Nycteris grandis":"Faint FM near 55 kHz; takes frogs and fish as well as insects.",
-"Taphozous perforatus":"Narrowband QCF near 30 kHz.",
-"Taphozous mauritianus":"QCF near 26 kHz, audible to young ears.",
-"Saccolaimus flaviventris":"QCF near 20 kHz — low enough that many people hear it directly.",
-"Saccopteryx bilineata":"Multi-harmonic calls near 45 kHz, alternating between two frequencies.",
-"Rhynchonycteris naso":"Alternating narrowband calls near 100 kHz, very quiet, over water.",
-"Peropteryx macrotis":"Narrowband near 45 kHz.",
-"Diclidurus albus":"QCF near 30 kHz, high above the canopy.",
-"Myzopoda aurita":"Long quiet narrowband FM, 35–45 kHz. Barely studied.",
-"Mystacina tuberculata":"Broadband FM, 25–60 kHz in flight; goes silent when foraging on the ground.",
-"Thyroptera tricolor":"Very faint broadband FM near 65 kHz, plus social calls used to find the roost leaf.",
-"Furipterus horrens":"Extremely faint FM near 110 kHz.",
-"Noctilio leporinus":"Alternates long CF near 55 kHz over open water with FM sweeps on the attack; detects ripples, not the fish itself.",
-"Noctilio albiventris":"CF–FM near 70 kHz.",
-"Pteronotus parnellii":"CF near 60 kHz with Doppler compensation — evolved independently of the Old World horseshoe bats.",
-"Pteronotus davyi":"Short FM near 70 kHz, with no CF component.",
-"Pteronotus gymnonotus":"FM near 55 kHz.",
-"Mormoops megalophylla":"FM near 55 kHz.",
-"Desmodus rotundus":"Faint multi-harmonic FM near 75 kHz; finds prey mainly by smell, heat and by listening to breathing.",
-"Diaemus youngi":"Faint FM; hunts roosting birds largely by sound and scent.",
-"Diphylla ecaudata":"Faint FM near 70 kHz.",
-"Vampyrum spectrum":"Very quiet FM; hunts sleeping birds and rodents mostly by listening.",
-"Trachops cirrhosus":"Faint FM near 70 kHz, but locates túngara frogs by eavesdropping on their calls, and can tell toxic species from edible ones by song alone.",
-"Chrotopterus auritus":"Very faint FM; a listening predator.",
-"Macrotus californicus":"Whispering FM near 55 kHz; unusually, hunts largely by eyesight in dim light.",
-"Micronycteris megalotis":"Very faint broadband FM near 90 kHz, for gleaning insects off leaves.",
-"Lonchorhina aurita":"Loud for a leaf-nosed bat, FM near 60 kHz through an exceptionally long nose-leaf.",
-"Glossophaga soricina":"Faint broadband FM near 75 kHz while hovering at flowers.",
-"Leptonycteris yerbabuenae":"Faint FM near 65 kHz; pollinates agave and columnar cacti.",
-"Anoura geoffroyi":"Faint multi-harmonic FM near 80 kHz.",
-"Carollia perspicillata":"Faint broadband FM, 60–100 kHz, in cluttered understorey.",
-"Artibeus jamaicensis":"Faint FM near 55 kHz; finds ripe figs largely by smell.",
-"Sturnira lilium":"Faint broadband FM near 70 kHz.",
-"Ectophylla alba":"Very faint FM; roosts under leaf tents it cuts itself.",
-"Centurio senex":"Faint FM; the folded facial skin may shape the beam.",
-"Natalus stramineus":"Faint broadband FM, 70–120 kHz.",
-"Tadarida brasiliensis":"QCF near 25 kHz in open air, steepening to FM in clutter; also produces complex courtship song.",
-"Tadarida teniotis":"QCF near 12 kHz — clearly audible to most people.",
-"Nyctinomus aegyptiacus":"QCF near 22 kHz.",
-"Austronomus australis":"QCF near 12 kHz, audible as a distinct metallic tick.",
-"Otomops martiensseni":"QCF near 11 kHz, one of the lowest bat calls known.",
-"Mops condylurus":"QCF near 25 kHz.",
-"Eumops perotis":"QCF near 9 kHz — audible, and carrying over a kilometre.",
-"Molossus molossus":"Alternating QCF near 35 kHz.",
-"Cheiromeles torquatus":"QCF near 20 kHz.",
-"Miniopterus schreibersii":"FM sweep flattening to QCF near 52 kHz.",
-"Miniopterus natalensis":"FM–QCF near 55 kHz.",
-"Cistugo lesueuri":"Broadband FM near 45 kHz.",
-"Myotis lucifugus":"Steep FM sweep 80–40 kHz, ending near 45 kHz; the classic aerial-hawking call.",
-"Myotis myotis":"FM sweep 90–25 kHz; gleans beetles off the ground, listening for their footsteps.",
-"Myotis daubentonii":"FM 75–30 kHz, flattening over water where it trawls insects with its feet.",
-"Myotis dasycneme":"FM near 35 kHz, lower and flatter than most Myotis, for trawling open water.",
-"Myotis brandtii":"FM 85–35 kHz.",
-"Myotis mystacinus":"FM 90–40 kHz, hard to separate acoustically from M. brandtii.",
-"Myotis alcathoe":"FM ending near 50 kHz — the highest terminal frequency of the European Myotis, which is how it was discovered.",
-"Myotis nattereri":"Very broadband FM, 120–20 kHz, faint and short, for gleaning off foliage.",
-"Myotis bechsteinii":"Faint broadband FM 100–30 kHz; a whispering gleaner.",
-"Myotis capaccinii":"FM near 35 kHz, trawling over water.",
-"Myotis vivesi":"FM near 40 kHz; gaffs small fish from the sea surface.",
-"Myotis emarginatus":"Broadband FM, gleaning spiders from walls and ceilings.",
-"Myotis sodalis":"FM ending near 43 kHz.",
-"Myotis septentrionalis":"Broad FM ending near 40 kHz, adapted to cluttered forest.",
-"Myotis grisescens":"FM ending near 45 kHz.",
-"Pipistrellus pipistrellus":"QCF ending near 45 kHz — the frequency that split it from the soprano pipistrelle.",
-"Pipistrellus pygmaeus":"QCF ending near 55 kHz; identical in the hand to P. pipistrellus, separated first by call.",
-"Pipistrellus nathusii":"QCF ending near 39 kHz.",
-"Pipistrellus kuhlii":"QCF ending near 38 kHz.",
-"Alionoctula abramus":"QCF near 45 kHz.",
-"Nyctalus noctula":"Alternating QCF, 20–25 kHz, loud and carrying, high above the canopy.",
-"Nyctalus leisleri":"QCF near 27 kHz.",
-"Nyctalus lasiopterus":"QCF near 18 kHz; the only bat known to catch migrating songbirds in flight.",
-"Perimyotis subflavus":"FM ending near 42 kHz.",
-"Parastrellus hesperus":"FM ending near 50 kHz.",
-"Hypsugo savii":"QCF ending near 34 kHz.",
-"Vespertilio murinus":"QCF near 25 kHz, plus a loud audible song-flight in autumn.",
-"Cnephaeus serotinus":"FM–QCF ending near 27 kHz, loud and slow.",
-"Cnephaeus nilssonii":"QCF near 30 kHz; forages far north, in twilight.",
-"Eptesicus fuscus":"FM sweep 60–25 kHz; the standard laboratory model for echolocation research.",
-"Neoeptesicus furinalis":"FM near 40 kHz.",
-"Scotophilus kuhlii":"QCF near 40 kHz.",
-"Lasiurus cinereus":"Low QCF near 20 kHz in open air, audible to some people.",
-"Lasiurus borealis":"FM–QCF ending near 40 kHz.",
-"Plecotus auritus":"Extremely faint broadband FM, 50–20 kHz. Huge ears do most of the work; it can hear an insect walking on a leaf.",
-"Plecotus austriacus":"Faint FM near 27 kHz.",
-"Barbastella barbastellus":"Alternates two very faint call types near 33 kHz — quiet enough that eared moths, which can hear most bats coming, do not detect it.",
-"Corynorhinus townsendii":"Very faint FM, 25–60 kHz; a whispering gleaner.",
-"Euderma maculatum":"Calls near 10 kHz — plainly audible to humans, and among the lowest of any bat.",
-"Otonycteris hemprichii":"Faint FM near 25 kHz; hunts scorpions on the ground and gets stung doing it.",
-"Antrozous pallidus":"Faint FM near 35 kHz, but locates ground prey mainly by listening for footsteps.",
-"Nyctophilus geoffroyi":"Very faint broadband FM; whispers at close range in clutter.",
-"Kerivoula picta":"Extremely broadband, faint FM, 150–60 kHz — among the widest sweeps known.",
-"Murina cyclotis":"Faint steep FM, gleaning in dense forest.",
-"Tylonycteris pachypus":"FM near 60 kHz; roosts inside bamboo internodes.",
-"Rousettus aegyptiacus":"No laryngeal call. Navigates by sight, but clicks its tongue at 10–60 kHz in dark caves — echolocation reinvented from scratch.",
-"Rousettus amplexicaudatus":"Tongue-clicks, like other Rousettus.",
-"Pteropus vampyrus":"No echolocation at all. Large eyes and an excellent nose.",
-"Pteropus poliocephalus":"No echolocation; navigates visually and is noisy in the audible range.",
-"Eidolon helvum":"No echolocation; migrates by sight over thousands of kilometres."
-};
+const ESP = {};
 
 /* =========================================================
    2. SPECIES LOOKUP — search field top right, detail in a drawer
@@ -2214,30 +1877,21 @@ function luMergeCountrySupplement(species, supplement){
 }
 
 Promise.all([
-  bundled('d-taxonomy', 'data/chiroptera_taxonomy.json'),
-  bundled('d-danish', 'data/danish_names.json'),
-  bundled('d-countries', 'data/gbif_country_supplement.json'),
-  bundled('d-calls', 'data/calls/exports/calls.json'),
-  bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, calls, media])=>{
+  bundled('d-taxonomy', 'data/dinosaur_taxonomy.json'),
+  bundled('d-images', 'data/dinosaur_images.json')
+]).then(([tax, images])=>{
   luState.species = tax.species;
   luBuildDisplayTaxonomy(luState.species);
-  luState.danish = danish;
-  luState.directCalls = calls.species || {};
-  luState.familyInference = calls.familyInference || {};
-  luState.genusInference = calls.genusInference || {};
-  luState.directCallReferences = calls.references || {};
-  luState.media = media.assets || {};
-  luMergeCountrySupplement(luState.species, countrySupp);
+  luState.images = images;
   luState.meta = tax._meta;
   const sourceLink = document.getElementById('mdd-source');
-  sourceLink.href = 'https://doi.org/'+tax._meta.sourceDoi;
+  sourceLink.href = tax._meta.sourceUrl;
   sourceLink.textContent = tax._meta.source;
   luState.ready = true;
   randomBat.disabled = false;
   if(mainCtx) ctxDrawTree(mainCtx);
   luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
-  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';
+  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' dinosaurs…';
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
   updateOfflineStatus();
@@ -2247,7 +1901,7 @@ Promise.all([
 
 /* ---- world map: outlines built by data/build_world_map.py ---- */
 let WMAP = null, WMBASE = null;
-bundled('d-worldmap', 'data/world_map.json').then(m=>{
+bundled('d-worldmap', 'data/marine_world_map.json').then(m=>{
   WMAP = m;
   WMBASE = Object.keys(m.shapes).map(k=>[k, m.shapes[k]]);
   cmMaybeInit();
@@ -2439,7 +2093,7 @@ function cmUpdateCountryIcon(){
     icon.setAttribute('viewBox','0 0 24 24');
     icon.innerHTML = '<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 4.5A2.5 2.5 0 1 1 12 11a2.5 2.5 0 0 1 0-4.5Z"/>';
   }
-  const text = entry ? 'Show only bats from '+entry.name : 'Show only bats from the selected country';
+  const text = entry ? 'Show only dinosaurs found in '+entry.name : 'Show only dinosaurs found in the selected country';
   button.setAttribute('aria-label', text);
   button.title = text;
 }
@@ -2657,7 +2311,7 @@ function luRenderResults(){
       '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></span></div>';
   }).join('');
   if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
-    luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' families</div>';
+    luState.meta.speciesCount+' species, '+luState.meta.genusCount+' genera, '+luState.meta.familyCount+' groups</div>';
   luResults.innerHTML = html;
   luCursor = -1;
   luInput.removeAttribute('aria-activedescendant');
@@ -2762,7 +2416,7 @@ function luSpeciesHTML(binomial, compact){
   if(!s){
     return '<p class="lu-d-sci">'+luEsc(binomial)+'</p>'+
       '<p class="lu-prov">'+(luState.ready
-        ? 'No record under this name in the Mammal Diversity Database export — most likely a spelling variant of a name the database files differently.'
+        ? 'No record under this name in the Paleobiology Database download — most likely a spelling variant of a name the database files differently.'
         : 'The species records have not loaded yet. This page needs to be served over http for them to load.')+'</p>';
   }
   return luDetailHTML(s, compact);
@@ -2832,39 +2486,21 @@ function renderPhoto(asset, host){
   const sourceOpen = asset.sourceUrl ? '<a href="'+luEsc(asset.sourceUrl)+'" target="_blank" rel="noopener noreferrer">' : '';
   const sourceClose = asset.sourceUrl ? '</a>' : '';
   const code = String(asset.license||'').toLowerCase();
-  const licenseUrl = code==='cc0' ? 'https://creativecommons.org/publicdomain/zero/1.0/' : 'https://creativecommons.org/licenses/'+code.replace('cc-','')+'/4.0/';
+  const licenseUrl = asset.licenseUrl || (code==='cc0' ? 'https://creativecommons.org/publicdomain/zero/1.0/' : 'https://creativecommons.org/licenses/'+code.replace('cc-','')+'/4.0/');
   const changed = asset.modified===true || (asset.path && asset.modified!==false && asset.sourceHash!==asset.outputHash);
   host.innerHTML = sourceOpen+'<img src="'+luEsc(asset.path?'data/'+asset.path:asset.url)+'" alt="'+luEsc(asset.alt||'Species photograph')+'" loading="eager" fetchpriority="high" decoding="async">'+sourceClose+
-    '<figcaption>'+sourceOpen+luEsc(asset.attribution)+sourceClose+' · <a href="'+licenseUrl+'" target="_blank" rel="noopener noreferrer">'+luEsc(asset.license)+'</a> · iNaturalist'+(changed?' · resized':'')+'</figcaption>';
+    '<figcaption>'+sourceOpen+luEsc(asset.attribution)+sourceClose+' · <a href="'+licenseUrl+'" target="_blank" rel="noopener noreferrer">'+luEsc(asset.license)+'</a> · '+luEsc(asset.provider||'iNaturalist')+(changed?' · resized':'')+'</figcaption>';
   const image = host.querySelector('img');
   image.addEventListener('error', ()=>host.remove(), {once:true});
   if(asset.path) upgradePhotoWhenAffordable(asset, image);
 }
 
 async function livePhotoFor(species){
-  if(!navigator.onLine) return null;
-  const key = 'chiroptree-live-media:'+species.id;
-  try {
-    const saved = JSON.parse(localStorage.getItem(key));
-    if(saved && LIVE_MEDIA_LICENSES.has(saved.license.toLowerCase())) return saved;
-  } catch (_) {}
-  const binomial = luNiceName(species.sciName);
-  const taxa = await fetch('https://api.inaturalist.org/v1/taxa?q='+encodeURIComponent(binomial)+'&rank=species&per_page=10').then(r=>r.ok?r.json():Promise.reject(r.status));
-  const taxon = (taxa.results||[]).find(t=>t.name && t.name.toLowerCase()===binomial.toLowerCase());
-  let photo = taxon && taxon.default_photo;
-  let sourceUrl = taxon && 'https://www.inaturalist.org/taxa/'+taxon.id;
-  if(!photo || !LIVE_MEDIA_LICENSES.has(String(photo.license_code||'').toLowerCase())){
-    const observations = await fetch('https://api.inaturalist.org/v1/observations?taxon_name='+encodeURIComponent(binomial)+'&photos=true&quality_grade=research&photo_license=cc0,cc-by,cc-by-sa,cc-by-nc,cc-by-nc-sa,cc-by-nd,cc-by-nc-nd&order_by=votes&order=desc&per_page=10').then(r=>r.ok?r.json():Promise.reject(r.status));
-    const observation = (observations.results||[]).find(o=>o.photos&&o.photos.some(p=>LIVE_MEDIA_LICENSES.has(String(p.license_code||'').toLowerCase())));
-    photo = observation && observation.photos.find(p=>LIVE_MEDIA_LICENSES.has(String(p.license_code||'').toLowerCase()));
-    sourceUrl = observation && 'https://www.inaturalist.org/observations/'+observation.id;
-  }
-  if(!photo) return null;
-  const size = canLoadHighResolutionPhoto() ? 'large' : 'small';
-  const asset = {url:String(photo.url||'').replace(/\/(square|small|medium)\./,'/'+size+'.'),sourceUrl,attribution:photo.attribution||'iNaturalist contributor',license:String(photo.license_code).toUpperCase(),alt:binomial};
-  localStorage.setItem(key, JSON.stringify(asset));
-  if('caches' in window) fetch(asset.url).then(response=>response.ok?caches.open(LIVE_MEDIA_CACHE).then(cache=>cache.put(asset.url,response)):null).catch(()=>{});
-  return asset;
+  const image = (luState.images||{})[species.genus];
+  if(!image) return null;
+  return {url:image.url, sourceUrl:image.sourceUrl, attribution:image.attribution,
+          license:image.license, licenseUrl:image.licenseUrl || image.sourceUrl,
+          provider:'Wikimedia Commons', alt:species.genus+', from its Wikipedia article'};
 }
 
 function loadSpeciesPhoto(species, host){
@@ -3136,8 +2772,10 @@ function luDetailHTML(s, compact){
   const callReference = directCall && directCall.reference
     ? luState.directCallReferences[directCall.reference] : null;
   const sources = [
-    '<a href="https://doi.org/'+luEsc(luState.meta.sourceDoi)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
+    '<a href="https://paleobiodb.org/classic/basicTaxonInfo?taxon_no='+luEsc(s.pbdb)+'" target="_blank" rel="noopener">'+luEsc(luState.meta.source)+'</a>'
   ];
+  const image = (luState.images||{})[s.genus];
+  if(image) sources.push('<a href="'+luEsc(image.article)+'" target="_blank" rel="noopener">Wikipedia</a> (image)');
   if(dk && dk.gbifKey) sources.push('<a href="https://www.gbif.org/species/'+luEsc(dk.gbifKey)+'" target="_blank" rel="noopener">'+luEsc(dk.source)+' via GBIF</a>');
   // Structured entries carry their own numbered reference list under the call
   // card, so only legacy single-reference entries are added to Sources here.
@@ -3160,14 +2798,13 @@ function luDetailHTML(s, compact){
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
     '<div class="lu-links">'+links+'</div>'+
     '<div class="lu-facts">'+
-      '<section class="lu-section"><h4>Taxonomy &amp; status</h4><dl>'+
-        '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+(s.iucnStatus||'NA')+'</span></dd>'+
-        '<dt>Extinct</dt><dd>'+(s.extinct==='1' ? 'Yes' : 'No')+'</dd>'+
-        '<dt>Realm</dt><dd>'+luEsc(s.biogeographicRealm||'—')+'</dd>'+
-        '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\|/g,', '))+'</dd>'+
-        '<dt>Countries</dt><dd>'+luCountriesHTML(s)+'</dd>'+
-      '</dl>'+luCountriesFootnote(s)+'</section>'+
-      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+
+      '<section class="lu-section"><h4>Fossil record</h4><dl>'+
+        '<dt>Age</dt><dd>'+luEsc(s.age||'—')+(s.maxMa ? ' · '+(s.maxMa===s.minMa ? s.maxMa : s.maxMa+'–'+s.minMa)+' million years ago' : '')+'</dd>'+
+        '<dt>Diet</dt><dd>'+luEsc(s.diet||'—')+'</dd>'+
+        '<dt>Found in</dt><dd>'+luCountriesHTML(s)+'</dd>'+
+        '<dt>Formations</dt><dd>'+luEsc((s.formations||'—').replace(/\|/g,', '))+'</dd>'+
+        '<dt>Named in</dt><dd>'+luEsc(s.reference||'—')+'</dd>'+
+      '</dl>'+(s.occurrences ? '<p class="lu-src">'+s.occurrences+' PBDB occurrence record'+(s.occurrences===1?'':'s')+'; countries are where fossils identified to this species were dug up, on today’s map</p>' : '')+'</section>'+
     '</div>'+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }

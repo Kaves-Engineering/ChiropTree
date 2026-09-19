@@ -53,6 +53,16 @@ def validate_bird_names(ids: set[str]) -> None:
         assert record.get("name") and record.get("source") and record.get("matchMethod"),             f"bird_danish_names.json: incomplete name {bird_id}"
 
 
+def validate_dinosaur_images(genera: set[str]) -> None:
+    """Wikipedia lead images: freely licensed, credited, and for a genus we have."""
+    free = re.compile(r"^(public domain|pd\b|cc0|cc[ -]by(-sa)?\b|gfdl|copyrighted free use|no restrictions)", re.I)
+    for genus, image in load("dinosaur_images.json").items():
+        assert genus in genera, f"dinosaur_images.json: unknown genus {genus}"
+        assert image.get("url", "").startswith("https://"), f"dinosaur_images.json: bad url for {genus}"
+        assert free.search(image.get("license", "")), f"dinosaur_images.json: non-free licence for {genus}"
+        assert image.get("attribution") and image.get("sourceUrl"), f"dinosaur_images.json: uncredited {genus}"
+
+
 def validate_expectations(families: set[str]) -> None:
     """Check the inference tables used to sanity-check imports.
 
@@ -190,6 +200,10 @@ def main() -> None:
     validate_map(bats, "world_map.json")
     validate_map(marine, "marine_world_map.json")
     validate_map(birds, "marine_world_map.json")
+    dinosaurs = load("dinosaur_taxonomy.json")
+    validate_taxonomy(dinosaurs, "dinosaurs")
+    validate_dinosaur_images({record["genus"] for record in dinosaurs["species"]})
+    validate_map(dinosaurs, "marine_world_map.json")
     validate_media(bat_ids | marine_ids)
     validate_manifest()
     print("Release validation passed")

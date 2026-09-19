@@ -46,6 +46,7 @@ jobs:
         run: |
           uv run data/build_marine_mammal_page.py
           uv run data/build_bird_page.py
+          uv run data/build_dinosaur_page.py
           uv run data/build_release_manifest.py
           uv run data/validate_release.py
           sh build.sh

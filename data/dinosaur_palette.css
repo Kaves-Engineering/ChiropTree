@@ -1,0 +1,113 @@
+/* ===== PALETTE =====================================================
+   The dinosaur palette. build_dinosaur_page.py swaps this in for the
+   region between the PALETTE markers in chiroptera-tree.html; the build
+   fails if a token the master defines is missing here.
+
+   The bat page is a cave at night, the marine page cold water, the bird
+   page the sky before dawn. Dinosaurs get the badlands where they are
+   dug up: dark basalt ground, sandstone and bone for structure, the
+   iron-red of the strata for rules. The one accent turns cool for the
+   first time -- vivianite blue, the mineral that stains fossil bone
+   blue where it grows in it. Same system, same roles, a fourth place.
+   =================================================================== */
+:root{
+  color-scheme:dark;
+  --abyss:#15110e;          /* page ground: basalt */
+  --prussian:#2a211a;       /* raised surface */
+  --prussian-2:#342920;
+  --panel:#1c1612;          /* drawer, search results */
+  --canvas:#1f1813;         /* the tree's own field */
+  --line:#dcc7a4;           /* structure: rules, branches, labels -- sandstone */
+  --line-dim:#7a6650;       /* hairlines ONLY -- too dim to carry text */
+  --line-text:#bba58a;      /* the same quiet register, but legible as ink */
+  --rule:#b0643c;           /* the hairline under a clade heading: iron-red strata */
+  --bone:#f8f1e6;           /* brightest ink */
+  --text:#e8dfd2;
+  --muted:#c0b3a2;
+  --ochre:#6cc4c0;          /* the one accent: selection, focus, active -- vivianite */
+  --ochre-dim:#3e7a77;
+
+  --ink-strong:#f2eadf;     /* tree rows, genus down to species */
+  --ink-mid:#d3c6b4;
+  --ink-soft:#bdb09f;
+  --ink-faint:#a19482;
+  --knot-leaf:#8a7358;
+  --footer-ink:#c2b5a4;
+  --placeholder:#978a79;
+
+  --map-water:#16110d;      /* the fossil map, unpainted */
+  --map-land:#3a2f25;
+  --map-has:#8a5a3a;        /* a country this taxon's fossils come from */
+  --map-has-edge:#dcc7a4;   /* ...and its outline, so fill isn't the only cue */
+  --map-has-hover:#a86c46;
+  --map-dot:#b07a52;        /* islands too small to draw as shapes */
+  --map-dot-hover:#dcc7a4;
+  --range-hover:#5fb3ae;
+
+  /* status colours are data, not decoration: unchanged from the bat page */
+  --st-good:#8fd19e;  --st-good-b:#3a6b45;
+  --st-bad:#e88a8a;   --st-bad-b:#8a3a3a;
+
+  /* triplets, for the places that need an alpha */
+  --border-rgb:190,165,130;
+  --border2-rgb:220,199,164;
+  --hover-rgb:220,199,164;
+  --ochre-rgb:108,196,192;
+  --abyss-rgb:21,17,14;
+  --card-rgb:42,33,26;
+  --scrim-rgb:10,8,6;
+  --input-rgb:42,33,26;
+  --glow-rgb:130,90,55;
+  --card-a:.75; --bar-a:.88; --input-a:.85; --scrim-a:.62;
+  --shadow:0 26px 64px rgba(0,0,0,.55);
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --abyss:#f5efe4;
+  --prussian:#ebe2d3;
+  --prussian-2:#dfd2bd;
+  --panel:#fbf8f2;
+  --canvas:#efe7da;
+  --line:#5a4230;
+  --line-dim:#a8957c;
+  --line-text:#6a5440;
+  --rule:#9c4f2a;
+  --bone:#21170f;
+  --text:#2f241a;
+  --muted:#6a5c4c;
+  --ochre:#1f6f6b;
+  --ochre-dim:#7fb0ac;
+
+  --ink-strong:#2a1f15;
+  --ink-mid:#4a3b2c;
+  --ink-faint:#726250;
+  --ink-soft:#726250;
+  --knot-leaf:#8a7458;
+  --footer-ink:#665747;
+  --placeholder:#85766a;
+
+  --map-water:#ebe4d8;
+  --map-land:#d6c9b4;
+  --map-has:#c08a64;
+  --map-has-edge:#5a4230;
+  --map-has-hover:#a9704a;
+  --map-dot:#a97652;
+  --map-dot-hover:#6e4a30;
+  --range-hover:#2a8a85;
+
+  --st-good:#266438;  --st-good-b:#579664;
+  --st-bad:#9b3232;   --st-bad-b:#bd6b6b;
+
+  --border-rgb:168,149,124;
+  --border2-rgb:168,149,124;
+  --hover-rgb:90,66,48;
+  --ochre-rgb:31,111,107;
+  --abyss-rgb:245,239,228;
+  --card-rgb:235,226,211;
+  --scrim-rgb:40,28,18;
+  --input-rgb:235,226,211;
+  --glow-rgb:190,150,110;
+  --card-a:.78; --bar-a:.9;  --input-a:.92; --scrim-a:.42;
+  --shadow:0 22px 52px rgba(60,40,20,.18);
+}
+/* ===== /PALETTE ==================================================== */

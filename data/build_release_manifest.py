@@ -13,6 +13,7 @@ FILES = (
     "gbif_country_supplement.json", "marine_mammal_gbif_country_supplement.json",
     "world_map.json", "marine_world_map.json", "media-manifest.json",
     "bird_taxonomy.json", "bird_danish_names.json",
+    "dinosaur_taxonomy.json", "dinosaur_images.json",
     "calls/exports/calls.json",
     # Family-level inference: sanity-checks imports, and fills the card for
     # species with no measurement (labelled as inference, never as measurement).
@@ -44,6 +45,7 @@ def main() -> None:
     bats = json.loads((HERE / "chiroptera_taxonomy.json").read_text(encoding="utf-8"))
     marine = json.loads((HERE / "marine_mammal_taxonomy.json").read_text(encoding="utf-8"))
     birds = json.loads((HERE / "bird_taxonomy.json").read_text(encoding="utf-8"))
+    dinosaurs = json.loads((HERE / "dinosaur_taxonomy.json").read_text(encoding="utf-8"))
     source_hash = bats["_meta"]["sourceChecksum"]
     assert source_hash == marine["_meta"]["sourceChecksum"]
     files = {name: {"sha256": digest(HERE / name), "bytes": len(canonical_bytes(HERE / name))}
@@ -53,8 +55,11 @@ def main() -> None:
         "source": {"doi": bats["_meta"]["sourceDoi"], "sha256": source_hash},
         # birds come from AviList, not MDD, and version independently of it
         "birdSource": {"doi": birds["_meta"]["sourceDoi"], "sha256": birds["_meta"]["sourceChecksum"]},
+        # PBDB is a live database with no versioned releases: the checksum of
+        # the two API downloads the taxonomy was built from stands in for one
+        "dinosaurSource": {"url": dinosaurs["_meta"]["sourceUrl"], "sha256": dinosaurs["_meta"]["sourceChecksum"]},
         "counts": {"bats": bats["_meta"]["speciesCount"], "marineMammals": marine["_meta"]["speciesCount"],
-                   "birds": birds["_meta"]["speciesCount"]},
+                   "birds": birds["_meta"]["speciesCount"], "dinosaurs": dinosaurs["_meta"]["speciesCount"]},
         "files": files,
     }
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")

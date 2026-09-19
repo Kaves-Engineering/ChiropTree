@@ -227,6 +227,66 @@ about once a year, and picking up a new version means updating
 `SOURCE_URL`/`SOURCE_VERSION` in `build_bird_taxonomy.py` and re-running the
 steps above.
 
+## The dinosaur pages
+
+A fourth tree, for the non-avian dinosaurs, stamped out of the bat page like
+the marine and bird pages; none of it changes what the other pages show. The
+page switch gains a **Dinosaurs** option on all four pages ("Dino" on phones).
+
+- **`dinosaur-tree.html`** — **generated, do not edit by hand.** Stamped out of
+  `chiroptera-tree.html` by `data/build_dinosaur_page.py`, with the same guard
+  rails as the other builds. Deployed as `/dinosaurs.html`.
+- **`data/dinosaur_taxonomy.json`** — 1,435 species in 1,279 genera, from the
+  [Paleobiology Database](https://paleobiodb.org) (PBDB, CC BY 4.0), pulled
+  from its public API by **`data/build_dinosaur_taxonomy.py`**: one call for
+  every accepted taxon under Dinosauria, one for every fossil occurrence.
+  Accepted names only (no junior synonyms), body fossils only (no footprint or
+  egg taxa), and no birds: everything under PBDB's Avialae and Aves is cut,
+  Archaeopteryx included. Records keep MDD's shape and add the fossil fields
+  the card shows: age (stages and millions of years), diet, the rock formations
+  the species comes from, and the paper that named it.
+- **The groups the tree draws.** PBDB's hierarchy is uneven (about half the
+  genera have no family, and it keeps some families few workers use), so the
+  script's `GROUPS` names 71 groups by the PBDB taxa each absorbs, and every
+  genus lands in the group of its nearest named ancestor. That is the only
+  editorial layer; membership is PBDB's. Groups such as *Theropoda* or
+  *Sauropoda* are catch-alls for genera PBDB places no deeper, and their text
+  says so. The build fails if a genus lands nowhere or a group ends up empty.
+- **Countries** are where fossils identified to the species were found, on
+  today's map. They come from PBDB occurrences, are spelled the way MDD spells
+  them, and are drawn on `marine_world_map.json`, since Antarctica has
+  dinosaurs too.
+- **`data/dinosaur_images.json`** — one image per genus (1,081 of 1,279): the
+  lead image of the genus's English Wikipedia article (a skeleton, fossil or
+  life restoration), with author and licence read from Wikimedia Commons.
+  Built by **`data/build_dinosaur_images.py`**. Only public-domain, CC0,
+  CC BY, CC BY-SA and GFDL images are kept, and an article counts only if its
+  title is the genus itself. A redirect to another genus is Wikipedia sinking
+  the name as a synonym, and the picture would show a different animal. The
+  page reads this file in place of the iNaturalist lookup; nothing is fetched
+  from Wikipedia at runtime except the image itself.
+- **`data/build_dinosaur_data_blocks.py`** — the cladogram layout (early
+  dinosaurs, Ornithischia, Sauropodomorpha, Theropoda) and each group's
+  English name and description. Each group's time span and top countries are
+  computed from the data.
+- **`data/dinosaur_palette.css`** — the badlands: basalt ground, sandstone and
+  bone for structure, iron-red strata for rules, and the first cool accent,
+  vivianite blue.
+- No Danish names (dinosaurs have none beyond their Latin ones) and no call
+  section.
+
+Building the dinosaur data (downloads cached in the gitignored `data/raw/`):
+
+```
+uv run python data/build_dinosaur_taxonomy.py   # --refresh to re-download from PBDB
+uv run python data/build_dinosaur_images.py     # --refresh to re-query Wikipedia
+uv run python data/build_dinosaur_page.py
+```
+
+PBDB is a live database, not a versioned release, so the release manifest
+records the checksum of the two API downloads in place of a version. Picking
+up new dinosaurs means re-running the steps above with `--refresh`.
+
 ## Updating the taxonomy data
 
 MDD publishes new releases periodically. To pick up a new one:
@@ -296,3 +356,8 @@ Avian Checklist*, v2025b. https://doi.org/10.2173/avilist.v2025b), licensed
 CC BY 4.0. Danish bird names are from Dansk Ornitologisk Forening's
 Navnegruppen, *Navne på alverdens fugle*. Country presence for birds is derived
 from GBIF-mediated occurrence data.
+
+Dinosaur taxonomy, ages, diets and fossil occurrences are from the
+Paleobiology Database (https://paleobiodb.org), licensed CC BY 4.0. Dinosaur
+images are from Wikimedia Commons; each is credited on the card with its
+author and its own licence.

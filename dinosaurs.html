@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- Local-dev shim. The published site names this page dinosaurs.html (build.sh
+     copies dinosaur-tree.html to public/dinosaurs.html), but the local server serves
+     the repo root, where the source file keeps its long name. This makes the
+     cross-links in all four trees resolve locally too. Not copied into public/. -->
+<meta charset="utf-8">
+<title>Redirecting to the dinosaur tree</title>
+<meta http-equiv="refresh" content="0; url=dinosaur-tree.html">
+<link rel="canonical" href="dinosaur-tree.html">
+<script>location.replace('dinosaur-tree.html' + location.search + location.hash);</script>
+<p><a href="dinosaur-tree.html">Dinosaur tree</a></p>

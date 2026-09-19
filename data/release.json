@@ -6,7 +6,12 @@
  "counts": {
   "bats": 1514,
   "birds": 11131,
+  "dinosaurs": 1435,
   "marineMammals": 144
+ },
+ "dinosaurSource": {
+  "sha256": "5a1bfd8bad0ae0b24366ea0c9b30e40f99c4dff0d5853c90c0942b0bcbeab87f",
+  "url": "https://paleobiodb.org"
  },
  "files": {
   "bird_danish_names.json": {
@@ -48,6 +53,14 @@
   "danish_names.json": {
    "bytes": 9470,
    "sha256": "c104e95cea3854e7d93fdc58f6442064d6ff0cf28da194f0c2c4c7cfe0fc539d"
+  },
+  "dinosaur_images.json": {
+   "bytes": 467325,
+   "sha256": "d33e7c3c33e1eef88bb60ac89d8bc45588f0fbf8463c2af838aa4cfe06ad8d1a"
+  },
+  "dinosaur_taxonomy.json": {
+   "bytes": 911341,
+   "sha256": "07d083f69f10427af1e5ed7084b50442bd41c69efe1a3e57550fac2e78d4667d"
   },
   "gbif_country_supplement.json": {
    "bytes": 7760,
