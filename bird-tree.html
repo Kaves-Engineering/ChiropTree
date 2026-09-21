@@ -724,6 +724,134 @@ g.trow.static:hover .trow-hit{fill:none}
 g.trow.static:hover .t-genus{fill:var(--ink-strong)}
 .fam-open .tip-name{fill:var(--ochre)}
 
+/* ---------- compare: a toggle on each record, a tray, and a side-by-side view ---------- */
+.cmp-toggle{
+  display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;margin-left:auto;
+  border:1px solid var(--line-dim);border-radius:999px;background:transparent;color:var(--line);
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  touch-action:manipulation;
+}
+.cmp-toggle:hover:not(:disabled){border-color:var(--ochre);color:var(--ochre)}
+.cmp-toggle:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cmp-toggle[aria-pressed="true"]{background:rgba(var(--ochre-rgb),.15);border-color:rgba(var(--ochre-rgb),.5);color:var(--ochre)}
+.cmp-toggle:disabled{opacity:.5;cursor:not-allowed}
+.cmp-toggle svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.cmp-tray{
+  position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:65;
+  width:min(980px,calc(100vw - 2*var(--pad)));
+  background:var(--panel);border:1px solid var(--line-dim);border-left:3px solid var(--ochre);border-radius:4px;
+  box-shadow:var(--shadow);
+}
+.cmp-tray[hidden]{display:none}
+.cmp-tray-in{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 14px}
+.cmp-count{flex:none;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--line-text);white-space:nowrap}
+.cmp-chips{flex:1;min-width:0;display:flex;gap:6px;margin:0;padding:2px;list-style:none;overflow-x:auto;scrollbar-width:thin}
+.cmp-chip{flex:none;display:inline-flex;align-items:center;border:1px solid rgba(var(--border-rgb),.35);border-radius:999px;background:rgba(var(--card-rgb),.6)}
+.cmp-chip button{background:transparent;border:0;color:var(--ink-mid);cursor:pointer;font:inherit;touch-action:manipulation}
+.cmp-chip-name{padding:4px 4px 4px 11px;font-family:var(--display);font-style:italic;font-size:0.84375rem;white-space:nowrap}
+.cmp-chip-x{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;font-size:1rem;line-height:1;color:var(--muted)}
+.cmp-chip button:hover{color:var(--ochre)}
+.cmp-chip button:focus-visible{outline:2px solid var(--ochre);outline-offset:-2px}
+.cmp-act{
+  flex:none;padding:7px 13px;border:1px solid var(--line-dim);border-radius:2px;background:transparent;color:var(--muted);
+  font-family:var(--mono);font-size:0.6875rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;touch-action:manipulation;
+}
+.cmp-act:hover:not(:disabled){border-color:var(--ochre);color:var(--ochre)}
+.cmp-act:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cmp-act:disabled{opacity:.45;cursor:not-allowed}
+.cmp-act.primary{border-color:rgba(var(--ochre-rgb),.6);background:rgba(var(--ochre-rgb),.15);color:var(--ochre)}
+body.has-cmp{padding-bottom:84px}
+
+.cmp-dialog{
+  width:min(1480px,96vw);max-width:none;height:min(920px,92vh);max-height:none;padding:0;
+  background:var(--panel);color:var(--text);border:1px solid var(--line-dim);border-radius:4px;box-shadow:var(--shadow);
+}
+.cmp-dialog[open]{display:flex;flex-direction:column}
+.cmp-dialog::backdrop{background:rgba(var(--scrim-rgb),var(--scrim-a))}
+.cmp-head{flex:none;display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:14px 18px;border-bottom:1px solid rgba(var(--border-rgb),.2)}
+.cmp-head h2{margin:0 auto 0 0;font-family:var(--display);font-weight:500;font-size:1.1875rem;color:var(--bone)}
+.cmp-diff{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.cmp-diff input{accent-color:var(--ochre);width:15px;height:15px;margin:0}
+.cmp-head .lu-close{position:static}
+.cmp-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:14px 18px 22px}
+.cmp-summary{margin:0 0 4px;font-size:0.84375rem;color:var(--text);max-width:90ch}
+.cmp-summary b{color:var(--ochre);font-weight:500}
+.cmp-summary + .cmp-summary{margin-top:2px}
+.cmp-empty{margin:24px 0;color:var(--muted);font-style:italic}
+
+.cmp-chart{margin:16px 0 18px;padding:12px 14px;border:1px solid rgba(var(--border-rgb),.22);border-radius:2px;background:rgba(var(--card-rgb),.45)}
+.cmp-chart h3{margin:0 0 2px;font-family:var(--mono);font-size:0.6875rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre)}
+.cmp-chart-sub{margin:0 0 10px;font-size:0.75rem;color:var(--muted)}
+.cmp-fq{display:grid;grid-template-columns:minmax(8em,22%) 1fr;column-gap:12px;row-gap:3px;align-items:center}
+.cmp-fq-name{font-family:var(--display);font-style:italic;font-size:0.8125rem;color:var(--ink-mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmp-fq-track{position:relative;height:22px;border-left:1px solid rgba(var(--border-rgb),.3)}
+.cmp-fq-grid{position:absolute;top:0;bottom:0;width:1px;background:rgba(var(--border-rgb),.13)}
+.cmp-fq-bar{position:absolute;top:6px;height:10px;min-width:4px;border-radius:4px;background:var(--ochre);cursor:default}
+.cmp-fq-bar.inferred{background:transparent;border:1.5px dashed var(--ochre);top:5px}
+.cmp-fq-bar:hover,.cmp-fq-bar:focus-visible{outline:2px solid var(--bone);outline-offset:1px}
+.cmp-fq-peak{position:absolute;top:3px;width:3px;height:16px;margin-left:-1.5px;border-radius:2px;background:var(--bone);box-shadow:0 0 0 2px var(--panel);pointer-events:none}
+.cmp-fq-none{font-size:0.75rem;color:var(--ink-faint);font-style:italic;line-height:22px}
+.cmp-fq-axis{position:relative;height:16px;grid-column:2}
+.cmp-fq-tick{position:absolute;top:1px;transform:translateX(-50%);font-family:var(--mono);font-size:0.625rem;color:var(--ink-faint);white-space:nowrap}
+.cmp-legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0;font-size:0.6875rem;color:var(--muted)}
+.cmp-legend span{display:inline-flex;align-items:center;gap:6px}
+.cmp-legend i{display:inline-block;width:18px;height:8px;border-radius:4px;background:var(--ochre)}
+.cmp-legend i.inferred{background:transparent;border:1.5px dashed var(--ochre)}
+.cmp-legend i.peak{width:3px;height:12px;border-radius:2px;background:var(--bone)}
+
+.cmp-scroll{overflow-x:auto;margin-top:14px;border:1px solid rgba(var(--border-rgb),.22);border-radius:2px}
+.cmp-table{border-collapse:separate;border-spacing:0;min-width:100%;font-size:0.8125rem}
+.cmp-table th,.cmp-table td{padding:8px 12px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(var(--border-rgb),.14)}
+.cmp-table td{min-width:190px;max-width:320px;color:var(--text)}
+.cmp-table tbody th{
+  position:sticky;left:0;z-index:1;width:9.5em;min-width:9.5em;background:var(--panel);
+  font-family:var(--mono);font-size:0.6875rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  border-right:1px solid rgba(var(--border-rgb),.2);
+}
+.cmp-table thead th{vertical-align:bottom;background:rgba(var(--card-rgb),.5)}
+.cmp-table thead th:first-child{position:sticky;left:0;z-index:2;background:var(--panel);border-right:1px solid rgba(var(--border-rgb),.2)}
+.cmp-table tr.same td{color:var(--ink-faint)}
+.cmp-table tr.same th::after{content:" · same";color:var(--line-text);text-transform:none;letter-spacing:.02em}
+.cmp-table.only-diff tr.same{display:none}
+.cmp-col{position:relative;min-width:190px}
+.cmp-col .inat-photo{float:none;width:100%;max-width:240px;margin:0 0 8px}
+.cmp-col .inat-photo img{width:100%;height:150px;aspect-ratio:auto;object-fit:contain;border-radius:2px;background:rgba(var(--card-rgb),.5)}
+.cmp-col .inat-photo figcaption{font-size:0.625rem;margin-top:3px}
+.cmp-name{display:block;padding:0;border:0;background:none;text-align:left;cursor:pointer;
+  font-family:var(--display);font-style:italic;font-weight:500;font-size:1.0625rem;line-height:1.2;color:var(--bone)}
+.cmp-name:hover{color:var(--ochre)}
+.cmp-name:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cmp-col-common{display:block;margin-top:2px;font-size:0.75rem;font-weight:400;color:var(--ochre)}
+.cmp-remove{position:absolute;top:6px;right:6px;z-index:1;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line-dim);border-radius:999px;background:var(--panel);color:var(--muted);font-size:1rem;line-height:1;cursor:pointer}
+.cmp-remove:hover{border-color:var(--ochre);color:var(--ochre)}
+.cmp-remove:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.cmp-countries{max-height:9.5em;overflow-y:auto;font-size:0.75rem;line-height:1.5;color:var(--muted)}
+.cmp-countries b{color:var(--text);font-weight:500}
+.cmp-n{display:block;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.04em;color:var(--line-text);margin-bottom:2px}
+.cmp-dash{color:var(--ink-faint)}
+.cmp-call-head{display:block}
+.cmp-call-range{display:block;margin-top:3px;font-variant-numeric:tabular-nums;color:var(--bone)}
+.cmp-table .lu-inferred-badge{margin-right:4px}
+
+@media (max-width:620px){
+  .cmp-tray{left:0;right:0;bottom:0;transform:none;width:auto;border-radius:0;border-left:0;border-top:1px solid var(--ochre-dim);
+    padding-bottom:env(safe-area-inset-bottom)}
+  .cmp-tray-in{flex-wrap:wrap;gap:8px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left))}
+  .cmp-chips{order:3;flex:1 0 100%}
+  .cmp-count{margin-right:auto}
+  .cmp-act,.cmp-toggle{min-height:44px}
+  .cmp-chip-x{width:36px;height:36px}
+  body.has-cmp{padding-bottom:128px}
+  .cmp-dialog{width:100vw;height:100dvh;margin:0;inset:0 auto auto 0;border:0;border-radius:0}
+  .cmp-head{padding:max(12px,env(safe-area-inset-top)) 14px 12px}
+  .cmp-body{padding:12px 14px 22px}
+  .cmp-fq{grid-template-columns:7em 1fr}
+  .cmp-table td,.cmp-col{min-width:160px}
+  .cmp-table tbody th{width:7em;min-width:7em}
+}
+
 /* ---------- field-notebook light theme ---------- */
 :root[data-theme="light"] body::before{opacity:.035;mix-blend-mode:multiply}
 </style>
@@ -859,6 +987,25 @@ g.trow.static:hover .t-genus{fill:var(--ink-strong)}
   <button type="button" class="lu-close" id="lu-close">Close</button>
   <div id="lu-detail"></div>
 </aside>
+
+<div class="cmp-tray" id="cmp-tray" role="region" aria-label="Species to compare" hidden>
+  <div class="cmp-tray-in">
+    <span class="cmp-count" id="cmp-count"></span>
+    <ul class="cmp-chips" id="cmp-chips"></ul>
+    <button type="button" class="cmp-act" id="cmp-clear">Clear</button>
+    <button type="button" class="cmp-act primary" id="cmp-open">Compare</button>
+  </div>
+</div>
+
+<dialog class="cmp-dialog" id="cmp-dialog" aria-labelledby="cmp-title">
+  <div class="cmp-head">
+    <h2 id="cmp-title">Compare</h2>
+    <label class="cmp-diff"><input type="checkbox" id="cmp-only-diff"> Only differences</label>
+    <button type="button" class="cmp-act" id="cmp-copy">Copy link</button>
+    <button type="button" class="lu-close" id="cmp-close">Close</button>
+  </div>
+  <div class="cmp-body" id="cmp-body"></div>
+</dialog>
 
 <script>
 const themeToggle = document.getElementById('theme-toggle');
@@ -2499,6 +2646,7 @@ Promise.all([
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
   updateOfflineStatus();
+  cmpReady();
 }).catch(err=>{
   luState.error = err.message;
 });
@@ -3417,7 +3565,7 @@ function luDetailHTML(s, compact){
     (s.mainCommonName ? '<p class="lu-d-common">'+luEsc(s.mainCommonName)+(s.otherCommonNames ? ' · '+luEsc(s.otherCommonNames) : '')+'</p>' : '')+
     (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+'</p>' : '')+
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
-    '<div class="lu-links">'+links+'</div>'+
+    '<div class="lu-links">'+links+cmpToggleHTML(s)+'</div>'+
     '<div class="lu-facts">'+
       '<section class="lu-section"><h4>Taxonomy &amp; status</h4><dl>'+
         '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+(s.iucnStatus||'NA')+'</span></dd>'+
@@ -3444,6 +3592,353 @@ function luSelectSpecies(id, focusCard = false){
     luOpenDrawer();
   }
 }
+
+/* =========================================================
+   9b. COMPARE — up to CMP_MAX species side by side
+   A toggle on every record adds its species to a tray; the tray opens a
+   table with one column per species. The picks are remembered per page, and
+   an open comparison is mirrored into the URL (#compare=...) so it can be
+   shared as a link.
+   ========================================================= */
+const CMP_MAX = 10;
+const CMP_KEY = 'compare:' + (location.pathname.split('/').pop() || 'index.html');
+const cmpTray    = document.getElementById('cmp-tray');
+const cmpChips   = document.getElementById('cmp-chips');
+const cmpCount   = document.getElementById('cmp-count');
+const cmpOpenBtn = document.getElementById('cmp-open');
+const cmpDialog  = document.getElementById('cmp-dialog');
+const cmpBody    = document.getElementById('cmp-body');
+const cmpOnlyDiff = document.getElementById('cmp-only-diff');
+const cmpCopyBtn = document.getElementById('cmp-copy');
+const CMP_HASH = '#compare=';
+const cmpFromHash = location.hash.indexOf(CMP_HASH) === 0;
+let cmpList = [];          // sciNames, in the order they were added
+let cmpReturnFocus = null;
+
+try { cmpList = JSON.parse(localStorage.getItem(CMP_KEY)) || []; } catch (_) {}
+if(cmpFromHash){
+  cmpList = location.hash.slice(CMP_HASH.length).split(',').map(x=>{
+    try { return decodeURIComponent(x); } catch (_) { return ''; }
+  });
+}
+cmpList = [...new Set(cmpList.filter(x=>typeof x==='string' && x))].slice(0, CMP_MAX);
+
+function cmpSpecies(sci){ return luState.byName[luNiceName(sci).toLowerCase()] || null; }
+function cmpSave(){ try { localStorage.setItem(CMP_KEY, JSON.stringify(cmpList)); } catch (_) {} }
+function cmpVal(v){ v = v==null ? '' : String(v).trim(); return v==='NA' ? '' : v; }
+function cmpSplit(v){ return cmpVal(v).split('|').map(x=>x.trim()).filter(x=>x && x!=='NA'); }
+function cmpCountryKey(c){ return c.replace(/\?$/,'').trim().toLowerCase(); }
+
+const CMP_ICON_ADD = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2 6h8"/></svg>';
+const CMP_ICON_ON  = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5 5 9l5-6"/></svg>';
+function cmpToggleState(sci){
+  const on = cmpList.includes(sci), full = !on && cmpList.length >= CMP_MAX;
+  return {on, full,
+    title: full ? 'The comparison holds '+CMP_MAX+' species. Remove one to add another.'
+         : on ? 'Remove from the comparison' : 'Add to the comparison',
+    inner: (on ? CMP_ICON_ON+'Comparing' : CMP_ICON_ADD+'Compare')};
+}
+function cmpToggleHTML(s){
+  const st = cmpToggleState(s.sciName);
+  return '<button type="button" class="cmp-toggle" data-sci="'+luEsc(s.sciName)+'" aria-pressed="'+st.on+'" title="'+
+    luEsc(st.title)+'"'+(st.full ? ' disabled' : '')+'>'+st.inner+'</button>';
+}
+function cmpSyncToggle(btn){
+  const st = cmpToggleState(btn.dataset.sci);
+  btn.setAttribute('aria-pressed', st.on);
+  btn.title = st.title;
+  btn.disabled = st.full;
+  btn.innerHTML = st.inner;
+}
+
+function cmpRender(){
+  const n = cmpList.length;
+  cmpTray.hidden = !n;
+  document.body.classList.toggle('has-cmp', n > 0);
+  cmpCount.textContent = n < 2 ? n+' picked · add another' : n+' of '+CMP_MAX;
+  cmpChips.innerHTML = cmpList.map(sci=>{
+    const name = luEsc(luNiceName(sci));
+    return '<li class="cmp-chip"><button type="button" class="cmp-chip-name" data-sci="'+luEsc(sci)+'" title="Show this record">'+name+'</button>'+
+      '<button type="button" class="cmp-chip-x" data-sci="'+luEsc(sci)+'" aria-label="Remove '+name+' from the comparison">&times;</button></li>';
+  }).join('');
+  cmpOpenBtn.disabled = n < 2 || !luState.ready;
+  cmpOpenBtn.textContent = n < 2 ? 'Compare' : 'Compare '+n;
+  document.querySelectorAll('.cmp-toggle').forEach(cmpSyncToggle);
+  if(cmpDialog.open){
+    cmpRenderDialog();
+    cmpSetHash();
+  }
+}
+
+function cmpAdd(sci){
+  if(cmpList.includes(sci) || cmpList.length >= CMP_MAX) return;
+  cmpList.push(sci);
+  cmpSave(); cmpRender();
+  announce(luNiceName(sci)+' added to the comparison, '+cmpList.length+' of '+CMP_MAX);
+}
+function cmpRemove(sci){
+  const i = cmpList.indexOf(sci);
+  if(i < 0) return;
+  cmpList.splice(i, 1);
+  cmpSave(); cmpRender();
+  announce(luNiceName(sci)+' removed from the comparison, '+cmpList.length+' left');
+}
+function cmpShow(sci){
+  const s = cmpSpecies(sci);
+  if(s) luSelectSpecies(s.id, true);
+}
+
+function cmpSetHash(){
+  history.replaceState(null, '', CMP_HASH+cmpList.map(encodeURIComponent).join(','));
+}
+function cmpOpen(){
+  if(cmpList.length < 2 || !luState.ready) return;
+  cmpReturnFocus = document.activeElement;
+  if(luDrawer.classList.contains('open')) luCloseDrawer();
+  luCloseResults();
+  cmpRenderDialog();
+  cmpDialog.showModal();
+  cmpBody.scrollTop = 0;
+  cmpSetHash();
+}
+
+/* The order and labels of the rank rows, deepest last. */
+const CMP_RANKS = [['order','Order'],['suborder','Suborder'],['infraorder','Infraorder'],['superfamily','Superfamily'],
+                   ['family','Family'],['subfamily','Subfamily'],['tribe','Tribe'],['genus','Genus']];
+
+function cmpCountriesCell(s, ctx){
+  const list = cmpSplit(s.countryDistribution);
+  const names = list.map(c=>ctx.sharedCountries.has(cmpCountryKey(c)) ? '<b>'+luEsc(c)+'</b>' : luEsc(c));
+  return '<span class="cmp-n">'+list.length+' countr'+(list.length===1 ? 'y' : 'ies')+'</span>'+
+    '<div class="cmp-countries">'+names.join(', ')+'</div>';
+}
+
+/* One comparable call per species: the first measured call type with a
+   frequency, else the genus or family expectation the card falls back to. */
+function cmpCall(s){
+  const call = luState.directCalls[s.id];
+  if(call){
+    const structured = call.format === 'structured';
+    const v = structured ? (call.variants||[]).find(x=>x.overview && (x.overview.low!=null || x.overview.peak!=null)) : null;
+    const o = (v && v.overview) || {};
+    const c = {headline: structured ? call.headline : call.summary, low:o.low, high:o.high, peak:o.peak,
+               variant: v && v.is_named ? v.label : '', inferred:false};
+    c.key = JSON.stringify([c.headline, c.low, c.high, c.peak]);
+    return c;
+  }
+  const inf = luState.genusInference[s.genus] || luState.familyInference[s.family];
+  if(!inf) return null;
+  if(inf.mode === 'none') return {headline: LU_MODE_HEADLINE.none, inferred:true, silent:true, key:'none'};
+  const c = {headline: 'Expected from its '+inf.scope+', '+inf.taxon, inferred:true,
+             low: inf.show_range ? inf.low : null, high: inf.show_range ? inf.high : null, peak:null};
+  c.key = JSON.stringify([c.headline, c.low, c.high]);
+  return c;
+}
+function cmpCallCell(s){
+  const c = cmpCall(s);
+  const range = c.low!=null && c.high!=null
+    ? luEsc(c.low)+'–'+luEsc(c.high)+' kHz'+(c.peak!=null ? ' · peak '+luEsc(c.peak)+' kHz' : '')
+    : c.peak!=null ? 'peak '+luEsc(c.peak)+' kHz' : '';
+  return (c.inferred ? '<span class="lu-inferred-badge">Inferred</span>' : '')+
+    '<span class="cmp-call-head">'+luEsc(c.headline)+'</span>'+
+    (c.variant ? '<span class="lu-basis">'+luEsc(c.variant)+'</span>' : '')+
+    (range ? '<span class="cmp-call-range">'+range+'</span>' : '');
+}
+
+/* The compare table's content rows, after the names and ranks every page
+   shares. Each is [label, cell(s, ctx) -> html, key(s) -> text]: a row whose
+   keys are all empty is left out, and one whose keys all match is marked as
+   the same. Clone pages swap this list, and compareChartHTML, for their own. */
+const COMPARE_ROWS = [
+  ['IUCN status', s=>'<span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+luEsc(s.iucnStatus)+'</span>', s=>cmpVal(s.iucnStatus)],
+  ['Realm', s=>luEsc(cmpVal(s.biogeographicRealm)), s=>cmpVal(s.biogeographicRealm)],
+  ['Continents', s=>luEsc(cmpSplit(s.continentDistribution).join(', ')), s=>cmpSplit(s.continentDistribution).join('|')],
+  ['Countries', cmpCountriesCell, s=>cmpSplit(s.countryDistribution).map(cmpCountryKey).sort().join('|')],
+  ['Call', cmpCallCell, s=>{ const c = cmpCall(s); return c ? c.key : ''; }]
+];
+
+/* Call frequency on one shared kHz axis: a bar from the lowest to the highest
+   frequency, a tick at the peak. Inferred ranges are drawn as outlines so an
+   expectation never reads as a measurement. */
+function compareChartHTML(list){
+  const calls = list.map(cmpCall);
+  const span = c => !c ? null
+    : c.low!=null && c.high!=null ? [c.low, c.high]
+    : c.peak!=null ? [c.peak, c.peak] : null;
+  const spans = calls.map(span);
+  if(!spans.some(Boolean)) return '';
+  const top = Math.max(...spans.filter(Boolean).map(x=>x[1]));
+  const step = top > 120 ? 40 : top > 60 ? 20 : 10;
+  const max = Math.max(step, Math.ceil(top/step)*step);
+  const pos = v => Math.round(v/max*10000)/100;
+  const ticks = [];
+  for(let v=0; v<=max; v+=step) ticks.push(v);
+  const grid = ticks.slice(1, -1).map(v=>'<span class="cmp-fq-grid" style="left:'+pos(v)+'%"></span>').join('');
+  const rows = list.map((s,i)=>{
+    const c = calls[i], sp = spans[i], bin = luNiceName(s.sciName);
+    let track;
+    if(!sp){
+      track = '<span class="cmp-fq-none">'+(c && c.silent ? 'Does not echolocate' : 'No call data')+'</span>';
+    } else {
+      const label = bin+': '+(c.inferred ? 'inferred, ' : '')+(sp[0]===sp[1] ? sp[0] : sp[0]+'–'+sp[1])+' kHz'+
+        (c.peak!=null && c.low!=null ? ', peak '+c.peak+' kHz' : '');
+      track = grid+'<span class="cmp-fq-bar'+(c.inferred ? ' inferred' : '')+'" style="left:'+pos(sp[0])+'%;width:'+
+        (pos(sp[1])-pos(sp[0]))+'%" role="img" tabindex="0" aria-label="'+luEsc(label)+'" title="'+luEsc(label)+'"></span>'+
+        (c.peak!=null && c.low!=null ? '<span class="cmp-fq-peak" style="left:'+pos(c.peak)+'%"></span>' : '');
+    }
+    return '<div class="cmp-fq-name" title="'+luEsc(bin)+'">'+luEsc(bin)+'</div><div class="cmp-fq-track">'+track+'</div>';
+  }).join('');
+  const axis = ticks.map(v=>'<span class="cmp-fq-tick" style="left:'+pos(v)+'%">'+v+(v===max ? ' kHz' : '')+'</span>').join('');
+  const anyInferred = calls.some((c,i)=>c && c.inferred && spans[i]);
+  const anyPeak = calls.some(c=>c && c.peak!=null && c.low!=null);
+  return '<section class="cmp-chart" aria-label="Call frequency ranges">'+
+    '<h3>Call frequency</h3>'+
+    '<p class="cmp-chart-sub">Lowest to highest frequency of each species’ first measured call type, on one axis.</p>'+
+    '<div class="cmp-fq">'+rows+'<div class="cmp-fq-axis" aria-hidden="true">'+axis+'</div></div>'+
+    '<p class="cmp-legend"><span><i></i>Measured</span>'+
+      (anyInferred ? '<span><i class="inferred"></i>Inferred from genus or family</span>' : '')+
+      (anyPeak ? '<span><i class="peak"></i>Peak frequency</span>' : '')+'</p>'+
+  '</section>';
+}
+
+function cmpRenderDialog(){
+  const list = cmpList.map(cmpSpecies).filter(Boolean);
+  const n = list.length;
+  document.getElementById('cmp-title').textContent = 'Comparing '+n+' species';
+  if(n < 2){
+    cmpBody.innerHTML = '<p class="cmp-empty">Add at least two species to compare them.</p>';
+    return;
+  }
+
+  // the deepest rank every species shares; a deeper match implies the ones above
+  let shared = null;
+  CMP_RANKS.forEach(([k,label])=>{
+    const v = cmpVal(list[0][k]);
+    if(v && list.every(s=>cmpVal(s[k])===v)) shared = [label, v];
+  });
+  const sharedName = shared && (shared[0]==='Genus' ? '<em>'+luEsc(shared[1])+'</em>' : luEsc(shared[1]));
+  let summary = '<p class="cmp-summary">'+(shared
+    ? (n===2 ? 'Both' : 'All '+n)+' belong to the '+luEsc(shared[0].toLowerCase())+' <b>'+sharedName+'</b>.'
+    : 'These '+n+' share no rank in this taxonomy.')+'</p>';
+
+  const countrySets = list.map(s=>new Set(cmpSplit(s.countryDistribution).map(cmpCountryKey)));
+  const sharedCountries = new Set(countrySets.some(x=>x.size)
+    ? [...countrySets[0]].filter(c=>countrySets.every(set=>set.has(c))) : []);
+  if(countrySets.some(x=>x.size)){
+    const names = cmpSplit(list[0].countryDistribution).map(c=>c.replace(/\?$/,'').trim())
+      .filter(c=>sharedCountries.has(c.toLowerCase()));
+    const SHOWN = 20;
+    summary += '<p class="cmp-summary">'+(names.length
+      ? 'Recorded together in <b>'+names.length+'</b> countr'+(names.length===1 ? 'y' : 'ies')+': '+
+        luEsc(names.slice(0, SHOWN).join(', '))+(names.length > SHOWN ? ' and '+(names.length-SHOWN)+' more' : '')+
+        '. Shared countries are in bold below.'
+      : 'There is no country where '+(n===2 ? 'both' : 'all '+n)+' are recorded.')+'</p>';
+  }
+  const ctx = {sharedCountries};
+
+  const rows = [
+    ['Other names', s=>luEsc(cmpSplit(s.otherCommonNames).join(', ')), s=>cmpVal(s.otherCommonNames)],
+    ['Danish name', s=>'🇩🇰 '+luEsc(luState.danish[s.id].name), s=>(luState.danish[s.id]||{}).name||''],
+    ...CMP_RANKS.map(([k,label])=>[label,
+      s=>k==='genus' ? '<em>'+luEsc(cmpVal(s[k]))+'</em>' : luEsc(cmpVal(s[k])), s=>cmpVal(s[k])]),
+    ['Named by', s=>luEsc((cmpVal(s.authoritySpeciesAuthor)+' '+cmpVal(s.authoritySpeciesYear)).trim()),
+                 s=>(cmpVal(s.authoritySpeciesAuthor)+' '+cmpVal(s.authoritySpeciesYear)).trim()],
+    ...COMPARE_ROWS
+  ];
+  const body = rows.map(([label, cell, key])=>{
+    const keys = list.map(key);
+    if(keys.every(k=>!k)) return '';
+    const same = keys.every(k=>k===keys[0]);
+    return '<tr'+(same ? ' class="same"' : '')+'><th scope="row">'+luEsc(label)+'</th>'+
+      list.map((s,i)=>'<td>'+(keys[i] ? cell(s, ctx) : '<span class="cmp-dash">—</span>')+'</td>').join('')+'</tr>';
+  }).join('');
+  const head = list.map(s=>{
+    const bin = luNiceName(s.sciName);
+    return '<th scope="col" class="cmp-col">'+
+      '<button type="button" class="cmp-remove" data-sci="'+luEsc(s.sciName)+'" aria-label="Remove '+luEsc(bin)+' from the comparison">&times;</button>'+
+      '<figure class="inat-photo" aria-busy="true"></figure>'+
+      '<button type="button" class="cmp-name" data-sci="'+luEsc(s.sciName)+'" title="Show the full record">'+luEsc(bin)+'</button>'+
+      (s.mainCommonName ? '<span class="cmp-col-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
+    '</th>';
+  }).join('');
+
+  cmpBody.innerHTML = summary + compareChartHTML(list) +
+    '<div class="cmp-scroll"><table class="cmp-table'+(cmpOnlyDiff.checked ? ' only-diff' : '')+'">'+
+      '<thead><tr><th scope="col"><span class="sr-only">Field</span></th>'+head+'</tr></thead>'+
+      '<tbody>'+body+'</tbody></table></div>';
+  cmpBody.querySelectorAll('.cmp-col .inat-photo').forEach((fig,i)=>loadSpeciesPhoto(list[i], fig));
+}
+
+/* once the records have loaded: drop names this release does not know, and
+   open a comparison that arrived as a link */
+function cmpReady(){
+  cmpList = [...new Set(cmpList.map(cmpSpecies).filter(Boolean).map(s=>s.sciName))].slice(0, CMP_MAX);
+  cmpSave();
+  cmpRender();
+  if(cmpFromHash && cmpList.length >= 2) cmpOpen();
+}
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('.cmp-toggle');
+  if(!t) return;
+  cmpList.includes(t.dataset.sci) ? cmpRemove(t.dataset.sci) : cmpAdd(t.dataset.sci);
+});
+cmpChips.addEventListener('click', e=>{
+  const x = e.target.closest('.cmp-chip-x');
+  if(x){
+    const i = cmpList.indexOf(x.dataset.sci);
+    cmpRemove(x.dataset.sci);
+    const rest = cmpChips.querySelectorAll('.cmp-chip-x');
+    if(rest.length) rest[Math.min(i, rest.length-1)].focus();
+    return;
+  }
+  const name = e.target.closest('.cmp-chip-name');
+  if(name) cmpShow(name.dataset.sci);
+});
+document.getElementById('cmp-clear').addEventListener('click', ()=>{
+  cmpList = [];
+  cmpSave(); cmpRender();
+  announce('Comparison cleared');
+});
+cmpOpenBtn.addEventListener('click', cmpOpen);
+document.getElementById('cmp-close').addEventListener('click', ()=>cmpDialog.close());
+// a click that lands on the dialog itself, not its content, is on the backdrop
+cmpDialog.addEventListener('click', e=>{ if(e.target === cmpDialog) cmpDialog.close(); });
+cmpDialog.addEventListener('close', ()=>{
+  if(location.hash.indexOf(CMP_HASH) === 0) history.replaceState(null, '', location.pathname+location.search);
+  if(cmpReturnFocus && document.contains(cmpReturnFocus)) cmpReturnFocus.focus();
+  cmpReturnFocus = null;
+});
+cmpOnlyDiff.addEventListener('change', ()=>{
+  const table = cmpBody.querySelector('.cmp-table');
+  if(table) table.classList.toggle('only-diff', cmpOnlyDiff.checked);
+});
+cmpBody.addEventListener('click', e=>{
+  const rm = e.target.closest('.cmp-remove');
+  if(rm){
+    const i = cmpList.indexOf(rm.dataset.sci);
+    cmpRemove(rm.dataset.sci);
+    if(cmpList.length < 2){ cmpDialog.close(); return; }
+    const rest = cmpBody.querySelectorAll('.cmp-remove');
+    rest[Math.min(i, rest.length-1)].focus();
+    return;
+  }
+  const name = e.target.closest('.cmp-name');
+  if(name){
+    cmpReturnFocus = null;
+    cmpDialog.close();
+    cmpShow(name.dataset.sci);
+  }
+});
+cmpCopyBtn.addEventListener('click', ()=>{
+  const done = text=>{
+    cmpCopyBtn.textContent = text;
+    setTimeout(()=>{ cmpCopyBtn.textContent = 'Copy link'; }, 1600);
+  };
+  if(!navigator.clipboard){ done('Copy failed'); return; }
+  navigator.clipboard.writeText(location.href).then(()=>{ done('Copied'); announce('Link copied'); }, ()=>done('Copy failed'));
+});
+cmpRender();
 
 /* =========================================================
    10. START THE TREE

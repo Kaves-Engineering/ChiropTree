@@ -304,6 +304,35 @@ function dinoSpeciesTimescale(s){
 function luDetailHTML(s, compact){""" % {"start": TS_START, "end": TS_END,
                                         "periods": [[n, a, b] for n, a, b in PERIODS]})
 
+# ------------------------------------------------------------------ compare
+# The compare table gets the fossil record's rows instead of status and call,
+# and its chart is the same Mesozoic time scale, one bar per compared species,
+# open by default since the comparison is what the reader asked to see.
+sub("""const COMPARE_ROWS = [
+  ['IUCN status', s=>'<span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+luEsc(s.iucnStatus)+'</span>', s=>cmpVal(s.iucnStatus)],
+  ['Realm', s=>luEsc(cmpVal(s.biogeographicRealm)), s=>cmpVal(s.biogeographicRealm)],
+  ['Continents', s=>luEsc(cmpSplit(s.continentDistribution).join(', ')), s=>cmpSplit(s.continentDistribution).join('|')],
+  ['Countries', cmpCountriesCell, s=>cmpSplit(s.countryDistribution).map(cmpCountryKey).sort().join('|')],
+  ['Call', cmpCallCell, s=>{ const c = cmpCall(s); return c ? c.key : ''; }]
+];""",
+    """const COMPARE_ROWS = [
+  ['Age', s=>luEsc(cmpVal(s.age))+(s.maxMa!=null ? '<span class="cmp-n">'+tsSpan(s.maxMa, s.minMa==null ? s.maxMa : s.minMa)+'</span>' : ''),
+          s=>cmpVal(s.age)+(s.maxMa!=null ? '|'+s.maxMa+'|'+s.minMa : '')],
+  ['Diet', s=>luEsc(cmpVal(s.diet)), s=>cmpVal(s.diet)],
+  ['Found in', cmpCountriesCell, s=>cmpSplit(s.countryDistribution).map(cmpCountryKey).sort().join('|')],
+  ['Formations', s=>luEsc(cmpSplit(s.formations).join(', ')), s=>cmpSplit(s.formations).join('|')],
+  ['Occurrences', s=>luEsc(s.occurrences), s=>s.occurrences ? String(s.occurrences) : ''],
+  ['Named in', s=>luEsc(cmpVal(s.reference)), s=>cmpVal(s.reference)]
+];""")
+swap_function("function compareChartHTML(list){", """function compareChartHTML(list){
+  const rows = list.filter(s=>s.maxMa!=null).map(s=>[luNiceName(s.sciName), s.maxMa, s.minMa==null ? s.maxMa : s.minMa]);
+  if(!rows.length) return '';
+  const html = dinoTimescaleHTML(rows, rows.length+' of '+list.length+' dated', true,
+    'Bars run from first to last appearance in the rocks.');
+  return '<section class="cmp-chart" aria-label="Time scale">'+html.replace('<details class="ts"', '<details class="ts" open')+'</section>';
+}""")
+sub("['family','Family']", "['family','Group']")
+
 # ------------------------------------------------------------------ the picture
 # No iNaturalist for the extinct: the genus's Wikipedia lead image, resolved
 # with its licence at build time, goes through the master's own photo path.

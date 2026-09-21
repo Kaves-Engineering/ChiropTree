@@ -66,6 +66,24 @@ Published with GitHub Pages.
   `data/raw/gbif_country_cache.json` (gitignored) so an interrupted run
   resumes cheaply; takes roughly 10–20 minutes for the full species list.
 
+## Comparing species
+
+Every species record has a **Compare** toggle. Picked species collect in a
+tray along the bottom of the page (up to 10, set by `CMP_MAX`), and the tray
+opens a side-by-side table: photos, names, every rank, the rank all of them
+share, the countries they are recorded in together, and the page's own fields,
+with an "only differences" filter. On the bat page a chart puts each species'
+call frequency range on one kHz axis, with inferred ranges drawn as outlines;
+the dinosaur page shows its Mesozoic time scale there instead. The picks are
+remembered per page in `localStorage`, and an open comparison is mirrored into
+the URL as `#compare=Genus_species,...`, so it can be shared as a link.
+
+The feature lives in the master page. The clone pages inherit it. Their
+content rows are `COMPARE_ROWS` and the chart is `compareChartHTML`, which
+`build_dinosaur_page.py` swaps for fossil-record rows and the time scale. The
+bird and marine pages keep the master's rows, and any row with no values for
+the picked species is left out.
+
 ## The marine mammal pages
 
 A parallel set of pages covering marine mammals, built from the same MDD
