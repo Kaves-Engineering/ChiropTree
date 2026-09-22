@@ -205,7 +205,7 @@ body::after{
 #country-map{padding-bottom:0}
 @media (min-width:1300px){
   .top-grid{
-    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    grid-template-columns:minmax(0,7fr) minmax(0,5fr);
     /* the tree spans both rows, and without this its height is shared out
        between them -- which opens a hole above the card */
     grid-template-rows:auto 1fr;
@@ -712,7 +712,7 @@ g.trow:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:2}
 .t-tribe{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;fill:var(--ochre);dominant-baseline:middle}
 .t-genus{font-family:var(--display);font-style:italic;font-size:17px;fill:var(--ink-strong);dominant-baseline:middle}
 .t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:var(--ink-mid);dominant-baseline:middle}
-.t-note{font-family:var(--body);font-size:14px;fill:var(--ink-faint);dominant-baseline:middle}
+.t-note{font-family:var(--body);font-style:normal;font-size:14px;fill:var(--ink-faint);dominant-baseline:middle}
 .t-count{font-family:var(--mono);font-size:13px;fill:var(--ink-faint);text-anchor:end;dominant-baseline:middle}
 .sub-branch{stroke:rgba(var(--border2-rgb),.34);stroke-width:1}
 .t-knot{fill:var(--line-dim)}
@@ -1501,10 +1501,10 @@ function ctxDrawTree(ctx){
   const mobile = matchMedia('(max-width:620px)').matches;
   const GAP_SF = mobile ? 62 : 46, GAP_SUB = mobile ? 104 : 88;
   // Lay out in CSS pixels on phones: counts stay visible without scaling down text.
-  const VW = mobile ? svg.parentElement.clientWidth : 700;
+  const VW = svg.parentElement.clientWidth;
   const LEFT = mobile ? 10 : 16, COUNTX = VW - (mobile ? 10 : 24);
-  const TIPX = mobile ? Math.max(32, Math.min(72, VW*.12)) : 110;
-  const branchStep = mobile ? VW*.085 : 70;
+  const TIPX = mobile ? Math.max(32, Math.min(72, VW*.12)) : 64;
+  const branchStep = mobile ? VW*.085 : 36;
   const rankColumn = {fam:0, subfam:1, tribe:2, genus:3, species:4};
   const PX = rank => TIPX + rank*branchStep;
   const LX = level => PX(level) + 9;
@@ -1528,9 +1528,9 @@ function ctxDrawTree(ctx){
   // Wrap unusually long labels rather than shifting columns or shrinking type.
   const ruler = el('text', {'aria-hidden':'true',visibility:'hidden'});
   svg.appendChild(ruler);
-  function labelLines(name, kind){
+  function labelLines(name, kind, className){
     const classes = {fam:'tip-name',subfam:'t-subfam',tribe:'t-tribe',genus:'t-genus',species:'t-species'};
-    ruler.setAttribute('class',classes[kind]);
+    ruler.setAttribute('class',className || classes[kind]);
     const reserve = kind==='species' ? 0 : mobile ? 48 : kind==='subfam'||kind==='tribe' ? 190 : 80;
     const available = Math.max(48,COUNTX-LX(rankColumn[kind])-reserve-12);
     ruler.textContent = name;
@@ -1551,7 +1551,7 @@ function ctxDrawTree(ctx){
   function rowLabel(n){
     return n.kind==='tribe' ? n.name.toUpperCase() : mobile && n.kind==='species'
       ? n.name.replace(/^(\S)\S+\s/, '$1. ')
-      : n.name+(n.kind==='species' && n.note ? ' — '+n.note : '');
+      : n.name;
   }
   function addLabel(g, className, x, y, lines){
     const text = el('text',{class:className,x,y});
@@ -1568,9 +1568,19 @@ function ctxDrawTree(ctx){
     const l = filtering ? list.filter(n=>countryLive.live.has(n.key)) : list;
     l.forEach((n,i)=>{
       const lines = labelLines(rowLabel(n),n.kind);
-      const h = RH[n.kind]+(lines.length-1)*20;
+      let noteLines = [], inlineNote = false;
+      if(!mobile && n.kind==='species' && n.note){
+        ruler.setAttribute('class','t-species');
+        ruler.textContent = n.name;
+        const nameWidth = ruler.getComputedTextLength();
+        ruler.setAttribute('class','t-note');
+        ruler.textContent = '— '+n.note;
+        inlineNote = lines.length===1 && nameWidth+11+ruler.getComputedTextLength() <= COUNTX-LX(rankColumn.species)-12;
+        if(!inlineNote) noteLines = labelLines('— '+n.note,'species','t-note');
+      }
+      const h = RH[n.kind]+(lines.length-1+noteLines.length)*20;
       const y = posY + h/2;
-      rows.push({kind:n.kind, node:n, y, level, parentKey, lines, height:h, posinset:i+1, setsize:l.length});
+      rows.push({kind:n.kind, node:n, y, level, parentKey, lines, noteLines, inlineNote, height:h, posinset:i+1, setsize:l.length});
       links.push({parentKind,kind:n.kind,parentY,y});
       posY += h;
       if(ctx.open.has(n.key)){
@@ -1734,7 +1744,10 @@ function ctxDrawTree(ctx){
     } else {
       g.setAttribute('class','trow species'+(n.name===ctx.selectedSp?' active':''));
       g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:''));
-      addLabel(g,'t-species',lx,r.y-(r.lines.length-1)*10,r.lines);
+      const labelY = r.y-(r.lines.length-1+r.noteLines.length)*10;
+      const label = addLabel(g,'t-species',lx,labelY,r.lines);
+      if(r.inlineNote) label.appendChild(el('tspan',{class:'t-note',dx:11},'— '+n.note));
+      if(r.noteLines.length) addLabel(g,'t-note',lx,labelY+r.lines.length*20,r.noteLines);
       const pick = ()=>{ ctx.focusKey = n.key; ctxShowSpecies(ctx, n.name); };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
@@ -3541,7 +3554,7 @@ function positionTreeTools(){
   }
   const box = document.querySelector('.treebox');
   const heading = svg.querySelector('.sub-label');
-  const scale = svg.clientWidth / VW;
+  const scale = svg.clientWidth / svg.viewBox.baseVal.width;
   if(!tools || !box || !heading || !scale) return;
   const boxRect = box.getBoundingClientRect();
   const headingRect = heading.getBoundingClientRect();
