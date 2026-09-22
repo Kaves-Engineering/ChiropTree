@@ -29,6 +29,7 @@ try {
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 
   --pad:clamp(18px,4vw,56px);
+  --topbar-height:58px;
 }
 
 /* ===== PALETTE =====================================================
@@ -160,7 +161,7 @@ try {
 .skip-link:focus{top:8px}
 main:focus{outline:none}
 .tb-title{margin:0;font-size:inherit;font-weight:inherit;line-height:inherit}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--topbar-height) + 12px)}
 .fbtn,.gen,.switch button,.tree-tools button,.jump,#fclear,.lu-close,g.tip,g.trow,button.gen{
   touch-action:manipulation;-webkit-tap-highlight-color:rgba(var(--ochre-rgb),.25);
 }
@@ -193,7 +194,8 @@ body::after{
 .wrap{max-width:1640px;margin:0 auto;padding:0 var(--pad)}
 
 /* ---------- tree and map workspace ---------- */
-.top-grid{display:grid;grid-template-columns:1fr}
+.top-grid{display:grid;grid-template-columns:minmax(0,1fr)}
+.top-grid>*{min-width:0}
 #tree-section,#country-map{
   padding-top:clamp(18px,2.6vw,28px);
   border-top:none;
@@ -214,12 +216,12 @@ body::after{
      you scroll. Without that span there is nothing for it to slide against. */
   .card{
     grid-column:2;grid-row:2;align-self:start;min-width:0;
-    position:sticky;top:84px;
-    max-height:calc(100vh - 104px);overflow-y:auto;overscroll-behavior:contain;
+    position:sticky;top:calc(var(--topbar-height) + 12px);
+    max-height:calc(100dvh - var(--topbar-height) - 24px);overflow-y:auto;overscroll-behavior:contain;
   }
 }
 
-section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(var(--border-rgb),.2);scroll-margin-top:70px}
+section{padding:clamp(40px,5.5vw,72px) 0;border-top:1px solid rgba(var(--border-rgb),.2);scroll-margin-top:0}
 
 /* ---------- tree ---------- */
 .treebox{
@@ -288,10 +290,10 @@ g.tip:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:2}
 .card{
   border:1px solid rgba(var(--border-rgb),.28);border-left:3px solid var(--ochre);
   background:rgba(var(--card-rgb),var(--card-a));padding:14px 18px;border-radius:2px;
-  margin:0 0 20px;scroll-margin-top:72px;
+  margin:0 0 20px;scroll-margin-top:0;overflow-wrap:anywhere;
 }
 
-.card{position:relative}
+@media (max-width:1299px){.card{position:relative}}
 .card-close{
   position:absolute;top:10px;right:12px;
   background:transparent;border:1px solid var(--line-dim);color:var(--muted);
@@ -337,7 +339,7 @@ footer a:hover{color:var(--ochre)}
 
 /* ---------- sticky topbar with the search field ---------- */
 .topbar{
-  position:sticky;top:0;z-index:60;
+  position:sticky;top:0;z-index:60;width:100%;
   background:rgba(var(--abyss-rgb),var(--bar-a));backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(var(--border-rgb),.2);
 }
@@ -461,7 +463,8 @@ footer a:hover{color:var(--ochre)}
 .lu-d-common.lu-dk{color:var(--ochre)}
 .lu-d-common .lu-dk-src{font-family:var(--mono);font-size:0.6875rem;color:var(--muted)}
 .lu-d-authority{font-family:var(--mono);font-size:0.6875rem;color:var(--muted);margin-top:4px}
-.lu-facts{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:20px;margin-top:24px}
+.lu-facts{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px;margin-top:24px}
+.lu-facts>*{min-width:0;overflow-wrap:anywhere}
 @media (max-width:700px){ .lu-facts{grid-template-columns:1fr} }
 .lu-section{background:var(--prussian);border:1px solid rgba(var(--border-rgb),.25);border-radius:4px;padding:16px 18px}
 .lu-section h4{margin:0 0 10px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);font-weight:500}
@@ -852,6 +855,60 @@ body.has-cmp{padding-bottom:84px}
 }
 
 /* ---------- field-notebook light theme ---------- */
+/* Responsive rules follow the base controls so desktop sizing cannot win. */
+@media (max-width:1000px){
+  .topbar-in{flex-wrap:wrap;gap:8px}
+  .tb-search{order:2;flex:1 0 100%;width:100%;margin:0}
+  .tb-title{margin-right:auto}
+}
+@media (max-width:620px){
+  :root{--pad:16px}
+  .topbar{background:var(--abyss);z-index:85}
+  .topbar-in{display:grid;grid-template-columns:minmax(0,1fr) 44px 44px;gap:6px 8px}
+  .tb-title{grid-column:1;grid-row:1}
+  .tb-brand::before{font-size:1.25rem}
+  .random-bat{display:flex;grid-column:2;grid-row:1}
+  .theme-toggle{grid-column:3;grid-row:1}
+  .pageswitch{grid-column:1/-1;grid-row:2;min-width:0;width:100%}
+  .ps-opt{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px;font-size:.8125rem;letter-spacing:.02em}
+  .tb-search{grid-column:1/-1;grid-row:3;min-width:0}
+  .tb-results{width:100%;max-height:calc(100dvh - var(--topbar-height) - 16px)}
+  .mobile-workspace{display:flex}
+  .mobile-workspace button{min-height:44px;font-size:.875rem}
+  .tree-mobile-hint{display:block;font-size:.8125rem}
+  .tree-tools{position:sticky;left:0;justify-content:flex-end;padding:6px;background:var(--canvas)}
+  .tree-tools button,.tree-tools .cm-mode button{min-width:44px;height:44px}
+  .mode-text{font-size:.75rem;letter-spacing:.03em}
+  .lu-drawer{top:var(--topbar-height);width:100%;padding:64px 16px 28px;overflow-wrap:anywhere}
+  .lu-scrim{top:var(--topbar-height)}
+  .lu-d-sci{padding-right:0;font-size:1.5rem;line-height:1.3}
+  .card{width:100%;padding:64px 14px 18px}
+  #card-body>:first-child{padding-right:0}
+  .card h3,.card .lu-d-sci{font-size:1.5rem;line-height:1.3}
+  .card .common,.card .lu-d-common,.card p.desc,.range-line,
+  .lu-row .lu-sci,.lu-row .lu-common,.lu-headline,
+  .lu-section dl,.card .lu-section dl,.lu-section .lu-note,.card .lu-section .lu-note{font-size:1rem}
+  .card-lineage,.chip,.lu-d-authority,.card .lu-d-authority,
+  .lu-section h4,.card .lu-section h4,.lu-prov,.card .lu-prov,
+  .lu-section .lu-src,.lu-refs li,.lu-row .lu-fam,.lu-inferred-why,
+  .lu-inferred-head,.lu-variant>summary,.lu-quick{font-size:.875rem}
+  .lu-section dl{grid-template-columns:minmax(0,1fr)}
+  .lu-section dt{white-space:normal;margin-top:6px}
+  .lu-section dd{min-width:0}
+  .lu-quick{white-space:normal}
+  .card-close,.lu-close,.jump,.offline-pack,.cmp-toggle,.cmp-act,.cmp-remove,
+  .cmp-chip button,.lu-variant>summary{min-height:44px;min-width:44px;font-size:.875rem}
+  .lu-links a,.card .lu-links a{width:44px;height:44px}
+  .cm-pick{flex-wrap:wrap}
+  .cm-pick label{font-size:.875rem}
+  .cm-pick select{min-height:44px;font-size:1rem;max-width:100%}
+}
+@media (pointer:coarse){
+  .card-close,.lu-close,.jump,.cmp-toggle,.cmp-act,.offline-pack,.ps-opt{min-height:44px;min-width:44px}
+  .lu-links a,.card .lu-links a{width:44px;height:44px}
+  .tree-tools button,.tree-tools .cm-mode button{min-width:44px;min-height:44px}
+}
+
 :root[data-theme="light"] body::before{opacity:.035;mix-blend-mode:multiply}
 </style>
 </head>
@@ -1006,6 +1063,13 @@ body.has-cmp{padding-bottom:84px}
 
 <script>
 const themeToggle = document.getElementById('theme-toggle');
+// Keep anchors and the phone detail drawer below the entire wrapped menu.
+const topbar = document.querySelector('.topbar');
+function syncTopbarHeight(){
+  document.documentElement.style.setProperty('--topbar-height', Math.ceil(topbar.getBoundingClientRect().height)+'px');
+}
+new ResizeObserver(syncTopbarHeight).observe(topbar);
+syncTopbarHeight();
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function applyTheme(theme, persist = false){
@@ -1121,7 +1185,9 @@ const svg = document.getElementById('tree');
 const VW = 700;                            // viewBox width
 const TOP = 4, LEFT = 16, TIPX = 110, COUNTX = VW - 24;
 const GAP_SF = 46, GAP_SUB = 88;
-const RH = {fam:46, subfam:30, tribe:25, genus:25, species:24};
+const RH = matchMedia('(pointer:coarse), (max-width:620px)').matches
+  ? {fam:48, subfam:46, tribe:46, genus:46, species:46}
+  : {fam:46, subfam:30, tribe:25, genus:25, species:24};
 const STEP2 = 14;                          // one nesting step below the family
 const PX = l => TIPX + l*STEP2;            // branch point of a level
 const LX = l => PX(l) + 9;                 // where its label starts
@@ -1413,8 +1479,8 @@ function ctxDrawTree(ctx){
         'aria-level':'1', 'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize),
         'aria-label':r.name+' — '+d.common+', '+famSpecies+' species, superfamily '+r.sf
       });
-      g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42,rx:2}));
-      g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-21,width:COUNTX-PX(0)+13,height:42}));
+      g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-(RH.fam-4)/2,width:COUNTX-PX(0)+13,height:RH.fam-4,rx:2}));
+      g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-(RH.fam-4)/2,width:COUNTX-PX(0)+13,height:RH.fam-4}));
       g.appendChild(knot(PX(0), r.y, isOpen ? 'open' : 'shut'));
       g.appendChild(el('text',{class:'tip-name',x:LX(0),y:r.y-9}, r.name));
       g.appendChild(el('text',{class:'tip-common',x:LX(0),y:r.y+13}, d.common));
@@ -1438,8 +1504,9 @@ function ctxDrawTree(ctx){
       'aria-level':String(r.level+1),
       'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize)
     });
-    g.appendChild(el('rect',{class:'focus-ring', x:x-5, y:r.y-12, width:COUNTX-x+13, height:24, rx:2}));
-    g.appendChild(el('rect',{class:'trow-hit', x:x-5, y:r.y-12, width:COUNTX-x+13, height:24}));
+    const hitHeight = Math.max(24, RH[r.kind]-2);
+    g.appendChild(el('rect',{class:'focus-ring', x:x-5, y:r.y-hitHeight/2, width:COUNTX-x+13, height:hitHeight, rx:2}));
+    g.appendChild(el('rect',{class:'trow-hit', x:x-5, y:r.y-hitHeight/2, width:COUNTX-x+13, height:hitHeight}));
     g.appendChild(knot(x, r.y, expandable ? (open?'open':'shut') : 'leaf'));
     if(expandable) g.setAttribute('aria-expanded', open?'true':'false');
 
@@ -1599,7 +1666,7 @@ function ctxFocusCard(ctx){
    disruption -- it can drag the tree row you just clicked off the screen. */
 function ctxScrollCardIntoView(ctx){
   const box = ctx.card.getBoundingClientRect();
-  if(box.top >= 0 && box.bottom <= innerHeight) return;
+  if(box.top >= topbar.getBoundingClientRect().bottom + 12 && box.bottom <= innerHeight) return;
   ctx.card.scrollIntoView({
     behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     block:'start'
@@ -3688,6 +3755,11 @@ cmpRender();
 const treeToggle = document.getElementById('t-toggle');
 function positionTreeTools(){
   const tools = document.querySelector('.tree-tools');
+  if(matchMedia('(max-width:620px)').matches){
+    tools.style.top = '';
+    tools.style.right = '';
+    return;
+  }
   const box = document.querySelector('.treebox');
   const heading = svg.querySelector('.sub-label');
   const scale = svg.clientWidth / VW;
