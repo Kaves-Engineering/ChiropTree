@@ -357,6 +357,11 @@ site served over HTTPS.
 
 The editable icon is `icons/icon.svg`. Regenerate its committed PNG exports
 with `uv run python data/build_app_icons.py` after changing the mark. The
+icon URL version in `manifest.webmanifest` and its matching entries in
+`service-worker.js` must also change: Chrome 144+ detects icon updates from
+changed manifest icon URLs or metadata, not changed image bytes alone.
+Chrome may ask installed users to approve the new icon.
+The
 manifest includes 192px, 512px and Android maskable icons; build smoke checks
 validate their dimensions and the offline asset paths.
 

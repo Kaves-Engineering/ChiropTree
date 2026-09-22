@@ -4,6 +4,7 @@ import json
 import re
 import struct
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
@@ -45,7 +46,8 @@ def main() -> None:
     assert {"192x192", "512x512"} <= {icon["sizes"] for icon in manifest["icons"] if icon["purpose"] == "any"}
     assert any(icon["purpose"] == "maskable" for icon in manifest["icons"])
     for icon in manifest["icons"]:
-        png = (ROOT / "public" / icon["src"]).read_bytes()
+        png = (ROOT / "public" / urlsplit(icon["src"]).path).read_bytes()
+        assert f"'./{icon['src']}'" in worker, "Manifest icon must be precached at its exact URL"
         assert png[:8] == b"\x89PNG\r\n\x1a\n"
         width, height = struct.unpack(">II", png[16:24])
         assert icon["sizes"] == f"{width}x{height}"
@@ -54,7 +56,7 @@ def main() -> None:
         assert 'src="app-install.js"' in page and 'id="install-app"' in page
     core = re.search(r"const CORE = \[(.*?)\];", worker, re.S).group(1)
     for path in re.findall(r"'\./([^']*)'", core):
-        assert (ROOT / "public" / path).exists(), f"Missing offline asset: {path}"
+        assert (ROOT / "public" / urlsplit(path).path).exists(), f"Missing offline asset: {path}"
     print("Offline build smoke test passed")
 
 

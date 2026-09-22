@@ -3,6 +3,8 @@ const CORE = [
   './', './index.html', './marine.html', './birds.html', './dinosaurs.html', './manifest.webmanifest',
   './app-install.js', './icons/icon.svg', './icons/icon-192.png',
   './icons/icon-512.png', './icons/icon-maskable-512.png',
+  './icons/icon-192.png?v=cladogram-1', './icons/icon-512.png?v=cladogram-1',
+  './icons/icon-maskable-512.png?v=cladogram-1',
   './data/chiroptera_taxonomy.json',
   './data/call_measurements.json',
   './data/calls/exports/calls.json',
