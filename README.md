@@ -328,6 +328,38 @@ MDD publishes new releases periodically. To pick up a new one:
 
 ## Running locally
 
+### Install on Android
+
+The published site is an installable web app named **Chiroptree**, with a
+bat-and-branch icon. All four animal groups stay inside the same app.
+
+1. Publish the changes through the existing GitHub Pages workflow (a push to
+   `master` builds and deploys the site).
+2. On the phone, open the published **HTTPS** address in Chrome.
+3. Tap **Install app** in the page footer when available, or open Chrome's
+   **⋮** menu and choose **Add to home screen → Install**.
+4. Launch **Chiroptree** from the home screen or app drawer.
+
+Installation does not require a Play Store listing or an APK. Chrome controls
+when it offers installation; the footer button appears only when a native
+install prompt is available. See [Chrome's Android instructions](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&hl=en).
+
+Keep the app online for its first visit so the offline cache can finish.
+The trees and core data then work offline. **Save images offline** downloads
+the available image pack separately; live photos and external links still
+need a connection. The app receives updates when reopened online (a further
+reopen may be needed to display an update).
+
+Phone installation requires HTTPS; a plain HTTP address on your home network
+is not sufficient. The local development server intentionally skips the
+service worker to avoid stale edits, so verify offline behavior on the built
+site served over HTTPS.
+
+The editable icon is `icons/icon.svg`. Regenerate its committed PNG exports
+with `uv run python data/build_app_icons.py` after changing the mark. The
+manifest includes 192px, 512px and Android maskable icons; build smoke checks
+validate their dimensions and the offline asset paths.
+
 `build.sh` writes the GitHub Pages site and its cacheable data files:
 
 ```

@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#131020">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<script src="app-install.js" defer></script>
 <link rel="preload" href="data/marine_world_map.json" as="fetch" type="application/json">
 <script>
 try {
@@ -1053,6 +1056,8 @@ body.has-cmp{padding-bottom:84px}
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
   · <span id="release-status">Loading release…</span>
   <button class="offline-pack" id="offline-pack" type="button">Save images offline</button>
+  <button class="offline-pack" id="install-app" type="button" hidden>Install app</button>
+  <span id="install-status" role="status"></span>
 </footer>
 
 </div>

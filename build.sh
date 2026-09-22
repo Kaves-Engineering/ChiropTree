@@ -22,9 +22,11 @@ rm -f public/data/bird_gbif_countries.json
 mkdir -p public/data/calls/exports
 cp data/calls/exports/calls.json public/data/calls/exports/
 cp manifest.webmanifest public/
+cp app-install.js public/
+cp -R icons public/icons
 if [ -d data/images ]; then cp -R data/images/. public/data/images/; fi
 
-release=$(sha256sum public/index.html public/marine.html public/birds.html public/dinosaurs.html public/data/*.json | sha256sum | cut -c1-16)
+release=$(sha256sum public/index.html public/marine.html public/birds.html public/dinosaurs.html public/data/*.json public/data/calls/exports/calls.json public/manifest.webmanifest public/app-install.js public/icons/* service-worker.js | sha256sum | cut -c1-16)
 sed "s/__RELEASE__/$release/" service-worker.js > public/service-worker.js
 
 for f in public/index.html public/marine.html public/birds.html public/dinosaurs.html; do

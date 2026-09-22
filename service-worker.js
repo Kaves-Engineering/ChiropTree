@@ -1,6 +1,8 @@
 const CACHE = 'chiroptree-core-__RELEASE__';
 const CORE = [
   './', './index.html', './marine.html', './birds.html', './dinosaurs.html', './manifest.webmanifest',
+  './app-install.js', './icons/icon.svg', './icons/icon-192.png',
+  './icons/icon-512.png', './icons/icon-maskable-512.png',
   './data/chiroptera_taxonomy.json',
   './data/call_measurements.json',
   './data/calls/exports/calls.json',

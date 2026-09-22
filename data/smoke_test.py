@@ -2,6 +2,7 @@
 
 import json
 import re
+import struct
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -38,6 +39,22 @@ def main() -> None:
     assert set(names) <= {item["id"] for item in bats["species"]}
     assert supplement and all(value for value in supplement.values())
     assert re.search(r"chiroptree-core-[0-9a-f]{16}", worker)
+    manifest = json.loads((ROOT / "public/manifest.webmanifest").read_text(encoding="utf-8"))
+    assert manifest["display"] == "standalone"
+    assert manifest["scope"] == "./" and manifest["id"] == manifest["start_url"] == "./index.html"
+    assert {"192x192", "512x512"} <= {icon["sizes"] for icon in manifest["icons"] if icon["purpose"] == "any"}
+    assert any(icon["purpose"] == "maskable" for icon in manifest["icons"])
+    for icon in manifest["icons"]:
+        png = (ROOT / "public" / icon["src"]).read_bytes()
+        assert png[:8] == b"\x89PNG\r\n\x1a\n"
+        width, height = struct.unpack(">II", png[16:24])
+        assert icon["sizes"] == f"{width}x{height}"
+    for page in pages:
+        assert 'rel="manifest" href="manifest.webmanifest"' in page
+        assert 'src="app-install.js"' in page and 'id="install-app"' in page
+    core = re.search(r"const CORE = \[(.*?)\];", worker, re.S).group(1)
+    for path in re.findall(r"'\./([^']*)'", core):
+        assert (ROOT / "public" / path).exists(), f"Missing offline asset: {path}"
     print("Offline build smoke test passed")
 
 
