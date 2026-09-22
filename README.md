@@ -331,7 +331,7 @@ MDD publishes new releases periodically. To pick up a new one:
 ### Install on Android
 
 The published site is an installable web app named **Chiroptree**, with a
-bat-and-branch icon. All four animal groups stay inside the same app.
+gold-and-green cladogram icon. All four animal groups stay inside the same app.
 
 1. Publish the changes through the existing GitHub Pages workflow (a push to
    `master` builds and deploys the site).

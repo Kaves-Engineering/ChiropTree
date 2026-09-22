@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <rect width="512" height="512" fill="#0d140f"/>
-  <!-- Branching lineages beneath a bat silhouette; kept inside Android's safe circle. -->
-  <path d="M256 372V286M256 334L188 300M256 334L324 300" fill="none" stroke="#a9b993" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M94 205Q150 210 207 247L225 226L229 181L250 203H262L283 181L287 226L305 247Q362 210 418 205Q395 244 393 286Q354 257 324 302Q291 271 256 304Q221 271 188 302Q158 257 119 286Q117 244 94 205Z" fill="#d3ae67"/>
-  <circle cx="188" cy="300" r="10" fill="#a9b993"/>
-  <circle cx="324" cy="300" r="10" fill="#a9b993"/>
+  <!-- Field-guide cladogram (concept B), inside Android's maskable safe circle. -->
+  <path d="M108 256H156M156 148V350M156 148H390M156 350H218M218 240V350M218 240H390M218 350H284M284 310V390M284 310H390M284 390H354" fill="none" stroke="#d3ae67" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="390" cy="148" r="11" fill="#a9b993"/>
+  <circle cx="390" cy="240" r="11" fill="#a9b993"/>
+  <circle cx="390" cy="310" r="11" fill="#a9b993"/>
+  <circle cx="354" cy="390" r="11" fill="#a9b993"/>
 </svg>
