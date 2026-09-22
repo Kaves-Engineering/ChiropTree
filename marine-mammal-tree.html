@@ -1364,8 +1364,11 @@ function ctxDrawTree(ctx){
   const GAP_SF = mobile ? 62 : 46, GAP_SUB = mobile ? 104 : 88;
   // Lay out in CSS pixels on phones: counts stay visible without scaling down text.
   const VW = mobile ? svg.parentElement.clientWidth : 700;
-  const LEFT = mobile ? 10 : 16, TIPX = mobile ? 32 : 110, COUNTX = VW - (mobile ? 10 : 24);
-  const PX = level => TIPX + level*(mobile ? 10 : STEP2);
+  const LEFT = mobile ? 10 : 16, COUNTX = VW - (mobile ? 10 : 24);
+  const TIPX = mobile ? Math.max(32, Math.min(72, VW*.12)) : 110;
+  const branchStep = mobile ? VW*.085 : 70;
+  const rankColumn = {fam:0, subfam:1, tribe:2, genus:3, species:4};
+  const PX = rank => TIPX + rank*branchStep;
   const LX = level => PX(level) + 9;
   const RH = mobile
     ? {fam:52, subfam:36, tribe:32, genus:30, species:32}
@@ -1383,22 +1386,58 @@ function ctxDrawTree(ctx){
   // selected country, instead of drawing the full tree and dimming the rest
   const filtering = (ctx === mainCtx) && countryTreeMode === 'filter' && !!countryLive;
 
+  // Fixed rank columns depend only on viewport width, never open branches.
+  // Wrap unusually long labels rather than shifting columns or shrinking type.
+  const ruler = el('text', {'aria-hidden':'true',visibility:'hidden'});
+  svg.appendChild(ruler);
+  function labelLines(name, kind){
+    const classes = {fam:'tip-name',subfam:'t-subfam',tribe:'t-tribe',genus:'t-genus',species:'t-species'};
+    ruler.setAttribute('class',classes[kind]);
+    const reserve = kind==='species' ? 0 : mobile ? 48 : kind==='subfam'||kind==='tribe' ? 190 : 80;
+    const available = Math.max(48,COUNTX-LX(rankColumn[kind])-reserve-12);
+    ruler.textContent = name;
+    if(ruler.getComputedTextLength()<=available) return [name];
+    const lines = [];
+    let line = '';
+    for(const character of name){
+      ruler.textContent = line+character;
+      if(line && ruler.getComputedTextLength()>available){
+        const space = line.lastIndexOf(' ');
+        if(space>0){ lines.push(line.slice(0,space)); line=line.slice(space+1)+character; }
+        else { lines.push(line); line=character; }
+      } else line += character;
+    }
+    if(line) lines.push(line);
+    return lines;
+  }
+  function rowLabel(n){
+    return n.kind==='tribe' ? n.name.toUpperCase() : mobile && n.kind==='species'
+      ? n.name.replace(/^(\S)\S+\s/, '$1. ')
+      : n.name+(n.kind==='species' && n.note ? ' — '+n.note : '');
+  }
+  function addLabel(g, className, x, y, lines){
+    const text = el('text',{class:className,x,y});
+    lines.forEach((line,i)=>text.appendChild(el('tspan',{x,dy:i ? 20 : 0},line)));
+    g.appendChild(text);
+    return text;
+  }
+
   /* ---------- 1. layout ---------- */
   let posY = TOP;
   const rows = [], links = [], famY = {}, headings = [];
 
-  function walk(list, level, parentY, parentKey){
+  function walk(list, level, parentY, parentKey, parentKind){
     const l = filtering ? list.filter(n=>countryLive.live.has(n.key)) : list;
-    const bx = PX(level-1), cx = PX(level);
     l.forEach((n,i)=>{
-      const h = RH[n.kind];
+      const lines = labelLines(rowLabel(n),n.kind);
+      const h = RH[n.kind]+(lines.length-1)*20;
       const y = posY + h/2;
-      rows.push({kind:n.kind, node:n, y, level, parentKey, posinset:i+1, setsize:l.length});
-      links.push('M '+bx+' '+parentY+' L '+bx+' '+y+' L '+cx+' '+y);
+      rows.push({kind:n.kind, node:n, y, level, parentKey, lines, height:h, posinset:i+1, setsize:l.length});
+      links.push({parentKind,kind:n.kind,parentY,y});
       posY += h;
       if(ctx.open.has(n.key)){
         const kids = ctx.nodeChildren(n);
-        if(kids && kids.length) walk(kids, level+1, y, n.key);
+        if(kids && kids.length) walk(kids, level+1, y, n.key, n.kind);
       }
     });
   }
@@ -1416,13 +1455,15 @@ function ctxDrawTree(ctx){
     posY += showSub ? GAP_SUB : GAP_SF;
     headings.push({b: Object.assign({}, b, {members, sub: showSub ? b.clade : null}), y0: posY + RH.fam/2});
     members.forEach(fam=>{
-      const y = posY + RH.fam/2;
+      const lines = labelLines(fam,'fam');
+      const height = RH.fam+(lines.length-1)*20;
+      const y = posY + height/2;
       famY[fam] = y;
-      rows.push({kind:'fam', name:fam, y, level:0, sf:b.sf});
-      posY += RH.fam;
+      rows.push({kind:'fam', name:fam, y, level:0, sf:b.sf,lines,height});
+      posY += height;
       if(ctx.open.has('f:'+fam)){
         posY += 2;
-        walk(ctx.famChildren(fam), 1, y, 'f:'+fam);
+        walk(ctx.famChildren(fam), 1, y, 'f:'+fam, 'fam');
         posY += 8;
       }
     });
@@ -1453,6 +1494,7 @@ function ctxDrawTree(ctx){
     })(backboneTree);
   }
 
+  ruler.remove();
   const H = posY + 22;
   svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
   svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg','aria-hidden':'true'}));
@@ -1468,7 +1510,10 @@ function ctxDrawTree(ctx){
       draw(c);
     });
   })(backboneTree);
-  links.forEach(d=> svg.appendChild(el('path',{d, class:'branch sub-branch','aria-hidden':'true'})));
+  links.forEach(({parentKind,kind,parentY,y})=>{
+    const bx = PX(rankColumn[parentKind]), cx = PX(rankColumn[kind]);
+    svg.appendChild(el('path',{d:`M ${bx} ${parentY} L ${bx} ${y} L ${cx} ${y}`, class:'branch sub-branch','aria-hidden':'true'}));
+  });
 
   function heading(text, x, y, cls, fs){
     const w = text.length * fs * 0.78 + 16;
@@ -1503,11 +1548,11 @@ function ctxDrawTree(ctx){
         'aria-level':'1', 'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize),
         'aria-label':r.name+' — '+d.common+', '+famSpecies+' species, superfamily '+r.sf
       });
-      g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-(RH.fam-4)/2,width:COUNTX-PX(0)+13,height:RH.fam-4,rx:2}));
-      g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-(RH.fam-4)/2,width:COUNTX-PX(0)+13,height:RH.fam-4}));
+      g.appendChild(el('rect',{class:'focus-ring',x:PX(0)-5,y:r.y-(r.height-4)/2,width:COUNTX-PX(0)+13,height:r.height-4,rx:2}));
+      g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-(r.height-4)/2,width:COUNTX-PX(0)+13,height:r.height-4}));
       g.appendChild(knot(PX(0), r.y, isOpen ? 'open' : 'shut'));
-      g.appendChild(el('text',{class:'tip-name',x:LX(0),y:r.y-9}, r.name));
-      g.appendChild(el('text',{class:'tip-common',x:LX(0),y:r.y+13}, d.common));
+      addLabel(g,'tip-name',LX(0),r.y-9-(r.lines.length-1)*10,r.lines);
+      g.appendChild(el('text',{class:'tip-common',x:LX(0),y:r.y+13+(r.lines.length-1)*10}, d.common));
       g.appendChild(el('text',{class:'tip-count',x:COUNTX,y:r.y}, famSpecies===1?'1':'~'+famSpecies));
       const hit = ()=>ctxToggleFamily(ctx, r.name);
       g.addEventListener('click', hit);
@@ -1518,7 +1563,7 @@ function ctxDrawTree(ctx){
       return;
     }
 
-    const n = r.node, x = PX(r.level), lx = LX(r.level);
+    const n = r.node, x = PX(rankColumn[r.kind]), lx = LX(rankColumn[r.kind]);
     const rawKids = ctx.nodeChildren(n) || [];
     const expandable = filtering ? rawKids.some(k=>countryLive.live.has(k.key)) : !!rawKids.length;
     const open = ctx.open.has(n.key);
@@ -1528,7 +1573,7 @@ function ctxDrawTree(ctx){
       'aria-level':String(r.level+1),
       'aria-posinset':String(r.posinset), 'aria-setsize':String(r.setsize)
     });
-    const hitHeight = Math.max(24, RH[r.kind]-2);
+    const hitHeight = Math.max(24, r.height-2);
     g.appendChild(el('rect',{class:'focus-ring', x:x-5, y:r.y-hitHeight/2, width:COUNTX-x+13, height:hitHeight, rx:2}));
     g.appendChild(el('rect',{class:'trow-hit', x:x-5, y:r.y-hitHeight/2, width:COUNTX-x+13, height:hitHeight}));
     g.appendChild(knot(x, r.y, expandable ? (open?'open':'shut') : 'leaf'));
@@ -1539,23 +1584,19 @@ function ctxDrawTree(ctx){
       const genCount = filtering ? liveGeneraCount(kids) : countGenera(kids);
       const spCount = filtering ? liveSpeciesCount(kids) : countSpecies(kids);
       g.setAttribute('aria-label', (r.kind==='subfam'?'Subfamily ':'Tribe ')+n.name);
-      g.appendChild(el('text',{class:r.kind==='subfam'?'t-subfam':'t-tribe',x:lx,y:r.y},
-        r.kind==='subfam' ? n.name : n.name.toUpperCase()));
+      addLabel(g,r.kind==='subfam'?'t-subfam':'t-tribe',lx,r.y-(r.lines.length-1)*10,r.lines);
       g.appendChild(el('text',{class:'t-count',x:COUNTX,y:r.y}, mobile ? '~'+spCount : genCount+' genera · ~'+spCount+' spp.'));
       ctxBindToggle(ctx, g, n);
     } else if(r.kind === 'genus'){
       const liveN = filtering ? (countryLive.genusCount[n.name]||0) : n.n;
       g.setAttribute('aria-label', 'Genus '+n.name+', '+liveN+' species');
-      g.appendChild(el('text',{class:'t-genus',x:lx,y:r.y}, n.name));
+      addLabel(g,'t-genus',lx,r.y-(r.lines.length-1)*10,r.lines);
       g.appendChild(el('text',{class:'t-count',x:COUNTX,y:r.y}, mobile ? String(liveN) : liveN===1?'1 species':liveN+' spp.'));
       if(expandable) ctxBindToggle(ctx, g, n);
     } else {
       g.setAttribute('class','trow species'+(n.name===ctx.selectedSp?' active':''));
       g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:''));
-      const t = el('text',{x:lx,y:r.y,'dominant-baseline':'middle'});
-      t.appendChild(el('tspan',{class:'t-species'}, mobile ? n.name.replace(/^(\S)\S+\s/, '$1. ') : n.name));
-      if(n.note && !mobile) t.appendChild(el('tspan',{class:'t-note',dx:'11'}, n.note));
-      g.appendChild(t);
+      addLabel(g,'t-species',lx,r.y-(r.lines.length-1)*10,r.lines);
       const pick = ()=>{ ctx.focusKey = n.key; ctxShowSpecies(ctx, n.name); };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
