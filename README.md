@@ -405,12 +405,24 @@ The map keeps its SVG geometry between selections, updates country/range
 classes in place, and batches pan/zoom writes with `requestAnimationFrame`.
 The frame callback runs only when the view changes; there is no idle render
 loop. All four pages inherit this behavior from `chiroptera-tree.html`.
+While moving, the map uses solid range fills and scaling outlines so the
+browser can reuse its painted layer. Hatching and precise border widths return
+after movement stops. On phones, map geometry is mounted only when the map
+approaches the viewport.
+
+Tree labels use cached canvas font measurements instead of forcing an SVG
+layout for each label or character. Tree redraws are assembled off-document,
+search reuses normalized text, and the sticky header uses an opaque background
+instead of blurring the scrolling page beneath it.
 
 With the local HTTP server running on port 8000 and Playwright plus Chromium
 available, run `node data/test_map_browser.cjs`. If Playwright is installed
 outside the project, set `PLAYWRIGHT_MODULE` to its module directory. This
 checks country filtering, species ranges, preserved geometry, island markers,
 dragging, zoom controls, wheel zoom, and narrow-screen selection on every page.
+Run `node data/test_page_browser.cjs` for desktop and mobile checks of tree
+expansion, keyboard focus, search equivalence, text measurement, species
+details, deferred map rendering, and restoration of hatching after zoom.
 
 ## Extending the echolocation data
 

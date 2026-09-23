@@ -346,7 +346,7 @@ footer a:hover{color:var(--ochre)}
 /* ---------- sticky topbar with the search field ---------- */
 .topbar{
   position:sticky;top:0;z-index:60;width:100%;
-  background:rgba(var(--abyss-rgb),var(--bar-a));backdrop-filter:blur(10px);
+  background:var(--abyss);
   border-bottom:1px solid rgba(var(--border-rgb),.2);
 }
 .topbar-in,.masthead-in{
@@ -632,6 +632,11 @@ footer a:hover{color:var(--ochre)}
 .cm-c.range:hover{fill:var(--range-hover)}
 .cm-c.sel{fill:var(--ochre)}
 .cm-c.range.sel{fill:var(--ochre)}
+/* During movement, avoid repainting thousands of hatch tiles and recalculating
+   non-scaling outlines. Restore the full pattern as soon as the view settles. */
+.cm-zoom-g.cm-moving .cm-c{vector-effect:none;stroke-width:calc(.4px * var(--cm-stroke-scale,1));transition:none}
+.cm-zoom-g.cm-moving .cm-c.has{stroke-width:calc(.75px * var(--cm-stroke-scale,1))}
+.cm-zoom-g.cm-moving .cm-c.has:not(.range):not(.sel){fill:var(--map-has)}
 .cm-d{fill:var(--map-dot);stroke:var(--map-water);stroke-width:.8;cursor:pointer;transition:fill .12s}
 .cm-d:hover{fill:var(--map-dot-hover)}
 .cm-d.range{fill:var(--ochre-dim)}
@@ -1093,14 +1098,26 @@ body.has-cmp{padding-bottom:84px}
 const themeToggle = document.getElementById('theme-toggle');
 // Keep anchors and the phone detail drawer below the entire wrapped menu.
 const topbar = document.querySelector('.topbar');
+let topbarFrame = null, topbarHeight = '', detailTop = '';
 function syncTopbarHeight(){
   const bounds = topbar.getBoundingClientRect();
-  document.documentElement.style.setProperty('--topbar-height', Math.ceil(bounds.height)+'px');
-  document.documentElement.style.setProperty('--detail-top', Math.ceil(bounds.bottom)+'px');
+  const height = Math.ceil(bounds.height)+'px', bottom = Math.ceil(bounds.bottom)+'px';
+  if(height !== topbarHeight){
+    document.documentElement.style.setProperty('--topbar-height', height);
+    topbarHeight = height;
+  }
+  if(bottom !== detailTop){
+    document.documentElement.style.setProperty('--detail-top', bottom);
+    detailTop = bottom;
+  }
 }
-new ResizeObserver(syncTopbarHeight).observe(topbar);
-new ResizeObserver(syncTopbarHeight).observe(document.querySelector('.masthead'));
-addEventListener('scroll', syncTopbarHeight, {passive:true});
+function scheduleTopbarHeight(){
+  if(topbarFrame !== null) return;
+  topbarFrame = requestAnimationFrame(()=>{ topbarFrame = null; syncTopbarHeight(); });
+}
+new ResizeObserver(scheduleTopbarHeight).observe(topbar);
+new ResizeObserver(scheduleTopbarHeight).observe(document.querySelector('.masthead'));
+addEventListener('scroll', scheduleTopbarHeight, {passive:true});
 syncTopbarHeight();
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -1363,6 +1380,34 @@ function knot(x, y, state){
     : el('circle',{class:'t-knot '+state, cx:x, cy:y, r:state==='leaf'?1.7:2.9});
 }
 
+// Measure text off the document. Mutating SVG text then reading its length
+// forced a synchronous layout for every label (and every wrapped character).
+// Sample the actual CSS fonts once per breakpoint/font load, preserving the
+// same wrapping on screen without laying out the whole tree to measure it.
+let treeFontVersion = 0;
+function treeTextMetrics(ctx, mobile){
+  const key = mobile+':'+treeFontVersion;
+  if(ctx.textMetrics && ctx.textMetrics.key === key) return ctx.textMetrics;
+  const classes = ['tip-name','tip-common','t-subfam','t-tribe','t-genus','t-species','t-note'];
+  const sample = el('g', {visibility:'hidden','aria-hidden':'true'});
+  classes.forEach(cls=>sample.appendChild(el('text',{class:cls},'M')));
+  ctx.svg.appendChild(sample);
+  const measures = {};
+  [...sample.children].forEach((text,i)=>{
+    const style = getComputedStyle(text);
+    const canvas = document.createElement('canvas').getContext('2d');
+    canvas.font = [style.fontStyle, style.fontWeight, style.fontSize, style.fontFamily].join(' ');
+    const spacing = parseFloat(style.letterSpacing) || 0;
+    if('letterSpacing' in canvas) canvas.letterSpacing = spacing+'px';
+    measures[classes[i]] = value=>canvas.measureText(value).width+
+      ('letterSpacing' in canvas ? 0 : spacing*value.length);
+  });
+  sample.remove();
+  ctx.textMetrics = {key, measures};
+  ctx.labelCache = null;
+  return ctx.textMetrics;
+}
+
 function ctxDrawTree(ctx){
   const svg = ctx.svg;
   const mobile = matchMedia('(max-width:620px)').matches;
@@ -1383,7 +1428,7 @@ function ctxDrawTree(ctx){
   // Note where focus was, and put it back on the same row once it is rebuilt.
   const hadFocus = !!(document.activeElement && svg.contains(document.activeElement));
   const prevIndex = ctx.rowOrder ? ctx.rowOrder.findIndex(r=>r.key===ctx.focusKey) : -1;
-  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  const drawing = document.createDocumentFragment();
   ctx.famG = {};
   ctx.rowOrder = [];
 
@@ -1393,26 +1438,31 @@ function ctxDrawTree(ctx){
 
   // Fixed rank columns depend only on viewport width, never open branches.
   // Wrap unusually long labels rather than shifting columns or shrinking type.
-  const ruler = el('text', {'aria-hidden':'true',visibility:'hidden'});
-  svg.appendChild(ruler);
+  const {measures} = treeTextMetrics(ctx, mobile);
+  if(!ctx.labelCache || ctx.labelCache.width !== VW) ctx.labelCache = {width:VW, lines:new Map()};
   function labelLines(name, kind, className){
     const classes = {fam:'tip-name',subfam:'t-subfam',tribe:'t-tribe',genus:'t-genus',species:'t-species'};
-    ruler.setAttribute('class',className || classes[kind]);
+    const cls = className || classes[kind];
+    const key = cls+':'+name;
+    if(ctx.labelCache.lines.has(key)) return ctx.labelCache.lines.get(key);
+    const measure = measures[cls];
     const reserve = kind==='species' ? 0 : mobile ? 48 : kind==='subfam'||kind==='tribe' ? 190 : 80;
     const available = Math.max(48,COUNTX-LX(rankColumn[kind])-reserve-12);
-    ruler.textContent = name;
-    if(ruler.getComputedTextLength()<=available) return [name];
     const lines = [];
-    let line = '';
-    for(const character of name){
-      ruler.textContent = line+character;
-      if(line && ruler.getComputedTextLength()>available){
-        const space = line.lastIndexOf(' ');
-        if(space>0){ lines.push(line.slice(0,space)); line=line.slice(space+1)+character; }
-        else { lines.push(line); line=character; }
-      } else line += character;
+    let rest = name;
+    while(rest && measure(rest)>available){
+      let lo = 1, hi = rest.length;
+      while(lo < hi){
+        const mid = Math.ceil((lo+hi)/2);
+        if(measure(rest.slice(0,mid))<=available) lo=mid; else hi=mid-1;
+      }
+      const space = rest.lastIndexOf(' ',lo);
+      const end = space>0 ? space : lo;
+      lines.push(rest.slice(0,end));
+      rest = rest.slice(end).trimStart();
     }
-    if(line) lines.push(line);
+    if(rest || !lines.length) lines.push(rest);
+    ctx.labelCache.lines.set(key, lines);
     return lines;
   }
   function rowLabel(n){
@@ -1437,12 +1487,8 @@ function ctxDrawTree(ctx){
       const lines = labelLines(rowLabel(n),n.kind);
       let noteLines = [], inlineNote = false;
       if(!mobile && n.kind==='species' && n.note){
-        ruler.setAttribute('class','t-species');
-        ruler.textContent = n.name;
-        const nameWidth = ruler.getComputedTextLength();
-        ruler.setAttribute('class','t-note');
-        ruler.textContent = '— '+n.note;
-        inlineNote = lines.length===1 && nameWidth+11+ruler.getComputedTextLength() <= COUNTX-LX(rankColumn.species)-12;
+        const nameWidth = measures['t-species'](n.name);
+        inlineNote = lines.length===1 && nameWidth+11+measures['t-note']('— '+n.note) <= COUNTX-LX(rankColumn.species)-12;
         if(!inlineNote) noteLines = labelLines('— '+n.note,'species','t-note');
       }
       const h = RH[n.kind]+(lines.length-1+noteLines.length)*20;
@@ -1509,10 +1555,9 @@ function ctxDrawTree(ctx){
     })(backboneTree);
   }
 
-  ruler.remove();
   const H = posY + 22;
   svg.setAttribute('viewBox', `0 0 ${VW} ${H}`);
-  svg.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg','aria-hidden':'true'}));
+  drawing.appendChild(el('rect',{x:0,y:0,width:VW,height:H,class:'tree-bg','aria-hidden':'true'}));
 
   /* ---------- 2. backbone, then the branches that continue below a family ---------- */
   const STEP = (TIPX - LEFT) / maxDepth;
@@ -1521,33 +1566,33 @@ function ctxDrawTree(ctx){
     if(node.leaf) return;
     const px = xOf(node);
     node.children.forEach(c=>{
-      svg.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch','aria-hidden':'true'}));
+      drawing.appendChild(el('path',{d:`M ${px} ${node.y} L ${px} ${c.y} L ${xOf(c)} ${c.y}`, class:'branch','aria-hidden':'true'}));
       draw(c);
     });
   })(backboneTree);
   links.forEach(({parentKind,kind,parentY,y})=>{
     const bx = PX(rankColumn[parentKind]), cx = PX(rankColumn[kind]);
-    svg.appendChild(el('path',{d:`M ${bx} ${parentY} L ${bx} ${y} L ${cx} ${y}`, class:'branch sub-branch','aria-hidden':'true'}));
+    drawing.appendChild(el('path',{d:`M ${bx} ${parentY} L ${bx} ${y} L ${cx} ${y}`, class:'branch sub-branch','aria-hidden':'true'}));
   });
 
   function heading(text, x, y, cls, fs){
     const w = text.length * fs * 0.78 + 16;
-    svg.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9, 'aria-hidden':'true'}));
+    drawing.appendChild(el('rect',{class:'knock', x:x-7, y:y-fs-2, width:w, height:fs+9, 'aria-hidden':'true'}));
     // the heading is drawn for the eye; the same grouping reaches a screen
     // reader through each family row's own label
-    svg.appendChild(el('text',{x:x, y:y, class:cls, 'aria-hidden':'true'}, text));
+    drawing.appendChild(el('text',{x:x, y:y, class:cls, 'aria-hidden':'true'}, text));
   }
   headings.forEach(({b,y0})=>{
     if(b.sub){
       heading(b.sub.toUpperCase(), LEFT, y0 - (mobile ? 91 : 75), 'sub-label', 16.5);
-      svg.appendChild(el('line',{x1:LEFT,y1:y0-(mobile ? 80 : 64),x2:COUNTX,y2:y0-(mobile ? 80 : 64),class:'tree-rule','stroke-width':'.8','aria-hidden':'true'}));
+      drawing.appendChild(el('line',{x1:LEFT,y1:y0-(mobile ? 80 : 64),x2:COUNTX,y2:y0-(mobile ? 80 : 64),class:'tree-rule','stroke-width':'.8','aria-hidden':'true'}));
     }
     const n = b.members.reduce((s,f)=>s+(filtering ? (countryLive.famCount[f]||0) : ctx.famInfo[f].species),0);
     heading(b.sf.toUpperCase(), LEFT+18, y0 - (mobile ? 48 : 32), 'sf-label', 13.5);
     const cx = mobile ? LEFT+18 : LEFT+18 + b.sf.length*13.5*0.78 + 20;
     const countY = y0-(mobile ? 30 : 32);
-    svg.appendChild(el('rect',{class:'knock',x:cx-6,y:countY-15,width:150,height:19,'aria-hidden':'true'}));
-    svg.appendChild(el('text',{x:cx, y:countY, class:'sf-count','aria-hidden':'true'},
+    drawing.appendChild(el('rect',{class:'knock',x:cx-6,y:countY-15,width:150,height:19,'aria-hidden':'true'}));
+    drawing.appendChild(el('text',{x:cx, y:countY, class:'sf-count','aria-hidden':'true'},
       b.members.length + (b.members.length===1?' family':' families') + ' · ~' + n + ' spp.'));
   });
 
@@ -1567,12 +1612,23 @@ function ctxDrawTree(ctx){
       g.appendChild(el('rect',{class:'tip-hit',x:PX(0)-5,y:r.y-(r.height-4)/2,width:COUNTX-PX(0)+13,height:r.height-4}));
       g.appendChild(knot(PX(0), r.y, isOpen ? 'open' : 'shut'));
       addLabel(g,'tip-name',LX(0),r.y-9-(r.lines.length-1)*10,r.lines);
-      g.appendChild(el('text',{class:'tip-common',x:LX(0),y:r.y+13+(r.lines.length-1)*10}, d.common));
+      let common = d.common;
+      if(mobile && measures['tip-common'](common)>COUNTX-48-LX(0)){
+        let lo=1, hi=common.length;
+        while(lo<hi){
+          const mid=Math.ceil((lo+hi)/2);
+          if(measures['tip-common'](common.slice(0,mid)+'…')<=COUNTX-48-LX(0)) lo=mid; else hi=mid-1;
+        }
+        common=common.slice(0,lo)+'…';
+      }
+      const commonLabel=el('text',{class:'tip-common',x:LX(0),y:r.y+13+(r.lines.length-1)*10},common);
+      if(common!==d.common) commonLabel.appendChild(el('title',{},d.common));
+      g.appendChild(commonLabel);
       g.appendChild(el('text',{class:'tip-count',x:COUNTX,y:r.y}, famSpecies===1?'1':'~'+famSpecies));
       const hit = ()=>ctxToggleFamily(ctx, r.name);
       g.addEventListener('click', hit);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();hit();} });
-      svg.appendChild(g);
+      drawing.appendChild(g);
       ctx.famG[r.name] = g;
       ctx.rowOrder.push({key:'f:'+r.name, el:g, expandable:true, open:isOpen, parentKey:null});
       return;
@@ -1619,21 +1675,11 @@ function ctxDrawTree(ctx){
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
     }
-    svg.appendChild(g);
+    drawing.appendChild(g);
     ctx.rowOrder.push({key:n.key, el:g, expandable, open, parentKey:r.parentKey});
   });
 
-  if(mobile){
-    // Secondary common names may be long; preserve the full text in a tooltip.
-    svg.querySelectorAll('.tip-common').forEach(label=>{
-      const full = label.textContent;
-      const available = COUNTX - 48 - Number(label.getAttribute('x'));
-      while(label.getComputedTextLength() > available && label.textContent.length > 2){
-        label.textContent = label.textContent.replace(/…$/, '').slice(0,-1)+'…';
-      }
-      if(label.textContent !== full) label.appendChild(el('title',{},full));
-    });
-  }
+  svg.replaceChildren(drawing);
   ctxSyncRoving(ctx, hadFocus, prevIndex);
   if(ctx.onDrawn) ctx.onDrawn();
 }
@@ -1737,6 +1783,7 @@ function ctxScrollFamIntoView(ctx, name){
 
 function ctxCardReset(ctx){
   ctx.selected = null; ctx.selectedSp = null;
+  ctx.svg.querySelectorAll('.active').forEach(row=>row.classList.remove('active'));
   ctx.card.classList.add('empty');
   ctx.cardBody.innerHTML = ctx.emptyHTML;
   if(ctx.closeBtn) ctx.closeBtn.hidden = true;
@@ -2068,8 +2115,12 @@ function bundled(id, url){
 }
 
 function luBuildDisplayTaxonomy(species){
-  const families = new Map(), speciesByGenus = new Map();
+  const families = new Map(), speciesByGenus = new Map(), familyCounts = new Map();
   species.forEach(record=>{
+    if(!familyCounts.has(record.family)) familyCounts.set(record.family,{genera:new Set(),species:0});
+    const counts = familyCounts.get(record.family);
+    counts.genera.add(record.genus);
+    counts.species++;
     const subfamily = !record.subfamily || record.subfamily==='NA' ? '' : record.subfamily;
     const tribe = !record.tribe || record.tribe==='NA' ? '' : record.tribe;
     if(!families.has(record.family)) families.set(record.family,new Map());
@@ -2094,8 +2145,8 @@ function luBuildDisplayTaxonomy(species){
       ATLAS[family].push(S(subfamily||null,null,rows));
     });
     if(F[family]){
-      F[family].genera = new Set(species.filter(item=>item.family===family).map(item=>item.genus)).size;
-      F[family].species = species.filter(item=>item.family===family).length;
+      F[family].genera = familyCounts.get(family).genera.size;
+      F[family].species = familyCounts.get(family).species;
     }
   });
   SP = Object.fromEntries([...speciesByGenus].map(([genus,rows])=>[genus,[1,rows]]));
@@ -2142,7 +2193,7 @@ Promise.all([
   sourceLink.textContent = tax._meta.source;
   luState.ready = true;
   randomBat.disabled = false;
-  if(mainCtx) ctxDrawTree(mainCtx);
+  if(mainCtx) scheduleTreeLayout();
   luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
   luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';
   if(luInput.value.trim()) luApplyFilter();
@@ -2186,6 +2237,7 @@ function wmResolve(list){
 
 /* ---- browse-by-country map: click a country, list bats confirmed there ---- */
 let CM = null, cmReady = false, cmSelected = null;
+let cmMapVisible = !matchMedia('(max-width:620px)').matches || !('IntersectionObserver' in window);
 
 function cmBuildIndex(){
   const byKey = {};
@@ -2221,7 +2273,7 @@ function cmShowSpeciesRange(binomial){
 
 function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
-  if(!mapEl || !WMAP || !CM) return;
+  if(!mapEl || !WMAP || !CM || !cmMapVisible) return;
   // Geometry and tooltips are static. Preserve the SVG (and pointer capture)
   // when only a selection or species range changes.
   if(mapEl.querySelector('svg')){
@@ -2291,6 +2343,7 @@ function cmUpdateMapState(mapEl){
 let cmView = {scale:1, x:0, y:0};
 let cmDrag = null; // {startClientX, startClientY, startX, startY} while a pointer is down
 let cmViewFrame = null, cmViewAnimate = false, cmHatchScale = null;
+let cmMotionTimer = null;
 const CM_MIN_SCALE = 1, CM_MAX_SCALE = 12;
 
 function cmClampView(v){
@@ -2309,10 +2362,31 @@ function cmApplyView(noAnim){
   // the hatch is measured in the group's own user space, so without this it
   // would grow with the zoom until the stripes are wider than a country
   const hatch = document.getElementById('cm-hatch');
-  if(hatch && cmHatchScale !== cmView.scale){
+  if(hatch && !g.classList.contains('cm-moving') && cmHatchScale !== cmView.scale){
     hatch.setAttribute('patternTransform', 'scale('+(1/cmView.scale)+')');
     cmHatchScale = cmView.scale;
   }
+}
+
+function cmStartMotion(animate){
+  const g = document.getElementById('cm-zoom-g');
+  if(!g) return;
+  if(!g.classList.contains('cm-moving')){
+    g.classList.add('cm-moving');
+    // Hold the stroke size for this gesture so the browser can reuse its
+    // painted layer. Exact screen-width borders return when movement stops.
+    g.style.setProperty('--cm-stroke-scale',1/cmView.scale);
+  }
+  clearTimeout(cmMotionTimer);
+  cmMotionTimer = setTimeout(()=>{
+    cmMotionTimer = null;
+    const hatch = document.getElementById('cm-hatch');
+    if(hatch && cmHatchScale !== cmView.scale){
+      hatch.setAttribute('patternTransform','scale('+(1/cmView.scale)+')');
+      cmHatchScale = cmView.scale;
+    }
+    g.classList.remove('cm-moving');
+  }, animate ? 450 : 180);
 }
 
 function cmSetView(v, animate){
@@ -2324,6 +2398,7 @@ function cmSetView(v, animate){
   if(cmViewFrame !== null) return;
   cmViewFrame = requestAnimationFrame(()=>{
     cmViewFrame = null;
+    cmStartMotion(cmViewAnimate);
     cmApplyView(!cmViewAnimate);
   });
 }
@@ -2552,6 +2627,15 @@ function cmMaybeInit(){
   }
   cmBuildIndex();
   cmFillCountrySelect();
+  if(!cmMapVisible){
+    const observer = new IntersectionObserver(entries=>{
+      if(!entries.some(entry=>entry.isIntersecting)) return;
+      cmMapVisible = true;
+      observer.disconnect();
+      cmRenderMap();
+    }, {rootMargin:'300px'});
+    observer.observe(mapEl);
+  }
   cmRenderMap();
   mapEl.addEventListener('click', cmOnMapClick);
   cmWireZoomControls();
@@ -2560,6 +2644,7 @@ function cmMaybeInit(){
 function luNiceName(sci){ return sci.replace('_',' '); }
 function luEsc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
+const luSearchText = new WeakMap();
 function luApplyFilter(){
   const q = luInput.value.trim().toLowerCase();
   if(!q){ luCloseResults(); return; }
@@ -2569,15 +2654,12 @@ function luApplyFilter(){
     return;
   }
   luState.filtered = luState.species.filter(s=>{
-    const dk = luState.danish[s.id];
-    return (
-      s.sciName.toLowerCase().replace('_',' ').includes(q) ||
-      (s.mainCommonName||'').toLowerCase().includes(q) ||
-      (s.otherCommonNames||'').toLowerCase().includes(q) ||
-      s.genus.toLowerCase().includes(q) ||
-      s.family.toLowerCase().includes(q) ||
-      (dk && dk.allNames.some(n=>n.toLowerCase().includes(q)))
-    );
+    if(!luSearchText.has(s)){
+      const dk = luState.danish[s.id];
+      luSearchText.set(s,[luNiceName(s.sciName),s.mainCommonName||'',s.otherCommonNames||'',
+        s.genus,s.family,...(dk ? dk.allNames : [])].join('\n').toLowerCase());
+    }
+    return luSearchText.get(s).includes(q);
   });
   luRenderResults();
   luOpenResults();
@@ -3528,14 +3610,24 @@ mainCtx = makeTreeCtx({
   onDrawn: ()=>{ applyTreeDim(); updateTreeToggle(); positionTreeTools(); }
 });
 
-let treeLayoutWidth = 0;
+let treeLayoutWidth = svg.parentElement.clientWidth, treeLayoutFrame = null;
+function scheduleTreeLayout(){
+  if(treeLayoutFrame !== null) return;
+  treeLayoutFrame = requestAnimationFrame(()=>{
+    treeLayoutFrame = null;
+    ctxDrawTree(mainCtx);
+  });
+}
 new ResizeObserver(()=>{
   const width = svg.parentElement.clientWidth;
   if(width === treeLayoutWidth) return;
   treeLayoutWidth = width;
-  ctxDrawTree(mainCtx);
+  scheduleTreeLayout();
 }).observe(svg.parentElement);
-if(document.fonts) document.fonts.ready.then(()=>ctxDrawTree(mainCtx));
+if(document.fonts) document.fonts.ready.then(()=>{
+  treeFontVersion++;
+  scheduleTreeLayout();
+});
 
 ctxCardReset(mainCtx);
 ctxDrawTree(mainCtx);
@@ -3549,7 +3641,6 @@ mainCtx.card.addEventListener('click', e=>{
 mainCtx.closeBtn.addEventListener('click', ()=>{
   const row = mainCtx.rowOrder.find(r=>r.key === mainCtx.focusKey);
   ctxCardReset(mainCtx);
-  ctxDrawTree(mainCtx);
   announce('Record closed');
   if(row) ctxFocusRow(mainCtx, mainCtx.rowOrder.findIndex(r=>r.key === mainCtx.focusKey), true);
 });
