@@ -49,9 +49,28 @@ application search to find taxa anywhere in the full dataset.
 Labels and search text are cached. Large preparation jobs and taxonomy/country
 index construction yield in short batches. Touch layouts use installed system
 fonts, avoid decorative overlays, and skip animated programmatic scrolling.
-The map retains its selection and range data, with simpler paint during
-movement and full hatching restored afterward. Deferred map space is reserved
-before it enters the viewport.
+On touch devices, the map uses a canvas at a maximum bitmap density of 2x.
+Country outlines are compiled to Path2D objects in short batches and reused
+for painting and hit testing. Selection, range shading, hatching and islands
+remain available. Only changes to map state, theme or width schedule a draw;
+scrolling and idle time do not. The 393px bat-page check replaces 513 map SVG
+elements with one canvas using about 0.9 MB of bitmap storage. This excludes
+browser overhead and compiled path storage. Desktop and unsupported browsers
+retain the SVG renderer. Deferred map space is reserved before mounting.
+
+Map geometry is prepared before scrolling reaches it. Native vertical swipes
+on the map scroll the document without starting a map drag. The touch-scroll
+suite checks both behaviors at 8x CPU slowdown. The mobile-map suite also
+checks country taps, filters, species ranges, theme changes, islands, horizontal
+touch panning and returning to the tree after loading the map without repainting
+the canvas.
+
+The touch-scroll test also repeats swipes over the collapsed bat families,
+away from the map, checking that they neither rebuild nor mutate the tree.
+Local steady-scroll traces do not reproduce the persistent lag reported on
+the physical Samsung in Chrome and the installed app. The canvas change
+removes the live SVG map from the phone's rendering tree, but real-device
+verification is still required before calling that lag resolved.
 
 Offline core assets and optional image packs retain their full contents but
 use at most two simultaneous downloads. Failed core installation does not
@@ -66,6 +85,7 @@ node data/test_low_end_browser.cjs
 node data/test_scroll_browser.cjs
 node data/test_page_browser.cjs
 node data/test_map_browser.cjs
+node data/test_mobile_map_browser.cjs
 node data/test_service_worker.cjs
 node data/test_offline_browser.cjs
 ```

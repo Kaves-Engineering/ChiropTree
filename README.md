@@ -401,14 +401,18 @@ offline without parsing a multi-megabyte HTML document at startup.
 
 ## Map performance checks
 
-The map keeps its SVG geometry between selections, updates country/range
-classes in place, and batches pan/zoom writes with `requestAnimationFrame`.
-The frame callback runs only when the view changes; there is no idle render
-loop. All four pages inherit this behavior from `chiroptera-tree.html`.
-While moving, the map uses solid range fills and scaling outlines so the
-browser can reuse its painted layer. Hatching and precise border widths return
-after movement stops. On phones, map geometry is mounted only when the map
-approaches the viewport.
+Touch devices draw the map to a canvas, using the same country paths, island
+markers, hatching, selection and species ranges. The bitmap density is capped
+at 2x. It redraws only for map state, theme or width changes, never for page
+scrolling or on an idle timer. Country taps use the original paths for hit
+testing; the country dropdown remains available for keyboard and screen readers.
+Desktop and browsers without the canvas capabilities retain the SVG renderer.
+That renderer preserves its geometry, batches view changes, and simplifies
+fills and outlines during movement. All four pages inherit both renderers from
+`chiroptera-tree.html`. Geometry is prepared off-document in small batches as
+soon as the country index is ready. On phones it is attached only when the map
+approaches the viewport, avoiding a large SVG parse during a swipe.
+Vertical touch gestures leave the map view unchanged and scroll the document.
 
 Tree labels use cached canvas font measurements instead of forcing an SVG
 layout for each label or character. Tree redraws are assembled off-document,
@@ -434,12 +438,16 @@ dragging, zoom controls, wheel zoom, and narrow-screen selection on every page.
 Run `node data/test_page_browser.cjs` for desktop and mobile checks of tree
 expansion, keyboard focus, search equivalence, text measurement, species
 details, deferred map rendering, and restoration of hatching after zoom.
-Run `node data/test_scroll_browser.cjs` to check native touch swipes, sticky
-header/drawer alignment, stable map space, and absence of root style writes
-during scrolling on all four pages.
+Run `node data/test_scroll_browser.cjs` to check native touch swipes at 8x CPU
+slowdown, sticky header/drawer alignment, stable map space, prepared geometry,
+and absence of root style writes during scrolling on all four pages. It also
+checks that swiping vertically on the map neither pans it nor swallows a tap.
 Run `node data/test_low_end_browser.cjs` for the 8x CPU-throttled mobile
 performance budget and virtual-tree navigation/cancellation checks, and
 `node data/test_service_worker.cjs` for precache concurrency and failure cleanup.
+Run `node data/test_mobile_map_browser.cjs` for canvas country taps, range and
+theme painting, island selection, touch panning, bitmap sizing and zero map
+redraws when scrolling after the map has loaded, at 8x CPU slowdown.
 See [PERFORMANCE.md](PERFORMANCE.md) for the budgets and measurement limits.
 
 ## Extending the echolocation data

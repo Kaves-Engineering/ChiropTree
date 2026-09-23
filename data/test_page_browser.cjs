@@ -25,7 +25,7 @@ const assert = require('node:assert/strict');
         await page.waitForFunction(()=>treeLayoutFrame===null && !svg.hasAttribute('aria-busy') && mainCtx.rowOrder.length>0);
         const initialRows=await page.evaluate(()=>mainCtx.rowOrder.length);
         assert(initialRows>0);
-        if(mobile) assert.equal(await page.locator('#cm-map-svg svg').count(),0,'offscreen map is deferred');
+        if(mobile) assert.equal(await page.locator('#cm-map-svg :is(svg,canvas)').count(),0,'offscreen map is deferred');
 
         // The arrow keys must still expand a row and preserve its focus after a redraw.
         const row=page.locator('#tree [role="treeitem"]').first();
@@ -78,12 +78,18 @@ const assert = require('node:assert/strict');
           assert.equal(await page.evaluate(()=>treeRowBeforeClose===svg.querySelector('[role="treeitem"]') && !svg.querySelector('.active')),true);
         }
         await page.locator('#cm-map').scrollIntoViewIfNeeded();
-        await page.waitForSelector('#cm-map-svg svg');
+        await page.waitForSelector('#cm-map-svg :is(svg,canvas)');
         if(mobile) await page.locator('#cm-zoom-in').tap(); else await page.locator('#cm-zoom-in').click();
         await page.waitForFunction(()=>cmView.scale>1);
-        await page.waitForFunction(()=>cmViewFrame===null && cmMotionTimer===null && !document.getElementById('cm-zoom-g').classList.contains('cm-moving'));
-        assert.equal(await page.evaluate(()=>cmHatchScale===cmView.scale),true,'hatch scale restored');
-        assert.equal(await page.evaluate(()=>getComputedStyle(document.querySelector('.cm-c.has:not(.range):not(.sel)')).fill.includes('cm-hatch')),true);
+        if(mobile){
+          await page.waitForFunction(()=>cmViewFrame===null && cmCanvasFrame===null);
+          assert.equal(await page.locator('#cm-map-svg canvas').count(),1,'touch map uses a bounded bitmap');
+          assert.equal(await page.locator('#cm-map-svg svg').count(),0,'touch map retains no live SVG geometry');
+        } else {
+          await page.waitForFunction(()=>cmViewFrame===null && cmMotionTimer===null && !document.getElementById('cm-zoom-g').classList.contains('cm-moving'));
+          assert.equal(await page.evaluate(()=>cmHatchScale===cmView.scale),true,'hatch scale restored');
+          assert.equal(await page.evaluate(()=>getComputedStyle(document.querySelector('.cm-c.has:not(.range):not(.sel)')).fill.includes('cm-hatch')),true);
+        }
         assert.equal(await page.evaluate(()=>svgTextMeasurements),0,'tree uses no synchronous SVG text measurements');
         assert.deepEqual(errors,[]);
         console.log(file,mobile?'mobile':'desktop','PASS');

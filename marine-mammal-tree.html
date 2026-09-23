@@ -565,8 +565,8 @@ footer a:hover{color:var(--ochre)}
 /* ---------- country browse map ---------- */
 .cm-map-wrap{margin-top:0}
 .cm-map{position:relative}
-.cm-map svg{display:block;width:100%;height:auto;background:var(--map-water);border:1px solid rgba(var(--border-rgb),.22);border-radius:3px;cursor:grab;touch-action:pan-y pinch-zoom}
-.cm-map svg.dragging{cursor:grabbing}
+.cm-map svg,.cm-map canvas{display:block;width:100%;height:auto;background:var(--map-water);border:1px solid rgba(var(--border-rgb),.22);border-radius:3px;cursor:grab;touch-action:pan-y pinch-zoom}
+.cm-map svg.dragging,.cm-map canvas.dragging{cursor:grabbing}
 .cm-zoom-g{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .cm-zoom-g.no-anim{transition:none}
 .cm-label{
@@ -1145,6 +1145,7 @@ function applyTheme(theme, persist = false){
 applyTheme(document.documentElement.dataset.theme || 'dark');
 themeToggle.addEventListener('click', () => {
   applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
+  if(cmCanvasMode && cmMapGeometry) cmRenderMap();
 });
 
 // On phones the tree and map are separate destinations in one field guide.
@@ -2415,51 +2416,152 @@ function cmShowSpeciesRange(binomial){
   if(cmReady) cmRenderMap();
 }
 
+// Prepare geometry off-document in short batches as soon as data is ready.
+// Scrolling into the map should only attach the prepared SVG, not parse it.
+let cmMapGeometry = null, cmMapPreparation = null;
+const cmCanvasMode = matchMedia('(pointer:coarse)').matches && typeof Path2D!=='undefined'
+  && typeof DOMMatrix!=='undefined' && typeof CanvasPattern!=='undefined' && 'setTransform' in CanvasPattern.prototype;
+let cmCanvasPaths = [], cmCanvasLand = null, cmCanvasFrame = null;
+function cmMapSurface(){ return document.querySelector('#cm-map-svg svg, #cm-map-svg canvas'); }
+function cmScheduleCanvas(){
+  if(cmCanvasFrame!==null) return;
+  cmCanvasFrame=requestAnimationFrame(()=>{cmCanvasFrame=null;cmDrawCanvas();});
+}
+function cmDrawCanvas(){
+  const canvas=cmMapGeometry;
+  if(!canvas || !canvas.isConnected) return;
+  const width=canvas.clientWidth, height=width*WMAP.h/WMAP.w;
+  if(!width) return;
+  // Bound memory and fill rate independently of a phone's display density.
+  const density=Math.min(devicePixelRatio||1,2);
+  const pixels=Math.round(width*density), rows=Math.round(height*density);
+  if(canvas.width!==pixels || canvas.height!==rows){canvas.width=pixels;canvas.height=rows;}
+  const context=canvas.getContext('2d');
+  const style=getComputedStyle(document.documentElement);
+  const colors=Object.create(null);
+  const color=name=>colors[name] || (colors[name]=style.getPropertyValue('--'+name).trim());
+  context.setTransform(1,0,0,1,0,0);
+  context.fillStyle=color('map-water');context.fillRect(0,0,canvas.width,canvas.height);
+  const ratio=canvas.width/WMAP.w;
+  context.setTransform(ratio*cmView.scale,0,0,ratio*cmView.scale,ratio*cmView.x,ratio*cmView.y);
+  context.fillStyle=color('map-land');
+  if(cmCanvasLand) context.fill(cmCanvasLand);
+  const tile=document.createElement('canvas');tile.width=tile.height=7;
+  const ink=tile.getContext('2d');ink.fillStyle=color('map-has');ink.fillRect(0,0,7,7);
+  ink.strokeStyle=color('map-has-edge');ink.globalAlpha=.42;ink.lineWidth=.6;
+  ink.beginPath();ink.moveTo(-1,1);ink.lineTo(1,-1);ink.moveTo(0,7);ink.lineTo(7,0);ink.moveTo(6,8);ink.lineTo(8,6);ink.stroke();
+  const hatch=context.createPattern(tile,'repeat');
+  hatch.setTransform(new DOMMatrix().scale(1/cmView.scale));
+  cmCanvasPaths.forEach(({key,path,has})=>{
+    const inRange=speciesRange && key in speciesRange.shapes;
+    context.fillStyle=key===cmSelected ? color('ochre') : inRange ? color('ochre-dim') : has ? hatch : color('map-land');
+    context.fill(path);
+    context.strokeStyle=color(has?'map-has-edge':'map-water');
+    context.lineWidth=(has ? .75 : .4)/(width/WMAP.w*cmView.scale);context.stroke(path);
+  });
+  Object.entries(WMAP.dots).forEach(([key,c])=>{
+    const entry=CM[key], inRange=speciesRange && key in speciesRange.dots;
+    if(!inRange && !(entry && (entry.confirmed.length || entry.maybe.length))) return;
+    context.beginPath();context.arc(c[0],c[1],3,0,Math.PI*2);
+    context.fillStyle=key===cmSelected?color('ochre'):inRange?color('ochre-dim'):color('map-dot');context.fill();
+    context.strokeStyle=color('map-water');context.lineWidth=.8;context.stroke();
+  });
+  const center=cmSelected && WMAP.small.includes(cmSelected) && WMAP.cent[cmSelected];
+  if(center){context.beginPath();context.arc(center[0],center[1],5,0,Math.PI*2);context.strokeStyle=color('ochre');context.lineWidth=1.4;context.stroke();}
+}
+function cmCanvasCountryAt(clientX,clientY){
+  const point=cmClientToViewBox(clientX,clientY);
+  if(!point) return null;
+  const x=(point.x-cmView.x)/cmView.scale,y=(point.y-cmView.y)/cmView.scale;
+  for(const [key,c] of Object.entries(WMAP.dots).reverse()){
+    const entry=CM[key], inRange=speciesRange && key in speciesRange.dots;
+    if((inRange || (entry && (entry.confirmed.length || entry.maybe.length))) && Math.hypot(x-c[0],y-c[1])<=3) return key;
+  }
+  const context=cmMapGeometry.getContext('2d');
+  context.save();context.setTransform(1,0,0,1,0,0);
+  const match=[...cmCanvasPaths].reverse().find(({path})=>context.isPointInPath(path,x,y));
+  context.restore();return match ? match.key : null;
+}
+function cmPrepareMap(){
+  if(cmMapPreparation) return cmMapPreparation;
+  cmMapPreparation = (async()=>{
+    if(cmCanvasMode){
+      const canvas=document.createElement('canvas');
+      canvas.style.aspectRatio=WMAP.w+'/'+WMAP.h;
+      canvas.setAttribute('role','img');
+      canvas.setAttribute('aria-label','World map. Hatched countries have records; use the country list above the map to choose one.');
+      if(WMAP.land) cmCanvasLand=new Path2D(WMAP.land);
+      await forEachCooperatively(WMBASE,([key,d])=>{
+        const entry=CM[key];
+        cmCanvasPaths.push({key,path:new Path2D(d),has:!!(entry && (entry.confirmed.length || entry.maybe.length))});
+      });
+      cmMapGeometry=canvas;
+      let previousWidth=0;
+      new ResizeObserver(()=>{
+        const width=canvas.clientWidth;
+        if(width===previousWidth) return;
+        previousWidth=width;cmScheduleCanvas();
+      }).observe(canvas);
+      cmRenderMap();return;
+    }
+    const mapSvg = el('svg', {viewBox:'0 0 '+WMAP.w+' '+WMAP.h, role:'img',
+      'aria-label':'World map. Hatched countries have records; use the country list above the map to choose one.'});
+    const defs = el('defs',{});
+    const pattern = el('pattern',{id:'cm-hatch',patternUnits:'userSpaceOnUse',width:7,height:7});
+    pattern.append(el('rect',{class:'cm-hatch-bg',width:7,height:7}),
+      el('path',{class:'cm-hatch-line',d:'M-1 1 L1 -1 M0 7 L7 0 M6 8 L8 6'}));
+    defs.appendChild(pattern);
+    const group = el('g',{class:'cm-zoom-g',id:'cm-zoom-g'});
+    group.appendChild(el('rect',{x:0,y:0,width:WMAP.w,height:WMAP.h,class:'cm-bg'}));
+    if(WMAP.land) group.appendChild(el('path',{class:'cm-land',d:WMAP.land}));
+    const titleFor = key=>{
+      const e = CM[key];
+      return e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
+    };
+    await forEachCooperatively(WMBASE,([key,d])=>{
+      const e = CM[key];
+      const has = e && (e.confirmed.length || e.maybe.length);
+      const path = el('path',{class:'cm-c'+(has?' has':''),'data-key':key,d});
+      const title = titleFor(key);
+      if(title) path.appendChild(el('title',{},title));
+      group.appendChild(path);
+    });
+    group.appendChild(el('circle',{class:'cm-ring',r:5,display:'none'}));
+    await forEachCooperatively(Object.entries(WMAP.dots),([key,c])=>{
+      if(!c) return;
+      const dot = el('circle',{class:'cm-d','data-key':key,cx:c[0],cy:c[1],r:3});
+      const title = titleFor(key);
+      if(title) dot.appendChild(el('title',{},title));
+      group.appendChild(dot);
+    });
+    mapSvg.append(defs,group);
+    cmMapGeometry = mapSvg;
+    cmRenderMap();
+  })();
+  return cmMapPreparation;
+}
+
 function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
   if(!mapEl || !WMAP || !CM || !cmMapVisible) return;
-  // Geometry and tooltips are static. Preserve the SVG (and pointer capture)
-  // when only a selection or species range changes.
-  if(mapEl.querySelector('svg')){
-    cmUpdateMapState(mapEl);
+  if(!cmMapGeometry){ cmPrepareMap(); return; }
+  if(cmCanvasMode){
+    if(!cmMapGeometry.isConnected) mapEl.replaceChildren(cmMapGeometry);
+    cmScheduleCanvas();cmUpdateLabel();return;
+  }
+  if(!mapEl.querySelector('svg')){
+    // Apply the latest selection, including changes made during preparation,
+    // before attaching the tree to avoid a second style/layout invalidation.
+    cmUpdateMapState(cmMapGeometry, false);
+    mapEl.replaceChildren(cmMapGeometry);
+    cmApplyView(true);
+    cmUpdateLabel();
     return;
   }
-  // One pattern for the whole map rather than an overlay path per country:
-  // the fill says "recorded here" a second time, in a form that survives
-  // deuteranopia, where the green-on-green land/range difference does not.
-  const defs = '<defs><pattern id="cm-hatch" patternUnits="userSpaceOnUse" width="7" height="7">'+
-    '<rect class="cm-hatch-bg" width="7" height="7"/>'+
-    '<path class="cm-hatch-line" d="M-1 1 L1 -1 M0 7 L7 0 M6 8 L8 6"/></pattern></defs>';
-  let body = '<rect x="0" y="0" width="'+WMAP.w+'" height="'+WMAP.h+'" class="cm-bg"/>';
-  // dissolved land mass, under the countries: fills the sub-pixel slivers that
-  // independent per-country simplification leaves along shared borders
-  if(WMAP.land) body += '<path class="cm-land" d="'+WMAP.land+'"/>';
-  body += WMBASE.map(([k,d])=>{
-    const e = CM[k];
-    const has = e && (e.confirmed.length || e.maybe.length);
-    const inRange = speciesRange && (k in speciesRange.shapes);
-    const cls = 'cm-c'+(has?' has':'')+(inRange?' range':'')+(k===cmSelected?' sel':'');
-    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
-    return '<path class="'+cls+'" data-key="'+luEsc(k)+'" d="'+d+'">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</path>';
-  }).join('');
-  body += '<circle class="cm-ring" r="5" display="none"/>';
-  Object.keys(WMAP.dots).forEach(k=>{
-    const e = CM[k];
-    const inRange = speciesRange && (k in speciesRange.dots);
-    const c = WMAP.dots[k];
-    if(!c) return;
-    const cls = 'cm-d'+(inRange?' range':'')+(k===cmSelected?' sel':'');
-    const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
-    body += '<circle class="'+cls+'" data-key="'+luEsc(k)+'" cx="'+c[0]+'" cy="'+c[1]+'" r="3">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</circle>';
-  });
-  mapEl.innerHTML = '<svg viewBox="0 0 '+WMAP.w+' '+WMAP.h+'" role="img" '+
-    'aria-label="World map. Hatched countries have records; use the country list above the map to choose one.">'+
-    defs+'<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
-  cmApplyView(true);
   cmUpdateMapState(mapEl);
 }
 
-function cmUpdateMapState(mapEl){
+function cmUpdateMapState(mapEl, updateLabel = true){
   mapEl.querySelectorAll('[data-key]').forEach(el=>{
     const key = el.getAttribute('data-key');
     const isDot = key.startsWith('d:');
@@ -2480,7 +2582,7 @@ function cmUpdateMapState(mapEl){
     ring.setAttribute('cy', c[1]);
   }
   ring.setAttribute('display', c ? '' : 'none');
-  cmUpdateLabel();
+  if(updateLabel) cmUpdateLabel();
 }
 
 /* ---- pan / zoom: retain geometry and write at most once per frame ---- */
@@ -2499,6 +2601,7 @@ function cmClampView(v){
 }
 
 function cmApplyView(noAnim){
+  if(cmCanvasMode){cmScheduleCanvas();return;}
   const g = document.getElementById('cm-zoom-g');
   if(!g) return;
   g.classList.toggle('no-anim', !!noAnim);
@@ -2513,6 +2616,7 @@ function cmApplyView(noAnim){
 }
 
 function cmStartMotion(animate){
+  if(cmCanvasMode) return;
   const g = document.getElementById('cm-zoom-g');
   if(!g) return;
   if(!g.classList.contains('cm-moving')){
@@ -2552,7 +2656,7 @@ function cmResetView(animate){ cmSetView({scale:1, x:0, y:0}, animate); }
 // point a screen (client) coordinate to viewBox units, independent of how
 // the svg itself is currently scaled on the page
 function cmClientToViewBox(clientX, clientY){
-  const svg = document.querySelector('#cm-map-svg svg');
+  const svg = cmMapSurface();
   if(!svg) return null;
   const rect = svg.getBoundingClientRect();
   if(!rect.width || !rect.height) return null;
@@ -2596,12 +2700,13 @@ function cmUpdateCountryIcon(){
   if(icon.getAttribute('data-country') === key) return;
   icon.setAttribute('data-country', key);
   const entry = cmSelected && CM[cmSelected];
-  const shape = document.querySelector('#cm-map-svg .cm-c.sel');
-  if(shape){
+  const shapeData=cmSelected && WMAP && WMAP.shapes[cmSelected];
+  if(shapeData){
+    const shape=el('path',{d:shapeData});
+    icon.replaceChildren(shape);
     const box = shape.getBBox();
     const pad = Math.max(box.width, box.height) * .08;
     icon.setAttribute('viewBox', [box.x-pad,box.y-pad,box.width+pad*2,box.height+pad*2].join(' '));
-    icon.innerHTML = '<path d="'+luEsc(shape.getAttribute('d'))+'"/>';
   } else {
     icon.setAttribute('viewBox','0 0 24 24');
     icon.innerHTML = '<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 4.5A2.5 2.5 0 1 1 12 11a2.5 2.5 0 0 1 0-4.5Z"/>';
@@ -2637,9 +2742,9 @@ function cmWireZoomControls(){
   mapEl.addEventListener('pointerdown', e=>{
     if(!e.isPrimary || e.button !== 0) return;
     if(e.target.closest('.cm-zoom-ctrl')) return;
-    const svg = document.querySelector('#cm-map-svg svg');
+    const svg = cmMapSurface();
     if(!svg) return;
-    cmDrag = {id:e.pointerId, svg, rect:svg.getBoundingClientRect(), startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, moved:false};
+    cmDrag = {id:e.pointerId, svg, rect:svg.getBoundingClientRect(), startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, pointerType:e.pointerType, moved:false};
     // pointer capture is NOT taken here: capturing on pointerdown retargets
     // the pointerup/mouseup/click that follow to the capturing element even
     // for a plain click with zero movement (verified in Chromium — the up
@@ -2658,6 +2763,13 @@ function cmWireZoomControls(){
     // units — the map can render anywhere from ~300px to 900px wide, so a
     // fixed viewBox-unit threshold could be under a single screen pixel and
     // flag ordinary mouse-hand jitter on a plain click as a drag
+    const clientDX = e.clientX-cmDrag.startClientX, clientDY = e.clientY-cmDrag.startClientY;
+    // Let a vertical touch gesture belong entirely to document scrolling.
+    // Do not repaint the map while the browser decides to send pointercancel.
+    if(!cmDrag.moved && cmDrag.pointerType==='touch' && Math.abs(clientDY)>4 && Math.abs(clientDY)>=Math.abs(clientDX)){
+      cmDrag = null;
+      return;
+    }
     if(!cmDrag.moved && (Math.abs(e.clientX-cmDrag.startClientX) > 4 || Math.abs(e.clientY-cmDrag.startClientY) > 4)){
       cmDrag.moved = true;
       svg.setPointerCapture(cmDrag.id);
@@ -2691,9 +2803,10 @@ let cmSuppressNextClick = false;
 
 function cmOnMapClick(e){
   if(cmSuppressNextClick){ cmSuppressNextClick = false; return; }
-  const el = e.target.closest('[data-key]');
-  if(!el) return;
-  const key = el.getAttribute('data-key');
+  if(e.target.closest('.cm-zoom-ctrl')) return;
+  const target=e.target.closest('[data-key]');
+  const key=cmCanvasMode ? cmCanvasCountryAt(e.clientX,e.clientY) : target && target.getAttribute('data-key');
+  if(!key) return;
   const entry = CM[key];
   if(!entry || (!entry.confirmed.length && !entry.maybe.length)) return;
   cmSetCountry(cmSelected === key ? null : key);
@@ -2774,6 +2887,7 @@ async function cmMaybeInit(){
   svgHolder.style.aspectRatio = WMAP.w+'/'+WMAP.h;
   await cmBuildIndex();
   cmFillCountrySelect();
+  cmPrepareMap();
   if(!cmMapVisible){
     const observer = new IntersectionObserver(entries=>{
       if(!entries.some(entry=>entry.isIntersecting)) return;

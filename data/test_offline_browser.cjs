@@ -23,7 +23,7 @@ const assert=require('node:assert/strict');
       assert(await page.locator('#tree [role=treeitem]').count()>0);
       assert.equal(await page.locator('#release-status time').getAttribute('datetime'),buildTime);
       await page.locator('#cm-map').scrollIntoViewIfNeeded();
-      await page.waitForSelector('#cm-map-svg svg');
+      await page.waitForSelector('#cm-map-svg :is(svg,canvas)');
       await page.locator('#cm-zoom-in').tap();
       await page.waitForFunction(()=>cmView.scale>1);
       console.log(file,'offline load and map zoom PASS');

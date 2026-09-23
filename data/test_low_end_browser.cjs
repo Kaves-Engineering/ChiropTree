@@ -39,7 +39,7 @@ const assert=require('node:assert/strict');
       assert(result.mounted<=128,'mounted row budget exceeded');
       assert(result.nodes<=2500,'page DOM budget exceeded');
       assert(result.inputMs<100,'expand button blocks input for 100 ms');
-      assert(result.worstTask<200,'tree operation contains a task longer than 200 ms at 8x slowdown');
+      assert(result.worstTask<200,'tree operation contains a task longer than 200 ms at 8x slowdown: '+JSON.stringify(result));
       if(result.logicalRows>500) assert(result.heartbeat>1,'large layout must yield to the browser');
       assert.deepEqual(fonts,[],'touch layout downloads no web fonts');
 

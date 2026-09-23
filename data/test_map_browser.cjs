@@ -8,6 +8,7 @@ const assert = require('node:assert/strict');
   const errors=[]; page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:8000/'+file);
   await page.waitForFunction(()=>typeof CM!=='undefined' && CM && cmReady);
+  await page.waitForSelector('#cm-map-svg svg');
   const result=await page.evaluate(async()=>{
    const check=(v,msg)=>{if(!v) throw Error(msg)};
    const svg=document.querySelector('#cm-map-svg svg');
