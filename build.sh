@@ -15,6 +15,11 @@ cp chiroptera-tree.html public/index.html
 cp marine-mammal-tree.html public/marine.html
 cp bird-tree.html public/birds.html
 cp dinosaur-tree.html public/dinosaurs.html
+build_time=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+for f in public/index.html public/marine.html public/birds.html public/dinosaurs.html; do
+  sed "s/__BUILD_TIME__/$build_time/g" "$f" > "$f.tmp"
+  mv "$f.tmp" "$f"
+done
 cp data/*.json public/data/
 # already merged into bird_taxonomy.json; no page loads it
 rm -f public/data/bird_gbif_countries.json

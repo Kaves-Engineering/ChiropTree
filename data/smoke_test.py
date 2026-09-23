@@ -3,6 +3,7 @@
 import json
 import re
 import struct
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -29,6 +30,10 @@ def main() -> None:
     worker = (ROOT / "public/service-worker.js").read_text(encoding="utf-8")
 
     pages = (bat_html, marine_html, bird_html, dino_html)
+    build_times = [re.search(r'<meta name="app-build-time" content="([^"]+)">', page).group(1) for page in pages]
+    assert len(set(build_times)) == 1, "All pages must share the same build timestamp"
+    assert datetime.fromisoformat(build_times[0].replace("Z", "+00:00")).utcoffset().total_seconds() == 0
+    assert all("__BUILD_TIME__" not in page for page in pages)
     assert "INLINE data/" not in "".join(pages)
     assert "__RELEASE__" not in worker
     assert all(family in bat_html for family in bats["families"])

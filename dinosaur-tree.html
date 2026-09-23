@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#15110e">
+<meta name="app-build-time" content="__BUILD_TIME__">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -1078,11 +1079,27 @@ body.has-cmp{padding-bottom:84px}
   Source: <a id="mdd-source" href="https://paleobiodb.org" target="_blank" rel="noopener noreferrer">Paleobiology Database</a>
   · Images: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, via Wikipedia
   · Map: <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a>
-  · <span id="release-status">Loading release…</span>
+  · <span id="release-status">Local development build</span><span id="offline-status"></span>
   <button class="offline-pack" id="offline-pack" type="button">Save images offline</button>
   <button class="offline-pack" id="install-app" type="button" hidden>Install app</button>
   <span id="install-status" role="status"></span>
 </footer>
+<script>
+{
+  const timestamp = document.querySelector('meta[name="app-build-time"]').content;
+  const builtAt = new Date(timestamp);
+  if(Number.isFinite(builtAt.getTime())){
+    const time = document.createElement('time');
+    time.dateTime = timestamp;
+    time.textContent = new Intl.DateTimeFormat(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short'
+    }).format(builtAt);
+    time.title = 'Build time of this page, shown in your local timezone';
+    document.getElementById('release-status').replaceChildren('Updated ', time);
+  }
+}
+</script>
 
 </div>
 
@@ -3114,13 +3131,13 @@ function loadSpeciesPhoto(species, host){
 }
 
 async function updateOfflineStatus(){
-  const status = document.getElementById('release-status');
+  const status = document.getElementById('offline-status');
   if(!status || !luState.meta) return;
   const release = String(luState.meta.sourceChecksum||'unknown').slice(0,12);
   const cacheName = 'chiroptree-images-'+release;
   const cache = 'caches' in window && await caches.open(cacheName);
   const installed = cache && !!(await cache.match('image-pack-complete-'+release));
-  status.textContent = 'Release '+release+(installed?' · images offline':'');
+  status.textContent = installed?' · images offline':'';
 }
 
 async function installOfflineImages(){
