@@ -357,9 +357,9 @@ sub("""Promise.all([
   bundled('d-countries', 'data/gbif_country_supplement.json'),
   bundled('d-calls', 'data/calls/exports/calls.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, calls, media])=>{
+]).then(async ([tax, danish, countrySupp, calls, media])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.directCalls = calls.species || {};
   luState.familyInference = calls.familyInference || {};
@@ -370,9 +370,9 @@ sub("""Promise.all([
     """Promise.all([
   bundled('d-taxonomy', 'data/dinosaur_taxonomy.json'),
   bundled('d-images', 'data/dinosaur_images.json')
-]).then(([tax, images])=>{
+]).then(async ([tax, images])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.images = images;""")
 sub("""  sourceLink.href = 'https://doi.org/'+tax._meta.sourceDoi;""",
     """  sourceLink.href = tax._meta.sourceUrl;""")

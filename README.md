@@ -414,6 +414,17 @@ Tree labels use cached canvas font measurements instead of forcing an SVG
 layout for each label or character. Tree redraws are assembled off-document,
 search reuses normalized text, and the sticky header uses an opaque background
 instead of blurring the scrolling page beneath it.
+Page scrolling has no JavaScript scroll handler or fixed grain/glow overlays.
+The mobile tree uses the document's scroll container, and the deferred map
+reserves its height so mounting it does not change the page length mid-swipe.
+Long trees mount nearby sections of 16 rows and release distant sections.
+The logical hierarchy stays complete: keyboard Home/End, arrow navigation,
+country filtering, and species search can mount any destination. Expensive
+label preparation and taxonomy indexing yield between small batches; a newer
+tree action cancels obsolete preparation. Touch devices use system fonts and
+immediate navigation instead of downloading display fonts or animating jumps.
+Core offline caching and optional image packs download at most two files at a
+time while preserving the complete offline library.
 
 With the local HTTP server running on port 8000 and Playwright plus Chromium
 available, run `node data/test_map_browser.cjs`. If Playwright is installed
@@ -423,6 +434,13 @@ dragging, zoom controls, wheel zoom, and narrow-screen selection on every page.
 Run `node data/test_page_browser.cjs` for desktop and mobile checks of tree
 expansion, keyboard focus, search equivalence, text measurement, species
 details, deferred map rendering, and restoration of hatching after zoom.
+Run `node data/test_scroll_browser.cjs` to check native touch swipes, sticky
+header/drawer alignment, stable map space, and absence of root style writes
+during scrolling on all four pages.
+Run `node data/test_low_end_browser.cjs` for the 8x CPU-throttled mobile
+performance budget and virtual-tree navigation/cancellation checks, and
+`node data/test_service_worker.cjs` for precache concurrency and failure cleanup.
+See [PERFORMANCE.md](PERFORMANCE.md) for the budgets and measurement limits.
 
 ## Extending the echolocation data
 

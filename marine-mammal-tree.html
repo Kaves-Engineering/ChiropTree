@@ -24,7 +24,7 @@ try {
 <title>Marine mammals — tree and range map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Lexend:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Lexend:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="(min-width:621px) and (pointer:fine)">
 <style>
 :root{
   --display:"Fraunces",Georgia,serif;
@@ -179,23 +179,11 @@ body{
   font-weight:400;
   font-size:1.03125rem;
   line-height:1.62;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 
-/* paper grain */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  pointer-events:none;z-index:99;
-  opacity:.09;
-  mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23g)'/></svg>");
-}
-body::after{
-  content:"";
-  position:fixed;inset:0;pointer-events:none;z-index:98;
-  background:radial-gradient(120% 90% at 50% 8%, rgba(var(--glow-rgb),.16), rgba(var(--abyss-rgb),0) 62%);
-}
+/* Keep the page background in the scrolling content. Full-screen fixed noise
+   and blend layers force extra compositing over every frame on mobile GPUs. */
 
 .wrap{max-width:1640px;margin:0 auto;padding:0 var(--pad)}
 
@@ -674,7 +662,7 @@ footer a:hover{color:var(--ochre)}
   .mobile-workspace button{min-height:42px;flex:1;border:1px solid rgba(var(--border-rgb),.3);background:rgba(var(--card-rgb),.48);color:var(--muted);font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
   .mobile-workspace button[aria-current="true"]{border-color:var(--ochre-dim);color:var(--ochre);background:rgba(var(--ochre-rgb),.1)}
   .mobile-workspace button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-  .treebox{overflow-x:auto;overscroll-behavior-x:contain}
+  .treebox{overflow:visible}
   svg#tree{width:700px;max-width:none}
   .tree-mobile-hint{display:block;margin:8px 2px 0;color:var(--muted);font:0.6875rem/1.45 var(--mono);letter-spacing:.05em}
   .cm-zoom-ctrl{top:12px;right:12px;gap:6px}
@@ -709,6 +697,7 @@ footer a:hover{color:var(--ochre)}
 .tree-tools .cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
 .tree-tools .cm-mode button{width:auto;min-width:28px}
 .tree-tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tree-progress{font:0.75rem var(--mono);color:var(--muted)}
 g.trow{cursor:pointer;transition:opacity .25s}
 g.trow.dim{opacity:.22}
 g.trow.dim:hover{opacity:.5}
@@ -872,7 +861,7 @@ body.has-cmp{padding-bottom:84px}
   .tb-title{margin-right:auto}
 }
 @media (max-width:620px){
-  :root{--pad:16px}
+  :root{--pad:16px;--display:Georgia,serif;--body:system-ui,sans-serif;--mono:ui-monospace,monospace}
   .topbar{background:var(--abyss);z-index:85}
   .masthead-in{display:flex;flex-wrap:nowrap;gap:8px;padding:8px var(--pad)}
   .topbar-in{display:flex;flex-wrap:nowrap;gap:8px}
@@ -924,12 +913,13 @@ body.has-cmp{padding-bottom:84px}
   .cm-pick select{min-height:44px;font-size:1rem;max-width:100%}
 }
 @media (pointer:coarse){
+  :root{--display:Georgia,serif;--body:system-ui,sans-serif;--mono:ui-monospace,monospace}
+  .cm-zoom-g,.cm-c,.cm-d,.lu-drawer,.lu-scrim,g.trow{transition:none}
   .card-close,.lu-close,.jump,.cmp-toggle,.cmp-act,.offline-pack,.ps-opt{min-height:44px;min-width:44px}
   .lu-links a,.card .lu-links a{width:44px;height:44px}
   .tree-tools button,.tree-tools .cm-mode button{min-width:44px;min-height:44px}
 }
 
-:root[data-theme="light"] body::before{opacity:.035;mix-blend-mode:multiply}
 .topbar-in>.tb-search{margin-left:0;flex:1;width:auto}
 .topbar-in>.random-bat{width:44px;height:44px}
 .topbar-in{max-width:1640px}
@@ -998,6 +988,7 @@ body.has-cmp{padding-bottom:84px}
   <h2 class="sr-only" id="tree-h">Family tree</h2>
   <div class="treebox">
     <div class="tree-tools">
+      <span id="tree-progress" class="tree-progress" role="status" hidden>Updating…</span>
       <div class="switch cm-mode" role="group" aria-label="Country filter">
         <button type="button" id="cm-mode-dim" aria-label="Keep all marine mammals in the tree" title="Keep all marine mammals in the tree" aria-pressed="true">
           <svg class="mode-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.4 3 14.6 0 18M12 3c-3 3.4-3 14.6 0 18"/></svg>
@@ -1117,7 +1108,8 @@ function scheduleTopbarHeight(){
 }
 new ResizeObserver(scheduleTopbarHeight).observe(topbar);
 new ResizeObserver(scheduleTopbarHeight).observe(document.querySelector('.masthead'));
-addEventListener('scroll', scheduleTopbarHeight, {passive:true});
+// Scrolling needs no layout reads or root style writes. Measure the header
+// when its size changes and when opening a surface that needs its offset.
 syncTopbarHeight();
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -1145,7 +1137,7 @@ workspaceButtons.forEach(button=>button.addEventListener('click', ()=>{
   const target = document.getElementById(button.dataset.workspaceTarget);
   if(!target) return;
   workspaceButtons.forEach(item=>item.setAttribute('aria-current', String(item===button)));
-  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth', block:'start'});
 }));
 
 /* =========================================================
@@ -1329,15 +1321,17 @@ let countryTreeMode = 'dim';  // 'dim' (gray out the rest) or 'filter' (show onl
 function computeCountryLiveKeys(speciesSet){
   const live = new Set(), liveFamilies = new Set();
   const famCount = {}, genusCount = {};
+  speciesSet.forEach(name=>{
+    const genus = name.slice(0,name.indexOf(' '));
+    genusCount[genus] = (genusCount[genus]||0)+1;
+    live.add('x:'+name);
+  });
   function walk(list){
     let total = 0;
     list.forEach(n=>{
       let count;
       if(n.kind === 'genus'){
-        const kids = genusChildren(n.name) || [];
-        count = 0;
-        kids.forEach(sp=>{ if(speciesSet.has(sp.name)){ live.add(sp.key); count++; } });
-        if(count) genusCount[n.name] = count;
+        count = genusCount[n.name]||0;
       } else {
         count = walk(n.children || []);
       }
@@ -1408,36 +1402,12 @@ function treeTextMetrics(ctx, mobile){
   return ctx.textMetrics;
 }
 
-function ctxDrawTree(ctx){
-  const svg = ctx.svg;
-  const mobile = matchMedia('(max-width:620px)').matches;
-  const GAP_SF = mobile ? 62 : 46, GAP_SUB = mobile ? 104 : 88;
-  // Lay out in CSS pixels on phones: counts stay visible without scaling down text.
-  const VW = svg.parentElement.clientWidth;
-  const LEFT = mobile ? 10 : 16, COUNTX = VW - (mobile ? 10 : 24);
+function treeLabelLayout(ctx, mobile, VW){
+  const COUNTX = VW - (mobile ? 10 : 24);
   const TIPX = mobile ? Math.max(32, Math.min(72, VW*.12)) : 64;
   const branchStep = mobile ? VW*.085 : 36;
   const rankColumn = {fam:0, subfam:1, tribe:2, genus:3, species:4};
-  const PX = rank => TIPX + rank*branchStep;
-  const LX = level => PX(level) + 9;
-  const RH = mobile
-    ? {fam:52, subfam:36, tribe:32, genus:30, species:32}
-    : {fam:46, subfam:30, tribe:25, genus:25, species:24};
-  // Every redraw destroys every row, so a keyboard user who expands a branch
-  // would otherwise be dropped back to <body> at the top of the tab order.
-  // Note where focus was, and put it back on the same row once it is rebuilt.
-  const hadFocus = !!(document.activeElement && svg.contains(document.activeElement));
-  const prevIndex = ctx.rowOrder ? ctx.rowOrder.findIndex(r=>r.key===ctx.focusKey) : -1;
-  const drawing = document.createDocumentFragment();
-  ctx.famG = {};
-  ctx.rowOrder = [];
-
-  // "show only" mode: prune every branch down to what's actually live in the
-  // selected country, instead of drawing the full tree and dimming the rest
-  const filtering = (ctx === mainCtx) && countryTreeMode === 'filter' && !!countryLive;
-
-  // Fixed rank columns depend only on viewport width, never open branches.
-  // Wrap unusually long labels rather than shifting columns or shrinking type.
+  const LX = level => TIPX + level*branchStep + 9;
   const {measures} = treeTextMetrics(ctx, mobile);
   if(!ctx.labelCache || ctx.labelCache.width !== VW) ctx.labelCache = {width:VW, lines:new Map()};
   function labelLines(name, kind, className){
@@ -1470,6 +1440,47 @@ function ctxDrawTree(ctx){
       ? n.name.replace(/^(\S)\S+\s/, '$1. ')
       : n.name;
   }
+  return {measures,labelLines,rowLabel};
+}
+
+function ctxDrawTree(ctx){
+  ctx.layoutRequest = (ctx.layoutRequest || 0)+1;
+  const renderVersion = ctx.renderVersion = (ctx.renderVersion || 0)+1;
+  ctx.svg.removeAttribute('aria-busy');
+  document.getElementById('tree-progress').hidden = true;
+  const svg = ctx.svg;
+  if(ctx.chunkObserver) ctx.chunkObserver.disconnect();
+  ctx.ensureRow = null;
+  const treeTop = svg.getBoundingClientRect().top;
+  const mobile = matchMedia('(max-width:620px)').matches;
+  const GAP_SF = mobile ? 62 : 46, GAP_SUB = mobile ? 104 : 88;
+  // Lay out in CSS pixels on phones: counts stay visible without scaling down text.
+  const VW = svg.parentElement.clientWidth;
+  const LEFT = mobile ? 10 : 16, COUNTX = VW - (mobile ? 10 : 24);
+  const TIPX = mobile ? Math.max(32, Math.min(72, VW*.12)) : 64;
+  const branchStep = mobile ? VW*.085 : 36;
+  const rankColumn = {fam:0, subfam:1, tribe:2, genus:3, species:4};
+  const PX = rank => TIPX + rank*branchStep;
+  const LX = level => PX(level) + 9;
+  const RH = mobile
+    ? {fam:52, subfam:36, tribe:32, genus:30, species:32}
+    : {fam:46, subfam:30, tribe:25, genus:25, species:24};
+  // Every redraw destroys every row, so a keyboard user who expands a branch
+  // would otherwise be dropped back to <body> at the top of the tab order.
+  // Note where focus was, and put it back on the same row once it is rebuilt.
+  const hadFocus = !!(document.activeElement && svg.contains(document.activeElement));
+  const prevIndex = ctx.rowOrder ? ctx.rowOrder.findIndex(r=>r.key===ctx.focusKey) : -1;
+  const drawing = document.createDocumentFragment();
+  ctx.famG = {};
+  ctx.rowOrder = [];
+
+  // "show only" mode: prune every branch down to what's actually live in the
+  // selected country, instead of drawing the full tree and dimming the rest
+  const filtering = (ctx === mainCtx) && countryTreeMode === 'filter' && !!countryLive;
+
+  // Fixed rank columns depend only on viewport width, never open branches.
+  // Wrap unusually long labels rather than shifting columns or shrinking type.
+  const {measures,labelLines,rowLabel} = treeLabelLayout(ctx,mobile,VW);
   function addLabel(g, className, x, y, lines){
     const text = el('text',{class:className,x,y});
     lines.forEach((line,i)=>text.appendChild(el('tspan',{x,dy:i ? 20 : 0},line)));
@@ -1570,10 +1581,11 @@ function ctxDrawTree(ctx){
       draw(c);
     });
   })(backboneTree);
-  links.forEach(({parentKind,kind,parentY,y})=>{
+  const branchPath = links.map(({parentKind,kind,parentY,y})=>{
     const bx = PX(rankColumn[parentKind]), cx = PX(rankColumn[kind]);
-    drawing.appendChild(el('path',{d:`M ${bx} ${parentY} L ${bx} ${y} L ${cx} ${y}`, class:'branch sub-branch','aria-hidden':'true'}));
-  });
+    return `M ${bx} ${parentY} L ${bx} ${y} L ${cx} ${y}`;
+  }).join(' ');
+  if(branchPath) drawing.appendChild(el('path',{d:branchPath,class:'branch sub-branch','aria-hidden':'true'}));
 
   function heading(text, x, y, cls, fs){
     const w = text.length * fs * 0.78 + 16;
@@ -1597,7 +1609,18 @@ function ctxDrawTree(ctx){
   });
 
   /* ---------- 4. rows ---------- */
-  rows.forEach(r=>{
+  // Logical rows remain available to keyboard navigation and search. Only
+  // nearby sections get SVG elements, so expanding thousands of taxa does
+  // not create thousands of offscreen labels, hit targets, and listeners.
+  ctx.rowOrder = rows.map(r=>{
+    if(r.kind==='fam') return {key:'f:'+r.name,el:null,expandable:true,open:ctx.open.has('f:'+r.name),parentKey:null};
+    const n = r.node;
+    const expandable = n.kind==='genus'
+      ? !!(SP[n.name] && SP[n.name][1].length && (!filtering || countryLive.genusCount[n.name]))
+      : (n.children||[]).some(child=>!filtering || countryLive.live.has(child.key));
+    return {key:n.key,el:null,expandable,open:ctx.open.has(n.key),parentKey:r.parentKey};
+  });
+  function renderRow(r, index, mount){
     if(r.kind === 'fam'){
       const d = ctx.famInfo[r.name], isOpen = ctx.open.has('f:'+r.name);
       const famSpecies = filtering ? (countryLive.famCount[r.name]||0) : d.species;
@@ -1628,15 +1651,15 @@ function ctxDrawTree(ctx){
       const hit = ()=>ctxToggleFamily(ctx, r.name);
       g.addEventListener('click', hit);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();hit();} });
-      drawing.appendChild(g);
+      mount.appendChild(g);
       ctx.famG[r.name] = g;
-      ctx.rowOrder.push({key:'f:'+r.name, el:g, expandable:true, open:isOpen, parentKey:null});
+      ctx.rowOrder[index].el = g;
+      g.classList.toggle('dim', !!countryLive && !countryLive.liveFamilies.has(r.name));
       return;
     }
 
     const n = r.node, x = PX(rankColumn[r.kind]), lx = LX(rankColumn[r.kind]);
-    const rawKids = ctx.nodeChildren(n) || [];
-    const expandable = filtering ? rawKids.some(k=>countryLive.live.has(k.key)) : !!rawKids.length;
+    const expandable = ctx.rowOrder[index].expandable;
     const open = ctx.open.has(n.key);
     const g = el('g',{
       class:'trow'+(open?' open':'')+(expandable?'':' static'),
@@ -1671,17 +1694,101 @@ function ctxDrawTree(ctx){
       const label = addLabel(g,'t-species',lx,labelY,r.lines);
       if(r.inlineNote) label.appendChild(el('tspan',{class:'t-note',dx:11},'— '+n.note));
       if(r.noteLines.length) addLabel(g,'t-note',lx,labelY+r.lines.length*20,r.noteLines);
-      const pick = ()=>{ ctx.focusKey = n.key; ctxShowSpecies(ctx, n.name); };
+      const pick = ()=>{ ctxFocusRow(ctx,index,false); ctxShowSpecies(ctx, n.name); };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
     }
-    drawing.appendChild(g);
-    ctx.rowOrder.push({key:n.key, el:g, expandable, open, parentKey:r.parentKey});
-  });
+    mount.appendChild(g);
+    ctx.rowOrder[index].el = g;
+    g.classList.toggle('dim', !!countryLive && !countryLive.live.has(n.key));
+  }
 
+  const CHUNK_ROWS = 16;
+  if(rows.length>64 && 'IntersectionObserver' in window){
+    const chunks = [], byElement = new Map();
+    function mount(chunk){
+      if(chunk.mounted) return;
+      const content = document.createDocumentFragment();
+      for(let i=chunk.start;i<chunk.end;i++) renderRow(rows[i],i,content);
+      chunk.content.appendChild(content);
+      chunk.mounted = true;
+      const current = ctx.rowOrder.find(row=>row.key===ctx.focusKey);
+      if(current && current.el) current.el.setAttribute('tabindex','0');
+    }
+    function unmount(chunk){
+      if(!chunk.mounted || chunk.content.contains(document.activeElement)) return;
+      // Keep the one tab stop available even when its row is offscreen.
+      for(let i=chunk.start;i<chunk.end;i++) if(ctx.rowOrder[i].key===ctx.focusKey) return;
+      for(let i=chunk.start;i<chunk.end;i++){
+        ctx.rowOrder[i].el = null;
+        if(rows[i].kind==='fam') delete ctx.famG[rows[i].name];
+      }
+      chunk.content.replaceChildren();
+      chunk.mounted = false;
+    }
+    ctx.chunkObserver = new IntersectionObserver(entries=>{
+      if(ctx.renderVersion!==renderVersion) return;
+      entries.forEach(entry=>{
+        const chunk = byElement.get(entry.target);
+        chunk.visible = entry.isIntersecting;
+        if(chunk.visible) mount(chunk); else unmount(chunk);
+      });
+    }, {rootMargin:'400px 0px'});
+    for(let start=0;start<rows.length;start+=CHUNK_ROWS){
+      const end = Math.min(rows.length,start+CHUNK_ROWS);
+      const top = rows[start].y-rows[start].height/2;
+      const bottom = rows[end-1].y+rows[end-1].height/2;
+      const group = el('g',{'data-tree-chunk':start/CHUNK_ROWS});
+      group.appendChild(el('rect',{x:0,y:top,width:VW,height:bottom-top,fill:'none','pointer-events':'none','aria-hidden':'true'}));
+      const content = el('g',{}); group.appendChild(content);
+      const chunk = {start,end,content,mounted:false,visible:bottom>=-treeTop-400 && top<=innerHeight-treeTop+400};
+      chunks.push(chunk); byElement.set(group,chunk);
+      if(chunk.visible) mount(chunk);
+      drawing.appendChild(group);
+      ctx.chunkObserver.observe(group);
+    }
+    ctx.ensureRow = index=>mount(chunks[Math.floor(index/CHUNK_ROWS)]);
+    ctx.releaseRows = ()=>chunks.forEach(chunk=>{if(!chunk.visible) unmount(chunk);});
+  } else {
+    rows.forEach((row,i)=>renderRow(row,i,drawing));
+    ctx.releaseRows = null;
+  }
   svg.replaceChildren(drawing);
   ctxSyncRoving(ctx, hadFocus, prevIndex);
   if(ctx.onDrawn) ctx.onDrawn();
+}
+
+// Expand-all can introduce thousands of previously unseen labels. Prepare
+// their wrapping in short slices before committing the new tree, leaving
+// input and scrolling free to run between slices. A newer action cancels it.
+async function prepareTreeLabels(ctx){
+  const request = ctx.layoutRequest = (ctx.layoutRequest || 0)+1;
+  const mobile = matchMedia('(max-width:620px)').matches;
+  const {labelLines,rowLabel} = treeLabelLayout(ctx,mobile,ctx.svg.parentElement.clientWidth);
+  const pending = [];
+  function gather(list){
+    list.forEach(n=>{
+      pending.push(n);
+      if(ctx.open.has(n.key)) gather(ctx.nodeChildren(n)||[]);
+    });
+  }
+  ctx.blocks.forEach(b=>b.members.forEach(name=>{
+    pending.push({kind:'fam',name});
+    if(ctx.open.has('f:'+name)) gather(ctx.famChildren(name));
+  }));
+  ctx.svg.setAttribute('aria-busy','true');
+  document.getElementById('tree-progress').hidden = false;
+  let deadline = performance.now()+6;
+  for(const node of pending){
+    labelLines(rowLabel(node),node.kind);
+    if(!mobile && node.note) labelLines('— '+node.note,'species','t-note');
+    if(performance.now()>=deadline){
+      await new Promise(resolve=>setTimeout(resolve,0));
+      if(ctx.layoutRequest!==request) return false;
+      deadline = performance.now()+6;
+    }
+  }
+  return ctx.layoutRequest===request;
 }
 
 /* One tab stop for the whole tree, as the treeview pattern wants: the current
@@ -1702,23 +1809,28 @@ function ctxFocusRow(ctx, i, focus){
   const rows = ctx.rowOrder, target = rows[i];
   if(!target) return;
   ctx.focusKey = target.key;
-  rows.forEach((r,n)=>r.el.setAttribute('tabindex', n===i ? '0' : '-1'));
+  if(ctx.ensureRow) ctx.ensureRow(i);
+  ctx.svg.querySelectorAll('[tabindex="0"]').forEach(el=>el.setAttribute('tabindex','-1'));
+  target.el.setAttribute('tabindex','0');
   if(focus) target.el.focus();
+  if(ctx.releaseRows) ctx.releaseRows();
 }
 
 /* Expanding a branch changes the page without moving the eye, so say so. */
 function ctxAnnounceRow(ctx, key, expanded){
   const row = ctx.rowOrder.find(r=>r.key===key);
   if(!row) return;
+  if(!row.el && ctx.ensureRow) ctx.ensureRow(ctx.rowOrder.indexOf(row));
   const count = row.el.querySelector('.t-count');
   announce((row.el.getAttribute('aria-label')||'') + (expanded ? ', expanded' : ', collapsed') +
            (count ? ', ' + count.textContent : ''));
 }
 
-function ctxSetOpen(ctx, key, open){
-  if(key.indexOf('f:') === 0){ ctxToggleFamily(ctx, key.slice(2)); return; }
+async function ctxSetOpen(ctx, key, open){
+  if(key.indexOf('f:') === 0) return ctxToggleFamily(ctx, key.slice(2));
   ctx.focusKey = key;
   open ? ctx.open.add(key) : ctx.open.delete(key);
+  if(!(await prepareTreeLabels(ctx))) return;
   ctxDrawTree(ctx);
   ctxAnnounceRow(ctx, key, open);
 }
@@ -1764,21 +1876,24 @@ function ctxBindToggle(ctx, g, n){
 function ctxToggle(ctx, key){
   ctxSetOpen(ctx, key, !ctx.open.has(key));
 }
-function ctxToggleFamily(ctx, name){
+async function ctxToggleFamily(ctx, name){
   const key = 'f:'+name, wasOpen = ctx.open.has(key);
   wasOpen ? ctx.open.delete(key) : ctx.open.add(key);
   ctx.selected = name; ctx.selectedSp = null;
   ctx.focusKey = key;
+  if(!(await prepareTreeLabels(ctx))) return;
   ctxDrawTree(ctx);
   ctxSelect(ctx, name);
   ctxAnnounceRow(ctx, key, !wasOpen);
   if(!wasOpen) ctxScrollFamIntoView(ctx, name);
 }
 function ctxScrollFamIntoView(ctx, name){
+  const index = ctx.rowOrder.findIndex(row=>row.key==='f:'+name);
+  if(index>=0 && ctx.ensureRow) ctx.ensureRow(index);
   const g = ctx.famG[name];
   const tip = g && g.querySelector('.tip-name');
   if(!tip) return;
-  tip.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  tip.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth'});
 }
 
 function ctxCardReset(ctx){
@@ -1809,7 +1924,7 @@ function ctxScrollCardIntoView(ctx){
   const box = ctx.card.getBoundingClientRect();
   if(box.top >= topbar.getBoundingClientRect().bottom + 12 && box.bottom <= innerHeight) return;
   ctx.card.scrollIntoView({
-    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    behavior: matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth',
     block:'start'
   });
 }
@@ -1855,13 +1970,13 @@ function findGenusPath(family, genus){
 function scrollRowIntoView(g){
   const rect = g && g.querySelector('rect');
   if(!rect) return;
-  rect.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  rect.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth'});
 }
 
 /* open the main tree's family/subfamily/tribe/genus branch down to one
    species and select it (used by search results, which always jump to
    the main tree regardless of which cladogram triggered the search) */
-function openTreeToSpecies(family, genus, binomial, focusCard = false){
+async function openTreeToSpecies(family, genus, binomial, focusCard = false){
   const path = findGenusPath(family, genus);
   if(!path) return false;
   mainCtx.open.add('f:'+family);
@@ -1869,6 +1984,7 @@ function openTreeToSpecies(family, genus, binomial, focusCard = false){
   if(path.hasTribe) mainCtx.open.add('t:'+family+'|'+path.si+'|'+path.ti);
   mainCtx.open.add('g:'+genus);
   mainCtx.focusKey = 'x:'+binomial;
+  if(!(await prepareTreeLabels(mainCtx))) return true;
   ctxDrawTree(mainCtx);
   ctxShowSpecies(mainCtx, binomial, focusCard);
   if(!focusCard) scrollRowIntoView(document.querySelector('g.trow.species.active'));
@@ -2114,9 +2230,20 @@ function bundled(id, url){
   });
 }
 
-function luBuildDisplayTaxonomy(species){
+async function forEachCooperatively(list, callback){
+  let deadline = performance.now()+6, count = 0;
+  for(const item of list){
+    callback(item);
+    if(++count % 32 === 0 && performance.now()>=deadline){
+      await new Promise(resolve=>setTimeout(resolve,0));
+      deadline = performance.now()+6;
+    }
+  }
+}
+
+async function luBuildDisplayTaxonomy(species){
   const families = new Map(), speciesByGenus = new Map(), familyCounts = new Map();
-  species.forEach(record=>{
+  await forEachCooperatively(species,record=>{
     if(!familyCounts.has(record.family)) familyCounts.set(record.family,{genera:new Set(),species:0});
     const counts = familyCounts.get(record.family);
     counts.genera.add(record.genus);
@@ -2137,7 +2264,7 @@ function luBuildDisplayTaxonomy(species){
     ]);
   });
   ATLAS = {};
-  families.forEach((subs,family)=>{
+  await forEachCooperatively(families,([family,subs])=>{
     ATLAS[family] = [];
     subs.forEach((tribes,subfamily)=>{
       const rows = [];
@@ -2181,9 +2308,9 @@ Promise.all([
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, media])=>{
+]).then(async ([tax, danish, countrySupp, media])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);
@@ -2191,10 +2318,10 @@ Promise.all([
   const sourceLink = document.getElementById('mdd-source');
   sourceLink.href = 'https://doi.org/'+tax._meta.sourceDoi;
   sourceLink.textContent = tax._meta.source;
+  await forEachCooperatively(luState.species,s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
   luState.ready = true;
   randomBat.disabled = false;
   if(mainCtx) scheduleTreeLayout();
-  luState.species.forEach(s=>{ luState.byName[luNiceName(s.sciName).toLowerCase()] = s; });
   luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' marine mammals…';
   if(luInput.value.trim()) luApplyFilter();
   cmMaybeInit();
@@ -2239,9 +2366,9 @@ function wmResolve(list){
 let CM = null, cmReady = false, cmSelected = null;
 let cmMapVisible = !matchMedia('(max-width:620px)').matches || !('IntersectionObserver' in window);
 
-function cmBuildIndex(){
+async function cmBuildIndex(){
   const byKey = {};
-  luState.species.forEach(s=>{
+  await forEachCooperatively(luState.species,s=>{
     (s.countryDistribution||'').split('|').forEach(raw=>{
       const t = raw.trim();
       if(!t || t==='NA') return;
@@ -2602,7 +2729,7 @@ function applyCountryFilterToMainTree(){
   }
   // a full redraw is needed (not just re-toggling the dim class): in "show
   // only" mode, which rows exist at all depends on the country selection
-  ctxDrawTree(mainCtx);
+  scheduleTreeLayout();
 }
 
 function setCountryTreeMode(mode, redraw = true){
@@ -2610,12 +2737,12 @@ function setCountryTreeMode(mode, redraw = true){
   countryTreeMode = mode;
   document.getElementById('cm-mode-dim').setAttribute('aria-pressed', mode==='dim' ? 'true' : 'false');
   document.getElementById('cm-mode-filter').setAttribute('aria-pressed', mode==='filter' ? 'true' : 'false');
-  if(redraw) ctxDrawTree(mainCtx);
+  if(redraw) scheduleTreeLayout();
 }
 document.getElementById('cm-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
 document.getElementById('cm-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
 
-function cmMaybeInit(){
+async function cmMaybeInit(){
   if(cmReady || !luState.ready || WMAP===null) return;
   cmReady = true;
   const mapEl = document.getElementById('cm-map');
@@ -2625,7 +2752,10 @@ function cmMaybeInit(){
     svgHolder.innerHTML = '<div class="wm-pending">Map data failed to load.</div>';
     return;
   }
-  cmBuildIndex();
+  // Reserve the deferred map's height before scrolling reaches it. Otherwise
+  // inserting the SVG changes the page length in the middle of the gesture.
+  svgHolder.style.aspectRatio = WMAP.w+'/'+WMAP.h;
+  await cmBuildIndex();
   cmFillCountrySelect();
   if(!cmMapVisible){
     const observer = new IntersectionObserver(entries=>{
@@ -2714,7 +2844,11 @@ function luSetCursor(i){
   rows[luCursor].scrollIntoView({block:'nearest'});
 }
 
-function luOpenResults(){ luResults.hidden = false; luInput.setAttribute('aria-expanded','true'); }
+function luOpenResults(){
+  if(luResults.hidden) syncTopbarHeight();
+  luResults.hidden = false;
+  luInput.setAttribute('aria-expanded','true');
+}
 function luCloseResults(){
   luResults.hidden = true;
   luInput.setAttribute('aria-expanded','false');
@@ -2767,6 +2901,7 @@ function luDrawerTrap(e){
   else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
 }
 function luOpenDrawer(){
+  syncTopbarHeight();
   luDrawerReturnFocus = document.activeElement;
   luDrawer.classList.add('open'); luScrim.classList.add('open');
   document.body.classList.add('drawer-open');
@@ -2926,9 +3061,9 @@ async function installOfflineImages(){
   button.disabled = true;
   try {
     const cache = await caches.open(cacheName);
-    for(let i=0;i<urls.length;i+=20){
-      button.textContent = 'Saving '+Math.min(i+20,urls.length)+'/'+urls.length;
-      await cache.addAll(urls.slice(i,i+20));
+    for(let i=0;i<urls.length;i+=2){
+      button.textContent = 'Saving '+Math.min(i+2,urls.length)+'/'+urls.length;
+      await cache.addAll(urls.slice(i,i+2));
     }
     await cache.put('image-pack-complete-'+release,new Response('ok'));
     const names = await caches.keys();
@@ -3203,13 +3338,13 @@ function luDetailHTML(s, compact){
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
 
-function luSelectSpecies(id, focusCard = false){
+async function luSelectSpecies(id, focusCard = false){
   luState.active = id;
   luCloseResults();
   const s = luState.species.find(x=>x.id===id);
   if(!s) return;
   const binomial = luNiceName(s.sciName);
-  const opened = openTreeToSpecies(s.family, s.genus, binomial, focusCard);
+  const opened = await openTreeToSpecies(s.family, s.genus, binomial, focusCard);
   if(!opened){
     // fallback for anything not represented in the cladogram
     luDetail.innerHTML = luDetailHTML(s, false);
@@ -3613,8 +3748,9 @@ mainCtx = makeTreeCtx({
 let treeLayoutWidth = svg.parentElement.clientWidth, treeLayoutFrame = null;
 function scheduleTreeLayout(){
   if(treeLayoutFrame !== null) return;
-  treeLayoutFrame = requestAnimationFrame(()=>{
+  treeLayoutFrame = requestAnimationFrame(async ()=>{
     treeLayoutFrame = null;
+    if(!(await prepareTreeLabels(mainCtx))) return;
     ctxDrawTree(mainCtx);
   });
 }
@@ -3630,7 +3766,7 @@ if(document.fonts) document.fonts.ready.then(()=>{
 });
 
 ctxCardReset(mainCtx);
-ctxDrawTree(mainCtx);
+scheduleTreeLayout();
 
 mainCtx.card.addEventListener('click', e=>{
   const btn = e.target.closest('.jump');
@@ -3661,12 +3797,14 @@ document.addEventListener('click', e=>{
   btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded')==='true' ? 'false' : 'true');
 });
 
-treeToggle.addEventListener('click', ()=>{
+treeToggle.addEventListener('click', async ()=>{
   const expanded = allFamiliesOpen();
   BLOCKS.forEach(b=>b.members.forEach(f=>{
     expanded ? mainCtx.open.delete('f:'+f) : mainCtx.open.add('f:'+f);
   }));
   if(expanded) ctxCardReset(mainCtx);
+  updateTreeToggle();
+  if(!expanded && !(await prepareTreeLabels(mainCtx))) return;
   ctxDrawTree(mainCtx);
   announceTreeToggle(expanded);
   if(expanded) document.querySelector('.treebox').scrollIntoView({block:'nearest'});

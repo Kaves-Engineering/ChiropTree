@@ -175,9 +175,9 @@ sub("""Promise.all([
   bundled('d-countries', 'data/gbif_country_supplement.json'),
   bundled('d-calls', 'data/calls/exports/calls.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, calls, media])=>{
+]).then(async ([tax, danish, countrySupp, calls, media])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.directCalls = calls.species || {};
   luState.familyInference = calls.familyInference || {};
@@ -188,9 +188,9 @@ sub("""Promise.all([
     """Promise.all([
   bundled('d-taxonomy', 'data/bird_taxonomy.json'),
   bundled('d-danish', 'data/bird_danish_names.json')
-]).then(([tax, danish])=>{
+]).then(async ([tax, danish])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;""")
 sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' bats…';""",
     """  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString() + ' birds…';""")

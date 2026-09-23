@@ -17,9 +17,26 @@ const CORE = [
   './data/media-manifest.json', './data/release.json'
 ];
 
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
-});
+async function installCore(){
+  const cache = await caches.open(CACHE);
+  let next = 0, failed = false;
+  try {
+    // Keep the complete offline library, but avoid dozens of simultaneous
+    // downloads/cache writes competing with the page on a low-memory phone.
+    await Promise.all([0,1].map(async()=>{
+      while(!failed && next < CORE.length){
+        const url = CORE[next++];
+        await cache.add(url);
+      }
+    }));
+    await self.skipWaiting();
+  } catch(error) {
+    failed = true;
+    await caches.delete(CACHE);
+    throw error;
+  }
+}
+self.addEventListener('install', event => event.waitUntil(installCore()));
 
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(

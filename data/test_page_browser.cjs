@@ -22,8 +22,8 @@ const assert = require('node:assert/strict');
         await page.goto('http://127.0.0.1:8000/'+file);
         await page.waitForFunction(()=>typeof CM!=='undefined' && CM && luState.ready);
         await page.evaluate(()=>document.fonts.ready);
-        await page.waitForFunction(()=>treeLayoutFrame===null);
-        const initialRows=await page.locator('#tree [role="treeitem"]').count();
+        await page.waitForFunction(()=>treeLayoutFrame===null && !svg.hasAttribute('aria-busy') && mainCtx.rowOrder.length>0);
+        const initialRows=await page.evaluate(()=>mainCtx.rowOrder.length);
         assert(initialRows>0);
         if(mobile) assert.equal(await page.locator('#cm-map-svg svg').count(),0,'offscreen map is deferred');
 
@@ -37,9 +37,11 @@ const assert = require('node:assert/strict');
         assert.equal(await row.getAttribute('aria-expanded'),'false');
 
         await page.locator('#t-toggle').click();
-        assert(await page.locator('#tree [role="treeitem"]').count()>initialRows);
+        await page.waitForFunction(()=>!svg.hasAttribute('aria-busy'));
+        assert(await page.evaluate(()=>mainCtx.rowOrder.length)>initialRows);
+        assert(await page.locator('#tree [role="treeitem"]').count()<=128,'only nearby tree rows are mounted');
         await page.locator('#t-toggle').click();
-        assert.equal(await page.locator('#tree [role="treeitem"]').count(),initialRows);
+        assert.equal(await page.evaluate(()=>mainCtx.rowOrder.length),initialRows);
 
         await page.evaluate(()=>{
           // Cached search must return exactly the same records as the original fields.

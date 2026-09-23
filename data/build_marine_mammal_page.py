@@ -154,9 +154,9 @@ sub("""Promise.all([
   bundled('d-countries', 'data/gbif_country_supplement.json'),
   bundled('d-calls', 'data/calls/exports/calls.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, calls, media])=>{
+]).then(async ([tax, danish, countrySupp, calls, media])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.directCalls = calls.species || {};
   luState.familyInference = calls.familyInference || {};
@@ -168,9 +168,9 @@ sub("""Promise.all([
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
   bundled('d-countries', 'data/marine_mammal_gbif_country_supplement.json'),
   bundled('d-media', 'data/media-manifest.json')
-]).then(([tax, danish, countrySupp, media])=>{
+]).then(async ([tax, danish, countrySupp, media])=>{
   luState.species = tax.species;
-  luBuildDisplayTaxonomy(luState.species);
+  await luBuildDisplayTaxonomy(luState.species);
   luState.danish = danish;
   luState.media = media.assets || {};""")
 
