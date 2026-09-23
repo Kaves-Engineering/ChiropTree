@@ -2886,7 +2886,13 @@ function cmShowSpeciesRange(binomial){
 
 function cmRenderMap(){
   const mapEl = document.getElementById('cm-map-svg');
-  if(!mapEl) return;
+  if(!mapEl || !WMAP || !CM) return;
+  // Geometry and tooltips are static. Preserve the SVG (and pointer capture)
+  // when only a selection or species range changes.
+  if(mapEl.querySelector('svg')){
+    cmUpdateMapState(mapEl);
+    return;
+  }
   // One pattern for the whole map rather than an overlay path per country:
   // the fill says "recorded here" a second time, in a form that survives
   // deuteranopia, where the green-on-green land/range difference does not.
@@ -2905,14 +2911,10 @@ function cmRenderMap(){
     const label = e ? e.name+' — '+e.confirmed.length+' species'+(e.maybe.length?', '+e.maybe.length+' uncertain':'') : '';
     return '<path class="'+cls+'" data-key="'+luEsc(k)+'" d="'+d+'">'+(label?'<title>'+luEsc(label)+'</title>':'')+'</path>';
   }).join('');
-  if(cmSelected && WMAP.small.indexOf(cmSelected) >= 0){
-    const c = WMAP.cent[cmSelected];
-    if(c) body += '<circle class="cm-ring" cx="'+c[0]+'" cy="'+c[1]+'" r="5"/>';
-  }
+  body += '<circle class="cm-ring" r="5" display="none"/>';
   Object.keys(WMAP.dots).forEach(k=>{
     const e = CM[k];
     const inRange = speciesRange && (k in speciesRange.dots);
-    if(!(e && (e.confirmed.length || e.maybe.length)) && !inRange) return;
     const c = WMAP.dots[k];
     if(!c) return;
     const cls = 'cm-d'+(inRange?' range':'')+(k===cmSelected?' sel':'');
@@ -2923,14 +2925,37 @@ function cmRenderMap(){
     'aria-label="World map. Hatched countries have records; use the country list above the map to choose one.">'+
     defs+'<g class="cm-zoom-g" id="cm-zoom-g">'+body+'</g></svg>';
   cmApplyView(true);
+  cmUpdateMapState(mapEl);
+}
+
+function cmUpdateMapState(mapEl){
+  mapEl.querySelectorAll('[data-key]').forEach(el=>{
+    const key = el.getAttribute('data-key');
+    const isDot = key.startsWith('d:');
+    const range = speciesRange && (isDot ? speciesRange.dots : speciesRange.shapes);
+    const inRange = !!range && key in range;
+    el.classList.toggle('range', inRange);
+    el.classList.toggle('sel', key === cmSelected);
+    if(isDot){
+      const e = CM[key];
+      const display = inRange || (e && (e.confirmed.length || e.maybe.length)) ? '' : 'none';
+      if(el.getAttribute('display') !== display) el.setAttribute('display', display);
+    }
+  });
+  const ring = mapEl.querySelector('.cm-ring');
+  const c = cmSelected && WMAP.small.includes(cmSelected) && WMAP.cent[cmSelected];
+  if(c){
+    ring.setAttribute('cx', c[0]);
+    ring.setAttribute('cy', c[1]);
+  }
+  ring.setAttribute('display', c ? '' : 'none');
   cmUpdateLabel();
 }
 
-/* ---- pan / zoom: a transform on the <g> wrapping the map's own content,
-   reapplied after every cmRenderMap() rebuild so a redraw (new country
-   selected, a species range painted) doesn't reset the current view ---- */
+/* ---- pan / zoom: retain geometry and write at most once per frame ---- */
 let cmView = {scale:1, x:0, y:0};
 let cmDrag = null; // {startClientX, startClientY, startX, startY} while a pointer is down
+let cmViewFrame = null, cmViewAnimate = false, cmHatchScale = null;
 const CM_MIN_SCALE = 1, CM_MAX_SCALE = 12;
 
 function cmClampView(v){
@@ -2949,12 +2974,23 @@ function cmApplyView(noAnim){
   // the hatch is measured in the group's own user space, so without this it
   // would grow with the zoom until the stripes are wider than a country
   const hatch = document.getElementById('cm-hatch');
-  if(hatch) hatch.setAttribute('patternTransform', 'scale('+(1/cmView.scale)+')');
+  if(hatch && cmHatchScale !== cmView.scale){
+    hatch.setAttribute('patternTransform', 'scale('+(1/cmView.scale)+')');
+    cmHatchScale = cmView.scale;
+  }
 }
 
 function cmSetView(v, animate){
-  cmView = cmClampView(v);
-  cmApplyView(!animate);
+  if(!WMAP) return;
+  const next = cmClampView(v);
+  if(next.scale === cmView.scale && next.x === cmView.x && next.y === cmView.y) return;
+  cmView = next;
+  cmViewAnimate = animate;
+  if(cmViewFrame !== null) return;
+  cmViewFrame = requestAnimationFrame(()=>{
+    cmViewFrame = null;
+    cmApplyView(!cmViewAnimate);
+  });
 }
 
 function cmResetView(animate){ cmSetView({scale:1, x:0, y:0}, animate); }
@@ -3001,6 +3037,10 @@ function cmUpdateCountryIcon(){
   const icon = document.getElementById('cm-country-icon');
   const button = document.getElementById('cm-mode-filter');
   if(!icon || !button) return;
+  // Species changes leave the country silhouette and its label unchanged.
+  const key = cmSelected || '';
+  if(icon.getAttribute('data-country') === key) return;
+  icon.setAttribute('data-country', key);
   const entry = cmSelected && CM[cmSelected];
   const shape = document.querySelector('#cm-map-svg .cm-c.sel');
   if(shape){
@@ -3041,10 +3081,11 @@ function cmWireZoomControls(){
   }, {passive:false});
 
   mapEl.addEventListener('pointerdown', e=>{
+    if(!e.isPrimary || e.button !== 0) return;
     if(e.target.closest('.cm-zoom-ctrl')) return;
     const svg = document.querySelector('#cm-map-svg svg');
     if(!svg) return;
-    cmDrag = {id:e.pointerId, svg, startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, moved:false};
+    cmDrag = {id:e.pointerId, svg, rect:svg.getBoundingClientRect(), startClientX:e.clientX, startClientY:e.clientY, startX:cmView.x, startY:cmView.y, moved:false};
     // pointer capture is NOT taken here: capturing on pointerdown retargets
     // the pointerup/mouseup/click that follow to the capturing element even
     // for a plain click with zero movement (verified in Chromium — the up
@@ -3057,7 +3098,7 @@ function cmWireZoomControls(){
   mapEl.addEventListener('pointermove', e=>{
     if(!cmDrag || e.pointerId !== cmDrag.id) return;
     const svg = cmDrag.svg;
-    const rect = svg.getBoundingClientRect();
+    const rect = cmDrag.rect;
     if(!rect.width) return;
     // "did this become a drag" is judged in real screen pixels, not viewBox
     // units — the map can render anywhere from ~300px to 900px wide, so a

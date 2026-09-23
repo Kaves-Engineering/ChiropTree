@@ -399,6 +399,19 @@ GitHub Pages serves the data files directly. The service worker precaches the
 application shell and core data after first visit, so the explorer works
 offline without parsing a multi-megabyte HTML document at startup.
 
+## Map performance checks
+
+The map keeps its SVG geometry between selections, updates country/range
+classes in place, and batches pan/zoom writes with `requestAnimationFrame`.
+The frame callback runs only when the view changes; there is no idle render
+loop. All four pages inherit this behavior from `chiroptera-tree.html`.
+
+With the local HTTP server running on port 8000 and Playwright plus Chromium
+available, run `node data/test_map_browser.cjs`. If Playwright is installed
+outside the project, set `PLAYWRIGHT_MODULE` to its module directory. This
+checks country filtering, species ranges, preserved geometry, island markers,
+dragging, zoom controls, wheel zoom, and narrow-screen selection on every page.
+
 ## Extending the echolocation data
 
 `data/echolocation_reference.json` is keyed by family, with optional
