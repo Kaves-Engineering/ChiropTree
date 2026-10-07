@@ -382,6 +382,10 @@ sub("""luState.meta.familyCount+' families</div>';""", """luState.meta.familyCou
 sub("bundled('d-worldmap', 'data/world_map.json')",
     "bundled('d-worldmap', 'data/marine_world_map.json')")
 
+# the name history comes from MDD's synonym table, which has no dinosaurs
+sub("const HISTORY_URL = 'data/chiroptera_name_history.json';",
+    "const HISTORY_URL = null;")
+
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
 
 print("applied %d replacements" % len(hits))

@@ -5,7 +5,7 @@ const CORE = [
   './icons/icon-512.png', './icons/icon-maskable-512.png',
   './icons/icon-192.png?v=cladogram-1', './icons/icon-512.png?v=cladogram-1',
   './icons/icon-maskable-512.png?v=cladogram-1',
-  './data/chiroptera_taxonomy.json',
+  './data/chiroptera_taxonomy.json', './data/chiroptera_name_history.json',
   './data/call_measurements.json',
   './data/calls/exports/calls.json',
   './data/danish_names.json', './data/gbif_country_supplement.json',

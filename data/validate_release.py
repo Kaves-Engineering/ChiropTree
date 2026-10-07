@@ -172,6 +172,23 @@ def validate_media(all_ids: set[str]) -> None:
     print(f"Validated {len(assets)} media records; image pack {total / 1024 / 1024:.1f} MiB")
 
 
+def validate_name_history(taxonomy: dict) -> None:
+    """Every species has a history, and every split link joins two of them
+    in both directions -- a one-sided link would draw an arrow from nowhere."""
+    history = load("chiroptera_name_history.json")
+    species = {record["sciName"].replace("_", " ") for record in taxonomy["species"]}
+    entries = history["species"]
+    assert set(entries) == species, "chiroptera_name_history.json: species differ from the taxonomy"
+    refs = len(history["refs"])
+    for name, entry in entries.items():
+        assert entry.get("names"), f"name history: {name} has no names"
+        for key, back in (("from", "into"), ("into", "from")):
+            for other, year, via in entry.get(key, ()):
+                assert other in species and other != name, f"name history: {name} {key} unknown {other}"
+                assert [name, year, via] in entries[other].get(back, ()), f"name history: {name} -> {other} is one-sided"
+        assert all(0 <= i < refs for i in entry.get("cites", ())), f"name history: {name} cites a missing reference"
+
+
 def validate_manifest() -> None:
     manifest = load("release.json")
     for name, expected in manifest["files"].items():
@@ -190,6 +207,7 @@ def main() -> None:
     bat_ids, _ = validate_taxonomy(bats, "bats")
     marine_ids, _ = validate_taxonomy(marine, "marine mammals")
     validate_names("danish_names.json", bat_ids)
+    validate_name_history(bats)
     validate_names("marine_mammal_danish_names.json", marine_ids)
     birds = load("bird_taxonomy.json")
     bird_ids, _ = validate_taxonomy(birds, "birds")

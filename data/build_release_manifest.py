@@ -8,7 +8,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 OUT = HERE / "release.json"
 FILES = (
-    "chiroptera_taxonomy.json", "marine_mammal_taxonomy.json",
+    "chiroptera_taxonomy.json", "chiroptera_name_history.json", "marine_mammal_taxonomy.json",
     "call_measurements.json", "danish_names.json", "marine_mammal_danish_names.json",
     "gbif_country_supplement.json", "marine_mammal_gbif_country_supplement.json",
     "world_map.json", "marine_world_map.json", "media-manifest.json",

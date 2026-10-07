@@ -65,6 +65,43 @@ Published with GitHub Pages.
   `gbif_country_supplement.json`. Caches per-species GBIF results in
   `data/raw/gbif_country_cache.json` (gitignored) so an interrupted run
   resumes cheaply; takes roughly 10–20 minutes for the full species list.
+- **`data/chiroptera_name_history.json`** — what every bat species was called
+  before, and which species it was split from. Built by
+  **`data/build_name_history.py`** from two tables of the same MDD v2.5
+  release: the species table's `taxonomyNotes` ("split from…", "previously
+  included…", "moved from *A* to *B*", with their citations) and its MSW3
+  (2005) and CMW (2020) names, plus the separate synonym table
+  (`Species_Syn_v2.5.csv`, ~68 MB, auto-downloaded into `data/raw/`), which
+  lists every name combination a species has carried, dated by the first use
+  Hesperomys records. That date is a lower bound on the record, not always the
+  year of the taxonomic act, and the page says so.
+
+  A split link needs one of two signals. Either MDD's note says so, or the
+  species' own name was once used as a subspecies of another current species.
+  A subspecies usage on its own only counts when the species was *described*
+  as a subspecies, or MSW3 did not list it as a species. One author's 1906
+  trinomial does not make a split. A species MSW3 did not list cannot have
+  been split before 2005, so its split year is taken from citations dated
+  2005 or later. batnames.org (Simmons & Cirranello) was surveyed as a second
+  source, but its species entries carry only name, authority and common name,
+  and its history is free-text genus commentary, so the card links to its
+  genus pages instead of paraphrasing them.
+
+  On the page, the history shows in four places:
+  - **Tree rows.** A species row carries "was *Eptesicus*" (its genus in MSW3,
+    when that differs) and "split 2013" in the right-hand column. On phones
+    only one tag fits, and the split takes priority.
+  - **Split arrows.** Selecting a species draws dashed arrows from the older
+    species to the one split from it, wherever both rows are open.
+  - **Name history card section.** The name chain, the "split from" and
+    "split from this one" lists (each name opens that species), the MSW3, CMW
+    and MDD names side by side, MDD's note with references, and the synonyms.
+  - **Search.** Search matches former names: "Eptesicus serotinus" finds
+    *Cnephaeus serotinus*.
+
+  The file loads after the taxonomy, so it never delays the first tree. The
+  clone pages stamp `HISTORY_URL` to `null` and show none of this. Re-run the
+  builder after updating the taxonomy to a new MDD release.
 
 ## Comparing species
 
@@ -324,7 +361,11 @@ MDD publishes new releases periodically. To pick up a new one:
 
    ```
    uv run python data/build_taxonomy.py
+   uv run python data/build_name_history.py
    ```
+
+   `build_name_history.py` pins the same release in its own `RECORD` URL and
+   file names; update those too.
 
 ## Running locally
 

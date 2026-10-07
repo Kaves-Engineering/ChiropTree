@@ -44,12 +44,15 @@ const assert = require('node:assert/strict');
         assert.equal(await page.evaluate(()=>mainCtx.rowOrder.length),initialRows);
 
         await page.evaluate(()=>{
-          // Cached search must return exactly the same records as the original fields.
+          // Cached search must return exactly the same records as the original
+          // fields, plus (bats only) the species a former name now belongs to.
           for(const q of ['a','myotis','whale','rex','æ','pter','nonexistent-zzz']){
             const expected=luState.species.filter(s=>{
               const dk=luState.danish[s.id];
+              const h=luState.history && q.length>2 && luHistoryOf(luNiceName(s.sciName));
               return [luNiceName(s.sciName),s.mainCommonName||'',s.otherCommonNames||'',s.genus,s.family,
-                ...(dk ? dk.allNames : [])].some(value=>value.toLowerCase().includes(q));
+                ...(dk ? dk.allNames : [])].some(value=>value.toLowerCase().includes(q)) ||
+                !!h && [...(h.names||[]),...(h.syn||[])].some(([name])=>luFoldName(name).includes(luFoldName(q)));
             }).map(s=>s.id);
             luInput.value=q;luApplyFilter();
             if(JSON.stringify(expected)!==JSON.stringify(luState.filtered.map(s=>s.id)))throw Error('Search mismatch: '+q);

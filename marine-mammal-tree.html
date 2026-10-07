@@ -471,6 +471,37 @@ footer a:hover{color:var(--ochre)}
 .lu-country-gbif sup{font-size:.7em;color:var(--ochre);margin-left:1px}
 .lu-section .lu-src{margin:7px 0 0;font-family:var(--mono);font-size:0.6875rem;color:var(--line-text)}
 
+/* name history */
+.lu-history{margin-top:20px}
+.lu-history h5{margin:14px 0 6px;font-family:var(--mono);font-size:0.625rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.lu-history h5:first-of-type{margin-top:0}
+.lu-names{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;font-size:0.875rem;line-height:1.4}
+.lu-names li{display:contents}
+.lu-names .yr{font-family:var(--mono);font-size:0.75rem;color:var(--muted);text-align:right;padding-top:2px}
+.lu-names .nm{font-family:var(--display);font-style:italic;color:var(--text)}
+.lu-names .now .nm{color:var(--bone)}
+.lu-names .who{display:block;font-size:0.75rem;color:var(--muted)}
+.lu-names .who b{font-weight:500;color:var(--ochre)}
+.lu-names details{grid-column:1/-1}
+.lu-names details>summary,.lu-history details>summary{cursor:pointer;font-size:0.78125rem;color:var(--line-text);padding:2px 0}
+.lu-names details[open]>summary{margin-bottom:5px}
+.lu-names details .lu-names{margin:0}
+.lu-splits{margin:0;padding:0;list-style:none;font-size:0.875rem;line-height:1.55}
+.lu-hist-sp{background:none;border:0;padding:0;font:inherit;font-family:var(--display);font-style:italic;color:var(--line);text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer}
+.lu-hist-sp:hover{color:var(--ochre)}
+.lu-hist-sp:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.lu-splits .yr{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
+.lu-history .lu-hist-notes{margin:6px 0 0;font-size:0.8125rem;color:var(--muted);line-height:1.5}
+.lu-history .lu-refs{margin:6px 0 0;padding-left:18px;font-size:0.75rem;color:var(--muted);line-height:1.5}
+.lu-history a{color:var(--line)}
+/* three short rows: they keep two columns even where the facts list stacks */
+.lu-history .lu-checklists{grid-template-columns:auto minmax(0,1fr);font-size:0.875rem}
+.lu-history .lu-checklists dt{margin-top:0;white-space:nowrap}
+.lu-history .lu-syn{margin:6px 0 0;padding:0;list-style:none;font-size:0.8125rem;color:var(--muted);columns:2 14em;column-gap:20px}
+.lu-history .lu-syn i{font-family:var(--display);color:var(--text)}
+.lu-row .lu-was{color:var(--line-text)}
+.lu-row .lu-was i{font-family:var(--display)}
+
 /* structured call measurements */
 .lu-headline{margin:0 0 12px;font-size:0.84375rem;line-height:1.55;color:var(--text)}
 .lu-variant{margin:0 0 6px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
@@ -713,6 +744,14 @@ g.trow:focus-visible .focus-ring{stroke:var(--ochre);stroke-width:2}
 .t-species{font-family:var(--display);font-style:italic;font-size:16px;fill:var(--ink-mid);dominant-baseline:middle}
 .t-note{font-family:var(--body);font-style:normal;font-size:14px;fill:var(--ink-faint);dominant-baseline:middle}
 .t-count{font-family:var(--mono);font-size:13px;fill:var(--ink-faint);text-anchor:end;dominant-baseline:middle}
+/* name history on a species row: "was Eptesicus · split 2013" */
+.t-hist{font-family:var(--mono);font-size:12px;fill:var(--ink-faint);text-anchor:end;dominant-baseline:middle}
+.t-hist .t-hist-split{fill:var(--line-text)}
+/* the selected species' split links: older species -> the one split from it */
+.hist-link{fill:none;stroke:var(--ochre);stroke-width:1.3;stroke-dasharray:3 3;opacity:.85}
+.hist-arrow{fill:var(--ochre)}
+g.trow.species.hist-rel .t-species{fill:var(--bone);text-decoration:underline dotted}
+g.trow.species.hist-rel .t-hist{fill:var(--ochre)}
 .sub-branch{stroke:rgba(var(--border2-rgb),.34);stroke-width:1}
 .t-knot{fill:var(--line-dim)}
 .t-knot.shut{fill:var(--ochre-dim)}
@@ -1400,7 +1439,7 @@ let treeFontVersion = 0;
 function treeTextMetrics(ctx, mobile){
   const key = mobile+':'+treeFontVersion;
   if(ctx.textMetrics && ctx.textMetrics.key === key) return ctx.textMetrics;
-  const classes = ['tip-name','tip-common','t-subfam','t-tribe','t-genus','t-species','t-note'];
+  const classes = ['tip-name','tip-common','t-subfam','t-tribe','t-genus','t-species','t-note','t-hist'];
   const sample = el('g', {visibility:'hidden','aria-hidden':'true'});
   classes.forEach(cls=>sample.appendChild(el('text',{class:cls},'M')));
   ctx.svg.appendChild(sample);
@@ -1428,13 +1467,13 @@ function treeLabelLayout(ctx, mobile, VW){
   const LX = level => TIPX + level*branchStep + 9;
   const {measures} = treeTextMetrics(ctx, mobile);
   if(!ctx.labelCache || ctx.labelCache.width !== VW) ctx.labelCache = {width:VW, lines:new Map()};
-  function labelLines(name, kind, className){
+  function labelLines(name, kind, className, tagWidth = 0){
     const classes = {fam:'tip-name',subfam:'t-subfam',tribe:'t-tribe',genus:'t-genus',species:'t-species'};
     const cls = className || classes[kind];
-    const key = cls+':'+name;
+    const key = cls+':'+tagWidth+':'+name;
     if(ctx.labelCache.lines.has(key)) return ctx.labelCache.lines.get(key);
     const measure = measures[cls];
-    const reserve = kind==='species' ? 0 : mobile ? 48 : kind==='subfam'||kind==='tribe' ? 190 : 80;
+    const reserve = kind==='species' ? tagWidth : mobile ? 48 : kind==='subfam'||kind==='tribe' ? 190 : 80;
     const available = Math.max(48,COUNTX-LX(rankColumn[kind])-reserve-12);
     const lines = [];
     let rest = name;
@@ -1458,7 +1497,12 @@ function treeLabelLayout(ctx, mobile, VW){
       ? n.name.replace(/^(\S)\S+\s/, '$1. ')
       : n.name;
   }
-  return {measures,labelLines,rowLabel};
+  // a species row's history tag, and the room it holds back from the label
+  function rowTag(n){
+    const tag = n.kind==='species' ? luHistoryTag(n.name, mobile) : null;
+    return tag ? {tag, width:measures['t-hist'](tag.text)+14} : {tag:null, width:0};
+  }
+  return {measures,labelLines,rowLabel,rowTag};
 }
 
 function ctxDrawTree(ctx){
@@ -1498,7 +1542,7 @@ function ctxDrawTree(ctx){
 
   // Fixed rank columns depend only on viewport width, never open branches.
   // Wrap unusually long labels rather than shifting columns or shrinking type.
-  const {measures,labelLines,rowLabel} = treeLabelLayout(ctx,mobile,VW);
+  const {measures,labelLines,rowLabel,rowTag} = treeLabelLayout(ctx,mobile,VW);
   function addLabel(g, className, x, y, lines){
     const text = el('text',{class:className,x,y});
     lines.forEach((line,i)=>text.appendChild(el('tspan',{x,dy:i ? 20 : 0},line)));
@@ -1513,16 +1557,17 @@ function ctxDrawTree(ctx){
   function walk(list, level, parentY, parentKey, parentKind){
     const l = filtering ? list.filter(n=>countryLive.live.has(n.key)) : list;
     l.forEach((n,i)=>{
-      const lines = labelLines(rowLabel(n),n.kind);
+      const {tag, width:tagWidth} = rowTag(n);
+      const lines = labelLines(rowLabel(n),n.kind,null,tagWidth);
       let noteLines = [], inlineNote = false;
       if(!mobile && n.kind==='species' && n.note){
         const nameWidth = measures['t-species'](n.name);
-        inlineNote = lines.length===1 && nameWidth+11+measures['t-note']('— '+n.note) <= COUNTX-LX(rankColumn.species)-12;
-        if(!inlineNote) noteLines = labelLines('— '+n.note,'species','t-note');
+        inlineNote = lines.length===1 && nameWidth+11+measures['t-note']('— '+n.note) <= COUNTX-LX(rankColumn.species)-12-tagWidth;
+        if(!inlineNote) noteLines = labelLines('— '+n.note,'species','t-note',tagWidth);
       }
       const h = RH[n.kind]+(lines.length-1+noteLines.length)*20;
       const y = posY + h/2;
-      rows.push({kind:n.kind, node:n, y, level, parentKey, lines, noteLines, inlineNote, height:h, posinset:i+1, setsize:l.length});
+      rows.push({kind:n.kind, node:n, y, level, parentKey, lines, noteLines, inlineNote, tag, height:h, posinset:i+1, setsize:l.length});
       links.push({parentKind,kind:n.kind,parentY,y});
       posY += h;
       if(ctx.open.has(n.key)){
@@ -1706,12 +1751,18 @@ function ctxDrawTree(ctx){
       g.appendChild(el('text',{class:'t-count',x:COUNTX,y:r.y}, mobile ? String(liveN) : liveN===1?'1 species':liveN+' spp.'));
       if(expandable) ctxBindToggle(ctx, g, n);
     } else {
-      g.setAttribute('class','trow species'+(n.name===ctx.selectedSp?' active':''));
-      g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:''));
+      g.setAttribute('class','trow species'+(n.name===ctx.selectedSp?' active':'')+(ctx.histRelated && ctx.histRelated.has(n.name)?' hist-rel':''));
+      g.setAttribute('aria-label', n.name+(n.note?' — '+n.note:'')+(r.tag?'; '+r.tag.label:''));
       const labelY = r.y-(r.lines.length-1+r.noteLines.length)*10;
       const label = addLabel(g,'t-species',lx,labelY,r.lines);
       if(r.inlineNote) label.appendChild(el('tspan',{class:'t-note',dx:11},'— '+n.note));
       if(r.noteLines.length) addLabel(g,'t-note',lx,labelY+r.lines.length*20,r.noteLines);
+      if(r.tag){
+        const tag = el('text',{class:'t-hist',x:COUNTX,y:labelY});
+        r.tag.parts.forEach(([text,cls],i)=>tag.appendChild(el('tspan',cls?{class:cls}:{},(i?' · ':'')+text)));
+        tag.appendChild(el('title',{},r.tag.label));
+        g.appendChild(tag);
+      }
       const pick = ()=>{ ctxFocusRow(ctx,index,false); ctxShowSpecies(ctx, n.name); };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
@@ -1771,7 +1822,12 @@ function ctxDrawTree(ctx){
     rows.forEach((row,i)=>renderRow(row,i,drawing));
     ctx.releaseRows = null;
   }
+  // the selected species' split links sit above every row, mounted or not
+  ctx.layout = {rows, x:PX(rankColumn.species), step:branchStep};
+  ctx.histLayer = el('g',{class:'hist-links','aria-hidden':'true'});
+  drawing.appendChild(ctx.histLayer);
   svg.replaceChildren(drawing);
+  ctxDrawHistoryLinks(ctx);
   ctxSyncRoving(ctx, hadFocus, prevIndex);
   if(ctx.onDrawn) ctx.onDrawn();
 }
@@ -1782,7 +1838,7 @@ function ctxDrawTree(ctx){
 async function prepareTreeLabels(ctx){
   const request = ctx.layoutRequest = (ctx.layoutRequest || 0)+1;
   const mobile = matchMedia('(max-width:620px)').matches;
-  const {labelLines,rowLabel} = treeLabelLayout(ctx,mobile,ctx.svg.parentElement.clientWidth);
+  const {labelLines,rowLabel,rowTag} = treeLabelLayout(ctx,mobile,ctx.svg.parentElement.clientWidth);
   const pending = [];
   function gather(list){
     list.forEach(n=>{
@@ -1798,8 +1854,9 @@ async function prepareTreeLabels(ctx){
   document.getElementById('tree-progress').hidden = false;
   let deadline = performance.now()+6;
   for(const node of pending){
-    labelLines(rowLabel(node),node.kind);
-    if(!mobile && node.note) labelLines('— '+node.note,'species','t-note');
+    const {width} = rowTag(node);
+    labelLines(rowLabel(node),node.kind,null,width);
+    if(!mobile && node.note) labelLines('— '+node.note,'species','t-note',width);
     if(performance.now()>=deadline){
       await new Promise(resolve=>setTimeout(resolve,0));
       if(ctx.layoutRequest!==request) return false;
@@ -1917,6 +1974,7 @@ function ctxScrollFamIntoView(ctx, name){
 function ctxCardReset(ctx){
   ctx.selected = null; ctx.selectedSp = null;
   ctx.svg.querySelectorAll('.active').forEach(row=>row.classList.remove('active'));
+  ctxDrawHistoryLinks(ctx);
   ctx.card.classList.add('empty');
   ctx.cardBody.innerHTML = ctx.emptyHTML;
   if(ctx.closeBtn) ctx.closeBtn.hidden = true;
@@ -1954,6 +2012,7 @@ function ctxSelect(ctx, name){
   if(ctx.closeBtn) ctx.closeBtn.hidden = false;
   Object.keys(ctx.famG).forEach(n=>ctx.famG[n].classList.toggle('active', n===name));
   ctx.svg.querySelectorAll('g.trow.species.active').forEach(g=>g.classList.remove('active'));
+  ctxDrawHistoryLinks(ctx);
   const d = F[name];
   const stats = ctx.famInfo[name];
   const isOpen = ctx.open.has('f:'+name);
@@ -2018,6 +2077,7 @@ function ctxShowSpecies(ctx, binomial, focusDetail){
   ctx.svg.querySelectorAll('g.trow.species').forEach(g=>{
     g.classList.toggle('active', g.getAttribute('aria-label').indexOf(binomial) === 0);
   });
+  ctxDrawHistoryLinks(ctx);
   ctx.cardBody.innerHTML = luSpeciesHTML(binomial, true);
   const species = luState.byName[binomial.toLowerCase()];
   loadSpeciesPhoto(species, ctx.cardBody.querySelector('.inat-photo'));
@@ -2321,6 +2381,194 @@ function luMergeCountrySupplement(species, supplement){
   });
 }
 
+/* =========================================================
+   NAME HISTORY — what each species was called before, and which species it
+   was split from. Built by data/build_name_history.py from MDD's species and
+   synonym tables; fetched after the taxonomy so it never holds up the tree.
+   ========================================================= */
+const HISTORY_URL = null;
+
+function luHistoryOf(binomial){
+  return luState.history ? luState.history[binomial] || null : null;
+}
+function luGenusOf(name){ return name.split(' ')[0]; }
+function luFoldName(name){
+  return name.replace(/æ/g,'ae').replace(/œ/g,'oe').normalize('NFKD').replace(/[̀-ͯ]/g,'')
+    .replace(/\([^)]*\)/g,' ').replace(/\s+/g,' ').trim().toLowerCase();
+}
+
+// "was Eptesicus · split 2013" on a species row: the genus it carried in
+// MSW3 (2005), if another, and when it was split from another species.
+// A phone has room for one of the two, and the split is the rarer news.
+function luHistoryTag(binomial, mobile){
+  const h = luHistoryOf(binomial);
+  if(!h) return null;
+  const parts = [], label = [];
+  const moved = h.msw3 && luGenusOf(h.msw3) !== luGenusOf(binomial);
+  const split = h.from && h.from.length ? h.from[0] : null;
+  if(moved && !(mobile && split)){
+    parts.push(['was '+luGenusOf(h.msw3), null]);
+  }
+  if(moved) label.push('listed as '+h.msw3+' in 2005');
+  if(split){
+    parts.push([split[1] ? 'split '+split[1] : 'split', 't-hist-split']);
+    label.push('split from '+h.from.map(([sp])=>sp).join(' and ')+(split[1] ? ' in '+split[1] : ''));
+  }
+  if(!parts.length) return null;
+  return {parts, text:parts.map(([text])=>text).join(' · '), label:label.join('; ')};
+}
+
+/* The selected species' splits, drawn as dashed arrows in the gap left of
+   the species column: from the older species to the one split from it.
+   Only rows that are laid out (their genus open) can be joined; the card
+   lists every relation either way. */
+function ctxDrawHistoryLinks(ctx){
+  if(!ctx.layout || !ctx.histLayer) return;
+  const h = ctx.selectedSp ? luHistoryOf(ctx.selectedSp) : null;
+  const related = new Map();
+  if(h){
+    (h.from||[]).forEach(([sp])=>related.set(sp, true));
+    (h.into||[]).forEach(([sp])=>related.set(sp, false));
+  }
+  ctx.histRelated = new Set(related.keys());
+  ctx.svg.querySelectorAll('g.trow.species').forEach(g=>
+    g.classList.toggle('hist-rel', ctx.histRelated.has(g.dataset.key.slice(2))));
+  const layer = ctx.histLayer;
+  layer.replaceChildren();
+  if(!related.size) return;
+  const ys = new Map();
+  ctx.layout.rows.forEach(r=>{
+    if(r.kind==='species') ys.set(r.node.name, r.y-(r.lines.length-1+r.noteLines.length)*10);
+  });
+  const y0 = ys.get(ctx.selectedSp);
+  if(y0==null) return;
+  const marker = el('marker',{id:'hist-arrow',viewBox:'0 0 6 6',refX:'5',refY:'3',markerWidth:'6',markerHeight:'6',orient:'auto'});
+  marker.appendChild(el('path',{class:'hist-arrow',d:'M0 0 L6 3 L0 6 Z'}));
+  const defs = el('defs',{}); defs.appendChild(marker); layer.appendChild(defs);
+  const x = ctx.layout.x-5, room = ctx.layout.step*.8;
+  related.forEach((older, name)=>{
+    const y1 = ys.get(name);
+    if(y1==null) return;
+    const [a, b] = older ? [y1, y0] : [y0, y1];
+    const bend = x-Math.min(room, 10+Math.abs(b-a)*.05);
+    layer.appendChild(el('path',{class:'hist-link','marker-end':'url(#hist-arrow)',
+      d:`M ${x} ${a} C ${bend} ${a}, ${bend} ${b}, ${x-1} ${b}`}));
+  });
+}
+
+function luHistSpecies(name){
+  const s = luState.byName[name.toLowerCase()];
+  return s
+    ? '<button type="button" class="lu-hist-sp" data-id="'+luEsc(s.id)+'">'+luEsc(name)+'</button>'
+    : '<i>'+luEsc(name)+'</i>';
+}
+function luHistNote(text){
+  return luEsc(text).replace(/_([^_]+)_/g,'<i>$1</i>');
+}
+function luHistoryHTML(s){
+  if(!HISTORY_URL || luState.historyError) return '';
+  const bin = luNiceName(s.sciName);
+  const open = '<section class="lu-section lu-history" data-sci="'+luEsc(bin)+'"><h4>Name history</h4>';
+  if(!luState.history) return open+'<p class="lu-note">Loading the name history…</p></section>';
+  const h = luHistoryOf(bin);
+  if(!h) return '';
+  const names = h.names || [];
+  const described = names.length ? names[0][1] : null;
+  const current = luFoldName(bin);
+
+  const item = ([name, year, author, of], i)=>{
+    const now = luFoldName(name)===current;
+    let what;
+    if(i===0){
+      const verb = h.link ? '<a href="'+luEsc(h.link)+'" target="_blank" rel="noopener">described</a>' : 'described';
+      what = verb+(author ? ' by '+luEsc(author) : '')+(h.rank ? ' as a '+luEsc(h.rank)+(of ? ' of '+luHistSpecies(of) : '') : '');
+    } else if(of){
+      what = 'as a subspecies of '+luHistSpecies(of)+(author ? ' · first used by '+luEsc(author) : '');
+    } else {
+      what = author ? 'first used by '+luEsc(author) : '';
+    }
+    if(now) what = '<b>current name</b>'+(what ? ' · '+what : '');
+    return '<li'+(now?' class="now"':'')+'><span class="yr">'+(year||'')+'</span><span><span class="nm">'+luEsc(name)+'</span>'+
+      (what ? '<span class="who">'+what+'</span>' : '')+'</span></li>';
+  };
+  const rows = names.map(item);
+  // a long chain keeps its ends in view: where it began, and the last few
+  const list = rows.length > 7
+    ? rows[0]+'<details><summary>'+(rows.length-5)+' more names</summary><ol class="lu-names">'+rows.slice(1,-4).join('')+'</ol></details>'+rows.slice(-4).join('')
+    : rows.join('');
+  let html = open+'<h5>Names it has carried</h5><ol class="lu-names">'+list+'</ol>';
+
+  const relation = ([sp, year, via])=>{
+    const when = year ? year : h.msw3===null && described && described < 2005 ? 'after 2005' : '';
+    const why = via==='s' ? 'its name was used as a subspecies of the other' : 'per MDD taxonomy note';
+    return '<li title="'+why+'">'+luHistSpecies(sp)+(when ? ' <span class="yr">· '+when+'</span>' : '')+'</li>';
+  };
+  if(h.from) html += '<h5>Split from</h5><ul class="lu-splits">'+h.from.map(relation).join('')+'</ul>';
+  if(h.into) html += '<h5>Species split from this one</h5><ul class="lu-splits">'+h.into.map(relation).join('')+'</ul>';
+
+  const checklist = (name, year)=> name===null
+    ? (described && described >= year ? 'not yet described' : 'not a separate species')
+    : name ? '<i>'+luEsc(name)+'</i>' : 'same name';
+  html += '<h5>In the reference checklists</h5><dl class="lu-checklists">'+
+    '<dt>MSW3, 2005</dt><dd>'+checklist(h.msw3, 2005)+'</dd>'+
+    '<dt>CMW, 2020</dt><dd>'+checklist(h.cmw, 2020)+'</dd>'+
+    '<dt>MDD, 2026</dt><dd><i>'+luEsc(bin)+'</i></dd></dl>';
+
+  if(h.notes){
+    html += '<h5>Taxonomy note</h5><p class="lu-hist-notes">'+luHistNote(h.notes)+'</p>';
+    if(h.cites && h.cites.length) html += '<details><summary>References ('+h.cites.length+')</summary><ol class="lu-refs">'+
+      h.cites.map(i=>{
+        const [text,,doi] = luState.historyRefs[i];
+        return '<li>'+luEsc(text)+(doi && text.indexOf('doi')<0 ? ' <a href="https://doi.org/'+luEsc(doi)+'" target="_blank" rel="noopener">doi</a>' : '')+'</li>';
+      }).join('')+'</ol></details>';
+  }
+  if(h.syn && h.syn.length){
+    html += '<details><summary>'+h.syn.length+' other name'+(h.syn.length===1?'':'s')+' now part of this species</summary><ul class="lu-syn">'+
+      h.syn.map(([name, author, year, status])=>'<li><i>'+luEsc(name)+'</i> '+luEsc(author)+(year ? ', '+year : '')+
+        (status ? ' ['+luEsc(status)+']' : '')+'</li>').join('')+'</ul></details>';
+  }
+  return html+'<p class="lu-src">MDD v2.5 synonym table, via Hesperomys. A year is the first use on record, not always when the change was made. '+
+    'Genus history: <a href="https://batnames.org/genera/'+encodeURIComponent(s.genus)+'" target="_blank" rel="noopener">Bat Species of the World</a></p></section>';
+}
+
+// old names find today's species: "Eptesicus serotinus" -> Cnephaeus serotinus
+const luHistoryText = new WeakMap();
+function luFormerName(s, q){
+  const h = luHistoryOf(luNiceName(s.sciName));
+  if(!h) return null;
+  if(!luHistoryText.has(s)){
+    luHistoryText.set(s, [...(h.names||[]).map(([name])=>name), ...(h.syn||[]).map(([name])=>name)]
+      .map(name=>[name, luFoldName(name)]));
+  }
+  const folded = luFoldName(q);
+  const hit = luHistoryText.get(s).find(([,name])=>name.includes(folded));
+  return hit ? hit[0] : null;
+}
+
+function luLoadHistory(){
+  if(!HISTORY_URL || luState.history || luState.historyLoading) return;
+  luState.historyLoading = true;
+  const refresh = ()=>document.querySelectorAll('.lu-history[data-sci]').forEach(section=>{
+    const s = luState.byName[section.dataset.sci.toLowerCase()];
+    section.outerHTML = s ? luHistoryHTML(s) : '';
+  });
+  bundled('d-history', HISTORY_URL).then(data=>{
+    luState.history = data.species;
+    luState.historyRefs = data.refs;
+    refresh();
+    if(luInput.value.trim() && !luResults.hidden) luApplyFilter();
+    if(mainCtx) scheduleTreeLayout();
+  }).catch(err=>{
+    luState.historyError = err.message;
+    refresh();
+  });
+}
+
+document.addEventListener('click', e=>{
+  const btn = e.target.closest('.lu-hist-sp');
+  if(btn) luSelectSpecies(btn.dataset.id, true);
+});
+
 Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),
   bundled('d-danish', 'data/marine_mammal_danish_names.json'),
@@ -2345,6 +2593,7 @@ Promise.all([
   cmMaybeInit();
   updateOfflineStatus();
   cmpReady();
+  luLoadHistory();
 }).catch(err=>{
   luState.error = err.message;
 });
@@ -2914,14 +3163,21 @@ function luApplyFilter(){
     luOpenResults();
     return;
   }
+  luState.formerMatch = new Map();
   luState.filtered = luState.species.filter(s=>{
     if(!luSearchText.has(s)){
       const dk = luState.danish[s.id];
       luSearchText.set(s,[luNiceName(s.sciName),s.mainCommonName||'',s.otherCommonNames||'',
         s.genus,s.family,...(dk ? dk.allNames : [])].join('\n').toLowerCase());
     }
-    return luSearchText.get(s).includes(q);
+    if(luSearchText.get(s).includes(q)) return true;
+    const former = luState.history && q.length > 2 ? luFormerName(s, q) : null;
+    if(former) luState.formerMatch.set(s.id, former);
+    return !!former;
   });
+  // typing an old name in full should land on the species that carried it
+  const exact = luState.filtered.filter(s=>luFoldName(luState.formerMatch.get(s.id)||'')===luFoldName(q));
+  if(exact.length) luState.filtered = [...exact, ...luState.filtered.filter(s=>!exact.includes(s))];
   luRenderResults();
   luOpenResults();
 }
@@ -2946,6 +3202,7 @@ function luRenderResults(){
       '<span class="lu-sci">'+luEsc(luNiceName(s.sciName))+'</span>'+
       (s.mainCommonName ? '<span class="lu-common">'+luEsc(s.mainCommonName)+'</span>' : '')+
       (dk ? '<span class="lu-common lu-dk">🇩🇰 '+luEsc(dk.name)+'</span>' : '')+
+      (luState.formerMatch && luState.formerMatch.has(s.id) ? '<span class="lu-common lu-was">formerly <i>'+luEsc(luState.formerMatch.get(s.id))+'</i></span>' : '')+
       '<span class="lu-fam">'+luEsc(s.family)+' · '+luEsc(s.genus)+'</span></span></div>';
   }).join('');
   if(luState.meta) html += '<div class="lu-foot">'+luEsc(luState.meta.source)+' — '+
@@ -3466,6 +3723,7 @@ function luDetailHTML(s, compact){
       '</dl>'+luCountriesFootnote(s)+'</section>'+
       '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+
     '</div>'+
+    luHistoryHTML(s)+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
 

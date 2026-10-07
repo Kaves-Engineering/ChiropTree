@@ -185,6 +185,11 @@ sub("""  luInput.placeholder = 'Search ' + tax._meta.speciesCount.toLocaleString
 sub("bundled('d-worldmap', 'data/world_map.json')",
     "bundled('d-worldmap', 'data/marine_world_map.json')")
 
+# The name history is built for bats only; null leaves every history path a
+# no-op (no tags, no card section, no extra search names).
+sub("const HISTORY_URL = 'data/chiroptera_name_history.json';",
+    "const HISTORY_URL = null;")
+
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
 
 print("applied %d replacements" % len(hits))
