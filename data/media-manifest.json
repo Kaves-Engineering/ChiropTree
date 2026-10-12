@@ -715,7 +715,19 @@
    "modified": true
   },
   "1004410": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004410-f04ddefa2d2e.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/384083345",
+   "providerAssetId": "703035696",
+   "attribution": "(c) Jasmine Vink, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Syconycteris carolinae",
+   "retrievedAt": "2026-10-12T10:42:17.574073+00:00",
+   "sourceHash": "6524ff92381597e613c09991208f039d20ffcb5c420dddffbe34d4fd6b53de44",
+   "outputHash": "f04ddefa2d2e66485719cff37bc75988f7384d3bd83a62c63cdfe1964de9ad2c",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004411": {
    "status": "unavailable"
@@ -1024,10 +1036,10 @@
    "path": "images/1004444-4a02319b1215.jpg",
    "sourceUrl": "https://www.inaturalist.org/observations/18422032",
    "providerAssetId": "28161237",
-   "attribution": "(c) matthewkwan, some rights reserved (CC BY-ND)",
-   "license": "CC-BY-ND",
+   "attribution": "(c) matthewkwan, some rights reserved (CC BY-NC-ND)",
+   "license": "CC-BY-NC-ND",
    "alt": "Acerodon jubatus",
-   "retrievedAt": "2026-09-04T09:14:56.123542+00:00",
+   "retrievedAt": "2026-10-12T10:58:31.195019+00:00",
    "sourceHash": "4a02319b121558d46b8f708a4072b4aee8b44a1a04b376e7f89d0543d0b49b3b",
    "outputHash": "4a02319b121558d46b8f708a4072b4aee8b44a1a04b376e7f89d0543d0b49b3b",
    "width": 240,
@@ -2547,7 +2559,19 @@
    "modified": true
   },
   "1004569": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004569-809e07f16dde.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74421",
+   "providerAssetId": "579183676",
+   "attribution": "(c) Jerrica Agebigo, sommige rechten voorbehouden (CC BY-NC), geüpload door Jerrica Agebigo",
+   "license": "CC-BY-NC",
+   "alt": "Hipposideros edwardshilli",
+   "retrievedAt": "2026-10-12T10:43:51.755224+00:00",
+   "sourceHash": "380497753e2a3633c06323db77acf34e6539d25bcd4dd3f1549b976e85f5e92d",
+   "outputHash": "809e07f16dde549399c49ae3a3fc23108f26a7399c6c92894e5bdedac03318f5",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004570": {
    "status": "unavailable"
@@ -10269,7 +10293,19 @@
    "modified": true
   },
   "1005207": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005207-ec586bf15c40.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1431065",
+   "providerAssetId": "6532480",
+   "attribution": "(c) Debbie Baker, some rights reserved (CC BY-NC), uploaded by Debbie Baker",
+   "license": "CC-BY-NC",
+   "alt": "Molossus verrilli",
+   "retrievedAt": "2026-10-12T10:48:42.574100+00:00",
+   "sourceHash": "1a38564de6cee1be3f2fce757f5fb7fa1b4421fcae6510cbc52b8ba84cc052bc",
+   "outputHash": "ec586bf15c403c09637185dcef63c0a6be30cfdc60fcef66cd8a930e20f17f7a",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005208": {
    "status": "available",
@@ -11058,7 +11094,19 @@
    "modified": true
   },
   "1005276": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005276-bbafbe85a976.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74730",
+   "providerAssetId": "715688400",
+   "attribution": "(c) Brian Oakes Haiti Hunter, some rights reserved (CC BY), uploaded by Brian Oakes Haiti Hunter",
+   "license": "CC-BY",
+   "alt": "Natalus major",
+   "retrievedAt": "2026-10-12T10:49:22.454892+00:00",
+   "sourceHash": "ec02d81a218037eca0b5c04ff5b52c80be3da66e0a8eaa5ebeccef0d1f838d03",
+   "outputHash": "bbafbe85a976119456e08491cbc13e616b1fa38985195d03c51a74eda9c999e4",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005277": {
    "status": "available",
