@@ -102,6 +102,93 @@ Published with GitHub Pages.
   The file loads after the taxonomy, so it never delays the first tree. The
   clone pages stamp `HISTORY_URL` to `null` and show none of this. Re-run the
   builder after updating the taxonomy to a new MDD release.
+- **`data/chiroptera_body_size.json`**: each bat species' forearm length and
+  body mass, from 15 sources. Built by **`data/size/build_size.py`** from one
+  CSV per source in `data/size/`. Each CSV is written by that source's
+  `data/size/import_<source>.py` from the source's own raw table, which is
+  cached in the gitignored `data/raw/size/` and pinned by SHA-256. The fetch
+  command is in each importer's docstring. `data/size/references.json` holds
+  one record per source: citation, DOI, licence, checksums, and an
+  independence group.
+
+  | Source | What it gives |
+  |---|---|
+  | ATLANTIC MAMMAL TRAITS (2018) | 23,010 individual bats, 98 species, Atlantic Forest |
+  | SONOZOTZ (2020) | 2,323 individual bats, 69 species, Mexico |
+  | Jennings et al. (2004), Table 2 | 300 bats, 14 West Indian taxa, mean ± SD |
+  | Clare & Simmons (2026), Lamanai field key v6 | forearm ranges for 49 species at Lamanai, Belize |
+  | EuroBaTrait 1.0 (2023) | population means, 40 European species |
+  | COMBINE (2021) | forearm and mass for most bats, with estimates marked |
+  | PanTHERIA (2009) | forearm and mass; masses from forearm marked as estimates |
+  | EltonTraits 1.0, Amniote database, PHYLACINE 1.2.1, AnAge, AnimalTraits | body mass |
+  | Collen (2012), Castro et al. (2024) | body mass, carried over from `data/calls/` |
+
+  The rules the builder applies:
+  - **Measured or estimated.** Every row says which it is. An estimate also
+    says how it was made: COMBINE's phylogenetic imputation, a parent
+    species' value copied after a split, PanTHERIA's mass from forearm,
+    PHYLACINE's isometric scaling, or EltonTraits' genus averages. The card
+    uses an estimate only when no measurement exists. It then shows it in a
+    dashed box with an "Estimate" badge, a "≈" and the method.
+  - **Copies count once.** The compilations copy each other: COMBINE took
+    most bat masses from the Amniote database, which took them from
+    PanTHERIA. Each row names its upstream source. When the upstream row
+    carries the same value (within 3%), the copy is folded into it and listed
+    as "also in". A value from a study cited inside a compilation, such as
+    EuroBaTrait's population studies, counts as that study.
+  - **Headline and range.** The headline value is the median over independent
+    sources. Each source's value is the n-weighted mean of its records. The
+    range is shown only where a source reports one: the central 95% of the
+    individuals for the individual-level datasets with 20 or more adults,
+    otherwise the reported minimum and maximum. No range is made up from
+    means.
+  - **Ranges without a mean.** A field key prints an identification range
+    ("F.A.=61-69"), not a mean. It is stored as `range_only`. It widens a
+    species' range, but its midpoint never enters the median while a real
+    mean exists. When a range is all a species has (*Artibeus intermedius*,
+    *Uroderma convexum*), the card shows the range itself, says no mean is
+    published, and uses the midpoint only to place the marker.
+  - **Individual-level data.** Only adults are used, and pregnant females are
+    left out of body mass. For SONOZOTZ, only identifications rated at least
+    90% certain are used.
+  - **Names** resolve with the call importers' policy. Two extra bridges,
+    both read from MDD and both only when they point at exactly one species,
+    cover the older databases: the CMW (2020) name, and a former combination
+    from the name history. A name split since the source used it (for
+    example *Pteronotus parnellii*) is never assigned to a species. It is
+    parked in `data/size/unresolved/` for review, with any other name that
+    does not resolve.
+  - **Flags.** The card warns when independent sources disagree by more than
+    30%. It also warns when every source predates a split of the species, so
+    its bats may include some now in the split-off species.
+
+  On the card, a **Size** section sits below Taxonomy and Call. It shows
+  forearm length first, then body mass. Each has a log-scale bar from the
+  smallest to the largest bat, the range as a band, and the share of bat
+  species that are smaller. Every record behind the value is listed with its
+  source, n, SD, area and upstream. The compare table gains Forearm and Body
+  mass rows (`SIZE_COMPARE_ROWS`). The file loads after the taxonomy. The
+  clone pages stamp `SIZE_URL` to `null`.
+
+  To rebuild after a new MDD release or a source update, run each importer,
+  then the builder:
+
+  ```
+  uv run data/size/import_combine.py
+  uv run data/size/import_pantheria.py
+  uv run data/size/import_eltontraits.py
+  uv run data/size/import_amniote.py
+  uv run data/size/import_phylacine.py
+  uv run data/size/import_anage.py
+  uv run data/size/import_animaltraits.py
+  uv run data/size/import_eurobatrait.py
+  uv run data/size/import_jennings_2004.py
+  uv run data/size/import_lamanai_key.py
+  uv run data/size/import_call_covariates.py
+  uv run --with rdata --with pandas data/size/import_atlantic.py
+  uv run --with openpyxl --with pandas data/size/import_sonozotz.py
+  uv run data/size/build_size.py
+  ```
 
 ## Comparing species
 
@@ -366,6 +453,9 @@ MDD publishes new releases periodically. To pick up a new one:
 
    `build_name_history.py` pins the same release in its own `RECORD` URL and
    file names; update those too.
+4. Re-run the body-size importers and `data/size/build_size.py` (see
+   `data/chiroptera_body_size.json` above), since names resolve against the
+   taxonomy and the name history.
 
 ## Running locally
 
@@ -510,6 +600,16 @@ Avian Checklist*, v2025b. https://doi.org/10.2173/avilist.v2025b), licensed
 CC BY 4.0. Danish bird names are from Dansk Ornitologisk Forening's
 Navnegruppen, *Navne på alverdens fugle*. Country presence for birds is derived
 from GBIF-mediated occurrence data.
+
+Bat body sizes come from the 15 sources listed in `data/size/references.json`,
+each cited on the card. The tables committed in `data/size/` are from CC0 or
+CC BY sources: COMBINE, EuroBaTrait (CC BY 4.0); PanTHERIA, EltonTraits,
+the Amniote database, PHYLACINE, SONOZOTZ, AnimalTraits (CC0); AnAge (CC BY
+3.0). ATLANTIC MAMMAL TRAITS states no copyright restrictions. Jennings et al.
+(2004), Collen (2012) and Castro et al. (2024) contribute factual
+measurements under the same terms as the call data. The Lamanai field key
+(Clare & Simmons 2026) is not openly published; only its printed forearm
+ranges are recorded. It was supplied by this project's owner, who vouches for it.
 
 Dinosaur taxonomy, ages, diets and fossil occurrences are from the
 Paleobiology Database (https://paleobiodb.org), licensed CC BY 4.0. Dinosaur

@@ -189,6 +189,31 @@ def validate_name_history(taxonomy: dict) -> None:
         assert all(0 <= i < refs for i in entry.get("cites", ())), f"name history: {name} cites a missing reference"
 
 
+def validate_body_size(taxonomy: dict) -> None:
+    """Every size record names a real species and source, every estimate is
+    marked as one, and no headline uses an estimate while a measurement exists."""
+    size = load("chiroptera_body_size.json")
+    species = {record["sciName"].replace("_", " ") for record in taxonomy["species"]}
+    refs = size["refs"]
+    strings = len(size["strings"])
+    assert set(size["species"]) <= species, "chiroptera_body_size.json: species not in the taxonomy"
+    for name, entry in size["species"].items():
+        assert set(entry) <= {"fa", "m"} and entry, f"body size: {name} has no traits"
+        for trait, head in entry.items():
+            records = head["r"]
+            assert records and head["v"] > 0 and head["k"] >= 1, f"body size: {name} {trait} empty"
+            measured = [r for r in records if "e" not in r]
+            assert bool(head.get("est")) == (not measured), f"body size: {name} {trait} estimate flag disagrees with its records"
+            if "lo" in head:
+                assert head["lo"] <= head["hi"], f"body size: {name} {trait} range reversed"
+            for r in records:
+                assert 0 <= r["s"] < len(refs) and refs[r["s"]][5] != "upstream", f"body size: {name} cites a missing source"
+                for key in ("e", "a", "u", "nm"):
+                    assert key not in r or 0 <= r[key] < strings, f"body size: {name} points at a missing string"
+                for i in [*r.get("al", ()), *([r["us"]] if "us" in r else ())]:
+                    assert 0 <= i < len(refs), f"body size: {name} cites a missing upstream"
+
+
 def validate_manifest() -> None:
     manifest = load("release.json")
     for name, expected in manifest["files"].items():
@@ -208,6 +233,7 @@ def main() -> None:
     marine_ids, _ = validate_taxonomy(marine, "marine mammals")
     validate_names("danish_names.json", bat_ids)
     validate_name_history(bats)
+    validate_body_size(bats)
     validate_names("marine_mammal_danish_names.json", marine_ids)
     birds = load("bird_taxonomy.json")
     bird_ids, _ = validate_taxonomy(birds, "birds")

@@ -190,6 +190,11 @@ sub("bundled('d-worldmap', 'data/world_map.json')",
 sub("const HISTORY_URL = 'data/chiroptera_name_history.json';",
     "const HISTORY_URL = null;")
 
+# body size is compiled for bats only (data/size/); null leaves the card
+# section and the compare rows out
+sub("const SIZE_URL = 'data/chiroptera_body_size.json';",
+    "const SIZE_URL = null;")
+
 open(DST, "w", encoding="utf-8", newline="\n").write(html)
 
 print("applied %d replacements" % len(hits))

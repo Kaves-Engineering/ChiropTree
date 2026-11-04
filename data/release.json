@@ -46,6 +46,10 @@
    "bytes": 1027,
    "sha256": "6235104b7d2545dcbdf82927c16d1db56106bd02f080801432ead4c31da5455e"
   },
+  "chiroptera_body_size.json": {
+   "bytes": 359957,
+   "sha256": "077724cd3eb25add3651f32d2a212a69589939874673b8bffc9da79ea1930435"
+  },
   "chiroptera_name_history.json": {
    "bytes": 713417,
    "sha256": "4d5ac10c0b372785cdc35a594f9e7acb3446bfc2a82f13f35b5e86060a57232a"

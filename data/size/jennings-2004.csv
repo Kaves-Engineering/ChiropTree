@@ -1,0 +1,33 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+jennings2004-1004850-pooled,1004850,M. blainvillii,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,9.4,,,,0.8,18,pooled,Puerto Rico,,1996,9.4 ± 0.8,"MDD spells the epithet blainvillei; an orthographic variant, not a different taxon"
+jennings2004-1004850-pooled,1004850,M. blainvillii,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,47.3,,,,3.2,18,pooled,Puerto Rico,,1996,47.3 ± 3.2,"MDD spells the epithet blainvillei; an orthographic variant, not a different taxon"
+jennings2004-1004853-pooled,1004853,P. davyi davyi,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,9.9,,,,0.8,7,pooled,Dominica,,1996,9.9 ± 0.8,
+jennings2004-1004853-pooled,1004853,P. davyi davyi,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,48.3,,,,1.5,7,pooled,Dominica,,1996,48.3 ± 1.5,
+jennings2004-1004863-pooled,1004863,P. parnellii portoricensis,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,11.3,,,,2.5,6,pooled,Puerto Rico,,1996,11.3 ± 2.5,P. parnellii portoricensis is now the full species Pteronotus portoricensis
+jennings2004-1004863-pooled,1004863,P. parnellii portoricensis,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,51.0,,,,0.9,6,pooled,Puerto Rico,,1996,51.0 ± 0.9,P. parnellii portoricensis is now the full species Pteronotus portoricensis
+jennings2004-1004866-pooled,1004866,P. quadridens fuliginosus,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,5.7,,,,0.7,16,pooled,Puerto Rico,,1996,5.7 ± 0.7,
+jennings2004-1004866-pooled,1004866,P. quadridens fuliginosus,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,38.6,,,,1.1,16,pooled,Puerto Rico,,1996,38.6 ± 1.1,
+jennings2004-1004883-pooled,1004883,B. cavernarum intermedia,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,46.0,,,,3.9,10,pooled,Puerto Rico,,1996,46.0 ± 3.9,
+jennings2004-1004883-pooled,1004883,B. cavernarum intermedia,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,66.3,,,,1.7,10,pooled,Puerto Rico,,1996,66.3 ± 1.7,
+jennings2004-1004885-pooled,1004885,E. bombifrons bombifrons,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,16.3,,,,2.6,17,pooled,Puerto Rico,,1996,16.3 ± 2.6,
+jennings2004-1004885-pooled,1004885,E. bombifrons bombifrons,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,48.2,,,,1.7,17,pooled,Puerto Rico,,1996,48.2 ± 1.7,
+jennings2004-1004911-pooled,1004911,G. longirostris rostrata,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,11.9,,,,1.1,51,pooled,St. Vincent,,1996,11.9 ± 1.1,
+jennings2004-1004911-pooled,1004911,G. longirostris rostrata,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,38.5,,,,1.0,51,pooled,St. Vincent,,1996,38.5 ± 1.0,
+jennings2004-1004917-female,1004917,M. plethodon luciae,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,14.6,,,,0.9,21,female,"Dominica, St. Vincent",,1996,14.6 ± 0.9,
+jennings2004-1004917-female,1004917,M. plethodon luciae,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,41.8,,,,1.1,21,female,"Dominica, St. Vincent",,1996,41.8 ± 1.1,
+jennings2004-1004917-male,1004917,M. plethodon luciae,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,16.7,,,,1.1,8,male,"Dominica, St. Vincent",,1996,16.7 ± 1.1,
+jennings2004-1004917-male,1004917,M. plethodon luciae,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,42.3,,,,0.6,8,male,"Dominica, St. Vincent",,1996,42.3 ± 0.6,
+jennings2004-1005011-pooled,1005011,A. jamaicensis jamaicensis,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,45.5,,,,4.9,17,pooled,"Puerto Rico, Dominica",,1996,45.5 ± 4.9,
+jennings2004-1005011-pooled,1005011,A. jamaicensis jamaicensis,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,61.6,,,,2.2,17,pooled,"Puerto Rico, Dominica",,1996,61.6 ± 2.2,
+jennings2004-1005018-female,1005018,A. jamaicensis schwartzi,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,62.6,,,,7.5,43,female,St. Vincent,,1996,62.6 ± 7.5,A. jamaicensis schwartzi is now the full species Artibeus schwartzi
+jennings2004-1005018-female,1005018,A. jamaicensis schwartzi,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,66.5,,,,1.9,43,female,St. Vincent,,1996,66.5 ± 1.9,A. jamaicensis schwartzi is now the full species Artibeus schwartzi
+jennings2004-1005018-male,1005018,A. jamaicensis schwartzi,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,57.8,,,,6.5,52,male,St. Vincent,,1996,57.8 ± 6.5,A. jamaicensis schwartzi is now the full species Artibeus schwartzi
+jennings2004-1005018-male,1005018,A. jamaicensis schwartzi,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,66.2,,,,1.6,52,male,St. Vincent,,1996,66.2 ± 1.6,A. jamaicensis schwartzi is now the full species Artibeus schwartzi
+jennings2004-1005054-pooled,1005054,S. rufum darioi,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,24.3,,,,3.4,4,pooled,Puerto Rico,,1996,24.3 ± 3.4,
+jennings2004-1005054-pooled,1005054,S. rufum darioi,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,49.0,,,,0.8,4,pooled,Puerto Rico,,1996,49.0 ± 0.8,
+jennings2004-1005071-pooled,1005071,S. lilium angeli,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,21.1,,,,0.9,11,pooled,Dominica,,1996,21.1 ± 0.9,S. lilium angeli is now the full species Sturnira angeli
+jennings2004-1005071-pooled,1005071,S. lilium angeli,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,44.3,,,,0.6,11,pooled,Dominica,,1996,44.3 ± 0.6,S. lilium angeli is now the full species Sturnira angeli
+jennings2004-1005090-pooled,1005090,S. lilium paulsoni,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,19.4,,,,2.7,11,pooled,St. Vincent,,1996,19.4 ± 2.7,S. lilium paulsoni is now the full species Sturnira paulsoni
+jennings2004-1005090-pooled,1005090,S. lilium paulsoni,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,42.7,,,,3.1,11,pooled,St. Vincent,,1996,42.7 ± 3.1,S. lilium paulsoni is now the full species Sturnira paulsoni
+jennings2004-1005279-pooled,1005279,N. stramineus stramineus,manual,jennings-2004,"Table 2, p. 81",body_mass,measured,,mean,6.3,,,,0.8,8,pooled,Dominica,,1996,6.3 ± 0.8,
+jennings2004-1005279-pooled,1005279,N. stramineus stramineus,manual,jennings-2004,"Table 2, p. 81",forearm_length,measured,,mean,41.3,,,,3.5,8,pooled,Dominica,,1996,41.3 ± 3.5,

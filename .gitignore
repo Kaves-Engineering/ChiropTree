@@ -39,5 +39,6 @@ data/calls/source_audit_*.md
 # check_expectations.py, report_regional_call_gaps.py and the importers
 data/calls/checks/
 data/calls/unresolved/
+data/size/unresolved/
 data/calls/regional_coverage_summary.csv
 data/calls/regional_missing_species.csv

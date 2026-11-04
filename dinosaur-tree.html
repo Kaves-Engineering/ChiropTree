@@ -501,6 +501,42 @@ footer a:hover{color:var(--ochre)}
 .lu-row .lu-was{color:var(--line-text)}
 .lu-row .lu-was i{font-family:var(--display)}
 
+/* body size: forearm first, mass second, each on a log scale of all bats */
+.lu-size{margin-top:20px}
+.lu-size-trait{padding:2px 0 14px}
+.lu-size-trait+.lu-size-trait{border-top:1px solid rgba(var(--border-rgb),.16);padding-top:14px}
+/* an estimate must never read as a measurement: dashed box, badge, hollow marker */
+.lu-size-trait.est{border:1px dashed var(--ochre);border-radius:3px;padding:10px 12px 12px;background:rgba(var(--border-rgb),.05)}
+.lu-size-trait.est+.lu-size-trait,.lu-size-trait+.lu-size-trait.est{margin-top:12px;border-top-style:dashed}
+.lu-size-head{margin:0 0 8px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.lu-size-label{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:6.5em}
+.lu-size-val{font-family:var(--display);font-size:1.375rem;color:var(--bone);font-variant-numeric:tabular-nums;line-height:1.1}
+.lu-size-trait.est .lu-size-val{color:var(--text)}
+.lu-size-range{font-family:var(--mono);font-size:0.75rem;color:var(--line-text);font-variant-numeric:tabular-nums}
+.lu-size-missing{font-size:0.8125rem;color:var(--muted);font-style:italic}
+.lu-size-scale{margin:0 0 8px}
+.lu-size-track{position:relative;display:block;height:6px;border-radius:3px;background:rgba(var(--border-rgb),.18);margin:8px 6px 5px}
+.lu-size-band{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--line);opacity:.55}
+.lu-size-dot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ochre);box-shadow:0 0 0 2px var(--prussian)}
+.lu-size-trait.est .lu-size-dot{background:var(--prussian);border:2px dashed var(--ochre);box-shadow:none}
+.lu-size-ends{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:0.625rem;color:var(--line-text)}
+.lu-size-ends>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lu-size-ends i{font-family:var(--display)}
+.lu-size-basis{margin:0 0 6px;font-size:0.78125rem;line-height:1.5;color:var(--muted)}
+.lu-size-basis a,.lu-size-recs a{color:var(--line)}
+.lu-size-recs>summary{cursor:pointer;font-size:0.78125rem;color:var(--line-text);padding:2px 0}
+.lu-size-recs ol{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.lu-size-recs li{display:grid;grid-template-columns:minmax(7.5em,auto) minmax(0,1fr);gap:2px 12px;font-size:0.78125rem;line-height:1.45;color:var(--text)}
+.lu-size-recs li.est{color:var(--muted)}
+.lu-size-who{font-family:var(--mono);font-size:0.6875rem;color:var(--line-text);padding-top:1px}
+.lu-size-how,.lu-size-note{display:block;font-size:0.71875rem;color:var(--muted)}
+.lu-size-how{color:var(--ochre)}
+.lu-size-recs .lu-inferred-badge{font-size:0.5625rem;padding:0 4px}
+@media (max-width:620px){
+  .lu-size-recs li{grid-template-columns:1fr;gap:0}
+  .lu-size-ends{font-size:0.5625rem}
+}
+
 /* structured call measurements */
 .lu-headline{margin:0 0 12px;font-size:0.84375rem;line-height:1.55;color:var(--text)}
 .lu-variant{margin:0 0 6px;background:rgba(var(--border-rgb),.07);border-left:2px solid var(--ochre);border-radius:0 3px 3px 0}
@@ -840,6 +876,11 @@ body.has-cmp{padding-bottom:84px}
 .cmp-legend i{display:inline-block;width:18px;height:8px;border-radius:4px;background:var(--ochre)}
 .cmp-legend i.inferred{background:transparent;border:1.5px dashed var(--ochre)}
 .cmp-legend i.peak{width:3px;height:12px;border-radius:2px;background:var(--bone)}
+.cmp-sz-dot{position:absolute;top:5px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--ochre);cursor:default}
+.cmp-sz-dot.inferred{background:transparent;border:1.5px dashed var(--ochre)}
+.cmp-sz-dot:hover,.cmp-sz-dot:focus-visible{outline:2px solid var(--bone);outline-offset:1px}
+.cmp-sz-val{position:absolute;top:3px;font-family:var(--mono);font-size:0.6875rem;line-height:16px;color:var(--text);white-space:nowrap;pointer-events:none}
+.cmp-legend i.dot{width:10px;height:10px;border-radius:50%}
 
 .cmp-scroll{overflow-x:auto;margin-top:14px;border:1px solid rgba(var(--border-rgb),.22);border-radius:2px}
 .cmp-table{border-collapse:separate;border-spacing:0;min-width:100%;font-size:0.8125rem}
@@ -2662,6 +2703,182 @@ document.addEventListener('click', e=>{
   if(btn) luSelectSpecies(btn.dataset.id, true);
 });
 
+/* =========================================================
+   BODY SIZE — forearm length first (the standard size measure for bats),
+   body mass second. Built by data/size/build_size.py from 15 sources; each
+   value is the median over independent sources of measured values, and a
+   value computed for a species nobody has measured is shown only when no
+   measurement exists, and always labelled as an estimate. Fetched after the
+   taxonomy, like the name history.
+   ========================================================= */
+const SIZE_URL = null;
+const SIZE_TRAITS = [
+  ['fa', 'Forearm', 'mm', 'forearm length'],
+  ['m', 'Body mass', 'g', 'body mass']
+];
+
+function luSizeOf(binomial){
+  return luState.size ? luState.size.species[binomial] || null : null;
+}
+function luSizeNum(v){ return Number(v).toLocaleString('en', {maximumFractionDigits:1}); }
+function luSizeVal(v, unit){ return luSizeNum(v)+' '+unit; }
+function luSizeRange(lo, hi, unit){ return luSizeNum(lo)+'–'+luSizeNum(hi)+' '+unit; }
+
+// position on a log axis running from the smallest to the largest bat
+function luSizePos(key, v){
+  const sc = luState.size.scale[key];
+  const lo = Math.log(sc.min), hi = Math.log(sc.max);
+  return Math.max(0, Math.min(100, (Math.log(v)-lo)/(hi-lo)*100));
+}
+// the share of bats with a value that are smaller than v
+function luSizeShare(key, v){
+  const all = luState.sizeSorted[key];
+  let a = 0, b = all.length;
+  while(a < b){ const m = (a+b)>>1; if(all[m] < v) a = m+1; else b = m; }
+  return {below: a, of: all.length};
+}
+
+function luSizeRef(i){
+  const [, short, citation, url] = luState.size.refs[i];
+  return url
+    ? '<a href="'+luEsc(url)+'" target="_blank" rel="noopener" title="'+luEsc(citation)+'">'+luEsc(short)+'</a>'
+    : '<span title="'+luEsc(citation)+'">'+luEsc(short)+'</span>';
+}
+function luSizeStr(i){ return i==null ? '' : luState.size.strings[i]; }
+
+function luSizeRecordHTML(r, unit){
+  const RANGE_LABEL = {c95:'central 95% ', key:'field-key range ', mm:'range '};
+  const parts = r.ro
+    ? ['<span class="lu-val">'+RANGE_LABEL[r.rt]+luSizeRange(r.lo, r.hi, unit)+'</span>']
+    : ['<span class="lu-val">'+luSizeVal(r.v, unit)+'</span>'];
+  if(r.lo!=null && !r.ro) parts.push(RANGE_LABEL[r.rt]+luSizeRange(r.lo, r.hi, unit));
+  if(r.sd!=null) parts.push('SD '+luSizeNum(r.sd));
+  if(r.n!=null) parts.push('<span class="lu-n">n '+r.n.toLocaleString('en')+'</span>');
+  if(r.x) parts.push(r.x==='m' ? 'males' : 'females');
+  if(r.a!=null) parts.push(luEsc(luSizeStr(r.a)));
+  const notes = [];
+  if(r.us!=null) notes.push('from '+luSizeRef(r.us));
+  else if(r.u!=null) notes.push('from '+luEsc(luSizeStr(r.u)));
+  if(r.al) notes.push('also in '+r.al.map(luSizeRef).join(', '));
+  if(r.nm!=null) notes.push('listed as <i>'+luEsc(luSizeStr(r.nm))+'</i>');
+  if(r.pre) notes.push('predates a split of this species');
+  return '<li'+(r.e!=null ? ' class="est"' : '')+'><span class="lu-size-who">'+luSizeRef(r.s)+'</span>'+
+    '<span class="lu-size-what">'+
+      (r.e!=null ? '<span class="lu-inferred-badge">Estimate</span> ' : '')+parts.join(' · ')+
+      (r.e!=null ? '<span class="lu-size-how">'+luEsc(luSizeStr(r.e))+'</span>' : '')+
+      (notes.length ? '<span class="lu-size-note">'+notes.join(' · ')+'</span>' : '')+
+    '</span></li>';
+}
+
+function luSizeTraitHTML(key, label, unit, noun, h){
+  const est = !!h.est;
+  const sc = luState.size.scale[key];
+  const pos = luSizePos(key, h.v);
+  const band = h.lo!=null
+    ? '<span class="lu-size-band" style="left:'+luSizePos(key, h.lo)+'%;width:'+Math.max(.8, luSizePos(key, h.hi)-luSizePos(key, h.lo))+'%"></span>'
+    : '';
+  const share = luSizeShare(key, h.v);
+  const pct = Math.round(share.below/share.of*100);
+  const aria = label+' '+(h.ro ? 'range '+luSizeRange(h.lo, h.hi, unit) : (est ? 'estimated at ' : '')+luSizeVal(h.v, unit)+
+    (h.lo!=null ? ', range '+luSizeRange(h.lo, h.hi, unit) : ''))+
+    ', on a scale from '+luSizeVal(sc.min, unit)+' ('+sc.minSp+') to '+luSizeVal(sc.max, unit)+' ('+sc.maxSp+')';
+  const scale = '<div class="lu-size-scale" role="img" aria-label="'+luEsc(aria)+'">'+
+      '<span class="lu-size-track">'+band+'<span class="lu-size-dot" style="left:'+pos+'%"></span></span>'+
+      '<span class="lu-size-ends" aria-hidden="true"><span>'+luSizeVal(sc.min, unit)+' <i>'+luEsc(sc.minSp)+'</i></span>'+
+      '<span><i>'+luEsc(sc.maxSp)+'</i> '+luSizeVal(sc.max, unit)+'</span></span>'+
+    '</div>';
+  let basis;
+  if(est){
+    basis = 'No measurement of this species in any of the sources. '+
+      (h.k > 1 ? 'Median of '+h.k+' independent estimates.' : 'One estimate.');
+  } else if(h.ro){
+    basis = 'Only a range is published for this species: the identification range in '+h.rs.map(luSizeRef).join(', ')+
+      ', not a mean. The marker sits at its midpoint.';
+  } else {
+    basis = h.k > 1 ? 'Median of '+h.k+' independent sources.' : 'One source.';
+    if(h.lo!=null) basis += ' Range from '+h.rs.map(luSizeRef).join(', ')+'.';
+  }
+  const comparison = (h.ro ? 'Its midpoint is ' : '')+(key==='fa' ? (h.ro ? 'longer than ' : 'Longer forearm than ') : 'Heavier than ')+pct+'% of the '+
+    share.of.toLocaleString('en')+' bat species with a '+noun+'.';
+  const warn = [];
+  if(est) warn.push('An estimate is computed, not measured: it comes from relatives or a model, and can be well off for this species.');
+  if(h.spread) warn.push('Sources disagree by more than 30%. See the records below.');
+  if(h.pre) warn.push('Every source predates the split of '+h.pre.map(sp=>luHistSpecies(sp)).join(', ')+
+    ' from this species, so its bats may include some now in '+(h.pre.length > 1 ? 'those species' : 'that species')+'.');
+  const estMethods = est ? [...new Set(h.r.filter(r=>r.e!=null).map(r=>luSizeStr(r.e)))] : [];
+  return '<div class="lu-size-trait'+(est ? ' est' : '')+'">'+
+    '<p class="lu-size-head"><span class="lu-size-label">'+label+'</span>'+
+      '<span class="lu-size-val">'+(h.ro ? luSizeRange(h.lo, h.hi, unit) : (est ? '≈ ' : '')+luSizeVal(h.v, unit))+'</span>'+
+      (est ? '<span class="lu-inferred-badge">Estimate</span>' : '')+
+      (h.lo!=null && !h.ro ? '<span class="lu-size-range">'+luSizeRange(h.lo, h.hi, unit)+'</span>' : '')+'</p>'+
+    scale+
+    '<p class="lu-size-basis">'+basis+' '+comparison+'</p>'+
+    (estMethods.length ? '<p class="lu-inferred-why"><strong>How it was estimated:</strong> '+estMethods.map(luEsc).join('; ')+'</p>' : '')+
+    (warn.length ? '<ul class="lu-inferred-warn">'+warn.map(w=>'<li>'+w+'</li>').join('')+'</ul>' : '')+
+    '<details class="lu-size-recs"><summary>'+h.r.length+' record'+(h.r.length===1 ? '' : 's')+'</summary>'+
+      '<ol>'+h.r.map(r=>luSizeRecordHTML(r, unit)).join('')+'</ol></details>'+
+  '</div>';
+}
+
+function luSizeHTML(s){
+  if(!SIZE_URL || luState.sizeError) return '';
+  const bin = luNiceName(s.sciName);
+  const open = '<section class="lu-section lu-size" data-sci="'+luEsc(bin)+'"><h4>Size</h4>';
+  if(!luState.size) return open+'<p class="lu-note">Loading size data…</p></section>';
+  const e = luSizeOf(bin);
+  const sources = luState.size.refs.filter(r=>r[5]!=='upstream').length;
+  const foot = '<p class="lu-src">Adults. Forearm length is the standard size measure for bats; mass shifts with season, fat and pregnancy. '+
+    'Scales are logarithmic, smallest to largest bat. A database that copies another counts once.</p>';
+  if(!e) return open+'<p class="lu-note">None of the '+sources+' size sources has a forearm length or body mass for this species yet. '+
+    'Most such species were described or split recently.</p>'+foot+'</section>';
+  const traits = SIZE_TRAITS.map(([key, label, unit, noun])=>e[key]
+    ? luSizeTraitHTML(key, label, unit, noun, e[key])
+    : '<div class="lu-size-trait none"><p class="lu-size-head"><span class="lu-size-label">'+label+'</span>'+
+        '<span class="lu-size-missing">no value in any source</span></p></div>').join('');
+  return open+traits+foot+'</section>';
+}
+
+function luLoadSize(){
+  if(!SIZE_URL || luState.size || luState.sizeLoading) return;
+  luState.sizeLoading = true;
+  const refresh = ()=>document.querySelectorAll('.lu-size[data-sci]').forEach(section=>{
+    const s = luState.byName[section.dataset.sci.toLowerCase()];
+    section.outerHTML = s ? luSizeHTML(s) : '';
+  });
+  bundled('d-size', SIZE_URL).then(data=>{
+    const sorted = {fa:[], m:[]};
+    Object.values(data.species).forEach(e=>SIZE_TRAITS.forEach(([key])=>{ if(e[key]) sorted[key].push(e[key].v); }));
+    sorted.fa.sort((a,b)=>a-b); sorted.m.sort((a,b)=>a-b);
+    luState.sizeSorted = sorted;
+    luState.size = data;
+    refresh();
+    if(cmpDialog.open) cmpRenderDialog();
+  }).catch(err=>{
+    luState.sizeError = err.message;
+    refresh();
+  });
+}
+
+// compare table: forearm, then mass; empty (so left out) on pages without size data
+function cmpSizeCell(key, unit){
+  return s=>{
+    const h = (luSizeOf(luNiceName(s.sciName))||{})[key];
+    if(h.ro) return luEsc(luSizeRange(h.lo, h.hi, unit))+'<span class="cmp-n">range only, no mean</span>';
+    return (h.est ? '≈ ' : '')+luEsc(luSizeVal(h.v, unit))+(h.est ? ' <span class="lu-inferred-badge">Estimate</span>' : '')+
+      (h.lo!=null ? '<span class="cmp-n">'+luSizeRange(h.lo, h.hi, unit)+'</span>' : '');
+  };
+}
+function cmpSizeKey(key){
+  return s=>{
+    const h = (luSizeOf(luNiceName(s.sciName))||{})[key];
+    return h ? h.v+(h.est ? 'e' : '') : '';
+  };
+}
+const SIZE_COMPARE_ROWS = [
+  ['Forearm', cmpSizeCell('fa', 'mm'), cmpSizeKey('fa')],
+  ['Body mass', cmpSizeCell('m', 'g'), cmpSizeKey('m')]
+];
+
 Promise.all([
   bundled('d-taxonomy', 'data/dinosaur_taxonomy.json'),
   bundled('d-images', 'data/dinosaur_images.json')
@@ -2683,6 +2900,7 @@ Promise.all([
   updateOfflineStatus();
   cmpReady();
   luLoadHistory();
+  luLoadSize();
 }).catch(err=>{
   luState.error = err.message;
 });
@@ -3858,6 +4076,7 @@ function luDetailHTML(s, compact){
       '</dl>'+(s.occurrences ? '<p class="lu-src">'+s.occurrences+' PBDB occurrence record'+(s.occurrences===1?'':'s')+'; countries are where fossils identified to this species were dug up, on today’s map</p>' : '')+
       dinoSpeciesTimescale(s)+'</section>'+
     '</div>'+
+    luSizeHTML(s)+
     luHistoryHTML(s)+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
@@ -4054,6 +4273,76 @@ function compareChartHTML(list){
   return '<section class="cmp-chart" aria-label="Time scale">'+html.replace('<details class="ts"', '<details class="ts" open')+'</section>';
 }
 
+/* Forearm and body mass charts, drawn like the call frequency chart: one row
+   per species, a bar over the reported range, a tick at the value. Estimates
+   are outlines, as inferred calls are. The axis fits the compared species;
+   it turns logarithmic when the largest value is over 8x the smallest. */
+function sizeAxis(lo, hi){
+  if(hi/lo > 8){
+    const a = Math.log(lo), b = Math.log(hi);
+    const ticks = [];
+    for(let p = Math.floor(Math.log10(lo)); p <= Math.ceil(Math.log10(hi)); p++)
+      [1,2,5].forEach(m=>{ const v = m*Math.pow(10,p); if(v >= lo && v <= hi) ticks.push(v); });
+    return {pos:v=>Math.round((Math.log(v)-a)/(b-a)*10000)/100, ticks, log:true};
+  }
+  const span = hi-lo, raw = span/5;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1,2,5,10].map(m=>m*mag).find(s=>s >= raw);
+  const min = Math.max(0, Math.floor(lo/step)*step), max = Math.ceil(hi/step)*step;
+  const ticks = [];
+  for(let v=min; v<=max+step/2; v+=step) ticks.push(Math.round(v*1000)/1000);
+  return {pos:v=>Math.round((v-min)/(max-min)*10000)/100, ticks, log:false};
+}
+
+function sizeCompareChartHTML(list){
+  if(!SIZE_URL || !luState.size) return '';
+  return SIZE_TRAITS.map(([key, label, unit])=>{
+    const heads = list.map(s=>(luSizeOf(luNiceName(s.sciName))||{})[key] || null);
+    if(heads.filter(Boolean).length < 2) return '';
+    const lows = heads.filter(Boolean).map(h=>h.lo!=null ? h.lo : h.v);
+    const highs = heads.filter(Boolean).map(h=>h.hi!=null ? h.hi : h.v);
+    let lo = Math.min(...lows), hi = Math.max(...highs);
+    // breathing room so a bar never sits on the axis ends
+    const pad = hi/lo > 8 ? 1.25 : 1;
+    lo = lo/pad; hi = hi*pad;
+    if(hi-lo < 1e-9){ lo *= .9; hi *= 1.1; }
+    const ax = sizeAxis(lo, hi);
+    const grid = ax.ticks.map(v=>'<span class="cmp-fq-grid" style="left:'+ax.pos(v)+'%"></span>').join('');
+    const rows = list.map((s,i)=>{
+      const h = heads[i], bin = luNiceName(s.sciName);
+      let track;
+      if(!h){
+        track = '<span class="cmp-fq-none">No '+label.toLowerCase()+' in any source</span>';
+      } else {
+        const text = bin+': '+(h.ro ? 'range '+luSizeRange(h.lo, h.hi, unit)+', no mean published'
+          : (h.est ? 'estimated ' : '')+luSizeVal(h.v, unit)+(h.lo!=null ? ', range '+luSizeRange(h.lo, h.hi, unit) : ''));
+        const bar = h.lo!=null
+          ? '<span class="cmp-fq-bar'+(h.est ? ' inferred' : '')+'" style="left:'+ax.pos(h.lo)+'%;width:'+(ax.pos(h.hi)-ax.pos(h.lo))+
+            '%" role="img" tabindex="0" aria-label="'+luEsc(text)+'" title="'+luEsc(text)+'"></span>'
+          : '<span class="cmp-sz-dot'+(h.est ? ' inferred' : '')+'" style="left:'+ax.pos(h.v)+'%" role="img" tabindex="0" aria-label="'+
+            luEsc(text)+'" title="'+luEsc(text)+'"></span>';
+        track = grid+bar+(h.lo!=null && !h.ro ? '<span class="cmp-fq-peak" style="left:'+ax.pos(h.v)+'%"></span>' : '')+
+          '<span class="cmp-sz-val" style="'+(ax.pos(h.hi!=null ? h.hi : h.v) > 78 ? 'right:'+(100-ax.pos(h.lo!=null ? h.lo : h.v))+'%;margin-right:10px' : 'left:'+ax.pos(h.hi!=null ? h.hi : h.v)+'%;margin-left:10px')+'">'+
+          (h.ro ? luSizeNum(h.lo)+'–'+luSizeNum(h.hi) : (h.est ? '≈' : '')+luSizeNum(h.v))+'</span>';
+      }
+      return '<div class="cmp-fq-name" title="'+luEsc(bin)+'">'+luEsc(bin)+'</div><div class="cmp-fq-track">'+track+'</div>';
+    }).join('');
+    const axis = ax.ticks.map((v,i)=>'<span class="cmp-fq-tick" style="left:'+ax.pos(v)+'%">'+luSizeNum(v)+
+      (i===ax.ticks.length-1 ? ' '+unit : '')+'</span>').join('');
+    const anyEst = heads.some(h=>h && h.est), anyRange = heads.some(h=>h && h.lo!=null), anyPoint = heads.some(h=>h && h.lo==null);
+    return '<section class="cmp-chart" aria-label="'+luEsc(label)+' compared">'+
+      '<h3>'+luEsc(label)+'</h3>'+
+      '<p class="cmp-chart-sub">'+(key==='fa' ? 'Adult forearm length' : 'Adult body mass')+' of each species on one '+
+        (ax.log ? 'logarithmic ' : '')+'axis. Bars span the range a source reports; a dot is a value with no reported range.</p>'+
+      '<div class="cmp-fq">'+rows+'<div class="cmp-fq-axis" aria-hidden="true">'+axis+'</div></div>'+
+      '<p class="cmp-legend">'+
+        (anyRange ? '<span><i></i>Measured range</span><span><i class="peak"></i>Value</span>' : '')+
+        (anyPoint ? '<span><i class="dot"></i>Value, no range reported</span>' : '')+
+        (anyEst ? '<span><i class="inferred"></i>Estimate, no measurement exists</span>' : '')+'</p>'+
+    '</section>';
+  }).join('');
+}
+
 function cmpRenderDialog(){
   const list = cmpList.map(cmpSpecies).filter(Boolean);
   const n = list.length;
@@ -4096,6 +4385,7 @@ function cmpRenderDialog(){
       s=>k==='genus' ? '<em>'+luEsc(cmpVal(s[k]))+'</em>' : luEsc(cmpVal(s[k])), s=>cmpVal(s[k])]),
     ['Named by', s=>luEsc((cmpVal(s.authoritySpeciesAuthor)+' '+cmpVal(s.authoritySpeciesYear)).trim()),
                  s=>(cmpVal(s.authoritySpeciesAuthor)+' '+cmpVal(s.authoritySpeciesYear)).trim()],
+    ...SIZE_COMPARE_ROWS,
     ...COMPARE_ROWS
   ];
   const body = rows.map(([label, cell, key])=>{
@@ -4115,7 +4405,7 @@ function cmpRenderDialog(){
     '</th>';
   }).join('');
 
-  cmpBody.innerHTML = summary + compareChartHTML(list) +
+  cmpBody.innerHTML = summary + compareChartHTML(list) + sizeCompareChartHTML(list) +
     '<div class="cmp-scroll"><table class="cmp-table'+(cmpOnlyDiff.checked ? ' only-diff' : '')+'">'+
       '<thead><tr><th scope="col"><span class="sr-only">Field</span></th>'+head+'</tr></thead>'+
       '<tbody>'+body+'</tbody></table></div>';
