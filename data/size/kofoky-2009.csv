@@ -1,0 +1,6 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+kofoky-2009-1004812-1,1004812,Emballonura tiavato,manual,kofoky-2009,"Table 1, FA column",forearm_length,measured,,mean,38,,,,0.66,6,pooled,Madagascar,,2009,38.0 ± 0.66,Emballonura tiavato is now Paremballonura tiavato (MDD).
+kofoky-2009-1005113-1,1005113,M. gleni,manual,kofoky-2009,"Table 1, FA column",forearm_length,measured,,mean,47.6,,,,1.1,7,pooled,Madagascar,,2009,47.6 ± 1.10,
+kofoky-2009-1005690-1,1005690,S. marovaza,manual,kofoky-2009,"Table 1, FA column",forearm_length,measured,,mean,43.5,,,,1.33,9,pooled,Madagascar,,2009,43.5 ± 1.33,
+kofoky-2009-1005696-1,1005696,S. tandrefana,manual,kofoky-2009,"Table 1, FA column",forearm_length,measured,,single,46.2,,,,,1,pooled,Madagascar,,2009,46.2 ± 0.00,One bat.
+kofoky-2009-1005733-1,1005733,Neoromicia malagasyensis,manual,kofoky-2009,"Table 1, FA column",forearm_length,measured,,mean,30.7,,,,1.15,6,pooled,Madagascar,,2009,30.7 ± 1.15,Neoromicia malagasyensis is now Laephotis malagasyensis (MDD).

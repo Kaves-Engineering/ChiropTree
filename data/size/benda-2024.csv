@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+benda-2024-1006850-1,1006850,R. cervenyi sp. n.,manual,benda-2024,"Diagnosis, p. 250; Plazi treatment 03B6EE58FFAC4F7DFC861F8EA30AFC4F",forearm_length,measured,,range_only,52,48,56,min_max,,,pooled,Lesotho and South Africa,,2024,Forearm length 48–56 mm,

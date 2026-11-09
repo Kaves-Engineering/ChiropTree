@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+novaes-2022-1005367-1,1005367,Myotis atacamensis,exact,novaes-2022,"Diagnosis, p. 2; Plazi treatment 646A3D65FFC4FF8B7C94685BB44EAB56",forearm_length,measured,,range_only,32.35,30.6,34.1,min_max,,,pooled,"Atacama, Chile and Peru",,2022,FA 30.6–34.1 mm,

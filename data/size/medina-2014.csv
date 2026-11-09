@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+medina-2014-1005177-1,1005177,Eumops chiribaya sp. nov.,manual,medina-2014,"Holotype, p. 27; Plazi treatment AB148783FFFA3B3EFF43A10CFE85FD81",forearm_length,measured,,single,61.1,,,,,1,female,"Moquegua, Peru",,2014,forearm length 61.1,"The holotype, the only specimen then known."

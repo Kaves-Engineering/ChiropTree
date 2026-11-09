@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+csorba-2011-1005598-1,1005598,G. bucephalus n. sp.,manual,csorba-2011,"Table 1, p. 42; Plazi treatment 03B7D66B3A3AA1439FD2F9AC6629F91A",forearm_length,measured,,mean,34.1,32.1,35.7,min_max,0.99,14,pooled,Indochina,,2011,FA 32.1–35.7 (14) 34.1 ± 0.99,

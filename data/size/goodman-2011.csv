@@ -1,0 +1,3 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+goodman-2011-1005108-1,1005108,M. egeri,manual,goodman-2011,"Table 5, 'Across range' row",forearm_length,measured,,mean,38.5,37,40,min_max,0.73,15,pooled,eastern Madagascar,,2011,"38.5 ± 0.73, 37–40, n=15",
+goodman-2011-1005132-1,1005132,M. petersoni,manual,goodman-2011,"Table 5, 'Southeastern Madagascar' row",forearm_length,measured,,mean,40,39,41,min_max,0.7,14,pooled,southeastern Madagascar,,2011,"40.0 ± 0.70, 39–41, n=14",

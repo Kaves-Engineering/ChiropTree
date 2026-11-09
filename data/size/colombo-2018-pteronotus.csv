@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+colombo-2018-pteronotus-1004852-1,1004852,Pteronotus alitonus,exact,colombo-2018-pteronotus,"Morphological description, p. 630; Plazi treatment 46341E41E13EE51BFC495ED1FE4FC1FD",forearm_length,measured,,range_only,61.65,58.8,64.5,min_max,,,pooled,Amazonia,,2018,the FL varies from 58.8 to 64.5 mm,Range from the type series and López-Baucells et al. (2017).
