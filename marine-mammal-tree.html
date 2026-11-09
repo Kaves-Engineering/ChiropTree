@@ -151,6 +151,13 @@ try {
 }
 /* ===== /PALETTE ==================================================== */
 
+/* Call plot series colours. Three hues plus a neutral, checked for colour-blind
+   separation (all pairs) and 3:1 contrast against --canvas in each theme; every
+   family also has its own marker shape, so colour is never the only cue. Kept
+   outside the palette region: only the bat page draws the plot. */
+:root{--plot-1:#3f8ee0;--plot-2:#d9701f;--plot-3:#d0548a;--plot-other:#9fb38d}
+:root[data-theme="light"]{--plot-1:#1f66c2;--plot-2:#c4560f;--plot-3:#b03a86;--plot-other:#6f8068}
+
 *{box-sizing:border-box}
 
 /* Visible to a screen reader, absent from the layout. Used for the headings
@@ -761,6 +768,142 @@ footer a:hover{color:var(--ochre)}
   background:transparent;border:0;color:var(--muted);padding:5px;border-radius:0;cursor:pointer;transition:.15s;
 }
 .tree-tools button:hover{color:var(--ochre)}
+
+/* ---------- tree / call plot switch ---------- */
+/* these set their own display, which would otherwise beat the hidden attribute */
+.view-switch[hidden],.plotbox[hidden],#plot-svg[hidden],.plot-tip[hidden],.plot-slot[hidden],.mobile-workspace button[hidden]{display:none}
+.view-switch{display:inline-flex;margin:0 0 10px;border:1px solid rgba(var(--border-rgb),.3)}
+.view-switch button{
+  min-height:38px;padding:0 16px;background:transparent;border:0;color:var(--muted);cursor:pointer;
+  font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .15s,background-color .15s;
+}
+.view-switch button+button{border-left:1px solid rgba(var(--border-rgb),.3)}
+.view-switch button[aria-pressed="true"]{color:var(--ochre);background:rgba(var(--ochre-rgb),.1)}
+@media (hover:hover){.view-switch button:hover{color:var(--ochre)}}
+.view-switch button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+/* The tree keeps its width while the plot is up, so a search or "Show in
+   tree" can open a branch in the background and lay it out correctly. */
+#tree-section{position:relative}
+#tree-section.show-plot .treebox{position:absolute;left:0;right:0;height:0;overflow:hidden;visibility:hidden;border:0}
+#tree-section.show-plot .tree-mobile-hint{display:none}
+
+/* ---------- call plot ---------- */
+.plotbox{
+  border:1px solid rgba(var(--border-rgb),.22);background:var(--canvas);border-radius:3px;
+  padding:14px 16px 12px;display:grid;gap:12px;min-width:0;
+}
+.plot-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.plot-title{margin:0;font-family:var(--display);font-weight:500;font-size:1.125rem;color:var(--bone);line-height:1.25;text-wrap:balance}
+.plot-sub{margin:0;font:0.75rem/1.4 var(--mono);color:var(--muted);letter-spacing:.02em}
+.plot-opts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-left:auto}
+.plot-check{display:inline-flex;align-items:center;gap:7px;min-height:36px;font-size:.875rem;color:var(--text);cursor:pointer}
+.plot-check input{width:16px;height:16px;margin:0;accent-color:var(--ochre)}
+.plot-seg{display:inline-flex;border:1px solid rgba(var(--border-rgb),.3)}
+.plot-seg button{min-height:34px;padding:0 11px;background:transparent;border:0;color:var(--muted);cursor:pointer;font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.plot-seg button+button{border-left:1px solid rgba(var(--border-rgb),.3)}
+.plot-seg button[aria-pressed="true"]{color:var(--ochre);background:rgba(var(--ochre-rgb),.1)}
+.plot-seg button:focus-visible,.plot-link:focus-visible,.plot-row-btn:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+
+.plot-fams{border-top:1px solid rgba(var(--border-rgb),.18);padding-top:8px}
+.plot-fams>summary,.plot-more>summary{
+  cursor:pointer;min-height:32px;display:flex;align-items:center;gap:8px;
+  font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line-text);
+}
+.plot-fams>summary::-webkit-details-marker,.plot-more>summary::-webkit-details-marker{display:none}
+.plot-fams>summary::before,.plot-more>summary::before{content:"";width:6px;height:6px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(-45deg);transition:transform .15s}
+.plot-fams[open]>summary::before,.plot-more[open]>summary::before{transform:rotate(45deg)}
+.plot-fams>summary:focus-visible,.plot-more>summary:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.plot-fam-actions{display:flex;gap:6px 14px;margin:4px 0 8px}
+.plot-link{background:none;border:0;padding:6px 2px;min-height:32px;color:var(--ochre);font:inherit;font-size:.8125rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.plot-fam-list{display:grid;gap:8px}
+.plot-fam-grp{display:grid;grid-template-columns:13.5em minmax(0,1fr);gap:6px 12px;align-items:start}
+.plot-fam-grp>span{font-size:.8125rem;color:var(--muted);padding-top:7px}
+.plot-chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.plot-fam{
+  position:relative;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:3px 11px 3px 9px;
+  border:1px solid rgba(var(--border-rgb),.3);border-radius:999px;cursor:pointer;font-size:.8125rem;color:var(--muted);
+  transition:background-color .15s,border-color .15s,color .15s;
+}
+.plot-fam input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.plot-fam .box{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--line-dim);display:grid;place-items:center;flex:none}
+.plot-fam .box svg{opacity:0}
+.plot-fam:has(input:checked){background:var(--prussian);border-color:var(--line-dim);color:var(--bone)}
+.plot-fam:has(input:checked) .box{background:var(--ochre);border-color:var(--ochre)}
+.plot-fam:has(input:checked) .box svg{opacity:1}
+.plot-fam:has(input:focus-visible){outline:2px solid var(--ochre);outline-offset:2px}
+@media (hover:hover){.plot-fam:hover{border-color:var(--muted)}}
+.plot-fam svg{flex:none}
+.plot-cnt{font:0.6875rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+
+.plot-chart{position:relative;min-width:0;touch-action:pan-y}
+#plot-svg{display:block;width:100%;height:auto;overflow:visible}
+#plot-svg:focus{outline:none}
+#plot-svg:focus-visible{outline:2px solid var(--ochre);outline-offset:4px}
+.pl-grid{stroke:rgba(var(--border-rgb),.16);stroke-width:1}
+.pl-axis{stroke:var(--line-dim);stroke-width:1}
+.pl-tick{font:11.5px var(--mono);fill:var(--muted);font-variant-numeric:tabular-nums}
+.pl-title{font:12.5px var(--body);fill:var(--text)}
+.pl-note{font:13px var(--body);fill:var(--muted)}
+.pg0{--c:var(--plot-1)} .pg1{--c:var(--plot-2)} .pg2{--c:var(--plot-3)} .pg3{--c:var(--plot-other)}
+.pl-pt{stroke-linejoin:round}
+.pl-pt.fill{fill:var(--c);stroke:var(--canvas);stroke-width:1.5}
+.pl-pt.hollow{fill:none;stroke:var(--c);stroke-width:1.5}
+.pl-pt.line{fill:none;stroke:var(--c);stroke-width:1.8;stroke-linecap:round}
+.pl-rng{fill:none;stroke:var(--c);stroke-width:2;stroke-linecap:round}
+.pl-span{stroke:var(--c);stroke-width:1.5;opacity:.32;stroke-linecap:round}
+.pl-dim{opacity:.13}
+.pl-ring{fill:none;stroke:var(--ochre);stroke-width:2}
+.pl-ring.hover{stroke:var(--bone);stroke-width:1.5}
+.plot-tip{
+  position:absolute;z-index:4;pointer-events:none;width:max-content;max-width:min(300px,78vw);
+  background:var(--panel);color:var(--text);border:1px solid rgba(var(--border-rgb),.3);border-radius:3px;
+  box-shadow:var(--shadow);padding:9px 12px;font-size:.8125rem;line-height:1.45;
+}
+.plot-tip .t-sci{font-family:var(--display);font-style:italic;font-size:1rem;color:var(--bone);line-height:1.2}
+.plot-tip .t-com{color:var(--muted);margin-bottom:5px}
+.plot-tip dl{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;margin:0}
+.plot-tip dt{color:var(--muted)}
+.plot-tip dd{margin:0;font-variant-numeric:tabular-nums}
+.plot-tip .t-src{margin-top:5px;color:var(--muted);font-size:.75rem}
+.plot-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;font-size:.8125rem;color:var(--muted)}
+.plot-foot p{margin:0;max-width:72ch}
+.plot-foot output{font-variant-numeric:tabular-nums}
+.plot-more{border-top:1px solid rgba(var(--border-rgb),.18);padding-top:6px}
+.plot-notes{margin:6px 0 4px;padding-left:1.1em;display:grid;gap:6px;font-size:.875rem;max-width:72ch}
+.plot-notes+p{margin:0;font-size:.8125rem;color:var(--muted);max-width:72ch}
+.plot-table-wrap{max-height:420px;overflow:auto;border:1px solid rgba(var(--border-rgb),.2);margin-top:6px}
+.plot-table{border-collapse:collapse;width:100%;font-size:.8125rem}
+.plot-table th,.plot-table td{text-align:left;padding:5px 10px;border-bottom:1px solid rgba(var(--border-rgb),.14);white-space:nowrap}
+.plot-table th{position:sticky;top:0;background:var(--prussian);color:var(--muted);font-weight:600}
+.plot-table .r{text-align:right;font-variant-numeric:tabular-nums}
+.plot-row-btn{background:none;border:0;padding:4px 0;color:var(--bone);font:italic .875rem var(--display);cursor:pointer;text-align:left}
+@media (hover:hover){.plot-row-btn:hover{color:var(--ochre)}}
+.plot-loading{margin:0;padding:40px 8px;text-align:center;color:var(--muted);font-size:.875rem}
+
+/* the record's link back to the plot */
+.plot-strip{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:10px 0 4px;padding:8px 12px;
+  border:1px solid var(--ochre-dim);background:rgba(var(--ochre-rgb),.07);border-radius:2px;
+}
+.plot-strip-k{font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ochre)}
+.plot-strip-v{font-size:.875rem;color:var(--bone);font-variant-numeric:tabular-nums}
+.plot-jump{
+  margin-left:auto;min-height:32px;padding:0 12px;background:transparent;border:1px solid var(--line-dim);color:var(--text);
+  font:0.75rem var(--body);cursor:pointer;border-radius:2px;
+}
+@media (hover:hover){.plot-jump:hover{border-color:var(--ochre);color:var(--ochre)}}
+.plot-jump:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+
+@media (max-width:620px){
+  .view-switch{display:none}
+  .plotbox{padding:12px 10px 10px}
+  .plot-opts{margin-left:0}
+  .plot-fam-grp{grid-template-columns:minmax(0,1fr)}
+  .plot-fam-grp>span{padding-top:2px}
+  .plot-check,.plot-seg button,.plot-link,.plot-jump{min-height:44px}
+  .plot-fams>summary,.plot-more>summary{min-height:44px;font-size:.8125rem}
+  .plot-fam{min-height:40px}
+}
 .tree-tools button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 .tree-tools .cm-mode button[aria-pressed="true"]{background:rgba(var(--border2-rgb),.1);color:var(--ochre)}
 .tree-tools .cm-mode button{width:auto;min-width:28px}
@@ -1056,8 +1199,9 @@ body.has-cmp{padding-bottom:84px}
 </div>
 
 <nav class="mobile-workspace" aria-label="Browse the bat guide">
-  <button type="button" data-workspace-target="tree-section" aria-current="true">Tree</button>
+  <button type="button" data-workspace-target="tree-section" data-view="tree" aria-current="true">Tree</button>
   <button type="button" data-workspace-target="country-map" aria-current="false">Map</button>
+  <button type="button" data-workspace-target="tree-section" data-view="plot" aria-current="false" hidden>Plot</button>
 </nav>
 
 <main class="wrap" id="top" tabindex="-1">
@@ -1067,6 +1211,10 @@ body.has-cmp{padding-bottom:84px}
 <!-- ================= TREE ================= -->
 <section id="tree-section" aria-labelledby="tree-h">
   <h2 class="sr-only" id="tree-h">Family tree</h2>
+  <div class="view-switch" id="view-switch" role="group" aria-label="View" hidden>
+    <button type="button" data-view="tree" aria-pressed="true">Tree</button>
+    <button type="button" data-view="plot" aria-pressed="false">Call plot</button>
+  </div>
   <div class="treebox">
     <div class="tree-tools">
       <span id="tree-progress" class="tree-progress" role="status" hidden>Updating…</span>
@@ -1091,6 +1239,62 @@ body.has-cmp{padding-bottom:84px}
       and Home or End for the first and last row.</p>
   </div>
   <p class="tree-mobile-hint">Tap a branch to open it. Species counts are on the right.</p>
+
+  <!-- the call plot: shown in the tree's place by the switch above -->
+  <div class="plotbox" id="plotbox" hidden>
+    <div class="plot-head">
+      <div>
+        <h3 class="plot-title">Peak call frequency by forearm length</h3>
+        <p class="plot-sub" id="plot-sub">Measured values only</p>
+      </div>
+      <div class="plot-opts">
+        <div class="plot-seg" role="group" aria-label="Country filter">
+          <button type="button" id="plot-mode-dim" aria-pressed="true" title="Keep all bats in the plot">All</button>
+          <button type="button" id="plot-mode-filter" aria-pressed="false" title="Show only bats from the selected country">Country</button>
+        </div>
+        <label class="plot-check" for="plot-spans"><input type="checkbox" id="plot-spans"> Call range</label>
+        <label class="plot-check" for="plot-log"><input type="checkbox" id="plot-log" checked> Log scales</label>
+      </div>
+    </div>
+    <details class="plot-fams" id="plot-fams">
+      <summary>Families <span id="plot-fam-count"></span></summary>
+      <div class="plot-fam-actions">
+        <button type="button" class="plot-link" id="plot-fam-all">Include all</button>
+        <button type="button" class="plot-link" id="plot-fam-none">Clear all</button>
+      </div>
+      <fieldset class="plot-fam-list" id="plot-fam-list" style="border:0;margin:0;padding:0;min-width:0">
+        <legend class="sr-only">Families to include in the plot</legend>
+      </fieldset>
+    </details>
+    <div class="plot-chart" id="plot-chart">
+      <p class="plot-loading" id="plot-loading">Loading the measurements…</p>
+      <svg id="plot-svg" role="img" aria-labelledby="plot-desc" tabindex="0" hidden></svg>
+      <div class="plot-tip" id="plot-tip" hidden></div>
+    </div>
+    <div class="plot-foot">
+      <p id="plot-desc">Each mark is one species: forearm length across, peak call frequency up. Click a mark to open its record. With the plot focused, the arrow keys step through species and Enter opens one.</p>
+      <output id="plot-status"></output>
+    </div>
+    <details class="plot-more">
+      <summary>What is plotted</summary>
+      <ul class="plot-notes">
+        <li><strong>Forearm length</strong> is the median over independent sources that measured the species. Species whose forearm is only estimated (<span id="plot-n-est">0</span>) are left out.</li>
+        <li><strong>Peak frequency</strong> is the frequency carrying most energy in the call, as printed by the headline source for that species. Values flagged as suspect or with an uncertain species identity are left out, and so are genus and family defaults.</li>
+        <li>Where a source gives peak frequency only as a range (<span id="plot-n-range">0</span> species), the mark is a vertical bar over that range.</li>
+        <li>Colour marks three groups; each family also has its own marker. Horseshoe and leaf-nosed bats (orange) use long constant-frequency calls and sit well above other bats of the same size.</li>
+      </ul>
+      <p>Sources: forearm from <code>data/chiroptera_body_size.json</code>, calls from <code>data/calls/exports/calls.json</code>; each record lists the original references.</p>
+    </details>
+    <details class="plot-more" id="plot-table-box">
+      <summary>Data table <span id="plot-table-count"></span></summary>
+      <div class="plot-table-wrap" tabindex="0" role="region" aria-label="Plotted species">
+        <table class="plot-table">
+          <thead><tr><th scope="col">Species</th><th scope="col">Family</th><th scope="col" class="r">Forearm (mm)</th><th scope="col" class="r">Peak (kHz)</th><th scope="col">Source</th></tr></thead>
+          <tbody id="plot-tbody"></tbody>
+        </table>
+      </div>
+    </details>
+  </div>
 </section>
 
 <!-- ================= COUNTRY MAP ================= -->
@@ -1235,6 +1439,8 @@ workspaceButtons.forEach(button=>button.addEventListener('click', ()=>{
   const target = document.getElementById(button.dataset.workspaceTarget);
   if(!target) return;
   workspaceButtons.forEach(item=>item.setAttribute('aria-current', String(item===button)));
+  // Tree and Plot share the left-hand section; the button picks which it shows
+  if(button.dataset.view) plotSetView(button.dataset.view);
   target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth', block:'start'});
 }));
 
@@ -2019,7 +2225,7 @@ function ctxCardReset(ctx){
   ctx.card.classList.add('empty');
   ctx.cardBody.innerHTML = ctx.emptyHTML;
   if(ctx.closeBtn) ctx.closeBtn.hidden = true;
-  if(ctx === mainCtx) cmShowSpeciesRange(null);
+  if(ctx === mainCtx){ cmShowSpeciesRange(null); plotSetSelected(null); }
 }
 
 /* Two detail surfaces for one record is two mental models and two dismissal
@@ -2086,6 +2292,7 @@ function findGenusPath(family, genus){
 
 /* scroll an arbitrary tree row into view on the page */
 function scrollRowIntoView(g){
+  if(plotState.view === 'plot') return;   // the tree is hidden behind the plot
   const rect = g && g.querySelector('rect');
   if(!rect) return;
   rect.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth'});
@@ -2122,7 +2329,7 @@ function ctxShowSpecies(ctx, binomial, focusDetail){
   ctx.cardBody.innerHTML = luSpeciesHTML(binomial, true);
   const species = luState.byName[binomial.toLowerCase()];
   loadSpeciesPhoto(species, ctx.cardBody.querySelector('.inat-photo'));
-  if(ctx === mainCtx) cmShowSpeciesRange(binomial);
+  if(ctx === mainCtx){ cmShowSpeciesRange(binomial); plotSetSelected(binomial); }
   luAnnounceRecord(binomial, species);
 
   // a phone gets the drawer with the same record; everything wider gets the
@@ -2759,10 +2966,12 @@ function luLoadSize(){
     luState.sizeSorted = sorted;
     luState.size = data;
     refresh();
+    plotDataReady();
     if(cmpDialog.open) cmpRenderDialog();
   }).catch(err=>{
     luState.sizeError = err.message;
     refresh();
+    plotDataFailed();
   });
 }
 
@@ -3327,6 +3536,7 @@ function applyCountryFilterToMainTree(){
   // a full redraw is needed (not just re-toggling the dim class): in "show
   // only" mode, which rows exist at all depends on the country selection
   scheduleTreeLayout();
+  plotRender();
 }
 
 function setCountryTreeMode(mode, redraw = true){
@@ -3334,7 +3544,8 @@ function setCountryTreeMode(mode, redraw = true){
   countryTreeMode = mode;
   document.getElementById('cm-mode-dim').setAttribute('aria-pressed', mode==='dim' ? 'true' : 'false');
   document.getElementById('cm-mode-filter').setAttribute('aria-pressed', mode==='filter' ? 'true' : 'false');
-  if(redraw) scheduleTreeLayout();
+  plotSyncCountryMode();
+  if(redraw){ scheduleTreeLayout(); plotRender(); }
 }
 document.getElementById('cm-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
 document.getElementById('cm-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
@@ -3931,6 +4142,7 @@ function luDetailHTML(s, compact){
     (dk ? '<p class="lu-d-common lu-dk">🇩🇰 '+luEsc(dk.allNames.join(' / '))+'</p>' : '')+
     '<p class="lu-d-authority">'+luEsc((s.authoritySpeciesAuthor||'')+' '+(s.authoritySpeciesYear||''))+'</p>'+
     '<div class="lu-links">'+links+cmpToggleHTML(s)+'</div>'+
+    plotStripHTML(bin)+
     '<div class="lu-facts">'+
       '<section class="lu-section"><h4>Taxonomy &amp; status</h4><dl>'+
         '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s.iucnStatus)+'">'+(s.iucnStatus||'NA')+'</span></dd>'+
@@ -4378,6 +4590,476 @@ cmpCopyBtn.addEventListener('click', ()=>{
   navigator.clipboard.writeText(location.href).then(()=>{ done('Copied'); announce('Link copied'); }, ()=>done('Copy failed'));
 });
 cmpRender();
+
+/* =========================================================
+   9c. CALL PLOT — peak call frequency against forearm length
+   Shown in the tree's place by the Tree | Call plot switch. Measured values
+   only: a forearm median that is not an estimate (SIZE_URL) and the headline
+   recorded peak frequency of the species' call (data/calls). A mark opens the
+   same record the tree opens. Pages without size data (SIZE_URL = null, the
+   clone pages) never show the switch.
+   ========================================================= */
+const PLOT_ON = !!SIZE_URL;
+const PLOT_BAD_FLAGS = new Set(['suspect', 'taxon_uncertain']);
+const PLOT_GROUPS = [
+  {label:'Vesper and bent-winged bats', fams:['Vespertilionidae','Miniopteridae']},
+  {label:'Horseshoe and leaf-nosed bats', fams:['Rhinolophidae','Hipposideridae','Rhinonycteridae']},
+  {label:'Free-tailed bats', fams:['Molossidae']},
+  {label:'Other families', fams:null}
+];
+// one marker per family: [shape, style]; colour comes from the group
+const PLOT_MARK = {
+  Vespertilionidae:['circle','fill'], Miniopteridae:['diamond','fill'],
+  Rhinolophidae:['triUp','fill'], Hipposideridae:['triDown','fill'], Rhinonycteridae:['star','fill'],
+  Molossidae:['square','fill'],
+  Phyllostomidae:['plus','line'], Emballonuridae:['cross','line'], Mormoopidae:['circle','hollow'],
+  Nycteridae:['square','hollow'], Megadermatidae:['diamond','hollow'], Natalidae:['triUp','hollow'],
+  Cistugidae:['triDown','hollow'], Furipteridae:['star','hollow'], Noctilionidae:['pentagon','fill'],
+  Rhinopomatidae:['pentagon','hollow'], Thyropteridae:['hexagon','fill'], Craseonycteridae:['hexagon','hollow'],
+  Mystacinidae:['asterisk','line'], Myzopodidae:['triRight','hollow']
+};
+const PLOT_STAT = {single:'single value', mean:'mean', median:'median', species_summary:'species summary', range:'reported range'};
+const PLOT_KEY = 'chiroptera-plot';
+const plotState = {
+  view:'tree', points:null, byName:{}, fams:[], famCounts:{}, excluded:new Set(),
+  log:true, spans:false, sel:null, hover:null, cursor:null, geo:[], order:[], estOnly:0, failed:false
+};
+try {
+  const saved = JSON.parse(localStorage.getItem(PLOT_KEY) || '{}');
+  if(typeof saved.log === 'boolean') plotState.log = saved.log;
+  if(typeof saved.spans === 'boolean') plotState.spans = saved.spans;
+  if(Array.isArray(saved.excluded)) plotState.excluded = new Set(saved.excluded);
+} catch (_) {}
+function plotSave(){
+  try { localStorage.setItem(PLOT_KEY, JSON.stringify({log:plotState.log, spans:plotState.spans, excluded:[...plotState.excluded]})); } catch (_) {}
+}
+
+const plotSection = document.getElementById('tree-section');
+const plotBox = document.getElementById('plotbox');
+const plotSvg = document.getElementById('plot-svg');
+const plotChart = document.getElementById('plot-chart');
+const plotTip = document.getElementById('plot-tip');
+const plotStatus = document.getElementById('plot-status');
+
+function plotGroupOf(family){
+  for(let i=0; i<3; i++) if(PLOT_GROUPS[i].fams.includes(family)) return i;
+  return 3;
+}
+function plotNum(v, dp=1){ return Number(v).toLocaleString('en', {maximumFractionDigits:dp}); }
+
+/* Marker shapes, sized to roughly the same visual weight. */
+function plotPoly(x, y, R, n, rot, inner){
+  const pts = [], k = inner ? 2*n : n;
+  for(let i=0; i<k; i++){
+    const a = rot + i*Math.PI*2/k, r = inner && i%2 ? R*inner : R;
+    pts.push((x + r*Math.sin(a)).toFixed(2)+','+(y - r*Math.cos(a)).toFixed(2));
+  }
+  return 'M'+pts.join('L')+'Z';
+}
+function plotShape(shape, x, y, r){
+  switch(shape){
+    case 'square':   { const s=r*0.88; return 'M'+(x-s)+','+(y-s)+'h'+2*s+'v'+2*s+'h'+(-2*s)+'Z'; }
+    case 'diamond':  return plotPoly(x, y, r*1.22, 4, 0);
+    case 'triUp':    return plotPoly(x, y+r*0.18, r*1.3, 3, 0);
+    case 'triDown':  return plotPoly(x, y-r*0.18, r*1.3, 3, Math.PI);
+    case 'triRight': return plotPoly(x-r*0.18, y, r*1.3, 3, Math.PI/2);
+    case 'star':     return plotPoly(x, y+r*0.08, r*1.4, 5, 0, 0.48);
+    case 'pentagon': return plotPoly(x, y+r*0.06, r*1.08, 5, 0);
+    case 'hexagon':  return plotPoly(x, y, r*1.05, 6, Math.PI/6);
+    case 'plus':     { const s=r*1.15; return 'M'+(x-s)+','+y+'H'+(x+s)+'M'+x+','+(y-s)+'V'+(y+s); }
+    case 'cross':    { const s=r*0.9; return 'M'+(x-s)+','+(y-s)+'L'+(x+s)+','+(y+s)+'M'+(x+s)+','+(y-s)+'L'+(x-s)+','+(y+s); }
+    case 'asterisk': { const s=r*1.15, c=s*0.866, h=s*0.5; return 'M'+x+','+(y-s)+'V'+(y+s)+'M'+(x-c)+','+(y-h)+'L'+(x+c)+','+(y+h)+'M'+(x+c)+','+(y-h)+'L'+(x-c)+','+(y+h); }
+    default:         return 'M'+(x-r)+','+y+'a'+r+','+r+' 0 1,0 '+2*r+',0a'+r+','+r+' 0 1,0 '+(-2*r)+',0';
+  }
+}
+function plotMarkPath(family, x, y, r){
+  const [shape, style] = PLOT_MARK[family] || ['circle','hollow'];
+  return {d: plotShape(shape, x, y, style==='fill' ? r : r*0.92), style};
+}
+function plotSwatch(family, size){
+  const m = plotMarkPath(family, 7, 7, 4.6);
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 14 14" aria-hidden="true"><path class="pl-pt pg'+plotGroupOf(family)+' '+m.style+'"'+
+    (m.style==='fill' ? ' style="stroke:none"' : '')+' d="'+m.d+'"/></svg>';
+}
+
+/* One point per species that has both a measured forearm and a recorded peak. */
+function plotBuildPoints(){
+  const byId = {};
+  luState.species.forEach(s=>{ byId[s.id] = s; });
+  const points = [];
+  let estOnly = 0;
+  Object.keys(luState.directCalls).forEach(id=>{
+    const s = byId[id], call = luState.directCalls[id];
+    if(!s || !call || !Array.isArray(call.variants)) return;
+    const name = luNiceName(s.sciName);
+    const variants = call.variants.slice().sort((a,b)=>(a.id!=='default')-(b.id!=='default'));
+    let variant = null, fact = null;
+    for(const v of variants){
+      fact = (v.facts||[]).find(f=>f.parameter==='peak_frequency' && f.value_num!=null && !PLOT_BAD_FLAGS.has(f.quality_flag));
+      if(fact){ variant = v; break; }
+    }
+    if(!fact) return;
+    const size = luSizeOf(name), fa = size && size.fa;
+    if(!fa) return;
+    if(fa.est){ estOnly++; return; }
+    const ref = luState.directCallReferences[fact.citation];
+    const p = {
+      n:name, c:s.mainCommonName||'', f:s.family, g:plotGroupOf(s.family), fa:fa.v, fak:fa.k||1,
+      pk:fact.value_num, st:fact.statistic, d:fact.display, src:ref ? ref.label : fact.citation,
+      ct:variant.label, sig:variant.signal_type||''
+    };
+    if(fact.statistic==='range'){
+      const m = String(fact.display).match(/([\d.]+)\s*[–-]\s*([\d.]+)/);
+      if(m){ p.plo = +m[1]; p.phi = +m[2]; }
+    }
+    const o = variant.overview || {};
+    if(o.low!=null && o.high!=null && o.derived_from==='min/max frequency'){ p.lo = o.low; p.hi = o.high; }
+    points.push(p);
+  });
+  points.sort((a,b)=>a.fa-b.fa || a.pk-b.pk);
+  plotState.points = points;
+  plotState.estOnly = estOnly;
+  plotState.byName = {};
+  plotState.famCounts = {};
+  points.forEach(p=>{ plotState.byName[p.n] = p; plotState.famCounts[p.f] = (plotState.famCounts[p.f]||0)+1; });
+  plotState.fams = Object.keys(plotState.famCounts).sort((a,b)=>
+    plotGroupOf(a)-plotGroupOf(b) || plotState.famCounts[b]-plotState.famCounts[a] || a.localeCompare(b));
+}
+
+function plotDataReady(){
+  if(!PLOT_ON || !luState.ready) return;
+  plotBuildPoints();
+  document.getElementById('plot-loading').hidden = true;
+  plotSvg.toggleAttribute('hidden', false);   // an SVG element has no .hidden property
+  document.getElementById('plot-n-est').textContent = plotState.estOnly;
+  document.getElementById('plot-n-range').textContent = plotState.points.filter(p=>p.plo!=null).length;
+  plotBuildFamilies();
+  // records drawn before the data arrived get their plot line now
+  document.querySelectorAll('.plot-slot[data-sci]').forEach(slot=>{ slot.outerHTML = plotStripHTML(slot.dataset.sci); });
+  plotRender();
+}
+function plotDataFailed(){
+  if(!PLOT_ON) return;
+  plotState.failed = true;
+  const msg = document.getElementById('plot-loading');
+  msg.hidden = false;
+  msg.textContent = 'The size measurements did not load, so the plot cannot be drawn. Reload the page to try again.';
+}
+
+function plotBuildFamilies(){
+  const list = document.getElementById('plot-fam-list');
+  const tick = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 5.2 4.1 7.3 8 2.8" fill="none" stroke="var(--canvas)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  list.innerHTML = '<legend class="sr-only">Families to include in the plot</legend>' + PLOT_GROUPS.map((g, gi)=>{
+    const fams = plotState.fams.filter(f=>plotGroupOf(f)===gi);
+    if(!fams.length) return '';
+    return '<div class="plot-fam-grp" role="group" aria-labelledby="plot-grp-'+gi+'"><span id="plot-grp-'+gi+'">'+g.label+'</span><div class="plot-chips">'+
+      fams.map(f=>'<label class="plot-fam" for="plot-fam-'+f+'"><input type="checkbox" id="plot-fam-'+f+'" value="'+f+'"'+(plotState.excluded.has(f)?'':' checked')+'>'+
+        '<span class="box">'+tick+'</span>'+plotSwatch(f, 14)+'<span>'+f+'</span><span class="plot-cnt">'+plotState.famCounts[f]+'</span></label>').join('')+
+      '</div></div>';
+  }).join('');
+  plotUpdateFamilyCount();
+}
+function plotUpdateFamilyCount(){
+  const n = plotState.fams.filter(f=>!plotState.excluded.has(f)).length;
+  document.getElementById('plot-fam-count').textContent = '· '+n+' of '+plotState.fams.length+' included';
+}
+function plotSyncFamilyBoxes(){
+  document.querySelectorAll('#plot-fam-list input').forEach(i=>{ i.checked = !plotState.excluded.has(i.value); });
+  plotUpdateFamilyCount();
+}
+
+/* Families and the country filter decide what is drawn; in the country
+   filter's "All" mode the bats from elsewhere are dimmed, as in the tree. */
+function plotIncluded(p){
+  if(plotState.excluded.has(p.f)) return false;
+  return !(countrySpeciesSet && countryTreeMode==='filter' && !countrySpeciesSet.has(p.n));
+}
+function plotDimmed(p){ return !!(countrySpeciesSet && countryTreeMode==='dim' && !countrySpeciesSet.has(p.n)); }
+
+const PLOT_SVGNS = 'http://www.w3.org/2000/svg';
+function plotEl(tag, attrs, parent, text){
+  const e = document.createElementNS(PLOT_SVGNS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  if(text != null) e.textContent = text;
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function plotScale(log, d0, d1, r0, r1){
+  const f = log ? Math.log : (v=>v), a = f(d0), b = f(d1);
+  return v=>r0 + (f(v)-a)/(b-a)*(r1-r0);
+}
+function plotLinTicks(lo, hi, n){
+  const step0 = (hi-lo)/n, mag = Math.pow(10, Math.floor(Math.log10(step0)));
+  const step = [1,2,5,10].map(m=>m*mag).find(s=>s>=step0);
+  const out = [];
+  for(let v=Math.ceil(lo/step)*step; v<=hi+1e-9; v+=step) out.push(+v.toFixed(6));
+  return out;
+}
+
+function plotRender(){
+  if(!PLOT_ON || plotState.view!=='plot' || !plotState.points) return;
+  const W = Math.max(280, plotChart.clientWidth);
+  const narrow = W < 560;
+  const H = Math.round(narrow ? Math.max(W*1.02, 320) : Math.min(Math.max(W*0.64, 360), 660));
+  const m = {l:narrow?40:54, r:narrow?8:16, t:12, b:narrow?42:48};
+  plotSvg.setAttribute('viewBox', '0 0 '+W+' '+H);
+  plotSvg.setAttribute('width', W); plotSvg.setAttribute('height', H);
+  plotSvg.textContent = '';
+  const log = plotState.log;
+  const xD = log ? [20,115] : [20,110], yD = log ? [8,240] : [0,220];
+  const x = plotScale(log, xD[0], xD[1], m.l, W-m.r);
+  const y = plotScale(log, yD[0], yD[1], H-m.b, m.t);
+  const xt = log ? (narrow ? [20,30,40,60,100] : [20,25,30,40,50,60,70,80,100]) : plotLinTicks(20, 110, narrow?5:9);
+  const yt = log ? (narrow ? [10,15,20,30,50,100,200] : [10,15,20,30,50,70,100,150,200]) : plotLinTicks(0, 220, narrow?5:11);
+
+  const grid = plotEl('g', {'aria-hidden':'true'}, plotSvg);
+  xt.forEach(v=>plotEl('line', {class:'pl-grid', x1:x(v), x2:x(v), y1:m.t, y2:H-m.b}, grid));
+  yt.forEach(v=>plotEl('line', {class:'pl-grid', x1:m.l, x2:W-m.r, y1:y(v), y2:y(v)}, grid));
+  plotEl('line', {class:'pl-axis', x1:m.l, x2:W-m.r, y1:H-m.b, y2:H-m.b}, grid);
+  plotEl('line', {class:'pl-axis', x1:m.l, x2:m.l, y1:m.t, y2:H-m.b}, grid);
+  xt.forEach(v=>plotEl('text', {class:'pl-tick', x:x(v), y:H-m.b+17, 'text-anchor':'middle'}, grid, v));
+  yt.forEach(v=>plotEl('text', {class:'pl-tick', x:m.l-7, y:y(v)+4, 'text-anchor':'end'}, grid, v));
+  plotEl('text', {class:'pl-title', x:(m.l+W-m.r)/2, y:H-6, 'text-anchor':'middle'}, grid, 'Forearm length (mm)');
+  plotEl('text', {class:'pl-title', transform:'translate(12 '+((m.t+H-m.b)/2)+') rotate(-90)', 'text-anchor':'middle'}, grid, 'Peak frequency (kHz)');
+
+  const shown = plotState.points.filter(plotIncluded);
+  const r = narrow ? 3.4 : 4.2;
+  if(plotState.spans){
+    const sg = plotEl('g', {'aria-hidden':'true'}, plotSvg);
+    shown.forEach(p=>{
+      if(p.lo==null) return;
+      plotEl('line', {class:'pl-span pg'+p.g+(plotDimmed(p)?' pl-dim':''), x1:x(p.fa), x2:x(p.fa),
+        y1:y(Math.max(p.lo, yD[0]||1)), y2:y(Math.min(p.hi, yD[1]))}, sg);
+    });
+  }
+  // dimmed first, the neutral group next, so the coloured groups sit on top
+  const order = shown.slice().sort((a,b)=>(plotDimmed(b)-plotDimmed(a)) || ((b.g===3)-(a.g===3)));
+  const pg = plotEl('g', {'aria-hidden':'true'}, plotSvg);
+  plotState.geo = [];
+  order.forEach(p=>{
+    const cx = x(p.fa), dim = plotDimmed(p) ? ' pl-dim' : '';
+    if(p.plo!=null){
+      const y0 = y(p.plo), y1 = y(p.phi);
+      plotEl('path', {class:'pl-rng pg'+p.g+dim, d:'M'+cx+','+y0+'V'+y1+'M'+(cx-3)+','+y0+'h6M'+(cx-3)+','+y1+'h6'}, pg);
+      plotState.geo.push({p, x:cx, y:(y0+y1)/2, top:y1, bottom:y0, dim:!!dim});
+    } else {
+      const cy = y(p.pk), mk = plotMarkPath(p.f, cx, cy, r);
+      plotEl('path', {class:'pl-pt pg'+p.g+' '+mk.style+dim, d:mk.d}, pg);
+      plotState.geo.push({p, x:cx, y:cy, dim:!!dim});
+    }
+  });
+  // keyboard order: left to right, then low to high
+  plotState.order = plotState.geo.slice().sort((a,b)=>a.x-b.x || b.y-a.y);
+
+  if(!shown.length){
+    plotEl('text', {class:'pl-note', x:(m.l+W-m.r)/2, y:(m.t+H-m.b)/2, 'text-anchor':'middle'}, plotSvg,
+      plotState.excluded.size >= plotState.fams.length ? 'No families included. Tick one under Families.' : 'No bats with both measurements in this selection.');
+  }
+  plotEl('g', {id:'plot-focus'}, plotSvg);
+  plotDrawFocus();
+  plotRenderTable(shown);
+
+  const total = plotState.points.length;
+  const entry = countrySpeciesSet && cmSelected && CM && CM[cmSelected];
+  const inCountry = entry ? shown.filter(p=>countrySpeciesSet.has(p.n)).length : 0;
+  document.getElementById('plot-sub').textContent = total+' species with a measured forearm and a recorded call';
+  plotStatus.textContent = entry
+    ? entry.name+': '+inCountry+' of these bats'+(countryTreeMode==='dim' ? ', others dimmed' : '')
+    : shown.length+' of '+total+' species shown';
+}
+
+function plotDrawFocus(){
+  const layer = plotSvg.querySelector('#plot-focus');
+  if(!layer) return;
+  layer.textContent = '';
+  const ring = (name, cls)=>{
+    const g = name && plotState.geo.find(z=>z.p.n===name);
+    if(!g) return null;
+    if(g.top!=null) plotEl('rect', {class:'pl-ring '+cls, x:g.x-7, y:g.top-6, width:14, height:g.bottom-g.top+12, rx:7}, layer);
+    else plotEl('circle', {class:'pl-ring '+cls, cx:g.x, cy:g.y, r:9}, layer);
+    return g;
+  };
+  ring(plotState.sel, 'sel');
+  const hoverName = plotState.hover || plotState.cursor;
+  const hg = hoverName && hoverName!==plotState.sel ? ring(hoverName, 'hover') : (hoverName ? plotState.geo.find(z=>z.p.n===hoverName) : null);
+  if(hg) plotShowTip(hg); else plotTip.hidden = true;
+}
+
+function plotShowTip(g){
+  const p = g.p;
+  plotTip.innerHTML =
+    '<div class="t-sci">'+luEsc(p.n)+'</div>'+
+    '<div class="t-com">'+luEsc([p.c, p.f].filter(Boolean).join(' · '))+'</div>'+
+    '<dl><dt>Forearm</dt><dd>'+plotNum(p.fa)+' mm'+(p.fak>1 ? ' (median of '+p.fak+' sources)' : '')+'</dd>'+
+    '<dt>Peak</dt><dd>'+luEsc(p.d)+' ('+(PLOT_STAT[p.st]||luEsc(p.st))+')</dd>'+
+    (p.lo!=null ? '<dt>Call range</dt><dd>'+plotNum(p.lo)+'–'+plotNum(p.hi)+' kHz</dd>' : '')+
+    '<dt>Call</dt><dd>'+luEsc(p.ct)+(p.sig ? ', '+luEsc(p.sig) : '')+'</dd></dl>'+
+    '<div class="t-src">Peak frequency: '+luEsc(p.src)+'</div>';
+  plotTip.hidden = false;
+  const k = plotChart.clientWidth / (+plotSvg.getAttribute('width') || 1);
+  const px = g.x*k, py = g.y*k, cw = plotChart.clientWidth, ch = plotChart.clientHeight;
+  const tw = plotTip.offsetWidth, th = plotTip.offsetHeight;
+  let left = null, top;
+  if(px + 16 + tw <= cw) left = px + 16;
+  else if(px - 16 - tw >= 0) left = px - 16 - tw;
+  if(left != null) top = Math.max(0, Math.min(py - th/2, ch - th));
+  else {
+    left = Math.max(0, Math.min(cw - tw, px - tw/2));
+    top = py - th - 16 >= 0 ? py - th - 16 : Math.min(py + 16, ch - th);
+  }
+  plotTip.style.left = left+'px';
+  plotTip.style.top = top+'px';
+}
+
+function plotNearest(e){
+  const rect = plotSvg.getBoundingClientRect();
+  const k = (+plotSvg.getAttribute('width') || rect.width) / rect.width;
+  const mx = (e.clientX-rect.left)*k, my = (e.clientY-rect.top)*k;
+  let best = null, bd = (e.pointerType==='touch' ? 28 : 18)**2;
+  plotState.geo.forEach(g=>{
+    if(g.dim) return;
+    const gy = g.top!=null ? Math.max(g.top, Math.min(g.bottom, my)) : g.y;
+    const d = (g.x-mx)**2 + (gy-my)**2;
+    if(d < bd){ bd = d; best = g.p.n; }
+  });
+  return best;
+}
+
+/* the record opens exactly as it does from the tree */
+function plotPick(name){
+  const p = plotState.byName[name];
+  if(!p) return;
+  plotState.hover = null;
+  ctxShowSpecies(mainCtx, name, false);
+}
+
+function plotSetSelected(name){
+  if(!PLOT_ON) return;
+  plotState.sel = name && plotState.byName[name] ? name : null;
+  if(plotState.view==='plot') plotDrawFocus();
+}
+
+function plotRenderTable(shown){
+  document.getElementById('plot-table-count').textContent = '· '+shown.length+' species';
+  if(!document.getElementById('plot-table-box').open) return;
+  document.getElementById('plot-tbody').innerHTML = shown.map(p=>
+    '<tr><td><button type="button" class="plot-row-btn" data-sci="'+luEsc(p.n)+'">'+luEsc(p.n)+'</button></td>'+
+    '<td>'+luEsc(p.f)+'</td><td class="r">'+plotNum(p.fa)+'</td><td class="r">'+luEsc(String(p.d).replace(' kHz',''))+'</td><td>'+luEsc(p.src)+'</td></tr>').join('');
+}
+
+/* the line in a record that links it to the plot (or back to the tree) */
+function plotStripHTML(binomial){
+  if(!PLOT_ON) return '';
+  if(!plotState.points) return '<div class="plot-slot" data-sci="'+luEsc(binomial)+'" hidden></div>';
+  const p = plotState.byName[binomial];
+  if(!p) return '';
+  return '<div class="plot-strip"><span class="plot-strip-k">In the call plot</span>'+
+    '<span class="plot-strip-v">'+plotNum(p.fa)+' mm forearm · '+(p.plo!=null ? luEsc(p.d) : plotNum(p.pk)+' kHz')+' peak</span>'+
+    '<button type="button" class="plot-jump" data-sci="'+luEsc(binomial)+'">'+(plotState.view==='plot' ? 'Show in tree' : 'Show in call plot')+'</button></div>';
+}
+function plotSyncJumpLabels(){
+  document.querySelectorAll('.plot-jump').forEach(b=>{ b.textContent = plotState.view==='plot' ? 'Show in tree' : 'Show in call plot'; });
+}
+
+function plotSetView(view){
+  if(!PLOT_ON) view = 'tree';
+  if(plotState.view === view) return;
+  plotState.view = view;
+  plotSection.classList.toggle('show-plot', view==='plot');
+  plotBox.hidden = view!=='plot';
+  document.getElementById('tree-h').textContent = view==='plot' ? 'Call plot' : 'Family tree';
+  document.querySelectorAll('#view-switch button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.view===view)));
+  workspaceButtons.forEach(b=>{ if(b.dataset.view) b.setAttribute('aria-current', String(b.dataset.view===view)); });
+  plotState.hover = plotState.cursor = null;
+  plotTip.hidden = true;
+  plotSyncJumpLabels();
+  if(view==='plot') plotRender();
+  else scheduleTreeLayout();
+  announce(view==='plot' ? 'Call plot shown' : 'Family tree shown');
+}
+
+function plotSyncCountryMode(){
+  document.getElementById('plot-mode-dim').setAttribute('aria-pressed', String(countryTreeMode==='dim'));
+  document.getElementById('plot-mode-filter').setAttribute('aria-pressed', String(countryTreeMode==='filter'));
+}
+
+if(PLOT_ON){
+  document.getElementById('view-switch').hidden = false;
+  workspaceButtons.forEach(b=>{ if(b.dataset.view==='plot') b.hidden = false; });
+  document.querySelectorAll('#view-switch button').forEach(b=>b.addEventListener('click', ()=>plotSetView(b.dataset.view)));
+  document.getElementById('plot-mode-dim').addEventListener('click', ()=>setCountryTreeMode('dim'));
+  document.getElementById('plot-mode-filter').addEventListener('click', ()=>setCountryTreeMode('filter'));
+  const logBox = document.getElementById('plot-log'), spanBox = document.getElementById('plot-spans');
+  logBox.checked = plotState.log; spanBox.checked = plotState.spans;
+  logBox.addEventListener('change', ()=>{ plotState.log = logBox.checked; plotSave(); plotRender(); });
+  spanBox.addEventListener('change', ()=>{ plotState.spans = spanBox.checked; plotSave(); plotRender(); });
+  document.getElementById('plot-fam-list').addEventListener('change', e=>{
+    const box = e.target.closest('input'); if(!box) return;
+    box.checked ? plotState.excluded.delete(box.value) : plotState.excluded.add(box.value);
+    plotUpdateFamilyCount(); plotSave(); plotRender();
+  });
+  document.getElementById('plot-fam-all').addEventListener('click', ()=>{
+    plotState.excluded.clear(); plotSyncFamilyBoxes(); plotSave(); plotRender();
+  });
+  document.getElementById('plot-fam-none').addEventListener('click', ()=>{
+    plotState.fams.forEach(f=>plotState.excluded.add(f)); plotSyncFamilyBoxes(); plotSave(); plotRender();
+  });
+  document.getElementById('plot-table-box').addEventListener('toggle', ()=>plotRender());
+  document.getElementById('plot-tbody').addEventListener('click', e=>{
+    const b = e.target.closest('.plot-row-btn'); if(b) plotPick(b.dataset.sci);
+  });
+
+  plotSvg.addEventListener('pointermove', e=>{
+    if(e.pointerType==='touch') return;
+    const name = plotNearest(e);
+    if(name !== plotState.hover){ plotState.hover = name; plotSvg.style.cursor = name ? 'pointer' : ''; plotDrawFocus(); }
+  });
+  plotSvg.addEventListener('pointerleave', ()=>{ if(plotState.hover){ plotState.hover = null; plotDrawFocus(); } });
+  plotSvg.addEventListener('click', e=>{ const name = plotNearest(e); if(name) plotPick(name); });
+  plotSvg.addEventListener('keydown', e=>{
+    const list = plotState.order.filter(g=>!g.dim);
+    if(!list.length) return;
+    let i = list.findIndex(g=>g.p.n===(plotState.cursor || plotState.sel));
+    const step = {ArrowRight:1, ArrowUp:1, ArrowLeft:-1, ArrowDown:-1}[e.key];
+    if(step){ i = i<0 ? 0 : Math.max(0, Math.min(list.length-1, i+step*(e.shiftKey?10:1))); }
+    else if(e.key==='Home') i = 0;
+    else if(e.key==='End') i = list.length-1;
+    else if((e.key==='Enter' || e.key===' ') && i>=0){ e.preventDefault(); plotPick(list[i].p.n); return; }
+    else if(e.key==='Escape' && plotState.cursor){ plotState.cursor = null; plotDrawFocus(); return; }
+    else return;
+    e.preventDefault();
+    const p = list[i].p;
+    plotState.cursor = p.n;
+    plotDrawFocus();
+    plotStatus.textContent = p.n+': forearm '+plotNum(p.fa)+' mm, peak '+p.d+'. '+(i+1)+' of '+list.length+'.';
+  });
+  plotSvg.addEventListener('blur', ()=>{ if(plotState.cursor){ plotState.cursor = null; plotDrawFocus(); } });
+
+  // the record's link: to the plot from the tree, and back
+  document.addEventListener('click', e=>{
+    const b = e.target.closest('.plot-jump');
+    if(!b) return;
+    const name = b.dataset.sci, s = luState.byName[name.toLowerCase()];
+    if(luDrawer.classList.contains('open')) luCloseDrawer();
+    if(plotState.view==='plot'){
+      plotSetView('tree');
+      if(s) openTreeToSpecies(s.family, s.genus, name, false);
+    } else {
+      plotSetView('plot');
+      plotSetSelected(name);
+      plotSection.scrollIntoView({block:'start', behavior: matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches ? 'auto' : 'smooth'});
+    }
+  });
+
+  let plotWidth = 0, plotFrame = null;
+  new ResizeObserver(()=>{
+    const w = plotChart.clientWidth;
+    if(!w || w===plotWidth) return;
+    plotWidth = w;
+    cancelAnimationFrame(plotFrame);
+    plotFrame = requestAnimationFrame(plotRender);
+  }).observe(plotChart);
+}
 
 /* =========================================================
    10. START THE TREE
