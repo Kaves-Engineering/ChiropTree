@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+kaur-2014-1004595-1,1004595,Hipposideros durgadasi,exact,kaur-2014,External characters (Table 1); Plazi treatment 5A962FACC19045F5C14DCC83757176E5,forearm_length,measured,,range_only,35.2,34.45,35.95,min_max,,,pooled,"Karnataka, India",,2014,34.45-35.95mm,

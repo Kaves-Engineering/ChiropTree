@@ -765,6 +765,72 @@
    "taxonomic_scope": "Trachops cirrhosus",
    "access_note": "Values were transcribed into the supplied consolidated upload archive (data/echolocation/files4.zip, MASTER_call_records.csv) rather than read from the source by this project, so the locator is a worksheet record id. verified_by is empty and must stay empty until someone checks the row against the publication itself.",
    "notes": "Among the most directional bat sonar beams measured."
+  },
+  "zamora-gutierrez-2016-mexico": {
+   "type": "dataset",
+   "citation": "Zamora-Gutierrez V, Lopez-Gonzalez C, MacSwiney Gonzalez MC, Fenton B, Jones G, Kalko EKV, Puechmaille SJ, Stathopoulos V, Jones KE (2016) Acoustic identification of Mexican bats based on taxonomic and ecological constraints on call design. Methods in Ecology and Evolution 7: 1082-1091. Data: Dryad doi:10.5061/dryad.760r8.",
+   "doi": "10.1111/2041-210X.12556",
+   "url": "https://doi.org/10.5061/dryad.760r8",
+   "accessed_at": "2026-11-09",
+   "licence": "CC0-1.0",
+   "access_note": "Dryad deposit Data-All-Classifiers.xlsx (sheet Classifier1: 4,685 search-phase calls, 1,378 sequences, 59 species), fetched from https://datadryad.org/api/v2/versions/20459/download and cached as data/raw/zamora-gutierrez-2016-mexico/Data-All-Classifiers.xlsx, SHA-256 45b7ca5fd372d9ee5b5fab26e5f4668865ff1f581c5d69913e8a2b6a5c4d557b. Species codes and recording metadata from the author manuscript and supporting information on UCL Discovery (eprint 1475252), cached beside it. Per-species values are computed by data/build_zamora_2016_mexico_calls.py (mean of per-sequence means) and flagged derived.",
+   "republishes_reference_id": null,
+   "independence_group": "zamora-gutierrez-mexico-library",
+   "geographic_scope": "Mexico, with donated recordings from Central America, the Caribbean, the Guianas, Brazil, the USA and Canada",
+   "taxonomic_scope": "59 species that occur in Mexico",
+   "notes": "The field recordings (2012-13) come from the same research programme as the later SONOZOTZ library (zamora-gutierrez-2020-sonozotz); the two may share bats."
+  },
+  "funakoshi-2010-kyushu": {
+   "type": "journal_article",
+   "citation": "Funakoshi K (2010) Acoustic identification of thirteen insectivorous bat species from the Kyushu District, Japan. Mammalian Science 50(2): 165-175. (In Japanese with English tables.)",
+   "doi": null,
+   "url": "https://www.jstage.jst.go.jp/article/mammalianscience/50/2/50_2_165/_article/-char/en",
+   "accessed_at": "2026-11-09",
+   "licence": "open-access-terms-unstated",
+   "access_note": "Free PDF from J-STAGE, cached as data/raw/funakoshi-2010-kyushu.pdf, SHA-256 630bbaf61e2bb284569453a016555cd1a371aff7ef724bd5a7d505e9dd4d8c3f. Tables 2 and 3 transcribed by hand; Table 4 not imported (its second row per species is unlabelled).",
+   "republishes_reference_id": null,
+   "independence_group": "funakoshi-2010-kyushu",
+   "geographic_scope": "Kyushu and the Amami Islands, Japan",
+   "taxonomic_scope": "13 insectivorous bats"
+  },
+  "hmw-2019": {
+   "type": "book",
+   "citation": "Wilson DE, Mittermeier RA (eds) (2019) Handbook of the Mammals of the World. Vol. 9. Bats. Lynx Edicions, Barcelona. ISBN 978-84-16728-19-0.",
+   "doi": "10.5281/zenodo.6397752",
+   "url": "https://tb.plazi.org/GgServer/summary/B004FF90FFFB6A44FFFC96591E00BB32",
+   "accessed_at": "2026-11-09",
+   "licence": "all-rights-reserved",
+   "access_note": "Species accounts read from Plazi TreatmentBank XML (https://tb.plazi.org/GgServer/xml/<docId>; the docId is in each row's locator), cached under data/raw/size/plazi/ and checksum-pinned in data/build_plazi_literature_calls.py. Only call frequencies stated in an account's text are taken, each as an individually cited factual value, for species without a measured peak from a primary source. Plazi's OCR renders decimal points as hyphens, colons or bullets; verbatim_value keeps the OCR text and adds the reading in brackets.",
+   "republishes_reference_id": null,
+   "independence_group": "hmw-2019",
+   "geographic_scope": "global",
+   "taxonomic_scope": "all bats"
+  },
+  "colombo-2018-pteronotus": {
+   "type": "journal_article",
+   "citation": "Colombo GT, Di Ponzio R, Benchimol M, Peres CA, Bobrowiec PED (2018) Geographic variation in a South American clade of mormoopid bats, Pteronotus (Phyllodia), with description of a new species. Journal of Mammalogy 99(3): 624-645.",
+   "doi": "10.1093/jmammal/gyy048",
+   "url": "https://doi.org/10.1093/jmammal/gyy048",
+   "accessed_at": "2026-11-09",
+   "licence": "all-rights-reserved",
+   "access_note": "Read from the Plazi TreatmentBank XML of the P. alitonus treatment (docId 46341E41E13EE51BFC495ED1FE4FC1FD), cached under data/raw/size/plazi/ and pinned in data/build_plazi_literature_calls.py. Individually cited factual values from the description.",
+   "republishes_reference_id": null,
+   "independence_group": "colombo-2018-pteronotus",
+   "geographic_scope": "Amazonia",
+   "taxonomic_scope": "Pteronotus subgenus Phyllodia"
+  },
+  "sedlock-2020-kerivoula": {
+   "type": "journal_article",
+   "citation": "Sedlock JL, Heaney LR, Balete DS, Ruedi M (2020) Philippine bats of the genus Kerivoula (Chiroptera: Vespertilionidae): Overview and assessment of variation in K. pellucida and K. whiteheadi. Zootaxa 4755(3): 454-490.",
+   "doi": "10.11646/zootaxa.4755.3.2",
+   "url": "https://doi.org/10.11646/zootaxa.4755.3.2",
+   "accessed_at": "2026-11-09",
+   "licence": "all-rights-reserved",
+   "access_note": "Table 5 read from the Plazi TreatmentBank XML (docId 5316885DF470FFEBFF0CD46CFAC7F84E), cached under data/raw/size/plazi/ and pinned in data/build_plazi_literature_calls.py. Individually cited factual values.",
+   "republishes_reference_id": null,
+   "independence_group": "sedlock-2020-kerivoula",
+   "geographic_scope": "Philippines",
+   "taxonomic_scope": "Philippine Kerivoula"
   }
  },
  "methods": {
@@ -1544,6 +1610,61 @@
    "source_level_reference_distance_m": null,
    "source_level_type": null,
    "notes": "Microphone array measuring beam directionality of perching and flying bats. Analysis settings are not stated in the archive."
+  },
+  "zamora-gutierrez-2016-mexico-sonobat": {
+   "reference_id": "zamora-gutierrez-2016-mexico",
+   "recorder_model": "Field recordings: Pettersson D1000x, 500 kHz sampling, high-pass filter off, real time full spectrum. Donated recordings: Avisoft UltraSoundGate, Echometer 3, Pettersson D240/D980/D1000x, Tranquility Transect and others, real time or time expanded (Table S2).",
+   "sample_rate_khz": 500,
+   "analysis_software": "SonoBat v.3 automatic extraction after manual removal of non-search-phase calls in BatSound Pro 3.31b; calls selected per sequence by SonoBat signal-to-noise, at most 100 per species.",
+   "frequency_definition": "SonoBat definitions (Table S3): FreqMaxPwr is the frequency of maximum call amplitude; Fc the frequency at the lowest slope in the final 40% of the call; HiFreq/LowFreq the highest/lowest apparent frequency; StartF/EndF the frequency at call start/end; FreqKnee the knee. For species using harmonics, the main harmonic was measured.",
+   "duration_threshold_db": "SonoBat default",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Field bats were netted, identified and recorded on hand release or zip line at the capture site; donated material includes free flight, light tagging, roost emergence and flight cage recordings. The deposit does not give the release type per call, so recording_condition is unspecified. Each sequence is taken as one bat (the authors' assumption)."
+  },
+  "funakoshi-2010-kyushu-scanning": {
+   "reference_id": "funakoshi-2010-kyushu",
+   "recorder_model": "Pettersson time-expansion bat detector (1/10 time expansion), recorded to a digital recorder",
+   "sample_rate_khz": 44.1,
+   "analysis_software": "BatSound 3.1 (Pettersson Elektronik); FFT size 512",
+   "frequency_definition": "PF: peak frequency (frequency of maximum energy); EF: end frequency; D: duration. Values are means of per-bat means.",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "'Scanning calls' (精査音) were recorded at roost emergence more than 10 m from the roost, from bats passing along forest roads, after release, while perched or inside caves, and while circling inside a net enclosure; the tables pool these, so recording_condition is unspecified. 44.1 kHz is the sampling rate of the time-expanded playback."
+  },
+  "hmw-2019-compiled": {
+   "reference_id": "hmw-2019",
+   "recorder_model": "various; compiled from the literature",
+   "sample_rate_khz": null,
+   "analysis_software": "various; compiled from the literature",
+   "frequency_definition": "As worded in each account: text naming the peak frequency, the frequency of most or maximum energy, or the frequency a harmonic peaks at is mapped to peak_frequency; 'CF component', 'F component' or 'call frequency of the F segment' to cf_frequency; 'characteristic frequency' to characteristic_frequency.",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "A handbook's summary of published and unpublished recordings; the underlying studies, sample sizes and recording conditions are usually not given per value."
+  },
+  "colombo-2018-pteronotus-field": {
+   "reference_id": "colombo-2018-pteronotus",
+   "recorder_model": "unstated in the treatment text",
+   "sample_rate_khz": null,
+   "analysis_software": "unstated in the treatment text",
+   "frequency_definition": "FME: frequency of maximum energy",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Calls recorded at several Amazonian localities; recording details are in the paper's methods and Supplementary Data SD6, not in the treatment text read here."
+  },
+  "sedlock-2020-kerivoula-field": {
+   "reference_id": "sedlock-2020-kerivoula",
+   "recorder_model": "unstated in the treatment text",
+   "sample_rate_khz": null,
+   "analysis_software": "unstated in the treatment text",
+   "frequency_definition": "Peak frequency, start and terminal frequency, bandwidth and duration as defined in the paper's methods.",
+   "duration_threshold_db": "unstated",
+   "source_level_reference_distance_m": null,
+   "source_level_type": null,
+   "notes": "Table 5 gives mean ± SD and range for Philippine K. whiteheadi (n = 16 as printed)."
   }
  }
 }

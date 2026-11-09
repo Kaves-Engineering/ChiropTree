@@ -1,0 +1,4 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+taylor-2012-hildebrandtii-1004672-1,1004672,cohenae sp. nov,manual,taylor-2012-hildebrandtii,"Table 3, FL column",forearm_length,measured,,mean,66.4,66,68,min_max,,10,pooled,"Mpumalanga, South Africa",,2012,66.4; 66–68 (10),
+taylor-2012-hildebrandtii-1004720-1,1004720,mossambicus sp. nov.,manual,taylor-2012-hildebrandtii,"Table 3, FL column",forearm_length,measured,,mean,62.8,60,65,min_max,,5,pooled,Mozambique and NW Zimbabwe,,2012,62.8; 60–65 (5),
+taylor-2012-hildebrandtii-1004747-1,1004747,smithersi sp. nov.,manual,taylor-2012-hildebrandtii,"Table 3, FL column",forearm_length,measured,,mean,62.6,61,64,min_max,,5,pooled,"Pafuri, South Africa, and Lutope-Ngolangola, Zimbabwe",,2012,62.6; 61–64 (5),

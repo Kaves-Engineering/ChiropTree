@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+srinivasulu-2014-1004605-1,1004605,Hipposideros hypophyllus,exact,srinivasulu-2014,"Table 1 and description, p. 6494",forearm_length,measured,,mean,39.88,39.86,39.89,min_max,,2,male,"Hanumanhalli, Kolar, Karnataka, India",,2014,"39.86, 39.89",Two voucher males; the value is their mean.

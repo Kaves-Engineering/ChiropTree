@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+feijo-2015-1005554-1,1005554,Histiotus diaphanopterus,exact,feijo-2015,"Table 3, p. 414; Plazi treatment E83187852A6D416DFF18FF657B6FF861",forearm_length,measured,,mean,45.1,41.8,47.2,min_max,1.46,12,pooled,NE Brazil,,2015,FL 45.1±1.46; 41.8–47.2 (12),The type series.

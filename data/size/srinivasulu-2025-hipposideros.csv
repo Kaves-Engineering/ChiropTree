@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+srinivasulu-2025-hipposideros-1006931-1,1006931,Hipposideros brachyotus,exact,srinivasulu-2025-hipposideros,"External characters, p. 517; Plazi treatment 4D413F2D0F2E9E3BFF2FF8E268E94B67",forearm_length,measured,,mean,47.17,45.6,49.6,min_max,1.33,,pooled,India,,2025,47.17 ± 1.33 mm (45.6–49.6 mm),Revalidated from H. galeritus in this paper.

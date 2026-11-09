@@ -103,7 +103,7 @@ Published with GitHub Pages.
   clone pages stamp `HISTORY_URL` to `null` and show none of this. Re-run the
   builder after updating the taxonomy to a new MDD release.
 - **`data/chiroptera_body_size.json`**: each bat species' forearm length and
-  body mass, from 15 sources. Built by **`data/size/build_size.py`** from one
+  body mass, from 44 sources. Built by **`data/size/build_size.py`** from one
   CSV per source in `data/size/`. Each CSV is written by that source's
   `data/size/import_<source>.py` from the source's own raw table, which is
   cached in the gitignored `data/raw/size/` and pinned by SHA-256. The fetch
@@ -122,6 +122,14 @@ Published with GitHub Pages.
   | PanTHERIA (2009) | forearm and mass; masses from forearm marked as estimates |
   | EltonTraits 1.0, Amniote database, PHYLACINE 1.2.1, AnAge, AnimalTraits | body mass |
   | Collen (2012), Castro et al. (2024) | body mass, carried over from `data/calls/` |
+  | 29 species descriptions, revisions and call papers; *Handbook of the Mammals of the World* vol. 9 (2019) | forearm for 107 species with a measured call but no measured forearm, so they appear in the call plot (`import_literature_forearm.py`) |
+
+  The literature forearms come from the studies that measured the bats where
+  one exists. Most were read from Plazi TreatmentBank XML. The Handbook's
+  compiled ranges are used only where no such study was found, always as
+  range-only rows. Two call-plot species still have no measured forearm:
+  *Molossus bondae* (only a paywalled revision measures it) and *Myotis
+  nipalensis*.
 
   The rules the builder applies:
   - **Measured or estimated.** Every row says which it is. An estimate also
@@ -187,8 +195,54 @@ Published with GitHub Pages.
   uv run data/size/import_call_covariates.py
   uv run --with rdata --with pandas data/size/import_atlantic.py
   uv run --with openpyxl --with pandas data/size/import_sonozotz.py
+  uv run data/size/import_literature_forearm.py
   uv run data/size/build_size.py
   ```
+
+## Call plot
+
+On the bat page a **Tree | Call plot** switch above the tree swaps it for a
+scatter plot of peak call frequency against forearm length (on a phone it is
+the third workspace button, **Plot**). It uses measured values only: a
+forearm median that is not an estimate, from `chiroptera_body_size.json`, and
+the headline recorded peak frequency of the species' call, from
+`data/calls/exports/calls.json`. Values flagged `suspect` or `taxon_uncertain`
+are left out, and so are genus and family defaults. A peak printed only as a
+range is drawn as a vertical bar over that range.
+
+To fill the plot, three call sources were added in November 2026:
+- `build_zamora_2016_mexico_calls.py`: Zamora-Gutierrez et al. (2016), the
+  per-call SonoBat measurements on Dryad (CC0). Values are summarised per
+  bat, then per species and country, and flagged `derived`.
+- `build_funakoshi_2010_kyushu_calls.py`: Funakoshi (2010), 13 Japanese
+  species.
+- `build_plazi_literature_calls.py`: call frequencies stated in species
+  treatments on Plazi. These are mostly from the *Handbook of the Mammals
+  of the World* (2019). Only text naming the peak becomes a peak frequency;
+  CF and characteristic frequencies keep their own parameters.
+
+With them, 616 species are plotted. Run the three importers, then
+`data/calls/build_calls.py`; the Zamora importer needs `uv run --with
+openpyxl`.
+
+Colour marks three groups (vesper and bent-winged, horseshoe and leaf-nosed,
+free-tailed bats) plus a neutral for the rest; each family also has its own
+marker (`PLOT_MARK`), so colour is never the only cue. The colours are
+`--plot-*` tokens beside the palette, checked for colour-blind separation and
+contrast on `--canvas` in both themes. Families can be left out with the
+checkboxes under **Families**; that choice, log scales and the call-range
+whiskers are remembered in `localStorage`. The country filter applies as it
+does to the tree: **Country** shows only the selected country's bats, **All**
+dims the rest.
+
+A mark opens the same record the tree opens (the drawer on a phone). The
+record gains an **In the call plot** line with **Show in tree** / **Show in
+call plot** to move between the two views. With the plot focused, the arrow
+keys step through species and Enter opens one; a data table lists every
+plotted species as well. The tree keeps laying out in the background while
+the plot is up, so search and "Show in tree" land on the right row. The plot
+switches itself off where `SIZE_URL` is `null`, so the clone pages never show
+it.
 
 ## Comparing species
 
@@ -573,6 +627,10 @@ Run `node data/test_scroll_browser.cjs` to check native touch swipes at 8x CPU
 slowdown, sticky header/drawer alignment, stable map space, prepared geometry,
 and absence of root style writes during scrolling on all four pages. It also
 checks that swiping vertically on the map neither pans it nor swallows a tap.
+Run `node data/test_plot_browser.cjs` for the call plot: one mark per plotted
+species, hover, click and keyboard opening of the record, Show in tree and
+back, family and country filtering, search while the plot is up, the phone
+drawer, and its absence on the clone pages.
 Run `node data/test_low_end_browser.cjs` for the 8x CPU-throttled mobile
 performance budget and virtual-tree navigation/cancellation checks, and
 `node data/test_service_worker.cjs` for precache concurrency and failure cleanup.

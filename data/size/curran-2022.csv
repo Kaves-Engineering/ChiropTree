@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+curran-2022-1006674-1,1006674,R. namuli sp. nov.,manual,curran-2022,"Table 3, p. 31",forearm_length,measured,,mean,48.3,47.3,49.5,min_max,,5,pooled,"Mount Namuli, Mozambique",,2022,"Mean 48.3, range 47.3–49.5",The type series of five.

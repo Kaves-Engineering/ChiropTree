@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+tu-2017-1005782-1,1005782,T. tonkinensis sp. nov.,manual,tu-2017,"Description, p. 13 (Table 2); Plazi treatment 9F07878AA866CD601888DE649C175E02",forearm_length,measured,,range_only,26.45,25.1,27.8,min_max,,,pooled,northern Indochina,,2017,forearm length of 25.1–27.8 mm,
