@@ -562,6 +562,8 @@ footer a:hover{color:var(--ochre)}
 .lu-refs a:hover{color:var(--text)}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
 .lu-refnum{font-size:0.6875rem;flex:none}
+.lu-placed{margin:8px 0 0;padding:6px 9px;border-left:2px solid var(--ochre);background:rgba(var(--border-rgb),.05);font-size:0.75rem;line-height:1.55;color:var(--muted)}
+.lu-placed strong{color:var(--text);font-weight:600}
 .lu-unmigrated{margin:6px 0 0;padding:5px 8px;border:1px dashed rgba(var(--border-rgb),.3);border-radius:3px;font-size:0.71875rem;line-height:1.5;color:var(--muted)}
 /* family-level inference — deliberately unlike a measurement block */
 .lu-inferred{border:1px dashed var(--ochre);border-radius:3px;padding:9px 11px;background:rgba(var(--border-rgb),.05)}
@@ -1118,7 +1120,7 @@ body.has-cmp{padding-bottom:84px}
   .card h3,.card .lu-d-sci{font-size:1.5rem;line-height:1.3}
   .card .common,.card .lu-d-common,.card p.desc,.range-line,
   .lu-row .lu-sci,.lu-row .lu-common,.lu-headline,
-  .lu-section dl,.card .lu-section dl,.lu-section .lu-note,.card .lu-section .lu-note{font-size:1rem}
+  .lu-section dl,.card .lu-section dl,.lu-section .lu-note,.card .lu-section .lu-note,.lu-placed{font-size:1rem}
   .card-lineage,.chip,.lu-d-authority,.card .lu-d-authority,
   .lu-section h4,.card .lu-section h4,.lu-prov,.card .lu-prov,
   .lu-section .lu-src,.lu-refs li,.lu-row .lu-fam,.lu-inferred-why,
@@ -4597,7 +4599,8 @@ function luCallFactHTML(f){
       (f.republished_index||[]).map((i,k)=>luRefMark(i, (f.republished_in||[])[k])).join('')+
       (mark ? ' '+luTipHTML('lu-agree lu-agree-'+luEsc(f.agreement), mark, markTitle) : '')+
       (f.n_calls ? ' <span class="lu-n">n='+luEsc(f.n_calls)+'</span>' : '')+
-      (flagged ? luTipHTML('lu-flag', luEsc(f.quality_flag.replace(/_/g,' ')), f.ambiguity||'') : '')+
+      (flagged ? luTipHTML('lu-flag', luEsc(f.quality_flag.replace(/_/g,' ')),
+        (f.quality_flag==='taxon_uncertain' && f.note) ? f.note : (f.ambiguity||'')) : '')+
       (alts.length ? '<div class="lu-alt">also reported: '+alts.join('; ')+'</div>' : '')+
     '</dd>'+
   '</div>';
@@ -4755,6 +4758,58 @@ function luCallHTML(call, legacyReference, family, genus, binomial){
       ' · '+luDensityHTML(call.density)+'</p>';
 }
 
+/* Calls a source published under a name that has since been split, placed by
+   where they were recorded (data/calls/locality.py). Spelled out on both
+   species: the one that received the recording and the one it left. */
+function luListOr(names){
+  return names.length < 2 ? names.join('') : names.slice(0,-1).join(', ')+' and '+names[names.length-1];
+}
+function luLocalityHTML(id, call, bin){
+  const sp = n=>luHistSpecies(n), it = n=>'<i>'+luEsc(n)+'</i>';
+  const gained = ((call && call.locality_assigned) || []).map(g=>{
+    const where = luEsc(luListOr(g.countries));
+    const split = g.copied
+      ? sp(g.printed)+' has since been split'
+      : it(bin)+' was split from '+sp(g.printed)+(g.split_year ? ' in '+luEsc(g.split_year) : '');
+    return '<p class="lu-placed"><strong>Placed by where it was recorded.</strong> '+
+      luEsc(g.label)+' published these calls as '+it(g.printed)+', recorded in '+where+'. '+
+      split+'. Of '+luListOr(g.others.map(sp))+' and '+it(bin)+', MDD v2.5 places only '+
+      it(bin)+' in '+where+', so the calls are shown here. The source did not identify them as '+
+      it(bin)+', so they are flagged “taxon uncertain” and left out of the call plot.</p>';
+  });
+  const moved = ((luState.localityMovedOut||{})[id] || []).map(m=>{
+    const where = luEsc(luListOr(m.countries));
+    return '<p class="lu-placed">'+luEsc(m.label)+' also published calls as '+it(bin)+
+      ', recorded in '+where+'. They are shown under '+sp(m.to)+' instead: since the split, '+
+      'MDD v2.5 places '+sp(m.to)+', not '+it(bin)+', in '+where+'.</p>';
+  });
+  return gained.join('')+moved.join('');
+}
+
+/* Where the search for a missing call stands (data/calls/search_log.csv), so
+   "nothing here" reads as a searched-for absence, not an unexplored gap.
+   "Not found" is never put as "never recorded": only a source saying so is. */
+const LU_SEARCH_TEXT = {
+  searched_none_found: ()=>'No published call measurement or recording was found.',
+  recording_only: e=>'No published call measurement was found, but '+
+    luSizeNum(e.sound_records)+' sound recording'+(e.sound_records===1?' is':'s are')+
+    ' listed in GBIF, identified by '+(e.sound_records===1?'its recordist':'their recordists')+'.',
+  to_read: ()=>'Possible sources have been found but not yet read.',
+  published_not_open: ()=>'A study measures its call, but it is not openly available.',
+  stated_unknown: ()=>'Its echolocation call has not been described.'
+};
+function luCallSearchHTML(id){
+  const e = (luState.callSearchLog||{})[id];
+  if(!e || !LU_SEARCH_TEXT[e.status]) return '';
+  const when = e.searched_on
+    ? new Date(e.searched_on+'T00:00:00').toLocaleDateString('en', {month:'long', year:'numeric'}) : '';
+  return '<p class="lu-note lu-search">'+luEsc(LU_SEARCH_TEXT[e.status](e))+
+    (e.note ? ' '+luEsc(e.note) : '')+
+    (when ? ' <span class="lu-basis">Searched '+luEsc(when)+': species treatments on Plazi, '+
+      'the literature in Europe PMC, and sound records in GBIF.</span>' : '')+
+    '</p>';
+}
+
 // MDD's checklist and the GBIF supplement are merged into one
 // countryDistribution string for the map, but the card keeps them apart: a
 // country only GBIF asserts is marked, so a reader can tell a curated range
@@ -4816,7 +4871,8 @@ function luDetailHTML(s, compact){
         '<dt>Range</dt><dd>'+luEsc(s.range||'—')+'</dd>'+
         '<dt>Countries</dt><dd>'+luCountriesHTML(s)+'</dd>'+
       '</dl>'+(s.countryDistribution ? '<p class="lu-src">Countries: GBIF occurrence records, vagrants filtered out</p>' : '')+'</section>'+
-      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+
+      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+
+        luLocalityHTML(s.id, directCall, bin)+(directCall ? '' : luCallSearchHTML(s.id))+'</section>'+
     '</div>'+
     luSizeHTML(s)+
     luHistoryHTML(s)+

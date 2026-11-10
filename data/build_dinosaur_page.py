@@ -181,7 +181,8 @@ sub("""        '<dt>IUCN status</dt><dd><span class="lu-status '+luStatusClass(s
         '<dt>Continents</dt><dd>'+luEsc((s.continentDistribution||'—').replace(/\\|/g,', '))+'</dd>'+
         '<dt>Countries</dt><dd>'+luCountriesHTML(s)+'</dd>'+
       '</dl>'+luCountriesFootnote(s)+'</section>'+
-      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+'</section>'+""",
+      '<section class="lu-section"><h4>Call</h4>'+luCallHTML(directCall, callReference, s.family, s.genus, bin)+
+        luLocalityHTML(s.id, directCall, bin)+(directCall ? '' : luCallSearchHTML(s.id))+'</section>'+""",
     """        '<dt>Age</dt><dd>'+luEsc(s.age||'—')+(s.maxMa ? ' · '+(s.maxMa===s.minMa ? s.maxMa : s.maxMa+'–'+s.minMa)+' million years ago' : '')+'</dd>'+
         '<dt>Diet</dt><dd>'+luEsc(s.diet||'—')+'</dd>'+
         '<dt>Found in</dt><dd>'+luCountriesHTML(s)+'</dd>'+
@@ -365,6 +366,8 @@ sub("""Promise.all([
   luState.familyInference = calls.familyInference || {};
   luState.genusInference = calls.genusInference || {};
   luState.directCallReferences = calls.references || {};
+  luState.localityMovedOut = calls.localityMovedOut || {};
+  luState.callSearchLog = calls.searchLog || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);""",
     """Promise.all([

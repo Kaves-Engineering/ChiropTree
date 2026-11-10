@@ -13,15 +13,21 @@ Run:  uv run data/calls/build_calls.py
 import csv
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
 from parameter_registry import Registry
+import locality
 
 HERE = Path(__file__).parent
 DATA = HERE.parent
 TAXONOMY = DATA / "chiroptera_taxonomy.json"
+HISTORY = DATA / "chiroptera_name_history.json"
+
+sys.path.insert(0, str(DATA))
+from call_import_lib import SPLIT_ASSIGNMENTS  # noqa: E402
 LEGACY = DATA / "call_measurements.json"
 REFERENCES = HERE / "references.json"
 OUT = HERE / "exports" / "calls.json"
@@ -185,6 +191,105 @@ def validate(rows, registry, refs, methods, taxonomy_ids) -> list[str]:
             )
 
     return problems
+
+
+def _italic_free(name: str) -> str:
+    return name.replace("_", " ")
+
+
+def reassign_by_locality(rows, taxonomy, history, refs) -> tuple[dict, dict]:
+    """Move rows published under a since-split name to the one species the
+    recording countries allow (see locality.py for the rule).
+
+    Two cases:
+      - the printed name survives but its concept narrowed: the row resolved
+        to the parent, yet it was recorded where only a daughter occurs;
+      - a SPLIT_ASSIGNMENTS name copied to every daughter: copies for the
+        daughters the countries rule out are dropped.
+
+    Every row moved or kept this way is flagged taxon_uncertain (unless it
+    already carries a stronger flag) and its note says why. Returns
+    (gained, moved_out): per-species lists the card shows as a paragraph.
+    """
+    by_id = {s["id"]: s for s in taxonomy}
+    by_name = {_italic_free(s["sciName"]): s for s in taxonomy}
+    known = locality.known_countries(taxonomy)
+
+    # parent name -> {daughter name: year split, or None}
+    daughters = defaultdict(dict)
+    for name, entry in history.items():
+        for parent, year, *_ in entry.get("from", []):
+            if parent in by_name and name in by_name:
+                daughters[parent][name] = year
+        for child, year, *_ in entry.get("into", []):
+            if child in by_name and name in by_name:
+                daughters[name].setdefault(child, year)
+
+    gained, moved_out = defaultdict(dict), defaultdict(dict)
+    keep = []
+    for row in rows:
+        species = by_id[row["mdd_id"]]
+        name = _italic_free(species["sciName"])
+        copied = row.get("taxon_match_method") == "split_assigned"
+        if copied and row.get("verbatim_taxon_name") in SPLIT_ASSIGNMENTS:
+            printed = row["verbatim_taxon_name"]
+            candidates = [by_id[i] for i in SPLIT_ASSIGNMENTS[printed]["daughters"]]
+            years = {}
+        elif daughters.get(name) and not copied:
+            printed = name
+            candidates = [species] + [by_name[d] for d in sorted(daughters[name])]
+            years = daughters[name]
+        else:
+            keep.append(row)
+            continue
+
+        where = locality.countries(row.get("country", ""), known)
+        target = locality.place(where, candidates) if where else None
+        if target is None:
+            keep.append(row)
+            continue
+        if copied and target["id"] != row["mdd_id"]:
+            continue  # a copy for a daughter these countries rule out
+        if not copied and target["id"] == row["mdd_id"]:
+            keep.append(row)  # recorded where only the parent occurs: nothing to fix
+            continue
+
+        target_name = _italic_free(target["sciName"])
+        others = [_italic_free(c["sciName"]) for c in candidates if c["id"] != target["id"]]
+        countries = ", ".join(sorted(where))
+        label = short_label(row["reference_id"], refs[row["reference_id"]])
+        year = years.get(target_name)
+        split = (f"{target_name} was split from {printed}" + (f" in {year}" if year else "")
+                 if not copied else f"{printed} has since been split")
+        row["notes"] = "; ".join(filter(None, [row.get("notes"), (
+            f"Published as {printed} and recorded in {countries}. {split}. "
+            f"Of {', '.join(others)} and {target_name}, MDD v2.5 places only {target_name} "
+            f"in {countries}, so the recording is shown here. The source did not "
+            f"identify it as {target_name}; the assignment rests on locality alone.")]))
+        if row.get("quality_flag") in ("", "ok", None):
+            row["quality_flag"] = "taxon_uncertain"
+        row["taxon_match_method"] = "locality_assigned"
+        row["mdd_id"] = target["id"]
+        keep.append(row)
+
+        key = (printed, row["reference_id"])
+        g = gained[target["id"]].setdefault(key, {
+            "printed": printed, "reference": row["reference_id"], "label": label,
+            "countries": set(), "others": others, "split_year": year,
+            "copied": copied})
+        g["countries"] |= where
+        if not copied:
+            m = moved_out[species["id"]].setdefault(key, {
+                "to": target_name, "reference": row["reference_id"], "label": label,
+                "countries": set()})
+            m["countries"] |= where
+
+    rows[:] = keep
+
+    def finish(table):
+        return {sid: [dict(v, countries=sorted(v["countries"])) for v in entries.values()]
+                for sid, entries in table.items()}
+    return finish(gained), finish(moved_out)
 
 
 # Kept short: this renders in a 9px non-wrapping label beside the value.
@@ -709,6 +814,9 @@ def main() -> None:
             print(f"  ! {issue}")
         raise BuildError(f"{len(issues)} validation problem(s); nothing written")
 
+    history = json.loads(HISTORY.read_text(encoding="utf-8"))["species"]
+    gained, moved_out = reassign_by_locality(rows, taxonomy["species"], history, refs)
+
     by_species = defaultdict(list)
     for row in rows:
         by_species[row["mdd_id"]].append(row)
@@ -743,6 +851,8 @@ def main() -> None:
                 "reference": previous.get("reference"),
             }
             shadowed.append((mdd_id, previous.get("reference")))
+        if mdd_id in gained:
+            record["locality_assigned"] = gained[mdd_id]
         species[mdd_id] = record
 
     # Family inference is emitted once, keyed by family, and the page applies it
@@ -763,6 +873,20 @@ def main() -> None:
             citation["url"] = reference.get("url")
     genus_inference.update(build_genus_inference())
 
+    # Where the search for a missing call stands, so the card can say "none
+    # found" rather than leave the reader to guess. Species that have since
+    # gained a call drop out.
+    search_log = {}
+    log_path = HERE / "search_log.csv"
+    if log_path.exists():
+        with log_path.open(encoding="utf-8", newline="") as handle:
+            for r in csv.DictReader(handle):
+                if r["mdd_id"] not in species:
+                    search_log[r["mdd_id"]] = {
+                        "status": r["status"], "searched_on": r["searched_on"],
+                        "sound_records": int(r["gbif_sound_records"] or 0),
+                        "note": r["note"]}
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
         "version": 3,
@@ -770,6 +894,11 @@ def main() -> None:
         "references": export_refs,
         "familyInference": inference,
         "genusInference": genus_inference,
+        # Kept apart from species: a parent can lose every row it had, and an
+        # entry there would read as a call measurement. The card still says
+        # where its recordings went.
+        "localityMovedOut": moved_out,
+        "searchLog": search_log,
         "species": species,
     }, ensure_ascii=False, indent=1, sort_keys=False) + "\n", encoding="utf-8")
 
@@ -777,6 +906,9 @@ def main() -> None:
     total = len(taxonomy["species"])
     levels = Counter(s["density"]["level"] for s in species.values())
     print(f"Validated {len(rows)} measurement rows from {len({r['_source_file'] for r in rows})} source file(s)")
+    moved = sum(1 for r in rows if r.get("taxon_match_method") == "locality_assigned")
+    print(f"  {moved} rows placed by recording locality, onto {len(gained)} species "
+          f"(from {len(moved_out)} parent names)")
     print(f"Wrote {OUT.relative_to(DATA.parent)}")
     print(f"  {structured} species structured, {len(species) - structured} legacy, "
           f"{total - len(species)} with no call data ({len(species) / total:.1%} coverage)")
