@@ -1,0 +1,3 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+lopez-cuamatzi-2024-corynorhinus-1006835-1,1006835,Corynorhinus leonpaniaguae,exact,lopez-cuamatzi-2024-corynorhinus,"Table of external measurements, females",forearm_length,measured,,mean,41.91,38.71,43.94,min_max,1.48,,female,north-eastern Mexico,,2024,41.91 1.48 38.71–43.94,
+lopez-cuamatzi-2024-corynorhinus-1006835-2,1006835,Corynorhinus leonpaniaguae,exact,lopez-cuamatzi-2024-corynorhinus,"Table of external measurements, males",forearm_length,measured,,mean,40.52,39.54,42.08,min_max,0.99,,male,north-eastern Mexico,,2024,40.52 0.99 39.54–42.08,

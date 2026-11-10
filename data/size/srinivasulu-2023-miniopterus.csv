@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+srinivasulu-2023-miniopterus-1006815-1,1006815,Miniopterus srinii,exact,srinivasulu-2023-miniopterus,"Diagnosis, p. 237; Plazi treatment 03FAFE07FFCFC00404B9F8F3DAD39643",forearm_length,measured,,range_only,40.11,38.93,41.29,min_max,,,pooled,"Western Ghats, India",,2023,forearm length ranging from 38.93 to 41.29 mm,

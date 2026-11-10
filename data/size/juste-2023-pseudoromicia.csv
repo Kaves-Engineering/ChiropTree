@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+juste-2023-pseudoromicia-1006741-1,1006741,Pseudoromicia principis,exact,juste-2023-pseudoromicia,"Table 3, FA",forearm_length,measured,,mean,31.42,30.5,32.3,min_max,0.74,6,pooled,Príncipe,,2023,31.42 ± 0.74 (30.5–32.3) N = 6,

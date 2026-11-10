@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+rosa-2020-thyroptera-1005094-1,1005094,Thyroptera devivoi,exact,rosa-2020-thyroptera,"Table 1, this study",forearm_length,measured,,single,36.9,,,,,1,male,"Chapada das Mesas, Maranhão, Brazil",,2020,Forearm Length (FA) 36.9,One adult male.

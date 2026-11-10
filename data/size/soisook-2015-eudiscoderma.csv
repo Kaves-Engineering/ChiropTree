@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+soisook-2015-eudiscoderma-1004646-1,1004646,Eudiscoderma thongareeae,exact,soisook-2015-eudiscoderma,"Holotype measurements, p. 532; Plazi treatment 03BAD22DF61ED378FF0AB3FEFD8F95D5",forearm_length,measured,,single,66.41,,,,,1,pooled,Peninsular Thailand,,2015,FA: 66.41,The holotype.
