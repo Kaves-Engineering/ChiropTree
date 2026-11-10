@@ -665,7 +665,17 @@ uv run data/calls/search_call_gaps.py plazi europepmc triage gbif openalex log
   and xeno-canto's disallows Anthropic's agents and its API, so neither site
   is contacted.
 - `openalex`: OpenAlex limits keyless use to about 100 searches a day, so
-  this pass resumes where it stopped and takes several days to finish.
+  this pass resumes where it stopped and takes several days to finish. The
+  first keyless run covered 94 species before it was rate-limited. The other
+  563 were searched on 2026-11-10 through the claude.ai OpenAlex connector
+  (records marked `"via"`): four combined title-and-abstract searches over
+  every name of every species, with the same echolocation terms. Each work
+  found was assigned to a species by matching its names, abbreviated forms
+  like "M. schaubi" included, in the title, keywords and abstract
+  (OpenAlex, Europe PMC, Crossref, DataCite, Semantic Scholar). When no open
+  abstract named the species, the full OpenAlex record was read. Eight works
+  name no target species that could be identified (obituaries, reviews and
+  works with no abstract) and are left out.
 
 Each pass writes a review queue to `data/calls/search/`; nothing in a queue
 is a measurement. `log` then writes `data/calls/search_log.csv`, one row per
