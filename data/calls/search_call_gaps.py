@@ -351,6 +351,8 @@ STATUSES = {
     "recording_only": "Recordings exist (sound records in GBIF), but no published measurement was found.",
     "searched_none_found": "No published call measurement or recording was found.",
     "stated_unknown": "A source states that the call has not been described.",
+    "described_not_measured": "A source describes the call, but gives no value the dataset can hold "
+                              "(an unnamed frequency, a 'mean frequency', or values reassigned from other studies).",
 }
 LOG = HERE / "search_log.csv"
 DECISIONS = HERE / "search_decisions.csv"

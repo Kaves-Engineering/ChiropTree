@@ -680,11 +680,30 @@ uv run data/calls/search_call_gaps.py plazi europepmc triage gbif openalex log
 Each pass writes a review queue to `data/calls/search/`; nothing in a queue
 is a measurement. `log` then writes `data/calls/search_log.csv`, one row per
 species with a status: `to_read`, `published_not_open`, `recording_only`,
-`searched_none_found` or `stated_unknown`. A person's verdict after reading,
-in `data/calls/search_decisions.csv`, overrides the automatic status.
+`searched_none_found`, `described_not_measured` (the call is described, but
+only as an unnamed frequency, a "mean frequency" or values reassigned from
+other studies) or `stated_unknown`. A person's verdict after reading, in
+`data/calls/search_decisions.csv`, overrides the automatic status.
 `build_calls.py` copies the log into the export, and the card says where the
 search stands. "None found" is never shown as "never recorded"; only a
 source that says the call is undescribed gives `stated_unknown`.
+
+**Reading the candidates (November 2026).** Every `to_read` species was
+read. `data/build_call_gap_literature.py` imports what was found, one CSV
+per source: 26 sources, 302 rows and 39 species, among them first call
+descriptions (Thyroptera devivoi, Histiotus colombiae, Pharotis imogene,
+Neoeptesicus innoxius, Myotis nimbaensis) and the per-species tables of
+Gyorossy et al. (2024) and Jung et al. (2014) that the earlier worksheet
+import lacked. Sources are cached Europe PMC XML, Plazi XML and open PDFs.
+The PDFs are fetched by `data/calls/fetch_call_gap_papers.py` only where
+robots.txt allows it, and the check is repeated on every redirect. Each
+source is pinned by SHA-256, and each row's wording is checked against the
+source text. One table whose PDF text layer is scrambled was read off the
+rendered page, and its note says so. Values identified only from calls
+("cf.") carry `taxon_uncertain`. The rest of the candidates got a verdict
+with a note in `search_decisions.csv`. 22 stay `to_read`: an open source
+exists, but this search could not fetch it (robots.txt, a 403, or a
+script or bot check), and the note names it.
 
 **Calls placed by locality.** A source that recorded bats under a name since
 split recorded some of the daughter species. `build_calls.py` moves such a

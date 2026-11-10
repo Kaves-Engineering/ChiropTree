@@ -4540,7 +4540,8 @@ const LU_SEARCH_TEXT = {
     ' listed in GBIF, identified by '+(e.sound_records===1?'its recordist':'their recordists')+'.',
   to_read: ()=>'Possible sources have been found but not yet read.',
   published_not_open: ()=>'A study measures its call, but it is not openly available.',
-  stated_unknown: ()=>'Its echolocation call has not been described.'
+  stated_unknown: ()=>'Its echolocation call has not been described.',
+  described_not_measured: ()=>'Its call has been described, but without a measurement this page can show.'
 };
 function luCallSearchHTML(id){
   const e = (luState.callSearchLog||{})[id];
@@ -4550,7 +4551,7 @@ function luCallSearchHTML(id){
   return '<p class="lu-note lu-search">'+luEsc(LU_SEARCH_TEXT[e.status](e))+
     (e.note ? ' '+luEsc(e.note) : '')+
     (when ? ' <span class="lu-basis">Searched '+luEsc(when)+': species treatments on Plazi, '+
-      'the literature in Europe PMC, and sound records in GBIF.</span>' : '')+
+      'the literature in Europe PMC and OpenAlex, and sound records in GBIF.</span>' : '')+
     '</p>';
 }
 

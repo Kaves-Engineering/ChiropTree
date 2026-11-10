@@ -1,22 +1,21 @@
 mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,literature_candidates,openalex_complete,gbif_sound_records,decided_on,note
 1004785,Diclidurus isabella,Emballonuridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004786,Diclidurus scutatus,Emballonuridae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1004788,Peropteryx leucoptera,Emballonuridae,to_read,2026-11-10,7,0,2,yes,0,,
-1004790,Peropteryx pallidoptera,Emballonuridae,to_read,2026-11-10,3,0,1,yes,0,,
-1004793,Saccopteryx antioquensis,Emballonuridae,to_read,2026-11-10,2,0,1,yes,0,,
+1004788,Peropteryx leucoptera,Emballonuridae,searched_none_found,2026-11-10,7,0,2,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004790,Peropteryx pallidoptera,Emballonuridae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004793,Saccopteryx antioquensis,Emballonuridae,to_read,2026-11-10,2,0,1,yes,0,2026-11-10,"First description of its call (Revista Chilena de Historia Natural 2026, doi 10.1186/s40693-026-00141-x) is open access, but the site answers automated clients with a script check."
 1004799,Coleura gallarum,Emballonuridae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1004802,Emballonura alecto,Emballonuridae,to_read,2026-11-10,11,0,1,yes,1,,
+1004802,Emballonura alecto,Emballonuridae,to_read,2026-11-10,11,0,1,yes,1,2026-11-10,A 2012 survey of Panay caves recorded echolocation calls; the journal's robots.txt disallows this search's agent.
 1004803,Emballonura beccarii,Emballonuridae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1004807,Emballonura raffrayana,Emballonuridae,searched_none_found,2026-11-10,7,0,0,yes,0,,
-1004808,Emballonura semicaudata,Emballonuridae,to_read,2026-11-10,9,0,6,yes,0,,
-1004815,Saccolaimus peli,Emballonuridae,to_read,2026-11-10,7,0,1,yes,2,,
+1004808,Emballonura semicaudata,Emballonuridae,to_read,2026-11-10,9,0,6,yes,0,2026-11-10,"First characterization of its calls (2026) is open on Zenodo (doi 10.5281/zenodo.22134602), whose robots.txt disallows this search's agent."
+1004815,Saccolaimus peli,Emballonuridae,searched_none_found,2026-11-10,7,0,1,yes,2,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004820,Taphozous hamiltoni,Emballonuridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004821,Taphozous hildegardeae,Emballonuridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1004829,Taphozous theobaldi,Emballonuridae,to_read,2026-11-10,6,0,2,yes,0,,
 1004834,Nycteris aurita,Nycteridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004835,Nycteris gambiensis,Nycteridae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004838,Nycteris intermedia,Nycteridae,searched_none_found,2026-11-10,7,0,0,yes,0,,
-1004839,Nycteris javanica,Nycteridae,to_read,2026-11-10,6,0,1,yes,0,,
+1004839,Nycteris javanica,Nycteridae,searched_none_found,2026-11-10,6,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004842,Nycteris major,Nycteridae,searched_none_found,2026-11-10,8,0,0,yes,0,,
 1004843,Nycteris nana,Nycteridae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1004844,Nycteris parisii,Nycteridae,searched_none_found,2026-11-10,7,0,0,yes,0,,
@@ -24,9 +23,9 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004872,Carollia benkeithi,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004875,Carollia manu,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004876,Carollia monohernandezi,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1004879,Carollia subrufa,Phyllostomidae,to_read,2026-11-10,4,0,2,yes,0,,
-1004882,Diphylla ecaudata,Phyllostomidae,to_read,2026-11-10,12,0,8,yes,1,,
-1004887,Phyllonycteris aphylla,Phyllostomidae,to_read,2026-11-10,3,0,2,yes,0,,
+1004879,Carollia subrufa,Phyllostomidae,to_read,2026-11-10,4,0,2,yes,0,2026-11-10,The Mammalian Species account (2008) may summarise its call; the publisher refused the request (403).
+1004882,Diphylla ecaudata,Phyllostomidae,searched_none_found,2026-11-10,12,0,8,yes,1,2026-11-10,The candidates study contact calls (Carter et al. 2012) or summarise its biology; none measures its echolocation call.
+1004887,Phyllonycteris aphylla,Phyllostomidae,searched_none_found,2026-11-10,3,0,2,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004889,Anoura aequatoris,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004890,Anoura cadenai,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004892,Anoura cultrata,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
@@ -37,19 +36,19 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004899,Choeroniscus godmani,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004901,Choeroniscus periosus,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004903,Dryadonycteris capixaba,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1004904,Hylonycteris underwoodi,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,7,,
+1004904,Hylonycteris underwoodi,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,7,2026-11-10,"Leiser-Miller & Santana (2021, Ecology and Evolution) measured its calls in a comparative study; no species values are given in the article text."
 1004905,Lichonycteris degener,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004906,Lichonycteris obscura,Phyllostomidae,recording_only,2026-11-10,6,0,0,yes,5,,
 1004907,Musonycteris harrisoni,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004908,Scleronycteris ega,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1006535,Glossophaga antillarum,Phyllostomidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1006582,Glossophaga bakeri,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1004909,Glossophaga commissarisi,Phyllostomidae,to_read,2026-11-10,6,0,4,yes,4,,
-1004910,Glossophaga leachii,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,0,,
-1004912,Glossophaga morenoi,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,0,,
-1006536,Glossophaga mutica,Phyllostomidae,to_read,2026-11-10,0,0,2,yes,0,,
+1004909,Glossophaga commissarisi,Phyllostomidae,searched_none_found,2026-11-10,6,0,4,yes,4,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004910,Glossophaga leachii,Phyllostomidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004912,Glossophaga morenoi,Phyllostomidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1006536,Glossophaga mutica,Phyllostomidae,searched_none_found,2026-11-10,0,0,2,yes,0,2026-11-10,"The candidates study social calls, not echolocation."
 1006537,Glossophaga valens,Phyllostomidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1004918,Monophyllus redmani,Phyllostomidae,to_read,2026-11-10,8,0,4,yes,0,,
+1004918,Monophyllus redmani,Phyllostomidae,to_read,2026-11-10,8,0,4,yes,0,2026-11-10,"A 2002 Cuban bioacoustic community study may include it; not openly available, not read."
 1004919,Glyphonycteris behnii,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004921,Glyphonycteris sylvestris,Phyllostomidae,searched_none_found,2026-11-10,7,0,0,yes,0,,
 1004922,Neonycteris pusilla,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
@@ -59,12 +58,12 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004929,Lonchophylla bokermanni,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004930,Lonchophylla chocoana,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004931,Lonchophylla concava,Phyllostomidae,recording_only,2026-11-10,1,0,0,yes,36,,
-1004932,Lonchophylla dekeyseri,Phyllostomidae,to_read,2026-11-10,6,0,1,yes,0,,
+1004932,Lonchophylla dekeyseri,Phyllostomidae,searched_none_found,2026-11-10,6,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004933,Lonchophylla fornicata,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004934,Lonchophylla handleyi,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004935,Lonchophylla hesperia,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004936,Lonchophylla inexpectata,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1004937,Lonchophylla mordax,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,0,,
+1004937,Lonchophylla mordax,Phyllostomidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004938,Lonchophylla orcesi,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004939,Lonchophylla orienticollina,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004940,Lonchophylla peracchii,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
@@ -72,47 +71,45 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004943,Xeronycteris vieirai,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004945,Lonchorhina fernandezi,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004947,Lonchorhina mankomara,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1004948,Lonchorhina marinkellei,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,0,,
+1004948,Lonchorhina marinkellei,Phyllostomidae,to_read,2026-11-10,5,0,1,yes,0,2026-11-10,The Mammalian Species account (2017) may summarise its call; the publisher refused the request (403).
 1004949,Lonchorhina orinocensis,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004953,Micronycteris brosseti,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004954,Micronycteris buriri,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004955,Micronycteris giovanniae,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004957,Micronycteris matses,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1004961,Micronycteris sanborni,Phyllostomidae,to_read,2026-11-10,3,0,1,yes,0,,
+1004961,Micronycteris sanborni,Phyllostomidae,to_read,2026-11-10,3,0,1,yes,0,2026-11-10,"López-Baucells et al. (2014, Mammalia) give the first description of its calls; the open repository copy refused the request (403)."
 1004963,Micronycteris simmonsae,Phyllostomidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1004964,Micronycteris tresamici,Phyllostomidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1004965,Micronycteris yatesi,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1006871,Trachops coffini,Phyllostomidae,to_read,2026-11-10,0,0,1,yes,0,,
+1006871,Trachops coffini,Phyllostomidae,searched_none_found,2026-11-10,0,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1006872,Trachops ehrhardti,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004970,Gardnerycteris keenani,Phyllostomidae,recording_only,2026-11-10,1,0,0,yes,1,,
 1004971,Gardnerycteris koepckeae,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1004974,Lophostoma evote,Phyllostomidae,to_read,2026-11-10,4,0,1,yes,0,,
+1004974,Lophostoma evote,Phyllostomidae,searched_none_found,2026-11-10,4,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004975,Lophostoma kalkoae,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1006675,Lophostoma nicaraguae,Phyllostomidae,to_read,2026-11-10,0,0,2,yes,0,,
+1006675,Lophostoma nicaraguae,Phyllostomidae,searched_none_found,2026-11-10,0,0,2,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004976,Lophostoma occidentale,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1007062,Phylloderma septentrionale,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1004989,Mimon bennettii,Phyllostomidae,to_read,2026-11-10,9,0,1,yes,0,,
-1004990,Mimon cozumelae,Phyllostomidae,to_read,2026-11-10,4,0,2,yes,0,,
+1004990,Mimon cozumelae,Phyllostomidae,to_read,2026-11-10,4,0,2,yes,0,2026-11-10,The Sonozotz call library (Zamora-Gutiérrez et al. 2020) holds 11 of its calls; no per-species values are given in the article text.
 1004992,Rhinophylla alethina,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004993,Rhinophylla fischerae,Phyllostomidae,searched_none_found,2026-11-10,7,0,0,yes,0,,
 1004998,Artibeus aequatorialis,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004999,Artibeus amplus,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005005,Artibeus fimbriatus,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005009,Artibeus hirsutus,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1005010,Artibeus inopinatus,Phyllostomidae,to_read,2026-11-10,3,0,1,yes,0,,
-1006683,Artibeus intermedius,Phyllostomidae,to_read,2026-11-10,1,0,2,yes,0,,
+1005010,Artibeus inopinatus,Phyllostomidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1006683,Artibeus intermedius,Phyllostomidae,to_read,2026-11-10,1,0,2,yes,0,2026-11-10,A 2026 study of wingbeat-pulse coupling includes it; the Zenodo copy is closed to this search's agent by robots.txt.
 1005000,Dermanura anderseni,Phyllostomidae,recording_only,2026-11-10,3,0,0,yes,3,,
-1005001,Dermanura azteca,Phyllostomidae,to_read,2026-11-10,3,0,1,yes,0,,
+1005001,Dermanura azteca,Phyllostomidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005002,Dermanura bogotensis,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005007,Dermanura glauca,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005016,Dermanura rava,Phyllostomidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005017,Dermanura rosenbergi,Phyllostomidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005030,Enchisthenes hartii,Phyllostomidae,recording_only,2026-11-10,5,0,0,yes,1,,
 1004997,Ariteus flavescens,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005021,Centurio senex,Phyllostomidae,to_read,2026-11-10,7,0,3,yes,5,,
 1005052,Pygoderma bilabiatum,Phyllostomidae,searched_none_found,2026-11-10,8,0,0,yes,0,,
 1005053,Sphaeronycteris toxophyllum,Phyllostomidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
-1005022,Chiroderma doriae,Phyllostomidae,to_read,2026-11-10,9,0,1,yes,0,,
+1005022,Chiroderma doriae,Phyllostomidae,searched_none_found,2026-11-10,9,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005023,Chiroderma gorgasi,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005025,Chiroderma salvini,Phyllostomidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1005026,Chiroderma scopaeum,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
@@ -135,11 +132,11 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005051,Platyrrhinus vittatus,Phyllostomidae,searched_none_found,2026-11-10,7,0,0,yes,0,,
 1005055,Uroderma bakeri,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005057,Uroderma convexum,Phyllostomidae,recording_only,2026-11-10,1,0,0,yes,4,,
-1005058,Uroderma davisi,Phyllostomidae,to_read,2026-11-10,2,0,1,yes,0,,
+1005058,Uroderma davisi,Phyllostomidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005059,Uroderma magnirostrum,Phyllostomidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1005060,Vampyressa elisabethae,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005061,Vampyressa melissa,Phyllostomidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
-1005062,Vampyressa pusilla,Phyllostomidae,to_read,2026-11-10,6,0,3,yes,0,,
+1005062,Vampyressa pusilla,Phyllostomidae,published_not_open,2026-11-10,6,0,3,yes,0,2026-11-10,"Korine & Kalko (2005, Behavioral Ecology and Sociobiology) analyse its echolocation calls."
 1005064,Vampyressa thyone,Phyllostomidae,recording_only,2026-11-10,6,0,0,yes,25,,
 1006846,Vampyressa villai,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006529,Vampyressa voragine,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
@@ -152,7 +149,7 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1006814,Sturnira boadai,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005075,Sturnira bogotensis,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005076,Sturnira burtonlimi,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005077,Sturnira erythromos,Phyllostomidae,to_read,2026-11-10,7,0,1,yes,0,,
+1005077,Sturnira erythromos,Phyllostomidae,searched_none_found,2026-11-10,7,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005078,Sturnira giannae,Phyllostomidae,recording_only,2026-11-10,3,0,0,yes,1,,
 1005080,Sturnira koopmanhilli,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005083,Sturnira luisi,Phyllostomidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
@@ -162,40 +159,30 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005088,Sturnira oporaphilum,Phyllostomidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005091,Sturnira perla,Phyllostomidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005092,Sturnira sorianoi,Phyllostomidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005094,Thyroptera devivoi,Thyropteridae,to_read,2026-11-10,1,0,3,yes,0,,
 1005096,Thyroptera lavali,Thyropteridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005098,Thyroptera wynneae,Thyropteridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005102,Miniopterus africanus,Miniopteridae,recording_only,2026-11-10,2,0,0,yes,2,,
 1005104,Miniopterus arenarius,Miniopteridae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005112,Miniopterus fuscus,Miniopteridae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005124,Miniopterus minor,Miniopteridae,searched_none_found,2026-11-10,8,0,0,yes,0,,
-1005125,Miniopterus mossambicus,Miniopteridae,to_read,2026-11-10,2,1,0,yes,0,,
-1005128,Miniopterus nimbae,Miniopteridae,to_read,2026-11-10,1,1,0,yes,0,,
-1005131,Miniopterus paululus,Miniopteridae,to_read,2026-11-10,4,0,2,yes,0,,
-1006676,Miniopterus phillipsi,Miniopteridae,to_read,2026-11-10,2,2,1,yes,0,,
+1005131,Miniopterus paululus,Miniopteridae,to_read,2026-11-10,4,0,2,yes,0,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
+1006676,Miniopterus phillipsi,Miniopteridae,described_not_measured,2026-11-10,2,2,1,yes,0,2026-11-10,"Its describers assign calls published as M. fuliginosus (Western Ghats 52.0 kHz, Wordley et al. 2014; Kerala 53.2 kHz) to this species, without naming the frequency."
 1005136,Miniopterus shortridgei,Miniopteridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1006815,Miniopterus srinii,Miniopteridae,to_read,2026-11-10,1,1,2,yes,0,,
-1005139,Miniopterus villiersi,Miniopteridae,to_read,2026-11-10,3,0,1,yes,0,,
 1005140,Miniopterus wilsoni,Miniopteridae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005142,Austronomus kuboriensis,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005143,Cabreramops aequatorianus,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005164,Cheiromeles parvidens,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1006540,Cynomops kuizha,Molossidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005170,Cynomops mexicanus,Molossidae,to_read,2026-11-10,2,0,2,yes,0,,
-1005171,Cynomops milleri,Molossidae,to_read,2026-11-10,1,0,1,yes,0,,
+1005171,Cynomops milleri,Molossidae,published_not_open,2026-11-10,1,0,1,yes,0,2026-11-10,"Moras et al. (2017, Mammalian Biology) redescribe it with echolocation calls."
 1005173,Cynomops tonkigui,Molossidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005175,Eumops bonariensis,Molossidae,recording_only,2026-11-10,7,0,0,yes,1,,
 1005176,Eumops chimaera,Molossidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005178,Eumops dabbenei,Molossidae,to_read,2026-11-10,4,0,1,yes,0,,
 1005179,Eumops delticus,Molossidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005180,Eumops ferox,Molossidae,to_read,2026-11-10,2,0,1,yes,0,,
-1005184,Eumops maurus,Molossidae,to_read,2026-11-10,4,0,1,yes,0,,
-1005185,Eumops nanus,Molossidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005186,Eumops patagonicus,Molossidae,to_read,2026-11-10,3,0,1,yes,0,,
+1005184,Eumops maurus,Molossidae,to_read,2026-11-10,4,0,1,yes,0,2026-11-10,"López-Baucells et al. (2017, Tropical Zoology) give acoustic data; the publisher refused the request (403)."
+1005186,Eumops patagonicus,Molossidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005188,Eumops trumbulli,Molossidae,recording_only,2026-11-10,2,0,0,yes,1,,
 1005190,Eumops wilsoni,Molossidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1006816,Molossops griseiventer,Molossidae,to_read,2026-11-10,0,0,1,yes,0,,
-1005194,Molossus alvarezi,Molossidae,to_read,2026-11-10,1,1,0,yes,2,,
+1005194,Molossus alvarezi,Molossidae,described_not_measured,2026-11-10,1,1,0,yes,2,2026-11-10,HMW (2019) gives alternating pulses at 26-36 and 31-38 kHz without naming which frequency.
 1005195,Molossus aztecus,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005199,Molossus fentoni,Molossidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005200,Molossus fluminensis,Molossidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
@@ -203,7 +190,7 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1006870,Molossus paranaensis,Molossidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005204,Molossus pretiosus,Molossidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1005207,Molossus verrilli,Molossidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005144,Mops aloysiisabaudiae,Molossidae,to_read,2026-11-10,6,0,1,yes,0,,
+1005144,Mops aloysiisabaudiae,Molossidae,searched_none_found,2026-11-10,6,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005208,Mops bakarii,Molossidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005147,Mops bemmeleni,Molossidae,searched_none_found,2026-11-10,9,0,0,yes,0,,
 1005209,Mops brachypterus,Molossidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
@@ -216,15 +203,15 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005217,Mops niangarae,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005219,Mops petersoni,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005160,Mops pusillus,Molossidae,recording_only,2026-11-10,0,0,0,yes,11,,
-1005161,Mops russatus,Molossidae,to_read,2026-11-10,2,0,1,yes,0,,
+1005161,Mops russatus,Molossidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005162,Mops solomonis,Molossidae,stated_unknown,2026-11-10,3,1,0,yes,0,2026-11-10,"HMW (2019) states the call is unknown, and only guesses a loud call near 20 kHz like the Fijian free-tailed bat's."
 1005221,Mops spurrelli,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005222,Mops thersites,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005163,Mops tomensis,Molossidae,to_read,2026-11-10,2,0,2,yes,0,,
+1005163,Mops tomensis,Molossidae,searched_none_found,2026-11-10,2,0,2,yes,0,2026-11-10,São Tomé acoustic surveys record it but cannot separate it from C. pumilus and give no call parameters.
 1005223,Mops trevori,Molossidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005224,Mormopterus acetabulosus,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005225,Mormopterus doriae,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005226,Mormopterus francoismoutoui,Molossidae,to_read,2026-11-10,1,0,2,yes,2,,
+1005226,Mormopterus francoismoutoui,Molossidae,searched_none_found,2026-11-10,1,0,2,yes,2,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005230,Mormopterus phrudus,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005231,Myopterus daubentonii,Molossidae,searched_none_found,2026-11-10,8,0,0,yes,0,,
 1005232,Myopterus whitleyi,Molossidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
@@ -232,16 +219,16 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005240,Otomops johnstonei,Molossidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005243,Otomops papuensis,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005244,Otomops secundus,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005247,Ozimops cobourgianus,Molossidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005248,Ozimops halli,Molossidae,to_read,2026-11-10,2,0,1,yes,0,,
-1005249,Ozimops kitcheneri,Molossidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005253,Ozimops planiceps,Molossidae,to_read,2026-11-10,2,0,1,yes,0,,
-1005254,Ozimops ridei,Molossidae,to_read,2026-11-10,1,0,2,yes,2,,
+1005247,Ozimops cobourgianus,Molossidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005248,Ozimops halli,Molossidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005249,Ozimops kitcheneri,Molossidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005253,Ozimops planiceps,Molossidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005254,Ozimops ridei,Molossidae,searched_none_found,2026-11-10,1,0,2,yes,2,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
 1005255,Platymops setiger,Molossidae,searched_none_found,2026-11-10,7,0,0,yes,0,,
-1005260,Setirostris eleryi,Molossidae,to_read,2026-11-10,2,0,2,yes,0,,
+1005260,Setirostris eleryi,Molossidae,published_not_open,2026-11-10,2,0,2,yes,0,2026-11-10,"McKenzie et al. (2020, Australian Mammalogy) document its echolocation sequences in Western Australia."
 1005266,Tadarida lobata,Molossidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005270,Chilonatalus macer,Natalidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005271,Chilonatalus micropus,Natalidae,to_read,2026-11-10,6,1,0,yes,0,,
+1005271,Chilonatalus micropus,Natalidae,searched_none_found,2026-11-10,6,1,0,yes,0,2026-11-10,Only a prediction from ear size (two harmonics in the 40-80 kHz range; Tejedor 2011).
 1005272,Chilonatalus tumidifrons,Natalidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005273,Natalus jamaicensis,Natalidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005276,Natalus major,Natalidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
@@ -257,18 +244,14 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005301,Kerivoula myrella,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005306,Kerivoula pusilla,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005310,Phoniscus aerosus,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005315,Harpiola grisea,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
-1005316,Harpiola isodon,Vespertilionidae,to_read,2026-11-10,2,0,2,yes,0,,
+1005315,Harpiola grisea,Vespertilionidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,The only candidate is about H. isodon.
+1005316,Harpiola isodon,Vespertilionidae,to_read,2026-11-10,2,0,2,yes,0,2026-11-10,A 2025 Zootaxa note describes its echolocation call; the full text was not reachable.
 1006981,Murina alvarezi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005319,Murina aurata,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
 1006982,Murina baletei,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005321,Murina beelzebub,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
 1006943,Murina beibengensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005322,Murina bicolor,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006942,Murina chayuensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005323,Murina chrysochaetes,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005325,Murina eleryi,Vespertilionidae,to_read,2026-11-10,4,0,1,yes,0,,
-1005328,Murina fionae,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
 1005330,Murina fusca,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005331,Murina gracilis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005333,Murina harpioloides,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
@@ -294,22 +277,21 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1006912,Murina yushuensis,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005362,Myotis ancricola,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005363,Myotis anjouanensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1006677,Myotis arescens,Vespertilionidae,to_read,2026-11-10,1,0,3,yes,0,,
+1006677,Myotis arescens,Vespertilionidae,to_read,2026-11-10,1,0,3,yes,0,2026-11-10,Its systematic review (Zootaxa 2022) includes bioacoustic analyses; the full text was not reachable.
 1006489,Myotis armiensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005368,Myotis ater,Vespertilionidae,to_read,2026-11-10,6,0,1,yes,0,,
 1005369,Myotis attenboroughi,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1006736,Myotis australis,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1007004,Myotis badius,Vespertilionidae,to_read,2026-11-10,2,0,1,yes,0,,
+1007004,Myotis badius,Vespertilionidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The candidate studies distress calls, not echolocation."
 1005373,Myotis bakeri,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1006737,Myotis barquezi,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005374,Myotis bartelsii,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
+1006737,Myotis barquezi,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,2026-11-10,A 2025 Journal of Mammalogy study gives acoustic parameters; the open CONICET copy is served by a script-only page.
+1005374,Myotis bartelsii,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005379,Myotis borneoensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005382,Myotis bucharensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005385,Myotis carteri,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005386,Myotis caucensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005390,Myotis clydejonesi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005391,Myotis cobanensis,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005397,Myotis dieteri,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
+1005397,Myotis dieteri,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,2026-11-10,"A preprint (ARPHA Preprints 2026, not yet peer reviewed) gives call values for one bat; to be imported once published."
 1005398,Myotis diminutus,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1006818,Myotis extremus,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005405,Myotis federatus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
@@ -320,7 +302,6 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005414,Myotis handleyi,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1006637,Myotis hayesi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005416,Myotis hermani,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1006948,Myotis himalaicus,Vespertilionidae,to_read,2026-11-10,2,1,2,yes,0,,
 1005418,Myotis hoveli,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006974,Myotis huariorum,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005419,Myotis hyrcanicus,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
@@ -329,46 +310,42 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005423,Myotis izecksohni,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1006997,Myotis kalkoae,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006534,Myotis larensis,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005427,Myotis lavali,Vespertilionidae,to_read,2026-11-10,4,1,3,yes,0,,
 1005430,Myotis longicaudatus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005435,Myotis macrotarsus,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,,
+1005435,Myotis macrotarsus,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
 1005438,Myotis midastactus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005440,Myotis montivagus,Vespertilionidae,to_read,2026-11-10,9,0,3,yes,0,,
 1006604,Myotis moratellii,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005441,Myotis morrisi,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005446,Myotis nesopolus,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
-1006522,Myotis nimbaensis,Vespertilionidae,to_read,2026-11-10,2,1,0,yes,0,,
-1006819,Myotis nustrale,Vespertilionidae,to_read,2026-11-10,1,1,0,yes,0,,
+1006819,Myotis nustrale,Vespertilionidae,described_not_measured,2026-11-10,1,1,0,yes,0,2026-11-10,"Its description (Puechmaille et al. 2023, Revue suisse de Zoologie): sweeps from above 105 kHz to c. 25 kHz, 'too plastic' for identification; no measured values."
 1005448,Myotis nyctor,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006603,Myotis pampa,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005463,Myotis rosseti,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005466,Myotis rufopictus,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005467,Myotis schaubi,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,,
+1005467,Myotis schaubi,Vespertilionidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005468,Myotis scotti,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005469,Myotis secundus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005474,Myotis simus,Vespertilionidae,to_read,2026-11-10,6,0,1,yes,0,,
+1005474,Myotis simus,Vespertilionidae,to_read,2026-11-10,6,0,1,yes,0,2026-11-10,The Mammalian Species account (2012) is not openly available and was not read.
 1005476,Myotis soror,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1006527,Myotis sowerbyi,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005477,Myotis stalkeri,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005480,Myotis tschuliensis,Vespertilionidae,to_read,2026-11-10,0,0,1,yes,0,,
-1005484,Myotis weberi,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005486,Myotis yanbarensis,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
+1005480,Myotis tschuliensis,Vespertilionidae,searched_none_found,2026-11-10,0,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005484,Myotis weberi,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005486,Myotis yanbarensis,Vespertilionidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005488,Myotis zenatius,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1005489,Submyotodon caliginosus,Vespertilionidae,to_read,2026-11-10,3,1,1,yes,0,,
-1005490,Submyotodon latirostris,Vespertilionidae,to_read,2026-11-10,2,0,1,yes,0,,
+1005490,Submyotodon latirostris,Vespertilionidae,described_not_measured,2026-11-10,2,0,1,yes,0,2026-11-10,"Chou & Cheng (2012, Taiwan) give a mean frequency of 54.77 ± 3.19 kHz (as Myotis latirostris); the full paper is not openly available."
 1005491,Submyotodon moupinensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006878,Antrozous koopmani,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005495,Baeodon alleni,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
-1005498,Baeodon gracilis,Vespertilionidae,to_read,2026-11-10,0,0,1,yes,0,,
+1005495,Baeodon alleni,Vespertilionidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005498,Baeodon gracilis,Vespertilionidae,searched_none_found,2026-11-10,0,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005496,Rhogeessa bickhami,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005497,Rhogeessa genowaysi,Vespertilionidae,to_read,2026-11-10,2,0,1,yes,0,,
+1005497,Rhogeessa genowaysi,Vespertilionidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005501,Rhogeessa menchuae,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005502,Rhogeessa minutilla,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005503,Rhogeessa mira,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005505,Rhogeessa permutandis,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005507,Rhogeessa velilla,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
+1005507,Rhogeessa velilla,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005579,Lasiurus ebenus,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
-1005590,Lasiurus villosissimus,Vespertilionidae,to_read,2026-11-10,3,0,8,yes,0,,
+1005590,Lasiurus villosissimus,Vespertilionidae,to_read,2026-11-10,3,0,8,yes,0,2026-11-10,A 2026 Acta Chiropterologica study of Galápagos bats and a 2026 Caatinga acoustic survey may give its call; BioOne answers automated clients with a bot check.
 1005509,Arielulus cuprosus,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005510,Arielulus societatis,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005517,Cnephaeus floweri,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
@@ -378,33 +355,30 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005527,Cnephaeus ognevi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005529,Cnephaeus pachyotis,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005530,Cnephaeus platyops,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1005535,Glauconycteris alboguttata,Vespertilionidae,to_read,2026-11-10,8,0,1,yes,0,,
-1005537,Glauconycteris atra,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
-1007048,Glauconycteris baka,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005539,Glauconycteris curryae,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,,
-1005541,Glauconycteris gleni,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,,
-1005542,Glauconycteris humeralis,Vespertilionidae,to_read,2026-11-10,4,0,1,yes,0,,
-1005543,Glauconycteris kenyacola,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
-1005544,Glauconycteris machadoi,Vespertilionidae,to_read,2026-11-10,2,0,1,yes,0,,
-1005545,Glauconycteris poensis,Vespertilionidae,to_read,2026-11-10,7,0,1,yes,3,,
+1005535,Glauconycteris alboguttata,Vespertilionidae,searched_none_found,2026-11-10,8,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005537,Glauconycteris atra,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1007048,Glauconycteris baka,Vespertilionidae,stated_unknown,2026-11-10,1,0,1,yes,0,2026-11-10,Its description (Gomeh-Djame et al. 2026) states that no echolocation calls were obtained.
+1005539,Glauconycteris curryae,Vespertilionidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005541,Glauconycteris gleni,Vespertilionidae,searched_none_found,2026-11-10,5,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005542,Glauconycteris humeralis,Vespertilionidae,searched_none_found,2026-11-10,4,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005543,Glauconycteris kenyacola,Vespertilionidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005544,Glauconycteris machadoi,Vespertilionidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005545,Glauconycteris poensis,Vespertilionidae,searched_none_found,2026-11-10,7,0,1,yes,3,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
 1005549,Hesperoptenus doriae,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005550,Hesperoptenus gaskelli,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005552,Hesperoptenus tomesi,Vespertilionidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1005553,Histiotus alienus,Vespertilionidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1006538,Histiotus cadenai,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1006539,Histiotus colombiae,Vespertilionidae,to_read,2026-11-10,1,0,3,yes,0,,
-1005555,Histiotus humboldti,Vespertilionidae,to_read,2026-11-10,3,0,1,yes,0,,
-1005557,Histiotus macrotus,Vespertilionidae,to_read,2026-11-10,5,0,4,yes,0,,
-1005558,Histiotus magellanicus,Vespertilionidae,to_read,2026-11-10,3,0,4,yes,0,,
+1005555,Histiotus humboldti,Vespertilionidae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,Rodríguez-Posada et al. (2021) give calls of H. colombiae only.
+1005557,Histiotus macrotus,Vespertilionidae,published_not_open,2026-11-10,5,0,4,yes,0,2026-11-10,"Giménez et al. (2023, Mammal Research) compare the calls of three Patagonian Histiotus."
+1005558,Histiotus magellanicus,Vespertilionidae,published_not_open,2026-11-10,3,0,4,yes,0,2026-11-10,"Giménez et al. (2023, Mammal Research) compare the calls of three Patagonian Histiotus; the Mammalian Species account (2019) could not be fetched."
 1006588,Histiotus mochica,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005512,Neoeptesicus andinus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005523,Neoeptesicus innoxius,Vespertilionidae,to_read,2026-11-10,6,0,1,yes,0,,
 1006578,Neoeptesicus langeri,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1006597,Neoeptesicus orinocensis,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005532,Neoeptesicus taddeii,Vespertilionidae,searched_none_found,2026-11-10,6,0,0,yes,0,,
 1005534,Neoeptesicus ulapesensis,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005592,Nycticeius aenobarbus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1006949,Alionoctula babu,Vespertilionidae,to_read,2026-11-10,3,1,1,yes,0,,
 1005618,Alionoctula endoi,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005625,Alionoctula minahassae,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005629,Alionoctula papuana,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
@@ -419,25 +393,22 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1006963,Pipistrellus etula,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005631,Pipistrellus permixtus,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005636,Pipistrellus simandouensis,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005642,Scotoecus albigula,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,1,,
+1005642,Scotoecus albigula,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,1,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005644,Scotoecus hindei,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005646,Scotoecus pallidus,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005647,Scotozous dormeri,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
-1005651,Barbastella caspica,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
 1005654,Barbastella pacifica,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1006835,Corynorhinus leonpaniaguae,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
 1005664,Plecotus balensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1006638,Plecotus gobiensis,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005667,Plecotus homochrous,Vespertilionidae,to_read,2026-11-10,2,0,2,yes,0,,
 1005669,Plecotus kozlovi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005672,Plecotus sacrimontis,Vespertilionidae,to_read,2026-11-10,1,1,2,yes,0,,
+1005672,Plecotus sacrimontis,Vespertilionidae,described_not_measured,2026-11-10,1,1,2,yes,0,2026-11-10,HMW (2019): FM-QCF pulses at c. 28-30 kHz with a second harmonic at 50-60 kHz; the frequency is not named.
 1005674,Plecotus strelkovi,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005675,Plecotus taivanus,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005677,Plecotus turkmenicus,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005678,Plecotus wardi,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005679,Scotophilus altilis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005680,Scotophilus andrewreborii,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1006739,Scotophilus borbonicus,Vespertilionidae,to_read,2026-11-10,5,1,3,yes,0,,
+1006739,Scotophilus borbonicus,Vespertilionidae,searched_none_found,2026-11-10,5,1,3,yes,0,2026-11-10,"HMW (2019) mentions an unidentified call that might be it; older 'S. borbonicus' calls (Fenton & Rautenbach 1986; Jacobs 2000) are of other Scotophilus under the name's former, broader use."
 1005682,Scotophilus colias,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005683,Scotophilus collinus,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1005685,Scotophilus ejetai,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
@@ -453,9 +424,8 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005751,Afropipistrellus macrocephalus,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1005724,Afropipistrellus musciculus,Vespertilionidae,searched_none_found,2026-11-10,8,0,0,yes,0,,
 1005701,Cassistrellus dimissus,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005702,Cassistrellus yokdonensis,Vespertilionidae,to_read,2026-11-10,2,0,1,yes,0,,
+1005702,Cassistrellus yokdonensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1006874,Chalinolobus orarius,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1005712,Hypsugo affinis,Vespertilionidae,to_read,2026-11-10,7,1,1,yes,0,,
 1005717,Hypsugo dolichodon,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1005718,Hypsugo imbricatus,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005719,Hypsugo kitcheneri,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
@@ -463,17 +433,15 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005722,Hypsugo macrotis,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005723,Hypsugo mordax,Vespertilionidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1005725,Hypsugo petersi,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1005726,Hypsugo pulveratus,Vespertilionidae,to_read,2026-11-10,7,0,3,yes,0,,
 1005728,Hypsugo vordermanni,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005732,Laephotis kirinyaga,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,0,,
-1005734,Laephotis matroka,Vespertilionidae,to_read,2026-11-10,1,0,1,yes,5,,
-1005736,Laephotis robertsi,Vespertilionidae,to_read,2026-11-10,2,1,0,yes,0,,
+1005732,Laephotis kirinyaga,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"Juste et al. (2023) cite a peak of 43.9 kHz from another study, not traced here."
+1005734,Laephotis matroka,Vespertilionidae,searched_none_found,2026-11-10,1,0,1,yes,5,2026-11-10,Kofoky et al. (2009)'s Neoromicia calls from its sites may be this species or L. robertsi (Goodman et al. 2012).
+1005736,Laephotis robertsi,Vespertilionidae,stated_unknown,2026-11-10,2,1,0,yes,0,2026-11-10,Goodman et al. (2012) state that no recordings can be assigned to it with certainty; Kofoky et al. (2009)'s Neoromicia calls from its sites may be this species or L. matroka.
 1005737,Laephotis stanleyi,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1005739,Mimetillus moloneyi,Vespertilionidae,to_read,2026-11-10,13,0,2,yes,0,,
-1005740,Mirostrellus joffrei,Vespertilionidae,to_read,2026-11-10,11,0,6,yes,0,,
+1005739,Mimetillus moloneyi,Vespertilionidae,searched_none_found,2026-11-10,13,0,2,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005743,Neoromicia guineensis,Vespertilionidae,searched_none_found,2026-11-10,10,0,0,yes,0,,
 1006679,Neoromicia hlandzeni,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005755,Nyctophilus corbeni,Vespertilionidae,to_read,2026-11-10,3,0,2,yes,0,,
+1005755,Nyctophilus corbeni,Vespertilionidae,searched_none_found,2026-11-10,3,0,2,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1005759,Nyctophilus heran,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1006554,Nyctophilus holtorum,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005760,Nyctophilus howensis,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
@@ -481,41 +449,35 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1005764,Nyctophilus nebulosus,Vespertilionidae,recording_only,2026-11-10,4,0,0,yes,1,,
 1005765,Nyctophilus sherrini,Vespertilionidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1005766,Nyctophilus shirleyae,Vespertilionidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1005768,Pharotis imogene,Vespertilionidae,to_read,2026-11-10,5,0,1,yes,0,,
-1005769,Philetor brachypterus,Vespertilionidae,to_read,2026-11-10,6,1,0,yes,0,,
+1005769,Philetor brachypterus,Vespertilionidae,described_not_measured,2026-11-10,6,1,0,yes,0,2026-11-10,"HMW (2019) gives only a mean frequency (30.6 kHz, Luzon), not a peak or another named frequency."
 1005770,Pseudoromicia brunnea,Vespertilionidae,searched_none_found,2026-11-10,9,0,0,yes,0,,
 1005771,Pseudoromicia isabella,Vespertilionidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1005772,Pseudoromicia kityoi,Vespertilionidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1005773,Pseudoromicia nyanza,Vespertilionidae,to_read,2026-11-10,0,0,1,yes,0,,
-1006741,Pseudoromicia principis,Vespertilionidae,to_read,2026-11-10,1,1,3,yes,0,,
+1005773,Pseudoromicia nyanza,Vespertilionidae,searched_none_found,2026-11-10,0,0,1,yes,0,2026-11-10,"Juste et al. (2023) cite a peak of 40.4 kHz from another study, not traced here."
 1005780,Tylonycteris pygmaea,Vespertilionidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004555,Anthops ornatus,Hipposideridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1004556,Asellia arabica,Hipposideridae,to_read,2026-11-10,3,0,1,yes,0,,
+1004556,Asellia arabica,Hipposideridae,searched_none_found,2026-11-10,3,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
 1004557,Asellia italosomalica,Hipposideridae,recording_only,2026-11-10,2,0,0,yes,2,,
 1004564,Coelops hirsutus,Hipposideridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
-1004574,Hipposideros abae,Hipposideridae,to_read,2026-11-10,5,0,3,yes,0,,
 1004576,Hipposideros antricola,Hipposideridae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1004582,Hipposideros breviceps,Hipposideridae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1004587,Hipposideros coronatus,Hipposideridae,to_read,2026-11-10,5,0,2,yes,0,,
+1004587,Hipposideros coronatus,Hipposideridae,to_read,2026-11-10,5,0,2,yes,0,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
 1004567,Hipposideros corynophyllus,Hipposideridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004589,Hipposideros crumeniferus,Hipposideridae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004569,Hipposideros edwardshilli,Hipposideridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004597,Hipposideros einnaythu,Hipposideridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004606,Hipposideros inexpectatus,Hipposideridae,searched_none_found,2026-11-10,4,0,0,yes,0,,
-1006813,Hipposideros kingstonae,Hipposideridae,to_read,2026-11-10,2,2,3,yes,0,,
 1004616,Hipposideros macrobullatus,Hipposideridae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1004617,Hipposideros madurae,Hipposideridae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004620,Hipposideros megalotis,Hipposideridae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004621,Hipposideros nequam,Hipposideridae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004622,Hipposideros nicobarulae,Hipposideridae,searched_none_found,2026-11-10,1,0,0,yes,0,,
-1006684,Hipposideros poutensis,Hipposideridae,to_read,2026-11-10,0,0,3,yes,0,,
 1004634,Hipposideros sorenseni,Hipposideridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1006932,Hipposideros srilankaensis,Hipposideridae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004636,Hipposideros sumbae,Hipposideridae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004641,Macronycteris cryptovalorona,Hipposideridae,stated_unknown,2026-11-10,1,1,0,yes,0,2026-11-10,"HMW (2019) states the call is not known. A CF near 76 kHz from Isalo bats, first identified as M. commersoni, may belong to it."
-1004643,Macronycteris thomensis,Hipposideridae,to_read,2026-11-10,2,0,2,yes,0,,
-1004646,Eudiscoderma thongareeae,Megadermatidae,to_read,2026-11-10,1,1,0,yes,0,,
-1004651,Rhinolophus achilles,Rhinolophidae,to_read,2026-11-10,1,1,0,yes,8,,
+1004643,Macronycteris thomensis,Hipposideridae,searched_none_found,2026-11-10,2,0,2,yes,0,2026-11-10,São Tomé acoustic surveys record it but give no call parameters.
+1004651,Rhinolophus achilles,Rhinolophidae,searched_none_found,2026-11-10,1,1,0,yes,8,2026-11-10,"HMW (2019)'s Queensland values belong to R. philippinensis forms, not to this species."
 1004653,Rhinolophus adami,Rhinolophidae,searched_none_found,2026-11-10,4,0,0,yes,0,,
 1004656,Rhinolophus alticolus,Rhinolophidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
 1006880,Rhinolophus axillaris,Rhinolophidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
@@ -523,11 +485,10 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004662,Rhinolophus bocharicus,Rhinolophidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004664,Rhinolophus canuti,Rhinolophidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004666,Rhinolophus celebensis,Rhinolophidae,searched_none_found,2026-11-10,7,0,0,yes,0,,
-1006895,Rhinolophus dobsoni,Rhinolophidae,to_read,2026-11-10,1,0,1,yes,0,,
+1006895,Rhinolophus dobsoni,Rhinolophidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,The systematic revision of the R. landeri complex (2025) states that calls are lacking for it.
 1004680,Rhinolophus eloquens,Rhinolophidae,searched_none_found,2026-11-10,9,0,0,yes,0,,
 1006572,Rhinolophus foetidus,Rhinolophidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1004691,Rhinolophus hilli,Rhinolophidae,to_read,2026-11-10,4,0,4,yes,0,,
-1004692,Rhinolophus hillorum,Rhinolophidae,to_read,2026-11-10,3,0,1,yes,0,,
+1004692,Rhinolophus hillorum,Rhinolophidae,to_read,2026-11-10,3,0,1,yes,0,2026-11-10,"A 2022 Nigerian survey built a call library from captured bats; it is not openly available, so whether this species is in it was not checked."
 1006590,Rhinolophus hirsutus,Rhinolophidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1004694,Rhinolophus horaceki,Rhinolophidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004695,Rhinolophus imaizumii,Rhinolophidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
@@ -535,7 +496,7 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1006933,Rhinolophus kirghisorum,Rhinolophidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1004705,Rhinolophus maclaudi,Rhinolophidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004707,Rhinolophus madurensis,Rhinolophidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1004708,Rhinolophus maendeleo,Rhinolophidae,to_read,2026-11-10,2,0,1,yes,0,,
+1004708,Rhinolophus maendeleo,Rhinolophidae,searched_none_found,2026-11-10,2,0,1,yes,0,2026-11-10,The 2022 description of a new Namuli horseshoe bat compares it morphologically; the call given is the new species'.
 1006733,Rhinolophus midas,Rhinolophidae,searched_none_found,2026-11-10,2,0,0,yes,0,,
 1004715,Rhinolophus mitratus,Rhinolophidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
 1004721,Rhinolophus nereis,Rhinolophidae,searched_none_found,2026-11-10,5,0,0,yes,0,,
@@ -551,6 +512,6 @@ mdd_id,species,family,status,searched_on,plazi_treatments,plazi_with_call_text,l
 1004758,Rhinolophus xinanzhongguoensis,Rhinolophidae,searched_none_found,2026-11-10,1,0,0,yes,0,,
 1006573,Rhinolophus yonghoiseni,Rhinolophidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
 1004760,Rhinolophus ziama,Rhinolophidae,searched_none_found,2026-11-10,3,0,0,yes,0,,
-1004764,Paratriaenops pauliani,Rhinonycteridae,to_read,2026-11-10,2,0,1,yes,0,,
+1004764,Paratriaenops pauliani,Rhinonycteridae,to_read,2026-11-10,2,0,1,yes,0,2026-11-10,"Its 2008 description is on Zenodo, whose robots.txt disallows this search's agent; not read."
 1007052,Rhinopoma funaiolii,Rhinopomatidae,searched_none_found,2026-11-10,0,0,0,yes,0,,
-1004771,Rhinopoma hadramauticum,Rhinopomatidae,to_read,2026-11-10,1,0,1,yes,0,,
+1004771,Rhinopoma hadramauticum,Rhinopomatidae,searched_none_found,2026-11-10,1,0,1,yes,0,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
