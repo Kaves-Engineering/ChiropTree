@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+tu-2026-mekong-1006813-1,1006813,Hipposideros kingstonae,exact,tu-2026-mekong,"Species account, p. 314 (Table 2); Plazi treatment FA2887C8CD4C8A77FF4C4107FC640C20",forearm_length,measured,,mean,38.2,37,40.3,min_max,,,pooled,"Mekong Delta, Vietnam",,2026,average forearm length of 38.2 mm (range 37.0– 40.3 mm,

@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+simmons-2021-myotis-1006522-1,1006522,Myotis nimbaensis,exact,simmons-2021-myotis,Diagnosis (table 1); Plazi treatment 867D87BA1B55ED02BEB5FE0517FD5AED,forearm_length,measured,,range_only,53.8,52.4,55.2,min_max,,,pooled,"Nimba Mountains, Guinea",,2021,FA 52.4–55.2 mm,The type series; females apparently somewhat larger than males.

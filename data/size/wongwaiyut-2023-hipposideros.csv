@@ -1,0 +1,2 @@
+observation_id,mdd_id,verbatim_taxon_name,taxon_match_method,reference_id,locator,trait,basis,estimate_method,statistic,value,value_min,value_max,range_type,sd,n,sex,area,upstream_source,data_year,verbatim_value,notes
+wongwaiyut-2023-hipposideros-1006813-1,1006813,Hipposideros kingstonae,exact,wongwaiyut-2023-hipposideros,"Holotype measurements, p. 406; Plazi treatment E602879BFFD1FFD4FF7AFF4BFBC2FB87",forearm_length,measured,,single,38.4,,,,,1,male,Thailand,,2023,FA: 38.4,The holotype.

@@ -574,6 +574,97 @@
    "same_as_calls": true,
    "access_note": "Forearm (FL) range in the P. alitonus description, p. 630, read from the Plazi treatment XML that data/build_plazi_literature_calls.py also pins.",
    "independence_group": "colombo-2018-pteronotus"
+  },
+  "srinivasulu-2023-miniopterus": {
+   "short": "Srinivasulu & Srinivasulu 2023",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Diagnosis of the species description. Read from the Plazi TreatmentBank XML (docId in the locator), cached under data/raw/size/plazi/ and checksum-pinned in import_literature_forearm.py.",
+   "independence_group": "srinivasulu-2023-miniopterus"
+  },
+  "wongwaiyut-2023-hipposideros": {
+   "short": "Wongwaiyut et al. 2023",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Holotype measurements in the species description. Plazi TreatmentBank XML, cached under data/raw/size/plazi/ and pinned.",
+   "independence_group": "wongwaiyut-2023-hipposideros"
+  },
+  "soisook-2015-eudiscoderma": {
+   "short": "Soisook et al. 2015",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Holotype measurements in the species description. Plazi TreatmentBank XML, cached under data/raw/size/plazi/ and pinned.",
+   "independence_group": "soisook-2015-eudiscoderma"
+  },
+  "simmons-2021-myotis": {
+   "short": "Simmons et al. 2021",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Diagnosis of the species description (type series, table 1). Plazi TreatmentBank XML, cached under data/raw/size/plazi/ and pinned.",
+   "independence_group": "simmons-2021-myotis"
+  },
+  "luo-2023-plecotus": {
+   "short": "Luo et al. 2023",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Table 1, each bat's FA. Europe PMC XML (PMC10206652), cached under data/raw/calls/europepmc/ and pinned.",
+   "independence_group": "luo-2023-plecotus"
+  },
+  "juste-2023-pseudoromicia": {
+   "short": "Juste et al. 2023",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Table 3, FA. Europe PMC XML (PMC10075340), cached under data/raw/calls/europepmc/ and pinned.",
+   "independence_group": "juste-2023-pseudoromicia"
+  },
+  "ramirez-chaves-2023-molossops": {
+   "short": "Ramírez-Chaves et al. 2023",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Table 4, forearm of three Colombian specimens. Europe PMC XML (PMC10838178), cached under data/raw/calls/europepmc/ and pinned.",
+   "independence_group": "ramirez-chaves-2023-molossops"
+  },
+  "lopez-cuamatzi-2024-corynorhinus": {
+   "short": "López-Cuamatzi et al. 2024",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Table of external measurements, by sex. Europe PMC XML (PMC10881012), cached under data/raw/calls/europepmc/ and pinned.",
+   "independence_group": "lopez-cuamatzi-2024-corynorhinus"
+  },
+  "rosa-2020-thyroptera": {
+   "short": "Rosa et al. 2020",
+   "role": "primary",
+   "same_as_calls": true,
+   "access_note": "Table 1, the male collected in this study. Open PDF cached under data/raw/calls/papers/ and pinned.",
+   "independence_group": "rosa-2020-thyroptera"
+  },
+  "francis-eger-2012": {
+   "short": "Francis & Eger 2012",
+   "role": "primary",
+   "type": "journal_article",
+   "citation": "Francis CM, Eger JL (2012) A review of tube-nosed bats (Murina) from Laos with a description of two new species. Acta Chiropterologica 14(1): 15-38.",
+   "doi": "10.3161/150811012X654231",
+   "url": "https://doi.org/10.3161/150811012X654231",
+   "accessed_at": "2026-11-10",
+   "licence": "all-rights-reserved",
+   "access_note": "Diagnosis of Murina fionae. Read from the Plazi TreatmentBank XML (docId in the locator), cached under data/raw/size/plazi/ and checksum-pinned in import_literature_forearm.py.",
+   "independence_group": "francis-eger-2012",
+   "geographic_scope": "Laos",
+   "taxonomic_scope": "Murina"
+  },
+  "tu-2026-mekong": {
+   "short": "Tu et al. 2026",
+   "role": "primary",
+   "type": "journal_article",
+   "citation": "Tu VT, Furey NM, Koyabu D, Arai S, Görföl T, Ngon LQ, Nojiri T, Fukui D, Csorba G, Balvín O, Tuan LQ, Tuan TA, Hang CT, Hanh LM, Thi VAL, Thien HH, Hassanin A (2026) Bats of the Vietnamese Mekong Delta: A revised checklist with significant new records. Zootaxa 5768(3): 301-334.",
+   "doi": "10.11646/zootaxa.5768.3.1",
+   "url": "https://doi.org/10.11646/zootaxa.5768.3.1",
+   "accessed_at": "2026-11-10",
+   "licence": "all-rights-reserved",
+   "access_note": "Species account of Hipposideros kingstonae. Read from the Plazi TreatmentBank XML (docId in the locator), cached under data/raw/size/plazi/ and checksum-pinned in import_literature_forearm.py.",
+   "independence_group": "tu-2026-mekong",
+   "geographic_scope": "Mekong Delta, Vietnam",
+   "taxonomic_scope": "bats of the Mekong Delta"
   }
  }
 }

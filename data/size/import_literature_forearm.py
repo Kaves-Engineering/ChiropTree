@@ -10,6 +10,13 @@ measurements, transcribed by hand. Two are still open: Molossus bondae (only
 the paywalled revision of Loureiro et al. measures it as a species) and Myotis
 nipalensis (no open source prints its forearm).
 
+The call-gap search (data/build_call_gap_literature.py, November 2026) gave
+39 more species a call; 21 of them had a peak but no measured forearm. 18 are
+filled here: 12 from the same descriptions that gave the call (their
+cached Europe PMC XML, Plazi XML or PDF), 6 from HMW. Three are still open:
+Histiotus colombiae (measurements only in supplementary material),
+Hipposideros poutensis and Alionoctula babu (no open source found).
+
 Sources, in the order the card prefers them:
 
 1. A study that measured the bats: a species description or revision, a
@@ -69,6 +76,12 @@ RAW_FILES = {
     "benda-vallo-2012": LIT / "benda-vallo-2012.pdf",
     "mamani-contreras-2021": LIT / "mamani-contreras-2021.pdf",
     "srinivasulu-2014": LIT / "srinivasulu-2014.pdf",
+    # pinned by data/build_call_gap_literature.py too
+    "luo-2023-plecotus": CALL_RAW / "calls" / "europepmc" / "PMC10206652.xml",
+    "juste-2023-pseudoromicia": CALL_RAW / "calls" / "europepmc" / "PMC10075340.xml",
+    "ramirez-chaves-2023-molossops": CALL_RAW / "calls" / "europepmc" / "PMC10838178.xml",
+    "lopez-cuamatzi-2024-corynorhinus": CALL_RAW / "calls" / "europepmc" / "PMC10881012.xml",
+    "rosa-2020-thyroptera": CALL_RAW / "calls" / "papers" / "thyroptera-devivoi-2020.pdf",
 }
 RAW_SHA256 = {
     "kofoky-2009": "26436d299810e72deb211d725d4c21b501b4de56579d6d43ce17a2d6c2c85c46",
@@ -81,6 +94,11 @@ RAW_SHA256 = {
     "benda-vallo-2012": "e24a3d2fa3238d7ac3e0adb7bb57b3e9a1a3c61393cd233f22cf97f60f80b4ac",
     "mamani-contreras-2021": "1d879318422e5580db0728e17350383536240819ed0f5fa4f8274c68f8fa2d4b",
     "srinivasulu-2014": "595dcf0afb056bf3f0a33e41089164b1119d4ff0490cfc88873e9ec0e0793800",
+    "luo-2023-plecotus": "0e2170750a5f9584be8c2f2b0c21ff10ef7089528a8583dde4d793513498e276",
+    "juste-2023-pseudoromicia": "d6ca176c52a240bb893b63af485922bd2d5aab3508832bd51ef17b04e308bcc7",
+    "ramirez-chaves-2023-molossops": "154886e24f42614534ea5b236ae9a21a0cd0519e3a3642318a0b6f1b55f58bbe",
+    "lopez-cuamatzi-2024-corynorhinus": "6e75d2658b08a8c88afec46eae084d32e4b24b7a4abc486121e15f72853f9ab2",
+    "rosa-2020-thyroptera": "c23a2aa9054add4ee7c3336c7b1350a06283fb87386c27570c688756f14bc997",
 }
 # Plazi treatment XML: docId -> sha256 of the cached copy
 PLAZI_SHA256 = {
@@ -171,6 +189,22 @@ PLAZI_SHA256 = {
     "03A63743915FFFE2E1DBC1E32DD4A4EE": "fc0e526d0a9f909c83d7ca1a2bb54823835bd3913c64cdf719482576a62e9120",
     "03A637439150FFECE4EACCF02EB6ACD0": "f780a9ac4f7bac8045779d464e122b927e0e0cb712aca9fc9fab651f54e0abf3",
     "46341E41E13EE51BFC495ED1FE4FC1FD": "a4fca9fbba6c9b0000eba7b7c184acc76abe42c23a4e7da2a0c12c920e483bd1",
+    # call-gap search, November 2026 (copied from data/raw/calls/plazi/)
+    "03FAFE07FFCFC00404B9F8F3DAD39643": "8a544bcc346c29831c586f1cdf7e025b5eb88218edb41c35d48b1b1f0cd275f3",
+    "16319E21FFC8FF876920F8E3FEE51708": "667ba8c8c251c17d9abc1094fee353e07cc9c1298f63e8e8bde505e40181a83a",
+    "FA2887C8CD4C8A77FF4C4107FC640C20": "b2b96ae717fb6c6f04d53cea0a7054fb6d31adc5d93a229bab2bf1091a7cb186",
+    "E602879BFFD1FFD4FF7AFF4BFBC2FB87": "e352b976b28fa1c904cba125e8a3d8efffb902b2bd4a2322cd36e9b081d97536",
+    "03BB87E9FFF42D3FFF6DF953FE52FBD4": "b26991e33c0c7d600e21954f805f2abf33d10efeaa6a0007a5ab966abb7a27a2",
+    "03BAD22DF61ED378FF0AB3FEFD8F95D5": "5361a4abc7cc244bed8b08dc3099e30a01ab08913611348527567660718b151c",
+    "03BB87E9FFCB2D08FF6DFDD9FAD8FE78": "45aabb2c69d78003f6ff76d5175f476ebcef9d1e11ad07fd6b572d4ad13121a3",
+    "867D87BA1B55ED02BEB5FE0517FD5AED": "bf0e7f09286fa20f4d1376990c567bc56c6952577f1df5fb8638c30f990cb100",
+    "03BB87E9FFDB2D17FF6DFB13FDB1FE20": "1c45027aee7ac65ae96d0f1da860184c12ec6df598caa964da224415088ea398",
+    "4C3D87E8FF9C6A23FF849ACB168EBE9C": "91324b23e35ab456500fb20a562c99a17f68e06cba43f6867e903dfa37f3b241",
+    "4C3D87E8FF6D6AD2FF8F906B1A01B76C": "0e66c7eb8473e1274171d5b2d265fdc8317ec7512d1e49f413aa56b181a7b8d7",
+    "4C3D87E8FF656ADAFF7C9ACE17D2BC81": "2c553663ed549ba20ffe3160a65a8d5976aaead0536ede46c6eaf18224f42cdc",
+    "4C3D87E8FF3F6A80FF4890731740BAD2": "084db0348d2d005134ece1eddd11e74e393fb96cd117a0e214d2603b8efcb64e",
+    "194287C9FFA8BA05B19BFE3FB602FC30": "8698c44409b745bd289bab48bcd075840e4e9ef22d353c7da838054c43ce0130",
+    "194287C9FFB0BA1CB48AFB76BA17F8C9": "350f3dc1cea534cfc354fe758c54d309f5050f07c1d2bbf6f41dfb9e782c6fb5",
 }
 
 # Publication year (data_year) per source; Webala's rows carry their upstream's.
@@ -184,6 +218,10 @@ YEAR = {
     "vannatta-2021": "2021", "benda-2024": "2024", "saikia-2025": "2025", "loureiro-2018": "2018",
     "mamani-contreras-2021": "2021", "srinivasulu-2014": "2014", "hernandez-canchola-2021": "2021",
     "colombo-2018-pteronotus": "2018",
+    "srinivasulu-2023-miniopterus": "2023", "francis-eger-2012": "2012", "tu-2026-mekong": "2026",
+    "wongwaiyut-2023-hipposideros": "2023", "soisook-2015-eudiscoderma": "2015", "simmons-2021-myotis": "2021",
+    "luo-2023-plecotus": "2023", "juste-2023-pseudoromicia": "2023", "ramirez-chaves-2023-molossops": "2023",
+    "lopez-cuamatzi-2024-corynorhinus": "2024", "rosa-2020-thyroptera": "2020",
 }
 
 # One row per printed record:
@@ -270,6 +308,24 @@ ROWS = [
     ("mamani-contreras-2021", "mamani-contreras-2021", "Lasiurus arequipae", "Lasiurus arequipae", "Table 1, MUSA 21058 (holotype)", "male", S, 46.4, None, None, None, 1, "Huatiapa, Arequipa, Peru", "FA 46.4", "Re-tabulated from Málaga et al. (2020)."),
     ("mamani-contreras-2021", "mamani-contreras-2021", "Lasiurus arequipae", "Lasiurus arequipae", "Table 1, MUSA 21891 (paratype)", "female", S, 47.6, None, None, None, 1, "Huatiapa, Arequipa, Peru", "FA 47.6", "Re-tabulated from Málaga et al. (2020)."),
     ("mamani-contreras-2021", "mamani-contreras-2021", "Lasiurus arequipae", "Lasiurus arequipae", "Table 1, MUSA 21853 (paratype)", "male", S, 46.7, None, None, None, 1, "Chaucalla, Arequipa, Peru", "FA 46.7", "Re-tabulated from Málaga et al. (2020)."),
+    # --- call-gap search, November 2026: the sources that gave these species a
+    # call (data/build_call_gap_literature.py) also measured their forearms
+    ("srinivasulu-2023-miniopterus", "03FAFE07FFCFC00404B9F8F3DAD39643", "Miniopterus srinii", "Miniopterus srinii", "Diagnosis, p. 237", "pooled", R, None, 38.93, 41.29, None, None, "Western Ghats, India", "forearm length ranging from 38.93 to 41.29 mm", ""),
+    ("francis-eger-2012", "16319E21FFC8FF876920F8E3FEE51708", "Murina fionae", "Murina fionae", "Diagnosis, p. 32", "pooled", R, None, 37, 38, None, None, "Laos", "FA 37–38", "From the species description."),
+    ("tu-2026-mekong", "FA2887C8CD4C8A77FF4C4107FC640C20", "Hipposideros kingstonae", "Hipposideros kingstonae", "Species account, p. 314 (Table 2)", "pooled", M, 38.2, 37.0, 40.3, None, None, "Mekong Delta, Vietnam", "average forearm length of 38.2 mm (range 37.0– 40.3 mm", ""),
+    ("wongwaiyut-2023-hipposideros", "E602879BFFD1FFD4FF7AFF4BFBC2FB87", "Hipposideros kingstonae", "Hipposideros kingstonae", "Holotype measurements, p. 406", "male", S, 38.4, None, None, None, 1, "Thailand", "FA: 38.4", "The holotype."),
+    ("saikia-2025", "03BB87E9FFF42D3FFF6DF953FE52FBD4", "Hypsugo affinis", "Hypsugo affinis", "Species account, p. 29", "male", S, 37.9, None, None, None, 1, "Western Himalayas, India", "An adult male had a forearm of 37.9 mm", "One adult male."),
+    ("saikia-2025", "03BB87E9FFCB2D08FF6DFDD9FAD8FE78", "Myotis himalaicus", "Myotis himalaicus", "Holotype measurements, p. 36", "pooled", S, 41.1, None, None, None, 1, "Western Himalayas, India", "forearm length, 41.1", "The holotype."),
+    ("saikia-2025", "03BB87E9FFDB2D17FF6DFB13FDB1FE20", "Plecotus homochrous", "Plecotus homochrous", "Species account", "pooled", R, None, 36.2, 39.4, None, None, "Western Himalayas, India", "forearm length of 36.2– 39.4 mm", "The authors' measured specimens."),
+    ("soisook-2015-eudiscoderma", "03BAD22DF61ED378FF0AB3FEFD8F95D5", "Eudiscoderma thongareeae", "Eudiscoderma thongareeae", "Holotype measurements, p. 532", "pooled", S, 66.41, None, None, None, 1, "Peninsular Thailand", "FA: 66.41", "The holotype."),
+    ("simmons-2021-myotis", "867D87BA1B55ED02BEB5FE0517FD5AED", "Myotis nimbaensis", "Myotis nimbaensis", "Diagnosis (table 1)", "pooled", R, None, 52.4, 55.2, None, None, "Nimba Mountains, Guinea", "FA 52.4–55.2 mm", "The type series; females apparently somewhat larger than males."),
+    ("luo-2023-plecotus", "luo-2023-plecotus", "Plecotus homochrous", "Plecotus homochrous", "Table 1, Guangxi, China", "pooled", R, None, 37.28, 38.49, None, 4, "Guangxi, China", "37.30 / 37.28 / 37.36 / 38.49", "Four bats; the table prints each one."),
+    ("luo-2023-plecotus", "luo-2023-plecotus", "Plecotus homochrous", "Plecotus homochrous", "Table 1, Lao Cai, Vietnam", "pooled", R, None, 37.36, 38.09, None, 4, "Lao Cai, Vietnam", "38.09 / 37.36 / 37.75 / 37.58", "Four bats; the table prints each one."),
+    ("juste-2023-pseudoromicia", "juste-2023-pseudoromicia", "Pseudoromicia principis", "Pseudoromicia principis", "Table 3, FA", "pooled", M, 31.42, 30.5, 32.3, 0.74, 6, "Príncipe", "31.42 ± 0.74 (30.5–32.3) N = 6", ""),
+    ("ramirez-chaves-2023-molossops", "ramirez-chaves-2023-molossops", "Molossops griseiventer", "Molossops griseiventer", "Table 4, MHN-UCa 4220, ICN 25759, ICN 25760", "pooled", R, None, 31.3, 32.9, None, 3, "Magdalena River Basin, Colombia", "(31.3–32.9) 3", "Three Colombian specimens; the table also gives the holotype (31.9) and a paratype (30.7) from Sanborn (1941)."),
+    ("lopez-cuamatzi-2024-corynorhinus", "lopez-cuamatzi-2024-corynorhinus", "Corynorhinus leonpaniaguae", "Corynorhinus leonpaniaguae", "Table of external measurements, females", "female", M, 41.91, 38.71, 43.94, 1.48, None, "north-eastern Mexico", "41.91 1.48 38.71–43.94", ""),
+    ("lopez-cuamatzi-2024-corynorhinus", "lopez-cuamatzi-2024-corynorhinus", "Corynorhinus leonpaniaguae", "Corynorhinus leonpaniaguae", "Table of external measurements, males", "male", M, 40.52, 39.54, 42.08, 0.99, None, "north-eastern Mexico", "40.52 0.99 39.54–42.08", ""),
+    ("rosa-2020-thyroptera", "rosa-2020-thyroptera", "Thyroptera devivoi", "Thyroptera devivoi", "Table 1, this study", "male", S, 36.9, None, None, None, 1, "Chapada das Mesas, Maranhão, Brazil", "Forearm Length (FA) 36.9", "One adult male."),
 ]
 
 # Handbook of the Mammals of the World 9 (2019): (docId, MDD species, account
@@ -337,6 +393,13 @@ HMW = [
     ("4C3D87E8FF636ADCFF819E1F1D6CB6BB", "Murina ryukyuana", "Murina ryukyuana", 913, 32.3, 38.1, "forearm 32-3-38- 1 mm", ""),
     ("03A687BCFF94FF97164EF411FCC7FB49", "Anoura peruana", "Anoura peruana", 521, 43, 49, "forearm 43-49 mm", ""),
     ("885887A2FFFE8A1BF8B4EFE6FC7FC876", "Rhinolophus perniger", "Rhinolophus perniger", 328, 68.5, 81, "forearm 68- 5-81 mm", "HMW notes its other measurements may include other taxa, but not the forearm."),
+    # call-gap search, November 2026: species whose call came in then
+    ("4C3D87E8FF9C6A23FF849ACB168EBE9C", "Barbastella caspica", "Barbastella caspica", 861, 40.6, 44.5, "forearm 40-6-44- 5 mm", ""),
+    ("4C3D87E8FF6D6AD2FF8F906B1A01B76C", "Murina beelzebub", "Murina beelzebub", 911, 34.4, 37.3, "forearm 34-4-37- 3 mm", ""),
+    ("4C3D87E8FF656ADAFF7C9ACE17D2BC81", "Murina eleryi", "Murina eleryi", 919, 27.3, 31.3, "forearm 27-3-31- 3 mm", ""),
+    ("4C3D87E8FF3F6A80FF4890731740BAD2", "Myotis ater", "Myotis ater", 958, 34, 39, "forearm 34-39 mm", ""),
+    ("194287C9FFA8BA05B19BFE3FB602FC30", "Cynomops mexicanus", "Cynomops mexicanus", 639, 33.2, 37, "forearm 33-2-37 mm", ""),
+    ("194287C9FFB0BA1CB48AFB76BA17F8C9", "Eumops ferox", "Eumops ferox", 631, 55, 63, "forearm 55-63 mm", ""),
 ]
 
 
