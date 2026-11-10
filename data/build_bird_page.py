@@ -183,6 +183,8 @@ sub("""Promise.all([
   luState.familyInference = calls.familyInference || {};
   luState.genusInference = calls.genusInference || {};
   luState.directCallReferences = calls.references || {};
+  luState.localityMovedOut = calls.localityMovedOut || {};
+  luState.callSearchLog = calls.searchLog || {};
   luState.media = media.assets || {};
   luMergeCountrySupplement(luState.species, countrySupp);""",
     """Promise.all([

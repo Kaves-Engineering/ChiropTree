@@ -1,0 +1,103 @@
+mdd_id,species,status,decided_on,note
+1005162,Mops solomonis,stated_unknown,2026-11-10,"HMW (2019) states the call is unknown, and only guesses a loud call near 20 kHz like the Fijian free-tailed bat's."
+1004641,Macronycteris cryptovalorona,stated_unknown,2026-11-10,"HMW (2019) states the call is not known. A CF near 76 kHz from Isalo bats, first identified as M. commersoni, may belong to it."
+1005194,Molossus alvarezi,described_not_measured,2026-11-10,HMW (2019) gives alternating pulses at 26-36 and 31-38 kHz without naming which frequency.
+1005769,Philetor brachypterus,described_not_measured,2026-11-10,"HMW (2019) gives only a mean frequency (30.6 kHz, Luzon), not a peak or another named frequency."
+1005672,Plecotus sacrimontis,described_not_measured,2026-11-10,HMW (2019): FM-QCF pulses at c. 28-30 kHz with a second harmonic at 50-60 kHz; the frequency is not named.
+1006819,Myotis nustrale,described_not_measured,2026-11-10,"Its description (Puechmaille et al. 2023, Revue suisse de Zoologie): sweeps from above 105 kHz to c. 25 kHz, 'too plastic' for identification; no measured values."
+1006676,Miniopterus phillipsi,described_not_measured,2026-11-10,"Its describers assign calls published as M. fuliginosus (Western Ghats 52.0 kHz, Wordley et al. 2014; Kerala 53.2 kHz) to this species, without naming the frequency."
+1005490,Submyotodon latirostris,described_not_measured,2026-11-10,"Chou & Cheng (2012, Taiwan) give a mean frequency of 54.77 ± 3.19 kHz (as Myotis latirostris); the full paper is not openly available."
+1005736,Laephotis robertsi,stated_unknown,2026-11-10,Goodman et al. (2012) state that no recordings can be assigned to it with certainty; Kofoky et al. (2009)'s Neoromicia calls from its sites may be this species or L. matroka.
+1007048,Glauconycteris baka,stated_unknown,2026-11-10,Its description (Gomeh-Djame et al. 2026) states that no echolocation calls were obtained.
+1005557,Histiotus macrotus,published_not_open,2026-11-10,"Giménez et al. (2023, Mammal Research) compare the calls of three Patagonian Histiotus."
+1005558,Histiotus magellanicus,published_not_open,2026-11-10,"Giménez et al. (2023, Mammal Research) compare the calls of three Patagonian Histiotus; the Mammalian Species account (2019) could not be fetched."
+1005260,Setirostris eleryi,published_not_open,2026-11-10,"McKenzie et al. (2020, Australian Mammalogy) document its echolocation sequences in Western Australia."
+1005171,Cynomops milleri,published_not_open,2026-11-10,"Moras et al. (2017, Mammalian Biology) redescribe it with echolocation calls."
+1005062,Vampyressa pusilla,published_not_open,2026-11-10,"Korine & Kalko (2005, Behavioral Ecology and Sociobiology) analyse its echolocation calls."
+1004793,Saccopteryx antioquensis,to_read,2026-11-10,"First description of its call (Revista Chilena de Historia Natural 2026, doi 10.1186/s40693-026-00141-x) is open access, but the site answers automated clients with a script check."
+1004808,Emballonura semicaudata,to_read,2026-11-10,"First characterization of its calls (2026) is open on Zenodo (doi 10.5281/zenodo.22134602), whose robots.txt disallows this search's agent."
+1004961,Micronycteris sanborni,to_read,2026-11-10,"López-Baucells et al. (2014, Mammalia) give the first description of its calls; the open repository copy refused the request (403)."
+1005131,Miniopterus paululus,to_read,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
+1005435,Myotis macrotarsus,to_read,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
+1004587,Hipposideros coronatus,to_read,2026-11-10,"Polillo Island call characterization (Philippine Journal of Science 150(6B), 2021) is open, but the site refused the request (403)."
+1005184,Eumops maurus,to_read,2026-11-10,"López-Baucells et al. (2017, Tropical Zoology) give acoustic data; the publisher refused the request (403)."
+1005316,Harpiola isodon,to_read,2026-11-10,A 2025 Zootaxa note describes its echolocation call; the full text was not reachable.
+1006737,Myotis barquezi,to_read,2026-11-10,A 2025 Journal of Mammalogy study gives acoustic parameters; the open CONICET copy is served by a script-only page.
+1006677,Myotis arescens,to_read,2026-11-10,Its systematic review (Zootaxa 2022) includes bioacoustic analyses; the full text was not reachable.
+1005397,Myotis dieteri,to_read,2026-11-10,"A preprint (ARPHA Preprints 2026, not yet peer reviewed) gives call values for one bat; to be imported once published."
+1005590,Lasiurus villosissimus,to_read,2026-11-10,A 2026 Acta Chiropterologica study of Galápagos bats and a 2026 Caatinga acoustic survey may give its call; BioOne answers automated clients with a bot check.
+1004904,Hylonycteris underwoodi,to_read,2026-11-10,"Leiser-Miller & Santana (2021, Ecology and Evolution) measured its calls in a comparative study; no species values are given in the article text."
+1004990,Mimon cozumelae,to_read,2026-11-10,The Sonozotz call library (Zamora-Gutiérrez et al. 2020) holds 11 of its calls; no per-species values are given in the article text.
+1006683,Artibeus intermedius,to_read,2026-11-10,A 2026 study of wingbeat-pulse coupling includes it; the Zenodo copy is closed to this search's agent by robots.txt.
+1004802,Emballonura alecto,to_read,2026-11-10,A 2012 survey of Panay caves recorded echolocation calls; the journal's robots.txt disallows this search's agent.
+1004879,Carollia subrufa,to_read,2026-11-10,The Mammalian Species account (2008) may summarise its call; the publisher refused the request (403).
+1004948,Lonchorhina marinkellei,to_read,2026-11-10,The Mammalian Species account (2017) may summarise its call; the publisher refused the request (403).
+1005474,Myotis simus,to_read,2026-11-10,The Mammalian Species account (2012) is not openly available and was not read.
+1004692,Rhinolophus hillorum,to_read,2026-11-10,"A 2022 Nigerian survey built a call library from captured bats; it is not openly available, so whether this species is in it was not checked."
+1004918,Monophyllus redmani,to_read,2026-11-10,"A 2002 Cuban bioacoustic community study may include it; not openly available, not read."
+1004764,Paratriaenops pauliani,to_read,2026-11-10,"Its 2008 description is on Zenodo, whose robots.txt disallows this search's agent; not read."
+1004651,Rhinolophus achilles,searched_none_found,2026-11-10,"HMW (2019)'s Queensland values belong to R. philippinensis forms, not to this species."
+1005271,Chilonatalus micropus,searched_none_found,2026-11-10,Only a prediction from ear size (two harmonics in the 40-80 kHz range; Tejedor 2011).
+1006739,Scotophilus borbonicus,searched_none_found,2026-11-10,"HMW (2019) mentions an unidentified call that might be it; older 'S. borbonicus' calls (Fenton & Rautenbach 1986; Jacobs 2000) are of other Scotophilus under the name's former, broader use."
+1006895,Rhinolophus dobsoni,searched_none_found,2026-11-10,The systematic revision of the R. landeri complex (2025) states that calls are lacking for it.
+1005734,Laephotis matroka,searched_none_found,2026-11-10,Kofoky et al. (2009)'s Neoromicia calls from its sites may be this species or L. robertsi (Goodman et al. 2012).
+1005732,Laephotis kirinyaga,searched_none_found,2026-11-10,"Juste et al. (2023) cite a peak of 43.9 kHz from another study, not traced here."
+1005773,Pseudoromicia nyanza,searched_none_found,2026-11-10,"Juste et al. (2023) cite a peak of 40.4 kHz from another study, not traced here."
+1004882,Diphylla ecaudata,searched_none_found,2026-11-10,The candidates study contact calls (Carter et al. 2012) or summarise its biology; none measures its echolocation call.
+1005163,Mops tomensis,searched_none_found,2026-11-10,São Tomé acoustic surveys record it but cannot separate it from C. pumilus and give no call parameters.
+1004643,Macronycteris thomensis,searched_none_found,2026-11-10,São Tomé acoustic surveys record it but give no call parameters.
+1004708,Rhinolophus maendeleo,searched_none_found,2026-11-10,The 2022 description of a new Namuli horseshoe bat compares it morphologically; the call given is the new species'.
+1006536,Glossophaga mutica,searched_none_found,2026-11-10,"The candidates study social calls, not echolocation."
+1007004,Myotis badius,searched_none_found,2026-11-10,"The candidate studies distress calls, not echolocation."
+1005555,Histiotus humboldti,searched_none_found,2026-11-10,Rodríguez-Posada et al. (2021) give calls of H. colombiae only.
+1005315,Harpiola grisea,searched_none_found,2026-11-10,The only candidate is about H. isodon.
+1004788,Peropteryx leucoptera,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004790,Peropteryx pallidoptera,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004815,Saccolaimus peli,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004839,Nycteris javanica,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004887,Phyllonycteris aphylla,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004909,Glossophaga commissarisi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004910,Glossophaga leachii,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004912,Glossophaga morenoi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004932,Lonchophylla dekeyseri,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004937,Lonchophylla mordax,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1006871,Trachops coffini,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004974,Lophostoma evote,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1006675,Lophostoma nicaraguae,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005010,Artibeus inopinatus,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005001,Dermanura azteca,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005022,Chiroderma doriae,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005058,Uroderma davisi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005077,Sturnira erythromos,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005186,Eumops patagonicus,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005144,Mops aloysiisabaudiae,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005161,Mops russatus,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005226,Mormopterus francoismoutoui,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005374,Myotis bartelsii,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005484,Myotis weberi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005467,Myotis schaubi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005480,Myotis tschuliensis,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005486,Myotis yanbarensis,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005495,Baeodon alleni,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005498,Baeodon gracilis,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005497,Rhogeessa genowaysi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005507,Rhogeessa velilla,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005642,Scotoecus albigula,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005739,Mimetillus moloneyi,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005702,Cassistrellus yokdonensis,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005755,Nyctophilus corbeni,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004556,Asellia arabica,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1004771,Rhinopoma hadramauticum,searched_none_found,2026-11-10,"The candidate papers (distribution records, surveys, diet, taxonomy or physiology) were read and do not measure its call."
+1005535,Glauconycteris alboguttata,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005537,Glauconycteris atra,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005539,Glauconycteris curryae,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005541,Glauconycteris gleni,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005542,Glauconycteris humeralis,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005543,Glauconycteris kenyacola,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005544,Glauconycteris machadoi,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005545,Glauconycteris poensis,searched_none_found,2026-11-10,"The only candidate is the description of G. baka, which compares it morphologically."
+1005247,Ozimops cobourgianus,searched_none_found,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005248,Ozimops halli,searched_none_found,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005249,Ozimops kitcheneri,searched_none_found,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005253,Ozimops planiceps,searched_none_found,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."
+1005254,Ozimops ridei,searched_none_found,2026-11-10,"Australian surveys record it, but none of the candidates gives its call parameters; regional call keys were not among the search results."

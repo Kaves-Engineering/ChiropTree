@@ -162,6 +162,8 @@ sub("""Promise.all([
   luState.familyInference = calls.familyInference || {};
   luState.genusInference = calls.genusInference || {};
   luState.directCallReferences = calls.references || {};
+  luState.localityMovedOut = calls.localityMovedOut || {};
+  luState.callSearchLog = calls.searchLog || {};
   luState.media = media.assets || {};""",
     """Promise.all([
   bundled('d-taxonomy', 'data/marine_mammal_taxonomy.json'),

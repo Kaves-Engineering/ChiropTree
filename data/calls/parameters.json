@@ -42,7 +42,7 @@
   "digitised_from_figure": "Read off a plot rather than a printed value.",
   "derived": "Modelled or calculated by the source rather than measured.",
   "suspect": "Looks wrong; retained with the flag rather than dropped.",
-  "taxon_uncertain": "The source published this under a name that has since been split, so the measurement is shown for every daughter species and belongs to only one of them."
+  "taxon_uncertain": "The source published this under a name that has since been split. Either the measurement is shown for every daughter species and belongs to only one of them, or it was placed on one daughter by where it was recorded (data/calls/locality.py) and its note says why; the source itself did not name that species."
  },
  "unit_conversions": {
   "Hz": {

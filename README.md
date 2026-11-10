@@ -219,9 +219,12 @@ To fill the plot, three call sources were added in November 2026:
 - `build_plazi_literature_calls.py`: call frequencies stated in species
   treatments on Plazi. These are mostly from the *Handbook of the Mammals
   of the World* (2019). Only text naming the peak becomes a peak frequency;
-  CF and characteristic frequencies keep their own parameters.
+  CF and characteristic frequencies keep their own parameters. The call-gap
+  search (see "Finding missing calls") added the HMW call statements of 102
+  species that had no call at all.
 
-With them, 616 species are plotted. Run the three importers, then
+With them, 620 species are plotted. A further 61 species have a measured
+peak but no measured forearm yet, so they are not plotted. Run the three importers, then
 `data/calls/build_calls.py`; the Zamora importer needs `uv run --with
 openpyxl`.
 
@@ -638,6 +641,81 @@ Run `node data/test_mobile_map_browser.cjs` for canvas country taps, range and
 theme painting, island selection, touch panning, bitmap sizing and zero map
 redraws when scrolling after the map has loaded, at 8x CPU slowdown.
 See [PERFORMANCE.md](PERFORMANCE.md) for the budgets and measurement limits.
+
+## Finding missing calls
+
+Bats in echolocating families (every family but Pteropodidae) that have no
+call in `data/calls/exports/calls.json` are searched for systematically,
+under every name in their MDD name history:
+
+```
+uv run data/calls/search_call_gaps.py plazi europepmc triage gbif openalex log
+```
+
+- `plazi`: every Plazi treatment filed under one of the species' names,
+  keeping each sentence that gives kHz or mentions echolocation. This found
+  the HMW vol. 9 call statements now in `build_plazi_literature_calls.py`.
+- `europepmc`, then `triage`: Europe PMC papers naming the species with an
+  echolocation term. The triage reads each one's open full text, or failing
+  that its abstract, and keeps the sentences that name the species with kHz
+  or echolocation.
+- `gbif`: whether sound recordings exist, as GBIF occurrence counts. Only
+  names GBIF accepts as species count; a synonym's records belong to its
+  parent. No audio is fetched. ChiroVox's robots.txt disallows all crawling
+  and xeno-canto's disallows Anthropic's agents and its API, so neither site
+  is contacted.
+- `openalex`: OpenAlex limits keyless use to about 100 searches a day, so
+  this pass resumes where it stopped and takes several days to finish. The
+  first keyless run covered 94 species before it was rate-limited. The other
+  563 were searched on 2026-11-10 through the claude.ai OpenAlex connector
+  (records marked `"via"`): four combined title-and-abstract searches over
+  every name of every species, with the same echolocation terms. Each work
+  found was assigned to a species by matching its names, abbreviated forms
+  like "M. schaubi" included, in the title, keywords and abstract
+  (OpenAlex, Europe PMC, Crossref, DataCite, Semantic Scholar). When no open
+  abstract named the species, the full OpenAlex record was read. Eight works
+  name no target species that could be identified (obituaries, reviews and
+  works with no abstract) and are left out.
+
+Each pass writes a review queue to `data/calls/search/`; nothing in a queue
+is a measurement. `log` then writes `data/calls/search_log.csv`, one row per
+species with a status: `to_read`, `published_not_open`, `recording_only`,
+`searched_none_found`, `described_not_measured` (the call is described, but
+only as an unnamed frequency, a "mean frequency" or values reassigned from
+other studies) or `stated_unknown`. A person's verdict after reading, in
+`data/calls/search_decisions.csv`, overrides the automatic status.
+`build_calls.py` copies the log into the export, and the card says where the
+search stands. "None found" is never shown as "never recorded"; only a
+source that says the call is undescribed gives `stated_unknown`.
+
+**Reading the candidates (November 2026).** Every `to_read` species was
+read. `data/build_call_gap_literature.py` imports what was found, one CSV
+per source: 26 sources, 302 rows and 39 species, among them first call
+descriptions (Thyroptera devivoi, Histiotus colombiae, Pharotis imogene,
+Neoeptesicus innoxius, Myotis nimbaensis) and the per-species tables of
+Gyorossy et al. (2024) and Jung et al. (2014) that the earlier worksheet
+import lacked. Sources are cached Europe PMC XML, Plazi XML and open PDFs.
+The PDFs are fetched by `data/calls/fetch_call_gap_papers.py` only where
+robots.txt allows it, and the check is repeated on every redirect. Each
+source is pinned by SHA-256, and each row's wording is checked against the
+source text. One table whose PDF text layer is scrambled was read off the
+rendered page, and its note says so. Values identified only from calls
+("cf.") carry `taxon_uncertain`. The rest of the candidates got a verdict
+with a note in `search_decisions.csv`. 22 stay `to_read`: an open source
+exists, but this search could not fetch it (robots.txt, a 403, or a
+script or bot check), and the note names it.
+
+**Calls placed by locality.** A source that recorded bats under a name since
+split recorded some of the daughter species. `build_calls.py` moves such a
+row to a daughter (`data/calls/locality.py`) only when every country the row
+names lies inside that daughter's MDD range and outside the range of the
+parent and every other daughter. A "?" in MDD's country list counts as
+possible presence and blocks the move. Moved rows keep `quality_flag
+taxon_uncertain`, so they stay out of the call plot, and their note names
+the printed name, the countries and the split. The card of the receiving
+species says where the calls came from; the parent's card says where they
+went (`localityMovedOut` in the export). Compilations without a country per
+row (Collen 2012, Castro et al. 2024) cannot be placed this way.
 
 ## Extending the echolocation data
 
