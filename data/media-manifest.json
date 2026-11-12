@@ -715,7 +715,19 @@
    "modified": true
   },
   "1004410": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004410-f04ddefa2d2e.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/384083345",
+   "providerAssetId": "703035696",
+   "attribution": "(c) Jasmine Vink, some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Syconycteris carolinae",
+   "retrievedAt": "2026-11-09T11:24:24.752894+00:00",
+   "sourceHash": "6524ff92381597e613c09991208f039d20ffcb5c420dddffbe34d4fd6b53de44",
+   "outputHash": "f04ddefa2d2e66485719cff37bc75988f7384d3bd83a62c63cdfe1964de9ad2c",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004411": {
    "status": "unavailable"
@@ -1024,10 +1036,10 @@
    "path": "images/1004444-4a02319b1215.jpg",
    "sourceUrl": "https://www.inaturalist.org/observations/18422032",
    "providerAssetId": "28161237",
-   "attribution": "(c) matthewkwan, some rights reserved (CC BY-ND)",
-   "license": "CC-BY-ND",
+   "attribution": "(c) matthewkwan, some rights reserved (CC BY-NC-ND)",
+   "license": "CC-BY-NC-ND",
    "alt": "Acerodon jubatus",
-   "retrievedAt": "2026-09-04T09:14:56.123542+00:00",
+   "retrievedAt": "2026-11-09T11:40:29.993182+00:00",
    "sourceHash": "4a02319b121558d46b8f708a4072b4aee8b44a1a04b376e7f89d0543d0b49b3b",
    "outputHash": "4a02319b121558d46b8f708a4072b4aee8b44a1a04b376e7f89d0543d0b49b3b",
    "width": 240,
@@ -2547,7 +2559,19 @@
    "modified": true
   },
   "1004569": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004569-809e07f16dde.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74421",
+   "providerAssetId": "579183676",
+   "attribution": "(c) Jerrica Agebigo, sommige rechten voorbehouden (CC BY-NC), geüpload door Jerrica Agebigo",
+   "license": "CC-BY-NC",
+   "alt": "Hipposideros edwardshilli",
+   "retrievedAt": "2026-11-09T11:25:58.918210+00:00",
+   "sourceHash": "380497753e2a3633c06323db77acf34e6539d25bcd4dd3f1549b976e85f5e92d",
+   "outputHash": "809e07f16dde549399c49ae3a3fc23108f26a7399c6c92894e5bdedac03318f5",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004570": {
    "status": "unavailable"
@@ -5336,7 +5360,19 @@
    "height": 75
   },
   "1004803": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004803-846d24588458.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/41358",
+   "providerAssetId": "734207293",
+   "attribution": "(c) Auzan Sukaton, some rights reserved (CC BY-NC), uploaded by Auzan Sukaton",
+   "license": "CC-BY-NC",
+   "alt": "Emballonura beccarii",
+   "retrievedAt": "2026-11-09T11:27:47.074555+00:00",
+   "sourceHash": "628adfe33bd06060eb8adfdbfa88a62257621396900bc562401be67e2b01818b",
+   "outputHash": "846d2458845847c0f3520c6c650873648840aef2b3e6ed5d799f654072e86ece",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004804": {
    "status": "unavailable"
@@ -7293,7 +7329,19 @@
    "status": "unavailable"
   },
   "1004964": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1004964-90d8efdab0a1.webp",
+   "sourceUrl": "https://www.inaturalist.org/observations/116297515",
+   "providerAssetId": "196295945",
+   "attribution": "(c) Thomas Hiller (he/him), some rights reserved (CC BY-NC)",
+   "license": "CC-BY-NC",
+   "alt": "Micronycteris tresamici",
+   "retrievedAt": "2026-11-09T11:28:59.928404+00:00",
+   "sourceHash": "46ef0d4555257b3fdfdc78faf207a1308c09a82bb80cf7942e91455966e97cf2",
+   "outputHash": "90d8efdab0a1ad5fbb63d025bc9c207b27044bb918dd59144c323ce77e4e8c93",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1004965": {
    "status": "available",
@@ -10269,7 +10317,19 @@
    "modified": true
   },
   "1005207": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005207-ec586bf15c40.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/1431065",
+   "providerAssetId": "6532480",
+   "attribution": "(c) Debbie Baker, some rights reserved (CC BY-NC), uploaded by Debbie Baker",
+   "license": "CC-BY-NC",
+   "alt": "Molossus verrilli",
+   "retrievedAt": "2026-11-09T11:30:42.383708+00:00",
+   "sourceHash": "1a38564de6cee1be3f2fce757f5fb7fa1b4421fcae6510cbc52b8ba84cc052bc",
+   "outputHash": "ec586bf15c403c09637185dcef63c0a6be30cfdc60fcef66cd8a930e20f17f7a",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005208": {
    "status": "available",
@@ -11058,7 +11118,19 @@
    "modified": true
   },
   "1005276": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005276-3ee1284df2df.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74730",
+   "providerAssetId": "749792799",
+   "attribution": "(c) José G. Martínez-Fonseca, some rights reserved (CC BY-NC), uploaded by José G. Martínez-Fonseca",
+   "license": "CC-BY-NC",
+   "alt": "Natalus major",
+   "retrievedAt": "2026-11-09T11:31:22.317023+00:00",
+   "sourceHash": "80c99435af87d0a9ae6ffb79d5cdc7b5b0f8686f941e28f979cae12c82a97336",
+   "outputHash": "3ee1284df2df4d1e3aef83e3e309f98c69ba0f1711eb52e44229d8e7a6f445df",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005277": {
    "status": "available",
@@ -11442,7 +11514,19 @@
    "modified": true
   },
   "1005312": {
-   "status": "unavailable"
+   "status": "available",
+   "path": "images/1005312-b650b9260e9e.webp",
+   "sourceUrl": "https://www.inaturalist.org/taxa/74873",
+   "providerAssetId": "289654786",
+   "attribution": "(c) Tejas M, some rights reserved (CC BY), uploaded by Tejas M",
+   "license": "CC-BY",
+   "alt": "Phoniscus jagorii",
+   "retrievedAt": "2026-11-09T11:31:48.520233+00:00",
+   "sourceHash": "622dd9a2266898a296a4482f5aa97eb2f8a4fc055107e389ce390ebf2b1f00dd",
+   "outputHash": "b650b9260e9ecac1fc4f3a6e39a56a58009620f69b3a768deadbd5577696c329",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005313": {
    "status": "available",
@@ -17162,18 +17246,18 @@
   },
   "1005913": {
    "status": "available",
-   "path": "images/1005913-3abb374475e3.jpeg",
+   "path": "images/1005913-cc8f623274bf.webp",
    "sourceUrl": "https://www.inaturalist.org/observations/17811121",
    "providerAssetId": "27179788",
-   "attribution": "(c) Dean Hester, some rights reserved (CC BY-NC-ND)",
-   "license": "CC-BY-NC-ND",
+   "attribution": "(c) Dean Hester, some rights reserved (CC BY)",
+   "license": "CC-BY",
    "alt": "Halichoerus grypus",
-   "retrievedAt": "2026-09-04T09:45:32.373695+00:00",
-   "sourceHash": "3abb374475e390a8a90ad1a42500c60b7dd929dd70f261c82656eafc6ea67987",
-   "outputHash": "3abb374475e390a8a90ad1a42500c60b7dd929dd70f261c82656eafc6ea67987",
-   "width": 240,
-   "height": 159,
-   "modified": false
+   "retrievedAt": "2026-11-09T12:02:11.238078+00:00",
+   "sourceHash": "22813aac064d1918f4fdf186e580a6f512750c582173ad36409ee9489f6f6e58",
+   "outputHash": "cc8f623274bfdd2688191f1c72d5a5f0ccb1e13cb515032504909406856d0489",
+   "width": 75,
+   "height": 75,
+   "modified": true
   },
   "1005914": {
    "status": "available",
