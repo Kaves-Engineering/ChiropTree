@@ -91,8 +91,8 @@
    "sha256": "e97f0bb333803c659d26b899ede52a72e2d1e323e0ff76590064c45206dfad49"
   },
   "media-manifest.json": {
-   "bytes": 768046,
-   "sha256": "b8fd10f1d5659735f71aab522d96a4dd8f07f4ce3b2e1471486aed99981126ea"
+   "bytes": 773179,
+   "sha256": "c76f168b9832ba5158b501052af366d17b8787c8d2d7614fefc924b0d7cdbfdc"
   },
   "world_map.json": {
    "bytes": 325070,
