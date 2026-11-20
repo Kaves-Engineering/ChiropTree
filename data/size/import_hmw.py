@@ -33,8 +33,25 @@ to the review file too: "611 g" for the 40 mm Lasiurus minor is HMW's 6-11 g
 with the hyphen lost.
 
 Several figures per account: HMW sometimes gives sexes apart ("57-65 mm
-(males) and 56-67 mm (females)"); those become male and female rows. Figures
-for subspecies or regions are pooled into one row spanning all of them.
+(males) and 56-67 mm (females)"); those become male and female rows.
+
+Subspecies. Some accounts print a block of figures per subspecies: "forearm
+59-68 mm; weight 43-59 g for subspecies intermedius. ... forearm 69-77 mm;
+weight 55-90 g for subspecies palmarum." Every forearm and weight figure in
+the notes is read, and a figure belongs to a subspecies when its own sentence
+names one of the epithets the account lists under "Subspecies and
+Distribution" ("for subspecies X", "for X", "Subspecies X:", "Nominate X",
+"subspecies X are smallest (forearm ...)"). Requiring a listed epithet is what
+keeps out figures HMW quotes for other species ("Horsfield's Myotis is smaller
+(forearm 35-38 mm)"). A subspecies MDD v2.5 ranks as a species takes its own
+figures (A. lituratus intermedius -> Artibeus intermedius, Dobsonia
+moluccensis magna -> D. magna); the other subspecies are pooled into one row
+for the account's species. A later figure that names no listed subspecies is
+not imported and is listed for review. A species-wide figure from an account
+whose subspecies include a species MDD now splits off says so in its notes.
+Checked by hand, Nov 2026, on the nine accounts that print several forearm
+ranges (A. jamaicensis, A. lituratus, A. planirostris, D. moluccensis,
+M. orianae, M. megalophylla, M. macrotarsus, P. vampyrus, S. adrianae).
 
 Which species: each account's text opens with its number, English name and
 binomial ("162. Great Evening Bat Ia io French: ..."). That printed binomial is
@@ -48,6 +65,7 @@ pooled into one row that says so. EXCLUDE lists figures known to be wrong.
 Run:  uv run data/size/fetch_hmw.py  (once; caches the XML)
       uv run data/size/import_hmw.py
 """
+import difflib
 import html
 import json
 import math
@@ -83,7 +101,15 @@ MISFIT_SIGMAS = 4.0
 # "¢" (cent sign) is how the OCR often renders a "g" or the "c." of "c. 13 g"
 UNIT = {"forearm_length": r"mm", "body_mass": r"(?:kg|g|�|¢)"}
 APPROX = r"(?:c\s*¢?\s*\.|¢\s*\.?)\s*"
-KEYWORD = {"forearm_length": r"(?i)\bforearms?\b(?:\s+length)?", "body_mass": r"(?i)\bweight\b"}
+KEYWORD = {"forearm_length": r"(?i)\bforearms?\b(?:\s+lengths?)?(?:\s+of)?", "body_mass": r"(?i)\bweight\b"}
+# Where a subspecies is named next to its figures, within one sentence: after
+# them ("... for subspecies X", "for nominotypical X", "for X") or before them
+# ("Subspecies X:", "Nominate X ... has forearm", "subspecies X are smallest (").
+LABEL_AFTER = re.compile(r"\bfor\s+(?:the\s+)?(?:subspecies\s+|nominotypical\s+|nominate\s+)?([a-z]{3,})\b")
+LABEL_BEFORE = re.compile(r"(?i:subspecies|nominate|nominotypical)\s+(?:(?:is|are)\s+)?([a-z]{3,})\b")
+# "A. l. intermedius J. A. Allen, 1897" in the Subspecies and Distribution section
+SUBSPECIES_ENTRY = re.compile(r"\b[A-Z]\s?\.\s?[a-z]\s?\.\s?([a-z]{3,})")
+SENTENCE_END = re.compile(r"\.\s+(?=[A-Z])")
 NUMBER = r"\d[\d\s\-–—:·.*�]*\d|\d"
 # "162. Great Evening Bat Ia io French: ..."
 HEADER = re.compile(r"^\s*\d+\s*\.\s*[^.]{0,80}?\b([A-Z][a-z]+ [a-z]+)\s+French\b")
@@ -119,7 +145,41 @@ def account_name(xml: str) -> str | None:
 
 def descriptive_notes(text: str) -> str:
     start = text.find("Descriptive notes")
-    return text[start:start + 900] if start >= 0 else ""
+    return text[start:start + 1200] if start >= 0 else ""
+
+
+def listed_subspecies(text: str, epithet: str) -> set[str]:
+    """The subspecies epithets an account lists, plus its own (the nominate)."""
+    start = text.find("Subspecies and Distribution")
+    end = text.find("Descriptive notes", start)
+    section = text[start:end] if start >= 0 and end > start else ""
+    return {m.group(1) for m in SUBSPECIES_ENTRY.finditer(section)} | {epithet}
+
+
+def sentence_around(notes: str, start: int, end: int) -> tuple[int, int]:
+    begin = max([m.end() for m in SENTENCE_END.finditer(notes, 0, start)], default=0)
+    after = SENTENCE_END.search(notes, end)
+    return begin, after.start() if after else len(notes)
+
+
+def listed_as(word: str, listed: set[str]) -> str:
+    """The listed epithet a word names, allowing one OCR slip: the notes of
+    A. planirostris print "trinitatis" where its list has "trinatatis", and
+    S. adrianae's print "carpana" for "caripana"."""
+    if word in listed:
+        return word
+    close = difflib.get_close_matches(word, listed, n=1, cutoff=0.85) if len(word) >= 6 else []
+    return close[0] if close else ""
+
+
+def subspecies_label(notes: str, start: int, end: int, listed: set[str]) -> str:
+    """The listed subspecies a figure chain is printed for, or ''."""
+    begin, finish = sentence_around(notes, start, end)
+    for match in LABEL_AFTER.finditer(notes, end, finish):
+        if found := listed_as(match.group(1), listed):
+            return found
+    before = [found for m in LABEL_BEFORE.finditer(notes, begin, start) if (found := listed_as(m.group(1), listed))]
+    return before[-1] if before else ""
 
 
 def readings(figure: str, trait: str) -> set[tuple[float, float]]:
@@ -168,14 +228,16 @@ def _readings(digits: list[str], options: list[list[str]], trait: str) -> set[tu
     return found
 
 
-def figures(notes: str, trait: str) -> list[dict]:
-    """The figures right after the trait's keyword: "forearm 57-65 mm (males)
-    and 56-67 mm (females)". Only figures chained by "and" or a comma count, so
-    the next measurement ("..., tibia 45 mm") is never read as this one."""
+def figure_chains(notes: str, trait: str) -> list[tuple[list[dict], int, int]]:
+    """Every run of figures right after the trait's keyword, with where it sits:
+    "forearm 57-65 mm (males) and 56-67 mm (females)". Only figures chained by
+    "and" or a comma count, so the next measurement ("..., tibia 45 mm") is
+    never read as this one."""
     figure = re.compile(rf"[:.]?\s*(?:of\s+(males|females)\s+)?({APPROX})?({NUMBER})\s*({UNIT[trait]})(?![a-z])\s*(?:\(([^)]*)\))?")
     joint = re.compile(r"\s*(?:,\s*and|,|and|or)\s+")
+    chains = []
     for match in re.finditer(KEYWORD[trait], notes):
-        position, out = match.end(), []
+        position, out, end = match.end(), [], match.end()
         while True:
             found = figure.match(notes, position + len(re.match(r"\s*", notes[position:]).group(0)))
             if not found:
@@ -183,13 +245,30 @@ def figures(notes: str, trait: str) -> list[dict]:
             out.append({"figure": found.group(3), "unit": found.group(4),
                         "qualifier": (found.group(5) or found.group(1) or "").strip(),
                         "verbatim": found.group(0).strip(), "approx": bool(found.group(2))})
+            end = found.end()
             link = joint.match(notes, found.end())
             if not link:
                 break
             position = link.end()
         if out:
-            return out
-    return []
+            chains.append((out, match.start(), end))
+    return chains
+
+
+def figures(notes: str, trait: str) -> list[dict]:
+    """The first run of figures for the trait (the species-wide one)."""
+    chains = figure_chains(notes, trait)
+    return chains[0][0] if chains else []
+
+
+def split_species(resolver: SizeResolver, genus: str, epithet: str, account_id: str):
+    """The MDD species a subspecies now is, when MDD ranks it as one."""
+    mark = len(resolver.unresolved)
+    species, method = resolver.resolve(f"{genus} {epithet}")
+    del resolver.unresolved[mark:]
+    if species and method == "exact" and species["id"] != account_id:
+        return species
+    return None
 
 
 def sex_of(qualifier: str) -> str:
@@ -234,25 +313,50 @@ def collect(manifest: dict, resolver: SizeResolver) -> tuple[dict, list]:
         if not species:
             continue
         binomial = species["sciName"].replace("_", " ")
-        notes = descriptive_notes(text_of(xml))
+        text = text_of(xml)
+        notes = descriptive_notes(text)
+        genus, epithet = printed.split()[:2]
+        listed = listed_subspecies(text, epithet)
+        # subspecies of this account that MDD now ranks as species of their own
+        split_off = {e: s for e in sorted(listed - {epithet})
+                     if (s := split_species(resolver, genus, e, species["id"]))}
         for trait in ("forearm_length", "body_mass"):
             if (binomial, trait) in EXCLUDE:
                 continue
-            for fig in figures(notes, trait):
-                found = readings(fig["figure"], trait)
-                if len(found) != 1:
-                    ambiguous.append((binomial, trait, fig["verbatim"], sorted(found), doc))
-                    if not found:
-                        continue
-                    # every reading lies inside their span, so the span is safe
-                    # as a reference range even before a person reads the figure
-                    fig["readings"] = sorted(found)
-                low, high = min(r[0] for r in found), max(r[1] for r in found)
-                if fig["unit"] == "kg":
-                    low, high = low * 1000, high * 1000
-                pooled[(species["id"], trait, sex_of(fig["qualifier"]))].append(
-                    {"low": low, "high": high, "fig": fig, "doc": doc, "page": meta["page"],
-                     "printed": printed, "method": method})
+            for i, (chain, start, end) in enumerate(figure_chains(notes, trait)):
+                label = subspecies_label(notes, start, end, listed)
+                if i > 0 and not label:
+                    # a later figure with no subspecies named: possibly another
+                    # species HMW compares this one with, so it is not used
+                    for fig in chain:
+                        ambiguous.append((binomial, trait, fig["verbatim"],
+                                          "a further figure that names no listed subspecies; not imported", doc))
+                    continue
+                target, target_method = species, method
+                if label in split_off:
+                    target, target_method = split_off[label], "manual"
+                for fig in chain:
+                    found = readings(fig["figure"], trait)
+                    if len(found) != 1:
+                        ambiguous.append((binomial, trait, fig["verbatim"], sorted(found), doc))
+                        if not found:
+                            continue
+                        # every reading lies inside their span, so the span is safe
+                        # as a reference range even before a person reads the figure
+                        fig["readings"] = sorted(found)
+                    low, high = min(r[0] for r in found), max(r[1] for r in found)
+                    if fig["unit"] == "kg":
+                        low, high = low * 1000, high * 1000
+                    fig["subspecies"] = label
+                    if target is not species:
+                        fig["moved_from"] = printed
+                    elif not label and split_off:
+                        fig["covers"] = [f"{genus} {e}" for e in split_off]
+                    pooled[(target["id"], trait, sex_of(fig["qualifier"]))].append(
+                        {"low": low, "high": high, "fig": fig, "doc": doc, "page": meta["page"],
+                         # a moved figure is printed for the trinomial
+                         "printed": printed if target is species else f"{printed} {label}",
+                         "method": target_method})
     return pooled, ambiguous
 
 
@@ -267,6 +371,18 @@ def size_row(mdd_id: str, trait: str, sex: str, figs: list[dict]) -> dict:
         notes.append(f"Spans HMW's {len(figs)} figures ({'; '.join(qualifiers)}).")
     elif qualifiers:
         notes.append(f"HMW's figure is for: {qualifiers[0]}.")
+    moved = sorted({f["printed"] for f in figs if f["fig"].get("moved_from")})
+    if moved:
+        notes.append(f"HMW prints it in the account of {figs[0]['fig']['moved_from']}, for subspecies "
+                     f"{', '.join(m.split()[-1] for m in moved)}, which MDD v2.5 ranks as this species.")
+    subspecies = sorted({f["fig"]["subspecies"] for f in figs if f["fig"].get("subspecies") and not f["fig"].get("moved_from")})
+    if subspecies:
+        notes.append(f"HMW gives it per subspecies; spans {', '.join(subspecies)}.")
+    covers = sorted({c for f in figs for c in f["fig"].get("covers", [])})
+    if covers:
+        named = covers[0] if len(covers) == 1 else ", ".join(covers[:-1]) + " and " + covers[-1]
+        notes.append(f"HMW's figure is for the species as it treats it, which includes {named}, "
+                     + ("a separate species" if len(covers) == 1 else "separate species") + " in MDD v2.5.")
     for f in figs:
         if "readings" in f["fig"]:
             options = " or ".join(f"{lo:g}-{hi:g}" if lo != hi else f"{lo:g}" for lo, hi in f["fig"]["readings"])
