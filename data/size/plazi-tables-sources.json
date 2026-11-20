@@ -1,0 +1,3033 @@
+{
+ "03EF1A9D3265EBC5D0B43E62852718A4": {
+  "caption": "Table 1. External and cranial measurements of the type series of Molossus paranaensis sp. nov. For descriptions of the abbreviations of measurements see “ Methods ”.",
+  "label": "Table 1",
+  "doi": "10.3897/vz.74.e122822",
+  "authors": "Chambi Velasquez, Micaela A., Pavé, Romina, Argoitia, María A., Schierloh, Pablo, Piccirilli, María G., Colombo, Valeria C., Beltrán, Fernando J., Cisterna, Daniel M. &amp; Caraballo, Diego A.",
+  "year": "2024",
+  "article": "Revisiting Molossus (Mammalia: Chiroptera: Molossidae) diversity: Exploring southern limits and revealing a novel species in Argentina",
+  "treatments": [
+   "AA6D0E17BDFD58DFB377A300B385CAEC"
+  ],
+  "zenodo": "",
+  "sha256": "c15df3c70b6688ca98406f52bb966385a2cdb1c8dc4b5521d8b44dc83e779345"
+ },
+ "04C1662CFFBAFF91FF402BABFA83C188": {
+  "caption": "TABLE 2. Selected measurements (mm) of pooled samples from the Atlantic Forest (Lonchophylla peracchii) and Cerrado (L. bokermanni) of southeastern Brazil. F values (ANOVA) with one asterisk (*) indicate statistical significance with α = 5 % (p ≤ 0.05), and with two asterisks (**) indicate statistical significance with α = 0.1 % (p ≤ 0.001).",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.3722.3.4",
+  "authors": "Dias, Daniela, Esbérard, Carlos Eduardo L. &amp; Moratelli, Ricardo",
+  "year": "2013",
+  "article": "A new species of Lonchophylla (Chiroptera, Phyllostomidae) from the Atlantic Forest of southeastern Brazil, with comments on L. bokermanni",
+  "treatments": [
+   "D81787B2FFB5FF9DFF402BA4FDA3C338"
+  ],
+  "zenodo": "",
+  "sha256": "2e8e7bb1d147e4e3249f5d997eda7d5055e4addd5eb27af4c08735392cbee744"
+ },
+ "18AD54D0EC4EFF8A3126FF4DFE2EFEB8": {
+  "caption": "Table 4.—Descriptive statistics (mean ± SD, minimum and maximum values, and number of measured specimens) at eight cranial measurements recorded for Pseudoromicia principis sp. nov. and the other members of the black-winged group of the genus Pseudoromicia. The small P. tenuipinnis is also included for comparisons. See text for definitions of the variables. Measurements for P. brunnea, P. kityoi, P. roseveari, and P. tenuipinnis after Monadjem et al. (2021a).",
+  "label": "Table 4",
+  "doi": "10.1093/jmammal/gyac110",
+  "authors": "Juste, Javier, Torrent, Laura, Méndez-Rodríguez, Aline, Howard, Kelli, García-Mudarra, Juan Luis, Nogueras, Jesús &amp; Ibáñez, Carlos",
+  "year": "2023",
+  "article": "A new Pipistrelle bat from the oceanic Island of Príncipe (Western Central Africa)",
+  "treatments": [
+   "C47BB54EEC4CFF85313EFE6DFEB9F84D"
+  ],
+  "zenodo": "https://zenodo.org/records/22874810",
+  "sha256": "2a243516733e5774ffa7eef13884ce7d0ba992849c7ca00d959bd742d3d7b57c"
+ },
+ "18AD54D0EC4FFF8B31F1FF4DFDF3FEB8": {
+  "caption": "Table 3.—Descriptive statistics (mean ± SD, minimum and maximum values, and number of measured specimens) at six external measurements recorded for Pseudoromicia principis sp. nov. and other members of the black-winged group of the genus Pseudoromicia. Pseudoromicia tenuipinnis is also included for comparisons. See text for definitions of the variables. Measurements for P. brunnea, P. kityoi, P. roseveari, and P. tenuipinnis after Monadjem et al. (2021a).",
+  "label": "Table 3",
+  "doi": "10.1093/jmammal/gyac110",
+  "authors": "Juste, Javier, Torrent, Laura, Méndez-Rodríguez, Aline, Howard, Kelli, García-Mudarra, Juan Luis, Nogueras, Jesús &amp; Ibáñez, Carlos",
+  "year": "2023",
+  "article": "A new Pipistrelle bat from the oceanic Island of Príncipe (Western Central Africa)",
+  "treatments": [
+   "C47BB54EEC4CFF85313EFE6DFEB9F84D"
+  ],
+  "zenodo": "https://zenodo.org/records/22874806",
+  "sha256": "6247a96b98ffa87e4f6aa62fde07991457bf1f696d4b6c396de13f8b7328d70d"
+ },
+ "1DCD6623FFA8BF319968FE17FA147437": {
+  "caption": "TABLE 2. Measurements of nine external traits of 52 bat species. FA — forearm length, BM — body mass, HB — head and body length, TL — tail length, TB — tibia length, HF — hind foot length, TU — thumb length: EL — ear length, TR — tragus length. Numbers denote minimum and maximum, and sample size; values in parentheses indicate measurements of specimens of this study; ‘ – ’: data not available. BMs for specimens were taken in the field. All measurements in mm, except for BM (in g)",
+  "label": "TABLE",
+  "doi": "10.3161/150811014X687369",
+  "authors": "Huang, Joe Chun-Chia, Jazdzyk, Elly Lestari, Nusalawo, Meyner, Maryanto, Ibnu, Maharadatunkamsi, Wiantoro, Sigit &amp; Kingston, Tigga",
+  "year": "2014",
+  "article": "A recent bat survey reveals Bukit Barisan Selatan Landscape as a chiropteran diversity hotspot in Sumatra",
+  "treatments": [
+   "C11B87BDFFA7BF339A5CFEA8FD6A7792",
+   "C11B87BDFFA7BF3E99EDFAFFFC4B776C",
+   "C11B87BDFFAABF3299FAFDF5FCA77472",
+   "C11B87BDFFABBF329808FA77FC747561",
+   "C11B87BDFFACBF349A9AFD01FF7077D6",
+   "C11B87BDFFADBF2B9A6EFB5DFD7377F4",
+   "C11B87BDFFB2BF2B980AFE53FED472A7",
+   "C11B87BDFFB8BF209A70FD9EFDA2776C",
+   "C11B87BDFFB9BF20980AFEABFD7F7004",
+   "C11B87BDFFBBBF219A98FA4FFACF743F",
+   "C11B87BDFFBBBF2299D6FA12FAD5745D",
+   "C11B87BDFFBBBF2299EDFE31FD3173CB"
+  ],
+  "zenodo": "",
+  "sha256": "73b3ff576db70898ba64b16cb4153a78285b28af8db7dfdaca6f8017aeacba45"
+ },
+ "1DCD6623FFB7BF2E9995FF3DFECE7758": {
+  "caption": "TABLE 3. Selected external traits and distribution range of known grayish-brown Kerivoula species on the Sunda Shelf and this study. FA — forearm length (mm); BM — body mass (g); TB — tibia length (mm); ‘–’: data not available. Data in parentheses denote samples of this study",
+  "label": "TABLE",
+  "doi": "10.3161/150811014X687369",
+  "authors": "Huang, Joe Chun-Chia, Jazdzyk, Elly Lestari, Nusalawo, Meyner, Maryanto, Ibnu, Maharadatunkamsi, Wiantoro, Sigit &amp; Kingston, Tigga",
+  "year": "2014",
+  "article": "A recent bat survey reveals Bukit Barisan Selatan Landscape as a chiropteran diversity hotspot in Sumatra",
+  "treatments": [
+   "C11B87BDFFB1BF289A70FE31FC5F70B9",
+   "C11B87BDFFB6BF2F9815FD3DFE317343",
+   "C11B87BDFFB6BF2F9A8DFC68FC0E7197"
+  ],
+  "zenodo": "",
+  "sha256": "99dcbca41a2062429210df642caf5bc8c653ca363592dda5319111e754a9661d"
+ },
+ "1DCD6623FFB8BF219994F9D9FB777019": {
+  "caption": "TABLE 4. Selected external traits and distribution of known Miniopterus species on the Sunda Shelf and this study. FA — forearm length (mm), BM — body mass (g), TB — tibia length (mm). Data in parentheses denote samples of this study",
+  "label": "TABLE",
+  "doi": "10.3161/150811014X687369",
+  "authors": "Huang, Joe Chun-Chia, Jazdzyk, Elly Lestari, Nusalawo, Meyner, Maryanto, Ibnu, Maharadatunkamsi, Wiantoro, Sigit &amp; Kingston, Tigga",
+  "year": "2014",
+  "article": "A recent bat survey reveals Bukit Barisan Selatan Landscape as a chiropteran diversity hotspot in Sumatra",
+  "treatments": [
+   "C11B87BDFFB8BF209A70FD9EFDA2776C",
+   "C11B87BDFFB9BF20980AFEABFD7F7004",
+   "C11B87BDFFBBBF219A98FA4FFACF743F"
+  ],
+  "zenodo": "",
+  "sha256": "da9d116623e876894eb7ea8bc3b3c5e2d2bab0a3911d529fba32445d1226f4ab"
+ },
+ "1F174FF36F32035D47B445654E0054FC": {
+  "caption": "Table 1. External and craniodental measurements taken from Histiotus specimens.",
+  "label": "Table 1",
+  "doi": "10.3897/zookeys.1174.108553",
+  "authors": "Claudio, Vinicius C., Almeida, Brunna, Novaes, Roberto L. M., Navarro, Marcos A., Tiepolo, Liliani M. &amp; Moratelli, Ricardo",
+  "year": "2023",
+  "article": "Rediscovery of Histiotus alienus Thomas, 1916 a century after its description (Chiroptera, Vespertilionidae): distribution extension and redescription",
+  "treatments": [
+   "374D8EF039175C94BC32BACB40785D27"
+  ],
+  "zenodo": "",
+  "sha256": "07d1016b230fe4c7d45744545b275c199987a5fbb68b9e57a243ab28ed52c00e"
+ },
+ "26FE6656CD498A70FF43443CFA7C0AF5": {
+  "caption": "TABLE 2. External and craniodental measurements and echolocation frequency of bat species (in mm) in this study. Values are given as mean ± SD; n (min–max). Abbreviations and definitions for measurements are provided in the text.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.5768.3.1",
+  "authors": "Tu, Vuong Tan, Furey, Neil M., Koyabu, Daisuke, Arai, Satoru, Görföl, Tamás, Ngon, Lam Quang, Nojiri, Taro, Fukui, Dai, Csorba, Gábor, Balvín, Ondřej, Tuan, Le Quang, Tuan, Tran Anh, Hang, Chu Thi, Hanh, Le Minh, Thi, Van Anh Le, Thien, Huynh Huu &amp; Hassanin, Alexandre",
+  "year": "2026",
+  "article": "Bats of the Vietnamese Mekong Delta: A revised checklist with significant new records",
+  "treatments": [
+   "FA2887C8CD498A73FF4C47A6FBE50B48",
+   "FA2887C8CD4A8A75FF4C45F7FF110868",
+   "FA2887C8CD4C8A75FF4C4617FD540C90",
+   "FA2887C8CD4C8A77FF4C4107FC640C20",
+   "FA2887C8CD4E8A69FF4C42DFFD240DD4"
+  ],
+  "zenodo": "",
+  "sha256": "c4d7706c28fab2225009b7eee955870c5c0cf99ae192576328ed1c42b1299f1e"
+ },
+ "28CD66762410FFB6FF6FFF73FD88FF7A": {
+  "caption": "Table 2.—External and cranial measurements of the species of Nyctinomops from Argentina. For descriptions of the abbreviations of measurements, see Materials and Methods section.",
+  "label": "Table 2",
+  "doi": "10.1093/jmammal/gyad040",
+  "authors": "Barquez, Rubén M, Tomasco, Ivanna H, Sánchez, R Tatiana, Boero, Lourdes, Rodriguez, Alejandro Daniel &amp; Díaz, M Mónica",
+  "year": "2023",
+  "article": "A new species of bat in the genus Nyctinomops Miller, 1902 (Chiroptera: Molossidae) from Misiones, Argentina",
+  "treatments": [
+   "F41B87E82412FFB6FF54FCA9FF5CF85C"
+  ],
+  "zenodo": "https://zenodo.org/records/15151489",
+  "sha256": "f80c3af62160e4a59bef11b051e122d053c6fb6a99f9afc4185993f0389a1d01"
+ },
+ "28CD66762411FFB7FBFAFCC0F843FC0E": {
+  "caption": "Table 3.—Comparison of the external and cranial characters among species of Nyctinomops. FA:",
+  "label": "Table 3",
+  "doi": "10.1093/jmammal/gyad040",
+  "authors": "Barquez, Rubén M, Tomasco, Ivanna H, Sánchez, R Tatiana, Boero, Lourdes, Rodriguez, Alejandro Daniel &amp; Díaz, M Mónica",
+  "year": "2023",
+  "article": "A new species of bat in the genus Nyctinomops Miller, 1902 (Chiroptera: Molossidae) from Misiones, Argentina",
+  "treatments": [
+   "F41B87E82412FFB6FF54FCA9FF5CF85C"
+  ],
+  "zenodo": "https://zenodo.org/records/15151491",
+  "sha256": "b7ce354d185e9b287aee445caff2e566d5c349f971fb083d20be5b7618586060"
+ },
+ "28EB660B29530E55FF93FE6AACB593EA": {
+  "caption": "TABLE 1. Selected external and cranial measurements (in mm), and frequency of the constant segment of the echolocation calls (CF, in kHz), of the putative sibling species considered in the study. Last column indicates the significance of a two-tailed t-test to test for differences between means of samples for H. rotalis and H. khaokhouayensis. P-level: ns — P> 0.05; * — 0.05 ≥ P> 0.01; ** — 0.01 ≥ P> 0.001; *** — P ≤ 0.001",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2006)8[39:ANSOBO]2.0.CO;2",
+  "authors": "Guillén-Servent, Antonio &amp; Francis, Charles M.",
+  "year": "2006",
+  "article": "A new species of bat of the Hipposideros bicolor group (Chiroptera: Hipposideridae) from Central Laos, with evidence of convergent evolution with Sundaic taxa",
+  "treatments": [
+   "F43D8795295D0E51FF74FD51AB82935E"
+  ],
+  "zenodo": "",
+  "sha256": "d28fef4cfff1b1569e8e9cd3433726067815cbd20215fb9d1a508e8c35974e8e"
+ },
+ "2CF56638FFE1FFA8FFFCFDBDF895FD76": {
+  "caption": "TABLE 3. External measurements of specimens of R. namuli sp. nov., R. maendeleo and R. simulator. Measurement with an asterisk in the header have non-overlapping ranges between R. namuli sp. nov. and R. maendeleo. DM = Durban Natural Science Museum; MHNG = Muséum d’Histoire Naturelle de Genève; MoM = National Museums of Malawi; SMF = Senckenberg Museum Frankfurt. * = accession numbers unknown for MoM, field codes used. Abbreviations are explained in the methods under ‘Character measurements’",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.002",
+  "authors": "Curran, Michael, Kopp, Mirjam, Ruedi, Manuel &amp; Bayliss, Julian",
+  "year": "2022",
+  "article": "A new species of horseshoe bat (Chiroptera: Rhinolophidae) from Mount Namuli, Mozambique",
+  "treatments": [
+   "F02387A6FFE4FFB7FC2CFA1AFD91F84F"
+  ],
+  "zenodo": "https://zenodo.org/records/15152648",
+  "sha256": "038eff959185e6d62f817c201a165f660656f8e5dd8ff54d0775814772c68bb5"
+ },
+ "2CF56638FFFCFFB5FF08FA30FA0FF9FA": {
+  "caption": "TABLE 5. Echolocation call parameters of R. namuli sp. nov. and species with similar echolocation peak frequency from nearby localities. Table highlights mean peak frequency (PF), standard deviation (SD), range and number of individuals recorded (n). Data collected by M. Curran and M. Kopp (unpublished material). MZ = Mozambique, MW = Malawi",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.002",
+  "authors": "Curran, Michael, Kopp, Mirjam, Ruedi, Manuel &amp; Bayliss, Julian",
+  "year": "2022",
+  "article": "A new species of horseshoe bat (Chiroptera: Rhinolophidae) from Mount Namuli, Mozambique",
+  "treatments": [
+   "F02387A6FFE4FFB7FC2CFA1AFD91F84F"
+  ],
+  "zenodo": "https://zenodo.org/records/15152650",
+  "sha256": "49a379a8d7c7a9f1667e1b8794128d5c2a55122efb7f909fc0b88475b3f28709"
+ },
+ "31CC84AB4542FFCAFF73FF2E0E2AFEC9": {
+  "caption": "Table 1. Comparative measurements of R. sinicus specimen from Manipur and Meghalaya",
+  "label": "Table 1",
+  "doi": "10.26515/rzsi/v120/i1/2020/140764",
+  "authors": "Saikia, Uttam, Ngaomei, Gaikhuanlung &amp; Meetei, A. B.",
+  "year": "2020",
+  "article": "Some noteworthy bat (Mammalia: Chiroptera) records from Manipur State, Northeastern India",
+  "treatments": [
+   "ED1A65354541FFC9FF56FB95084CFE12",
+   "ED1A65354541FFCAFCABFE0F08A4FF29"
+  ],
+  "zenodo": "https://zenodo.org/records/15140704",
+  "sha256": "28707eb3f2dee094d313c98b729fb57fe9ea6d26033da796e75e4ca3705b71d7"
+ },
+ "31CC84AB4543FFCBFCABFF2E082BFEEA": {
+  "caption": "Table 2. Morphological and cranio-dental measurements of some of the newly reported bat species from Manipur",
+  "label": "Table 2",
+  "doi": "10.26515/rzsi/v120/i1/2020/140764",
+  "authors": "Saikia, Uttam, Ngaomei, Gaikhuanlung &amp; Meetei, A. B.",
+  "year": "2020",
+  "article": "Some noteworthy bat (Mammalia: Chiroptera) records from Manipur State, Northeastern India",
+  "treatments": [
+   "ED1A65354543FFCBFF56FDD70D21FAFE"
+  ],
+  "zenodo": "https://zenodo.org/records/15140706",
+  "sha256": "d8a219be9c309bbf93ef83f42b8e4dfbb0223c992a29b5655dfa8e5c03cb37a2"
+ },
+ "34E7661B2A65416DFF18FE987C52FE18": {
+  "caption": "TABLE 4. Loadings of the first and second principal components (PC) of the 15 cranial measurements of the H. humboldti, H. montanus, H. velatus and H. diaphanopterus.",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.4048.3.4",
+  "authors": "Feijó, Anderson, Rocha, Patrício Adriano Da &amp; Althoff, Sergio Luiz",
+  "year": "2015",
+  "article": "New species of Histiotus (Chiroptera: Vespertilionidae) from northeastern Brazil",
+  "treatments": [
+   "E83187852A6D416DFF18FF657B6FF861"
+  ],
+  "zenodo": "",
+  "sha256": "453dcbbb6665321f88a240e51aa18bc72559b95220c57c2ef22d7ccc385a7e9e"
+ },
+ "3AD46605FFDDFFCEFF75FDC5FE98FBC5": {
+  "caption": "TABLE 1. External measurements (in mm), body mass (in g) and call frequency (FMaxE; in kHz) of H. kingstonae sp. nov., H. einnaythu, H. cf. saevus, H. cf. cineraceus, H. kunzi, H. bicolor, H. ater, and H. cf. gentilis. See methods for the definition of measurements. Sample size, mean ± standard deviation (SD) are provided, with min–max in parentheses.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.5277.3.1",
+  "authors": "Wongwaiyut, Phutita, Karapan, Sunate, Saekong, Puchit, Francis, Charles M., Guillén-Servent, Antonio, Senawi, Juliana, Khan, Faisal Ali Anwarali, Bates, Paul J. J., Jantarit, Sopark &amp; Soisook, Pipat",
+  "year": "2023",
+  "article": "Solving the taxonomic identity of Hipposideros cineraceus sensu lato (Chiroptera: Hipposideridae) in the Thai-Malay Peninsula, with the description of a new species",
+  "treatments": [
+   "E602879BFFD1FFD4FF7AFF4BFBC2FB87"
+  ],
+  "zenodo": "https://zenodo.org/records/15153776",
+  "sha256": "d968672ae20fc77b50a895223205634320fea283d58a9983b8a3ac56b95ca3c1"
+ },
+ "3AD46605FFDFFFCCFF75FE45F9FAFB79": {
+  "caption": "TABLE 2. Cranial and dental measurements (in mm) of H. kingstonae sp. nov., H. einnaythu, H. cf. saevus, H. cf. cineraceus, H. kunzi, H. bicolor, H. ater, and H. cf. gentilis. See methods for the definition of measurements. Sample size, mean ± standard deviation (SD) are provided, with min–max in parentheses.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.5277.3.1",
+  "authors": "Wongwaiyut, Phutita, Karapan, Sunate, Saekong, Puchit, Francis, Charles M., Guillén-Servent, Antonio, Senawi, Juliana, Khan, Faisal Ali Anwarali, Bates, Paul J. J., Jantarit, Sopark &amp; Soisook, Pipat",
+  "year": "2023",
+  "article": "Solving the taxonomic identity of Hipposideros cineraceus sensu lato (Chiroptera: Hipposideridae) in the Thai-Malay Peninsula, with the description of a new species",
+  "treatments": [
+   "E602879BFFD1FFD4FF7AFF4BFBC2FB87"
+  ],
+  "zenodo": "https://zenodo.org/records/15153778",
+  "sha256": "40ab403bd349ae4dc6cfe4efb70f24aa826d9a6bba156423151e7e598219d36e"
+ },
+ "3CAF6605C667FFA8C18CFB58690B387B": {
+  "caption": "TABLE 2. Reproductive phenology of K. krauensis from Krau Wildlife Reserve; distribution of pregnant, lactating and reproductively inactive females by month. Note that trapping effort varied among months with very little trapping in November and December because of the monsoon rains",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2007)9[1:ANSOKC]2.0.CO;2",
+  "authors": "Francis, Charles M., Kingston, Tigga &amp; Zubaid, Akbar",
+  "year": "2007",
+  "article": "A new species of Kerivoula (Chiroptera: Vespertilionidae) from peninsular Malaysia",
+  "treatments": [
+   "E079879BC66EFFA8C3F9FE0F6E493DA7"
+  ],
+  "zenodo": "",
+  "sha256": "8dca0e459cc339e53df74251fe12a7cf4311e00b3eb4e9682f9a6ba742d8e697"
+ },
+ "42809A135230486481C7EFAD4D162CEF": {
+  "caption": "Table 7. Selected measurements (mm) and weigth (g) for specimens of Stenodermatinae from PECB, São Paulo state, Brazil. See Material and Methods for description of measurements.",
+  "label": "Table 7",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "3B97C7546DF75958AC34A22A880AF7E4",
+   "5D5978D120175C70B7892617C010E437",
+   "A69F7256C47F52E3BA93BD90803422D6",
+   "BDC12BC2F55C513CB97DB47660B8B89C"
+  ],
+  "zenodo": "",
+  "sha256": "5b9d12ecbc31a5e30af899fe716b6b05a8189057c331dc5d146e197fccaabf57"
+ },
+ "43D16614A866CD6319AAD92C9B485B77": {
+  "caption": "Table 2. Selected external and craniodental measurements (in mm) of Tylonycteris spp. Values are given as mean, standard deviation (SD), (n) and min – max. Acronyms and definitions for measurements are given in Material and methods.",
+  "label": "Table 2",
+  "doi": "10.5852/ejt.2017.274",
+  "authors": "Tu, Vuong Tan, Csorba, Gábor, Ruedi, Manuel, Furey, Neil M., Son, Nguyen Truong, Thong, Vu Dinh, Bonillo, Céline &amp; Hassanin, Alexandre",
+  "year": "2017",
+  "article": "Comparative phylogeography of bamboo bats of the genus Tylonycteris (Chiroptera, Vespertilionidae) in Southeast Asia",
+  "treatments": [
+   "9F07878AA866CD601888DE649C175E02"
+  ],
+  "zenodo": "",
+  "sha256": "345e5fb847cd4d17878283042086403ba521eb0dc792ea4d68b9a1547265543b"
+ },
+ "44F53F9DF2F3960110D72F3CDB6FE6C0": {
+  "caption": "Table 2. Measurements (in mm) of Tonatia bakeri and Tonatia maresi. Measurements are given for the holotypes and for the specimens included in this study (mean and observed range). Holotype data taken from Williams et al. (1995).",
+  "label": "Table 2",
+  "doi": "10.3897/zookeys.915.46995",
+  "authors": "Basantes, Mateo, Tinoco, Nicolas, Velazco, Paul M., Hofmann, Melinda J., Rodriguez-Posada, Miguel E. &amp; Camacho, M. Alejandra",
+  "year": "2020",
+  "article": "Systematics and Taxonomy of Tonatia saurophila Koopman &amp; Williams, 1951 (Chiroptera, Phyllostomidae)",
+  "treatments": [
+   "654527AF33FC5FD4A37097258F312F55",
+   "A1C8791EAC165E5AAA638199F55EC42B"
+  ],
+  "zenodo": "https://zenodo.org/records/15143672",
+  "sha256": "883a380a2a19972dd4122455fae78b8cd0783c2d9f17c9fae9491d7b60169751"
+ },
+ "4BDB11BDFFD6FFA512636BD9F90269EA": {
+  "caption": "TABLE 1. Body mass (in grams) and external measurements (mm) of R. francisi sp. nov., R. beddomei, R. formosae, R. trifoliatus, and R. luctus. Mean ± SD, minimum and maximum values are given. Sample sizes where differing from those given under n are included in brackets. Definitions of measurements are included in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.1.002",
+  "authors": "Soisook, Pipat, Struebig, Matthew J., Noerfahmy, Sephy, Bernard, Henry, Maryanto, Ibnu, Chen, Shiang- Fan, Rossiter, Stephen J., Kuo, Hao- Chih, Deshpande, Kadambari, Bates, Paul J. J., Sykes, Dan &amp; Miguez, Roberto Portela",
+  "year": "2015",
+  "article": "Description of a new species of the Rhinolophus trifoliatus-group (Chiroptera: Rhinolophidae) from Southeast Asia",
+  "treatments": [
+   "970DF023FFD4FFAE13566BC5FE0B6CF1",
+   "970DF023FFDDFFAD119B6DA1FE586DC0"
+  ],
+  "zenodo": "",
+  "sha256": "b0301e329a939789826f67f2be318ea19ca1f5018e5f9e6bd2c552a033f08387"
+ },
+ "4BDB11BDFFD7FFA412636B90F9F669AD": {
+  "caption": "TABLE 2. Craniodental measurements of R. francisi sp. nov., R. beddomei, R. formosae, R. trifoliatus, R. luctus and R. sedulus. Mean ± SD, minimum and maximum values are given. Sample sizes where differing from those given under n are included in brackets. Definitions of measurements are included in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.1.002",
+  "authors": "Soisook, Pipat, Struebig, Matthew J., Noerfahmy, Sephy, Bernard, Henry, Maryanto, Ibnu, Chen, Shiang- Fan, Rossiter, Stephen J., Kuo, Hao- Chih, Deshpande, Kadambari, Bates, Paul J. J., Sykes, Dan &amp; Miguez, Roberto Portela",
+  "year": "2015",
+  "article": "Description of a new species of the Rhinolophus trifoliatus-group (Chiroptera: Rhinolophidae) from Southeast Asia",
+  "treatments": [
+   "970DF023FFD4FFAE13566BC5FE0B6CF1",
+   "970DF023FFDDFFAD119B6DA1FE586DC0"
+  ],
+  "zenodo": "",
+  "sha256": "86a960c958316ac2d578a1cf505952db8df25af3a303ad3c0ae2a278eb03c3f3"
+ },
+ "4BDB11BDFFDBFFA811306C99FC1B6EE3": {
+  "caption": "TABLE 3. Factor loading scores of the characters used in PCA and variance explained by the first three components. Definitions of measurement are included in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.1.002",
+  "authors": "Soisook, Pipat, Struebig, Matthew J., Noerfahmy, Sephy, Bernard, Henry, Maryanto, Ibnu, Chen, Shiang- Fan, Rossiter, Stephen J., Kuo, Hao- Chih, Deshpande, Kadambari, Bates, Paul J. J., Sykes, Dan &amp; Miguez, Roberto Portela",
+  "year": "2015",
+  "article": "Description of a new species of the Rhinolophus trifoliatus-group (Chiroptera: Rhinolophidae) from Southeast Asia",
+  "treatments": [
+   "970DF023FFD4FFAE13566BC5FE0B6CF1"
+  ],
+  "zenodo": "",
+  "sha256": "7a11c61c57b9ab2880c15a34349ac9347316b0fd20b5b2af52ddf91a74968fae"
+ },
+ "4CE7708F6514D02A6F8379098077B02D": {
+  "caption": "Table 1. Summary of skull and external measurements (mm) for male Eastern Red Bats (Lasiurus borealis; n = 5) and male Western Red Bats (Lasiurus frantzii; n = 8) used in this study as reference specimens (see Appendix for specimen details), along with measurements of four individuals originally suspected and subsequently confirmed to be Eastern Red Bats from western parts of North America in Arizona, New Mexico, and Utah. GSL represents greatest skull length (not including teeth). Maxillary toothrow was measured from posterior border of upper M3 to anterior border of canine. M3 represents upper last molar and M1 represents upper first molar. Zygomatic breadth represents greatest width across lateral borders of zygomatic processes. Dentary length was measured from posterior border of mandible to anterior border of dentary (not including incisors). Total length of skin and tail length was taken from measurements recorded on skin tag by collector. Forearm length was measured by us from dry study skins. MSB represents the Museum of Southwestern Biology, Albuquerque, New Mexico whereas BYU represents the M. L. Bean Life Science Museum at Brigham Young University, Provo, Utah. NM stands for New Mexico, AZ stands for Arizona, and UT stands for Utah.",
+  "label": "Table 1",
+  "doi": "10.5281/zenodo.15832263",
+  "authors": "Geluso, Keith &amp; Valdez, Ernest W.",
+  "year": "2019",
+  "article": "First Records Of The Eastern Red Bat (Lasiurus Borealis) In Arizona, Utah, And Western New Mexico",
+  "treatments": [
+   "903191116518D02F6DBF798681CDB1F9"
+  ],
+  "zenodo": "https://zenodo.org/records/15832306",
+  "sha256": "4be5766aeb4503706071d3a92ece7db4fc700787ec54d44868fd1c88096f2628"
+ },
+ "4F0A09F06C351B55346F3976BBD7E52D": {
+  "caption": "Table 4. External and craniodental measurements (in mm) of M. milinensis sp. nov., M. yadongensis sp. nov., and four closely related species. MC: M. chrysochaetes (Eger et al. 2011); MH: M. harpioloides (Kruskop and Eger 2008); MY: M. yushuensis (Wang et al. 2024 a). NA indicates that the data is not available.",
+  "label": "Table 4",
+  "doi": "10.3897/zse.101.144375",
+  "authors": "Luo, Tao, Mao, Ming-Le, Lan, Chang-Ting, Zhao, Zi-Fa, Wang, Zhong-Lian, Yu, Jing, Wang, Jia-Jia, Yan, Chen-Rui, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "Four new tube-nosed bat species of the genus Murina (Chiroptera, Vespertilionidae) from Xizang Autonomous Region, China, based on morphological and molecular data",
+  "treatments": [
+   "015E85F518C256EDB5C021312CAA81AE",
+   "43CF00CF05115D4EA66CE313F7025B21"
+  ],
+  "zenodo": "",
+  "sha256": "759547a8ec112330c2445ca80cb45a2163ff007b15352a000bf909001f8f94d7"
+ },
+ "50ED661BFFB5BB69E0C8F8D0FAF581FC": {
+  "caption": "TABLE 2. Selected cranial measurements of smaller species of Murina. See text for explanations (sample sizes in parentheses)",
+  "label": "TABLE",
+  "doi": "10.3161/150811008X414809",
+  "authors": "K Ruskop, Sergei V. &amp; Eger, Judith L.",
+  "year": "2008",
+  "article": "A new species of tube-nosed bat Murina (Vespertilionidae, Chiroptera) from Vietnam",
+  "treatments": [
+   "8C3B8785FFB1BB69E172F8D3FD958794"
+  ],
+  "zenodo": "",
+  "sha256": "83faf8a004716f06902d2713b5f5cbe5ecf215d0d82b35cd778d7f6017de9e2f"
+ },
+ "51075CD1C1EDF3497714D110C0056209": {
+  "caption": "Table 1. Description of cranial, mandibular, and external dimensions (and their abbreviations) used in this study.",
+  "label": "Table 1",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "183B8CD248A550EBBBF62ACB0C2031EA",
+   "82D3CB15485E5E8D9D46CA7924F7F923",
+   "9B4F61F9A9F95BEFA2BE0AAEF8355F66",
+   "B4FB7E11AA5656D5958407B3C012A8D3"
+  ],
+  "zenodo": "https://zenodo.org/records/15134748",
+  "sha256": "c7076e8a9495adc42d24d640140c2d67d8fec589aa87ee7fe04488bc348240d8"
+ },
+ "52B4278657F6E8B1B86BD665AF30BF27": {
+  "caption": "Table 8. Selected measurements (mm) and weigth (g) for specimens of Molossinae from PECB, São Paulo state, Brazil. See Material and Methods for description of measurements.",
+  "label": "Table 8",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "44C6190A999E596A8145FF925153DAB4",
+   "832BBB0341B851FEBBB06D6A2B502572",
+   "ADC5979FBF21572D92C9DA088415B632",
+   "ED191F566CF1520084D76833FC5A0D37"
+  ],
+  "zenodo": "",
+  "sha256": "f5dd7ba239bc1ef18fc94caf3503ef51fa56d90ea9044f9ba6452f3a50179831"
+ },
+ "552402E697D21C976F1B82B8AEA92335": {
+  "caption": "Table 2. Cranial and body measurements of six taxa of the big-eyed bat Chiroderma. See Material and methods for variable abbreviations.",
+  "label": "Table 2",
+  "doi": "10.3897/zookeys.918.48786",
+  "authors": "Lim, Burton K., Loureiro, Livia O. &amp; Garbino, Guilherme S. T.",
+  "year": "2020",
+  "article": "Cryptic diversity and range extension in the big-eyed bat genus Chiroderma (Chiroptera, Phyllostomidae)",
+  "treatments": [
+   "FFD367BC610F510FB5C94C7F370CFDE3"
+  ],
+  "zenodo": "",
+  "sha256": "5aa35233f3ae5cdf57f9b6a43e732b26f3fd720e28e8a065222ab8445e10c767"
+ },
+ "58AEDFCAFFB5FFD7AF8F7CC0FDC07171": {
+  "caption": "Table 1. Mean uncorrected p-distances (below diagonal) and Kimura 2-parameter model-corrected distances (above diagonal) based on 667 Cytb sequences between eight recognized and newly proposed species of small African Rhinolophus bats. Within-species uncorrected p-distances provided in parentheses on the diagonals (in parentheses), except for R. landeri where only one individual was available",
+  "label": "Table 1",
+  "doi": "10.1093/zoolinnean/zly024",
+  "authors": "Taylor, Peter J., Macdonald, Angus, Goodman, Steven M., Kearney, Teresa, Cotterill, Fenton P. D., Stoffberg, Sam, Monadjem, Ara, Schoeman, M. Corrie, Guyton, Jennifer, Naskrecki, Pitor &amp; Richards, Leigh R.",
+  "year": "2018",
+  "article": "Integrative taxonomy resolves three new cryptic species of small southern African horseshoe bats (Rhinolophus)",
+  "treatments": [
+   "84783E54FFAAFFC8AFC27D97FC54758E"
+  ],
+  "zenodo": "",
+  "sha256": "2c34f46d6b2caf711dacd3f60e69a8bbb0941c34a8b2e245a72aaed28373c0f0"
+ },
+ "58AEDFCAFFB9FFDBAF8F7CC0FE9A7157": {
+  "caption": "Table 5. Bacula measurements for 33 individuals of three small African Rhinolophus taxa. Mean, standard deviation, range and sample sizes are provided. All measurements recorded in mm. Numbers in superscript refer to the position of taxa in Fig. 7",
+  "label": "Table 5",
+  "doi": "10.1093/zoolinnean/zly024",
+  "authors": "Taylor, Peter J., Macdonald, Angus, Goodman, Steven M., Kearney, Teresa, Cotterill, Fenton P. D., Stoffberg, Sam, Monadjem, Ara, Schoeman, M. Corrie, Guyton, Jennifer, Naskrecki, Pitor &amp; Richards, Leigh R.",
+  "year": "2018",
+  "article": "Integrative taxonomy resolves three new cryptic species of small southern African horseshoe bats (Rhinolophus)",
+  "treatments": [
+   "84783E54FFBFFFC0AFDA788EFD247543"
+  ],
+  "zenodo": "",
+  "sha256": "9b98837eb87b8d4b660a87de7d9d510594160067a61924be57b789d2ed7b8385"
+ },
+ "58AEDFCAFFBAFFD8AFA17DACFD7D71BA": {
+  "caption": "Table 2. Summary statistics for six external and three cranial variables (in mm), mass (in g) and echolocation peak frequency for museum-type specimens and series of taxa sampled in this study in the saeinnyi, simulator and landeri groups. Except in the case of type specimens and certain series where indicated, all measurements were taken by the authors of this paper",
+  "label": "Table 2",
+  "doi": "10.1093/zoolinnean/zly024",
+  "authors": "Taylor, Peter J., Macdonald, Angus, Goodman, Steven M., Kearney, Teresa, Cotterill, Fenton P. D., Stoffberg, Sam, Monadjem, Ara, Schoeman, M. Corrie, Guyton, Jennifer, Naskrecki, Pitor &amp; Richards, Leigh R.",
+  "year": "2018",
+  "article": "Integrative taxonomy resolves three new cryptic species of small southern African horseshoe bats (Rhinolophus)",
+  "treatments": [
+   "84783E54FFA2FFC4AFF87944FB747737",
+   "84783E54FFA7FFC8AFD07CC1FE077115",
+   "84783E54FFAAFFC8AFC27D97FC54758E",
+   "84783E54FFBFFFC0AFDA788EFD247543"
+  ],
+  "zenodo": "",
+  "sha256": "093ca135cb498a1ef42f28bf8aa0e7ce37da2a565cee23b9bac7a0477c403e77"
+ },
+ "59F666125F19F24086B64C8AFF46AA5E": {
+  "caption": "TABLE 1. Selected external and craniodental measurements (in mm) of G. bucephalus, G. aquilus n. sp., G. javanus, and G. tylopus. Values are given as mean, ± SD, min-max, (n). Acronyms and definitions for measurements are given in the text.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.3980.2.7",
+  "authors": "Csorba, Gábor, Görföl, Tamás, Wiantoro, Sigit, Kingston, Tigga, Bates, Paul J. J. &amp; Huang, Joe Chun-Chia",
+  "year": "2015",
+  "article": "Thumb-pads up — a new species of thick-thumbed bat from Sumatra (Chiroptera: Vespertilionidae: Glischropus)",
+  "treatments": [
+   "8520878C5F18F24586B648B3FB94AD97"
+  ],
+  "zenodo": "",
+  "sha256": "28f15a06d1f3b8ccf84f61a6af6b21508a9765ccfa8bd7d0449af821546c299b"
+ },
+ "59F666125F1CF24586B64AB8FAF6ADE8": {
+  "caption": "TABLE 3. K 2 P genetic distances (%) between Glischropus specimens estimated from 404 bp fragment of cytb gene.",
+  "label": "TABLE 3. K 2 P",
+  "doi": "10.11646/zootaxa.3980.2.7",
+  "authors": "Csorba, Gábor, Görföl, Tamás, Wiantoro, Sigit, Kingston, Tigga, Bates, Paul J. J. &amp; Huang, Joe Chun-Chia",
+  "year": "2015",
+  "article": "Thumb-pads up — a new species of thick-thumbed bat from Sumatra (Chiroptera: Vespertilionidae: Glischropus)",
+  "treatments": [
+   "8520878C5F18F24586B648B3FB94AD97"
+  ],
+  "zenodo": "",
+  "sha256": "0bba064bb46d5e1e21d0f07a053c190a474abcc06edb45789b8f80e847b5f694"
+ },
+ "59F666125F1FF24686B6490AFB22AE9E": {
+  "caption": "TABLE 2. Factor loadings of selected external and craniodental characters obtained by the PCA.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.3980.2.7",
+  "authors": "Csorba, Gábor, Görföl, Tamás, Wiantoro, Sigit, Kingston, Tigga, Bates, Paul J. J. &amp; Huang, Joe Chun-Chia",
+  "year": "2015",
+  "article": "Thumb-pads up — a new species of thick-thumbed bat from Sumatra (Chiroptera: Vespertilionidae: Glischropus)",
+  "treatments": [
+   "8520878C5F18F24586B648B3FB94AD97"
+  ],
+  "zenodo": "",
+  "sha256": "3e7a8d787a623cd5cf05227ec0f4f42351528bd580472e8e06e660e2175003ae"
+ },
+ "5BEE69B91820FFCCCEB6C2D5E65C6D30": {
+  "caption": "TABLE 3. Forearm and skull dimensions (in mm) of the examined holotype specimens of Asellia. See Abbreviations and Terminology for explanation of dimension abbreviations",
+  "label": "TABLE",
+  "doi": "10.3161/150811011X624749",
+  "authors": "Benda, Petr, Vallo, Peter &amp; Reiter, Antonín",
+  "year": "2011",
+  "article": "Taxonomic revision of the genus Asellia (Chiroptera: Hipposideridae) with a description of a new species from southern Arabia",
+  "treatments": [
+   "873888271821FFC9CDFEC316E7BD6AE8"
+  ],
+  "zenodo": "",
+  "sha256": "a99509b49f80d969ff683e459d4dd0fc20fd6298ccabe3b65b80a7a4246965f3"
+ },
+ "5BEE69B91835FFD9CE4AC087E2A36E9E": {
+  "caption": "TABLE 1. Forearm and skull dimensions (in mm) of the examined sample sets of Asellia. See Abbreviations and Terminology for explanation of dimension abbreviations",
+  "label": "TABLE",
+  "doi": "10.3161/150811011X624749",
+  "authors": "Benda, Petr, Vallo, Peter &amp; Reiter, Antonín",
+  "year": "2011",
+  "article": "Taxonomic revision of the genus Asellia (Chiroptera: Hipposideridae) with a description of a new species from southern Arabia",
+  "treatments": [
+   "873888271821FFC9CDFEC316E7BD6AE8"
+  ],
+  "zenodo": "",
+  "sha256": "1414f8d390b63022c2c66af07cacae9fdc3eef7e3cb5772a2e8f71ecef0ab3c7"
+ },
+ "5D8470C5C22A3761FF25B723FEF8F93B": {
+  "caption": "TABLE 1. Body mass (MASS, g), forearm length (FA, mm) and tibia length (TIB, mm) of Taiwanese Kerivoula measured in the field (Kuo et al. 2014). Values are means and SDs with the range in the following row. Sample sizes are given in parentheses",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2017.19.1.002",
+  "authors": "Kuo, Hao-Chih, Soisook, Pipat, Ho, Ying-Yi, Csorba, Gabor, Wang, Chun-Neng &amp; Rossiter, Stephen J.",
+  "year": "2017",
+  "article": "A taxonomic revision of the Kerivoula hardwickii complex (Chiroptera: Vespertilionidae) with the description of a new species",
+  "treatments": [
+   "8152915BC2253768FEF5B577FC85FB3E"
+  ],
+  "zenodo": "",
+  "sha256": "2eac349d8579139f16f5d1ed9ea796215150b6453f9417f1bf4ced0f327fed82"
+ },
+ "5DE7E2B1F6DB1E28895E50CE44194204": {
+  "caption": "Table 4. ANOVA comparing Chiroderma trinitatum trinitatum to C. doriae, C. improvisum, C. villosum, C. salvini, and C. trinitatum gorgasi. * indicates significantly distinct variables (p ≤ 5 %).",
+  "label": "Table 4",
+  "doi": "10.3897/zookeys.918.48786",
+  "authors": "Lim, Burton K., Loureiro, Livia O. &amp; Garbino, Guilherme S. T.",
+  "year": "2020",
+  "article": "Cryptic diversity and range extension in the big-eyed bat genus Chiroderma (Chiroptera, Phyllostomidae)",
+  "treatments": [
+   "FFD367BC610F510FB5C94C7F370CFDE3"
+  ],
+  "zenodo": "",
+  "sha256": "db0e26ce48814b3129c60b8a564df338042cebb66bddb348434310ae9e8536ce"
+ },
+ "5FAA6645FF93C07DFF03FF23FC6EFEEE": {
+  "caption": "TABLE 2. External measurements (mm) and bacular length (mm) of 14 bat species recently collected at Lekoumou, Congo.Acronyms explained in the Materials and Methods section include means, ranges, and, where relevant, standard deviations. Numbers in parentheses refer to sample size where they differ from those stated in column 2",
+  "label": "TABLE",
+  "doi": "10.3161/150811013X678955",
+  "authors": "Bates, Paul J. J., Cameron, Kenneth, Pearch, Malcolm J. &amp; Hayes, Benjamin",
+  "year": "2013",
+  "article": "A review of the bats (Chiroptera) of the Republic of Congo, including eight species new to the country",
+  "treatments": [
+   "837C87DBFF85C068FC0EFD6EFCCAFE5B",
+   "837C87DBFF85C06BFF65FCDEFC7BFDC7",
+   "837C87DBFF91C07CFCE3F88FFA42FEFF",
+   "837C87DBFF98C077FF6DFE55FD5BFEDC",
+   "837C87DBFF99C075FC1BF99EFF21FC12",
+   "837C87DBFF99C077FE9CF874FC4AF9D2",
+   "837C87DBFF99C077FF63FE9CFD39F884",
+   "837C87DBFF9BC06BFC1EFA7CFF32FD10",
+   "837C87DBFF9BC075FE84FBDEFC38FAF2",
+   "837C87DBFF9DC070FC5FFB6EFA89FDC1",
+   "837C87DBFF9DC073FF73FC3EFB72FB81",
+   "837C87DBFF9FC076FF7AFD4CFD83FE99"
+  ],
+  "zenodo": "",
+  "sha256": "0d76cfb1ee7ccad4c9ed0730cf93ff265a33b4b530fff228c9a3534952c8034f"
+ },
+ "5FAA6645FF9CC072FFFFFD2AFAA7FCC7": {
+  "caption": "TABLE 3. Cranial and dental measurements (mm) of 14 bat species recently collected at Lekoumou, Congo.Acronyms explained in the Materials and Methods section include means, ranges, and, where relevant,standard deviations. Numbers in parentheses refer to sample size where they differ from those stated in column 2",
+  "label": "TABLE",
+  "doi": "10.3161/150811013X678955",
+  "authors": "Bates, Paul J. J., Cameron, Kenneth, Pearch, Malcolm J. &amp; Hayes, Benjamin",
+  "year": "2013",
+  "article": "A review of the bats (Chiroptera) of the Republic of Congo, including eight species new to the country",
+  "treatments": [
+   "837C87DBFF85C068FC0EFD6EFCCAFE5B",
+   "837C87DBFF85C06BFF65FCDEFC7BFDC7",
+   "837C87DBFF91C07CFCE3F88FFA42FEFF",
+   "837C87DBFF98C077FF6DFE55FD5BFEDC",
+   "837C87DBFF99C077FE9CF874FC4AF9D2",
+   "837C87DBFF99C077FF63FE9CFD39F884",
+   "837C87DBFF9BC06BFC1EFA7CFF32FD10",
+   "837C87DBFF9BC075FE84FBDEFC38FAF2",
+   "837C87DBFF9DC073FF73FC3EFB72FB81",
+   "837C87DBFF9FC076FF7AFD4CFD83FE99"
+  ],
+  "zenodo": "",
+  "sha256": "bb84572c8e52b1f0c4b45fccde85265f1bf061de01f686d456b25efbd12b125b"
+ },
+ "5FF65F5475EE8122E2EF1788F314FDC6": {
+  "caption": "Appendix 1 Information on bats sampling sites selected on Carlos Botelho State Park, São Paulo state, Brazil. The mist-net (M) and search for roost (S) codes correspond to the sampling sites as indicated in Fig. 1.",
+  "label": "Appendix 1",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "0C127693C64358B6BA75439EF8101B77",
+   "15E36DCD8395564D8C6F7DF9E93F286A",
+   "1619467DE3E9516784EE469297AB5E72",
+   "1DDE5581135B5D68939301BAAE913DB2",
+   "3B97C7546DF75958AC34A22A880AF7E4",
+   "4118600E7CAC5883857A5A2A69D99E12",
+   "44C6190A999E596A8145FF925153DAB4",
+   "4A89ACFB062158D48E13DA86CBE51AA9",
+   "5D027F7A3F1552359D7F3C7BB5F0BCE8",
+   "5D5978D120175C70B7892617C010E437",
+   "76B0AAEF864255B0A5306EF9ECAABEB0",
+   "832BBB0341B851FEBBB06D6A2B502572",
+   "975C7C014FD959D5896B19C9F5F52EEF",
+   "A69F7256C47F52E3BA93BD90803422D6",
+   "ADC5979FBF21572D92C9DA088415B632",
+   "B1682AB630A35B9BBB206780CC674CAD",
+   "BDC12BC2F55C513CB97DB47660B8B89C",
+   "C2595A62A5895233B01CDFFBD0D6ED74",
+   "C981FB9464365805A28F3DD31E3535B4",
+   "ED191F566CF1520084D76833FC5A0D37",
+   "EEBC7CD734915025BBFA268A31E53A29",
+   "F294C9E6EFD957439D242EF601DB43D3",
+   "F2BDDA639408510F897C3B59C1117A97",
+   "F5C350BB7952538AB05EA4069FBFCE20"
+  ],
+  "zenodo": "",
+  "sha256": "baa1eddc107bddcc263a838208a0b4bc84aaf0fa7be4f446a0b04fc54d51c923"
+ },
+ "60A1664CBF54FFCBCCD36DE1EED7134E": {
+  "caption": "Table 2. Summary statistics for mass, forearm, and 12 craniodental variables for voucher specimens of DNA barcoded taxa identified in this study (Angola) and comparative positively identified (from barcoding or baculum characters) specimens from South Africa and Eswatini. The country of origin of measured specimens from each species is indicated below and full details of specimens included in the morphometric study are included in Supporting Information, Table S1",
+  "label": "Table 2",
+  "doi": "10.1093/zoolinnean/zlac071",
+  "authors": "Taylor, Peter John, Strydom, Erika, Richards, Leigh, Markotter, Wanda, Toussaint, Dawn Cory, Kearney, Teresa, D., F. P., Woody, Cotterill, Howard, Alexandra, Weier, Sina Monika, Keith, Mark, Neef, Gӧtz, Mamba, Mnqobi L., Magagula, Siphesihle &amp; Monadjem, Ara",
+  "year": "2022",
+  "article": "Integrative taxonomic analysis of new collections from the central Angolan highlands resolves the taxonomy of African pipistrelloid bats on a continental scale",
+  "treatments": [
+   "BC7787D2BF50FFD2CFD16F8FE9EF14BA"
+  ],
+  "zenodo": "",
+  "sha256": "b39d8269704ca7a1546f0c7b14b26fd5fa23386023418f416c68ea56118a49da"
+ },
+ "646DBD722982E57EE07CBC96A7B72FC8": {
+  "caption": "Table 6. Selected measurements (mm) and weigth (g) for specimens of Carolliinae and Stenodermatinae from PECB, São Paulo state, Brazil. See Material and Methods for description of measurements.",
+  "label": "Table 6",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "F294C9E6EFD957439D242EF601DB43D3",
+   "F2BDDA639408510F897C3B59C1117A97"
+  ],
+  "zenodo": "",
+  "sha256": "7c94135e08496e2cba3fe70a7723c7dca848750ce1f11bc8dfb1f15a573886af"
+ },
+ "64D7AB8BFFD6873960B6D783F910FD16": {
+  "caption": "TABLE 4. Measurements of the type series of Platyrrhinus guianensis sp. nov. (in mm)",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.3796.1.9",
+  "authors": "Velazco, Paúl M. &amp; Lim, Burton K.",
+  "year": "2014",
+  "article": "A new species of broad-nosed bat Platyrrhinus Saussure, 1860 (Chiroptera: Phyllostomidae) from the Guianan Shield",
+  "treatments": [
+   "B8014A15FFD8873F60B6D22AFF4DFCB2"
+  ],
+  "zenodo": "",
+  "sha256": "f7c8723477cf54ce1b1aa221ae456cf03abd5f996927524b0cfaf87a6ae0b668"
+ },
+ "65F9EA79B6C26CCA5754F574AEF11244": {
+  "caption": "Table 3. External and craniodental measurements (in mm) of M. medogensis sp. nov. and three closely related species. NA indicates that the data is not available.",
+  "label": "Table 3",
+  "doi": "10.3897/zse.101.144375",
+  "authors": "Luo, Tao, Mao, Ming-Le, Lan, Chang-Ting, Zhao, Zi-Fa, Wang, Zhong-Lian, Yu, Jing, Wang, Jia-Jia, Yan, Chen-Rui, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "Four new tube-nosed bat species of the genus Murina (Chiroptera, Vespertilionidae) from Xizang Autonomous Region, China, based on morphological and molecular data",
+  "treatments": [
+   "362A7E5E02915BE1A4F4515A47F3A554"
+  ],
+  "zenodo": "",
+  "sha256": "29fce2711addd1b8dae37b765e8951c4f2970cd2559c0a474320ca7b9b4181d0"
+ },
+ "6CFE662BFF83FFA7FBBF89FD33756658": {
+  "caption": "TABLE 4. Results of a MANOVA for the first two relative warps (RW I-RW II) and a MANOVA for ACM and RW I among species and sex. The results of the Bonferroni tests between marginal means for the factor species are shown only for those with p <0.05 along ACM, RW I and RW II. The sole responsible for the observed differences is Sturnira perla on the three response variables. Sample size is Sturnira lilium = 103, S. luisi = 76, S. perla = 12 and S. tildae = 16.",
+  "label": "TABLE 4",
+  "doi": "10.5281/zenodo.201718",
+  "authors": "V, Pablo Jarrín - &amp; Kunz, Thomas H.",
+  "year": "2011",
+  "article": "A new species of Sturnira (Chiroptera: Phyllostomidae) from the Choco forest of Ecuador",
+  "treatments": [
+   "B02887B5FF96FFA6FBBF89F2358861C9"
+  ],
+  "zenodo": "",
+  "sha256": "27125180694ae39a5c5d46262e081c8e0713be949536d1a77d3b1ecd80c5629c"
+ },
+ "6CFE662BFF94FFB0FBBF89FD32E067FF": {
+  "caption": "TABLE 1. Descriptive statistics for interlandmark characters and ACM. Total sample size is n = 279 except for the ACM with",
+  "label": "TABLE 1",
+  "doi": "10.5281/zenodo.201718",
+  "authors": "V, Pablo Jarrín - &amp; Kunz, Thomas H.",
+  "year": "2011",
+  "article": "A new species of Sturnira (Chiroptera: Phyllostomidae) from the Choco forest of Ecuador",
+  "treatments": [
+   "B02887B5FF96FFA6FBBF89F2358861C9"
+  ],
+  "zenodo": "",
+  "sha256": "db7923bec65cff807776f526406c5cee5932c0c3311d38d12c1dd9e569bf22e6"
+ },
+ "6CFE662BFF9FFFBBFBBF89FD33BF6658": {
+  "caption": "TABLE 3. Results of a MANOVA for linear characters among species and sex. The MANOVA includes ACM and PC I – PC V as response variables. The results of the Bonferroni tests between marginal means for the factor species are shown only for those with p <0.05 along ACM, PC I and PC II. Differences are concentrated around Sturnira perla along PC II and ACM, and around S. tildae along PC I. Sample size is Sturnira lilium = 103, S. luisi = 76, S. perla = 12 and S. tildae = 15.",
+  "label": "TABLE 3",
+  "doi": "10.5281/zenodo.201718",
+  "authors": "V, Pablo Jarrín - &amp; Kunz, Thomas H.",
+  "year": "2011",
+  "article": "A new species of Sturnira (Chiroptera: Phyllostomidae) from the Choco forest of Ecuador",
+  "treatments": [
+   "B02887B5FF96FFA6FBBF89F2358861C9"
+  ],
+  "zenodo": "",
+  "sha256": "0f4a33c7394bd43f4426fceebc2ce0b435cc4b475f7e00aa8c0f20d9f2a4bc7a"
+ },
+ "6D9B6628B174FFF4FF6A269752C8FB02": {
+  "caption": "Tabla 2 Distancias promedio del parámetro Kimura 2 (en porcentajes) entre especies de Lasiurus, basado en 1,140 pares de bases del citocromo b. La divergencia intraespecífica está denotada en la diagonal. Los taxones del grupo externo no fueron incluidos.",
+  "label": "Tabla 2",
+  "doi": "10.5281/zenodo.4447315",
+  "authors": "Málaga, Brian A., Díaz, Darwin R., Arias, Sandra &amp; Medina, César E.",
+  "year": "2020",
+  "article": "Una especie nueva de Lasiurus (Chiroptera: Vespertilionidae) del suroeste de Perú",
+  "treatments": [
+   "B14D87B6B177FFF5FF64239555F5F86E"
+  ],
+  "zenodo": "",
+  "sha256": "bd493a6663a971ea45231329bc23ca97047f21ebb148976c35c36257670ebe6d"
+ },
+ "6D9B6628B178FFF8FF9723C353BDFDEA": {
+  "caption": "Tabla 5 Comparación de la morfología de Lasiurus arequipae sp. nov. con otras especies rojizas del género Lasiurus presentes en el neotrópico.",
+  "label": "Tabla 5",
+  "doi": "10.5281/zenodo.4447315",
+  "authors": "Málaga, Brian A., Díaz, Darwin R., Arias, Sandra &amp; Medina, César E.",
+  "year": "2020",
+  "article": "Una especie nueva de Lasiurus (Chiroptera: Vespertilionidae) del suroeste de Perú",
+  "treatments": [
+   "B14D87B6B177FFF5FF64239555F5F86E"
+  ],
+  "zenodo": "",
+  "sha256": "0fe86ace8a8cff1c4e560725c33af4d9a51ddc8ef8fd898810af87206fee1c48"
+ },
+ "6D9B6628B179FFF9FF6A22EC54C5FEAB": {
+  "caption": "Tabla 4 Factores extraídos del ACP y AFD de 5 especies de Lasiurus (Lasiurus arequipae sp. nov., L. atratus, L. castaneus, L. varius y L. blossevillii), con base en una matriz de varianza-covarianza.",
+  "label": "Tabla 4",
+  "doi": "10.5281/zenodo.4447315",
+  "authors": "Málaga, Brian A., Díaz, Darwin R., Arias, Sandra &amp; Medina, César E.",
+  "year": "2020",
+  "article": "Una especie nueva de Lasiurus (Chiroptera: Vespertilionidae) del suroeste de Perú",
+  "treatments": [
+   "B14D87B6B177FFF5FF64239555F5F86E"
+  ],
+  "zenodo": "",
+  "sha256": "ec451ed12be62882d5fbab986383c9605a703264eab76a7c2bc04bb694886bad"
+ },
+ "6D9B6628B17BFFFBFF6A22EC55BAFEA8": {
+  "caption": "Tabla 3 Comparación de medidas (mm) del holotipo de Lasiurus arequipae sp. nov. y otras especies del género Lasiurus del neotrópico. Los números incluyen la media ± SD, rangos en paréntesis y tamaño de la muestra.",
+  "label": "Tabla 3",
+  "doi": "10.5281/zenodo.4447315",
+  "authors": "Málaga, Brian A., Díaz, Darwin R., Arias, Sandra &amp; Medina, César E.",
+  "year": "2020",
+  "article": "Una especie nueva de Lasiurus (Chiroptera: Vespertilionidae) del suroeste de Perú",
+  "treatments": [
+   "B14D87B6B177FFF5FF64239555F5F86E"
+  ],
+  "zenodo": "",
+  "sha256": "b6eb39f61131d93096ab0fde0846a890aaefceb5fcac85a838be91c6934eac38"
+ },
+ "73E598CB33243242D0C4C72DE8320399": {
+  "caption": "Table 2. External and cranial measurements (in millimetres) of Molossus melini Specimens from Brazil, Curitiba, Parana, Atlantic Forest and published data by Montani et al. (2021) and Pave et al. (2023). Symbols: (-) denotes missing data and (*) indicates specimens with damaged skulls. Values outside parentheses represent the means of the measurements.",
+  "label": "Table 2",
+  "doi": "10.3897/BDJ.12.e114261",
+  "authors": "Olimpio, Ana Priscila Medeiros, Lima, Amanda Cristiny da Silva, Mendes, Samira Brito, Natividade, Beatriz Dybas da, Fraga, Elmary da Costa, Barros, Maria Claudene &amp; Sampaio, Iracilda",
+  "year": "2024",
+  "article": "Molossus melini Montani et al. 2021 (Chiroptera, Molossidae) in Brazil: new insights for distribuition, morphology and genetics",
+  "treatments": [
+   "92BE69D56131518BB74AB8B199E6B485"
+  ],
+  "zenodo": "",
+  "sha256": "6b952d10386659d1c38adbb18ac58d176f70a2665006abe53024648539c0b4df"
+ },
+ "743D6864D53D404D8726F14BA4806475": {
+  "caption": "Table 5. Selected measurements (mm) and weigth (g) for specimens of Phyllostominae, Glyphonycterinae and Glossophaginae from PECB, São Paulo state, Brazil. See Material and Methods for description of measurements.",
+  "label": "Table 5",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "15E36DCD8395564D8C6F7DF9E93F286A",
+   "1DDE5581135B5D68939301BAAE913DB2",
+   "76B0AAEF864255B0A5306EF9ECAABEB0",
+   "F5C350BB7952538AB05EA4069FBFCE20"
+  ],
+  "zenodo": "",
+  "sha256": "fa3eaa414bb57dfc00b573067e30c0f7c072e51fa7df34cde3b2d691281f6752"
+ },
+ "7759B796C1B39F56A3FD9368BF9BA341": {
+  "caption": "Table 2. External and craniodental measurements (in mm) of M. beibengensis sp. nov. and three closely related species. NA indicates that the data is not available.",
+  "label": "Table 2",
+  "doi": "10.3897/zse.101.144375",
+  "authors": "Luo, Tao, Mao, Ming-Le, Lan, Chang-Ting, Zhao, Zi-Fa, Wang, Zhong-Lian, Yu, Jing, Wang, Jia-Jia, Yan, Chen-Rui, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "Four new tube-nosed bat species of the genus Murina (Chiroptera, Vespertilionidae) from Xizang Autonomous Region, China, based on morphological and molecular data",
+  "treatments": [
+   "6AD4F4F54C665DC4BCE076319828A672"
+  ],
+  "zenodo": "",
+  "sha256": "35e68c27a39f8c3f0c75ed0cb856e9e508f4220e03e15ca05cf7a391cd7dac1a"
+ },
+ "77C2661DFFF03B37FF43A3BFFCE8FBB7": {
+  "caption": "TABLE 1. Morphological matrix used in the phylogenetic analysis. Question marks “? ” denote missing data and dashes “ – ” denote characters that are not applicable to that particular taxon.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.3878.1.2",
+  "authors": "Medina, César E., Gregorin, Renato, Zeballos, Horacio, Zamora, Hugo T. &amp; Moras, Ligiane M.",
+  "year": "2014",
+  "article": "A new species of Eumops (Chiroptera: Molossidae) from southwestern Peru",
+  "treatments": [
+   "AB148783FFFA3B3EFF43A10CFE85FD81"
+  ],
+  "zenodo": "",
+  "sha256": "b5c37ee5179a42d3ef04ae233ab14969b43f6e680dc8577d0a30216364270eb8"
+ },
+ "77C2661DFFF83B3FFF43A1B3FC67FDB3": {
+  "caption": "TABLE 5. Comparative measurements (mm) of the holotype of Eumops chiribaya sp nov., and females of selected species of genus Eumops. Numbers include mean ± SD and ranges in brackets.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.3878.1.2",
+  "authors": "Medina, César E., Gregorin, Renato, Zeballos, Horacio, Zamora, Hugo T. &amp; Moras, Ligiane M.",
+  "year": "2014",
+  "article": "A new species of Eumops (Chiroptera: Molossidae) from southwestern Peru",
+  "treatments": [
+   "AB148783FFFA3B3EFF43A10CFE85FD81"
+  ],
+  "zenodo": "",
+  "sha256": "79196775c9fc22ec9c7cf339f9131bbd5824047e7a5e6bd12229ed45e4be4f96"
+ },
+ "7B94FEF0DA28E87EFF51FF49681EFF78": {
+  "caption": "TABLE 3. Measurements (mm) and body masses (g) of Sturnira oporaphilum, S. adrianae adrianae, and S. a. caripana. Descriptive statistics are: mean (minimum – maximum) standard deviation [sample size].",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.4243.1.3",
+  "authors": "Molinari, Jesús, Bustos, Xiomar E., Burneo, Santiago F., Camacho, M. Alejandra, Moreno, S. Andrea &amp; Fermín, Gustavo",
+  "year": "2017",
+  "article": "A new polytypic species of yellow-shouldered bats, genus Sturnira (Mammalia: Chiroptera: Phyllostomidae), from the Andean and coastal mountain systems of Venezuela and Colombia",
+  "treatments": [
+   "A7421F6EDA22E876FF51F94A6943FE78",
+   "A7421F6EDA27E875FF51F8FD6E47F83D"
+  ],
+  "zenodo": "",
+  "sha256": "d6c4604fe1cd296bfacf2772e78380a376502c1776fed9f111b74cc353fadd67"
+ },
+ "7BAC6A746013BD73C80E462117FAEE32": {
+  "caption": "Table 1. Comparison of cranial measurements (see Material and methods for abbreviations) and forearm length (FA) of Molossus pretiosus specimens along its distribution in Latin America. Specimens and locations as follow: 1. Claudio et al. (2018), 2. Nogueira et al. (2008), 3. Gregorin and Taddei (2000) and 4. Dolan (1989).",
+  "label": "Table 1",
+  "doi": "10.3897/zookeys.1196.116144",
+  "authors": "Turcios-Casco, Manfredo A., Cardoso Claudio, Vinicius &amp; Lee Jr, Thomas E.",
+  "year": "2024",
+  "article": "Back to the future: A preserved specimen validates the presence of Molossus pretiosus (Molossidae, Chiroptera) in Honduras",
+  "treatments": [
+   "42A0787916215B9EB7A316DF19EF4AB3"
+  ],
+  "zenodo": "",
+  "sha256": "2c4de4726d889dd11c303a58a86faa7a7c0481b74337cbca4be9484f18af5a04"
+ },
+ "82FCF3C0FE987602E58F69FE66BBDEE4": {
+  "caption": "Table 2. External measurements (mm) and proportions (%) of Glauconycteris collected for this study, together with the holotype of G. beatrix and two additional comparative specimens of G. beatrix and G. humeralis. Species order follows Table 1. Measurements are defined in Materials and methods.",
+  "label": "Table 2",
+  "doi": "10.3897/zookeys.1282.183038",
+  "authors": "Gomeh-Djame, Aicha, Bates, Paul J. J., Juste, Javier, Suarez-Rubio, Marcela, Torrent, Laura, García-Mudarra, Juan Luis, Agodigo Ayangma, Eugenie, Yettore, Félécité, Bilong Bilong, Charles Félix &amp; Bakwo-Fils, Eric-Moise",
+  "year": "2026",
+  "article": "An integrated taxonomic and conservation assessment of Glauconycteris (Chiroptera, Vespertilionidae) in Cameroon, with the description of two new species from the Northwestern Congolian Lowland Forest",
+  "treatments": [
+   "235F963AF4E75D45A80E567E9A05FC42",
+   "3E977F7D4BB455A89145177D70E64CEA",
+   "422946B701445124B7758DAB29D9282C",
+   "4AB94CCB94B359038E283C3B30F0B444",
+   "5DDB12AE9F5855DDB94FF7D962005C06",
+   "73CFA6F2716854838A9AF88FEA33D18B",
+   "A210E2C1B859500E98DC6475234B3118",
+   "B9300CA6249056B69D12226397B824D5"
+  ],
+  "zenodo": "",
+  "sha256": "a41eb2ab5a170323acd47db95a9ef163c5a205098aec85b9e1105fb81c864468"
+ },
+ "8FC069C3F466FFF6FF0CD0EBFE00FD8E": {
+  "caption": "TABLE 1. Mean (± standard deviation) and range of cranial-dental measurements of adult K. whiteheadi and K. pellucida, and comparison groups. Holotypes indicated with an asterisk. n = sample size",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.4755.3.2",
+  "authors": "Sedlock, Jodi L., Heaney, Lawrence R., Balete, Danilo S. &amp; Ruedi, Manuel",
+  "year": "2020",
+  "article": "Philippine bats of the genus Kerivoula (Chiroptera: Vespertilionidae): Overview and assessment of variation in K. pellucida and K. whiteheadi",
+  "treatments": [
+   "5316885DF469FFFEFF0CD51CFE9CFE70",
+   "5316885DF46EFFE0FF0CD7F1FE3CFE54",
+   "5316885DF470FFEBFF0CD46CFAC7F84E"
+  ],
+  "zenodo": "",
+  "sha256": "6979d134da56fa03488b4dfd7115d6ce044a0b024cdccff1f7137aec3f0db5ab"
+ },
+ "8FC069C3F46FFFFFFF0CD245FD27FC26": {
+  "caption": "TABLE 3. Mean (± standard deviation) and range of condylo-canine length (CCL) and braincase height (BH) for those specimens not included in Table 1. n = sample size.",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.4755.3.2",
+  "authors": "Sedlock, Jodi L., Heaney, Lawrence R., Balete, Danilo S. &amp; Ruedi, Manuel",
+  "year": "2020",
+  "article": "Philippine bats of the genus Kerivoula (Chiroptera: Vespertilionidae): Overview and assessment of variation in K. pellucida and K. whiteheadi",
+  "treatments": [
+   "5316885DF469FFFEFF0CD51CFE9CFE70",
+   "5316885DF470FFEBFF0CD46CFAC7F84E"
+  ],
+  "zenodo": "",
+  "sha256": "799a4f48146f5bc70a81c596e9c19540382ee333d47cad12276f3ed4c92694dd"
+ },
+ "8FC069C3F473FFE3FF0CD0C7F91AFD86": {
+  "caption": "TABLE 4. Mean (± standard deviation) and range of external body measurements (in mm) of K. whiteheadi and K. pellucida. n = sample size",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.4755.3.2",
+  "authors": "Sedlock, Jodi L., Heaney, Lawrence R., Balete, Danilo S. &amp; Ruedi, Manuel",
+  "year": "2020",
+  "article": "Philippine bats of the genus Kerivoula (Chiroptera: Vespertilionidae): Overview and assessment of variation in K. pellucida and K. whiteheadi",
+  "treatments": [
+   "5316885DF46EFFE0FF0CD7F1FE3CFE54",
+   "5316885DF470FFEBFF0CD46CFAC7F84E"
+  ],
+  "zenodo": "",
+  "sha256": "f907137745f89087c02cdbef6684d0eb12116173a49c2bf799fdfbf7b94d8621"
+ },
+ "8FC069C3F477FFE7FF0CD7A2FE8FF964": {
+  "caption": "TABLE 5. Mean ± standard deviation and range of five call parameter measurements of Philippine Kerivoula pellucida and K. whiteheadi. Descriptions of measurements given in methods. p-values represent results of Welch’s t-test comparing species.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.4755.3.2",
+  "authors": "Sedlock, Jodi L., Heaney, Lawrence R., Balete, Danilo S. &amp; Ruedi, Manuel",
+  "year": "2020",
+  "article": "Philippine bats of the genus Kerivoula (Chiroptera: Vespertilionidae): Overview and assessment of variation in K. pellucida and K. whiteheadi",
+  "treatments": [
+   "5316885DF46EFFE0FF0CD7F1FE3CFE54",
+   "5316885DF470FFEBFF0CD46CFAC7F84E"
+  ],
+  "zenodo": "",
+  "sha256": "2e89cfa1ad39413ca32435f7ac769ca1a174fb35414cd17c5d199134925cd431"
+ },
+ "9003904B4ADA3833FAA480718C2943A6": {
+  "caption": "Table 2. External and cranial measurements for four species of bats of the family Molossidae with confirmed identity and three unidentified morphos. Data based on specimens collected in the Caatinga bioma (Lençóis, Chapada Diamantina region, northeastern Brazil), according to this study (catalog number are indicated) and previous information in literature. Abbreviations are described in the section of materials and methods.",
+  "label": "Table 2",
+  "doi": "10.3897/zookeys.1210.128570",
+  "authors": "García, Franger J., Ochoa-G, José, Poma-Urey, José L., Miller, Bruce W., Falcão, Fábio C. &amp; del Valle Alvarez, Martín Roberto",
+  "year": "2024",
+  "article": "Expanding the knowledge of the bat fauna of the Brazilian Caatinga: new geographical records of molossid bats (Chiroptera, Molossidae) for the Chapada Diamantina region, with taxonomic notes",
+  "treatments": [
+   "55CE3C92A13E5A4FABF0EFCB4F9CE543",
+   "80DCF7A3B22152FCB76A7519DFE031C0",
+   "9DFDE743B5875141B4C8E19F6E02940A",
+   "CDBAB67FF677552A85A63F46383F9206"
+  ],
+  "zenodo": "",
+  "sha256": "d8f4e235193393dd5db64e6dfa324a13de691553ce771741135e6cb7dba7cb62"
+ },
+ "93FB7DE36104FFF6480DFD3BAD3CFD2D": {
+  "caption": "TABLE 1. Selected external and craniodental measurements (in mm) of Aselliscus spp. Values are given as 0 ± SD, n, min–max. Level of statistical significance (P) of intraspecific variation within A. stoliczkanus s.l. based on T-test. Acronyms and definitions for measurements are given in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.2.002",
+  "authors": "Tu, Vuong Tan, Csorba, Gábor, Görföl, Tamás, Arai, Satoru, Son, Nguyen Truong, Thanh, Hoang Trung &amp; Hasanin, Alexandre",
+  "year": "2015",
+  "article": "Description of a new species of the genus Aselliscus (Chiroptera, Hipposideridae) from Vietnam",
+  "treatments": [
+   "4F2D9C7D6108FFFE4BDEFB4AA958FD35"
+  ],
+  "zenodo": "",
+  "sha256": "b130b3790d87b591cd146f8e3a854fffb6f2dd1e5adca61d58a303c4f7b623ed"
+ },
+ "95B4C1DE5310088F352A8C2E3B5A1919": {
+  "caption": "Table 2. External and craniodental measurements of Myotis sp. nov. from Uruguay (including holotype abd paratypes), M. riparius and M. ruber including morphometric variation and sample size (N). The measurements are in millimeters. Acronyms and descriptions are available in Table 1.",
+  "label": "Table 2",
+  "doi": "10.3897/vz.71.e73146",
+  "authors": "Novaes, Roberto Leonan M., Wilson, Don E. &amp; Moratelli, Ricardo",
+  "year": "2021",
+  "article": "A new species of Myotis (Chiroptera, Vespertilionidae) from Uruguay",
+  "treatments": [
+   "0C5B5E9EEFEA57C5B22CE5BF562C853C"
+  ],
+  "zenodo": "",
+  "sha256": "b584fc670207bf7adcc22defc2517cda74eed8304d6e5fd4a326d14f610ac40b"
+ },
+ "962C8BB8B8BBCA81DB8AC9946906D2AC": {
+  "caption": "Table 2. Diagnostic external and cranial characters for each Molossus species following Loureiro et al. (2018 b, 2019, 2020) and Montani et al. (2021). References: NA, not available; *: data from this study.",
+  "label": "Table 2",
+  "doi": "10.3897/vz.74.e122822",
+  "authors": "Chambi Velasquez, Micaela A., Pavé, Romina, Argoitia, María A., Schierloh, Pablo, Piccirilli, María G., Colombo, Valeria C., Beltrán, Fernando J., Cisterna, Daniel M. &amp; Caraballo, Diego A.",
+  "year": "2024",
+  "article": "Revisiting Molossus (Mammalia: Chiroptera: Molossidae) diversity: Exploring southern limits and revealing a novel species in Argentina",
+  "treatments": [
+   "AA6D0E17BDFD58DFB377A300B385CAEC"
+  ],
+  "zenodo": "",
+  "sha256": "5a26e9a4ebf6d02133b47cc6cf62dc35c4288d94ee895f197315dd4fbff70e5d"
+ },
+ "96FD87B3FF9EFFF39CF7FF022567FCA7": {
+  "caption": "TABLE 1. Body mass (MASS; g) and external and craniodental measurements (mm) of M. balaensis sp. nov. and M. eleryi examined in this study. Specimens examined and definitions of measurements are in method section.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.3746.4.4",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Satasook, Chutamas &amp; Bates, Paul J. J.",
+  "year": "2013",
+  "article": "A new species of Murina (Mammalia: Chiroptera: Vespertilionidae) from peninsular Thailand",
+  "treatments": [
+   "4A2B662DFF9FFFF99CF7FC3621D5FDE0"
+  ],
+  "zenodo": "",
+  "sha256": "072b7cd53695296b25d8c7b6219c7c182fd951abe01df518e2c0b46f5a99aae9"
+ },
+ "9A57147435D4590E1444D0F6C0CC8B95": {
+  "caption": "Table 4. External and craniodental measurements of Argentinean populations of Myotis albescens, M. ruber, and M. nigricans, including morphometric variation and number of samples (N). The measurements are in millimeters. Acronyms and descriptions are available in Table 1.",
+  "label": "Table 4",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "0D024082429250399869169324B3E941",
+   "183B8CD248A550EBBBF62ACB0C2031EA",
+   "FF652C617777581797888A1C4C66225A"
+  ],
+  "zenodo": "https://zenodo.org/records/15134754",
+  "sha256": "80f2683273a86fee5aef662e83426aff353cd7451463204e8e0326800504cefe"
+ },
+ "9AE2FFDFE13DE514FF0C58ADFCB4C56A": {
+  "caption": "Table 2.—Measurements (mm) of the 2 external and 8 cranial variables collected from specimens of Pteronotus cf. rubiginosus according to the classification and mode of distribution established for morphometric analyses. For external measurements, mean values and sample sizes are presented. For cranial variables, samples sizes by sex (F = females; M = males; U = undetermined) and mean values (minimum–maximum range). BB = braincase breadth; GLS = greatest length of skull; IB = interorbital breadth; MdL = mandibular length; MdTL = mandibular toothrow length; MxTL = maxillary toothrow length; PL = palatal length; PW = palatal width.",
+  "label": "Table 2",
+  "doi": "10.1093/jmammal/gyy048",
+  "authors": "Colombo, Guthieri T., Di Ponzio, Raffaello, Benchimol, Maíra, Peres, Carlos A. &amp; Bobrowiec, Paulo Estefano D.",
+  "year": "2018",
+  "article": "Geographic variation in a South American clade of mormoopid bats, Pteronotus (Phyllodia), with description of a new species",
+  "treatments": [
+   "46341E41E13EE51BFC495ED1FE4FC1FD"
+  ],
+  "zenodo": "https://zenodo.org/records/15154952",
+  "sha256": "fe2539c3e53d39475f0907febb0c2a375dcf32544ba88bd2db469d2c0d2777ba"
+ },
+ "9FD9AB78FBD3E0609EFB2EB143B8B921": {
+  "caption": "Table 10. Selected measurements (mm) and weigth (g) for specimens of Vespertilioninae and Myotinae from PECB, São Paulo state, Brazil. See Material and Methods for description of measurements.",
+  "label": "Table 10",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "0C127693C64358B6BA75439EF8101B77",
+   "1619467DE3E9516784EE469297AB5E72",
+   "4118600E7CAC5883857A5A2A69D99E12",
+   "5D027F7A3F1552359D7F3C7BB5F0BCE8",
+   "975C7C014FD959D5896B19C9F5F52EEF",
+   "EEBC7CD734915025BBFA268A31E53A29"
+  ],
+  "zenodo": "",
+  "sha256": "25a38e3aec31b50947711f0f4734406415be931be51fa487bb97bd5abbc4ec43"
+ },
+ "A1079DA4684048AE897FB3472451F473": {
+  "caption": "Table 2. External and skull measurements of Histiotus alienus. Acronyms and descriptions of the measurements are available in Table 1.",
+  "label": "Table 2",
+  "doi": "10.3897/zookeys.1174.108553",
+  "authors": "Claudio, Vinicius C., Almeida, Brunna, Novaes, Roberto L. M., Navarro, Marcos A., Tiepolo, Liliani M. &amp; Moratelli, Ricardo",
+  "year": "2023",
+  "article": "Rediscovery of Histiotus alienus Thomas, 1916 a century after its description (Chiroptera, Vespertilionidae): distribution extension and redescription",
+  "treatments": [
+   "374D8EF039175C94BC32BACB40785D27"
+  ],
+  "zenodo": "",
+  "sha256": "94f31c5c654db7d21f35ec406d08a0d9605f515e5822cdc134eb65217419c08c"
+ },
+ "A2C24294C168A9740A9DFEDDFDB218A6": {
+  "caption": "Table 1. Craniodental and external measurements of Glauconycteris superba Hayman, 1939. Reference: 1. Randolph L. Peterson (courtesy of Judith Eger, pers. comm. 1 Nov. 2001; column 1). 2, 5, 7. FDV. 3. Rosevear (1965). 4. Hayman (1947). 6. Hayman (1939). 8. GCGT (field measurements). For measurement descriptions see text.",
+  "label": "Table 1",
+  "doi": "10.5852/ejt.2013.42",
+  "authors": "Tungaluna, Guy-Crispin Gembu, Cakenberghe, Victor Van, Akawa, Prescott Musaba, Akaibe, Benjamin Dudu, Verheyen, Erik, Vree, Frits De &amp; Legera, Jakob Fahr",
+  "year": "2013",
+  "article": "Rediscovery of Glauconycteris superba Hayman, 1939 (Chiroptera: Vespertilionidae) after 40 years at Mbiye Island, Democratic Republic of the Congo",
+  "treatments": [
+   "7E14A30AC164A9760813FE3DFE931C09"
+  ],
+  "zenodo": "",
+  "sha256": "405f6377d6a4c24110e16001759ba89e19406100366a3e739a6d2a31c66c2160"
+ },
+ "A2C24294C16BA9770A9DFEDDFA93180F": {
+  "caption": "Table 2. Craniodental measurements (rounded to nearest 0.1 mm). For measurement descriptions see text.",
+  "label": "Table 2",
+  "doi": "10.5852/ejt.2013.42",
+  "authors": "Tungaluna, Guy-Crispin Gembu, Cakenberghe, Victor Van, Akawa, Prescott Musaba, Akaibe, Benjamin Dudu, Verheyen, Erik, Vree, Frits De &amp; Legera, Jakob Fahr",
+  "year": "2013",
+  "article": "Rediscovery of Glauconycteris superba Hayman, 1939 (Chiroptera: Vespertilionidae) after 40 years at Mbiye Island, Democratic Republic of the Congo",
+  "treatments": [
+   "7E14A30AC164A9760813FE3DFE931C09"
+  ],
+  "zenodo": "",
+  "sha256": "e780bdf02ab2b2a2220f6353363dd5f02ab973e4b312906c848df659e2a85916"
+ },
+ "A2F2EFCFF81C8D2FD82AFF67FC6B76C1": {
+  "caption": "Table 4. Morphological measurements of external structures obtained in Corynorhinus leonpaniaguae.",
+  "label": "Table 4",
+  "doi": "10.1371/journal.pone.0296275",
+  "authors": "López-Cuamatzi, Issachar L., Ortega, Jorge, Ospina-Garcés, Sandra M., Zúñiga, Gerardo &amp; G., M. Cristina MacSwiney",
+  "year": "2024",
+  "article": "Molecular and morphological data suggest a new species of big-eared bat (Vespertilionidae: Corynorhinus) endemic to northeastern Mexico",
+  "treatments": [
+   "7E240E51F8108D2FDA5FFA15FBCD70E7"
+  ],
+  "zenodo": "https://zenodo.org/records/15159022",
+  "sha256": "19b2e1c3748826ab36b3e21e4560839626ec74ef7082bfa18cc3cc5075acaafb"
+ },
+ "A2F2EFCFF81D8D2ED82AFA7EFC5773FE": {
+  "caption": "Table 5. Spectro-temporal characteristics of the echolocation pulses of Corynorhinus leonpaniaguae.",
+  "label": "Table 5",
+  "doi": "10.1371/journal.pone.0296275",
+  "authors": "López-Cuamatzi, Issachar L., Ortega, Jorge, Ospina-Garcés, Sandra M., Zúñiga, Gerardo &amp; G., M. Cristina MacSwiney",
+  "year": "2024",
+  "article": "Molecular and morphological data suggest a new species of big-eared bat (Vespertilionidae: Corynorhinus) endemic to northeastern Mexico",
+  "treatments": [
+   "7E240E51F8108D2FDA5FFA15FBCD70E7"
+  ],
+  "zenodo": "https://zenodo.org/records/15159024",
+  "sha256": "39341b4a1966500ff690ae9fb65721789a439e3c58c67a9062c49d9cfecf6b18"
+ },
+ "A6D77D4F2194414208549A31BBFEA20A": {
+  "caption": "Table 5. External and craniodental measurements (in mm) of M. rubella and a closely related species. NA indicates that the data is not available.",
+  "label": "Table 5",
+  "doi": "10.3897/zse.101.144375",
+  "authors": "Luo, Tao, Mao, Ming-Le, Lan, Chang-Ting, Zhao, Zi-Fa, Wang, Zhong-Lian, Yu, Jing, Wang, Jia-Jia, Yan, Chen-Rui, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "Four new tube-nosed bat species of the genus Murina (Chiroptera, Vespertilionidae) from Xizang Autonomous Region, China, based on morphological and molecular data",
+  "treatments": [
+   "9AA00AF9954B538FA2AA1317B0560C78"
+  ],
+  "zenodo": "",
+  "sha256": "a94928409efdeb625239c3276397903c83a2867b23911ac3048c27fad8b10e08"
+ },
+ "A88331BDB8886D09E769E4C9D6415090": {
+  "caption": "Table 1. Character matrix of all Glauconycteris species, arranged in descending order of greatest skull length (GSL). Measurements from Happold and Happold (2013), Hassanin et al. (2018) and this study. Number of localities in Africa and Cameroon based on Monadjem et al. (2024), Torrent et al. (2025 a), and this study.",
+  "label": "Table 1",
+  "doi": "10.3897/zookeys.1282.183038",
+  "authors": "Gomeh-Djame, Aicha, Bates, Paul J. J., Juste, Javier, Suarez-Rubio, Marcela, Torrent, Laura, García-Mudarra, Juan Luis, Agodigo Ayangma, Eugenie, Yettore, Félécité, Bilong Bilong, Charles Félix &amp; Bakwo-Fils, Eric-Moise",
+  "year": "2026",
+  "article": "An integrated taxonomic and conservation assessment of Glauconycteris (Chiroptera, Vespertilionidae) in Cameroon, with the description of two new species from the Northwestern Congolian Lowland Forest",
+  "treatments": [
+   "06CE49EF1DA95EFAAB36ADC0F1399852",
+   "3326CF63577A52EC9F85660A605355EB",
+   "422946B701445124B7758DAB29D9282C",
+   "5DDB12AE9F5855DDB94FF7D962005C06"
+  ],
+  "zenodo": "",
+  "sha256": "2bdce61b8bf9f7e440252fa67ec5d9993a8707f528c14f80b4a6e35bad8c0818"
+ },
+ "AA75EAF456E1ACBC4ED9F762EEE0EC6A": {
+  "caption": "Table 5. External and craniodental measurements of Argentinean populations of Myotis levis, M. chiloensis, and M. oxyotus, including morphometric variation and number of samples (N). The measurements are in millimeters. Acronyms and descriptions are available in Table 1.",
+  "label": "Table 5",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "5CBC8C8D238551169BE2491A03A74C9B",
+   "9B4F61F9A9F95BEFA2BE0AAEF8355F66",
+   "C42126BBD0EA5797B2EA20D2F050E470"
+  ],
+  "zenodo": "https://zenodo.org/records/15134756",
+  "sha256": "29d3152a62f8d9e3c9d2e7cce676108b4181595ace40dbe24e6bc7cb981dae9a"
+ },
+ "AAFB666C4F46FFA7FF40D2CFFBB5FA83": {
+  "caption": "TABLE 8. Factor loadings from principal component analysis of log-transformed cranial measurements of specimens of Miniopterus egeri sp. nov., M. manavi sensu stricto, M. petersoni, M. sororculus, and M. majori. A graphical representation of the first two factors is presented in Figure 8. See Methods and materials for the acronym definitions.",
+  "label": "TABLE 8",
+  "doi": "10.5281/zenodo.202738",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Maminirina, Claudette P., Schoeman, Corrie &amp; Appleton, Belinda",
+  "year": "2011",
+  "article": "Morphological, bioacoustical, and genetic variation in Miniopterus bats from eastern Madagascar, with the description of a new species",
+  "treatments": [
+   "762D87F24F5EFFA6FF40D384FD05FB26"
+  ],
+  "zenodo": "",
+  "sha256": "92c964655bae126b560333c662c8d220d7d342be48206ee2a7a2af5f166b02a2"
+ },
+ "AAFB666C4F59FFB8FF40D6E6FC3EFE90": {
+  "caption": "TABLE 7. Dental measurements (in millimeters) of Miniopterus egeri sp. nov., M. petersoni, M. sororculus (Central Highlands), and M. majori. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. See Methods and materials for an explanation of variable acronyms. Statistical differences between M. egeri and M. petersoni are examined based on student t-tests, n. s. = not significant.",
+  "label": "TABLE 7",
+  "doi": "10.5281/zenodo.202738",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Maminirina, Claudette P., Schoeman, Corrie &amp; Appleton, Belinda",
+  "year": "2011",
+  "article": "Morphological, bioacoustical, and genetic variation in Miniopterus bats from eastern Madagascar, with the description of a new species",
+  "treatments": [
+   "762D87F24F5EFFA6FF40D384FD05FB26"
+  ],
+  "zenodo": "",
+  "sha256": "3ceee0180edac42959930f47fabb0336bd35fb7da8ce65e3f284c095389214b9"
+ },
+ "AAFB666C4F5AFFBBFF40D4F7FDB8FC9E": {
+  "caption": "TABLE 5. External measurements (in millimeters) and mass (in grams) of Miniopterus egeri sp. nov., M. petersoni, M. sororculus (Central Highlands), and M. majori. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. Figures in bold are of specimens collected and measured by SMG and those in standard script by a variety of different field collectors. Statistical differences between M. egeri and M. petersoni are examined based on student t-tests, n. s. = not significant.",
+  "label": "TABLE 5",
+  "doi": "10.5281/zenodo.202738",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Maminirina, Claudette P., Schoeman, Corrie &amp; Appleton, Belinda",
+  "year": "2011",
+  "article": "Morphological, bioacoustical, and genetic variation in Miniopterus bats from eastern Madagascar, with the description of a new species",
+  "treatments": [
+   "762D87F24F5EFFA6FF40D384FD05FB26"
+  ],
+  "zenodo": "",
+  "sha256": "db66755c94225799c01975f0aa4d12b537b0620bd26e809b4f07a289b8c5cced"
+ },
+ "AAFB666C4F5BFFBAFF40D41BFBDFFD50": {
+  "caption": "TABLE 6. Cranial measurements (in millimeters) of adult Miniopterus egeri sp. nov., M. petersoni, M. sororculus (Central Highlands), and M. majori. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. See Methods and materials for an explanation of variable acronyms. Statistical differences between M. egeri and M. petersoni are examined based on student t-tests, n. s. = not significant.",
+  "label": "TABLE 6",
+  "doi": "10.5281/zenodo.202738",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Maminirina, Claudette P., Schoeman, Corrie &amp; Appleton, Belinda",
+  "year": "2011",
+  "article": "Morphological, bioacoustical, and genetic variation in Miniopterus bats from eastern Madagascar, with the description of a new species",
+  "treatments": [
+   "762D87F24F5EFFA6FF40D384FD05FB26"
+  ],
+  "zenodo": "",
+  "sha256": "0510f2dabf9674e369958df8e9ecd56f0ac1d65b80309b21d3e23522a02eb6db"
+ },
+ "AE8B6635FFE4FFACFD0D5296FA48FCEF": {
+  "caption": "TABLE 1.Area, elevation, disturbance history and sampling effort of bat surveys undertaken at four karst formations on the Sangkulirang peninsula,East August 2004.Area, elevation and disturbance information derived from L. A. Salas (unpublished data). Survey effort in caves is given in parentheses",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2007)9[67:botslk]2.0.co;2",
+  "authors": "Suyanto, Agustinus &amp; Struebig, Matthew J.",
+  "year": "2007",
+  "article": "Bats of the Sangkulirang limestone karst formations, East Kalimantan - a priority region for Bornean bat conservation",
+  "treatments": [
+   "725D87ABFFF3FFBAFD6D523AF066FDDA"
+  ],
+  "zenodo": "",
+  "sha256": "d26624ec62492a07e94d2b1e007a7fb75d4947a81c0192dcb7a971e80f041913"
+ },
+ "AE8B6635FFEBFFA3FFF351C7F74EFDDB": {
+  "caption": "TABLE 4. Cranial and dental measurements (in mm) of 27 microchiropteran taxa collected as specimens during the survey, including greatest length of skull (GTL), skull length (SL), condylo-canine length (CCL), zygomatic breadth (ZB), breadth of braincase (BB), post orbital constriction (PC), maxillary toothrow length (C–M3), palatal breadth (M3–M3), mandibular toothrow length (C–M), anterior palatal width (C1–C1) and mandible length (MDL)",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2007)9[67:botslk]2.0.co;2",
+  "authors": "Suyanto, Agustinus &amp; Struebig, Matthew J.",
+  "year": "2007",
+  "article": "Bats of the Sangkulirang limestone karst formations, East Kalimantan - a priority region for Bornean bat conservation",
+  "treatments": [
+   "725D87ABFFECFFA1FD7F52E8F03DFC39",
+   "725D87ABFFECFFA4FEAA50DAF183FDC6"
+  ],
+  "zenodo": "",
+  "sha256": "ce05ee25eef89bbbf10e6380028ddb45dc03407e92cda3c0fb144f3588dd4f9d"
+ },
+ "AE8B6635FFEFFFA7FFF251E5F354FE39": {
+  "caption": "TABLE 3. External measurements and species presence at each of the karst formations of the 35 confirmed bat species captured during the survey. Numbers in parentheses indicate the number of individuals from which measurements were taken. 1 — the conservation status of the species is listed as Lower Risk: Near Threatened (IUCN, 2004)",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2007)9[67:botslk]2.0.co;2",
+  "authors": "Suyanto, Agustinus &amp; Struebig, Matthew J.",
+  "year": "2007",
+  "article": "Bats of the Sangkulirang limestone karst formations, East Kalimantan - a priority region for Bornean bat conservation",
+  "treatments": [
+   "725D87ABFFE0FFA8FF00514AF68BFC26",
+   "725D87ABFFECFFA4FEAA50DAF183FDC6"
+  ],
+  "zenodo": "",
+  "sha256": "92d8cc572ed50c1fdf1c075e057ed01294d5795601bd078560d0751ed24b4600"
+ },
+ "AECA6678B879FF85FFFAFD8FC74F0A17": {
+  "caption": "TABLE 3. The means (in mm) ± SD, and ranges (in parentheses) for 22 skull variables (see Materials and Methods for descriptions) were compared between H. kunzi (=H. bicolor-142) and H. bicolor (=H. bicolor-131; including both KWR and Borneo individuals) using GLM analysis: * — P <0.05, ** — P <0.01, and *** — P <0.001. The separate means for the two populations of H. bicolor (KWR and Borneo) are also shown. The measurements for the holotype and the paratypes for H. kunzi are included for comparison",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.001",
+  "authors": "Murray, Susan W., Khan, Faisal A. A., Kingston, Tigga, Zubaid, Akbar &amp; Campbell, Polly",
+  "year": "2018",
+  "article": "A new species in the Hipposideros bicolor group (Chiroptera: Hipposideridae) from Peninsular Malaysia",
+  "treatments": [
+   "721C87E6B860FF9EFF55FADDC54B0C04"
+  ],
+  "zenodo": "",
+  "sha256": "288aab7cc379558d932138da5bb828e4073317b96122dc4ae0f2885d7214e492"
+ },
+ "AECA6678B87CFF80FF0EFF14C41309EC": {
+  "caption": "TABLE 2. Mean values for external and wing morphology with standard deviation and sample size (in parentheses) for H. bicolor (=H. bicolor-131) and H. kunzi (H. bicolor-142) captured in peninsular Malaysia (not including bats from Taiping and Kuala Atok). Ranges are also presented for external morphology and echolocation. Values for H. cineraceus-B are included for comparison because of this lineage’s close phylogenetic relationship with H. kunzi, but were not included in statistical analyses. The results of univariate GLM analyses for an effect of species on external measurements and echolocation call frequency with phonic type split by sex are given: * — P <0.05, ** — P <0.01, and *** — P <0.001. For the wing morphology data, the results of a GLM analysis with the sexes pooled, species as a fixed factor and length of forearm as a covariate are also shown. Differences between males and females within each phonic type were evaluated using t-tests; α = 0.004 after Bonferroni correction",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.001",
+  "authors": "Murray, Susan W., Khan, Faisal A. A., Kingston, Tigga, Zubaid, Akbar &amp; Campbell, Polly",
+  "year": "2018",
+  "article": "A new species in the Hipposideros bicolor group (Chiroptera: Hipposideridae) from Peninsular Malaysia",
+  "treatments": [
+   "721C87E6B860FF9EFF55FADDC54B0C04"
+  ],
+  "zenodo": "",
+  "sha256": "8ede5a02ae358e99e8e0658dff8bb4b0a22d1dd6e3d928abc2f27c6f40ae32c8"
+ },
+ "B1AC9C230BCB535EA4F65236DC8B76FE": {
+  "caption": "Table 6. External and craniodental measurements of Argentinean populations of Myotis cf. simus, M. dinellii, and M. keaysi, including morphometric variation and number of samples (N). The measurements are in millimeters. Acronyms and descriptions are available in Table 1.",
+  "label": "Table 6",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "B4FB7E11AA5656D5958407B3C012A8D3",
+   "B5712CA7ACEE5F3A97F1B2D64FB9865F",
+   "EB63FACE19285DE8B207F96790B4B08A"
+  ],
+  "zenodo": "https://zenodo.org/records/15134758",
+  "sha256": "4252c51aa33c7367b4ab1875178af2dec059c095aaa59604937cbb04cd3218b6"
+ },
+ "B399BFD3FFF4667BB7243795F909FE6D": {
+  "caption": "Table 4. Results of the analysis of variance between the Caucasian and European sample sets of Myotis alcathoe and dimensions of the European samples of M. alcathoe. See Section 2.3 for explanation of the dimension acronyms. a – external, skull, and tooth dimensions (in millimetres); b – relative dimensions and phenetic characters.",
+  "label": "Table 4",
+  "doi": "10.3906/zoo-1505-47",
+  "authors": "Benda, Petr, Gazaryan, Suren &amp; Vallo, Peter",
+  "year": "2016",
+  "article": "On the distribution and taxonomy of bats of the Myotis mystacinus morphogroup from the Caucasus region (Chiroptera: Vespertilionidae)",
+  "treatments": [
+   "6F4F5E4DFFF66679B7273312FB28FE9B"
+  ],
+  "zenodo": "https://zenodo.org/records/13852398",
+  "sha256": "ff310d9cb11bc67f2ec8e2bb5640c954d2543503342acac81463f039b5799478"
+ },
+ "B6B755B1FF8AFF8684D3FF4DFA7BFF7B": {
+  "caption": "TABLE 4. Unique synapomorphies of O. harrisoni sp. nov. in the mitochondrial cytochrome b gene and D-loop region.",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.4057.1.1",
+  "authors": "Ralph, Taryn M. C., Richards, Leigh R., Taylor, Peter J., Napier, Melanie C. &amp; Lamb, Jennifer M.",
+  "year": "2015",
+  "article": "Revision of Afro-Malagasy Otomops (Chiroptera: Molossidae) with the description of a new Afro-Arabian species",
+  "treatments": [
+   "6A61B42FFF8DFF8A84D3FB3EFAEDF841"
+  ],
+  "zenodo": "",
+  "sha256": "daeecdc2ee5cffd83aa5a12bf6bb2304af55aa400d73238fc7fbff34b4c93eab"
+ },
+ "B6B755B1FF91FF9D8439FE27FEB3FDD2": {
+  "caption": "TABLE 2. (Continued)",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.4057.1.1",
+  "authors": "Ralph, Taryn M. C., Richards, Leigh R., Taylor, Peter J., Napier, Melanie C. &amp; Lamb, Jennifer M.",
+  "year": "2015",
+  "article": "Revision of Afro-Malagasy Otomops (Chiroptera: Molossidae) with the description of a new Afro-Arabian species",
+  "treatments": [
+   "6A61B42FFF8DFF8A84D3FB3EFAEDF841"
+  ],
+  "zenodo": "",
+  "sha256": "31051d7aa28b90b9830d349191dcf499319ca515e9137cb956b3099dd72a354d"
+ },
+ "B6FA61B1FFD90E4002A609F2FBDEFD61": {
+  "caption": "TABLE 3. Characteristic comparison of external and cranial morphology between specimen JX- 07 X- 20 (3) and the holotype (Ƥ) of Myotis flavus Shamel, 1944. Measurements are in mm and body mass is in g.",
+  "label": "TABLE 3",
+  "doi": "10.5281/zenodo.194368",
+  "authors": "Jiang, Tinglei, Sun, Keping, Chou, Chenghan, Zhang, Zhenzhen &amp; Feng, Jiang",
+  "year": "2010",
+  "article": "First record of Myotis flavus (Chiroptera: Vespertilionidae) from mainland China and a reassessment of its taxonomic status",
+  "treatments": [
+   "6A2C802FFFD40E4102A60F78FE47FCDB"
+  ],
+  "zenodo": "",
+  "sha256": "e788c7f418b6da7df644a528dac026d88fd83f05bbe71a430e219ee616de7471"
+ },
+ "B7DD6662FF80753F0002FEFCF8FDFE7F": {
+  "caption": "Table 3. Coefficient of differences and percentages of nonoverlap of population curves in Rhmolophiis chiewkweeae sp nov. and R ytinanensis.",
+  "label": "Table 3",
+  "doi": "10.5281/zenodo.3755399",
+  "authors": "Yoshiyuki, Mizuko &amp; Lim, Boo Liat",
+  "year": "2005",
+  "article": "A New Horseshoe Bat, Rhinolophus chiewkweeae (Chiroptera, Rhinolophidae), from Malaysia",
+  "treatments": [
+   "6B0B87FCFF87753E07EAFC5FFCC9FBE0"
+  ],
+  "zenodo": "",
+  "sha256": "e815c26e4b71e9e83bf2797ca853011829a926d08c56bad94a1781ac464dd9e6"
+ },
+ "B7DD6662FF80753F0496FEFFFC49FE7F": {
+  "caption": "Table 2. Coefficient of differences and percentages of nonoverlap of population curves in Rhinolopiuis chiewkweeae sp. nov. and. pearsoni.",
+  "label": "Table 2",
+  "doi": "10.5281/zenodo.3755399",
+  "authors": "Yoshiyuki, Mizuko &amp; Lim, Boo Liat",
+  "year": "2005",
+  "article": "A New Horseshoe Bat, Rhinolophus chiewkweeae (Chiroptera, Rhinolophidae), from Malaysia",
+  "treatments": [
+   "6B0B87FCFF87753E07EAFC5FFCC9FBE0"
+  ],
+  "zenodo": "",
+  "sha256": "36d42fccc234d68a8a57ab5499bddbac89f07de1b912d4befd2679e9063d5a1b"
+ },
+ "B7DD6662FF85753A0506FEE6F810FE41": {
+  "caption": "Table 1. Comparisons of external, cranial, and dental measurements in the species of the Rhinolophus peasoni group. (in mm)",
+  "label": "Table 1",
+  "doi": "10.5281/zenodo.3755399",
+  "authors": "Yoshiyuki, Mizuko &amp; Lim, Boo Liat",
+  "year": "2005",
+  "article": "A New Horseshoe Bat, Rhinolophus chiewkweeae (Chiroptera, Rhinolophidae), from Malaysia",
+  "treatments": [
+   "6B0B87FCFF87753E07EAFC5FFCC9FBE0"
+  ],
+  "zenodo": "",
+  "sha256": "a55406238cb0c26006a3d0e7aa551e5278043883ba0d778bf152979ee0ec5583"
+ },
+ "B8BCDCFBFFC4FF8F7F4B6D0AB574A9CB": {
+  "caption": "Table 1. External and craniodental measurements of Myotis ataca- mensis from Chile and Peru.",
+  "label": "Table 1",
+  "doi": "10.1590/S1984-4689.v39.e21026",
+  "authors": "Novaes, Roberto Leonan M., LaVal, Richard K., Wilson, Don E. &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Redescription of Myotis atacamensis (Chiroptera: Vespertilionidae) with neotype designation",
+  "treatments": [
+   "646A3D65FFC4FF8B7C94685BB44EAB56"
+  ],
+  "zenodo": "",
+  "sha256": "1617628c41f47d5d20be8b6ed329f2a23ac26e84eedf13ea7fd53cf34024d5e0"
+ },
+ "B8C56310874EB0200E521F6119AD6685": {
+  "caption": "Table 3. Selected measurements (mm) and body mass (g) of the holotype (CML 7623) and paratype of Myotis barquezi (CML 7622) from Salta, Argentina.",
+  "label": "Table 3",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "CCDAF985E5295168A6D61536DE1A6448"
+  ],
+  "zenodo": "https://zenodo.org/records/15134752",
+  "sha256": "886e5aa1eb67454ca9a5434adeadaa5d3c391354bf997d72b10bf76881eb3285"
+ },
+ "B9FD036CBDAAAF534202CBFAC6829122": {
+  "caption": "Table 1. External and craniodental measurements of Harpiola species (mm) (* the parameter shows obvious difference between specimens of Yunnan and Taiwan).",
+  "label": "Table 1",
+  "doi": "10.3897/BDJ.12.e120670",
+  "authors": "Li, Song, Mou, Xin, Li, Mengcheng, Li, Fengyi, Li, Mei, Li, Biao, Li, Mengjia, Luo, Xiong, Csorba, Gabor &amp; Kuo, Haochi",
+  "year": "2024",
+  "article": "New records of Harpiola isodon (Chiroptera, Vespertilionidae) from the Chinese mainland",
+  "treatments": [
+   "25A3C971F1F45FD6876252FB29CD42DB"
+  ],
+  "zenodo": "",
+  "sha256": "9bd66bc7f7f67ab953703a012b03cc00c71ffd55d4868bc4e311319e6d7fcf30"
+ },
+ "BA3D29C505B844CC90083BD4FE26B2CA": {
+  "caption": "Table 4. Genetic distances (Kimura 2 - parameter [K 2 P] distances) based on the partial mitochondrial Cytb gene among the species studied within the genus Glauconycteris. (Glauconycteris sp. A = G. baka sp. nov. and G. cf. humeralis = G. lobeke sp. nov. when comparing with provisional identifications used in the Results).",
+  "label": "Table 4",
+  "doi": "10.3897/zookeys.1282.183038",
+  "authors": "Gomeh-Djame, Aicha, Bates, Paul J. J., Juste, Javier, Suarez-Rubio, Marcela, Torrent, Laura, García-Mudarra, Juan Luis, Agodigo Ayangma, Eugenie, Yettore, Félécité, Bilong Bilong, Charles Félix &amp; Bakwo-Fils, Eric-Moise",
+  "year": "2026",
+  "article": "An integrated taxonomic and conservation assessment of Glauconycteris (Chiroptera, Vespertilionidae) in Cameroon, with the description of two new species from the Northwestern Congolian Lowland Forest",
+  "treatments": [
+   "5DDB12AE9F5855DDB94FF7D962005C06",
+   "C5AF2404F3885C65BBB578DA25C08937"
+  ],
+  "zenodo": "",
+  "sha256": "e809e06a96cb4bc0964c03cfd0912abb06021ee210a7e6419ec768e15c5f8101"
+ },
+ "C22913BC47B4FA61AC9CFEE60F11B46D": {
+  "caption": "Table 1. Genetic distance based on the Kimura 2 - parameter model between species calculated from Cyt b sequences.",
+  "label": "Table 1",
+  "doi": "10.3897/zse.101.147349",
+  "authors": "Luo, Pengfei, Mao, Mingle, Yan, Chengrui, He, Qingqing, Yang, Qin, Deng, Huaiqing, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "A new species of the genus Murina (Chiroptera, Vespertilionidae) from the Southeastern Qinghai-Tibetan Plateau, China",
+  "treatments": [
+   "E5DBCCCB7E645819963A82A39180EC70"
+  ],
+  "zenodo": "",
+  "sha256": "c28d8c34c28b78b7dc8dbde85bc580fd436c6078584d5c23ce28499c9ba0e2c8"
+ },
+ "C6EB09B2CF21DD2C16C2FF349DEE5BBE": {
+  "caption": "Table 1 External, cranial, and dental measurements (in mm, except mass in g) of the four specimens of MUrina lorelieae: MUrina lorelieae lorelieae from South China, MUrina lorelieae ngoclinhensis from Vietnam (see Materials and methods for acronyms).",
+  "label": "Table 1",
+  "doi": "10.1515/mammalia-2013-0101",
+  "authors": "Tu, Vuong Tan, Cornette, Raphaël, Utge, José &amp; Hassanin, Alexandre",
+  "year": "2015",
+  "article": "First records of Murina lorelieae (Chiroptera: Vespertilionidae) from Vietnam",
+  "treatments": [
+   "1A3DE82CCF20DD2C16ECFC2B9C7E5CC7"
+  ],
+  "zenodo": "https://zenodo.org/records/15155199",
+  "sha256": "4390dc374ec2ac7fe3c62e65a417d4a7d605376c4d6bd8436bd14f69af19beab"
+ },
+ "C8C497441EF1BCD328097877580E7E4C": {
+  "caption": "Table 2. External and cranial measurements (in mm) of Murina species.",
+  "label": "Table 2",
+  "doi": "10.3897/zse.101.147349",
+  "authors": "Luo, Pengfei, Mao, Mingle, Yan, Chengrui, He, Qingqing, Yang, Qin, Deng, Huaiqing, Xiao, Ning &amp; Zhou, Jiang",
+  "year": "2025",
+  "article": "A new species of the genus Murina (Chiroptera, Vespertilionidae) from the Southeastern Qinghai-Tibetan Plateau, China",
+  "treatments": [
+   "E5DBCCCB7E645819963A82A39180EC70"
+  ],
+  "zenodo": "",
+  "sha256": "86a78109ff061a85f5d14f858880aa64716567f4386bbee35752064d44869f4a"
+ },
+ "CAE77FBFFFDCFF9568F4FA20FC6B16EE": {
+  "caption": "TABLE 1. Selected external measurements and body mass [mean (minimum–maximum; n)] for eight species of Murina from Laos, including the holotypes of two new species and the holotype of M. feae from Myanmar",
+  "label": "TABLE",
+  "doi": "10.3161/150811012X654231",
+  "authors": "Francis, Charles M. &amp; Eger, Judith L.",
+  "year": "2012",
+  "article": "A review of tube-nosed bats (Murina) from Laos with a description of two new species",
+  "treatments": [
+   "16319E21FFCEFF866946FBF8FBDA119D",
+   "16319E21FFD4FF9C697DFF70FDD11234",
+   "16319E21FFD9FF956BD8FE8CFCF81034",
+   "16319E21FFDCFF996BDDFCEAFB101212"
+  ],
+  "zenodo": "",
+  "sha256": "c038ae8100e956ea49877433fa2f87907a7316b0c43809015da9c9746f550713"
+ },
+ "CBBF90DFFF98DD74FFCBB5FFD2A2FDF7": {
+  "caption": "Table 1. External measurements for comparison between: Scotophilus dinganii (Natal, RSA) and S. andrewreborii sp. nov. (Rift Valley, Kenya), S. livingstonii sp. nov. (W. Kenya/Ghana), S. ejetai sp. nov. (Ethiopia); and between S. viridis (Mozambique) and S. trujilloi sp. nov. (coastal Kenya). Mensural acronyms are as follows: head-body length (HB), tail length (TL), hind foot length (HF), ear length (EA), and forearm length (FA).",
+  "label": "Table 1",
+  "doi": "10.5281/zenodo.15748542",
+  "authors": "Brooks, Daniel M. &amp; Bickham, John W.",
+  "year": "2014",
+  "article": "New Species Of Scotophilus (Chiroptera: Vespertilionidae) From Sub-Saharan Africa",
+  "treatments": [
+   "17697141FF91DD7FFEB5B7B8D235FC5B",
+   "17697141FF93DD62FC3AB025D39CFD08",
+   "17697141FF96DD7DFC13B7FBD47AFC37",
+   "17697141FF9BDD7AFE88B676D2FAFC7A"
+  ],
+  "zenodo": "https://zenodo.org/records/15800491",
+  "sha256": "5094fd185d64fe88ef7b3e45632f75a0f6aeb985dcb2e1d1e621d3c14c887d1c"
+ },
+ "CBBF90DFFF99DD75FF4FB524D568FE7A": {
+  "caption": "Table 2. Male cranio-dental measurements for comparison between: Scotophilus dinganii (Natal, RSA) and S. andrewreborii sp. nov. (Rift Valley, Kenya), S. livingstonii sp. nov. (W. Kenya/Ghana), S. ejetai sp. nov. (Ethiopia); and between S. viridis (Mozambique) and S. trujilloi sp. nov. (coastal Kenya). Mensural acronyms are as follows: greatest skull length (SL), zygomatic breadth (ZB), braincase breadth (BB), braincase height (BH), interorbital width (IW), greatest breadth across upper molars (WM), greatest breadth across upper canines (WC), and mandibular length (ML). * P ≤ 0.05, ** P ≤ 0.01.",
+  "label": "Table 2",
+  "doi": "10.5281/zenodo.15748542",
+  "authors": "Brooks, Daniel M. &amp; Bickham, John W.",
+  "year": "2014",
+  "article": "New Species Of Scotophilus (Chiroptera: Vespertilionidae) From Sub-Saharan Africa",
+  "treatments": [
+   "17697141FF91DD7FFEB5B7B8D235FC5B",
+   "17697141FF93DD62FC3AB025D39CFD08",
+   "17697141FF96DD7DFC13B7FBD47AFC37",
+   "17697141FF9BDD7AFE88B676D2FAFC7A"
+  ],
+  "zenodo": "https://zenodo.org/records/15800493",
+  "sha256": "0427c12133ee56da44a095bbf96121b6596aac4ae35747abd90cc5ae6e12e047"
+ },
+ "CBBF90DFFF9ADD76FF4FB524D5DAFE7A": {
+  "caption": "Table 3. Female cranio-dental measurements for comparison between: Scotophilus dinganii (Natal, RSA) and S. andrewreborii sp. nov. (Rift Valley, Kenya), S. livingstonii sp. nov. (W. Kenya/Ghana), S. ejetai sp. nov. (Ethiopia); and between S. viridis (Mozambique) and S. trujilloi sp. nov. (coastal Kenya). Mensural acronyms are as follows: greatest skull length (SL), zygomatic breadth (ZB), braincase breadth (BB), braincase height (BH), interorbital width (IW), greatest breadth across upper molars (WM), greatest breadth across upper canines (WC), and mandibular length (ML). * P <0.05, ** P <0.01, *** P <0.001.",
+  "label": "Table 3",
+  "doi": "10.5281/zenodo.15748542",
+  "authors": "Brooks, Daniel M. &amp; Bickham, John W.",
+  "year": "2014",
+  "article": "New Species Of Scotophilus (Chiroptera: Vespertilionidae) From Sub-Saharan Africa",
+  "treatments": [
+   "17697141FF91DD7FFEB5B7B8D235FC5B",
+   "17697141FF93DD62FC3AB025D39CFD08",
+   "17697141FF96DD7DFC13B7FBD47AFC37",
+   "17697141FF9BDD7AFE88B676D2FAFC7A"
+  ],
+  "zenodo": "https://zenodo.org/records/15800495",
+  "sha256": "f94d6b8fc833b15627c2ff1704fbfa6cf88c8ce634b1f93d8e153a9c1fe8d476"
+ },
+ "CC9380622E2AAA40BA5C8F992710199D": {
+  "caption": "Table 4. Locality records of Micronycteris schmidtorum in Brazil. The map numbers correspond to the records as indicated in Fig. 16.",
+  "label": "Table 4",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "C981FB9464365805A28F3DD31E3535B4"
+  ],
+  "zenodo": "",
+  "sha256": "922f0af2d055e5c03ddb8d4d147d8c80efc848a1892f469913fb0573612ab846"
+ },
+ "CDDD76EF25ABF8494F08E22244940222": {
+  "caption": "Table 3. Selected measurements (mm) and weigth (g) for specimens of Micronycterinae and Desmodontinae from PECB, São Paulo state, Brazil. * Mean values from Tavares and Taddei (2003) and Rocha et al. (2017). See Material and Methods for description of measurements.",
+  "label": "Table 3",
+  "doi": "10.3897/zoologia.37.e36514",
+  "authors": "Cardoso Cláudio, Vinícius, Barbosa, Gedimar Pereira, Rassy, Fabrício Braga, Rocha, Vlamir José &amp; Moratelli, Ricardo",
+  "year": "2020",
+  "article": "The bat fauna (Mammalia: Chiroptera) of Carlos Botelho State Park, Atlantic Forest of Southeastern Brazil, including new distribution records for the state of São Paulo",
+  "treatments": [
+   "4A89ACFB062158D48E13DA86CBE51AA9",
+   "B1682AB630A35B9BBB206780CC674CAD",
+   "C2595A62A5895233B01CDFFBD0D6ED74",
+   "C981FB9464365805A28F3DD31E3535B4"
+  ],
+  "zenodo": "",
+  "sha256": "96f6d5e92fce6fdb090827d1cf90856abb8494604e802f0b655a222b4edeb454"
+ },
+ "CFF66603FFB8FF90FF79FF416942FE84": {
+  "caption": "TABLE 1. — Measurements in mm of species of Molossus E. Geoffroy, 1805 occurring in Brazil. Molossus sp. refers to the putative new species capture in the Brazilian Caatinga. Abbreviations: see Material & Methods.",
+  "label": "TABLE",
+  "doi": "10.5252/zoosystema2018v40a18",
+  "authors": "Loureiro, Livia Oliveira, Gregorin, Renato &amp; Perini, Fernando Araujo",
+  "year": "2018",
+  "article": "Diversity, morphological phylogeny, and distribution of bats of the genus Molossus E. Geoffroy, 1805 (Chiroptera, Molossidae) in Brazil",
+  "treatments": [
+   "1320879DFFB0FF98FEEAFBE96FE6F86B",
+   "1320879DFFB2FF98FC46FF4D6A16FBAF",
+   "1320879DFFB3FF9AFC34FC6E6952F86C",
+   "1320879DFFB4FF9BFC3DFA086F09FC2F"
+  ],
+  "zenodo": "",
+  "sha256": "519aa4d64447df0020eb59f74194d058e6671ce18a0eaa3fc4df23ea3bde57e2"
+ },
+ "D25E30B5059BACCD66236FC8806D9321": {
+  "caption": "Table 7. External and craniodental measurements of Argentinean populations of Myotis riparius, M. izecksohni, and M. lavali, including morphometric variation and number of samples (N). The measurements are in millimeters. Acronyms and descriptions are available in Table 1.",
+  "label": "Table 7",
+  "doi": "10.3897/vz.72.e90958",
+  "authors": "Novaes, Roberto Leonan M., Claudio, Vinicius C., Diaz, M. Monica, Wilson, Don E., Weksler, Marcelo &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Argentinean Myotis (Chiroptera, Vespertilionidae), including the description of a new species from the Yungas",
+  "treatments": [
+   "3AFC7F94144D564B83FF3992EF453A35",
+   "82D3CB15485E5E8D9D46CA7924F7F923",
+   "BA9C16C07CA75B788522843EFD4FE8F9"
+  ],
+  "zenodo": "https://zenodo.org/records/15134760",
+  "sha256": "e00ac74aea665c89478e14735c7b1fb98a627ee80df9e2758784c407a093ab14"
+ },
+ "D3866640E9054062FC6CFF22F996EDA6": {
+  "caption": "Table 5. Selected measurements (mm) and body weight (g) of the holotype (MSB",
+  "label": "Table 5",
+  "doi": "10.12933/therya-20-999",
+  "authors": "Carrion-Bonilla, Carlos Alberto &amp; Cook, Joseph Anthony",
+  "year": "2020",
+  "article": "A new bat species of the genus Myotis with comments on the phylogenetic placement of M. keaysi and M. pilosatibialis",
+  "treatments": [
+   "0F5087DEE9084064FC01FBC0FB8AE84C"
+  ],
+  "zenodo": "https://zenodo.org/records/15133997",
+  "sha256": "61215e6d78767f87c997f809f681a3073926ab80f46107ce95542127da1a6856"
+ },
+ "D3866640E9064061FF90FF22FA4AED9E": {
+  "caption": "Table 6. Selected measurements,cranial index,body mass (adults males and females[N]). Mean,(Minimum–Maxima) and sample size (n). See methods for variable abbreviations.",
+  "label": "Table 6",
+  "doi": "10.12933/therya-20-999",
+  "authors": "Carrion-Bonilla, Carlos Alberto &amp; Cook, Joseph Anthony",
+  "year": "2020",
+  "article": "A new bat species of the genus Myotis with comments on the phylogenetic placement of M. keaysi and M. pilosatibialis",
+  "treatments": [
+   "0F5087DEE9084064FC01FBC0FB8AE84C"
+  ],
+  "zenodo": "https://zenodo.org/records/15133995",
+  "sha256": "6992a4450b685998407fd24ca3d28d970b87232c8a2997971a40bd7974b80d80"
+ },
+ "D3D26639FFD76B3579DA86BDFBD28572": {
+  "caption": "Table 1. Univariate statistics, test of normality, and results of the Ryan–Einot–Gabriel–Welsch multiple range test for external and craniodental measurements of Pseudoromicia species. For each species, the top row (species label) also indicates the sample size (number in parentheses). Results displayed include mean ±standard deviation, sample size for each measurement (in parentheses) when different from the sample size of individuals examined for the species, and range (minimum value – maximum value). A “†” after the mean value indicates a non–normal distribution for that variable. Superscripts associated with the mean for the value identify statistically significantly different groups as judged by the Ryan–Einot–Gabriel–Welsch multiple range test, arranged in order of descending size (a> b> c …). Means with the same letter are not significantly different from each other, and different means may, depending on their variance, be members of several groups. Stars by the character indicate the significance level of the character in the analysis of variance; $$: <0.01; $$$$: <0.0001.",
+  "label": "Table 1",
+  "doi": "10.1080/14772000.2022.2156002",
+  "authors": "Grunwald, Amanda L., Demos, Terrence C., Nguéagni, Yvette, Tchamba, Martin N., Monadjem, Ara, Webala, Paul W., Peterhans, Julian C. Kerbis, Patterson, Bruce D. &amp; Ruedas, Luis A.",
+  "year": "2023",
+  "article": "A review of bats of the genus Pseudoromicia (Chiroptera: Vespertilionidae) with the description of a new species",
+  "treatments": [
+   "0F0487A7FFD66B3C7AF287B7FF35823A"
+  ],
+  "zenodo": "https://zenodo.org/records/15145102",
+  "sha256": "bc64a5933621940c9a908b54793cd2acbad5a63325eb98142b6aa4035c4f28a8"
+ },
+ "D3D26639FFDA6B3879C087B6FDB187F5": {
+  "caption": "Table 3. Uncorrected Cytochrome b p-distances among (below diagonal) and within (numbers on diagonal, in bold) nine species of Pseudoromicia, calculated in MEGA X v.10.0.5.",
+  "label": "Table 3",
+  "doi": "10.1080/14772000.2022.2156002",
+  "authors": "Grunwald, Amanda L., Demos, Terrence C., Nguéagni, Yvette, Tchamba, Martin N., Monadjem, Ara, Webala, Paul W., Peterhans, Julian C. Kerbis, Patterson, Bruce D. &amp; Ruedas, Luis A.",
+  "year": "2023",
+  "article": "A review of bats of the genus Pseudoromicia (Chiroptera: Vespertilionidae) with the description of a new species",
+  "treatments": [
+   "0F0487A7FFD66B3C7AF287B7FF35823A"
+  ],
+  "zenodo": "https://zenodo.org/records/15145106",
+  "sha256": "e1b3834d6ce1b9432ecda2e3c990ec5d3ffe7e10fee3cde56e4f1c786250fae7"
+ },
+ "D3D26639FFDF6B3D7A13840BFA948453": {
+  "caption": "Table 4. Wing measurements of the holotype of Pseudoromicia mbamminkom sp. nov. Measured wing variables include: metacarpals (mt) and phalanx (ph).",
+  "label": "Table 4",
+  "doi": "10.1080/14772000.2022.2156002",
+  "authors": "Grunwald, Amanda L., Demos, Terrence C., Nguéagni, Yvette, Tchamba, Martin N., Monadjem, Ara, Webala, Paul W., Peterhans, Julian C. Kerbis, Patterson, Bruce D. &amp; Ruedas, Luis A.",
+  "year": "2023",
+  "article": "A review of bats of the genus Pseudoromicia (Chiroptera: Vespertilionidae) with the description of a new species",
+  "treatments": [
+   "0F0487A7FFD66B3C7AF287B7FF35823A"
+  ],
+  "zenodo": "https://zenodo.org/records/15145108",
+  "sha256": "553bc094c845d5fefcba6ac7d4c26b8141c575f9f82324fa234884bf6656cdf2"
+ },
+ "DAC8DD8E12C65991D82EE55E009C253B": {
+  "caption": "Table 3 Cranial measurements (mm) and proportions (%) of Glauconycteris collected for this study, together with the holotype of G. beatrix and two additional comparative specimens of G. beatrix and G. humeralis. Species order follows Table 1. Measurements are listed in Materials and methods.",
+  "label": "Table 3",
+  "doi": "10.3897/zookeys.1282.183038",
+  "authors": "Gomeh-Djame, Aicha, Bates, Paul J. J., Juste, Javier, Suarez-Rubio, Marcela, Torrent, Laura, García-Mudarra, Juan Luis, Agodigo Ayangma, Eugenie, Yettore, Félécité, Bilong Bilong, Charles Félix &amp; Bakwo-Fils, Eric-Moise",
+  "year": "2026",
+  "article": "An integrated taxonomic and conservation assessment of Glauconycteris (Chiroptera, Vespertilionidae) in Cameroon, with the description of two new species from the Northwestern Congolian Lowland Forest",
+  "treatments": [
+   "235F963AF4E75D45A80E567E9A05FC42",
+   "3E977F7D4BB455A89145177D70E64CEA",
+   "422946B701445124B7758DAB29D9282C",
+   "5DDB12AE9F5855DDB94FF7D962005C06",
+   "73CFA6F2716854838A9AF88FEA33D18B",
+   "A210E2C1B859500E98DC6475234B3118",
+   "B9300CA6249056B69D12226397B824D5"
+  ],
+  "zenodo": "",
+  "sha256": "f0b2b5940cf1f1415a84cb8a2f2dfb95630e794233f716a79105686bd650d054"
+ },
+ "DF04662E8809FFE2FF21F4CA482BFA61": {
+  "caption": "TABLE 8. Estimated elevation of locality records of PNG Chalinolobus spp. and vegetation classes within 5 km radius",
+  "label": "TABLE 8",
+  "doi": "10.11646/zootaxa.5492.3.1",
+  "authors": "Parnaby, Harry E., King, Andrew G., Hamilton, Steve &amp; Eldridge, Mark D. B.",
+  "year": "2024",
+  "article": "A new species of lobe-lipped bat (Chalinolobus: Vespertilionidae) from southern Papua New Guinea",
+  "treatments": [
+   "03D287B08812FFFDFF21F28E4D1EF8F1"
+  ],
+  "zenodo": "https://zenodo.org/records/15156498",
+  "sha256": "e39f537efe788ecdb3208642460adb2150f384d7c98d4566e2522267ae59f509"
+ },
+ "DF04662E8811FFFAFF21F04D490CFEBD": {
+  "caption": "TABLE 4. Summary statistics of Forearm Length (FA) and field body weight (WT) for adult Chalinolobus species.",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.5492.3.1",
+  "authors": "Parnaby, Harry E., King, Andrew G., Hamilton, Steve &amp; Eldridge, Mark D. B.",
+  "year": "2024",
+  "article": "A new species of lobe-lipped bat (Chalinolobus: Vespertilionidae) from southern Papua New Guinea",
+  "treatments": [
+   "03D287B08812FFFDFF21F28E4D1EF8F1"
+  ],
+  "zenodo": "https://zenodo.org/records/15156488",
+  "sha256": "e73137706ddd09eb4172463a8dae2ccc7325a2f780d9ba17be56ed7583b14021"
+ },
+ "DF04662E8816FFFDFF21F1D1490CFF10": {
+  "caption": "TABLE 7. External and cranial measurements for the holotype (AM M.15114) and paratypes of C. orarius sp. nov.",
+  "label": "TABLE 7",
+  "doi": "10.11646/zootaxa.5492.3.1",
+  "authors": "Parnaby, Harry E., King, Andrew G., Hamilton, Steve &amp; Eldridge, Mark D. B.",
+  "year": "2024",
+  "article": "A new species of lobe-lipped bat (Chalinolobus: Vespertilionidae) from southern Papua New Guinea",
+  "treatments": [
+   "03D287B08812FFFDFF21F28E4D1EF8F1"
+  ],
+  "zenodo": "https://zenodo.org/records/15156496",
+  "sha256": "edffd4080c74fc7f56b7150697d4ba2c992cf1642b99acacceab2b8a4e33d6c8"
+ },
+ "DF04662E881EFFF5FF21F0DD48B2FE71": {
+  "caption": "TABLE 3. Summary statistics of cranial and dental characters for adult Chalinolobus, sexes combined. Abbreviations are s.e, standard error of the mean, s.d. standard deviation, Med., median and CV, coefficient of variation.",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.5492.3.1",
+  "authors": "Parnaby, Harry E., King, Andrew G., Hamilton, Steve &amp; Eldridge, Mark D. B.",
+  "year": "2024",
+  "article": "A new species of lobe-lipped bat (Chalinolobus: Vespertilionidae) from southern Papua New Guinea",
+  "treatments": [
+   "03D287B08812FFFDFF21F28E4D1EF8F1"
+  ],
+  "zenodo": "https://zenodo.org/records/15156486",
+  "sha256": "4197d52e36c54bdaffb365a0fb59053d9e29aee84af5c73bf0e2b154f9e8bc70"
+ },
+ "DF0618A81D5C56354CFC418CFD7C3211": {
+  "caption": "Table 1. Detailed morphological measurements of H. galeritus",
+  "label": "Table 1",
+  "doi": "10.11609/jott.o4247.7477-9",
+  "authors": "Debata, Subrat, Palei, Himanshu Shekhar, Mohapatra, Pratyush Paradarsita &amp; Palita, Sharat Kumar",
+  "year": "2015",
+  "article": "Additional records of Cantor’s Leaf-Nosed Bat Hipposideros galeritus Cantor, 1846 (Mammalia: Chiroptera: Hipposideridae) in eastern India: Odisha",
+  "treatments": [
+   "03D0F9361D5E56364C874202FAA735EC"
+  ],
+  "zenodo": "",
+  "sha256": "25996ea096984f2689965d4bb3b8ace2536cbe8a214908cda641a673cc93f5e9"
+ },
+ "DF09CCBE0547337F3FB30B5A8858FB12": {
+  "caption": "Table 1. ANOVA of skull and external body characters of genusRousettus based on sex type influnce. The significance levels of F used: * = p<0.05, ** = p<0.01 dan *** = p<0.001",
+  "label": "Table 1",
+  "doi": "10.3844/ojbsci.2016.90.101",
+  "authors": "Lengkong, Hanry Jefry, Arisoesilaningsih, Endang, Hakim, Luchman &amp; Sudarto",
+  "year": "2016",
+  "article": "Morphological Variations and New Species Description of Genus Rousettus; Bat from Gunung Duasudara Sanctuary, North Sulawesi, Indonesia",
+  "treatments": [
+   "03DF2D20054033763C1D092B8F19FA58",
+   "03DF2D200542337B3FB309A68E38FAAD",
+   "03DF2D20054333783C1D0A428EB4F994"
+  ],
+  "zenodo": "",
+  "sha256": "cb6d733f62964ea00819bed78a1c106872ede516b099143ec6f536f75a567c69"
+ },
+ "DF0FE5F72340FFD5D9E33562FC42FA16": {
+  "caption": "TABLE 3. External measurements (mm) and mass (g) of M. phillipsi sp. nov. from Idulgashinna, Sri Lanka. Measurements presented as 0 ± SD, range, and sample size n. Measurements of the holotype, paratypes and other individuals of the new species and other species of Miniopterus occurring in India and Sri Lanka are shown for comparative purposes. Measurements of M. phillipsi sp. nov. types were taken by TK, while the other specimens by an assortment of different authors",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.001",
+  "authors": "Kusuminda, Tharaka, Mannakkara, Amani, Ukuwela, Kanishka D. B., Kruskop, Sergei V., Amarasinghe, Chamara J., Saikia, Uttam, Venugopal, Parvathy, Karunarathna, Mathisha, Gamage, Rajika, Ruedi, Manuel, Csorba, Gábor, Yapa, Wipula B. &amp; Patterson, Bruce D.",
+  "year": "2022",
+  "article": "DNA barcoding and morphological analyses reveal a cryptic species of Miniopterus from India and Sri Lanka",
+  "treatments": [
+   "03D90469234CFFD7DADA3693FAA5FD6B"
+  ],
+  "zenodo": "https://zenodo.org/records/15156341",
+  "sha256": "95d095bf6f7c0545c502c4622d9846783c7835f4a654daa106d7241b3c53bf5a"
+ },
+ "DF0FE5F72345FFD0D9E33098FCF9FEB8": {
+  "caption": "TABLE 5. Dental measurements (mm) of M. phillipsi sp. nov. from Idalgashinna, Sri Lanka. Measurements presented as 0 ± SD, range, and sample size n. Measurements of the holotype, paratypes and other individuals of the new species and other species of Miniopterus occurring in India and Sri Lanka are shown for comparative purposes. Measurements of M. phillipsi sp. nov. were taken by TK, while the other specimens by an assortment of different authors",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.001",
+  "authors": "Kusuminda, Tharaka, Mannakkara, Amani, Ukuwela, Kanishka D. B., Kruskop, Sergei V., Amarasinghe, Chamara J., Saikia, Uttam, Venugopal, Parvathy, Karunarathna, Mathisha, Gamage, Rajika, Ruedi, Manuel, Csorba, Gábor, Yapa, Wipula B. &amp; Patterson, Bruce D.",
+  "year": "2022",
+  "article": "DNA barcoding and morphological analyses reveal a cryptic species of Miniopterus from India and Sri Lanka",
+  "treatments": [
+   "03D90469234CFFD7DADA3693FAA5FD6B"
+  ],
+  "zenodo": "https://zenodo.org/records/15156345",
+  "sha256": "af9333d66165931c6ee4151ff12f844e50278c7002c3852924da13e2758aebd5"
+ },
+ "DF1399F64F67FF8AFF2CFECD0588FE35": {
+  "caption": "Table 6 - 4 .. Summary of Critical Habitats Assessment",
+  "label": "Table 6",
+  "doi": "https://publication.plazi.org/id/FFFC00104F3FFFD2FFECFFB00774FFAD",
+  "authors": "GmbH, Gopa-International Energy Consultants &amp; Iris Consult Plc, Ethiopia",
+  "year": "2022",
+  "article": "Electricity Network Reinforcement and Expansion Project (ENREP) Update the Environmental and Social Impact Assessment (ESIA) for LOT-I: Metu-Mesha 230 KV Single Circuit Transmission Line",
+  "treatments": [
+   "03C578684F78FF9AFF1CFA7A037AFADC"
+  ],
+  "zenodo": "https://zenodo.org/records/17730483",
+  "sha256": "fd17d2f1cabad7df8d3fb54bf483f9520018536611e835ef1767ded972e3b868"
+ },
+ "DF1566452B0BB427FF7D5E886005FE9B": {
+  "caption": "TABLE 3. Forearm and skull dimensions (in mm) of the examined holotype specimens of Asellia. See Abbreviations and Terminology for explanation of dimension abbreviations",
+  "label": "TABLE",
+  "doi": "10.3161/150811011X624749",
+  "authors": "Benda, Petr, Vallo, Peter &amp; Reiter, Antonín",
+  "year": "2011",
+  "article": "Taxonomic revision of the genus Asellia (Chiroptera: Hipposideridae) with a description of a new species from southern Arabia",
+  "treatments": [
+   "03C387DB2B08B422FC355F4B67ACFE77"
+  ],
+  "zenodo": "",
+  "sha256": "f0f70138ca7a99a07ec7735b22e2871fd028eac19b579b8ae6ba089fb0efe9db"
+ },
+ "DF1566452B1CB430FF675CDA64D9FD35": {
+  "caption": "TABLE 1. Forearm and skull dimensions (in mm) of the examined sample sets of Asellia. See Abbreviations and Terminology for explanation of dimension abbreviations",
+  "label": "TABLE",
+  "doi": "10.3161/150811011X624749",
+  "authors": "Benda, Petr, Vallo, Peter &amp; Reiter, Antonín",
+  "year": "2011",
+  "article": "Taxonomic revision of the genus Asellia (Chiroptera: Hipposideridae) with a description of a new species from southern Arabia",
+  "treatments": [
+   "03C387DB2B08B422FC355F4B67ACFE77"
+  ],
+  "zenodo": "",
+  "sha256": "36db9fcacb25bddf4011eaba3c3c9a1af1b06439cc5ae0a29e0d6916e8cee8ca"
+ },
+ "DF166665FFC3C232FF1BAF4D3B43CA1B": {
+  "caption": "Table 2. External measurements (mean ± SD, minimum and maximum values) recorded in the four compared species within the M. nattereri species complex. See text for definitions of the variables and acronyms. Besides ears which appear to be slightly longer in Myotis nustrale sp. nov., none of the external characters differ from those measured in the other species.",
+  "label": "Table 2",
+  "doi": "10.35929/RSZ.0108",
+  "authors": "Puechmaille, Sébastien J., Dool, Serena, Beuneux, Gregory &amp; Ruedi, Manuel",
+  "year": "2023",
+  "article": "Newly described and already endangered: a new mammal species endemic to Corsica",
+  "treatments": [
+   "03C087FBFFC3C23EFF54A90D3ACFCEAB"
+  ],
+  "zenodo": "",
+  "sha256": "1cd77b4cac04dfe2c3c45d0dcb254db293bb7090ce7c6741878a85b85ae7145b"
+ },
+ "DF166665FFCDC23CFF15AF4D3B20CA1B": {
+  "caption": "Table 3. Descriptive statistics (mean ± SD, minimum and maximum values) of 12 cranial and four mandibular variables measured in four species within the M. nattereri species complex. See text for definitions of variables and acronyms. Measurements of the single known skull of Myotis nustrale sp. nov. are very much like those measured in other species from the continent.",
+  "label": "Table 3",
+  "doi": "10.35929/RSZ.0108",
+  "authors": "Puechmaille, Sébastien J., Dool, Serena, Beuneux, Gregory &amp; Ruedi, Manuel",
+  "year": "2023",
+  "article": "Newly described and already endangered: a new mammal species endemic to Corsica",
+  "treatments": [
+   "03C087FBFFC3C23EFF54A90D3ACFCEAB"
+  ],
+  "zenodo": "",
+  "sha256": "c7e5439c4669b78dc737b5953eb7ca310b9b74a0d57df079356404c8a63874d9"
+ },
+ "DF1AD993485FFFF0ACF40F7C3AE8A992": {
+  "caption": "TABLE 1. Comparative morphometric data of G. meghalayanus n. sp. from Meghalaya and morphologically closer G. aquilus and G. bucephalus from Southeast Asia. Bacular measurements of G. bucephalus are partly after Kruskop (2019).",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.5154.3.8",
+  "authors": "Saikia, Uttam, Ruedi, Manuel &amp; Csorba, Gabor",
+  "year": "2022",
+  "article": "Out of Southeast Asia: A new species of thick-thumbed bat (Chiroptera: Vespertilionidae: Glischropus) from Meghalaya, north-eastern India",
+  "treatments": [
+   "03CC380D485FFFFAACF40A403CF0AC66"
+  ],
+  "zenodo": "",
+  "sha256": "c8a1c3d90e071a2bbe653b1266cdf67a750ccc1dfc16f2cca03792a5bad21a3e"
+ },
+ "DF1F11D8FFC8B607C553FA05FDA1F99A": {
+  "caption": "Table 3. Standardized character coefficients on the first three PC axes based on 9 skull and dental measurements of 75 adult male specimens of N. geoffroyi, the holotype of N. heran and M.38841 from Timor-Leste.",
+  "label": "Table 3",
+  "doi": "10.3853/j.2201-4349.75.2023.1782",
+  "authors": "Parnaby, Harry E. &amp; Helgen, Kristofer M.",
+  "year": "2023",
+  "article": "Rediscovery of the Long-eared Bat Genus Nyctophilus (Chiroptera: Vespertilionidae) in Timor and a Reassessment of Nyctophilus timoriensis",
+  "treatments": [
+   "03C9F046FFC0B618C431F9F3FDC5FE82"
+  ],
+  "zenodo": "https://zenodo.org/records/15144973",
+  "sha256": "c7ff463c48afb79e53e07c22eb1159d8fb3681fac1602b29752f55e9201cd6ef"
+ },
+ "DF1F11D8FFC9B606C58CF952FA96F945": {
+  "caption": "Table 4. Characters of Maubisse Nyctophilus specimens shared (+) with N. heran and N. geoffroyi complex.",
+  "label": "Table 4",
+  "doi": "10.3853/j.2201-4349.75.2023.1782",
+  "authors": "Parnaby, Harry E. &amp; Helgen, Kristofer M.",
+  "year": "2023",
+  "article": "Rediscovery of the Long-eared Bat Genus Nyctophilus (Chiroptera: Vespertilionidae) in Timor and a Reassessment of Nyctophilus timoriensis",
+  "treatments": [
+   "03C9F046FFC0B618C431F9F3FDC5FE82"
+  ],
+  "zenodo": "https://zenodo.org/records/15144975",
+  "sha256": "92ba0d52cb8c1dc05787dabb79d56236553fc1bec935fddac82d3489527ec183"
+ },
+ "DF1F11D8FFCBB604C58CFF59FE19FF05": {
+  "caption": "Table 2. Selected cranial and external measurements of AM M.38841 from Maubisse, Timor-Leste, and the holotypes of N. heran, pacificus, and pallescens, compared to male N. geoffroyi from the Australian mainland. * Measurements from Kitchener et al. (1991).",
+  "label": "Table 2",
+  "doi": "10.3853/j.2201-4349.75.2023.1782",
+  "authors": "Parnaby, Harry E. &amp; Helgen, Kristofer M.",
+  "year": "2023",
+  "article": "Rediscovery of the Long-eared Bat Genus Nyctophilus (Chiroptera: Vespertilionidae) in Timor and a Reassessment of Nyctophilus timoriensis",
+  "treatments": [
+   "03C9F046FFC0B618C431F9F3FDC5FE82"
+  ],
+  "zenodo": "https://zenodo.org/records/15144971",
+  "sha256": "a86ff77dc59cd17bd50554bbaa7ba148df71327517b75ffe52b972c62f2f1b1a"
+ },
+ "DF21660FFF93FFB8FF4F49D9FEDDFE84": {
+  "caption": "TABLE 2. — Non-flying small mammal species trapped or observed at six sites in the Volta Region of Ghana. Symbols for specimen origin: 1, specimen brought to us from nearby unspecified locality; 2, specimen brought to us by local hunter; 3, observed or signs and local informants. Abbreviations: F, forest; S, savanna, F/S, occurs in forest and savanna. Note: *, relative biomass is calculated from average weights of trapped species × number of individuals caught at that site/100 trap nights.",
+  "label": "TABLE",
+  "doi": "10.5252/zoosystema2021v43a14",
+  "authors": "Decher, Jan, Norris, Ryan W., Abedi-Lartey, Michael, Oppong, James, Hutterer, Rainer, Weinbrenner, Martin, Koch, Martin, Podsiadlowski, Lars &amp; Kilpatrick, C. William",
+  "year": "2021",
+  "article": "A survey of small mammals in the Volta Region of Ghana with comments on zoogeography and conservation",
+  "treatments": [
+   "03F78791FF8AFFA2FC5E4D96FDD7FD9D"
+  ],
+  "zenodo": "",
+  "sha256": "0a78006d5c5d9b32e1a8d497d16466ad17bdbc028086baae5655bfdac7c78fc5"
+ },
+ "DF22FCADFF80FF877DE3FA21F034FA34": {
+  "caption": "TABLE 6. Kimura 2 - Parameter (K 2 P) genetic distance between lineages of Miniopterus spp. derived from 725 bp cytochrome b sequences. Italicized values refer to K 2 P distance within the lineage based on included sequences.",
+  "label": "TABLE 6",
+  "doi": "10.11646/zootaxa.3936.4.4",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Naughton, Kate M. &amp; Appleton, Belinda",
+  "year": "2015",
+  "article": "Description of a new species of the Miniopterus aelleni group (Chiroptera: Miniopteridae) from upland areas of central and northern Madagascar",
+  "treatments": [
+   "03F41D33FF89FF847DE3F89EF7E6FA8A"
+  ],
+  "zenodo": "",
+  "sha256": "338fb0eafce7c4fd46442fe476ba73ce01fce5a806099eba16de3a52ec41d27b"
+ },
+ "DF22FCADFF80FF877DE3FC69F49EFB8C": {
+  "caption": "TABLE 5. Comparison of the echolocation parameters of Miniopterus ambohitrensis sp. nov. and M. aelleni sensu stricto recorded inside a flight cage. Measurements presented as mean ± standard deviation, minimum – maximum, and number of individuals analyzed.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.3936.4.4",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Naughton, Kate M. &amp; Appleton, Belinda",
+  "year": "2015",
+  "article": "Description of a new species of the Miniopterus aelleni group (Chiroptera: Miniopteridae) from upland areas of central and northern Madagascar",
+  "treatments": [
+   "03F41D33FF89FF847DE3F89EF7E6FA8A"
+  ],
+  "zenodo": "",
+  "sha256": "ad996e1c0d07520d21c619e4a667c55f12d724b7a420d096f7c5314670b6c19e"
+ },
+ "DF22FCADFF80FF877DE3FF0BF69DFE92": {
+  "caption": "TABLE 4. Dental measurements (in millimeters) of holotypes and adults (sexes combined) of Miniopterus ambohitrensis sp. nov. and M. aelleni sensu stricto. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. See Materials and Methods for an explanation of variable acronyms. Statistical differences between M. ambohitrensis and M. aelleni are examined based on student t-tests. The descriptive statistics presented here for M. aelleni sensu stricto are different from those in Goodman et al. (2009 a), as the larger M. ambohitrensis have been removed from M. aelleni sensu lato samples.",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.3936.4.4",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Naughton, Kate M. &amp; Appleton, Belinda",
+  "year": "2015",
+  "article": "Description of a new species of the Miniopterus aelleni group (Chiroptera: Miniopteridae) from upland areas of central and northern Madagascar",
+  "treatments": [
+   "03F41D33FF89FF847DE3F89EF7E6FA8A"
+  ],
+  "zenodo": "",
+  "sha256": "376c7b59fc572e6dcb6b1e7238bd0a50371810fe1417325b4430bfce50e0495d"
+ },
+ "DF22FCADFF84FF837D09FD44F375FCF1": {
+  "caption": "TABLE 2. External measurements (in millimeters) and mass (in grams) of adult (sexes combined) Miniopterus ambohitrensis sp. nov. and M. aelleni sensu stricto. Measurements were all taken by the same field collector (SMG) and presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. Statistical differences between M. ambohitrensis and M. aelleni based on student t-tests, n. s. = not significant.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.3936.4.4",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Naughton, Kate M. &amp; Appleton, Belinda",
+  "year": "2015",
+  "article": "Description of a new species of the Miniopterus aelleni group (Chiroptera: Miniopteridae) from upland areas of central and northern Madagascar",
+  "treatments": [
+   "03F41D33FF89FF847DE3F89EF7E6FA8A"
+  ],
+  "zenodo": "",
+  "sha256": "37359b085faa8475bee6172923e8cd495fe06c29a1fdf6ff7810bbdfeb71cb86"
+ },
+ "DF22FCADFF85FF827D03FD39F242FCC6": {
+  "caption": "TABLE 3. Cranial measurements (in millimeters) οf hοlοtypes and adult (sexes cοmbined) Miniopterus ambohitrensis sp. nov. and M. ae ̸̸ eni sensu strictο. Measurements presented as mean ± standard deviatiοn, minimum and maximum measurements, and number οf specimens. See Materials and Methοds fοr an explanatiοn οf variable acrοnyms. Statistical differences between M. ambohitrensis and M. ae ̸̸ eni are examined based οn student t-tests. Τhe descriptive statistics presented here fοr M. ae ̸̸ eni sensu strictο are different frοm thοse in Gοοdman et a ̸ • (2009 a), as the larger M. ambohitrensis have been remοved frοm",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.3936.4.4",
+  "authors": "Goodman, Steven M., Ramasindrazana, Beza, Naughton, Kate M. &amp; Appleton, Belinda",
+  "year": "2015",
+  "article": "Description of a new species of the Miniopterus aelleni group (Chiroptera: Miniopteridae) from upland areas of central and northern Madagascar",
+  "treatments": [
+   "03F41D33FF89FF847DE3F89EF7E6FA8A"
+  ],
+  "zenodo": "",
+  "sha256": "89afb65e8da660978c6f7489e7a5ba5f01c494788a6aa18b1c88fdcf352173e9"
+ },
+ "DF2866492B22CF4BFFF6FDABFBB14BC6": {
+  "caption": "TABLE. 1. External measurements (mm), body masses (g), and cranial measurements of small Scotophilus species. Descriptive statistics are presented as mean, SD, minimum–maximum, and number of specimens (in parentheses). Measurements followed by an asterisk where made from fluid preserved specimens and are not included in the descriptive statistics. See Materials and Methods section for explanation of acronyms",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2006)8[21:ansosc]2.0.co;2",
+  "authors": "Goodman, Steven M., Ratrimomanarivo, Fanja H. &amp; Randrianandrianina, Félicien H.",
+  "year": "2006",
+  "article": "A new species of Scotophilus (Chiroptera: Vespertilionidae) from western Madagascar",
+  "treatments": [
+   "03FE87D72B29CF4CFF70FD8BFC974C61"
+  ],
+  "zenodo": "",
+  "sha256": "bf28a9c3c6f8343740613628ac1b10af59697818c5e69d21f6724deb3fe5b628"
+ },
+ "DF2866492B26CF4FFF22FF3BFDAF49B0": {
+  "caption": "TABLE 2. Dental and mandibular measurements (in mm) of small Scotophilus species. Descriptive statistics are presented as mean, SD, minimum–maximum, and number of specimens (in parentheses). See Materials and Methods section for explanation of acronyms",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2006)8[21:ansosc]2.0.co;2",
+  "authors": "Goodman, Steven M., Ratrimomanarivo, Fanja H. &amp; Randrianandrianina, Félicien H.",
+  "year": "2006",
+  "article": "A new species of Scotophilus (Chiroptera: Vespertilionidae) from western Madagascar",
+  "treatments": [
+   "03FE87D72B29CF4CFF70FD8BFC974C61"
+  ],
+  "zenodo": "",
+  "sha256": "ba21aea86a312db9cb260ae83b8429334b3c6b6615bea769eb88f46af3cd9654"
+ },
+ "DF29D2D88E13FF83FFF8EBD6FD8AFC83": {
+  "caption": "TABLE 1. External measurements (in mm) and body mass (in g) of four species of Hipposideros recently collected in Sulawesi. Used abbreviations: FA — forearm length; 5MET, 4MET, 3MET — fifth, fourth, and third metacarpal lengths; 5MET/FA× 100 — % length of fifth metacarpal relative to forearm length; 3D1P, 3D2P — length of first and second phalanges of the third digit; 3D1P/3MET × 100 — % length of first phalanx of the third digit relative to third metacarpal length; TAIL — tail length; HF — foot; TIBIA — tibia; E — ear and WGT — body mass. Sample sizes differing from those reported under n are given in parentheses. Mean and SD are included when sample size is ≥ 3",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2007)9[13:ANSOHC]2.0.CO;2",
+  "authors": "Bates, Paul J. J., Rossiter, Stephen J., Suyanto, Augustinus &amp; Kingston, Tigga",
+  "year": "2007",
+  "article": "A new species of Hipposideros (Chiroptera: Hipposideridae) from Sulawesi",
+  "treatments": [
+   "03FF33468E15FF8BFD52EC28FCE7FBE7"
+  ],
+  "zenodo": "",
+  "sha256": "eb035a19ea9d6d7ed0c0b8868c27f713518399db0a4b78cd20d88fa782b4bf7b"
+ },
+ "DF2B6644D8560C3A1B60F9D61890F997": {
+  "caption": "Table 3. Number of localities collected for E. miradorensis along its distribution range by country and reporting the elevation interval (Min:minimum,Max:maximum).",
+  "label": "Table 3",
+  "doi": "10.12933/therya-23-2290",
+  "authors": "Ramírez-Chaves, Héctor E., Alarcón Cifuentes, Mallerly, Noguera-Urbano, Elkin A., Pérez, Weimar A., Torres-Martínez, Maria M., Ossa-López, Paula A., Rivera-Páez, Fredy A. &amp; Morales-Martínez, Darwin Manuel",
+  "year": "2023",
+  "article": "Systematics, morphometry, and distribution of Eptesicus fuscus miradorensis (H. Allen, 1866) (Chiroptera: Vespertilionidae), with notes on baculum morphology and natural history",
+  "treatments": [
+   "03FD87DAD8520C311B95FDF9184FF9AC"
+  ],
+  "zenodo": "https://zenodo.org/records/15135787",
+  "sha256": "1e62569622551e6f045fa61c82c455e2d9674ba7d070449b92b19813b0d3ceec"
+ },
+ "DF2B6644D8570C3B189CFF7619E7FF5F": {
+  "caption": "Table 2. External and cranial measurements (Meas) of E.miradorensis along its distribution range.Values indicate:Mean (interval) n.",
+  "label": "Table 2",
+  "doi": "10.12933/therya-23-2290",
+  "authors": "Ramírez-Chaves, Héctor E., Alarcón Cifuentes, Mallerly, Noguera-Urbano, Elkin A., Pérez, Weimar A., Torres-Martínez, Maria M., Ossa-López, Paula A., Rivera-Páez, Fredy A. &amp; Morales-Martínez, Darwin Manuel",
+  "year": "2023",
+  "article": "Systematics, morphometry, and distribution of Eptesicus fuscus miradorensis (H. Allen, 1866) (Chiroptera: Vespertilionidae), with notes on baculum morphology and natural history",
+  "treatments": [
+   "03FD87DAD8520C311B95FDF9184FF9AC"
+  ],
+  "zenodo": "https://zenodo.org/records/15135785",
+  "sha256": "3217fc652c83b62a7ccb556b3e3afc7f2766567483daa33b93e4cd35be8b6dc6"
+ },
+ "DF332AC43364FFF7BCD66514FEC9F32B": {
+  "caption": "Table 1.—Length of forearm and seven cranial measurements (in mm) for seven species of bats occurring on the West Indian island of Barbuda.",
+  "label": "Table 1",
+  "doi": "10.5281/zenodo.15748434",
+  "authors": "Pedersen, Scott C., Larsen, Peter A., Genoways, Hugh H., Morton, Mathew N., Lindsay, Kevel C. &amp; Cindric, Jerry",
+  "year": "2007",
+  "article": "Bats Of Barbuda, Northern Lesser Antilles",
+  "treatments": [
+   "03E5CB5A3365FFF6BD1E66FBFA87F56A",
+   "03E5CB5A3369FFFBBF796528FDD8F4A9",
+   "03E5CB5A336AFFFABF426528FDB6F5F0",
+   "03E5CB5A336BFFF9BCE06196FD66F517",
+   "03E5CB5A336EFFFDBCE16702FC0BF73A",
+   "03E5CB5A336FFFFDBF766529FD22F17D"
+  ],
+  "zenodo": "https://zenodo.org/records/17094463",
+  "sha256": "565826aa588c1387201ad896ef7764f62cb5c5bcd2eb61451bfd51aa08f223ce"
+ },
+ "DF3C6611FF86FFA44C8C18F8FC34690B": {
+  "caption": "TABLE 6. Matrix showing pairwise sequence divergence (%) (bottom left corner) of the COI gene among species included in the genetic analysis in Fig. 9 together with SE (% — upper right corner). The average divergence within species and SE are shown in bold",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "9a84612120c36fda4a2da5716f64b0aa4d042cd7d6e2abf66e063bf8250aa7b7"
+ },
+ "DF3C6611FF90FFB24C8C1B19FA5F692A": {
+  "caption": "TABLE 2. Craniodental measurements (in mm) of R. monticolus sp. nov., R. shortridgei, R. lepidus, R. refulgens and R. pusillus. Mean ± SD, min-max values are given. A sample size that differs from the total number of specimens is given in brackets. Definitions of measurement are included in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "2768e02c5f3eca19ae178ea3d87b2cc40e7bf3752119bcac2419aee37220c26e"
+ },
+ "DF3C6611FF92FFB04C8C1B19FDF0694D": {
+  "caption": "TABLE 1. Body mass (MASS; in grams), frequency of maximum energy (fmaxe; in kHz) and external measurements (in mm) of R. monticolus sp. nov., R. shortridgei, R. lepidus, R. refulgens and R. pusillus. Mean ± SD, min-max values are given. A sample size that differs from the total number of specimens is given in brackets. Definitions of measurement are included in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "f91f42582ded8951bc54df2d27eaac13c35702cfde318c793ef9b5dc00193551"
+ },
+ "DF3C6611FF9AFFB84F301A36F91B6840": {
+  "caption": "TABLE 5. Matrix showing pairwise sequence divergence (%) (bottom left corner) at the cyt b gene among species included in the genetic analysis in Fig. 8 together with standard error (SE; %) (upper right corner). The average divergence within species and SE are shown in bold",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "eaf803dff740781b7f46a3d2869e067d78cca335d07e5b7f8aa68452ebe7bdc3"
+ },
+ "DF3C6611FF9BFFB94F3319B2FB4E6BE0": {
+  "caption": "TABLE 4. Factor loading scores of the first three components and variance explained of the PCA. Definitions of measurements are provided in the Materials and Methods section",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "4bbebc4328ce96fdf136fa2c38d83cf632b46330a472c5ef55268b5239bbd1fa"
+ },
+ "DF3C6611FF9CFFBE4C8C18EEFDEB6938": {
+  "caption": "TABLE 3. Matrix summarising discriminating features of Rhinolophus in the ‘pusillus group’ currently recognised from mainland Southeast Asia. Characters that are most distinct from R. monticolus sp. nov. are highlighted in grey",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2016.18.1.005",
+  "authors": "Soisook, Pipat, Karapan, Sunate, Srikrachang, Mattana, Dejtaradol, Ariya, Nualcharoen, Kwan, Bumrungsri, Sara, Lin, Sai Sein, Aung, Moe Moe, Bates, Paul J. J., Harutyunyan, Margarita, Buś, Magdalena M. &amp; Bogdanowicz, Iesław",
+  "year": "2016",
+  "article": "Hill forest dweller: a new cryptic species of Rhinolophus in the ‘ pusillus group’ (Chiroptera: Rhinolophidae) from Thailand and Lao PDR",
+  "treatments": [
+   "03EA878FFF95FFA54F811B00FB0E6CA9"
+  ],
+  "zenodo": "",
+  "sha256": "9e15476201f94d9df88d25a4b61888b46912eba4dd5dcdfe982d61b566316af6"
+ },
+ "DF3F66269B04FFD5FE59FAE4A012FA66": {
+  "caption": "Table 5. Comparison of body size of Murina yuanyang sp. nov. and other ‘suilla-type’ species lacking COI sequences.",
+  "label": "Table 5",
+  "doi": "10.3390/ani14162371",
+  "authors": "Mou, Xin, Qian, Yishun, Li, Mei, Li, Biao, Luo, Xiong &amp; Li, Song",
+  "year": "2024",
+  "article": "A New Species of Murina (Chiroptera: Vespertilionidae) from Yunnan, China",
+  "treatments": [
+   "03E987B89B0CFFD2FE16FACCA0BDFE90"
+  ],
+  "zenodo": "https://zenodo.org/records/13830318",
+  "sha256": "32d4f8146435dca2df3b45e4371a56fbf8c12441f899ce1ea5cc0866fc2313bc"
+ },
+ "DF3F66269B0AFFDBFE50FBF2A73EFB53": {
+  "caption": "Table 4. Weight (g) and external and cranial measurements (mm) of Murina species. Abbreviations and definitions of measurement values are provided in Section 2.",
+  "label": "Table 4",
+  "doi": "10.3390/ani14162371",
+  "authors": "Mou, Xin, Qian, Yishun, Li, Mei, Li, Biao, Luo, Xiong &amp; Li, Song",
+  "year": "2024",
+  "article": "A New Species of Murina (Chiroptera: Vespertilionidae) from Yunnan, China",
+  "treatments": [
+   "03E987B89B0CFFD2FE16FACCA0BDFE90"
+  ],
+  "zenodo": "https://zenodo.org/records/13830316",
+  "sha256": "8546a7c8017febe0360ab55727b91942f33c2f2d0c768d3eaa6e805ee9d179fd"
+ },
+ "DF3F6679A047FF9DFF3CFE7AFA7CFD8F": {
+  "caption": "TABLE 3. External and craniodental measurements of Woolly Horseshoe Bats Rhinolophus perniger, R. beddomei beddomei, R. beddomei sobrinus, and R. trifoliatus. Values are given in mm as Mean ± SD. Abbreviations as stated in text.",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.5301.2.3",
+  "authors": "Srinivasulu, Aditya, Srinivasulu, Bhargavi, Kusuminda, Tharaka, Amarasinghe, Chamara, Ukuwela, Kanishka D. B., Karunarathna, Mathisha, Mannakkara, Amani, Yapa, Wipula B. &amp; Srinivasulu, Chelmala",
+  "year": "2023",
+  "article": "Taxonomic status of the Lesser Woolly Horseshoe bats (Chiroptera, Rhinolophidae Rhinolophus beddomei) in peninsular India and Sri Lanka",
+  "treatments": [
+   "03E987E7A04DFF8BFF33FA35FAB4FA8A"
+  ],
+  "zenodo": "https://zenodo.org/records/15158441",
+  "sha256": "c6e123b488d7e8673a10b647ed32f44e0ff91a0b699d26347494c5e1ab8bd376"
+ },
+ "DF420691FFB6FFBE13BA302F8F19ED3D": {
+  "caption": "Table 1.—Length of forearm and cranial measurements of six species of bats occurring on the West Indian island of Anguilla.",
+  "label": "Table 1",
+  "doi": "10.5281/zenodo.15748430",
+  "authors": "Genoways, Hugh H., Pedersen, Scott C., Phillips, Carleton J. &amp; Gordon, Linda K.",
+  "year": "2007",
+  "article": "Bats Of Anguilla, Northern Lesser Antilles",
+  "treatments": [
+   "0394E70FFFB0FFBB125733FB8BEAED75",
+   "0394E70FFFB1FFB81271352C8801EEC5",
+   "0394E70FFFB3FFBB10B7330689BCEB12",
+   "0394E70FFFB3FFBB124230AB8E4EEDE9",
+   "0394E70FFFB7FFB9124635D78815EFF5"
+  ],
+  "zenodo": "https://zenodo.org/records/17094044",
+  "sha256": "561b73e2b03a73ffb9de87222306027e0bd841a76991afd34f0df575ecb855d7"
+ },
+ "DF44660F5A08FF90FDAEE1C3E8E0FD08": {
+  "caption": "TABLE 3. Skull and external measures of the holotype, and examined specimens of Species 6 and M. norfolkensis. Measures in bold denote values that fall outside the range of the holotype.",
+  "label": "TABLE 3",
+  "doi": "10.5281/zenodo.184082",
+  "authors": "Reardon, Terry, Adams, Mark, Kenzie, Norm M &amp; Jenkins, Paulina",
+  "year": "2008",
+  "article": "A new species of Australian freetail bat Mormopterus eleryi sp. nov. (Chiroptera: Molossidae) and a taxonomic reappraisal of M. norfolkensis (Gray)",
+  "treatments": [
+   "039287915A0EFF8FFDAEE58EE921FDCB"
+  ],
+  "zenodo": "",
+  "sha256": "49f594e9ed91e9c85160c35bc2c3fca8ed14b9dc7d6ea6d05ef253fa17058d55"
+ },
+ "DF44660F5A0BFF93FDAEE7CDE985FAC1": {
+  "caption": "TABLE 2 b. Matrix of genetic distances among species. Lower left = % FDs, upper right = Nei Ds. Taxon code: sp 1 = Species 1, sp 2 = Species 2, sp 3 = Species 3, sp 4 w and sp 4 e = Species 4 western and eastern populations respectively, sp 5 w and sp 5 e = species 5 western and eastern populations respectively, sp 6 = Species 6, norf = norfolkensis, Cj = Chaerephon jobensis and Ta = Tadarida australis.",
+  "label": "TABLE 2 b",
+  "doi": "10.5281/zenodo.184082",
+  "authors": "Reardon, Terry, Adams, Mark, Kenzie, Norm M &amp; Jenkins, Paulina",
+  "year": "2008",
+  "article": "A new species of Australian freetail bat Mormopterus eleryi sp. nov. (Chiroptera: Molossidae) and a taxonomic reappraisal of M. norfolkensis (Gray)",
+  "treatments": [
+   "039287915A0EFF8FFDAEE58EE921FDCB",
+   "039287915A17FF86FDAEE116EF9EFED3"
+  ],
+  "zenodo": "",
+  "sha256": "8670da18cdd961d0304754b2cc5f7eaae001e039c489e7dd60b81dae5022c123"
+ },
+ "DF466663FF9DFF94D12BFD8314B2F91E": {
+  "caption": "TABLE 3. Morphological characteristics of European Plecotus spp. (data from Hȃussler and Braun, 19911; Spitzenberger et al., 20022; Kiefer and Veith, 20023; A. Kiefer and O. von Helversen, unpubl. data4; authors̕ own data5)",
+  "label": "TABLE",
+  "doi": "10.3161/001.004.0202",
+  "authors": "Mucedda, Mauro, Kiefer, Ndreas, Pidinchedda, Rmanno &amp; Veith, Ichael",
+  "year": "2002",
+  "article": "A new species of long · eared bat (Chiroptera, Vespertilionidae) from Sardinia (Italy)",
+  "treatments": [
+   "039087FDFF99FF99D253FA4117A0F947"
+  ],
+  "zenodo": "",
+  "sha256": "c4adb50cb4ddc2df881c8955419f4350f80a95befcced0bf1ba5619675d1f93b"
+ },
+ "DF466663FF9FFF96D1F1FA2114DBFEDC": {
+  "caption": "TABLE 2. Body measurements of Plecotus sardus sp. nov.",
+  "label": "TABLE",
+  "doi": "10.3161/001.004.0202",
+  "authors": "Mucedda, Mauro, Kiefer, Ndreas, Pidinchedda, Rmanno &amp; Veith, Ichael",
+  "year": "2002",
+  "article": "A new species of long · eared bat (Chiroptera, Vespertilionidae) from Sardinia (Italy)",
+  "treatments": [
+   "039087FDFF99FF99D253FA4117A0F947"
+  ],
+  "zenodo": "",
+  "sha256": "b4812f61534679fb30094209f3819832d5925df07b1587877c85545d8ffd139c"
+ },
+ "DF4766792C7C91608CADAA59FBBFFB71": {
+  "caption": "TABLE 3. Selected measurements (mm) of M. atacamensis, M. chiloensis, and M. arescens. Descriptive statistics include the mean, range (in parentheses), and sample size. See Table 1 for variable abbreviations.",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.5188.5.2",
+  "authors": "Novaes, Roberto Leonan M., Pedro, Annia Rodríguez-San, Saldarriaga-Córdoba, Mónica M., Aguilera-Acuña, Omayra, Wilson, Don E. &amp; Moratelli, Ricardo",
+  "year": "2022",
+  "article": "Systematic review of Myotis (Chiroptera, Vespertilionidae) from Chile based on molecular, morphological, and bioacoustic data",
+  "treatments": [
+   "039187E72C7891678CA2AC82FCAAFC14",
+   "039187E72C7991648CA2AF46FBE6FDBC",
+   "039187E72C7B91668CA2AA32FE8BFC30"
+  ],
+  "zenodo": "",
+  "sha256": "1d8854a20a70f3698ef430182806c51bbb5ea37ac675c91a79121e63c2bcf540"
+ },
+ "DF4AE0BFFFE8FFCF7759FDE21EF85685": {
+  "caption": "TABLE 4. Skull measurements (mm) of specimens of the new species N. isabella sp. nov. from Guinea and Liberia and of other white-winged Neoromicia species from West Africa, partly quoted from De Vree (1971), Kock et al. (2002) and Monadjem et al. (2013a). Measurement abreviations: GSKL — greatest skull length; CIL — condylo-incisive length; CCL — condylo-canine length; ZYGO — greatest zygomatic breadth; GBW — greatest braincase width; GSH — greatest skull height; POB — postorbital width; MAST — greatest mastoid breadth; MAND — greatest mandible length; M3–M3 — width across the third molars; C–M3 — complete upper canine-molar tooth row length; C–C — width across upper canines; C–M3 — complete mandibular canine-molar tooth row length (see Monadjem et al., 2013a for more details). Values taken from published resources marked by an asterisk",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.2.003",
+  "authors": "Decher, Jan, Hoffmann, Anke, Schaer, Juliane, N Orris, Ryan W., Kadjo, Blaise, Astrin, Jonas, Monadjem, Ara &amp; Hutterer, Rainer",
+  "year": "2015",
+  "article": "Bat diversity in the Simandou Mountain Range of Guinea, with the description of a new white-winged vespertilionid",
+  "treatments": [
+   "039C0121FFF7FFCE761BFBD71C18554D"
+  ],
+  "zenodo": "",
+  "sha256": "a3181e452b8715aec60b3a3bde3c540ee65cbbc98e0edc418b55195e7a996ec2"
+ },
+ "DF4AE0BFFFEBFFCC77A2FF7B1ECE54A1": {
+  "caption": "TABLE 3. External measurements (mm) and body mass (g) of specimens of the new species N. isabella sp. nov. from Guinea and Liberia and of other white-winged Neoromicia species from West Africa. Values taken from published resources marked by an asterisk",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2015.17.2.003",
+  "authors": "Decher, Jan, Hoffmann, Anke, Schaer, Juliane, N Orris, Ryan W., Kadjo, Blaise, Astrin, Jonas, Monadjem, Ara &amp; Hutterer, Rainer",
+  "year": "2015",
+  "article": "Bat diversity in the Simandou Mountain Range of Guinea, with the description of a new white-winged vespertilionid",
+  "treatments": [
+   "039C0121FFF7FFCE761BFBD71C18554D"
+  ],
+  "zenodo": "",
+  "sha256": "73a10a93c10c243b3acd2d7eee246050c2f903c13d381dd98b055d8424a75171"
+ },
+ "DF4C665DD54639431C8FFF45FDEA411C": {
+  "caption": "TABLE 1. — Sampling stations, habitat sampled and species captured during our field surveys (2016-2018). Abbreviations: A, above slow-flowing steam, B, cultivated farm; C, fallow farmland; D, beside fruiting tree; E, cleared farmland; F, understory of Primary forest; G, ecotone forest/alpine grassland, H, cave; I, gap between trees; J, forest fragment; K, waterhole.",
+  "label": "TABLE",
+  "doi": "10.5252/zoosystema2020v42a24",
+  "authors": "Mongombe, Aaron Manga, Fils, Eric Moise Bakwo &amp; Tamesse, Joseph Lebel",
+  "year": "2020",
+  "article": "Annotated checklist of bats (Mammalia: Chiroptera) of Mount Cameroon, southwestern Cameroon",
+  "treatments": [
+   "039A87C3D547394C1FD9F8D2FA844667",
+   "039A87C3D549394E1FBAF971FEB246AC",
+   "039A87C3D54B39491F7FFAA1FC23464E",
+   "039A87C3D54C394B1FADF951FC2941B4",
+   "039A87C3D54E394B1F97FDB5FBAF47D0",
+   "039A87C3D54F394A1CEEFAB0FB63411D",
+   "039A87C3D54F394A1CF2FF74FCF944B0",
+   "039A87C3D54F394A1F46FE14FA544680",
+   "039A87C3D54F39541FAFF892FB7E43B9",
+   "039A87C3D55139571FBAF9D1FD784343",
+   "039A87C3D55339501FAAF931FB06411D",
+   "039A87C3D55339561CF0FF74FE7645B7",
+   "039A87C3D55539501FA3FE15FBB14504",
+   "039A87C3D55739521FA9FB30FB3E47D0",
+   "039A87C3D558395C1F78F9D0FDEE4617",
+   "039A87C3D558395D1CCCFB77FA50460E",
+   "039A87C3D559395C1D0EF971FB3742DB",
+   "039A87C3D55A395F1D09FBF7FD1E46F1",
+   "039A87C3D55A395F1FC9FB97FBDA47D2",
+   "039A87C3D55B395E1CF6FB4BFA504160",
+   "039A87C3D55B395E1CFFFF74FE1D4400"
+  ],
+  "zenodo": "",
+  "sha256": "73f3100ee4ed1a49fcd4610f52a154397175269138ea1500ca9dbb9b758c2bc6"
+ },
+ "DF4C665DD54C39491C8FFF7FFAB440D7": {
+  "caption": "TABLE 3. — External measurements of adult bats captured on Mount Cameroon. Measurements are given as mean ± standard deviation and range.",
+  "label": "TABLE",
+  "doi": "10.5252/zoosystema2020v42a24",
+  "authors": "Mongombe, Aaron Manga, Fils, Eric Moise Bakwo &amp; Tamesse, Joseph Lebel",
+  "year": "2020",
+  "article": "Annotated checklist of bats (Mammalia: Chiroptera) of Mount Cameroon, southwestern Cameroon",
+  "treatments": [
+   "039A87C3D547394C1FD9F8D2FA844667",
+   "039A87C3D549394E1FBAF971FEB246AC",
+   "039A87C3D54B39491F7FFAA1FC23464E",
+   "039A87C3D54C394B1FADF951FC2941B4",
+   "039A87C3D54E394B1F97FDB5FBAF47D0",
+   "039A87C3D54F394A1CEEFAB0FB63411D",
+   "039A87C3D54F394A1CF2FF74FCF944B0",
+   "039A87C3D54F394A1F46FE14FA544680",
+   "039A87C3D54F39541FAFF892FB7E43B9",
+   "039A87C3D55139571FBAF9D1FD784343",
+   "039A87C3D55339501FAAF931FB06411D",
+   "039A87C3D55339561CF0FF74FE7645B7",
+   "039A87C3D55539501FA3FE15FBB14504",
+   "039A87C3D55739521FA9FB30FB3E47D0",
+   "039A87C3D558395C1F78F9D0FDEE4617",
+   "039A87C3D558395D1CCCFB77FA50460E",
+   "039A87C3D559395C1D0EF971FB3742DB",
+   "039A87C3D55A395F1D09FBF7FD1E46F1",
+   "039A87C3D55A395F1FC9FB97FBDA47D2",
+   "039A87C3D55B395E1CF6FB4BFA504160",
+   "039A87C3D55B395E1CFFFF74FE1D4400"
+  ],
+  "zenodo": "",
+  "sha256": "4d3f6ad169d4bd39fc9d0f600bdaabc13f65d2691278e58efbf4cbe411e57444"
+ },
+ "DF4C665DD55A395F1C8DFF7AFD85413B": {
+  "caption": "TABLE 4. — Cranial and dental measurements (mm) of preserved bats capture for the first time in the Mount Cameroon Region (November 2016-November 2018). Abbreviations explained in the Material and Method section.",
+  "label": "TABLE",
+  "doi": "10.5252/zoosystema2020v42a24",
+  "authors": "Mongombe, Aaron Manga, Fils, Eric Moise Bakwo &amp; Tamesse, Joseph Lebel",
+  "year": "2020",
+  "article": "Annotated checklist of bats (Mammalia: Chiroptera) of Mount Cameroon, southwestern Cameroon",
+  "treatments": [
+   "039A87C3D558395C1F78F9D0FDEE4617",
+   "039A87C3D558395D1CCCFB77FA50460E",
+   "039A87C3D55A395F1D09FBF7FD1E46F1"
+  ],
+  "zenodo": "",
+  "sha256": "c75c9482571aa3d6a60cef74d625e22207438943d2897e9bafb3748247128ba7"
+ },
+ "DF4DF3CB9D7CB970FF53722701D201CF": {
+  "caption": "Table 2: Diagnostic characters of Carollia benkeithi specimens from the Mamirauá and Amanã SDRs,Amazonas state,Brazil,in the mammal collection of the Museu Paraense Emílio Goeldi.",
+  "label": "Table 2",
+  "doi": "10.1515/mammalia-2023-0154",
+  "authors": "Soeiro, Andreza &amp; Bezerra, Alexandra M. R.",
+  "year": "2024",
+  "article": "Bats (Mammalia: Chiroptera) from two priority areas for biodiversity conservation in the Brazilian Amazon and range extension for Carollia benkeithi (Phyllostomidae)",
+  "treatments": [
+   "039B12559D7DB971FF7D7394046C03C9"
+  ],
+  "zenodo": "",
+  "sha256": "d368f45cfce8adcea8fab23de911113f01acc3a75a6ee75fe175886eed3c31e9"
+ },
+ "DF576678FFB2F455FF6CFF2EFC35FF15": {
+  "caption": "TABLE 2. Factor loadings of craniodental characters obtained by the PCA.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.3887.2.6",
+  "authors": "Görföl, Tamás, Csorba, Gábor, Eger, Judith L., Son, Nguyen Truong &amp; Francis, Charles M.",
+  "year": "2014",
+  "article": "Canines make the difference: a new species of Hypsugo (Chiroptera: Vespertilionidae) from Laos and Vietnam",
+  "treatments": [
+   "038187E6FFB8F455FF6CF9E4FC76FB11"
+  ],
+  "zenodo": "https://zenodo.org/records/14159817",
+  "sha256": "ee46eebb1298ddabe7e41e3bf4f37fd4c195737e27811d325dd0dc0312459796"
+ },
+ "DF576678FFBEF459FF6CFE22FAC4FE70": {
+  "caption": "TABLE 1. Selected external and craniodental measurements (in mm) of H. pulveratus and H. dolichodon n. sp. Values are given as mean, ± SD (n ≥ 2), min-max, (n). Acronyms and definitions for measurements are given in the text.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.3887.2.6",
+  "authors": "Görföl, Tamás, Csorba, Gábor, Eger, Judith L., Son, Nguyen Truong &amp; Francis, Charles M.",
+  "year": "2014",
+  "article": "Canines make the difference: a new species of Hypsugo (Chiroptera: Vespertilionidae) from Laos and Vietnam",
+  "treatments": [
+   "038187E6FFB8F455FF6CF9E4FC76FB11"
+  ],
+  "zenodo": "https://zenodo.org/records/14159815",
+  "sha256": "1ecb9c52f281de5f0ba4131490654f2ca6ed041937723d866eb750a386d032ac"
+ },
+ "DF5966242549FFE9FF85FE1619FBFE37": {
+  "caption": "TABLE 1. Selected external and cranial measurements (in mm), and frequency of the constant segment of the echolocation calls (CF, in kHz), of the putative sibling species considered in the study. Last column indicates the significance of a two-tailed t-test to test for differences between means of samples for H. rotalis and H. khaokhouayensis. P-level: ns — P> 0.05; * — 0.05 ≥ P> 0.01; ** — 0.01 ≥ P> 0.001; *** — P ≤ 0.001",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2006)8[39:ansobo]2.0.co;2",
+  "authors": "Guillén-Servent, Antonio &amp; Francis, Charles M.",
+  "year": "2006",
+  "article": "A new species of bat of the Hipposideros bicolor group (Chiroptera: Hipposideridae) from Central Laos, with evidence of convergent evolution with Sundaic taxa",
+  "treatments": [
+   "038F87BA2543FFF5FF49FD2D1EE7FE83"
+  ],
+  "zenodo": "",
+  "sha256": "c4829981c5990157f2dc13b2606bc494deb7342e8ad2f0d99ffbaa87142adcff"
+ },
+ "DF5DF9F0FF8B304173EAECC44D7A2712": {
+  "caption": "Table 1. The morphological characteristics of lesser mouse-tailed bat, Rhinopoma hardwickii obtained in the present study and the corresponding values of previous studies (Sinha, 1980; Bates and Harrison, 1997)",
+  "label": "Table 1",
+  "doi": "10.26515/rzsi/v122/i1/2022/167154",
+  "authors": "Elangovan, Vadamalai",
+  "year": "2022",
+  "article": "Distribution and roosting ecology of the lesser mouse-tailed bat, Rhinopoma hardwickii Gray, 1831 (Chiroptera: Rhinopomatidae)",
+  "treatments": [
+   "038B186EFF8830407031EECC4D152155"
+  ],
+  "zenodo": "https://zenodo.org/records/15134676",
+  "sha256": "1eafa39a65bb80ae9f861988ae0bdfcb2de09ba1731aa03832bda16e35fc8d7c"
+ },
+ "DF5E661D144EFFE83DA9F9CA962C1B13": {
+  "caption": "TABLE 1. External measurements (in mm) and conservation status of the 20 known species of bat captured during the survey, including forearm (FA), body mass (MASS, in g), head-body length (HB), tibia length (TB), hind foot length (HF), tail length and ear length; ns indicates the number of male or female specimens taken. Numbers in parentheses indicate the number of individuals from which measurements were taken. Conservation status: LR: lc, Low Risk: Least Concern; LR: nt, Low Risk: Near Threatened, following IUCN (2002)",
+  "label": "TABLE",
+  "doi": "10.3161/1733-5329(2005)7[147:ROARBS]2.0.CO;2",
+  "authors": "Struebig, Matthew J., Rossiter, Stephen J., Bates, Paul J. J., Kingston, Tigga, Oo, Sai Sein Lin, Nwe, Aye Aye, Aung, Moe Moe, Win, Sein Sein &amp; Mya, Khin Mya",
+  "year": "2005",
+  "article": "Results of a recent bat survey in Upper Myanmar including new records from the Kachin forests",
+  "treatments": [
+   "038887831440FFE13FD1FA9495C919A9",
+   "038887831440FFE63D84F89E95C91D2D",
+   "038887831440FFE63DFBFCA2918A1B35",
+   "038887831442FFE43DB4FA5894481C44",
+   "038887831442FFE43DEEFD0596321B3C",
+   "038887831443FFE43FF3FCDC95CA1B79",
+   "038887831447FFE13DBFFC3795C91CF9",
+   "03888783144CFFE53FE1FD3294B31A8A"
+  ],
+  "zenodo": "",
+  "sha256": "0b988d83c1b33fe134445f0b7cdfb9279d72b83048639845f9b878d374122436"
+ },
+ "DF600FC6FFA24F77FF181AF5A3B1FC74": {
+  "caption": "Table 3: Biometric data on the holotype specimens examined.",
+  "label": "Table 3",
+  "doi": "10.1515/mammalia-2023-0119",
+  "authors": "Benda, Petr, Uvizl, Marek, Eiseb, Seth J. &amp; Avenant, Nico L.",
+  "year": "2024",
+  "article": "On the systematic position of the horseshoe bats (Mammalia: Chiroptera) from Lesotho",
+  "treatments": [
+   "03B6EE58FFAC4F7DFC861F8EA30AFC4F"
+  ],
+  "zenodo": "",
+  "sha256": "c913fdb0d96c79f9af1eedbfc65410b84b2af8cfac73bbd5148679329d61fd7b"
+ },
+ "DF692492FF81F52329B8E783F29DB62C": {
+  "caption": "Table 2. Average values of the 12 analyzed craniodental measurements (mm) of large Anoura specimens. Abbreviations: GLS: Greatest length of skull; CB: Condylobasal length; PAL: Palatal length; PO: Postorbital constriction width; MB: Mastoid breadth; BCW: Braincase width; BCH: Braincase height; TR: Tooth-row length; M-M: Distance across upper molars; C-C: Distance across upper canines; ML: Mandible length; MTR: Longitude of the mandibular tooth-row. StDv = Standard Deviation.",
+  "label": "Table 2",
+  "doi": "10.5281/zenodo.15777715",
+  "authors": "Hugo Mantilla-Meluk &amp; Robert J. Baker",
+  "year": "2010",
+  "article": "New Species of Anoura (Chiroptera: Phyllostomidae) from Colombia, with Systematic Remarks and Notes on the Distribution of the A. geoffroyi Complex",
+  "treatments": [
+   "03BFC50CFF83F53B2ADEE68FF2FDB718"
+  ],
+  "zenodo": "",
+  "sha256": "b55a0004b1730600f1780cda648822fa14bd7845d1d23eef61c22367c04c3abf"
+ },
+ "DF692492FF84F52629C1E0CEF7D1B34F": {
+  "caption": "Table 3. Average values of the 12 craniodental measurements analyzed for Anoura carishina holotype (*) and the type series. Abbreviations: GLS: Greatest length of skull; CB: Condylobasal length; PAL: Palatal length; PO: Postorbital constriction width; MB: Mastoid breadth; BCW: Braincase width; BCH: Braincase height; TR: Tooth-row length; M-M: Distance across upper molars; C-C: Distance across upper canines; ML: Mandible length; MTR: Longitude of the mandibular tooth-row.",
+  "label": "Table 3",
+  "doi": "10.5281/zenodo.15777715",
+  "authors": "Hugo Mantilla-Meluk &amp; Robert J. Baker",
+  "year": "2010",
+  "article": "New Species of Anoura (Chiroptera: Phyllostomidae) from Colombia, with Systematic Remarks and Notes on the Distribution of the A. geoffroyi Complex",
+  "treatments": [
+   "03BFC50CFF83F53B2ADEE68FF2FDB718"
+  ],
+  "zenodo": "",
+  "sha256": "b70881627bc8369ef2100d1f33eb02ac5d1f6bb25ae2ef0a399ec2954635da87"
+ },
+ "DF6C33B3F612D362FFE0B416F9159400": {
+  "caption": "TABLE 1. Matrix summarising selected discriminating characters (dental, cranial, bacular and) of the five genera / six species of Megadermatidae currently recognised.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.3931.4.4",
+  "authors": "Soisook, Pipat, Prajakjitr, Amron, Karapan, Sunate, Francis, Charles M. &amp; Bates, Paul J. J.",
+  "year": "2015",
+  "article": "A new genus and species of false vampire (Chiroptera: Megadermatidae) from peninsular Thailand",
+  "treatments": [
+   "03BAD22DF61ED378FF0AB3FEFD8F95D5"
+  ],
+  "zenodo": "",
+  "sha256": "dab595d442914e50b1f75c7a225f9e0ae9da4d718e09dceb1a4d53dca26bec5d"
+ },
+ "DF6C33B3F613D363FFEAB46DFD4094F8": {
+  "caption": "TABLE 2. Selected external and craniοdental measurements (in mm) οf Macroderma gigas, E. thongareeae gen. sp. nοv., Megaderma lyra, M. spasma, C. cor and L. frons. Mean, ± SD, minimum (Min) and maximum values (Max) and sample size οf specimens examined are given (sample sizes, which differ frοm thοse indicated, are in brackets). List οf specimens examined definitiοns οf measurements are in the methοd sectiοn.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.3931.4.4",
+  "authors": "Soisook, Pipat, Prajakjitr, Amron, Karapan, Sunate, Francis, Charles M. &amp; Bates, Paul J. J.",
+  "year": "2015",
+  "article": "A new genus and species of false vampire (Chiroptera: Megadermatidae) from peninsular Thailand",
+  "treatments": [
+   "03BAD22DF61ED378FF0AB3FEFD8F95D5"
+  ],
+  "zenodo": "",
+  "sha256": "9fb7c03d28beb9b9a46db393fea6419972989c25e1e31d6fda292190eec099e0"
+ },
+ "DF6D66083D555D1FA8EBF2B411BFFCED": {
+  "caption": "TABLE 5. Mean K 2 P divergence among each species from Taiwan calculated for the Cyt b gene. Numbers are expressed as percentage and those in italics in the diagonal are intra-specific distances.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.3920.2.6",
+  "authors": "Ruedi, Manuel, Csorba, Gábor, Lin, Liang- Kong &amp; Chou, Cheng-Han",
+  "year": "2015",
+  "article": "Molecular phylogeny and morphological revision of Myotis bats (Chiroptera: Vespertilionidae) from Taiwan and adjacent China",
+  "treatments": [
+   "03BB87963D515D24A8EBF2BF1748FC32",
+   "03BB87963D555D19A8EBF54513E1F867",
+   "03BB87963D585D1FA8EBF2B41078FD13"
+  ],
+  "zenodo": "",
+  "sha256": "70a9f88a24f4f4407480a21d706c12b7eb2ed8741031122ae136683a81b12e2c"
+ },
+ "DF6F6600B032FFAFFF07FC99FA93FC8B": {
+  "caption": "TABLE 2. Comparison of morphological differences among A. fistulata, A. caudifer, A. aequatoris, and A. javieri sp. nov.",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.002",
+  "authors": "Pacheco, Víctor, Sánchez-Vendizú, Pamela &amp; Solari, Sergio",
+  "year": "2018",
+  "article": "A new species of Anoura Gray, 1838 (Chiroptera: Phyllostomidae) from Peru, with taxonomic and biogeographic comments on species of the Anoura caudifer complex",
+  "treatments": [
+   "03B9879EB036FFA5FEAEF8F3FE95FAB4"
+  ],
+  "zenodo": "",
+  "sha256": "7968be231513b7a369e49310318bc185a825ce05423ee481ab64fe458f2cea3a"
+ },
+ "DF6F6600B036FFABFF07FF7AFAB3FF2E": {
+  "caption": "TABLE 1. Measurements (mm) and body masses (g) of the type series of A. javieri sp. nov., including the holotype (*)",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.002",
+  "authors": "Pacheco, Víctor, Sánchez-Vendizú, Pamela &amp; Solari, Sergio",
+  "year": "2018",
+  "article": "A new species of Anoura Gray, 1838 (Chiroptera: Phyllostomidae) from Peru, with taxonomic and biogeographic comments on species of the Anoura caudifer complex",
+  "treatments": [
+   "03B9879EB036FFA5FEAEF8F3FE95FAB4"
+  ],
+  "zenodo": "",
+  "sha256": "3e3a783ff9cb2df5fdc569cbf3e8003b0f7b59d81e4d897f82ae7a5c01bfcb1e"
+ },
+ "DF6F6600B03BFFA6FCB8FAD1FAA5FA87": {
+  "caption": "TABLE 5. Factor loadings of the first two axes of a PCA based on the correlation matrix of 13 cranial variables and forearm length for adult males of A. aequatoris (n = 16), A. caudifer (n = 18), A. fistulata (n = 11), and A. javieri sp. nov. (n = 5)",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.002",
+  "authors": "Pacheco, Víctor, Sánchez-Vendizú, Pamela &amp; Solari, Sergio",
+  "year": "2018",
+  "article": "A new species of Anoura Gray, 1838 (Chiroptera: Phyllostomidae) from Peru, with taxonomic and biogeographic comments on species of the Anoura caudifer complex",
+  "treatments": [
+   "03B9879EB036FFA5FEAEF8F3FE95FAB4"
+  ],
+  "zenodo": "",
+  "sha256": "e2838d1fb9e6f33b0211626d0cfb50ab3f41d721dae722a01ef4fe04a280cc6b"
+ },
+ "DF6F6600B03BFFA6FF07FF7AFAEEFF16": {
+  "caption": "TABLE 4. MANOVA followed by Bonferroni post-hoc test among species for the entire sample of 13 cranial variables and forearm length for adult males of A. aequatoris (n = 16), A. caudifer (n = 18), A. fistulata (n = 11), and A. javieri sp. nov. (n = 5). Values in bold represent statistical difference at 5% in Bonferroni test. All F-values in MANOVA are statistically significant at P ≤ 0.05",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.002",
+  "authors": "Pacheco, Víctor, Sánchez-Vendizú, Pamela &amp; Solari, Sergio",
+  "year": "2018",
+  "article": "A new species of Anoura Gray, 1838 (Chiroptera: Phyllostomidae) from Peru, with taxonomic and biogeographic comments on species of the Anoura caudifer complex",
+  "treatments": [
+   "03B9879EB036FFA5FEAEF8F3FE95FAB4"
+  ],
+  "zenodo": "",
+  "sha256": "d7bd236e73eb2a93de7443388519859609d856e0695fd95a08acc950edcd0009"
+ },
+ "DF6F6600B03DFFA0FF07FD6EFBCAFD07": {
+  "caption": "TABLE 3. External and craniodental measurements (in mm) of male bats of the genus Anoura. Body mass is given in grams. Mean and standard deviation are followed by observed range size (in parentheses) and sample size (in italics)",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2018.20.1.002",
+  "authors": "Pacheco, Víctor, Sánchez-Vendizú, Pamela &amp; Solari, Sergio",
+  "year": "2018",
+  "article": "A new species of Anoura Gray, 1838 (Chiroptera: Phyllostomidae) from Peru, with taxonomic and biogeographic comments on species of the Anoura caudifer complex",
+  "treatments": [
+   "03B9879EB036FFA5FEAEF8F3FE95FAB4"
+  ],
+  "zenodo": "",
+  "sha256": "f3b61e8576e176d947f80419cfde0869e44171ead6987cc7b2621edec7c032d9"
+ },
+ "DF71FA838B45FFFBFCCAFE03C556A81D": {
+  "caption": "TABLE 1 External measurements (in mm) and weight (in g) for adult specimens of Peropteryx The average and range of measurements for each sex of the five species of Peropteryx and the probability (*, 0.05) of sexual dimorphism within each species with sample sizes.2 are summarized in boldface. Abbreviations of measurements are listed in the Materials and Methods section, and localities of specimens examined are listed in appendix 1.",
+  "label": "TABLE 1",
+  "doi": "10.1206/691.1",
+  "authors": "Lim, Burton K., Engstrom, Mark D., Reid, Fiona A., Simmons, Nancy B., Voss, Robert S. &amp; Fleck, David W.",
+  "year": "2010",
+  "article": "A New Species of Peropteryx (Chiroptera: Emballonuridae) from Western Amazonia with Comments on Phylogenetic Relationships within the Genus",
+  "treatments": [
+   "03A71B1D8B42FFF0FF5DFA7EC1FBA815"
+  ],
+  "zenodo": "",
+  "sha256": "255c41b7f9e0a159929756131d76be1c1df3503631ff5ca838f66bfe329325bc"
+ },
+ "DF71FA838B49FFF7FCCAFE6DC5EAA87C": {
+  "caption": "TABLE 2 Cranial measurements (in mm) for adult specimens of Peropteryx The average and range of measurements for each sex of the five species of Peropteryx and the probability (*, 0.05) of sexual dimorphism within P. macrotis (other species have small sample sizes) are summarized in boldface. Abbreviations of measurements are listed in the Materials and Methods section, and localities of specimens examined are listed in appendix 1.",
+  "label": "TABLE 2",
+  "doi": "10.1206/691.1",
+  "authors": "Lim, Burton K., Engstrom, Mark D., Reid, Fiona A., Simmons, Nancy B., Voss, Robert S. &amp; Fleck, David W.",
+  "year": "2010",
+  "article": "A New Species of Peropteryx (Chiroptera: Emballonuridae) from Western Amazonia with Comments on Phylogenetic Relationships within the Genus",
+  "treatments": [
+   "03A71B1D8B42FFF0FF5DFA7EC1FBA815"
+  ],
+  "zenodo": "",
+  "sha256": "d09ab0277b39f55a979224a59889b44df2f549e3b2facc8946096b9d7c9dddbf"
+ },
+ "DF71FA838B4CFFF2FCF0FD16C4E9A8D1": {
+  "caption": "TABLE 3 Morphological comparison among the five species of Peropteryx",
+  "label": "TABLE 3",
+  "doi": "10.1206/691.1",
+  "authors": "Lim, Burton K., Engstrom, Mark D., Reid, Fiona A., Simmons, Nancy B., Voss, Robert S. &amp; Fleck, David W.",
+  "year": "2010",
+  "article": "A New Species of Peropteryx (Chiroptera: Emballonuridae) from Western Amazonia with Comments on Phylogenetic Relationships within the Genus",
+  "treatments": [
+   "03A71B1D8B42FFF0FF5DFA7EC1FBA815"
+  ],
+  "zenodo": "",
+  "sha256": "abee6c2055e5066f1a0f3c1e98bb10f86c14bf60b1f15bb783c4740221c720be"
+ },
+ "DF746E9CFF891C703535FAFE7A1DFAD6": {
+  "caption": "Table 1. Percentage of contribution and permutation importance of climatic variables used in MaxEnt model for each subspecies of Artibeus aztecus.",
+  "label": "Table 1",
+  "doi": "10.12933/therya-23-2214",
+  "authors": "Hernández-Chávez, Iván, Guevara, Lázaro, Arroyo-Cabrales, Joaquín &amp; León-Paniagua, Livia",
+  "year": "2023",
+  "article": "Ecological niche differentiation among Aztec fruit-eating bat subspecies (Chiroptera: Phyllostomidae) in Mesoamerica",
+  "treatments": [
+   "03A28F02FF891C753677F8B07AF9FEEA"
+  ],
+  "zenodo": "https://zenodo.org/records/15158853",
+  "sha256": "3113439a8aa484f9fe51addd9e54fd757088657cd4d2a952c5850f410a4389bd"
+ },
+ "DF746E9CFF8F1C76361EFF687C4FFF28": {
+  "caption": "Table 2. Results of the background similarity pairwise comparisons among the three subspecies of Artibeus aztecus. Observed Schoener's D and Hellinger's I values and p-values (p-val) are shown.",
+  "label": "Table 2",
+  "doi": "10.12933/therya-23-2214",
+  "authors": "Hernández-Chávez, Iván, Guevara, Lázaro, Arroyo-Cabrales, Joaquín &amp; León-Paniagua, Livia",
+  "year": "2023",
+  "article": "Ecological niche differentiation among Aztec fruit-eating bat subspecies (Chiroptera: Phyllostomidae) in Mesoamerica",
+  "treatments": [
+   "03A28F02FF891C753677F8B07AF9FEEA"
+  ],
+  "zenodo": "https://zenodo.org/records/15158855",
+  "sha256": "e43cb438066b38cd0ec0c0b9cd48dc8d8be74a7a067080a18f78cb36ac365062"
+ },
+ "DF76666CFFA8FFC5FF2A0007D1330B75": {
+  "caption": "TABLE 3. Descriptive statistics presented as mean, standard deviation (when calculable), minimum and maximum range, and number of individuals of five baculum measurements (see methods section for definitions) from genotyped individuals of Neoromicia stanleyi sp. nov. and N. capensis. The measurements for N. capensis include two individuals from the type locality of N. melckorum sensu stricto at Kersefontein Farm in the Western Cape of South Africa (DM 7192 and 7196).",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.4236.2.10",
+  "authors": "Goodman, Steven M., Kearney, Teresa, Ratsimbazafy, Malalatiana Michèle &amp; Hassanin, Alexandre",
+  "year": "2017",
+  "article": "Description of a new species of Neoromicia (Chiroptera: Vespertilionidae) from southern Africa: A name for “ N. cf. melckorum ”",
+  "treatments": [
+   "03A087F2FFABFFDFFF2A001ED4A20DC0"
+  ],
+  "zenodo": "",
+  "sha256": "cf9d2945ceb8015fd2a9ac877c76c7fed2502feeab2cd6175fd7e7cf6ed6a30c"
+ },
+ "DF76666CFFAFFFC2FF2A01E1D32C082F": {
+  "caption": "TABLE 4. External measurements (in millimeters) and mass (in grams) of Neoromicia stanleyi sp. nov., N. robertsi, N. matroka, N. malagasyensis, and N. capensis. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. Given small sample sizes, aspects of sexual dimorphism for the taxa presented here have not been taken into account. In the case of N. stanleyi and N. capensis, the notably high standard deviation values and the broad range of minimum and maximum measurement values are presumably an artifact of different measurement techniques used by various field collectors.",
+  "label": "TABLE 4",
+  "doi": "10.11646/zootaxa.4236.2.10",
+  "authors": "Goodman, Steven M., Kearney, Teresa, Ratsimbazafy, Malalatiana Michèle &amp; Hassanin, Alexandre",
+  "year": "2017",
+  "article": "Description of a new species of Neoromicia (Chiroptera: Vespertilionidae) from southern Africa: A name for “ N. cf. melckorum ”",
+  "treatments": [
+   "03A087F2FFABFFDFFF2A001ED4A20DC0"
+  ],
+  "zenodo": "",
+  "sha256": "104f69bffed388bbf3a7ae093936cb8c3bd591a54f51d09292ee2514877df100"
+ },
+ "DF76666CFFB0FFDDFF2A01E1D3490828": {
+  "caption": "TABLE 5. Cranial measurements (in millimeters) of adult Neoromicia stanleyi sp. nov., N. robertsi, N. matroka, N. malagasyensis, N. capensis, and N. melckorum. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. See Methods for an explanation of variable acronyms. Given small sample sizes for most taxa, aspects of sexual dimorphism have not been taken into account. The T-test statistics at the foot of the table are to compare measurement differences between Roberts’ N. melckorum and specimens of N. capensis obtained in other areas of South Africa, Botswana, and Zambia.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.4236.2.10",
+  "authors": "Goodman, Steven M., Kearney, Teresa, Ratsimbazafy, Malalatiana Michèle &amp; Hassanin, Alexandre",
+  "year": "2017",
+  "article": "Description of a new species of Neoromicia (Chiroptera: Vespertilionidae) from southern Africa: A name for “ N. cf. melckorum ”",
+  "treatments": [
+   "03A087F2FFABFFDFFF2A001ED4A20DC0"
+  ],
+  "zenodo": "",
+  "sha256": "8bc754d2298d392ee0efa114998985c8f59ef738cfe741b67ae74e517fe766cf"
+ },
+ "DF76666CFFB3FFDEFF2A0329D2B70A67": {
+  "caption": "TABLE 6. Dental measurements (in millimeters) of adult Neoromicia stanleyi sp. nov., N. robertsi, N. matroka, N. malagasyensis, and N. capensis. Measurements presented as mean ± standard deviation, minimum and maximum measurements, and number of specimens. See Methods for an explanation of variable acronyms. Given small sample sizes for most taxa, aspects of sexual dimorphism have not been taken into account. The T-test statistics at the foot of the table are to compare measurement differences between Roberts’ N. melckorum and specimens of N. capensis obtained in other areas of South Africa, Botswana, and Zambia.",
+  "label": "TABLE 6",
+  "doi": "10.11646/zootaxa.4236.2.10",
+  "authors": "Goodman, Steven M., Kearney, Teresa, Ratsimbazafy, Malalatiana Michèle &amp; Hassanin, Alexandre",
+  "year": "2017",
+  "article": "Description of a new species of Neoromicia (Chiroptera: Vespertilionidae) from southern Africa: A name for “ N. cf. melckorum ”",
+  "treatments": [
+   "03A087F2FFABFFDFFF2A001ED4A20DC0"
+  ],
+  "zenodo": "",
+  "sha256": "25e6f7f46a59075ace74e3ec41531d3598f694566751c882b10cb30d0416e107"
+ },
+ "DF76C2EDBD43FF941517FDCBFB81D219": {
+  "caption": "TABLE 1. External measurements (in mm) and body mass (in g) of Chaerephon jobimena and other members of this genus. Descriptive statistics presented as 0 ± SD (minimum–maximum, n). Samples measured by a single field collector are in bold. t-test statistical comparisons of measurements of C. jobimena and C. ansorgei (sexes combined for each species) were conducted: ** — P <0.001, *** — P <0.0001",
+  "label": "TABLE",
+  "doi": "10.3161/001.006.0204",
+  "authors": "Goodman, Steven M. &amp; C Ardiff, Scott G.",
+  "year": "2004",
+  "article": "A new species of Chaerephon (Molossidae) from Madagascar with notes on other members of the family",
+  "treatments": [
+   "03A02373BD42FF9B159FFEFCFB86D3FC"
+  ],
+  "zenodo": "",
+  "sha256": "21c692c9dd66f5c1fc3e19e7e70aae9a591f5adde8e050f99b86b7ac4e63f110"
+ },
+ "DF76C2EDBD4AFF9D1517FDFAFAD6D209": {
+  "caption": "TABLE 2. Cranial and dental measurements (in mm) of C. jobimena and other members of this genus. Descriptive statistics presented as 0 ± SD (minimum–maximum, n). Standard deviation is not presented for palate emargination, which is a qualitative character. t-test statistical comparisons of measurements of C. jobimena and C. ansorgei (sexes combined for each species) were conducted: * — P <0.05, ** — P <0.001, *** — P <0.0001",
+  "label": "TABLE",
+  "doi": "10.3161/001.006.0204",
+  "authors": "Goodman, Steven M. &amp; C Ardiff, Scott G.",
+  "year": "2004",
+  "article": "A new species of Chaerephon (Molossidae) from Madagascar with notes on other members of the family",
+  "treatments": [
+   "03A02373BD42FF9B159FFEFCFB86D3FC"
+  ],
+  "zenodo": "",
+  "sha256": "42e965998008c705cddf92fe7630beccd05dae1c255aa6c2d764b2250b3d4f8d"
+ },
+ "DF77F9B29E713A36CD0F41E64998FE9F": {
+  "caption": "TABLE 1. Measurements (in mm) of Sturnira nana and Sturnira EC. Tabulated sample statistics include the observed range and the mean plus or minus one standard deviation. N = sample size.",
+  "label": "TABLE 1",
+  "doi": "10.1206/4001.1",
+  "authors": "Yánez-Fernández, Viviana, Marchán-Rivadeneira, M. Raquel, Velazco, Paúl M., Burneo, Santiago F., Tinoco, Nicolás &amp; Camacho, M. Alejandra",
+  "year": "2023",
+  "article": "On the taxonomic identity of Sturnira nana Gardner and O’Neil, 1971 (Chiroptera: Phyllostomidae), from Ecuador, with the description of a new species of Sturnira",
+  "treatments": [
+   "03A1182C9E7D3A3FCF6340FF49FAFA25"
+  ],
+  "zenodo": "https://zenodo.org/records/15133823",
+  "sha256": "6d1cc275d3ad8ef12695ec5bfb36d2c18a64c1685776c22c34e72546faf4f1a2"
+ },
+ "DF77F9B29E783A3FCD0F41E64ED0FF71": {
+  "caption": "TABLE 6. Forearm and craniodental measurements (mm) analyzed for the type series of Sturnira boadai.",
+  "label": "TABLE 6",
+  "doi": "10.1206/4001.1",
+  "authors": "Yánez-Fernández, Viviana, Marchán-Rivadeneira, M. Raquel, Velazco, Paúl M., Burneo, Santiago F., Tinoco, Nicolás &amp; Camacho, M. Alejandra",
+  "year": "2023",
+  "article": "On the taxonomic identity of Sturnira nana Gardner and O’Neil, 1971 (Chiroptera: Phyllostomidae), from Ecuador, with the description of a new species of Sturnira",
+  "treatments": [
+   "03A1182C9E7D3A3FCF6340FF49FAFA25"
+  ],
+  "zenodo": "https://zenodo.org/records/15133831",
+  "sha256": "1a1519b2e469fab6b7b1edcb1a5b07f95ea4c1d01721d88f0ff36fc66a0d6389"
+ },
+ "DF7C660BFFB2FF84A9C7B923FD66392B": {
+  "caption": "TABLE 5. Mean, standard deviation, and range of external and craniodental measurements for Lophostoma carrikeri, including L. yasuni as a junior synonym of L. carrikeri.",
+  "label": "TABLE 5",
+  "doi": "10.11646/zootaxa.4114.3.2",
+  "authors": "Camacho, M. Alejandra, Chávez, Daniel &amp; Burneo, Santiago F.",
+  "year": "2016",
+  "article": "A taxonomic revision of the Yasuni Round-eared bat, Lophostoma yasuni (Chiroptera: Phyllostomidae)",
+  "treatments": [
+   "03AA8795FFB3FF81A9C7BC37FA103ABC"
+  ],
+  "zenodo": "",
+  "sha256": "ba62112a33d796d908143e386e037aeda5e9c559d45b9c8f40ed5c84c0d5b02f"
+ },
+ "DF7C660BFFB8FF8EA9C7B985FC1A3981": {
+  "caption": "TABLE 2. Measurements (mm) and sample statistics a of white-bellied Round-eared bats. Measurements descriptions are provided in the materials and methods section (Morphological analysis).",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.4114.3.2",
+  "authors": "Camacho, M. Alejandra, Chávez, Daniel &amp; Burneo, Santiago F.",
+  "year": "2016",
+  "article": "A taxonomic revision of the Yasuni Round-eared bat, Lophostoma yasuni (Chiroptera: Phyllostomidae)",
+  "treatments": [
+   "03AA8795FFB3FF81A9C7BC37FA103ABC"
+  ],
+  "zenodo": "",
+  "sha256": "76b94e34bc307b9f4a8c837802bae544f1e9d999b2656ec53f3e65d06b3bd034"
+ },
+ "E6C4BA1927A7227114AF7FD00B3D5A38": {
+  "caption": "Table 1. External and cranial measurements for eight species of bats of the family Molossidae with confirmed identities and one unidentified morphospecies. Data based on specimens collected in the Caatinga biome (Lençóis, Chapada Diamantina region, northeastern Brazil), according to this study (catalog numbers are indicated) and previous information in the literature. Abbreviations are described in the Materials and methods.",
+  "label": "Table 1",
+  "doi": "10.3897/zookeys.1210.128570",
+  "authors": "García, Franger J., Ochoa-G, José, Poma-Urey, José L., Miller, Bruce W., Falcão, Fábio C. &amp; del Valle Alvarez, Martín Roberto",
+  "year": "2024",
+  "article": "Expanding the knowledge of the bat fauna of the Brazilian Caatinga: new geographical records of molossid bats (Chiroptera, Molossidae) for the Chapada Diamantina region, with taxonomic notes",
+  "treatments": [
+   "01534CCE20B95EECB6A03EEDB11EB90F",
+   "3E3C251E04425AF7BAB6AB5645C04925",
+   "57F9B6ED8E545888AF84FF6D544E5B47",
+   "7EEC5847125054938AC12AB97B91798C",
+   "8C5BE4C9C9A65DFF963C25F39C46E17C",
+   "B36E9B43E631532483B86C3B085B1B9C",
+   "BF382F93EBDB5CACA468F7C6A7492820",
+   "DC2E867BD8F352FBBCADAA653492BB48"
+  ],
+  "zenodo": "",
+  "sha256": "0e7d5b824476b076bc745450509e374a8ba93aad8cccf7f8978328a19d3250fc"
+ },
+ "E7D0660FFFC8FF8FFF29C8DB287C3881": {
+  "caption": "TABLE 1. Selected external measurements and body mass (g), [(mean); (min-max in mm.)] for eight species of Philippine Murininae.",
+  "label": "TABLE 1",
+  "doi": "10.11646/zootaxa.5691.1.1",
+  "authors": "Eger, Judith L., Sedlock, Jodi L., Lim, Burton K. &amp; Heaney, Lawrence R.",
+  "year": "2025",
+  "article": "Systematics and biogeography of tube-nosed bats, Murina (Mammalia, Chiroptera, Vespertilionidae), from the Philippines with descriptions of six new species",
+  "treatments": [
+   "3B068791FFCBFF89FF26C9C828263F58",
+   "3B068791FFCEFF88FF26CFFC2A8039A0",
+   "3B068791FFCFFF95FF26C8642B3D3C78",
+   "3B068791FFD0FF91FF26CBF82D0C3C78",
+   "3B068791FFD4FF93FF26CCA82D1D3BBE",
+   "3B068791FFD6FF91FF26CC1C2B4D3B84",
+   "3B068791FFD6FF93FF26CA402A4C3CEC"
+  ],
+  "zenodo": "",
+  "sha256": "46feb76f961fcff893560dd9f2e7583f92833bf46628b24e9c29b758530df49e"
+ },
+ "E7D0660FFFD1FF96FF29C9FB2A4A39A1": {
+  "caption": "TABLE 3. Murina sp. Philippines: Estimates of evolutionary divergence based on Tamura-Nei model for cytochrome b between species (lower triangle) and within species (diagonal).",
+  "label": "TABLE 3",
+  "doi": "10.11646/zootaxa.5691.1.1",
+  "authors": "Eger, Judith L., Sedlock, Jodi L., Lim, Burton K. &amp; Heaney, Lawrence R.",
+  "year": "2025",
+  "article": "Systematics and biogeography of tube-nosed bats, Murina (Mammalia, Chiroptera, Vespertilionidae), from the Philippines with descriptions of six new species",
+  "treatments": [
+   "3B068791FFCBFF89FF26C9C828263F58",
+   "3B068791FFCEFF88FF26CFFC2A8039A0",
+   "3B068791FFD0FF91FF26CBF82D0C3C78",
+   "3B068791FFD6FF91FF26CC1C2B4D3B84",
+   "3B068791FFD6FF93FF26CA402A4C3CEC"
+  ],
+  "zenodo": "",
+  "sha256": "c95d158b3cfa89616cbb0df4b8ac04e3e0871bbdaf80ad3cdfa2eb6441b2441e"
+ },
+ "E7D0660FFFD2FF95FF29CC3F2B493CED": {
+  "caption": "TABLE 2A. Selected skull measurements, [(mean+/- sd); (min-max in mm.)] for eight species of Philippine Murininae including holotypes of six new species.",
+  "label": "TABLE 2",
+  "doi": "10.11646/zootaxa.5691.1.1",
+  "authors": "Eger, Judith L., Sedlock, Jodi L., Lim, Burton K. &amp; Heaney, Lawrence R.",
+  "year": "2025",
+  "article": "Systematics and biogeography of tube-nosed bats, Murina (Mammalia, Chiroptera, Vespertilionidae), from the Philippines with descriptions of six new species",
+  "treatments": [
+   "3B068791FFCBFF89FF26C9C828263F58",
+   "3B068791FFCEFF88FF26CFFC2A8039A0",
+   "3B068791FFCFFF95FF26C8642B3D3C78",
+   "3B068791FFD0FF91FF26CBF82D0C3C78",
+   "3B068791FFD4FF93FF26CCA82D1D3BBE",
+   "3B068791FFD6FF91FF26CC1C2B4D3B84",
+   "3B068791FFD6FF93FF26CA402A4C3CEC"
+  ],
+  "zenodo": "",
+  "sha256": "89202d43686bb3053beb0d55da475265d7d09bb00e9db8800cc6d0d6ff9886bd"
+ },
+ "E9F63AFE4E41FFBAD297FF4FFACDFF13": {
+  "caption": "Table 1. Craniometric measurements (mm) of the Eptesicus furinalis specimen from Cândido Mendes, Maranhão, Brazil (present study), with values recorded in specimens of the same species from the Yucatán Peninsula (Mexico) and Chaco Borealis of Argentina, Bolivia and Paraguay.",
+  "label": "Table 1",
+  "doi": "10.15446/caldasia.v45n1.94085",
+  "authors": "Costa, Cleison Luis da Silva, Lima, Ana Priscila Medeiros Olimpío Amanda Cristiny da Silva, Mendes, Samira Brito, Ventura, Marcelo Cardoso da Silva, Fraga, Elmary da Costa &amp; Barros, Maria Claudene",
+  "year": "2023",
+  "article": "First record of Eptesicus furinalis (Chiroptera, Vespertilionidae) from the state of Maranhão, Brazil",
+  "treatments": [
+   "3520DB604E46FFBCD141FDE1FCB4F919"
+  ],
+  "zenodo": "https://zenodo.org/records/15342038",
+  "sha256": "6c519ba02de0cec4ed276d1586f489d867605263c8c13d8c89ee2b8d9adc142c"
+ },
+ "E9FB6645727DFFD4FF0D139B2C7EFC76": {
+  "caption": "TABLE 1. External and cranial measurements (0 ± SD, sample size, and minimum–maximum) of R. thailandensis and R. yunanensis from Yunnan and Sichuan provinces, China, and R. pearsoni from Sichuan Province. Data for the R. yunanensis type (syntype no. BMNH 9.4.4.3) were taken from Hill (1986), and those for R. peasoni from Thailand were cited from Yoshiyuki and Lim (2005)",
+  "label": "TABLE",
+  "doi": "10.3161/150811009X485486",
+  "authors": "Wu, Yi, Harada, Masashi &amp; Motokawa, Masaharu",
+  "year": "2009",
+  "article": "Taxonomy of Rhinolophus yunanensis Dobson, 1872 (Chiroptera: Rhinolophidae) with a description of a new species from Thailand",
+  "treatments": [
+   "352D87DB727BFFD7FC061216284AFE25"
+  ],
+  "zenodo": "",
+  "sha256": "26b6fc8cbef946c75b9bffce578bdc19bee25c09a80d0cb298254b9e54f8b72d"
+ },
+ "ED9A57C5FFAAC73D75CBFA9CFC0AFA58": {
+  "caption": "TABLE 3. External measurements (mm) and mass (g) of M. phillipsi sp. nov. from Idulgashinna, Sri Lanka. Measurements presented as 0 ± SD, range, and sample size n. Measurements of the holotype, paratypes and other individuals of the new species and other species of Miniopterus occurring in India and Sri Lanka are shown for comparative purposes. Measurements of M. phillipsi sp. nov. types were taken by TK, while the other specimens by an assortment of different authors",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.001",
+  "authors": "Kusuminda, Tharaka, Mannakkara, Amani, Ukuwela, B., Kanishka D., Kruskop, V., Sergei, Amarasinghe &amp; J., Chamara",
+  "year": "2022",
+  "article": "DNA Barcoding and Morphological Analyses Reveal a Cryptic Species of Miniopterus from India and Sri Lanka",
+  "treatments": [
+   "314CB65BFFA6C73F76F2F96DFD53F858"
+  ],
+  "zenodo": "",
+  "sha256": "6a83fb9abc44dc17cce706e816cdc0e4b75496ceb040247ecf3d40ea58938c23"
+ },
+ "ED9A57C5FFAFC73875CBFF66FCB1FEF6": {
+  "caption": "TABLE 5. Dental measurements (mm) of M. phillipsi sp. nov. from Idalgashinna, Sri Lanka. Measurements presented as 0 ± SD, range, and sample size n. Measurements of the holotype, paratypes and other individuals of the new species and other species of Miniopterus occurring in India and Sri Lanka are shown for comparative purposes. Measurements of M. phillipsi sp. nov. were taken by TK, while the other specimens by an assortment of different authors",
+  "label": "TABLE",
+  "doi": "10.3161/15081109ACC2022.24.1.001",
+  "authors": "Kusuminda, Tharaka, Mannakkara, Amani, Ukuwela, B., Kanishka D., Kruskop, V., Sergei, Amarasinghe &amp; J., Chamara",
+  "year": "2022",
+  "article": "DNA Barcoding and Morphological Analyses Reveal a Cryptic Species of Miniopterus from India and Sri Lanka",
+  "treatments": [
+   "314CB65BFFA6C73F76F2F96DFD53F858"
+  ],
+  "zenodo": "",
+  "sha256": "7426469a55718e4a34d5464c4fd8b1dd6be105df3415ac61b7a8a263a1fcceda"
+ },
+ "F8E7A4B535699A34FCC5C31BAE75FC12": {
+  "caption": "TABLE 2. Cranial measurements (mean, range and number of specimens) of Rhinolophus specimens collected recently in Mozambique Natural Science Museum). For measurement codes see Sampling and data analysis.",
+  "label": "TABLE",
+  "doi": "10.3161/150811010X537963",
+  "authors": "Monadjem, Ara, Schoeman, M. Corrie, Reside, April, P Io, Dorothea V., Stoffberg, Samantha, Bayliss, Julian, (Woody) Cotterill, F. P. D., Curran, Michael, Kopp, Mirjam &amp; Taylor, Peter J.",
+  "year": "2010",
+  "article": "A recent inventory of the bats of Mozambique with documentation of seven new species for the country",
+  "treatments": [
+   "2431452B35649A39FF01C769AC32FB03",
+   "2431452B35649A39FF2FC48BA976F962",
+   "2431452B35669A3BFC6EC32AAC3AF965",
+   "2431452B35679A39FC99C769AA6FFB00",
+   "2431452B35679A3AFF19C47EAC84FB4D",
+   "2431452B35699A34FEEDC43AA977F8A1",
+   "2431452B35699A3BFF10C728ABA4FCA0"
+  ],
+  "zenodo": "",
+  "sha256": "34432ad96400cedc359392aa805d9a9cccd83b8cc573a771719adea0a75f4407"
+ },
+ "F993661FFFA2E41A507EFD60FA7953C7": {
+  "caption": "Table 3. Cranial measurements (in millimetres) of specimens of Laephotis kirinyaga from Marsabit National Park, Kenya",
+  "label": "Table 3",
+  "doi": "10.1093/zoolinnean/zlaa087",
+  "authors": "Monadjem, Ara, Demos, Terrence C, Dalton, Desire L, Webala, Paul W, Musila, Simon, Kerbis Peterhans, Julian C &amp; Patterson, Bruce D",
+  "year": "2020",
+  "article": "A revision of pipistrelle-like bats (Mammalia: Chiroptera: Vespertilionidae) in East Africa with the description of new genera and species",
+  "treatments": [
+   "25458781FFBCE4185340FC59FC0550F2"
+  ],
+  "zenodo": "",
+  "sha256": "99fef2efc8fae499954a9f33e34fa25741cd78c6ba1a3397e921407b8077b3cc"
+ },
+ "F993661FFFB9E40150A6FA30FD185495": {
+  "caption": "Table 1. Uncorrected cytochrome b p-distances among (below diagonal) and within (numbers on diagonal, in bold) nine genera of Vespertilionidae calculated in MEGA X v.10.0.5",
+  "label": "Table 1",
+  "doi": "10.1093/zoolinnean/zlaa087",
+  "authors": "Monadjem, Ara, Demos, Terrence C, Dalton, Desire L, Webala, Paul W, Musila, Simon, Kerbis Peterhans, Julian C &amp; Patterson, Bruce D",
+  "year": "2020",
+  "article": "A revision of pipistrelle-like bats (Mammalia: Chiroptera: Vespertilionidae) in East Africa with the description of new genera and species",
+  "treatments": [
+   "25458781FFBCE4185340FC59FC0550F2"
+  ],
+  "zenodo": "",
+  "sha256": "598ab4745172141178ee738eff2da19e34b41727aae85db173168c24627c40bc"
+ },
+ "F993661FFFBDE405535AFD18F73C539F": {
+  "caption": "Table 2. External measurements (in millimetres) and mass (in grams) of Laephotis kirinyaga from Marsabit National Park, Kenya",
+  "label": "Table 2",
+  "doi": "10.1093/zoolinnean/zlaa087",
+  "authors": "Monadjem, Ara, Demos, Terrence C, Dalton, Desire L, Webala, Paul W, Musila, Simon, Kerbis Peterhans, Julian C &amp; Patterson, Bruce D",
+  "year": "2020",
+  "article": "A revision of pipistrelle-like bats (Mammalia: Chiroptera: Vespertilionidae) in East Africa with the description of new genera and species",
+  "treatments": [
+   "25458781FFBCE4185340FC59FC0550F2"
+  ],
+  "zenodo": "",
+  "sha256": "dcaedf0d0394af73d72346995045b3d6ca8b6dc033379905e5a082fb931c9dfb"
+ }
+}

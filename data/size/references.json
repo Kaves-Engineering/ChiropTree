@@ -693,6 +693,32 @@
    "independence_group": "velazco-2021-matses",
    "geographic_scope": "Yavarí-Ucayali interfluve, Loreto, Peru",
    "taxonomic_scope": "bats of the Yavarí-Ucayali interfluve"
+  },
+  "plazi-literature": {
+   "short": "Plazi treatments",
+   "role": "compilation",
+   "type": "dataset",
+   "citation": "Plazi TreatmentBank (2026) Bat species treatments from journal articles and monographs, listed through the Plazi SPARQL endpoint (https://qlever.ld.plazi.org/sparql). Each value cites its own article in upstream_source.",
+   "url": "https://tb.plazi.org/GgServer/search?taxonomicName.isNomenclature=true&taxonomicName.exactMatch=false&taxonomicName.order=Chiroptera",
+   "accessed_at": "2026-11-20",
+   "licence": "CC0-1.0 (Plazi treatment data); the articles' own licences apply to their text",
+   "access_note": "Forearm and body-mass figures printed in the running text of 2,359 bat species treatments outside HMW 9 and the MSW checklists, listed with fetch_plazi_bats.py and read by import_plazi_literature.py under strict rules (its docstring): only figures that follow a forearm or mass keyword, belong to the treatment's own species by Plazi's taxon-name markup, are not approximate, comparative or quoted from older literature, and lie within -20%/+25% of HMW's range. Each row's upstream_source names the article (authors, year, title, DOI), so every article counts as its own study; its locator names the Plazi treatment. Values printed only in tables are read separately by import_plazi_tables.py (reference plazi-tables). Articles already imported by hand are skipped. Implausible figures are listed in data/size/unresolved/plazi-literature-figures.md. XML cached under data/raw/size/plazi/ and checksum-pinned in data/size/plazi-literature-sources.json.",
+   "independence_group": "plazi-literature",
+   "geographic_scope": "global",
+   "taxonomic_scope": "all bats"
+  },
+  "plazi-tables": {
+   "short": "Plazi tables",
+   "role": "compilation",
+   "type": "dataset",
+   "citation": "Plazi (2026) Measurement tables of bat articles digitised by Plazi, served at table.plazi.org and deposited in Zenodo's Biodiversity Literature Repository (https://zenodo.org/communities/biosyslit/). Each value cites its own article in upstream_source.",
+   "url": "https://zenodo.org/communities/biosyslit/",
+   "accessed_at": "2026-11-20",
+   "licence": "CC0-1.0 (Plazi table data); the articles' own licences apply to their tables",
+   "access_note": "Forearm and body-mass values from the 215 tables that the cached Plazi bat treatments cite (fetch_plazi_tables.py; XML from table.plazi.org/id/<uuid>), read by import_plazi_tables.py under strict rules (its docstring): a value is kept only when its row and column labels name exactly one species by Plazi's taxon markup, give a clear statistic and sex, and cite no older publication; tables of test results, tables whose header labels are not aligned with their columns, and species whose values the caption says come from older work are skipped. Values pass the same plausibility check as the text import (-20%/+25% of HMW's range). upstream_source is the article, written exactly as plazi-literature writes it, so an article's text and tables count as one study; table values repeating a text value of the same article are not written twice. The locator names the table's Plazi uuid; the claim links http://table.plazi.org/id/<uuid>, which renders the table. Unreadable tables and implausible values are listed in data/size/unresolved/plazi-tables-figures.md. XML cached under data/raw/size/plazi-tables/ and checksum-pinned in data/size/plazi-tables-sources.json.",
+   "independence_group": "plazi-tables",
+   "geographic_scope": "global",
+   "taxonomic_scope": "all bats"
   }
  }
 }

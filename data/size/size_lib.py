@@ -24,6 +24,7 @@ The policy is the one the call importers follow (see data/call_import_lib.py):
 import csv
 import hashlib
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -60,6 +61,43 @@ COLUMNS = [
     "statistic", "value", "value_min", "value_max", "range_type", "sd", "n",
     "sex", "area", "upstream_source", "data_year", "verbatim_value", "notes",
 ]
+
+# A value read from a Plazi treatment (HMW 9, the Plazi literature import, hand
+# reads of a description) links to that species' treatment page, with the printed
+# figure highlighted by a #:~:text= fragment. HMW's own Zenodo record covers one
+# chapter only, so it cannot lead a reader to any other family's account.
+PLAZI_TREATMENT = re.compile(r"Plazi treatment ([0-9A-F]{32})")
+PLAZI_PAGE = "https://tb.plazi.org/GgServer/xhtml/{}"
+# a dash between digits ("22.3–30.5 g") stays inside, so a range highlights whole
+NUMBER_WITH_UNIT = re.compile(r"c?\.?\d(?:[\d\-:.,]|\s?[–—]\s?(?=\d))*\s*(?:mm|g|kHz|ms|dB)\b")
+
+
+# A value read from a table Plazi digitised (import_plazi_tables.py) links to the
+# table itself: table.plazi.org renders it as HTML for a browser (http only).
+PLAZI_TABLE = re.compile(r"Plazi table ([0-9A-F]{32})")
+PLAZI_TABLE_PAGE = "http://table.plazi.org/id/{}"
+
+
+def plazi_treatment(locator: str) -> str:
+    """The Plazi treatment id a locator names, or ''."""
+    match = PLAZI_TREATMENT.search(locator or "")
+    return match.group(1) if match else ""
+
+
+def plazi_table(locator: str) -> str:
+    """The Plazi table uuid a locator names, or ''."""
+    match = PLAZI_TABLE.search(locator or "")
+    return match.group(1) if match else ""
+
+
+def highlight_text(verbatim: str) -> str:
+    """The shortest printed text worth highlighting: the number and its unit.
+
+    A whole sentence breaks on the source's own typos ("componentsis"), and
+    some rows join two printed values with ' | ' or append a reading in '[...]'."""
+    first = (verbatim or "").split(" | ")[0].split(" [")[0].strip()
+    match = NUMBER_WITH_UNIT.search(first)
+    return match.group(0).strip() if match else first
 
 
 def sha256(path: Path) -> str:

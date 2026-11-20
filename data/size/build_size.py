@@ -57,7 +57,17 @@ from pathlib import Path
 HERE = Path(__file__).parent
 DATA = HERE.parent
 sys.path.insert(0, str(HERE))
-from size_lib import BASES, COLUMNS, RANGE_TYPES, SEXES, STATISTICS, TRAITS  # noqa: E402
+from size_lib import (  # noqa: E402
+    BASES,
+    COLUMNS,
+    RANGE_TYPES,
+    SEXES,
+    STATISTICS,
+    TRAITS,
+    highlight_text,
+    plazi_table,
+    plazi_treatment,
+)
 
 OUT = DATA / "chiroptera_body_size.json"
 TAXONOMY = DATA / "chiroptera_taxonomy.json"
@@ -134,7 +144,8 @@ def load_rows(refs: dict, species: dict, sane: dict) -> tuple[list[dict], list[s
                 if "value_min" in numbers and not numbers["value_min"] <= numbers["value"] <= numbers["value_max"]:
                     errors.append(f"{where}: value outside its own range")
                     continue
-                row.update(_num=numbers)
+                # _where lets data/build_claims.py trace a shown value to its row
+                row.update(_num=numbers, _where=where)
                 rows.append(row)
     if errors:
         raise BuildError("\n".join(errors[:40]) + (f"\n... and {len(errors) - 40} more" if len(errors) > 40 else ""))
@@ -316,6 +327,15 @@ def main() -> None:
                     rec["out"] = 1
                 if r["taxon_match_method"] not in ("exact",):
                     rec["nm"] = text(r["verbatim_taxon_name"])
+                # read from a Plazi treatment: the card links the record to that
+                # species' own page (pt) and highlights the printed figure (ph)
+                # or to the Plazi table it was read from (tt), which table.plazi.org renders
+                treatment, table = plazi_treatment(r["locator"]), plazi_table(r["locator"])
+                if treatment or table:
+                    rec["pt" if treatment else "tt"] = treatment or table
+                    printed = highlight_text(r["verbatim_value"])
+                    if printed:
+                        rec["ph"] = printed
                 recs.append(rec)
             h["r"] = recs
             entry[SHORT_TRAIT[trait]] = h
