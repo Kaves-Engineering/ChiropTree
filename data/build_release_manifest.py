@@ -9,6 +9,7 @@ HERE = Path(__file__).parent
 OUT = HERE / "release.json"
 FILES = (
     "chiroptera_taxonomy.json", "chiroptera_name_history.json", "chiroptera_body_size.json",
+    "chiroptera_diet.json",
     "marine_mammal_taxonomy.json",
     "call_measurements.json", "danish_names.json", "marine_mammal_danish_names.json",
     "gbif_country_supplement.json", "marine_mammal_gbif_country_supplement.json",

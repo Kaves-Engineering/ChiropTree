@@ -26,10 +26,10 @@ Sources, in the order the card prefers them:
    SD and n where printed; sexes are kept apart where the source separates
    them. A range printed without a mean is 'range_only'.
 2. Handbook of the Mammals of the World, vol. 9, Bats (Wilson & Mittermeier
-   2019), used only where no study above covers the species. Each species
-   account gives the forearm as a range compiled from the literature, so every
-   row is 'range_only' with range_type 'min_max'; build_size.py never lets its
-   midpoint into a median beside a real mean.
+   2019) gave the forearm for 67 of them. Those rows are now written, with
+   every other HMW account's forearm and weight, by data/size/import_hmw.py,
+   which reads the same Plazi text automatically and agrees with all 67 hand
+   readings.
 
 Most texts were read from Plazi TreatmentBank, which publishes each species
 treatment as XML (doi of the HMW deposit: 10.5281/zenodo.6397752 and its
@@ -328,81 +328,6 @@ ROWS = [
     ("rosa-2020-thyroptera", "rosa-2020-thyroptera", "Thyroptera devivoi", "Thyroptera devivoi", "Table 1, this study", "male", S, 36.9, None, None, None, 1, "Chapada das Mesas, Maranhão, Brazil", "Forearm Length (FA) 36.9", "One adult male."),
 ]
 
-# Handbook of the Mammals of the World 9 (2019): (docId, MDD species, account
-# title, page, low, high, OCR text as Plazi has it, note). low == high: a
-# single printed value.
-HMW = [
-    ("885887A2FFD98A3EF89CEFB2FE0DD1D4", "Rhinolophus siamensis", "Rhinolophus siamensis", 301, 36, 41, "forearm 36-41 mm", ""),
-    ("194287C9FFA7BA0CB1AFFC50B66EF9EE", "Mops leucogaster", "Chaerephon leucogaster", 646, 33, 37, "forearm 33-37 mm", "Chaerephon leucogaster is now Mops leucogaster (MDD). HMW describes it from Madagascar; MDD also includes mainland African populations."),
-    ("4C3D87E8FFA16A1EFF429DAD16F3B09B", "Cnephaeus anatolicus", "Eptesicus anatolicus", 848, 46.1, 50.4, "forearm 46-1-50-4 mm", "Eptesicus anatolicus is now Cnephaeus anatolicus (MDD)."),
-    ("4C3D87E8FF966A29FA8895F51406B2A1", "Plecotus ognevi", "Plecotus ognevi", 867, 40, 42, "forearm 40-42 mm", ""),
-    ("4C3D87E8FF716ACEFF4D9EF3167BBA8C", "Kerivoula dongduongana", "Kerivoula dongduongana", 898, 30, 33, "forearm 30-33 mm", ""),
-    ("885887A2FFE48A02F8B7FC6AF77CC945", "Rhinolophus microglobosus", "Rhinolophus microglobosus", 322, 41.4, 46.3, "forearm 41-4—46- 3 mm", ""),
-    ("885887A2FFC18A27FF69EFAAF4D0D285", "Rhinolophus damarensis", "Rhinolophus damarensis", 293, 44, 52.9, "forearm 44-52- 9 mm", ""),
-    ("4C3D87E8FF666AD9FF51942A1CC5B288", "Murina peninsularis", "Murina peninsularis", 918, 33.8, 39.4, "forearm 33-8-39- 4 mm", ""),
-    ("4C3D87E8FF9C6A2CFA8F9B521A9FB345", "Barbastella darjelingensis", "Barbastella darjelingensis", 861, 38.7, 42.1, "forearm 38.7-42- 1 mm", ""),
-    ("4C3D87E8FFA76A18FF51958919CFB8E6", "Cnephaeus pachyomus", "Eptesicus pachyomus", 850, 49, 57, "forearm 49-57 mm", "Eptesicus pachyomus is now Cnephaeus pachyomus (MDD)."),
-    ("194287C9FFB6BA1AB495FFF1B59BFE36", "Promops davisoni", "Promops davisoni", 629, 46, 52, "forearm 46-52 mm", ""),
-    ("860EC8445712FFE9FF03FB05B262F26F", "Rhinopoma cystops", "Rhinopoma cystops", 176, 50, 67, "forearm 50-67 mm", ""),
-    ("03A63743915EFFE2E4E4CDC6284BA4B6", "Pteronotus rubiginosus", "Pteronotus rubiginosus", 443, 61, 67, "forearm 61-67 mm", ""),
-    ("194287C9FF98BA35B16DFFDCB0DFFCC6", "Mops niveiventer", "Mops niveiventer", 655, 44, 48, "forearm 44-48 mm", ""),
-    ("194287C9FF8FBA23B4A6F4A8B608F660", "Ozimops loriae", "Ozimops loriae", 670, 32, 34, "forearm 32-34 mm", ""),
-    ("4C3D87E8FFDB6A64FF4D95171EFAB6B0", "Falsistrellus mackenziei", "Falsistrellus mackenziei", 790, 48, 54, "forearm 48-54 mm", ""),
-    ("4C3D87E8FFCB6A75FA519FDC1B23B1DD", "Nyctophilus geoffroyi", "Nyctophilus geoffroyi", 806, 30.6, 41.7, "forearm 30-6—41-7 mm", ""),
-    ("4C3D87E8FFAA6A15FF7C9037179ABA50", "Scotorepens orion", "Scotorepens orion", 839, 32.4, 38.8, "forearm 32-4-38-8 mm", ""),
-    ("4C3D87E8FFDA6A65FF849DAE1699B286", "Vespadelus caurinus", "Vespadelus caurinus", 791, 26.6, 31.7, "forearm 26-6-31-7 mm", ""),
-    ("4C3D87E8FFDA6A66FA8B9FA41A19B22A", "Vespadelus finlaysoni", "Vespadelus finlaysoni", 791, 29.8, 37.6, "forearm 29-8-37-6 mm", ""),
-    ("4C3D87E8FFD96A66FF539F3819BFBCE8", "Vespadelus troughtoni", "Vespadelus troughtoni", 792, 30, 36.4, "forearm 30-36-4 mm", ""),
-    ("4C3D87E8FFE26A5DFF919E4D18B8BFBC", "Alionoctula westralis", "Pipistrellus westralis", 783, 27.4, 31.3, "forearm 27-4-31-3 mm", "Pipistrellus westralis is now Alionoctula westralis (MDD)."),
-    ("03D587F2FFDA4C11FF723C6DF706FBF5", "Centronycteris centralis", "Centronycteris centralis", 370, 42.9, 49, "forearm 42-9-49 mm", ""),
-    ("03D587F2FFDB4C10FF04395FF587FB05", "Peropteryx trinitatis", "Peropteryx trinitatis", 369, 36, 43.5, "forearm 36-43.5 mm", ""),
-    ("4C3D87E8FF9D6A22FF4E9A1419C2BE0C", "Rhogeessa hussoni", "Rhogeessa hussoni", 860, 30.2, 30.2, "Forearm 30- 2 mm (type specimen)", "The type specimen."),
-    ("4C3D87E8FFAF6A10FA5394D718F1B3DB", "Histiotus laephotis", "Histiotus laephotis", 842, 44, 50.1, "forearm 44-50-1 mm", ""),
-    ("4C3D87E8FF9E6A21FF81941A1F8AB00E", "Rhogeessa io", "Rhogeessa io", 859, 27.6, 32, "forearm 27- 6-32 mm", "Plazi's metadata titles this treatment Rhogeessa innoxius; its text is the account of R. io (no. 213, Thomas's Yellow Bat)."),
-    ("4C3D87E8FFAD6A13FA489C2A1F41BF8C", "Neoeptesicus chiriquinus", "Eptesicus chiriquinus", 844, 42.5, 48.9, "forearm 42-5-48-9 mm", "Eptesicus chiriquinus is now Neoeptesicus chiriquinus (MDD)."),
-    ("03D587F2FFCA4C01FF7431D4F8DBF2F5", "Taphozous achates", "Taphozous achates", 354, 59.6, 63.7, "forearm 59-6—63-7 mm", ""),
-    ("194287C9FF93BA20B1BEF06EB11EFD9F", "Tadarida insignis", "Tadarida insignis", 666, 57, 65, "forearm 57-65 mm", ""),
-    ("4C3D87E8FF6F6AD1FA91909E1B63BDB7", "Murina hilgendorfi", "Murina hilgendorfi", 909, 39.5, 46.2, "forearm 39-5—46- 2 mm", ""),
-    ("4C3D87E8FF2F6A90FF51975E1FA4B225", "Myotis fimbriatus", "Myotis fimbriatus", 974, 37, 42.7, "forearm 37-42- 7 mm", ""),
-    ("4C3D87E8FF2B6A94FF5296A61F61B0CE", "Myotis macropus", "Myotis macropus", 970, 36, 42.9, "forearm 36-42- 9 mm", ""),
-    ("4C3D87E8FF346A8BFA82932516A6B6B5", "Myotis moluccarum", "Myotis moluccarum", 969, 36, 43.1, "forearm 36-43- 1 mm", ""),
-    ("4C3D87E8FFBF6A01FA569C0B1D3FBF02", "Arielulus torquatus", "Thainycteris torquatus", 826, 41, 50, "forearm 41-50 mm", "Thainycteris torquatus is now Arielulus torquatus (MDD)."),
-    ("4C3D87E8FF7E6AC1FF409D3B184EBC70", "Nycticeius cubanus", "Nycticeius cubanus", 892, 28.6, 32.4, "forearm 28-6— 32- 4 mm", ""),
-    ("4C3D87E8FFFD6A43FA4E952F1D9FBCA2", "Nyctalus plancyi", "Nyctalus plancyi", 764, 47, 50, "forearm 47-50 mm", ""),
-    ("4C3D87E8FFE26A5DFA9692811886B695", "Alionoctula adamsi", "Pipistrellus adamsi", 783, 29.6, 32.7, "forearm 29-6-32-7 mm", "Pipistrellus adamsi is now Alionoctula adamsi (MDD)."),
-    ("4C3D87E8FFC36A7DFA4D9B571DD0B205", "Neoromicia anchietae", "Hypsugo anchieta", 814, 29, 34, "forearm 29-34 mm", "HMW's Hypsugo anchietae is MDD's Neoromicia anchietae, from which N. hlandzeni was split in 2020."),
-    ("4C3D87E8FF396A87FA489C2A1B2FB322", "Myotis davidii", "Myotis davidii", 956, 31, 37, "forearm 31-37 mm", ""),
-    ("4C3D87E8FFCF6A71FA599B521DE4B2B7", "Hypsugo alashanicus", "Hypsugo alaschanicus", 810, 35, 38, "forearm 35-38 mm", "HMW spells the epithet alaschanicus."),
-    ("E84887F9FFD4D65A0AC8FE4618BD3100", "Miniopterus fuliginosus", "Miniopterus fuliginosus", 693, 44.7, 49.6, "forearm 44-7-49-6 mm", ""),
-    ("4C3D87E8FF316A8FFA5190A81FC6B95B", "Myotis laniger", "Myotis laniger", 964, 31, 37.1, "forearm 31-37- 1 mm", ""),
-    ("E84887F9FFD5D65B0FE6FE1B1B4A3CF7", "Miniopterus medius", "Miniopterus medius", 694, 40, 48.2, "forearm 40-48-2 mm", ""),
-    ("885887A2FFD98A3FF887FCC8F71ED6C6", "Rhinolophus episcopus", "Rhinolophus episcopus", 301, 45, 52, "forearm 45-52 mm (subspecies episcopus)", "The nominate subspecies only; HMW gives other ranges for caldwelli (43-45 mm) and an undescribed subspecies (40-46 mm)."),
-    ("4C3D87E8FF936A2CFA4C92B81462B74B", "Barbastella beijingensis", "Barbastella beijingensis", 862, 41.1, 46.4, "forearm 41.1-46.4 mm", ""),
-    ("194287C9FF8CBA20B482F5FEB6BEF840", "Tadarida latouchei", "Tadarida latouchei", 667, 53, 57, "forearm 53-57 mm", ""),
-    ("4C3D87E8FF466AFAFA8E9A951D07B3C5", "Myotis rufoniger", "Myotis rufoniger", 951, 45, 56, "forearm 45-56 mm", ""),
-    ("4C3D87E8FFE76A59FF579A181D28BF49", "Tylonycteris fulvida", "Tylonycteris fulvida", 786, 22.9, 27.9, "forearm 22-9-27-9 mm", ""),
-    ("03BD87A2C678A20AFF4AF83BFC745253", "Hipposideros demissus", "Hipposideros demissus", 241, 66.9, 66.9, "forearm 66* 9 mm", "A single value."),
-    ("4C3D87E8FFE36A5DFA4F90F71DBEBAFA", "Alionoctula angulata", "Pipistrellus angulatus", 782, 31, 37.4, "forearm 31-37-4 mm", "Pipistrellus angulatus is now Alionoctula angulata (MDD)."),
-    ("03BD87A2C67AA208FF57FB47FB1E4E1A", "Hipposideros grandis", "Hipposideros grandis", 239, 59, 62, "forearm 59-62 mm", ""),
-    ("4C3D87E8FF836A3CFF53975F1F8EB778", "Lasiurus seminolus", "Lasiurus seminolus", 878, 39, 47, "forearm 39-47 mm", ""),
-    ("4C3D87E8FF586AE0FA869DA11A47B283", "Myotis ciliolabrum", "Myotis ciliolabrum", 925, 31.2, 35.7, "forearm 31:2-35- 7 mm", ""),
-    ("03A63743915FFFE3E4DFC5BF28E3A80A", "Pteronotus fuscus", "Pteronotus fuscus", 442, 56, 62, "forearm 56-62 mm", ""),
-    ("03A63743915FFFE2E1DBC1E32DD4A4EE", "Pteronotus paraguanensis", "Pteronotus paraguanensis", 442, 52.6, 55.8, "forearm 52-6-55-8 mm", ""),
-    ("03A637439150FFECE4EACCF02EB6ACD0", "Pteronotus pusillus", "Pteronotus pusillus", 441, 49.7, 52.9, "forearm 49-7-52-9 mm", ""),
-    ("885887A2FFDD8A3AF896FB47F94CD195", "Rhinolophus nippon", "Rhinolophus nippon", 297, 49, 64, "forearm 49—64 mm", "Whole species; HMW gives 49-59 mm for the Japanese nominate subspecies and 58-64 mm for tragatus."),
-    ("4C3D87E8FF636ADCFF819E1F1D6CB6BB", "Murina ryukyuana", "Murina ryukyuana", 913, 32.3, 38.1, "forearm 32-3-38- 1 mm", ""),
-    ("03A687BCFF94FF97164EF411FCC7FB49", "Anoura peruana", "Anoura peruana", 521, 43, 49, "forearm 43-49 mm", ""),
-    ("885887A2FFFE8A1BF8B4EFE6FC7FC876", "Rhinolophus perniger", "Rhinolophus perniger", 328, 68.5, 81, "forearm 68- 5-81 mm", "HMW notes its other measurements may include other taxa, but not the forearm."),
-    # call-gap search, November 2026: species whose call came in then
-    ("4C3D87E8FF9C6A23FF849ACB168EBE9C", "Barbastella caspica", "Barbastella caspica", 861, 40.6, 44.5, "forearm 40-6-44- 5 mm", ""),
-    ("4C3D87E8FF6D6AD2FF8F906B1A01B76C", "Murina beelzebub", "Murina beelzebub", 911, 34.4, 37.3, "forearm 34-4-37- 3 mm", ""),
-    ("4C3D87E8FF656ADAFF7C9ACE17D2BC81", "Murina eleryi", "Murina eleryi", 919, 27.3, 31.3, "forearm 27-3-31- 3 mm", ""),
-    ("4C3D87E8FF3F6A80FF4890731740BAD2", "Myotis ater", "Myotis ater", 958, 34, 39, "forearm 34-39 mm", ""),
-    ("194287C9FFA8BA05B19BFE3FB602FC30", "Cynomops mexicanus", "Cynomops mexicanus", 639, 33.2, 37, "forearm 33-2-37 mm", ""),
-    ("194287C9FFB0BA1CB48AFB76BA17F8C9", "Eumops ferox", "Eumops ferox", 631, 55, 63, "forearm 55-63 mm", ""),
-]
-
-
 def midpoint(low: float, high: float) -> str:
     return number((low + high) / 2)
 
@@ -445,21 +370,6 @@ def main() -> None:
             "upstream_source": {"webala-2019": "guillen-servent-1996"}.get(ref, "")
             or ("malaga-2020" if "Málaga" in note else ""),
             "data_year": YEAR[ref], "verbatim_value": verbatim, "notes": note,
-        })
-
-    for doc, binomial, printed, page, low, high, verbatim, note in HMW:
-        species, method = species_for(binomial, printed)
-        single = low == high
-        rows["hmw-2019"].append({
-            "observation_id": f"hmw-2019-{species['id']}", "mdd_id": species["id"],
-            "verbatim_taxon_name": printed, "taxon_match_method": method, "reference_id": "hmw-2019",
-            "locator": f"p. {page}, Descriptive notes; Plazi treatment {doc}", "trait": "forearm_length",
-            "basis": "measured", "statistic": "single" if single else "range_only",
-            "value": number(low) if single else midpoint(low, high),
-            "value_min": "" if single else number(low), "value_max": "" if single else number(high),
-            "range_type": "" if single else "min_max", "n": "1" if single and "type specimen" in note else "",
-            "sex": "pooled", "data_year": "2019", "verbatim_value": verbatim,
-            "notes": ("Range compiled from the literature by HMW. " + note).strip(),
         })
 
     for ref, ref_rows in sorted(rows.items()):

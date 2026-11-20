@@ -214,6 +214,21 @@ def validate_body_size(taxonomy: dict) -> None:
                     assert 0 <= i < len(refs), f"body size: {name} cites a missing upstream"
 
 
+def validate_diet(taxonomy: dict) -> None:
+    """Every diet entry names a real species, known guilds and a known route."""
+    diet = load("chiroptera_diet.json")
+    species = {record["sciName"].replace("_", " ") for record in taxonomy["species"]}
+    guilds, bases = set(diet["_meta"]["guilds"]), set(diet["_meta"]["bases"])
+    assert set(diet["species"]) <= species, "chiroptera_diet.json: species not in the taxonomy"
+    for name, entry in diet["species"].items():
+        foods = entry["g"]
+        assert isinstance(foods, list) and foods and len(set(foods)) == len(foods), f"diet: {name} needs a list of distinct foods"
+        assert set(foods) <= guilds, f"diet: {name} has an unknown guild in {foods!r}"
+        assert entry["b"] in bases, f"diet: {name} has an unknown route {entry['b']!r}"
+        if "sh" in entry:
+            assert 0 < sum(entry["sh"].values()) <= 101, f"diet: {name} shares do not add up"
+
+
 def validate_manifest() -> None:
     manifest = load("release.json")
     for name, expected in manifest["files"].items():
@@ -234,6 +249,7 @@ def main() -> None:
     validate_names("danish_names.json", bat_ids)
     validate_name_history(bats)
     validate_body_size(bats)
+    validate_diet(bats)
     validate_names("marine_mammal_danish_names.json", marine_ids)
     birds = load("bird_taxonomy.json")
     bird_ids, _ = validate_taxonomy(birds, "birds")
