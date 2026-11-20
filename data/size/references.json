@@ -253,9 +253,9 @@
    "citation": "Wilson DE, Mittermeier RA (eds) (2019) Handbook of the Mammals of the World. Vol. 9. Bats. Lynx Edicions, Barcelona. ISBN 978-84-16728-19-0.",
    "doi": "10.5281/zenodo.6397752",
    "url": "https://doi.org/10.5281/zenodo.6397752",
-   "accessed_at": "2026-11-09",
+   "accessed_at": "2026-11-18",
    "licence": "all-rights-reserved",
-   "access_note": "The species accounts were digitised by Plazi and deposited in Zenodo (Vespertilionidae: 10.5281/zenodo.6397752; the other families have sibling deposits). Only the forearm range in each account's Descriptive notes is used, and only for species no measuring study covers. Plazi's OCR renders decimal points as hyphens or colons; the OCR text is kept in verbatim_value, and each reading is unambiguous by magnitude. The ranges are compiled from the literature, so every row is range_only. Read from the Plazi TreatmentBank XML of the treatment (https://tb.plazi.org/GgServer/xml/<docId>; the docId is in each row's locator), cached under data/raw/size/plazi/ and checksum-pinned in import_literature_forearm.py. Values transcribed by hand.",
+   "access_note": "The species accounts were digitised by Plazi and deposited in Zenodo (Vespertilionidae: 10.5281/zenodo.6397752; the other families have sibling deposits). The forearm and weight figures in every account's Descriptive notes are used, as ranges compiled from the literature (range_only) or single printed values. build_size.py also uses them as each species' reference range: a measured value well outside it is kept on the card but left out of the headline. Plazi's OCR renders decimal points as hyphens or colons; import_hmw.py reads every figure automatically (the rules are in its docstring), keeps the OCR text in verbatim_value, and lists figures it cannot read unambiguously in data/size/unresolved/hmw-2019-figures.md. Read from the Plazi TreatmentBank XML of the treatment (https://tb.plazi.org/GgServer/xml/<docId>; the docId is in each row's locator), fetched by fetch_hmw.py, cached under data/raw/size/plazi/ and checksum-pinned in data/size/hmw-2019-sources.json.",
    "independence_group": "hmw-2019",
    "geographic_scope": "global",
    "taxonomic_scope": "all bats"
@@ -665,6 +665,34 @@
    "independence_group": "tu-2026-mekong",
    "geographic_scope": "Mekong Delta, Vietnam",
    "taxonomic_scope": "bats of the Mekong Delta"
+  },
+  "castillo-figueroa-2020": {
+   "short": "Castillo-Figueroa 2020",
+   "role": "primary",
+   "type": "journal_article",
+   "citation": "Castillo-Figueroa D (2020) Ecological morphology of Neotropical bat wing structures. Zoological Studies 59: 60.",
+   "doi": "10.6620/ZS.2020.59-60",
+   "url": "https://doi.org/10.6620/ZS.2020.59-60",
+   "accessed_at": "2026-11-18",
+   "licence": "open-access-terms-unstated",
+   "access_note": "Table 1, FL column: mean ± SD forearm of dry adult vouchers in MPUJ-MAMM (Bogotá), sexes pooled, one measurer with a digital caliper. Five rows left out (a copied row, two single specimens probably mixed up with a congener, and two names for species outside the Neotropics), listed in import_castillo_figueroa_2020.py. Journal PDF downloaded by the project owner, cached as data/raw/size/literature/castillo-figueroa-2020.pdf (sha256 0c05905d...).",
+   "independence_group": "castillo-figueroa-2020",
+   "geographic_scope": "Neotropics, mainly Colombia",
+   "taxonomic_scope": "97 Neotropical bat species"
+  },
+  "velazco-2021-matses": {
+   "short": "Velazco et al. 2021",
+   "role": "primary",
+   "type": "journal_article",
+   "citation": "Velazco PM, Voss RS, Fleck DW, Simmons NB (2021) Mammalian diversity and Matses ethnomammalogy in Amazonian Peru. Part 4: Bats. Bulletin of the American Museum of Natural History 451: 1-199.",
+   "doi": "10.1206/0003-0090.451.1.1",
+   "url": "https://doi.org/10.1206/0003-0090.451.1.1",
+   "accessed_at": "2026-11-18",
+   "licence": "all-rights-reserved",
+   "access_note": "Forearm (F) row of the 49 tables of external and craniodental measurements, by sex, of the authors' voucher specimens; transcribed by hand from the page images by import_velazco_2021_matses.py. Only the factual measurements are recorded. BioOne PDF downloaded by the project owner, cached as data/raw/size/literature/velazco-2021-matses-bats.pdf (sha256 8470f277...).",
+   "independence_group": "velazco-2021-matses",
+   "geographic_scope": "Yavarí-Ucayali interfluve, Loreto, Peru",
+   "taxonomic_scope": "bats of the Yavarí-Ucayali interfluve"
   }
  }
 }

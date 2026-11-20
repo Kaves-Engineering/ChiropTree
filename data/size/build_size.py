@@ -34,7 +34,15 @@ Flags carried to the page:
 - est: the headline is an estimate (no measurement exists);
 - pre-split: a record's source predates a split of this species, so its bats
   may include populations now in the split-off species (from the name history);
-- spread: independent sources disagree by more than 30% of the median.
+- spread: independent sources disagree by more than 30% of the median;
+- out: a measured value lies more than 5% outside the range the reference
+  handbook (HMW 2019, REFERENCE_RANGES) gives for the species (or, where HMW
+  prints one value, more than 10% from its forearm or 35% from its mass). Such a value is
+  almost always another species, a juvenile, or a unit or transcription error
+  (PanTHERIA's 68.8 mm forearm for Vampyrum spectrum, whose adults measure
+  98-118 mm), so it stays in the record list, marked, but never enters the
+  headline. When every measured value is out, the headline is the handbook's
+  range (flagged ro), exactly as for a species known only from ranges.
 
 Run after the importers: uv run data/size/build_size.py
 """
@@ -58,6 +66,9 @@ PARAMETERS = DATA / "calls" / "parameters.json"
 CALL_REFS = DATA / "calls" / "references.json"
 COPY_TOLERANCE = 0.03
 SPREAD_TOLERANCE = 0.30
+REFERENCE_RANGES = {"hmw-2019"}
+OUTSIDE_TOLERANCE = 0.05
+SINGLE_TOLERANCE = {"forearm_length": 0.10, "body_mass": 0.35}
 SHORT_TRAIT = {"forearm_length": "fa", "body_mass": "m"}
 
 
@@ -184,6 +195,31 @@ def group_values(rows: list[dict]) -> dict[str, float]:
     return out
 
 
+def outside_reference(records: list[dict]) -> set[int]:
+    """ids of the rows whose value lies outside the reference handbook's range.
+
+    A printed range allows OUTSIDE_TOLERANCE either side; a single printed
+    value (often one specimen) allows SINGLE_TOLERANCE of the trait, since
+    one bat says little about the species' spread.
+    """
+    bands = []
+    for r in records:
+        if r["reference_id"] not in REFERENCE_RANGES:
+            continue
+        if "value_min" in r["_num"]:
+            bands.append((r["_num"]["value_min"] * (1 - OUTSIDE_TOLERANCE),
+                          r["_num"]["value_max"] * (1 + OUTSIDE_TOLERANCE)))
+        else:
+            tolerance = SINGLE_TOLERANCE[r["trait"]]
+            bands.append((r["_num"]["value"] * (1 - tolerance), r["_num"]["value"] * (1 + tolerance)))
+    if not bands:
+        return set()
+    low, high = min(b[0] for b in bands), max(b[1] for b in bands)
+    return {id(r) for r in records
+            if r["reference_id"] not in REFERENCE_RANGES and r["statistic"] != "range_only"
+            and not low <= r["_num"]["value"] <= high}
+
+
 def rounded(value: float, trait: str) -> float:
     if trait == "forearm_length" or value < 10:
         return round(value, 1)
@@ -222,10 +258,12 @@ def main() -> None:
         entry = {}
         for trait, records in per_species[binomial].items():
             measured = [r for r in records if r["basis"] == "measured"]
+            outside = outside_reference(records)
+            kept = [r for r in measured if id(r) not in outside]
             # a range-only row (a field key's identification range) has no
             # mean; its midpoint never joins a median of real means
-            with_value = [r for r in measured if r["statistic"] != "range_only"]
-            basis_rows = with_value or measured or records
+            with_value = [r for r in kept if r["statistic"] != "range_only"]
+            basis_rows = with_value or kept or [r for r in records if id(r) not in outside] or records
             values = group_values(basis_rows)
             headline = statistics.median(values.values())
             ranged = [r for r in measured if "value_min" in r["_num"]]
@@ -274,6 +312,8 @@ def main() -> None:
                     rec["al"] = sorted({ref_index[a] for a in r["_also"]})
                 if predates(r):
                     rec["pre"] = 1
+                if id(r) in outside:
+                    rec["out"] = 1
                 if r["taxon_match_method"] not in ("exact",):
                     rec["nm"] = text(r["verbatim_taxon_name"])
                 recs.append(rec)

@@ -150,12 +150,17 @@ try {
 }
 /* ===== /PALETTE ==================================================== */
 
-/* Call plot series colours. Three hues plus a neutral, checked for colour-blind
-   separation (all pairs) and 3:1 contrast against --canvas in each theme; every
-   family also has its own marker shape, so colour is never the only cue. Kept
-   outside the palette region: only the bat page draws the plot. */
-:root{--plot-1:#3f8ee0;--plot-2:#d9701f;--plot-3:#d0548a;--plot-other:#9fb38d}
-:root[data-theme="light"]{--plot-1:#1f66c2;--plot-2:#c4560f;--plot-3:#b03a86;--plot-other:#6f8068}
+/* Call plot series colours: blue, vermilion, gold, purple, teal and a grey for
+   the leftovers. Each clears 3:1 against --canvas in its theme, and every pair
+   stays at least 10 OKLab units apart (x100) under simulated protanopia,
+   deuteranopia and tritanopia (Machado 2009, full severity): 12.5 in dark,
+   10.3 in light. The hues spread in lightness as well as hue, which is what
+   keeps them apart for colour-blind readers. Every family and diet also has
+   its own marker shape, so colour is never the only cue. The grey is neutral,
+   not sage, so it does not sink into the green canvas. Kept outside the
+   palette region: only the bat page draws the plot. */
+:root{--plot-1:#5aaaf5;--plot-2:#f5612a;--plot-3:#f2d35c;--plot-4:#a64fd0;--plot-5:#9cefe6;--plot-other:#9b9c97}
+:root[data-theme="light"]{--plot-1:#3a7ae6;--plot-2:#962a0c;--plot-3:#a87a12;--plot-4:#6c1fa8;--plot-5:#00545e;--plot-other:#7a7c78}
 
 *{box-sizing:border-box}
 
@@ -796,6 +801,10 @@ footer a:hover{color:var(--ochre)}
 .plot-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
 .plot-title{margin:0;font-family:var(--display);font-weight:500;font-size:1.125rem;color:var(--bone);line-height:1.25;text-wrap:balance}
 .plot-sub{margin:0;font:0.75rem/1.4 var(--mono);color:var(--muted);letter-spacing:.02em}
+/* what the filters have selected, under the title */
+.plot-sel{margin:6px 0 0;font-size:.9375rem;line-height:1.45;color:var(--bone);text-wrap:pretty;max-width:72ch}
+.plot-sel .k{font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line-text);margin-right:5px}
+.plot-sel .sep{color:var(--muted);margin:0 8px}
 .plot-opts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-left:auto}
 .plot-check{display:inline-flex;align-items:center;gap:7px;min-height:36px;font-size:.875rem;color:var(--text);cursor:pointer}
 .plot-check input{width:16px;height:16px;margin:0;accent-color:var(--ochre)}
@@ -814,9 +823,48 @@ footer a:hover{color:var(--ochre)}
 .plot-fams>summary::before,.plot-more>summary::before{content:"";width:6px;height:6px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(-45deg);transition:transform .15s}
 .plot-fams[open]>summary::before,.plot-more[open]>summary::before{transform:rotate(45deg)}
 .plot-fams>summary:focus-visible,.plot-more>summary:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
-.plot-fam-actions{display:flex;gap:6px 14px;margin:4px 0 8px}
+.plot-filter-lead{margin:6px 0 4px;font-size:.8125rem;color:var(--muted);max-width:72ch}
+.plot-filter-lead .plot-link{margin-left:8px}
+.plot-link[hidden]{display:none}
+.plot-filters{display:grid;gap:4px}
+/* one row per filter: name and summary on the left, All/None on the right, chips below */
+.plot-dim{border:0;margin:0;padding:10px 0 6px;min-width:0;border-top:1px solid rgba(var(--border-rgb),.14)}
+.plot-dim:first-child{border-top:0}
+.plot-dim>legend{float:left;padding:0;margin:0 16px 6px 0;min-height:32px;display:flex;align-items:center;gap:8px}
+.plot-dim-name{font:500 0.6875rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line-text)}
+.plot-dim-sum{font-size:.8125rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.plot-dim-acts{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:2px 12px;margin-bottom:6px}
+.plot-dim-acts[hidden]{display:none}
+.plot-dim-body{clear:both;display:grid;gap:8px}
+.plot-dim-note{margin:0;font-size:.8125rem;color:var(--muted);max-width:72ch}
+.plot-find input{
+  min-height:32px;width:12em;max-width:100%;padding:0 10px;border:1px solid rgba(var(--border-rgb),.3);border-radius:2px;
+  background:rgba(var(--input-rgb),var(--input-a));color:var(--text);font:inherit;font-size:.8125rem;
+}
+.plot-find input:focus-visible{outline:2px solid var(--ochre);outline-offset:1px}
+.plot-fam i{font-style:italic}
+/* would add no species, given the other rows: still clickable, so no fading */
+.plot-fam.zero{border-style:dashed}
+.plot-key{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.8125rem;color:var(--text)}
+.plot-key li{display:inline-flex;align-items:center;gap:6px}
+.plot-key svg{flex:none}
+.plot-key-note{color:var(--muted)}
+/* marked by family: one line per colour group, its families' shapes after it */
+.plot-key.by-fam{display:grid;gap:3px}
+.plot-key.by-fam li{display:flex;flex-wrap:wrap;align-items:center;gap:2px 14px}
+.plot-key-grp{display:inline-flex;align-items:center;gap:6px;min-width:15.5em;color:var(--text)}
+.plot-key-fam{display:inline-flex;align-items:center;gap:4px;color:var(--muted);font-size:.78rem}
+.plot-key-fam .n{font:0.6875rem var(--mono);font-variant-numeric:tabular-nums;opacity:.85}
+.plot-key .plot-key-narrow{display:none}
+/* a phone keeps the chart on screen: colours only, the shapes are on the family chips */
+@media (max-width:620px){
+  .plot-key.by-fam{display:flex;gap:4px 16px}
+  .plot-key.by-fam li{display:inline-flex}
+  .plot-key-grp{min-width:0}
+  .plot-key-fam{display:none}
+  .plot-key .plot-key-narrow{display:inline-flex}
+}
 .plot-link{background:none;border:0;padding:6px 2px;min-height:32px;color:var(--ochre);font:inherit;font-size:.8125rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.plot-fam-list{display:grid;gap:8px}
 .plot-fam-grp{display:grid;grid-template-columns:13.5em minmax(0,1fr);gap:6px 12px;align-items:start}
 .plot-fam-grp>span{font-size:.8125rem;color:var(--muted);padding-top:7px}
 .plot-chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
@@ -825,13 +873,10 @@ footer a:hover{color:var(--ochre)}
   border:1px solid rgba(var(--border-rgb),.3);border-radius:999px;cursor:pointer;font-size:.8125rem;color:var(--muted);
   transition:background-color .15s,border-color .15s,color .15s;
 }
-.plot-fam input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.plot-fam .box{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--line-dim);display:grid;place-items:center;flex:none}
-.plot-fam .box svg{opacity:0}
+/* the native checkbox: it keeps its checked state in high-contrast mode */
+.plot-fam input{width:15px;height:15px;margin:0;flex:none;accent-color:var(--ochre);cursor:pointer}
 .plot-fam:has(input:checked){background:var(--prussian);border-color:var(--line-dim);color:var(--bone)}
-.plot-fam:has(input:checked) .box{background:var(--ochre);border-color:var(--ochre)}
-.plot-fam:has(input:checked) .box svg{opacity:1}
-.plot-fam:has(input:focus-visible){outline:2px solid var(--ochre);outline-offset:2px}
+.plot-fam input:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 @media (hover:hover){.plot-fam:hover{border-color:var(--muted)}}
 .plot-fam svg{flex:none}
 .plot-cnt{font:0.6875rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
@@ -845,14 +890,20 @@ footer a:hover{color:var(--ochre)}
 .pl-tick{font:11.5px var(--mono);fill:var(--muted);font-variant-numeric:tabular-nums}
 .pl-title{font:12.5px var(--body);fill:var(--text)}
 .pl-note{font:13px var(--body);fill:var(--muted)}
-.pg0{--c:var(--plot-1)} .pg1{--c:var(--plot-2)} .pg2{--c:var(--plot-3)} .pg3{--c:var(--plot-other)}
+.pg0{--c:var(--plot-1)} .pg1{--c:var(--plot-2)} .pg2{--c:var(--plot-3)} .pg3{--c:var(--plot-4)} .pg4{--c:var(--plot-5)} .pg5{--c:var(--plot-other)}
 .pl-pt{stroke-linejoin:round}
 .pl-pt.fill{fill:var(--c);stroke:var(--canvas);stroke-width:1.5}
-.pl-pt.hollow{fill:none;stroke:var(--c);stroke-width:1.5}
-.pl-pt.line{fill:none;stroke:var(--c);stroke-width:1.8;stroke-linecap:round}
+/* hollow marks get a faint fill of the canvas so they read as outlines even
+   where they overlap a filled mark */
+.pl-pt.hollow{fill:var(--canvas);fill-opacity:.55;stroke:var(--c);stroke-width:2}
+.pl-pt.line{fill:none;stroke:var(--c);stroke-width:2.2;stroke-linecap:round}
 .pl-rng{fill:none;stroke:var(--c);stroke-width:2;stroke-linecap:round}
 .pl-span{stroke:var(--c);stroke-width:1.5;opacity:.32;stroke-linecap:round}
 .pl-dim{opacity:.13}
+/* a filter chip under the pointer picks out its species */
+#plot-svg.emph .pl-pt,#plot-svg.emph .pl-rng{opacity:.12;transition:opacity .12s}
+#plot-svg.emph .pl-hi,#plot-svg.emph .pl-hi .pl-pt{opacity:1}
+.pgx{--c:var(--muted)}
 .pl-ring{fill:none;stroke:var(--ochre);stroke-width:2}
 .pl-ring.hover{stroke:var(--bone);stroke-width:1.5}
 .plot-tip{
@@ -1275,29 +1326,67 @@ body.has-cmp{padding-bottom:84px}
       <div>
         <h3 class="plot-title">Peak call frequency by forearm length</h3>
         <p class="plot-sub" id="plot-sub">Measured values only</p>
+        <p class="plot-sel" id="plot-sel"></p>
       </div>
       <div class="plot-opts">
         <div class="plot-seg" role="group" aria-label="Country filter">
           <button type="button" id="plot-mode-dim" aria-pressed="true" title="Keep all bats in the plot">All</button>
           <button type="button" id="plot-mode-filter" aria-pressed="false" title="Show only bats from the selected country">Country</button>
         </div>
+        <div class="plot-seg" role="group" aria-label="Mark the points by">
+          <button type="button" id="plot-colour-group" aria-pressed="true" title="Colour by family group, shape by family">Family</button>
+          <button type="button" id="plot-colour-diet" aria-pressed="false" title="Colour and shape by main food">Diet</button>
+        </div>
         <label class="plot-check" for="plot-spans"><input type="checkbox" id="plot-spans"> Call range</label>
         <label class="plot-check" for="plot-log"><input type="checkbox" id="plot-log" checked> Log scales</label>
       </div>
     </div>
     <details class="plot-fams" id="plot-fams">
-      <summary>Families <span id="plot-fam-count"></span></summary>
-      <div class="plot-fam-actions">
-        <button type="button" class="plot-link" id="plot-fam-all">Include all</button>
-        <button type="button" class="plot-link" id="plot-fam-none">Clear all</button>
+      <summary>Filters <span id="plot-fam-count"></span></summary>
+      <p class="plot-filter-lead">Untick to leave out. Tribes and genera list only those of the families still ticked.
+        <button type="button" class="plot-link" id="plot-reset" hidden>Reset every filter</button></p>
+      <div class="plot-filters" id="plot-filters">
+        <fieldset class="plot-dim" data-dim="fam">
+          <legend><span class="plot-dim-name">Family</span> <span class="plot-dim-sum" id="pf-sum-fam"></span></legend>
+          <div class="plot-dim-acts">
+            <button type="button" class="plot-link" id="plot-fam-all" data-act="all">All</button>
+            <button type="button" class="plot-link" id="plot-fam-none" data-act="none">None</button>
+          </div>
+          <div class="plot-dim-body" id="pf-body-fam"></div>
+        </fieldset>
+        <fieldset class="plot-dim" data-dim="tribe">
+          <legend><span class="plot-dim-name">Tribe</span> <span class="plot-dim-sum" id="pf-sum-tribe"></span></legend>
+          <div class="plot-dim-acts">
+            <button type="button" class="plot-link" id="pf-tribe-all" data-act="all">All</button>
+            <button type="button" class="plot-link" id="pf-tribe-none" data-act="none">None</button>
+          </div>
+          <div class="plot-dim-body" id="pf-body-tribe"></div>
+        </fieldset>
+        <fieldset class="plot-dim" data-dim="genus">
+          <legend><span class="plot-dim-name">Genus</span> <span class="plot-dim-sum" id="pf-sum-genus"></span></legend>
+          <div class="plot-dim-acts">
+            <button type="button" class="plot-link" id="pf-genus-all" data-act="all">All</button>
+            <button type="button" class="plot-link" id="pf-genus-none" data-act="none">None</button>
+            <label class="plot-find"><span class="sr-only">Find a genus</span>
+              <input type="search" id="plot-find" placeholder="Find a genus" autocomplete="off" spellcheck="false"></label>
+          </div>
+          <div class="plot-dim-body" id="pf-body-genus"></div>
+        </fieldset>
+        <fieldset class="plot-dim" data-dim="diet">
+          <legend><span class="plot-dim-name">Diet</span> <span class="plot-dim-sum" id="pf-sum-diet"></span></legend>
+          <div class="plot-dim-acts">
+            <button type="button" class="plot-link" id="pf-diet-all" data-act="all">All</button>
+            <button type="button" class="plot-link" id="pf-diet-none" data-act="none">None</button>
+            <button type="button" class="plot-link" id="pf-diet-mark" data-act="mark">Show diet on the plot</button>
+          </div>
+          <div class="plot-dim-body" id="pf-body-diet"></div>
+        </fieldset>
       </div>
-      <fieldset class="plot-fam-list" id="plot-fam-list" style="border:0;margin:0;padding:0;min-width:0">
-        <legend class="sr-only">Families to include in the plot</legend>
-      </fieldset>
     </details>
+    <ul class="plot-key" id="plot-key" aria-label="Marker key"></ul>
     <div class="plot-chart" id="plot-chart">
       <p class="plot-loading" id="plot-loading">Loading the measurements…</p>
-      <svg id="plot-svg" role="img" aria-labelledby="plot-desc" tabindex="0" hidden></svg>
+      <svg id="plot-svg" role="img" aria-labelledby="plot-sel plot-desc" tabindex="0" hidden></svg>
       <div class="plot-tip" id="plot-tip" hidden></div>
     </div>
     <div class="plot-foot">
@@ -1310,15 +1399,16 @@ body.has-cmp{padding-bottom:84px}
         <li><strong>Forearm length</strong> is the median over independent sources that measured the species. Species whose forearm is only estimated (<span id="plot-n-est">0</span>) are left out.</li>
         <li><strong>Peak frequency</strong> is the frequency carrying most energy in the call, as printed by the headline source for that species. Values flagged as suspect or with an uncertain species identity are left out, and so are genus and family defaults.</li>
         <li>Where a source gives peak frequency only as a range (<span id="plot-n-range">0</span> species), the mark is a vertical bar over that range.</li>
-        <li>Colour marks three groups; each family also has its own marker. Horseshoe and leaf-nosed bats (orange) use long constant-frequency calls and sit well above other bats of the same size.</li>
+        <li>Colour marks five groups of related families, with grey for the few left over; each family also has its own marker shape, listed in the key above the plot. Horseshoe and leaf-nosed bats (vermilion) use long constant-frequency calls and sit well above other bats of the same size. The commonest families are drawn first, so the rarer ones stay visible on top. Point at a filter chip to pick out its species. Switch the marks to <strong>Diet</strong> and both colour and shape show the main food instead, each diet with its own marker.</li>
+        <li><strong>Diet</strong> lists every food group making up at least 30% of the diet in EltonTraits 1.0 (Wilman et al. 2014), so a bat that eats several foods counts under each of them, and the diet filter keeps it while any of its foods is ticked. Marked by diet, it is drawn with one overlapping marker per food. EltonTraits has no blood category, so the three vampire bats are set to blood. A species EltonTraits does not list takes its genus's foods only when every listed species of the genus agrees, and the record says so.</li>
       </ul>
-      <p>Sources: forearm from <code>data/chiroptera_body_size.json</code>, calls from <code>data/calls/exports/calls.json</code>; each record lists the original references.</p>
+      <p>Sources: forearm from <code>data/chiroptera_body_size.json</code>, calls from <code>data/calls/exports/calls.json</code>, diet from <code>data/chiroptera_diet.json</code>; each record lists the original references.</p>
     </details>
     <details class="plot-more" id="plot-table-box">
       <summary>Data table <span id="plot-table-count"></span></summary>
       <div class="plot-table-wrap" tabindex="0" role="region" aria-label="Plotted species">
         <table class="plot-table">
-          <thead><tr><th scope="col">Species</th><th scope="col">Family</th><th scope="col" class="r">Forearm (mm)</th><th scope="col" class="r">Peak (kHz)</th><th scope="col">Source</th></tr></thead>
+          <thead><tr><th scope="col">Species</th><th scope="col">Family</th><th scope="col">Tribe</th><th scope="col">Diet</th><th scope="col" class="r">Forearm (mm)</th><th scope="col" class="r">Peak (kHz)</th><th scope="col">Source</th></tr></thead>
           <tbody id="plot-tbody"></tbody>
         </table>
       </div>
@@ -2971,6 +3061,7 @@ function luSizeRecordHTML(r, unit){
   if(r.al) notes.push('also in '+r.al.map(luSizeRef).join(', '));
   if(r.nm!=null) notes.push('listed as <i>'+luEsc(luSizeStr(r.nm))+'</i>');
   if(r.pre) notes.push('predates a split of this species');
+  if(r.out) notes.push('outside the range in HMW 2019, so left out of the headline');
   return '<li'+(r.e!=null ? ' class="est"' : '')+'><span class="lu-size-who">'+luSizeRef(r.s)+'</span>'+
     '<span class="lu-size-what">'+
       (r.e!=null ? '<span class="lu-inferred-badge">Estimate</span> ' : '')+parts.join(' · ')+
@@ -3054,7 +3145,10 @@ function luLoadSize(){
     const s = luState.byName[section.dataset.sci.toLowerCase()];
     section.outerHTML = s ? luSizeHTML(s) : '';
   });
-  bundled('d-size', SIZE_URL).then(data=>{
+  // the diet only colours and filters the call plot, so the plot still draws without it
+  const diet = DIET_URL ? bundled('d-diet', DIET_URL).catch(()=>null) : Promise.resolve(null);
+  Promise.all([bundled('d-size', SIZE_URL), diet]).then(([data, dietData])=>{
+    luState.diet = dietData;
     const sorted = {fa:[], m:[]};
     Object.values(data.species).forEach(e=>SIZE_TRAITS.forEach(([key])=>{ if(e[key]) sorted[key].push(e[key].v); }));
     sorted.fa.sort((a,b)=>a-b); sorted.m.sort((a,b)=>a-b);
@@ -4761,37 +4855,88 @@ cmpRender();
    ========================================================= */
 const PLOT_ON = !!SIZE_URL;
 const PLOT_BAD_FLAGS = new Set(['suspect', 'taxon_uncertain']);
+/* Colour groups, one series colour each (the index is the .pg class). They
+   follow the superfamilies, so a colour is a branch of the tree: the two big
+   echolocation styles (vesper FM, horseshoe CF), the low-calling free-tails,
+   the New World noctilionoids and the emballonuroids. What is left (a handful
+   of species) shares the grey, which is the last group. */
 const PLOT_GROUPS = [
-  {label:'Vesper and bent-winged bats', fams:['Vespertilionidae','Miniopteridae']},
+  {label:'Vesper and bent-winged bats', fams:['Vespertilionidae','Miniopteridae','Cistugidae']},
   {label:'Horseshoe and leaf-nosed bats', fams:['Rhinolophidae','Hipposideridae','Rhinonycteridae']},
   {label:'Free-tailed bats', fams:['Molossidae']},
+  {label:'New World leaf-nosed bats and kin', fams:['Phyllostomidae','Mormoopidae','Noctilionidae','Thyropteridae','Furipteridae','Mystacinidae','Myzopodidae']},
+  {label:'Sheath-tailed and slit-faced bats', fams:['Emballonuridae','Nycteridae']},
   {label:'Other families', fams:null}
 ];
-// one marker per family: [shape, style]; colour comes from the group
+const PLOT_OTHER = PLOT_GROUPS.length - 1;
+/* One marker per family: [shape, style]; colour comes from the group (or the
+   diet). The eight largest families each get a shape and style no other family
+   uses, so they stay apart without colour; the rest are unique within their
+   colour. Neighbours in the same colour differ in fill as well as outline
+   (filled against hollow or line), which survives marker size far better than
+   triangle against square. No pentagons or hexagons: they read as circles. */
 const PLOT_MARK = {
-  Vespertilionidae:['circle','fill'], Miniopteridae:['diamond','fill'],
-  Rhinolophidae:['triUp','fill'], Hipposideridae:['triDown','fill'], Rhinonycteridae:['star','fill'],
-  Molossidae:['square','fill'],
-  Phyllostomidae:['plus','line'], Emballonuridae:['cross','line'], Mormoopidae:['circle','hollow'],
-  Nycteridae:['square','hollow'], Megadermatidae:['diamond','hollow'], Natalidae:['triUp','hollow'],
-  Cistugidae:['triDown','hollow'], Furipteridae:['star','hollow'], Noctilionidae:['pentagon','fill'],
-  Rhinopomatidae:['pentagon','hollow'], Thyropteridae:['hexagon','fill'], Craseonycteridae:['hexagon','hollow'],
-  Mystacinidae:['asterisk','line'], Myzopodidae:['triRight','hollow']
+  // blue
+  Vespertilionidae:['circle','fill'], Miniopteridae:['cross','line'], Cistugidae:['square','hollow'],
+  // vermilion
+  Rhinolophidae:['triUp','fill'], Hipposideridae:['circle','hollow'], Rhinonycteridae:['plus','line'],
+  // gold
+  Molossidae:['diamond','fill'],
+  // purple
+  Phyllostomidae:['square','fill'], Mormoopidae:['triUp','hollow'], Noctilionidae:['triDown','hollow'],
+  Thyropteridae:['plus','line'], Furipteridae:['asterisk','line'], Mystacinidae:['star','fill'], Myzopodidae:['diamond','hollow'],
+  // teal
+  Emballonuridae:['triDown','fill'], Nycteridae:['square','hollow'],
+  // grey
+  Megadermatidae:['diamond','hollow'], Natalidae:['triDown','hollow'], Rhinopomatidae:['star','fill'],
+  Craseonycteridae:['asterisk','line'], Pteropodidae:['plus','line']
 };
 const PLOT_STAT = {single:'single value', mean:'mean', median:'median', species_summary:'species summary', range:'reported range'};
+
+/* Foods eaten, from data/chiroptera_diet.json (EltonTraits 1.0, built by
+   data/build_diet.py). Each diet gets a series colour and its own filled
+   shape (as plotly's color+symbol on one column); the two meat diets share
+   vermilion and differ by shape, and unknown is the hollow grey circle. */
+const DIET_URL = SIZE_URL ? 'data/chiroptera_diet.json' : null;
+const PLOT_DIET = {
+  ins:{label:'Insects', long:'insects and other invertebrates', slot:0, mark:['circle','fill']},
+  fru:{label:'Fruit', long:'fruit and other plant parts', slot:2, mark:['square','fill']},
+  nec:{label:'Nectar', long:'nectar and pollen', slot:3, mark:['diamond','fill']},
+  ver:{label:'Vertebrates', long:'land vertebrates', slot:1, mark:['triUp','fill']},
+  fis:{label:'Fish', long:'fish', slot:4, mark:['triDown','fill']},
+  blo:{label:'Blood', long:'blood', slot:1, mark:['star','fill']},
+  '':{label:'Unknown', long:'not known', slot:5, mark:['circle','hollow']}
+};
+const PLOT_DIET_ORDER = ['ins','fru','nec','ver','fis','blo',''];
+const PLOT_FOOD = {inv:'invertebrates', vend:'warm-blooded vertebrates', vect:'cold-blooded vertebrates', fish:'fish',
+  vunk:'vertebrates', scav:'carrion', fruit:'fruit', nect:'nectar', seed:'seeds', plant:'other plant parts'};
+const PLOT_DIET_BASIS = {g:'from its genus', p:'from the species before it was split', r:'vampire bat'};
+
+/* Filters: one set of left-out values per dimension; a species is drawn only
+   if none of its values is left out. Tribe keys are "Family|Tribe" (an empty
+   tribe is a family's species with no tribe); families without tribes are
+   untouched by the tribe filter. */
+const PLOT_DIMS = ['fam','tribe','genus','diet'];
+let plotSetMarking = ()=>{};   // set once the controls are wired
+const PLOT_DIM_LABEL = {fam:'Families', tribe:'Tribes', genus:'Genera', diet:'Diets'};
 const PLOT_KEY = 'chiroptera-plot';
 const plotState = {
-  view:'tree', points:null, byName:{}, fams:[], famCounts:{}, excluded:new Set(),
+  view:'tree', points:null, byName:{}, fams:[], famCounts:{},
+  ex:{fam:new Set(), tribe:new Set(), genus:new Set(), diet:new Set()}, find:'', genusOpen:false, emph:null, colour:'group',
   log:true, spans:false, sel:null, hover:null, cursor:null, geo:[], order:[], estOnly:0, failed:false
 };
 try {
   const saved = JSON.parse(localStorage.getItem(PLOT_KEY) || '{}');
   if(typeof saved.log === 'boolean') plotState.log = saved.log;
   if(typeof saved.spans === 'boolean') plotState.spans = saved.spans;
-  if(Array.isArray(saved.excluded)) plotState.excluded = new Set(saved.excluded);
+  if(saved.colour==='diet' || saved.colour==='group') plotState.colour = saved.colour;
+  if(Array.isArray(saved.excluded)) plotState.ex.fam = new Set(saved.excluded);   // the older, family-only form
+  if(saved.ex) PLOT_DIMS.forEach(d=>{ if(Array.isArray(saved.ex[d])) plotState.ex[d] = new Set(saved.ex[d]); });
 } catch (_) {}
 function plotSave(){
-  try { localStorage.setItem(PLOT_KEY, JSON.stringify({log:plotState.log, spans:plotState.spans, excluded:[...plotState.excluded]})); } catch (_) {}
+  const ex = {};
+  PLOT_DIMS.forEach(d=>{ ex[d] = [...plotState.ex[d]]; });
+  try { localStorage.setItem(PLOT_KEY, JSON.stringify({log:plotState.log, spans:plotState.spans, colour:plotState.colour, ex})); } catch (_) {}
 }
 
 const plotSection = document.getElementById('tree-section');
@@ -4802,8 +4947,8 @@ const plotTip = document.getElementById('plot-tip');
 const plotStatus = document.getElementById('plot-status');
 
 function plotGroupOf(family){
-  for(let i=0; i<3; i++) if(PLOT_GROUPS[i].fams.includes(family)) return i;
-  return 3;
+  for(let i=0; i<PLOT_OTHER; i++) if(PLOT_GROUPS[i].fams.includes(family)) return i;
+  return PLOT_OTHER;
 }
 function plotNum(v, dp=1){ return Number(v).toLocaleString('en', {maximumFractionDigits:dp}); }
 
@@ -4822,24 +4967,58 @@ function plotShape(shape, x, y, r){
     case 'diamond':  return plotPoly(x, y, r*1.22, 4, 0);
     case 'triUp':    return plotPoly(x, y+r*0.18, r*1.3, 3, 0);
     case 'triDown':  return plotPoly(x, y-r*0.18, r*1.3, 3, Math.PI);
-    case 'triRight': return plotPoly(x-r*0.18, y, r*1.3, 3, Math.PI/2);
-    case 'star':     return plotPoly(x, y+r*0.08, r*1.4, 5, 0, 0.48);
-    case 'pentagon': return plotPoly(x, y+r*0.06, r*1.08, 5, 0);
-    case 'hexagon':  return plotPoly(x, y, r*1.05, 6, Math.PI/6);
+    case 'star':     return plotPoly(x, y+r*0.08, r*1.5, 5, 0, 0.45);
     case 'plus':     { const s=r*1.15; return 'M'+(x-s)+','+y+'H'+(x+s)+'M'+x+','+(y-s)+'V'+(y+s); }
     case 'cross':    { const s=r*0.9; return 'M'+(x-s)+','+(y-s)+'L'+(x+s)+','+(y+s)+'M'+(x+s)+','+(y-s)+'L'+(x-s)+','+(y+s); }
     case 'asterisk': { const s=r*1.15, c=s*0.866, h=s*0.5; return 'M'+x+','+(y-s)+'V'+(y+s)+'M'+(x-c)+','+(y-h)+'L'+(x+c)+','+(y+h)+'M'+(x+c)+','+(y-h)+'L'+(x-c)+','+(y+h); }
     default:         return 'M'+(x-r)+','+y+'a'+r+','+r+' 0 1,0 '+2*r+',0a'+r+','+r+' 0 1,0 '+(-2*r)+',0';
   }
 }
-function plotMarkPath(family, x, y, r){
-  const [shape, style] = PLOT_MARK[family] || ['circle','hollow'];
+function plotMarkOf([shape, style], x, y, r){
   return {d: plotShape(shape, x, y, style==='fill' ? r : r*0.92), style};
 }
-function plotSwatch(family, size){
-  const m = plotMarkPath(family, 7, 7, 4.6);
-  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 14 14" aria-hidden="true"><path class="pl-pt pg'+plotGroupOf(family)+' '+m.style+'"'+
+function plotMarkPath(family, x, y, r){ return plotMarkOf(PLOT_MARK[family] || ['circle','hollow'], x, y, r); }
+// a point's marker under the current marking
+function plotPointMark(p, x, y, r){
+  return plotState.colour==='diet' ? plotMarkOf(PLOT_DIET[p.dt].mark, x, y, r) : plotMarkPath(p.f, x, y, r);
+}
+function plotGlyph(mark, colourClass, size){
+  const m = plotMarkOf(mark, 7, 7, 4.6);
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 14 14" aria-hidden="true"><path class="pl-pt '+colourClass+' '+m.style+'"'+
     (m.style==='fill' ? ' style="stroke:none"' : '')+' d="'+m.d+'"/></svg>';
+}
+// a family's marker; none while the plot is marked by diet, since the family shapes are not drawn then
+function plotSwatch(family, size){
+  return plotState.colour==='group' ? plotGlyph(PLOT_MARK[family] || ['circle','hollow'], 'pg'+plotGroupOf(family), size) : '';
+}
+function plotDietSwatch(k, size){ return plotGlyph(PLOT_DIET[k].mark, 'pg'+PLOT_DIET[k].slot, size); }
+/* A species that eats several foods: one diet marker per food, set a little
+   apart around the point so each shows while they overlap. The largest share
+   is drawn last, on top. */
+function plotMultiOffsets(n, d){
+  if(n===2) return [[-d, 0], [d, 0]];
+  return Array.from({length:n}, (_, i)=>{ const a = -Math.PI/2 + i*2*Math.PI/n; return [d*Math.cos(a), d*Math.sin(a)]; });
+}
+function plotMultiPaths(keys, x, y, r){
+  const offs = plotMultiOffsets(keys.length, r*0.62);
+  return keys.map((k, i)=>({k, off:offs[i], m:plotMarkOf(PLOT_DIET[k].mark, x+offs[i][0], y+offs[i][1], r*0.9)})).reverse();
+}
+function plotMultiSwatch(keys, size){
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 18 18" aria-hidden="true">'+plotMultiPaths(keys, 9, 9, 4.4).map(({k, m})=>
+    '<path class="pl-pt pg'+PLOT_DIET[k].slot+' '+m.style+'" d="'+m.d+'"/>').join('')+'</svg>';
+}
+// a colour swatch: a rounded square, so it never reads as one of the marker shapes
+function plotDot(slot, size){
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 14 14" aria-hidden="true"><rect class="pg'+slot+'" x="1" y="1" width="12" height="12" rx="3" style="fill:var(--c)"/></svg>';
+}
+// the colour class of a point under the current colouring
+function plotColour(p){ return 'pg'+(plotState.colour==='diet' ? PLOT_DIET[p.dt].slot : p.g); }
+function plotDietText(p){
+  if(!p.dt) return 'Not known';
+  const d = {label:plotSelList(p.dts.map(k=>PLOT_DIET[k].label.toLowerCase()))};
+  d.label = d.label.charAt(0).toUpperCase()+d.label.slice(1);
+  const shares = p.dsh ? Object.entries(p.dsh).map(([k, v])=>v+'% '+(PLOT_FOOD[k]||k)).join(', ') : '';
+  return d.label+(PLOT_DIET_BASIS[p.db] ? ' ('+PLOT_DIET_BASIS[p.db]+')' : '')+(shares ? ': '+shares : '');
 }
 
 /* One point per species that has both a measured forearm and a recorded peak. */
@@ -4863,8 +5042,12 @@ function plotBuildPoints(){
     if(!fa) return;
     if(fa.est){ estOnly++; return; }
     const ref = luState.directCallReferences[fact.citation];
+    const diet = luState.diet && luState.diet.species[name] || null;
+    const tribe = s.tribe && s.tribe!=='NA' ? s.tribe : '';
     const p = {
       n:name, c:s.mainCommonName||'', f:s.family, g:plotGroupOf(s.family), fa:fa.v, fak:fa.k||1,
+      t:tribe, tk:s.family+'|'+tribe, gn:name.split(' ')[0],
+      dts:diet ? [].concat(diet.g).filter(k=>PLOT_DIET[k]) : [], db:diet ? diet.b : '', dsh:diet ? diet.sh : null,
       pk:fact.value_num, st:fact.statistic, d:fact.display, src:ref ? ref.label : fact.citation,
       ct:variant.label, sig:variant.signal_type||''
     };
@@ -4872,6 +5055,8 @@ function plotBuildPoints(){
       const m = String(fact.display).match(/([\d.]+)\s*[–-]\s*([\d.]+)/);
       if(m){ p.plo = +m[1]; p.phi = +m[2]; }
     }
+    p.dt = p.dts[0] || '';
+    if(!p.dts.length) p.dts = [''];   // unknown is a diet value of its own
     const o = variant.overview || {};
     if(o.low!=null && o.high!=null && o.derived_from==='min/max frequency'){ p.lo = o.low; p.hi = o.high; }
     points.push(p);
@@ -4884,6 +5069,62 @@ function plotBuildPoints(){
   points.forEach(p=>{ plotState.byName[p.n] = p; plotState.famCounts[p.f] = (plotState.famCounts[p.f]||0)+1; });
   plotState.fams = Object.keys(plotState.famCounts).sort((a,b)=>
     plotGroupOf(a)-plotGroupOf(b) || plotState.famCounts[b]-plotState.famCounts[a] || a.localeCompare(b));
+  // families that use tribes at all, in the plot
+  plotState.tribedFams = new Set(points.filter(p=>p.t).map(p=>p.f));
+}
+
+/* The chips of each filter: [{label, items:[{v, html, n}]}], in the family order. */
+function plotDimValue(dim, p){
+  return dim==='fam' ? p.f : dim==='tribe' ? p.tk : dim==='genus' ? p.gn : p.dt;
+}
+// every value a species has in a row: one, except a diet, where it is each food it eats
+function plotDimValues(dim, p){ return dim==='diet' ? p.dts : [plotDimValue(dim, p)]; }
+// a species is left out by the diet row only when every food it eats is unticked
+function plotDietOut(p){ return p.dts.every(k=>plotState.ex.diet.has(k)); }
+/* The filter rows cascade: a tribe is listed only while its family is ticked,
+   a genus only while its family and (for tribed families) its tribe are. Each
+   chip counts the species it would add given the other rows' choices. */
+const PLOT_GENUS_FOLD = 30;   // more genera than this in reach stay folded until asked for
+function plotPassesExcept(p, dim){
+  const ex = plotState.ex;
+  return !((dim!=='fam' && ex.fam.has(p.f)) || (dim!=='genus' && ex.genus.has(p.gn)) || (dim!=='diet' && plotDietOut(p)) ||
+    (dim!=='tribe' && plotState.tribedFams.has(p.f) && ex.tribe.has(p.tk)));
+}
+function plotInScope(dim, p){
+  const ex = plotState.ex;
+  if(dim==='tribe') return plotState.tribedFams.has(p.f) && !ex.fam.has(p.f);
+  if(dim==='genus') return !ex.fam.has(p.f) && !(plotState.tribedFams.has(p.f) && ex.tribe.has(p.tk));
+  if(dim==='diet') return !!luState.diet;
+  return true;
+}
+// [{label, items:[{v, html, n}]}] for one row, in the family order
+function plotDimGroups(dim, ignoreFind){
+  const n = new Map(), famOf = new Map();
+  plotState.points.forEach(p=>{
+    if(!plotInScope(dim, p)) return;
+    const passes = plotPassesExcept(p, dim);
+    plotDimValues(dim, p).forEach(v=>{
+      if(!famOf.has(v)){ famOf.set(v, p.f); n.set(v, 0); }
+      if(passes) n.set(v, n.get(v)+1);
+    });
+  });
+  const item = (v, html)=>({v, html, n:n.get(v)});
+  if(dim==='fam'){
+    return PLOT_GROUPS.map((g, gi)=>({label:g.label, items:plotState.fams.filter(f=>plotGroupOf(f)===gi)
+      .map(f=>item(f, plotSwatch(f, 14)+'<span>'+f+'</span>'))})).filter(g=>g.items.length);
+  }
+  if(dim==='diet'){
+    return [{label:'Eats', items:PLOT_DIET_ORDER.filter(k=>famOf.has(k)).map(k=>item(k,
+      plotDietSwatch(k, 14)+'<span>'+PLOT_DIET[k].label+'</span>'))}];
+  }
+  const q = dim==='genus' && !ignoreFind ? plotState.find.trim().toLowerCase() : '';
+  return plotState.fams.map(f=>({label:f, items:[...famOf.keys()]
+    .filter(v=>famOf.get(v)===f && (!q || v.toLowerCase().includes(q) || f.toLowerCase().includes(q)))
+    // a family's untribed species come last
+    .sort((a,b)=>(a.endsWith('|') - b.endsWith('|')) || a.localeCompare(b))
+    .map(v=>item(v, plotSwatch(f, 14)+'<span>'+
+      (dim==='genus' ? '<i>'+luEsc(v)+'</i>' : v.endsWith('|') ? 'No tribe' : luEsc(v.split('|')[1]))+'</span>'))}))
+    .filter(g=>g.items.length);
 }
 
 function plotDataReady(){
@@ -4906,33 +5147,139 @@ function plotDataFailed(){
   msg.textContent = 'The size measurements did not load, so the plot cannot be drawn. Reload the page to try again.';
 }
 
+function plotChipId(dim, v){
+  // families keep their old ids (plot-fam-<Family>) so saved tests and links still find them
+  return dim==='fam' ? 'plot-fam-'+v : 'pf-'+dim+'-'+(v.replace(/[^A-Za-z0-9]/g, '_') || 'none');
+}
+function plotChipsHTML(dim, items){
+  const ex = plotState.ex[dim];
+  return '<div class="plot-chips">'+items.map(it=>{ const id = plotChipId(dim, it.v);
+    return '<label class="plot-fam'+(it.n ? '' : ' zero')+'" for="'+id+'" data-v="'+luEsc(it.v)+'">'+
+      '<input type="checkbox" id="'+id+'" value="'+luEsc(it.v)+'"'+(ex.has(it.v) ? '' : ' checked')+'>'+
+      it.html+'<span class="plot-cnt">'+it.n+'</span></label>'; }).join('')+'</div>';
+}
+// the values a row lists right now (All/None act on exactly these)
+function plotListed(dim){ return plotDimGroups(dim).flatMap(g=>g.items.map(it=>it.v)); }
+
+/* Rebuild every row's chips: one change can reach the rows below it. The
+   headers, buttons and the genus search are static, so focus and the caret
+   stay put; a focused chip is focused again after the rebuild. */
 function plotBuildFamilies(){
-  const list = document.getElementById('plot-fam-list');
-  const tick = '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 5.2 4.1 7.3 8 2.8" fill="none" stroke="var(--canvas)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  list.innerHTML = '<legend class="sr-only">Families to include in the plot</legend>' + PLOT_GROUPS.map((g, gi)=>{
-    const fams = plotState.fams.filter(f=>plotGroupOf(f)===gi);
-    if(!fams.length) return '';
-    return '<div class="plot-fam-grp" role="group" aria-labelledby="plot-grp-'+gi+'"><span id="plot-grp-'+gi+'">'+g.label+'</span><div class="plot-chips">'+
-      fams.map(f=>'<label class="plot-fam" for="plot-fam-'+f+'"><input type="checkbox" id="plot-fam-'+f+'" value="'+f+'"'+(plotState.excluded.has(f)?'':' checked')+'>'+
-        '<span class="box">'+tick+'</span>'+plotSwatch(f, 14)+'<span>'+f+'</span><span class="plot-cnt">'+plotState.famCounts[f]+'</span></label>').join('')+
-      '</div></div>';
-  }).join('');
+  if(!plotState.points) return;
+  const active = document.activeElement;
+  const focused = active && active.closest && active.closest('#plot-filters .plot-dim-body') ? active.id : null;
+  PLOT_DIMS.forEach(dim=>{
+    const body = document.getElementById('pf-body-'+dim);
+    const acts = body.parentElement.querySelector('.plot-dim-acts');
+    const groups = plotDimGroups(dim);
+    const listed = groups.reduce((a, g)=>a+g.items.length, 0);
+    const q = plotState.find.trim();
+    let html = '', note = '';
+    if(dim==='diet' && !luState.diet){
+      note = 'The diet data did not load, so this filter and the diet colouring are off. Reload the page to try again.';
+    } else if(dim==='tribe' && !listed){
+      note = 'None of the ticked families is divided into tribes.';
+    } else if(dim==='genus' && !listed){
+      note = q ? 'No genus in the ticked families matches “'+luEsc(q)+'”.' : 'Tick a family to choose its genera.';
+    } else if(dim==='genus' && listed > PLOT_GENUS_FOLD && !q && !plotState.genusOpen){
+      note = listed+' genera in the ticked families. Narrow the families above, search, or '+
+        '<button type="button" class="plot-link" id="pf-genus-show" data-act="show">list them all</button>.';
+    } else {
+      html = groups.map((g, gi)=>g.label
+        ? '<div class="plot-fam-grp" role="group" aria-labelledby="pf-grp-'+dim+'-'+gi+'"><span id="pf-grp-'+dim+'-'+gi+'">'+g.label+'</span>'+plotChipsHTML(dim, g.items)+'</div>'
+        : plotChipsHTML(dim, g.items)).join('');
+      if(dim==='genus' && listed > PLOT_GENUS_FOLD && !q)
+        html += '<p class="plot-dim-note"><button type="button" class="plot-link" id="pf-genus-fold" data-act="fold">Fold the genus list</button></p>';
+    }
+    body.innerHTML = note ? '<p class="plot-dim-note">'+note+'</p>' : html;
+    // the search stays usable while the list is folded; All/None need something listed
+    acts.querySelectorAll('[data-act="all"],[data-act="none"]').forEach(b=>{ b.hidden = !listed || (dim==='diet' && !luState.diet); });
+    const ticked = groups.reduce((a, g)=>a+g.items.filter(it=>!plotState.ex[dim].has(it.v)).length, 0);
+    document.getElementById('pf-sum-'+dim).textContent = !listed ? '' : ticked===listed ? 'all '+listed : ticked+' of '+listed;
+  });
+  document.getElementById('plot-colour-diet').disabled = !luState.diet;
+  document.getElementById('pf-diet-mark').hidden = !luState.diet || plotState.colour==='diet';
+  if(focused){ const el = document.getElementById(focused); if(el) el.focus(); }
   plotUpdateFamilyCount();
 }
-function plotUpdateFamilyCount(){
-  const n = plotState.fams.filter(f=>!plotState.excluded.has(f)).length;
-  document.getElementById('plot-fam-count').textContent = '· '+n+' of '+plotState.fams.length+' included';
+/* The selection line: for each row that is narrowed, what is still ticked.
+   Rows left at "all" are not mentioned; a long list collapses to "all except"
+   or a count, so the line stays one or two lines long. */
+const PLOT_SEL_NAMES = {fam:['Family','Families'], tribe:['Tribe','Tribes'], genus:['Genus','Genera'], diet:['Diet','Diets']};
+function plotSelName(dim, v){
+  if(dim==='genus') return '<i>'+luEsc(v)+'</i>';
+  if(dim==='tribe') return v.endsWith('|') ? luEsc(v.slice(0, -1))+' without a tribe' : luEsc(v.split('|')[1]);
+  if(dim==='diet') return PLOT_DIET[v].label.toLowerCase();
+  return luEsc(v);
 }
-function plotSyncFamilyBoxes(){
-  document.querySelectorAll('#plot-fam-list input').forEach(i=>{ i.checked = !plotState.excluded.has(i.value); });
-  plotUpdateFamilyCount();
+function plotSelList(names){
+  return names.length < 3 ? names.join(' and ') : names.slice(0, -1).join(', ')+' and '+names[names.length-1];
+}
+function plotSelectionHTML(){
+  const parts = [];
+  PLOT_DIMS.forEach(dim=>{
+    const listed = [...new Set(plotDimGroups(dim, true).flatMap(g=>g.items.map(it=>it.v)))];
+    if(!listed.length) return;
+    const ex = plotState.ex[dim], ticked = listed.filter(v=>!ex.has(v)), out = listed.filter(v=>ex.has(v));
+    if(!out.length) return;
+    const [one, many] = PLOT_SEL_NAMES[dim];
+    let text;
+    if(!ticked.length) text = 'none';
+    else if(ticked.length <= 3) text = plotSelList(ticked.map(v=>plotSelName(dim, v)));
+    else if(out.length <= 2) text = 'all except '+plotSelList(out.map(v=>plotSelName(dim, v)));
+    else text = ticked.length+' of '+listed.length;
+    parts.push('<span class="k">'+(ticked.length===1 ? one : many)+'</span>'+text);
+  });
+  return parts.length ? parts.join('<span class="sep" aria-hidden="true">·</span>')
+    : 'All families, tribes, genera and diets';
 }
 
-/* Families and the country filter decide what is drawn; in the country
+function plotUpdateFamilyCount(){
+  document.getElementById('plot-sel').innerHTML = plotSelectionHTML();
+  const shown = plotState.points.filter(plotPassesFilters).length;
+  const active = PLOT_DIMS.filter(d=>plotState.ex[d].size);
+  document.getElementById('plot-fam-count').textContent = '· '+shown+' of '+plotState.points.length+' species'+
+    (active.length ? ' ('+active.map(d=>PLOT_DIM_LABEL[d].toLowerCase()).join(', ')+' narrowed)' : '');
+  document.getElementById('plot-reset').hidden = !active.length;
+}
+
+/* The filters and the country filter decide what is drawn; in the country
    filter's "All" mode the bats from elsewhere are dimmed, as in the tree. */
+function plotPassesFilters(p){
+  const ex = plotState.ex;
+  return !(ex.fam.has(p.f) || ex.genus.has(p.gn) || plotDietOut(p) || (plotState.tribedFams.has(p.f) && ex.tribe.has(p.tk)));
+}
 function plotIncluded(p){
-  if(plotState.excluded.has(p.f)) return false;
+  if(!plotPassesFilters(p)) return false;
   return !(countrySpeciesSet && countryTreeMode==='filter' && !countrySpeciesSet.has(p.n));
+}
+
+/* the key above the chart. Marked by family: what each hue means, the shapes
+   being on the family chips. Marked by diet: every diet among the plotted
+   bats with its marker, colour and shape together. */
+function plotRenderKey(){
+  const key = document.getElementById('plot-key');
+  if(plotState.colour==='diet'){
+    const present = new Set(plotState.points.flatMap(p=>p.dts));
+    key.innerHTML = PLOT_DIET_ORDER.filter(k=>present.has(k)).map(k=>'<li>'+plotDietSwatch(k, 14)+PLOT_DIET[k].label+'</li>').join('')+
+      '<li>'+plotMultiSwatch(['ins','fru'], 18)+'Overlapping markers: eats several foods</li>';
+  } else {
+    // each colour, then the shape of every family in it, largest first
+    key.innerHTML = PLOT_GROUPS.map((g, i)=>{
+      const fams = plotState.fams.filter(f=>plotGroupOf(f)===i);
+      if(!fams.length) return '';
+      return '<li><span class="plot-key-grp">'+plotDot(i, 12)+g.label+'</span>'+fams.map(f=>
+        '<span class="plot-key-fam">'+plotSwatch(f, 14)+f+' <span class="n">'+plotState.famCounts[f]+'</span></span>').join('')+'</li>';
+    }).join('')+'<li class="plot-key-note plot-key-narrow">Shape: family (see Filters)</li>';
+  }
+  key.classList.toggle('by-fam', plotState.colour!=='diet');
+}
+
+/* Point at (or focus) a chip and its species stand out; the rest fade. */
+function plotEmphasis(dim, v){
+  plotState.emph = dim ? {dim, v} : null;
+  plotSvg.classList.toggle('emph', !!dim);
+  plotState.geo.forEach(g=>{ if(g.el) g.el.classList.toggle('pl-hi', !!dim && plotDimValues(dim, g.p).includes(v)); });
 }
 function plotDimmed(p){ return !!(countrySpeciesSet && countryTreeMode==='dim' && !countrySpeciesSet.has(p.n)); }
 
@@ -4983,29 +5330,42 @@ function plotRender(){
   plotEl('text', {class:'pl-title', transform:'translate(12 '+((m.t+H-m.b)/2)+') rotate(-90)', 'text-anchor':'middle'}, grid, 'Peak frequency (kHz)');
 
   const shown = plotState.points.filter(plotIncluded);
-  const r = narrow ? 3.4 : 4.2;
+  const r = narrow ? 4.2 : 5;
   if(plotState.spans){
     const sg = plotEl('g', {'aria-hidden':'true'}, plotSvg);
     shown.forEach(p=>{
       if(p.lo==null) return;
-      plotEl('line', {class:'pl-span pg'+p.g+(plotDimmed(p)?' pl-dim':''), x1:x(p.fa), x2:x(p.fa),
+      plotEl('line', {class:'pl-span '+plotColour(p)+(plotDimmed(p)?' pl-dim':''), x1:x(p.fa), x2:x(p.fa),
         y1:y(Math.max(p.lo, yD[0]||1)), y2:y(Math.min(p.hi, yD[1]))}, sg);
     });
   }
-  // dimmed first, the neutral group next, so the coloured groups sit on top
-  const order = shown.slice().sort((a,b)=>(plotDimmed(b)-plotDimmed(a)) || ((b.g===3)-(a.g===3)));
+  /* Dimmed first; then the commonest marker under the current marking (family
+     or main diet) down to the rarest, so a rare family or diet is never buried
+     under the hundreds of vesper or insect-eating bats. */
+  const markKey = p=>plotState.colour==='diet' ? p.dt : p.f;
+  const markN = {};
+  shown.forEach(p=>{ const k = markKey(p); markN[k] = (markN[k]||0)+1; });
+  const order = shown.slice().sort((a,b)=>(plotDimmed(b)-plotDimmed(a)) ||
+    (markN[markKey(b)]-markN[markKey(a)]) || (markKey(a) < markKey(b) ? -1 : markKey(a) > markKey(b) ? 1 : 0));
   const pg = plotEl('g', {'aria-hidden':'true'}, plotSvg);
   plotState.geo = [];
   order.forEach(p=>{
     const cx = x(p.fa), dim = plotDimmed(p) ? ' pl-dim' : '';
     if(p.plo!=null){
       const y0 = y(p.plo), y1 = y(p.phi);
-      plotEl('path', {class:'pl-rng pg'+p.g+dim, d:'M'+cx+','+y0+'V'+y1+'M'+(cx-3)+','+y0+'h6M'+(cx-3)+','+y1+'h6'}, pg);
-      plotState.geo.push({p, x:cx, y:(y0+y1)/2, top:y1, bottom:y0, dim:!!dim});
+      const el = plotEl('path', {class:'pl-rng '+plotColour(p)+dim, d:'M'+cx+','+y0+'V'+y1+'M'+(cx-3.5)+','+y0+'h7M'+(cx-3.5)+','+y1+'h7'}, pg);
+      plotState.geo.push({p, x:cx, y:(y0+y1)/2, top:y1, bottom:y0, dim:!!dim, el});
     } else {
-      const cy = y(p.pk), mk = plotMarkPath(p.f, cx, cy, r);
-      plotEl('path', {class:'pl-pt pg'+p.g+' '+mk.style+dim, d:mk.d}, pg);
-      plotState.geo.push({p, x:cx, y:cy, dim:!!dim});
+      const cy = y(p.pk);
+      let el;
+      if(plotState.colour==='diet' && p.dts.length > 1){
+        el = plotEl('g', {class:'pl-multi'+dim}, pg);
+        plotMultiPaths(p.dts, cx, cy, r).forEach(({k, m})=>plotEl('path', {class:'pl-pt pg'+PLOT_DIET[k].slot+' '+m.style, d:m.d}, el));
+      } else {
+        const mk = plotPointMark(p, cx, cy, r);
+        el = plotEl('path', {class:'pl-pt '+plotColour(p)+' '+mk.style+dim, d:mk.d}, pg);
+      }
+      plotState.geo.push({p, x:cx, y:cy, dim:!!dim, el});
     }
   });
   // keyboard order: left to right, then low to high
@@ -5013,10 +5373,13 @@ function plotRender(){
 
   if(!shown.length){
     plotEl('text', {class:'pl-note', x:(m.l+W-m.r)/2, y:(m.t+H-m.b)/2, 'text-anchor':'middle'}, plotSvg,
-      plotState.excluded.size >= plotState.fams.length ? 'No families included. Tick one under Families.' : 'No bats with both measurements in this selection.');
+      plotState.ex.fam.size >= plotState.fams.length ? 'No families included. Tick one under Filters.'
+        : !plotState.points.some(plotPassesFilters) ? 'No species pass these filters.' : 'No bats with both measurements in this selection.');
   }
   plotEl('g', {id:'plot-focus'}, plotSvg);
+  if(plotState.emph) plotEmphasis(plotState.emph.dim, plotState.emph.v);
   plotDrawFocus();
+  plotRenderKey();
   plotRenderTable(shown);
 
   const total = plotState.points.length;
@@ -5053,7 +5416,9 @@ function plotShowTip(g){
     '<dl><dt>Forearm</dt><dd>'+plotNum(p.fa)+' mm'+(p.fak>1 ? ' (median of '+p.fak+' sources)' : '')+'</dd>'+
     '<dt>Peak</dt><dd>'+luEsc(p.d)+' ('+(PLOT_STAT[p.st]||luEsc(p.st))+')</dd>'+
     (p.lo!=null ? '<dt>Call range</dt><dd>'+plotNum(p.lo)+'–'+plotNum(p.hi)+' kHz</dd>' : '')+
-    '<dt>Call</dt><dd>'+luEsc(p.ct)+(p.sig ? ', '+luEsc(p.sig) : '')+'</dd></dl>'+
+    '<dt>Call</dt><dd>'+luEsc(p.ct)+(p.sig ? ', '+luEsc(p.sig) : '')+'</dd>'+
+    (p.t ? '<dt>Tribe</dt><dd>'+luEsc(p.t)+'</dd>' : '')+
+    '<dt>Diet</dt><dd>'+luEsc(plotDietText(p))+'</dd></dl>'+
     '<div class="t-src">Peak frequency: '+luEsc(p.src)+'</div>';
   plotTip.hidden = false;
   const k = plotChart.clientWidth / (+plotSvg.getAttribute('width') || 1);
@@ -5104,7 +5469,7 @@ function plotRenderTable(shown){
   if(!document.getElementById('plot-table-box').open) return;
   document.getElementById('plot-tbody').innerHTML = shown.map(p=>
     '<tr><td><button type="button" class="plot-row-btn" data-sci="'+luEsc(p.n)+'">'+luEsc(p.n)+'</button></td>'+
-    '<td>'+luEsc(p.f)+'</td><td class="r">'+plotNum(p.fa)+'</td><td class="r">'+luEsc(String(p.d).replace(' kHz',''))+'</td><td>'+luEsc(p.src)+'</td></tr>').join('');
+    '<td>'+luEsc(p.f)+'</td><td>'+luEsc(p.t||'–')+'</td><td>'+p.dts.map(k=>PLOT_DIET[k].label).join(', ')+'</td><td class="r">'+plotNum(p.fa)+'</td><td class="r">'+luEsc(String(p.d).replace(' kHz',''))+'</td><td>'+luEsc(p.src)+'</td></tr>').join('');
 }
 
 /* the line in a record that links it to the plot (or back to the tree) */
@@ -5153,17 +5518,53 @@ if(PLOT_ON){
   logBox.checked = plotState.log; spanBox.checked = plotState.spans;
   logBox.addEventListener('change', ()=>{ plotState.log = logBox.checked; plotSave(); plotRender(); });
   spanBox.addEventListener('change', ()=>{ plotState.spans = spanBox.checked; plotSave(); plotRender(); });
-  document.getElementById('plot-fam-list').addEventListener('change', e=>{
-    const box = e.target.closest('input'); if(!box) return;
-    box.checked ? plotState.excluded.delete(box.value) : plotState.excluded.add(box.value);
-    plotUpdateFamilyCount(); plotSave(); plotRender();
+  const filters = document.getElementById('plot-filters');
+  const changed = ()=>{ plotBuildFamilies(); plotSave(); plotRender(); };
+  filters.addEventListener('change', e=>{
+    const box = e.target.closest('input[type="checkbox"]'); if(!box) return;
+    const ex = plotState.ex[box.closest('.plot-dim').dataset.dim];
+    box.checked ? ex.delete(box.value) : ex.add(box.value);
+    changed();
   });
-  document.getElementById('plot-fam-all').addEventListener('click', ()=>{
-    plotState.excluded.clear(); plotSyncFamilyBoxes(); plotSave(); plotRender();
+  filters.addEventListener('click', e=>{
+    const b = e.target.closest('button[data-act]'); if(!b) return;
+    const dim = b.closest('.plot-dim').dataset.dim, act = b.dataset.act, ex = plotState.ex[dim];
+    if(act==='mark'){ plotSetMarking('diet'); colourBtns.diet.focus(); return; }
+    if(act==='show' || act==='fold'){
+      plotState.genusOpen = act==='show';
+      plotBuildFamilies();
+      const next = document.getElementById(act==='show' ? 'pf-genus-fold' : 'pf-genus-show');
+      (next || document.getElementById('plot-find')).focus();
+      return;
+    }
+    plotListed(dim).forEach(v=>act==='all' ? ex.delete(v) : ex.add(v));
+    changed();
   });
-  document.getElementById('plot-fam-none').addEventListener('click', ()=>{
-    plotState.fams.forEach(f=>plotState.excluded.add(f)); plotSyncFamilyBoxes(); plotSave(); plotRender();
+  document.getElementById('plot-reset').addEventListener('click', ()=>{
+    PLOT_DIMS.forEach(d=>plotState.ex[d].clear()); changed();
+    announce('Every filter reset');
   });
+  document.getElementById('plot-find').addEventListener('input', e=>{ plotState.find = e.target.value; plotBuildFamilies(); });
+  // pointing at a chip picks out its species
+  const chipEmph = e=>{
+    const chip = e.target.closest && e.target.closest('.plot-fam');
+    if(chip) plotEmphasis(chip.closest('.plot-dim').dataset.dim, chip.dataset.v);
+  };
+  filters.addEventListener('pointerover', e=>{ if(e.pointerType==='touch') return; e.target.closest('.plot-fam') ? chipEmph(e) : plotEmphasis(null); });
+  filters.addEventListener('pointerleave', ()=>plotEmphasis(null));
+  filters.addEventListener('focusin', e=>{ e.target.closest('.plot-fam') ? chipEmph(e) : plotEmphasis(null); });
+  filters.addEventListener('focusout', e=>{ if(!filters.contains(e.relatedTarget)) plotEmphasis(null); });
+  const colourBtns = {group:document.getElementById('plot-colour-group'), diet:document.getElementById('plot-colour-diet')};
+  const syncColour = ()=>Object.entries(colourBtns).forEach(([k, b])=>b.setAttribute('aria-pressed', String(plotState.colour===k)));
+  syncColour();
+  plotSetMarking = k=>{
+    if(plotState.colour===k) return;
+    plotState.colour = k; syncColour(); plotSave();
+    if(plotState.points) plotBuildFamilies();   // the chips' swatches follow the marking
+    plotRender();
+    announce(k==='diet' ? 'Points marked by diet: colour and shape show the main food' : 'Points marked by family');
+  };
+  Object.entries(colourBtns).forEach(([k, b])=>b.addEventListener('click', ()=>plotSetMarking(k)));
   document.getElementById('plot-table-box').addEventListener('toggle', ()=>plotRender());
   document.getElementById('plot-tbody').addEventListener('click', e=>{
     const b = e.target.closest('.plot-row-btn'); if(b) plotPick(b.dataset.sci);

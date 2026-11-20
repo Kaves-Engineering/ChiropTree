@@ -103,7 +103,7 @@ Published with GitHub Pages.
   clone pages stamp `HISTORY_URL` to `null` and show none of this. Re-run the
   builder after updating the taxonomy to a new MDD release.
 - **`data/chiroptera_body_size.json`**: each bat species' forearm length and
-  body mass, from 44 sources. Built by **`data/size/build_size.py`** from one
+  body mass, from 46 sources. Built by **`data/size/build_size.py`** from one
   CSV per source in `data/size/`. Each CSV is written by that source's
   `data/size/import_<source>.py` from the source's own raw table, which is
   cached in the gitignored `data/raw/size/` and pinned by SHA-256. The fetch
@@ -117,17 +117,24 @@ Published with GitHub Pages.
   | SONOZOTZ (2020) | 2,323 individual bats, 69 species, Mexico |
   | Jennings et al. (2004), Table 2 | 300 bats, 14 West Indian taxa, mean ± SD |
   | Clare & Simmons (2026), Lamanai field key v6 | forearm ranges for 49 species at Lamanai, Belize |
+  | Velazco et al. (2021), bats of the Yavarí-Ucayali interfluve | forearm mean, range and n by sex for 92 species, NE Peru |
+  | Castillo-Figueroa (2020), Table 1 | forearm mean ± SD of museum specimens, 90 Neotropical species, mainly Colombia |
   | EuroBaTrait 1.0 (2023) | population means, 40 European species |
   | COMBINE (2021) | forearm and mass for most bats, with estimates marked |
   | PanTHERIA (2009) | forearm and mass; masses from forearm marked as estimates |
   | EltonTraits 1.0, Amniote database, PHYLACINE 1.2.1, AnAge, AnimalTraits | body mass |
   | Collen (2012), Castro et al. (2024) | body mass, carried over from `data/calls/` |
-  | 29 species descriptions, revisions and call papers; *Handbook of the Mammals of the World* vol. 9 (2019) | forearm for 107 species with a measured call but no measured forearm, so they appear in the call plot (`import_literature_forearm.py`) |
+  | *Handbook of the Mammals of the World* vol. 9 (2019), every species account | forearm range for 1,337 species and weight range for 1,158, read from the Plazi TreatmentBank text (`fetch_hmw.py`, `import_hmw.py`) |
+  | 29 species descriptions, revisions and call papers | forearm for species with a measured call but no measured forearm, so they appear in the call plot (`import_literature_forearm.py`) |
 
-  The literature forearms come from the studies that measured the bats where
-  one exists. Most were read from Plazi TreatmentBank XML. The Handbook's
-  compiled ranges are used only where no such study was found, always as
-  range-only rows. Two call-plot species still have no measured forearm:
+  The literature forearms come from the studies that measured the bats.
+  Most were read from Plazi TreatmentBank XML. The Handbook's figures are
+  read automatically from Plazi's OCR, whose decimal points often turn into
+  hyphens ("42-9-49 mm" is 42.9-49). Figures that can be read more than one
+  way, and masses that cannot belong to the account's own forearm, are listed
+  in `data/size/unresolved/hmw-2019-figures.md` for reading by hand. The
+  automatic reading agrees with the 67 forearms read by hand before.
+  Two call-plot species still have no measured forearm:
   *Molossus bondae* (only a paywalled revision measures it) and *Myotis
   nipalensis*.
 
@@ -156,6 +163,14 @@ Published with GitHub Pages.
     mean exists. When a range is all a species has (*Artibeus intermedius*,
     *Uroderma convexum*), the card shows the range itself, says no mean is
     published, and uses the midpoint only to place the marker.
+  - **The Handbook range as a check.** A measured value more than 5% outside
+    the Handbook's range for the species (10% of a single printed forearm,
+    35% of a single printed mass) is almost always another species, a
+    juvenile, or a unit or copying error. PanTHERIA's 68.8 mm forearm for
+    *Vampyrum spectrum* is one: its adults measure 98-118 mm. Such a value
+    stays in the record list, marked "outside the range in HMW 2019", but
+    never enters the headline. When every measured value is outside, the
+    card shows the Handbook range itself, as for a range-only species.
   - **Individual-level data.** Only adults are used, and pregnant females are
     left out of body mass. For SONOZOTZ, only identifications rated at least
     90% certain are used.
@@ -192,6 +207,8 @@ Published with GitHub Pages.
   uv run data/size/import_eurobatrait.py
   uv run data/size/import_jennings_2004.py
   uv run data/size/import_lamanai_key.py
+  uv run data/size/import_velazco_2021_matses.py
+  uv run data/size/import_castillo_figueroa_2020.py
   uv run data/size/import_call_covariates.py
   uv run --with rdata --with pandas data/size/import_atlantic.py
   uv run --with openpyxl --with pandas data/size/import_sonozotz.py
@@ -209,6 +226,32 @@ the headline recorded peak frequency of the species' call, from
 `data/calls/exports/calls.json`. Values flagged `suspect` or `taxon_uncertain`
 are left out, and so are genus and family defaults. A peak printed only as a
 range is drawn as a vertical bar over that range.
+
+Filters, under **Filters**, narrow the plot by family, tribe, genus (with a
+search box) and diet, in one panel of four rows; a species is drawn only when
+none of its values is left out, and the choice is remembered in
+`localStorage`. The rows cascade: Tribe lists only the tribes of ticked
+families, and Genus only the genera of ticked families and tribes, folded
+behind a count while more than 30 are in reach. Each chip's count is the
+number of species it would add given the other rows. Pointing at a filter chip
+picks out its species. The marks are coloured either by family group or by
+diet (**Group | Diet**); only three hues plus a neutral pass the colour-blind
+checks against each other on the plot's canvas, so every family also has a
+marker shape and style that is unique within its colour.
+
+**`data/chiroptera_diet.json`** lists the foods each species eats. It is
+built by **`data/build_diet.py`** from the `Diet-*` columns of EltonTraits 1.0
+(Wilman et al. 2014, CC0), the same checksum-pinned `MamFuncDat.txt` the size
+importer reads. A species belongs to every food group making up at least 30% of
+its diet (insects, fruit, nectar, land vertebrates, fish), largest share
+first, so a bat with a mixed diet counts under each food rather than in a
+"mixed" group. The three vampire bats (Desmodontinae) are set to blood alone by
+rule, since EltonTraits has no blood category. A species EltonTraits does not
+list takes its genus's foods only when every listed congener agrees. Each
+entry records which route it came from, and the plot's tooltip says so. On
+the plot, marked by diet, a species eating several foods gets one overlapping
+marker per food, and the diet filter keeps it while any of its foods is
+ticked.
 
 To fill the plot, three call sources were added in November 2026:
 - `build_zamora_2016_mexico_calls.py`: Zamora-Gutierrez et al. (2016), the
