@@ -567,6 +567,40 @@ footer a:hover{color:var(--ochre)}
 .lu-refs li{display:flex;gap:6px;align-items:baseline;font-size:0.6875rem;line-height:1.45;color:var(--muted)}
 .lu-refs a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 .lu-refs a:hover{color:var(--text)}
+
+/* Sources & evidence: every value on the card, where it is printed, and how far
+   the link can show it. Status colours reuse the IUCN tokens, which stay put
+   across palettes; ochre marks what still needs a person. */
+.lu-evidence{margin-top:20px}
+.lu-ev>summary,.lu-ev-group>summary{cursor:pointer;font-size:0.78125rem;color:var(--line-text);padding:2px 0}
+.lu-ev>summary:focus-visible,.lu-ev-group>summary:focus-visible{outline:1px solid var(--ochre);outline-offset:2px}
+.lu-ev-body{margin-top:8px}
+.lu-ev-lede{margin:0 0 8px;font-size:0.8125rem;line-height:1.5;color:var(--text)}
+.lu-ev-group{margin:0 0 6px;border-left:2px solid var(--line-dim);padding:2px 0 2px 10px}
+.lu-ev-group>summary{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.lu-ev-group>summary b{color:var(--text);font-weight:600}
+.lu-ev-src{margin:8px 0 10px}
+.lu-ev-src-head{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:0.78125rem}
+.lu-ev-src-head a{color:var(--line);text-underline-offset:2px}
+.lu-ev-scope{font-family:var(--mono);font-size:0.625rem;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line-dim);border-radius:3px;padding:0 4px}
+.lu-ev-cite{margin:2px 0 0;font-size:0.6875rem;line-height:1.4;color:var(--muted)}
+.lu-ev-list{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:5px}
+.lu-ev-list li{font-size:0.75rem;line-height:1.45;color:var(--text);overflow-wrap:anywhere}
+.lu-ev-list .lu-ev-meta{display:block;color:var(--muted);font-size:0.6875rem}
+.lu-ev-list .lu-ev-meta a{color:var(--muted);text-underline-offset:2px}
+.lu-ev-list .lu-ev-open{color:var(--line);font-weight:600}
+.lu-ev-issue{display:block;color:var(--ochre);font-size:0.6875rem}
+.lu-ev-st{display:inline-block;font-family:var(--mono);font-size:0.5625rem;letter-spacing:.05em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-right:5px;vertical-align:1px;color:var(--muted)}
+.lu-ev-st.good{color:var(--st-good)}
+.lu-ev-st.bad{color:var(--st-bad)}
+.lu-ev-st.warn{color:var(--ochre)}
+.lu-ev-foot{margin:10px 0 0;font-size:0.6875rem;line-height:1.5;color:var(--muted)}
+.lu-ev-foot dl{display:grid;grid-template-columns:auto 1fr;gap:3px 8px;margin:6px 0}
+.lu-ev-foot dd{margin:0}
+.lu-ev-dl{font:inherit;font-size:0.6875rem;color:var(--line);background:transparent;border:1px solid var(--line-dim);border-radius:3px;padding:2px 8px;cursor:pointer;margin-right:6px}
+.lu-ev-dl:hover{border-color:var(--line)}
+.lu-ev-dl:focus-visible{outline:1px solid var(--ochre);outline-offset:2px}
 .lu-refnum,.lu-refmark{font-family:var(--mono);color:var(--ochre)}
 .lu-refnum{font-size:0.6875rem;flex:none}
 .lu-placed{margin:8px 0 0;padding:6px 9px;border-left:2px solid var(--ochre);background:rgba(var(--border-rgb),.05);font-size:0.75rem;line-height:1.55;color:var(--muted)}
@@ -2950,7 +2984,39 @@ function luSizeRef(i){
     ? '<a href="'+luEsc(url)+'" target="_blank" rel="noopener" title="'+luEsc(citation)+'">'+luEsc(short)+'</a>'
     : '<span title="'+luEsc(citation)+'">'+luEsc(short)+'</span>';
 }
+// A record read from a Plazi treatment links to this species' own account,
+// scrolled to the printed figure and highlighted, rather than to the source as
+// a whole (HMW's deposit is one chapter and would open the wrong family).
+const PLAZI_PAGE = 'https://tb.plazi.org/GgServer/xhtml/';
+// a record read from a table Plazi digitised (tt) links to that table, which
+// table.plazi.org renders as a page (http only)
+const PLAZI_TABLE_PAGE = 'http://table.plazi.org/id/';
+function luTreatmentURL(r){
+  // '-' is syntax inside a text fragment, so it is escaped too
+  return (r.pt ? PLAZI_PAGE+r.pt : PLAZI_TABLE_PAGE+r.tt)+
+    (r.ph ? '#:~:text='+encodeURIComponent(r.ph).replace(/-/g,'%2D') : '');
+}
+function luSizeRecRef(r){
+  if(!r.pt && !r.tt) return luSizeRef(r.s);
+  const [, short, citation] = luState.size.refs[r.s];
+  const opens = r.pt ? ' — opens this species’ account at the printed figure'
+                     : ' — opens the article’s table at the printed figure';
+  return '<a href="'+luEsc(luTreatmentURL(r))+'" target="_blank" rel="noopener" title="'+
+    luEsc(citation+opens)+'">'+luEsc(short)+'</a>';
+}
+// a source named in a sentence, linked through its record for this species when it has one
+function luSizeRefIn(h){
+  return i=>{
+    const r = h.r.find(x=>x.s===i && (x.pt || x.tt));
+    return r ? luSizeRecRef(r) : luSizeRef(i);
+  };
+}
 function luSizeStr(i){ return i==null ? '' : luState.size.strings[i]; }
+// "Luo et al. (2025) Title. https://doi.org/..." -> the citation, linked to its DOI
+function luSizeUpstream(text){
+  const m = text.match(/^(.*?)\.?\s+(https:\/\/doi\.org\/\S+)$/);
+  return m ? '<a href="'+luEsc(m[2])+'" target="_blank" rel="noopener">'+luEsc(m[1])+'</a>' : luEsc(text);
+}
 
 function luSizeRecordHTML(r, unit){
   const RANGE_LABEL = {c95:'central 95% ', key:'field-key range ', mm:'range '};
@@ -2964,12 +3030,12 @@ function luSizeRecordHTML(r, unit){
   if(r.a!=null) parts.push(luEsc(luSizeStr(r.a)));
   const notes = [];
   if(r.us!=null) notes.push('from '+luSizeRef(r.us));
-  else if(r.u!=null) notes.push('from '+luEsc(luSizeStr(r.u)));
+  else if(r.u!=null) notes.push('from '+luSizeUpstream(luSizeStr(r.u)));
   if(r.al) notes.push('also in '+r.al.map(luSizeRef).join(', '));
   if(r.nm!=null) notes.push('listed as <i>'+luEsc(luSizeStr(r.nm))+'</i>');
   if(r.pre) notes.push('predates a split of this species');
   if(r.out) notes.push('outside the range in HMW 2019, so left out of the headline');
-  return '<li'+(r.e!=null ? ' class="est"' : '')+'><span class="lu-size-who">'+luSizeRef(r.s)+'</span>'+
+  return '<li'+(r.e!=null ? ' class="est"' : '')+'><span class="lu-size-who">'+luSizeRecRef(r)+'</span>'+
     '<span class="lu-size-what">'+
       (r.e!=null ? '<span class="lu-inferred-badge">Estimate</span> ' : '')+parts.join(' · ')+
       (r.e!=null ? '<span class="lu-size-how">'+luEsc(luSizeStr(r.e))+'</span>' : '')+
@@ -2999,11 +3065,11 @@ function luSizeTraitHTML(key, label, unit, noun, h){
     basis = 'No measurement of this species in any of the sources. '+
       (h.k > 1 ? 'Median of '+h.k+' independent estimates.' : 'One estimate.');
   } else if(h.ro){
-    basis = 'Only a range is published for this species: the identification range in '+h.rs.map(luSizeRef).join(', ')+
+    basis = 'Only a range is published for this species: the identification range in '+h.rs.map(luSizeRefIn(h)).join(', ')+
       ', not a mean. The marker sits at its midpoint.';
   } else {
     basis = h.k > 1 ? 'Median of '+h.k+' independent sources.' : 'One source.';
-    if(h.lo!=null) basis += ' Range from '+h.rs.map(luSizeRef).join(', ')+'.';
+    if(h.lo!=null) basis += ' Range from '+h.rs.map(luSizeRefIn(h)).join(', ')+'.';
   }
   const comparison = (h.ro ? 'Its midpoint is ' : '')+(key==='fa' ? (h.ro ? 'longer than ' : 'Longer forearm than ') : 'Heavier than ')+pct+'% of the '+
     share.of.toLocaleString('en')+' bat species with a '+noun+'.';
@@ -3070,6 +3136,188 @@ function luLoadSize(){
     plotDataFailed();
   });
 }
+
+/* =========================================================
+   Sources & evidence — every value the card shows, one line each
+   data/evidence.json is written by data/build_claims.py from the same rows
+   the size and call sections are built from. It is only fetched when a
+   reader opens the panel: it is large, and most visits never need it.
+   ========================================================= */
+const EVIDENCE_URL = SIZE_URL ? 'data/evidence.json' : null;
+const EV_SECTIONS = [
+  ['forearm_length', 'Forearm length'],
+  ['body_mass', 'Body mass'],
+  ['echolocation', 'Echolocation'],
+  ['echolocation (inferred)', 'Echolocation, inferred'],
+  ['diet', 'Diet'],
+  ['distribution', 'Distribution'],
+];
+// status -> [label, tone, what it means]
+const EV_STATUS = {
+  located:      ['found at link', 'good', 'An automated check found the printed value on the page the link opens.'],
+  cited:        ['cited', '', 'The source and where in it are named; the value is not machine-checked.'],
+  not_found:    ['not at link', 'bad', 'The linked page opened, but the value was not found on it.'],
+  generic_link: ['index link', 'warn', 'The link opens an index or summary page, not the place the value is printed.'],
+  no_locator:   ['no page or table', 'warn', 'The source is linked, but nothing says where in it the value is.'],
+  unpublished:  ['unpublished', 'warn', 'The source is not published, so there is nothing to link.'],
+  unlinked:     ['no link', 'bad', 'The source has no link at all.'],
+};
+const EV_SCOPE = {document:'paper', dataset:'dataset, download', index:'index page', none:'no link'};
+// best evidence first: what a reader can follow to the value, then what only
+// names where it is, then what cannot be followed at all
+const EV_RANK = ['located','cited','generic_link','no_locator','not_found','unpublished','unlinked'];
+const evRank = c=>{ const i = EV_RANK.indexOf(c.status); return i<0 ? EV_RANK.length : i; };
+const EV_REPO = 'https://github.com/Kaves-Engineering/ChiropTree/blob/master/data/';
+
+function luLoadEvidence(){
+  if(!luState.evidencePromise){
+    luState.evidencePromise = bundled('d-evidence', EVIDENCE_URL).then(data=>{
+      const f = data._meta.fields;
+      // arrays -> objects once, so the renderer can read fields by name
+      Object.keys(data.species).forEach(id=>{
+        data.species[id] = data.species[id].map(row=>Object.fromEntries(f.map((k,i)=>[k, row[i]])));
+      });
+      return data;
+    });
+    luState.evidencePromise.catch(()=>{ luState.evidencePromise = null; });
+  }
+  return luState.evidencePromise;
+}
+
+function luEvidenceHTML(s){
+  if(!EVIDENCE_URL) return '';
+  return '<section class="lu-section lu-evidence" data-id="'+luEsc(s.id)+'"><h4>Sources &amp; evidence</h4>'+
+    '<details class="lu-ev"><summary>Where every value on this card comes from</summary>'+
+    '<div class="lu-ev-body" aria-live="polite"><p class="lu-note">Loading the evidence list…</p></div></details></section>';
+}
+
+function luEvStatus(status){
+  const [label, tone, why] = EV_STATUS[status] || [status, '', ''];
+  return '<span class="lu-ev-st'+(tone ? ' '+tone : '')+'" title="'+luEsc(why)+'">'+luEsc(label)+'</span>';
+}
+
+function luEvClaimHTML(c, source){
+  const meta = [];
+  if(c.item && !['forearm length','body mass','guilds'].includes(c.item)) meta.push(luEsc(c.item));
+  if(c.locator) meta.push(luEsc(c.locator));
+  if(c.verbatim && c.verbatim !== c.value) meta.push('printed: “'+luEsc(c.verbatim)+'”');
+  if(c.basis && c.basis !== 'measured') meta.push(luEsc(c.basis));
+  if(c.role && c.role !== 'shown') meta.push(luEsc(c.role));
+  const links = [];
+  if(c.deep_link) links.push('<a class="lu-ev-open" href="'+luEsc(c.deep_link)+'" target="_blank" rel="noopener">open at the value ↗</a>');
+  else if(c.link && c.link !== source.url) links.push('<a href="'+luEsc(c.link)+'" target="_blank" rel="noopener">link ↗</a>');
+  if(c.row){
+    const dir = c.section.startsWith('echolocation') ? 'calls/' : 'size/';
+    const [file, line] = c.row.split(':');
+    links.push('<a href="'+luEsc(EV_REPO+dir+file+(line ? '#L'+line : ''))+'" target="_blank" rel="noopener" '+
+      'title="The row this project transcribed from the source">our transcription</a>');
+  }
+  if(c.checked_on) links.push('checked '+luEsc(c.checked_on));
+  return '<li>'+luEvStatus(c.status)+'<b>'+luEsc(c.value)+'</b>'+
+    (meta.length ? '<span class="lu-ev-meta">'+meta.join(' · ')+'</span>' : '')+
+    (links.length ? '<span class="lu-ev-meta">'+links.join(' · ')+'</span>' : '')+
+    (c.issues ? '<span class="lu-ev-issue">⚠ '+luEsc(c.issues)+'</span>' : '')+'</li>';
+}
+
+function luEvidenceBody(data, id, binomial){
+  const claims = data.species[id];
+  if(!claims) return '<p class="lu-note">The evidence list does not cover this species yet. This preview covers: '+
+    luEsc(data._meta.scope)+'.</p>';
+  if(!claims.length) return '<p class="lu-note">No value on this card has a source yet.</p>';
+  const count = st=>claims.filter(c=>c.status===st).length;
+  const sourceCount = new Set(claims.map(c=>c.source)).size;
+  const weak = count('generic_link')+count('no_locator')+count('unpublished')+count('unlinked')+count('not_found');
+  let html = '<p class="lu-ev-lede">'+claims.length+' values from '+sourceCount+' sources. '+
+    (count('located') ? count('located')+' found on the page the link opens. ' : '')+
+    count('cited')+' name the source and where in it the value is printed'+
+    (weak ? '; '+weak+' cannot be followed to the value.' : '.')+'</p>';
+
+  EV_SECTIONS.forEach(([key, label])=>{
+    const items = claims.filter(c=>c.section===key);
+    if(!items.length) return;
+    const grouped = new Map();
+    items.forEach(c=>{ if(!grouped.has(c.source)) grouped.set(c.source, []); grouped.get(c.source).push(c); });
+    // values ranked by evidence within each source; sources by their best
+    // value, then by how many of their values reach it, then by size
+    grouped.forEach(group=>group.sort((a,b)=>evRank(a)-evRank(b)));
+    const bySource = new Map([...grouped].sort(([,a],[,b])=>
+      evRank(a[0])-evRank(b[0]) ||
+      b.filter(c=>evRank(c)===evRank(b[0])).length/b.length - a.filter(c=>evRank(c)===evRank(a[0])).length/a.length ||
+      b.length-a.length));
+    const tally = Object.keys(EV_STATUS).filter(st=>items.some(c=>c.status===st))
+      .map(st=>items.filter(c=>c.status===st).length+' '+EV_STATUS[st][0]).join(', ');
+    html += '<details class="lu-ev-group"><summary><b>'+label+'</b><span>'+items.length+' value'+(items.length===1?'':'s')+
+      ' · '+bySource.size+' source'+(bySource.size===1?'':'s')+'</span><span>'+luEsc(tally)+'</span></summary>';
+    bySource.forEach((group, rid)=>{
+      const src = data.sources[rid] || {label: rid};
+      // When every value from this source opens the same species page (a
+      // Plazi treatment, an MDD species page), that page is the source for this
+      // bat: the source's own link may be a chapter or index for other taxa.
+      const pages = new Set(group.map(c=>c.deep_link ? c.deep_link.split('#')[0] : ''));
+      const own = pages.size===1 && !pages.has('') ? [...pages][0] : '';
+      const href = own || src.url;
+      const name = href
+        ? '<a href="'+luEsc(href)+'" target="_blank" rel="noopener" title="'+luEsc(src.citation||'')+'">'+luEsc(src.label||rid)+'</a>'
+        : '<span title="'+luEsc(src.citation||'')+'">'+luEsc(src.label||rid)+'</span>';
+      const scope = own ? 'species page' : EV_SCOPE[src.link_scope] || '';
+      html += '<div class="lu-ev-src"><p class="lu-ev-src-head">'+name+
+        (scope ? '<span class="lu-ev-scope">'+luEsc(scope)+'</span>' : '')+
+        (src.licence ? '<span class="lu-ev-scope" title="Licence">'+luEsc(src.licence)+'</span>' : '')+'</p>'+
+        (src.citation ? '<p class="lu-ev-meta lu-ev-cite">'+luEsc(src.citation)+'</p>' : '')+
+        '<ul class="lu-ev-list">'+group.map(c=>luEvClaimHTML(c, src)).join('')+'</ul></div>';
+    });
+    html += '</details>';
+  });
+
+  html += '<div class="lu-ev-foot"><dl>'+Object.entries(EV_STATUS)
+      .filter(([st])=>claims.some(c=>c.status===st))
+      .map(([st,[,,why]])=>'<dt>'+luEvStatus(st)+'</dt><dd>'+luEsc(why)+'</dd>').join('')+'</dl>'+
+    '<p>Built '+luEsc(data._meta.built)+(data._meta.checked ? ', open pages checked automatically' : '')+
+    ' by data/build_claims.py from the rows this card is built from. “Our transcription” is the row this project copied from the source.</p>'+
+    '<button type="button" class="lu-ev-dl" data-id="'+luEsc(id)+'" data-fmt="csv" data-name="'+luEsc(binomial)+'">Download CSV</button>'+
+    '<button type="button" class="lu-ev-dl" data-id="'+luEsc(id)+'" data-fmt="json" data-name="'+luEsc(binomial)+'">Download JSON</button></div>';
+  return html;
+}
+
+// the panel fills itself the first time it is opened
+document.addEventListener('toggle', e=>{
+  const det = e.target;
+  if(!det.matches || !det.matches('.lu-ev') || !det.open || det.dataset.filled) return;
+  const section = det.closest('.lu-evidence');
+  const body = det.querySelector('.lu-ev-body');
+  const s = luState.species.find(x=>x.id===section.dataset.id);
+  luLoadEvidence().then(data=>{
+    body.innerHTML = luEvidenceBody(data, section.dataset.id, s ? luNiceName(s.sciName) : section.dataset.id);
+    det.dataset.filled = '1';
+  }).catch(err=>{
+    body.innerHTML = '<p class="lu-note">Could not load the evidence list ('+luEsc(err.message)+').</p>';
+  });
+}, true);
+
+document.addEventListener('click', e=>{
+  const btn = e.target.closest('.lu-ev-dl');
+  if(!btn) return;
+  luLoadEvidence().then(data=>{
+    const claims = (data.species[btn.dataset.id]||[]).map(c=>({...c, source_label:(data.sources[c.source]||{}).label||c.source,
+      source_url:(data.sources[c.source]||{}).url||'', source_citation:(data.sources[c.source]||{}).citation||''}));
+    let text, type;
+    if(btn.dataset.fmt==='json'){
+      text = JSON.stringify({species:btn.dataset.name, mdd_id:btn.dataset.id, built:data._meta.built, claims}, null, 1);
+      type = 'application/json';
+    } else {
+      const cols = ['section','item','value','basis','role','status','source_label','source_url','source_citation',
+                    'link','deep_link','locator','verbatim','row','issues','checked_on'];
+      const cell = v=>'"'+String(v==null ? '' : v).replace(/"/g,'""')+'"';
+      text = [cols.join(','), ...claims.map(c=>cols.map(k=>cell(c[k])).join(','))].join('\r\n');
+      type = 'text/csv';
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], {type}));
+    a.download = btn.dataset.name.replace(/\s+/g,'_')+'_sources.'+btn.dataset.fmt;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  });
+});
 
 // compare table: forearm, then mass; empty (so left out) on pages without size data
 function cmpSizeCell(key, unit){
@@ -4305,6 +4553,7 @@ function luDetailHTML(s, compact){
         luLocalityHTML(s.id, directCall, bin)+(directCall ? '' : luCallSearchHTML(s.id))+'</section>'+
     '</div>'+
     luSizeHTML(s)+
+    luEvidenceHTML(s)+
     luHistoryHTML(s)+
     '<p class="lu-prov">Sources: '+sources.join(' · ')+'</p>';
 }
