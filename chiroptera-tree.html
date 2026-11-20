@@ -3565,6 +3565,10 @@ const EV_STATUS = {
   unlinked:     ['no link', 'bad', 'The source has no link at all.'],
 };
 const EV_SCOPE = {document:'paper', dataset:'dataset, download', index:'index page', none:'no link'};
+// best evidence first: what a reader can follow to the value, then what only
+// names where it is, then what cannot be followed at all
+const EV_RANK = ['located','cited','generic_link','no_locator','not_found','unpublished','unlinked'];
+const evRank = c=>{ const i = EV_RANK.indexOf(c.status); return i<0 ? EV_RANK.length : i; };
 const EV_REPO = 'https://github.com/Kaves-Engineering/ChiropTree/blob/master/data/';
 
 function luLoadEvidence(){
@@ -3633,8 +3637,15 @@ function luEvidenceBody(data, id, binomial){
   EV_SECTIONS.forEach(([key, label])=>{
     const items = claims.filter(c=>c.section===key);
     if(!items.length) return;
-    const bySource = new Map();
-    items.forEach(c=>{ if(!bySource.has(c.source)) bySource.set(c.source, []); bySource.get(c.source).push(c); });
+    const grouped = new Map();
+    items.forEach(c=>{ if(!grouped.has(c.source)) grouped.set(c.source, []); grouped.get(c.source).push(c); });
+    // values ranked by evidence within each source; sources by their best
+    // value, then by how many of their values reach it, then by size
+    grouped.forEach(group=>group.sort((a,b)=>evRank(a)-evRank(b)));
+    const bySource = new Map([...grouped].sort(([,a],[,b])=>
+      evRank(a[0])-evRank(b[0]) ||
+      b.filter(c=>evRank(c)===evRank(b[0])).length/b.length - a.filter(c=>evRank(c)===evRank(a[0])).length/a.length ||
+      b.length-a.length));
     const tally = Object.keys(EV_STATUS).filter(st=>items.some(c=>c.status===st))
       .map(st=>items.filter(c=>c.status===st).length+' '+EV_STATUS[st][0]).join(', ');
     html += '<details class="lu-ev-group"><summary><b>'+label+'</b><span>'+items.length+' value'+(items.length===1?'':'s')+
